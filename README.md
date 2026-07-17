@@ -25,7 +25,7 @@ Use write-agora-marketing to rewrite this mobile paywall. Keep one CTA and use o
 The repository contains one canonical [Agent Skill](https://agentskills.io/specification). Its zero-dependency installer copies that skill into documented host locations without rewriting it.
 
 ```sh
-npx --yes --ignore-scripts git+ssh://git@github.com/mbanderas/agora-marketing-skill.git#v0.1.0 --target universal
+npx --yes --ignore-scripts git+ssh://git@github.com/mbanderas/agora-marketing-skill.git#v0.1.1 --target universal
 ```
 
 `universal` installs two identical copies:
@@ -38,7 +38,7 @@ Some clients scan both locations and do not document duplicate-name precedence. 
 The repository is private, so the command uses SSH and needs GitHub access through your existing Git setup. For a project-only install, keep the skill inside the repository:
 
 ```sh
-npx --yes --ignore-scripts git+ssh://git@github.com/mbanderas/agora-marketing-skill.git#v0.1.0 --target universal --scope project --project .
+npx --yes --ignore-scripts git+ssh://git@github.com/mbanderas/agora-marketing-skill.git#v0.1.1 --target universal --scope project --project .
 ```
 
 Preview destinations with `--dry-run`. Re-run with `--force` to update a copy that differs; the installer refuses to overwrite it by default.
