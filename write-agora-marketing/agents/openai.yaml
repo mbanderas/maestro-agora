@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Agora Marketing"
+  short_description: "Evidence-led marketing copy across channels"
+  default_prompt: "Use $write-agora-marketing to write concise, evidence-led copy for this asset."
