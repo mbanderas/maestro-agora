@@ -1,0 +1,39 @@
+{
+  "name": "agora-marketing-skill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Install and validate the write-agora-marketing Agent Skill.",
+  "type": "module",
+  "bin": {
+    "write-agora-marketing": "./scripts/install.mjs"
+  },
+  "files": [
+    "README.md",
+    "assets/agora-orbit.svg",
+    "scripts/install.mjs",
+    "write-agora-marketing"
+  ],
+  "scripts": {
+    "check": "npm run validate && npm test && npm run pack:check",
+    "pack:check": "node scripts/pack-check.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbanderas/agora-marketing-skill.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "marketing",
+    "copywriting",
+    "codex",
+    "claude-code",
+    "cursor",
+    "geo",
+    "aeo"
+  ]
+}
