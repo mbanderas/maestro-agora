@@ -1,0 +1,22 @@
+{
+  "name": "maestro-agora",
+  "version": "1.0.0",
+  "displayName": "Maestro: Agora",
+  "description": "Turn verified product truth into concise, argument-first marketing and sales copy across written and spoken channels with the /agora skill.",
+  "author": {
+    "name": "Mark Laursen",
+    "url": "https://github.com/mbanderas"
+  },
+  "homepage": "https://github.com/mbanderas/maestro-agora",
+  "repository": "https://github.com/mbanderas/maestro-agora",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "agora",
+    "marketing",
+    "copywriting",
+    "claude-code",
+    "geo",
+    "aeo"
+  ]
+}

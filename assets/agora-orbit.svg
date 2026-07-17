@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
-  <title id="title">Write Agora Marketing</title>
-  <desc id="desc">An animated argument path connects reality, proof, voice, and a clear action around one defensible belief.</desc>
+  <title id="title">How Maestro Agora works</title>
+  <desc id="desc">An animated gold pen stroke conducts verified truth through argument, proof, voice, and a clear action into ready copy.</desc>
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#090b19"/>
@@ -15,7 +15,12 @@
     <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#8b5cf6"/>
       <stop offset="0.5" stop-color="#22d3ee"/>
-      <stop offset="1" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#f6b90b"/>
+    </linearGradient>
+    <linearGradient id="penInk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff2ad"/>
+      <stop offset="0.42" stop-color="#f6b90b"/>
+      <stop offset="1" stop-color="#a78bfa"/>
     </linearGradient>
     <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
       <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#c4b5fd" stroke-opacity="0.055"/>
@@ -42,13 +47,15 @@
       .pulse { animation: pulse 3.4s ease-in-out infinite; }
       .drift { animation: drift 6s ease-in-out infinite; }
       .signal-dot { animation: shuttle 4.8s ease-in-out infinite; }
+      .pen-stroke { stroke-dasharray: 520; stroke-dashoffset: 520; animation: write 5.8s ease-in-out infinite; }
       @keyframes route { to { stroke-dashoffset: -180; } }
       @keyframes orbit { to { transform: rotate(360deg); } }
       @keyframes pulse { 0%, 100% { opacity: .48; } 50% { opacity: 1; } }
       @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
       @keyframes shuttle { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(94px); } }
+      @keyframes write { 0%, 12% { stroke-dashoffset: 520; opacity: .3; } 58%, 86% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: -520; opacity: .3; } }
       @media (prefers-reduced-motion: reduce) {
-        .route, .orbit, .pulse, .drift, .signal-dot { animation: none; }
+        .route, .orbit, .pulse, .drift, .signal-dot, .pen-stroke { animation: none; stroke-dashoffset: 0; }
       }
     </style>
   </defs>
@@ -63,18 +70,24 @@
 
     <g transform="translate(58 52)">
       <rect width="210" height="31" rx="15.5" fill="#11162e" stroke="#7c83a6" stroke-opacity="0.35"/>
-      <circle cx="17" cy="15.5" r="4" fill="#34d399" class="pulse"/>
+      <circle cx="17" cy="15.5" r="4" fill="#f6b90b" class="pulse"/>
       <text x="31" y="20" class="label">ARGUMENT-FIRST</text>
     </g>
 
     <text x="58" y="138" fill="#f8fafc" font-size="43" font-weight="760" letter-spacing="-1.7">Make the case.</text>
     <text x="58" y="180" fill="#b8c2dd" font-size="23" font-weight="430">Then make every word earn its place.</text>
-    <text x="58" y="230" fill="#8390af" font-size="14.5">Verified truth in. Ready-to-use copy out.</text>
+    <text x="58" y="230" fill="#8390af" font-size="14.5">Verified truth in. Concise copy out.</text>
 
     <g class="drift">
       <rect x="58" y="285" width="198" height="72" rx="18" fill="#0d1329" stroke="#8b5cf6" stroke-opacity="0.4"/>
       <text x="78" y="311" class="label">INPUT</text>
       <text x="78" y="340" fill="#e9e7ff" font-size="16" font-weight="650">REALITY + EVIDENCE</text>
+    </g>
+
+    <path d="M258 321 C342 318 388 284 442 247 C471 228 505 222 535 220" fill="none" stroke="url(#penInk)" stroke-width="3" stroke-linecap="round" class="pen-stroke" filter="url(#glow)"/>
+    <g transform="translate(422 239) rotate(-34)" aria-hidden="true">
+      <path d="M0 0 L30 0 L42 7 L30 14 L0 14 Z" fill="#f6b90b" stroke="#fff2ad" stroke-opacity="0.8"/>
+      <circle cx="31" cy="7" r="2.5" fill="#111630"/>
     </g>
 
     <g>
@@ -87,7 +100,7 @@
 
       <g class="orbit">
         <circle cx="600" cy="92" r="5" fill="#22d3ee" filter="url(#glow)"/>
-        <circle cx="728" cy="220" r="4" fill="#34d399"/>
+        <circle cx="728" cy="220" r="4" fill="#f6b90b"/>
         <circle cx="600" cy="348" r="4" fill="#a78bfa"/>
         <circle cx="472" cy="220" r="4" fill="#60a5fa"/>
       </g>
@@ -98,7 +111,7 @@
           <text x="44" y="18" text-anchor="middle" class="node">ARGUMENT</text>
         </g>
         <g transform="translate(704 206)">
-          <rect width="70" height="27" rx="13.5" fill="#10172d" stroke="#34d399" stroke-opacity="0.4"/>
+          <rect width="70" height="27" rx="13.5" fill="#10172d" stroke="#f6b90b" stroke-opacity="0.5"/>
           <text x="35" y="18" text-anchor="middle" class="node">PROOF</text>
         </g>
         <g transform="translate(562 347)">
@@ -116,10 +129,10 @@
     <circle cx="764" cy="220" r="4" fill="#22d3ee" class="signal-dot"/>
 
     <g transform="translate(878 107)">
-      <rect width="264" height="246" rx="24" fill="#0b1422" fill-opacity="0.86" stroke="#34d399" stroke-opacity="0.32"/>
-      <rect x="20" y="20" width="92" height="25" rx="12.5" fill="#12302d"/>
-      <text x="66" y="37" text-anchor="middle" fill="#6ee7b7" font-size="10.5" font-weight="800" letter-spacing="1.8">OUTPUT</text>
-      <text x="20" y="82" fill="#f8fafc" font-size="23" font-weight="730">Ready-to-use copy</text>
+      <rect width="264" height="246" rx="24" fill="#0b1422" fill-opacity="0.86" stroke="#f6b90b" stroke-opacity="0.38"/>
+      <rect x="20" y="20" width="92" height="25" rx="12.5" fill="#35290e"/>
+      <text x="66" y="37" text-anchor="middle" fill="#ffd65b" font-size="10.5" font-weight="800" letter-spacing="1.8">OUTPUT</text>
+      <text x="20" y="82" fill="#f8fafc" font-size="23" font-weight="730">Ready copy</text>
       <text x="20" y="110" fill="#9aa8c4" font-size="13.5">Shortest complete version.</text>
       <g transform="translate(20 137)">
         <circle cx="6" cy="6" r="6" fill="#8b5cf6"/>
@@ -132,14 +145,14 @@
         <text x="22" y="11" fill="#cbd5e1" font-size="13">Voice gate</text>
       </g>
       <g transform="translate(20 205)">
-        <circle cx="6" cy="6" r="6" fill="#34d399"/>
+        <circle cx="6" cy="6" r="6" fill="#f6b90b"/>
         <path d="m3 6 2 2 4-5" fill="none" stroke="#07161c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <text x="22" y="11" fill="#cbd5e1" font-size="13">Format router</text>
       </g>
     </g>
 
     <text x="58" y="405" class="label">WRITE  ·  VERIFY  ·  COMPRESS</text>
-    <text x="1142" y="405" text-anchor="end" fill="#596783" font-size="11" font-weight="700" letter-spacing="1.6">AGORA</text>
+    <text x="1142" y="405" text-anchor="end" fill="#f6b90b" font-size="11" font-weight="700" letter-spacing="1.6">MAESTRO · AGORA</text>
   </g>
   <rect x="1" y="1" width="1198" height="438" rx="28" fill="none" stroke="#6f78a3" stroke-opacity="0.25"/>
 </svg>

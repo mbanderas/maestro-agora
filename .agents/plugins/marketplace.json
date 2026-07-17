@@ -1,0 +1,21 @@
+{
+  "name": "maestro-agora",
+  "interface": {
+    "displayName": "Maestro: Agora"
+  },
+  "plugins": [
+    {
+      "name": "maestro-agora",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/mbanderas/maestro-agora.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

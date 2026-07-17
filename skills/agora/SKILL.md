@@ -1,13 +1,13 @@
 ---
-name: write-agora-marketing
-description: Write, rewrite, shorten, critique, or plan evidence-led marketing and sales content using the Agora argument-first method. Use when invoked as `/write-agora-marketing` and for marketing and sales copy; CTAs and microcopy; landing, product, and comparison pages; email and direct outreach; mobile-app onboarding, upgrade, and paywall screens; ads and social posts; editorial content; and spoken audio/video scripts plus written derivatives such as titles, descriptions, transcripts, captions, show notes, and companion pages.
+name: agora
+description: Write, rewrite, shorten, critique, or plan evidence-led marketing and sales content using the Agora argument-first method. Use when invoked as `/agora` and for marketing and sales copy; CTAs and microcopy; landing, product, and comparison pages; email and direct outreach; mobile-app onboarding, upgrade, and paywall screens; ads and social posts; editorial content; and spoken audio/video scripts plus written derivatives such as titles, descriptions, transcripts, captions, show notes, and companion pages.
 ---
 
-# Write Agora Marketing
+# Maestro: Agora
 
 ## Accept direct invocation
 
-Treat `/write-agora-marketing` as explicit activation. Use all text after the command as the task. If no task follows, ask for the asset or source copy.
+Treat `/agora` as explicit activation. Use all text after the command as the task. If no task follows, ask for the asset or source copy.
 
 ## Load the authority
 

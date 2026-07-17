@@ -5,8 +5,8 @@ import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const SKILL_NAME = "write-agora-marketing";
-const SKILL_ROOT = join(ROOT, SKILL_NAME);
+const SKILL_NAME = "agora";
+const SKILL_ROOT = join(ROOT, "skills", SKILL_NAME);
 const REQUIRED_SKILL_FILES = [
   "SKILL.md",
   "agents/openai.yaml",
@@ -76,6 +76,26 @@ async function validateRelativeLinks(file) {
   }
 }
 
+async function readJson(file) {
+  try {
+    return JSON.parse(await readFile(file, "utf8"));
+  } catch (error) {
+    check(false, `${relative(ROOT, file)} is not valid JSON: ${error.message}`);
+    return {};
+  }
+}
+
+async function pngDimensions(file) {
+  const image = await readFile(file);
+  check(
+    image.length >= 24 && image.subarray(1, 4).toString("ascii") === "PNG",
+    `${relative(ROOT, file)} must be a PNG image`,
+  );
+  return image.length >= 24
+    ? { height: image.readUInt32BE(20), width: image.readUInt32BE(16) }
+    : { height: 0, width: 0 };
+}
+
 async function main() {
   const skillFiles = await listFiles(SKILL_ROOT);
   check(
@@ -100,7 +120,7 @@ async function main() {
   }
   check(skill.split(/\r?\n/).length < 500, "SKILL.md must stay under 500 lines");
   check(
-    skill.includes("Treat `/write-agora-marketing` as explicit activation"),
+    skill.includes("Treat `/agora` as explicit activation"),
     "SKILL.md must preserve the direct invocation contract",
   );
   check(
@@ -125,8 +145,43 @@ async function main() {
     check(new RegExp(`^  ${field}:`, "m").test(openaiYaml), `agents/openai.yaml is missing ${field}`);
   }
   check(
-    openaiYaml.includes("$write-agora-marketing"),
+    openaiYaml.includes("$agora"),
     "agents/openai.yaml default_prompt must invoke the skill",
+  );
+
+  const packageJson = await readJson(join(ROOT, "package.json"));
+  check(packageJson.name === "@maestrofrontier/agora", "package name must match the public npm package");
+  check(packageJson.version === "1.0.0", "package version must match the launch version");
+  check(packageJson.bin?.agora === "./scripts/install.mjs", "package must expose the agora bin");
+  check(packageJson.license === "MIT", "package must declare the MIT license");
+
+  const codexPlugin = await readJson(join(ROOT, ".codex-plugin", "plugin.json"));
+  check(codexPlugin.name === "maestro-agora", "Codex plugin ID must be maestro-agora");
+  check(codexPlugin.version === packageJson.version, "Codex plugin version must match package version");
+  check(codexPlugin.skills === "./skills/", "Codex plugin must expose the skills directory");
+  check(codexPlugin.interface?.displayName === "Maestro: Agora", "Codex display name must be Maestro: Agora");
+  check(
+    codexPlugin.interface?.composerIcon === "./assets/icon.png",
+    "Codex plugin must use the Agora icon",
+  );
+
+  const claudePlugin = await readJson(join(ROOT, ".claude-plugin", "plugin.json"));
+  check(claudePlugin.name === "maestro-agora", "Claude plugin ID must be maestro-agora");
+  check(claudePlugin.version === packageJson.version, "Claude plugin version must match package version");
+  check(claudePlugin.displayName === "Maestro: Agora", "Claude display name must be Maestro: Agora");
+
+  const codexMarketplace = await readJson(join(ROOT, ".agents", "plugins", "marketplace.json"));
+  const codexListing = codexMarketplace.plugins?.find((plugin) => plugin.name === "maestro-agora");
+  check(Boolean(codexListing), "Codex marketplace must list maestro-agora");
+  check(
+    codexListing?.source?.url === "https://github.com/mbanderas/maestro-agora.git",
+    "Codex marketplace must point at the public repository",
+  );
+
+  const claudeMarketplace = await readJson(join(ROOT, ".claude-plugin", "marketplace.json"));
+  check(
+    claudeMarketplace.plugins?.some((plugin) => plugin.name === "maestro-agora"),
+    "Claude marketplace must list maestro-agora",
   );
 
   const repoFiles = await listFiles(ROOT, ROOT, new Set([".git", "node_modules", "08-agora-marketing.md"]));
@@ -135,6 +190,8 @@ async function main() {
     { pattern: /\[(?:TODO|TBD)(?::[^\]]*)?\]/i, label: "TODO marker" },
     { pattern: new RegExp(`\\bPLACE${"HOLDER"}\\b`, "i"), label: "unfinished marker" },
     { pattern: /\bturn\d+(?:search|fetch|view|open)\d+\b/i, label: "temporary citation token" },
+    { pattern: new RegExp(["promotional", "concept"].join("\\s+"), "i"), label: "prohibited visual-caption phrase" },
+    { pattern: new RegExp(["write", "agora", "marketing"].join("-"), "i"), label: "legacy skill alias" },
   ];
   for (const file of repoFiles.filter((file) => scanExtensions.has(extname(file)))) {
     const content = await readFile(join(ROOT, file), "utf8");
@@ -147,8 +204,19 @@ async function main() {
     await validateRelativeLinks(join(ROOT, file));
   }
 
-  check(await exists(join(ROOT, "assets", "agora-orbit.svg")), "README hero SVG is missing");
+  check(await exists(join(ROOT, "assets", "agora-orbit.svg")), "workflow SVG is missing");
+  check(await exists(join(ROOT, "assets", "maestro-agora-banner.png")), "README banner is missing");
+  check(await exists(join(ROOT, "assets", "icon.png")), "plugin icon is missing");
   check(await exists(join(ROOT, "scripts", "install.mjs")), "installer is missing");
+
+  const banner = await pngDimensions(join(ROOT, "assets", "maestro-agora-banner.png"));
+  check(banner.width === banner.height * 3, "README banner must be exactly 3:1");
+  const icon = await pngDimensions(join(ROOT, "assets", "icon.png"));
+  check(icon.width === icon.height, "plugin icon must be square");
+
+  const workflowSvg = await readFile(join(ROOT, "assets", "agora-orbit.svg"), "utf8");
+  check(workflowSvg.includes("prefers-reduced-motion"), "workflow SVG must support reduced motion");
+  check(workflowSvg.includes("pen-stroke"), "workflow SVG must preserve its pen-stroke motif");
 
   if (errors.length > 0) {
     process.stderr.write("Validation failed:\n");

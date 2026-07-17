@@ -1,21 +1,28 @@
 {
-  "name": "agora-marketing-skill",
-  "version": "0.1.1",
-  "private": true,
-  "description": "Install and validate the write-agora-marketing Agent Skill.",
+  "name": "@maestrofrontier/agora",
+  "version": "1.0.0",
+  "description": "Install Maestro: Agora, the evidence-led marketing skill for AI coding agents.",
   "type": "module",
   "bin": {
-    "write-agora-marketing": "./scripts/install.mjs"
+    "agora": "./scripts/install.mjs"
   },
   "files": [
+    ".agents/plugins/marketplace.json",
+    ".claude-plugin/marketplace.json",
+    ".claude-plugin/plugin.json",
+    ".codex-plugin/plugin.json",
+    "LICENSE",
     "README.md",
     "assets/agora-orbit.svg",
+    "assets/icon.png",
+    "assets/maestro-agora-banner.png",
     "scripts/install.mjs",
-    "write-agora-marketing"
+    "skills/agora"
   ],
   "scripts": {
     "check": "npm run validate && npm test && npm run pack:check",
     "pack:check": "node scripts/pack-check.mjs",
+    "prepublishOnly": "npm run check",
     "test": "node --test tests/install.test.mjs",
     "validate": "node scripts/validate.mjs"
   },
@@ -24,10 +31,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mbanderas/agora-marketing-skill.git"
+    "url": "git+https://github.com/mbanderas/maestro-agora.git"
+  },
+  "homepage": "https://github.com/mbanderas/maestro-agora#readme",
+  "bugs": {
+    "url": "https://github.com/mbanderas/maestro-agora/issues"
+  },
+  "author": "Mark Laursen",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "agent-skills",
+    "maestro",
     "marketing",
     "copywriting",
     "codex",

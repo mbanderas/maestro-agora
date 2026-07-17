@@ -15,10 +15,10 @@ import { homedir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const SKILL_NAME = "write-agora-marketing";
+const SKILL_NAME = "agora";
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const PACKAGE_ROOT = resolve(SCRIPT_DIR, "..");
-const SOURCE_DIR = join(PACKAGE_ROOT, SKILL_NAME);
+const SOURCE_DIR = join(PACKAGE_ROOT, "skills", SKILL_NAME);
 
 const TARGETS = {
   shared: {
@@ -64,7 +64,7 @@ function usage() {
   return `Install ${SKILL_NAME} into documented Agent Skills locations.
 
 Usage:
-  write-agora-marketing [options]
+  agora [options]
 
 Options:
   --target <name>    universal (default), shared, codex, claude, cursor,
@@ -78,9 +78,9 @@ Options:
   -h, --help         Show this help.
 
 Examples:
-  write-agora-marketing --target universal
-  write-agora-marketing --target universal --scope project --project .
-  write-agora-marketing --target claude,cursor --force`;
+  agora --target universal
+  agora --target universal --scope project --project .
+  agora --target claude,cursor --force`;
 }
 
 function fail(message) {
@@ -251,7 +251,7 @@ async function verifySource() {
   ];
   for (const file of required) {
     if (!(await exists(join(SOURCE_DIR, file)))) {
-      throw new Error(`package is missing ${SKILL_NAME}/${file}`);
+      throw new Error(`package is missing skills/${SKILL_NAME}/${file}`);
     }
   }
 }

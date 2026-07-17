@@ -9,13 +9,20 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const EXPECTED = [
+  ".agents/plugins/marketplace.json",
+  ".claude-plugin/marketplace.json",
+  ".claude-plugin/plugin.json",
+  ".codex-plugin/plugin.json",
+  "LICENSE",
   "README.md",
   "assets/agora-orbit.svg",
+  "assets/icon.png",
+  "assets/maestro-agora-banner.png",
   "package.json",
   "scripts/install.mjs",
-  "write-agora-marketing/SKILL.md",
-  "write-agora-marketing/agents/openai.yaml",
-  "write-agora-marketing/references/agora-marketing.md",
+  "skills/agora/SKILL.md",
+  "skills/agora/agents/openai.yaml",
+  "skills/agora/references/agora-marketing.md",
 ].sort();
 
 const cache = await mkdtemp(join(tmpdir(), "agora-npm-pack-"));

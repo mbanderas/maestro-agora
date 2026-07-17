@@ -1,0 +1,39 @@
+{
+  "name": "maestro-agora",
+  "version": "1.0.0",
+  "description": "Maestro: Agora turns verified product truth into concise, argument-first copy across written and spoken channels.",
+  "author": {
+    "name": "Mark Laursen",
+    "url": "https://github.com/mbanderas"
+  },
+  "homepage": "https://github.com/mbanderas/maestro-agora#readme",
+  "repository": "https://github.com/mbanderas/maestro-agora",
+  "license": "MIT",
+  "keywords": [
+    "agora",
+    "marketing",
+    "copywriting",
+    "codex",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Maestro: Agora",
+    "shortDescription": "Evidence-led, argument-first copy across every channel",
+    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that turns supplied product truth and proof into concise marketing, sales, editorial, outreach, interface, and spoken copy while preserving claim limits.",
+    "developerName": "Mark Laursen",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/mbanderas/maestro-agora",
+    "brandColor": "#7C3AED",
+    "composerIcon": "./assets/icon.png",
+    "defaultPrompt": [
+      "/agora Rewrite this page around one defensible argument and CTA.",
+      "/agora Shorten this copy without losing proof or qualifications.",
+      "/agora Draft a spoken script from the verified facts below."
+    ]
+  }
+}

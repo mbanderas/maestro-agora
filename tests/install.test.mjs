@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const INSTALLER = join(ROOT, "scripts", "install.mjs");
-const SOURCE_SKILL = join(ROOT, "write-agora-marketing", "SKILL.md");
+const SOURCE_SKILL = join(ROOT, "skills", "agora", "SKILL.md");
 
 function run(args) {
   return spawnSync(process.execPath, [INSTALLER, ...args], {
@@ -40,8 +40,8 @@ test("universal user install writes the shared and Claude locations", async () =
   await withTemp(async (home) => {
     const result = run(["--target", "universal", "--home", home]);
     assert.equal(result.status, 0, result.stderr);
-    await assertInstalled(join(home, ".agents", "skills", "write-agora-marketing"));
-    await assertInstalled(join(home, ".claude", "skills", "write-agora-marketing"));
+    await assertInstalled(join(home, ".agents", "skills", "agora"));
+    await assertInstalled(join(home, ".claude", "skills", "agora"));
   });
 });
 
@@ -58,7 +58,7 @@ test("native project targets use each host's documented directory", async () => 
     await withTemp(async (project) => {
       const result = run(["--target", target, "--scope", "project", "--project", project]);
       assert.equal(result.status, 0, `${target}: ${result.stderr}`);
-      await assertInstalled(join(project, ...path, "write-agora-marketing"));
+      await assertInstalled(join(project, ...path, "agora"));
     });
   }
 });
@@ -67,7 +67,7 @@ test("a different existing copy requires --force", async () => {
   await withTemp(async (home) => {
     const args = ["--target", "shared", "--home", home];
     assert.equal(run(args).status, 0);
-    const skill = join(home, ".agents", "skills", "write-agora-marketing", "SKILL.md");
+    const skill = join(home, ".agents", "skills", "agora", "SKILL.md");
     await writeFile(skill, "changed locally\n", "utf8");
 
     const refused = run(args);
@@ -76,13 +76,13 @@ test("a different existing copy requires --force", async () => {
 
     const replaced = run([...args, "--force"]);
     assert.equal(replaced.status, 0, replaced.stderr);
-    await assertInstalled(join(home, ".agents", "skills", "write-agora-marketing"));
+    await assertInstalled(join(home, ".agents", "skills", "agora"));
   });
 });
 
 test("universal install preflights every destination before writing", async () => {
   await withTemp(async (home) => {
-    const conflict = join(home, ".claude", "skills", "write-agora-marketing");
+    const conflict = join(home, ".claude", "skills", "agora");
     await mkdir(conflict, { recursive: true });
     await writeFile(join(conflict, "SKILL.md"), "different copy\n", "utf8");
 
@@ -90,7 +90,7 @@ test("universal install preflights every destination before writing", async () =
     assert.equal(result.status, 1);
     assert.match(result.stderr, /differs/);
     await assert.rejects(
-      readFile(join(home, ".agents", "skills", "write-agora-marketing", "SKILL.md")),
+      readFile(join(home, ".agents", "skills", "agora", "SKILL.md")),
     );
   });
 });
@@ -103,7 +103,7 @@ test("universal install prepares every copy before committing any", async () => 
     assert.equal(result.status, 1);
     assert.match(result.stderr, /no installed copy was changed/);
     await assert.rejects(
-      readFile(join(home, ".agents", "skills", "write-agora-marketing", "SKILL.md")),
+      readFile(join(home, ".agents", "skills", "agora", "SKILL.md")),
     );
   });
 });
@@ -113,6 +113,6 @@ test("dry run reports destinations without writing", async () => {
     const result = run(["--", "--target", "universal", "--home", home, "--dry-run"]);
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /would install/);
-    await assert.rejects(readFile(join(home, ".agents", "skills", "write-agora-marketing", "SKILL.md")));
+    await assert.rejects(readFile(join(home, ".agents", "skills", "agora", "SKILL.md")));
   });
 });

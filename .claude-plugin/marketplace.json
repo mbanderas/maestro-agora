@@ -1,0 +1,15 @@
+{
+  "name": "maestro-agora",
+  "description": "Self-hosted marketplace for the Maestro: Agora marketing skill.",
+  "owner": {
+    "name": "Mark Laursen",
+    "url": "https://github.com/mbanderas"
+  },
+  "plugins": [
+    {
+      "name": "maestro-agora",
+      "source": "./",
+      "description": "Turn verified product truth into concise, argument-first copy across marketing, sales, editorial, outreach, interface, and spoken channels with the /agora skill."
+    }
+  ]
+}
