@@ -127,14 +127,30 @@ async function main() {
     skill.includes("[references/agora-marketing.md](references/agora-marketing.md)"),
     "SKILL.md must link its canonical reference",
   );
+  check(
+    skill.includes("Do not generate em dashes or curly or smart quotes in final copy"),
+    "SKILL.md must enforce the global punctuation bans",
+  );
+  check(
+    skill.includes("banned vocabulary, connectives, phrase templates, significance tails"),
+    "SKILL.md must enforce the consolidated lexical and structural bans",
+  );
 
   const referencePath = join(SKILL_ROOT, "references", "agora-marketing.md");
   const reference = await readFile(referencePath, "utf8");
   for (const required of [
     "## Evidence register",
     "## Human voice and AI-writing-tell gate",
+    "### Global output bans",
+    "### Banned vocabulary and connectives",
+    "### Banned templates and significance tails",
+    "### Banned structural and typography patterns",
     "## Written GEO/AEO and citability gate",
     "When this file is used outside CiteSurge",
+    "Apply this gate to every Agora deliverable",
+    "Wikipedia-style",
+    "zero generated em dashes and zero curly or smart quotes",
+    "zero generated tripartite templates",
   ]) {
     check(reference.includes(required), `canonical reference is missing: ${required}`);
   }
@@ -151,7 +167,7 @@ async function main() {
 
   const packageJson = await readJson(join(ROOT, "package.json"));
   check(packageJson.name === "@maestroagora/agora", "package name must match the public npm package");
-  check(packageJson.version === "1.0.0", "package version must match the launch version");
+  check(packageJson.version === "1.0.1", "package version must match the patch release");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.license === "MIT", "package must declare the MIT license");
 
@@ -183,6 +199,25 @@ async function main() {
     claudeMarketplace.plugins?.some((plugin) => plugin.name === "maestro-agora"),
     "Claude marketplace must list maestro-agora",
   );
+
+  for (const file of [
+    "README.md",
+    "package.json",
+    ".agents/plugins/marketplace.json",
+    ".claude-plugin/marketplace.json",
+    ".claude-plugin/plugin.json",
+    ".codex-plugin/plugin.json",
+  ]) {
+    const content = await readFile(join(ROOT, file), "utf8");
+    check(
+      !/(?:\u2014|&mdash;|&#8212;|&#x2014;)/i.test(content),
+      `${file} contains an em dash in public copy`,
+    );
+    check(
+      !/(?:[\u2018\u2019\u201c\u201d]|&(?:ldquo|rdquo|lsquo|rsquo);|&#(?:8216|8217|8220|8221);|&#x(?:2018|2019|201c|201d);)/i.test(content),
+      `${file} contains a curly or smart quote in public copy`,
+    );
+  }
 
   const repoFiles = await listFiles(ROOT, ROOT, new Set([".git", "node_modules", "08-agora-marketing.md"]));
   const scanExtensions = new Set([".md", ".mjs", ".json", ".yaml", ".yml", ".svg"]);

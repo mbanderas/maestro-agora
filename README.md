@@ -12,15 +12,15 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-7c3aed" /></a>
 </p>
 
-Agora is a portable Agent Skill for marketing, sales, editorial, interface, outreach, and spoken copy. It gives an AI agent a research-backed argument method, a strict claim gate, channel-aware brevity rules, and written GEO/AEO guidance—without treating a persuasive framework as permission to invent the proof.
+Agora is a portable Agent Skill for marketing, sales, editorial, interface, outreach, and spoken copy. It gives an AI agent a research-backed argument method, a strict claim gate, channel-aware brevity rules, and written GEO/AEO guidance. A persuasive framework is never permission to invent the proof.
 
 Give it product truth, evidence, constraints, and one desired action. The skill instructs the agent to return the shortest complete, ready-to-use draft first.
 
 **One suite: fuse the answer, make the case, guard the spend.**
 
-- **[Maestro Frontier](https://github.com/mbanderas/maestro)** — Fuses the model CLIs you already run into one judged, grounded answer.
-- **[Maestro Agora](https://github.com/mbanderas/maestro-agora)** — Turns verified product truth into concise, argument-first copy without inventing the proof.
-- **[Maestro CostGuard](https://github.com/mbanderas/costguard)** — Audits CI and cloud infrastructure for cost leaks and shows what to fix.
+- **[Maestro Frontier](https://github.com/mbanderas/maestro):** Fuses the model CLIs you already run into one judged, grounded answer.
+- **[Maestro Agora](https://github.com/mbanderas/maestro-agora):** Turns verified product truth into concise, argument-first copy without inventing the proof.
+- **[Maestro CostGuard](https://github.com/mbanderas/costguard):** Audits CI and cloud infrastructure for cost leaks and shows what to fix.
 
 ## Install
 
@@ -71,7 +71,7 @@ Invoke the skill directly, then provide the facts it may use:
 /agora Rewrite this upgrade screen. Keep one CTA. Use only these verified facts: ...
 ```
 
-In Codex, `$agora` and the skills picker can also select the installed skill. Other hosts may expose skills through their own picker or mention syntax; asking the agent to “use the agora skill” remains portable.
+In Codex, `$agora` and the skills picker can also select the installed skill. Other hosts may expose skills through their own picker or mention syntax; asking the agent to "use the agora skill" remains portable.
 
 Agora activates for writing, rewriting, shortening, critiquing, and planning:
 
@@ -89,7 +89,7 @@ Agora silently routes each asset as indexable public, public non-indexable writt
 - **Argument before ornament.** Build one defensible belief shift, one decision path, and one primary action.
 - **Proof beside the claim.** Preserve source, scope, date, qualification, and material limitations.
 - **Shortest complete draft.** Remove repetition before evidence, legal meaning, accessibility, or next-step clarity.
-- **Human voice controls.** Cut stock openings, vague hype, fabricated texture, template residue, and decorative recaps.
+- **Hard writing-tell bans.** Cut Wikipedia-style flagged vocabulary, connectives, templates, significance tails, generated em dashes, curly quotes, fabricated texture, and decorative recaps.
 - **Claim gate.** Narrow, omit, or flag unsupported claims instead of supplying missing features, prices, routes, urgency, scarcity, testimonials, or results.
 - **Ready copy first.** Return one usable draft without exposing private reasoning or producing near-duplicate variants unless asked.
 

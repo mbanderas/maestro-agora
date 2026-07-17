@@ -64,21 +64,27 @@ When activated, the LLM must:
    captions, show notes, or companion page.
 7. Never invent a product fact, route, price, deadline, result, testimonial,
    source, urgency, scarcity, or proof point.
+8. Apply the human-voice and AI-writing-tell gate to every deliverable. Enforce
+   its global output bans, including zero generated em dashes and zero curly or
+   smart quotes. Use straight quotes.
 
 This is a decision system, not a visible fill-in-the-blanks template. Use only
 the moves the asset needs, and vary the surface structure naturally.
 
 ## Source basis and authority
 
-This handbook synthesizes the two writing references and three research
-reports listed below. The research reports inform the rules but do
-not override the scope or limits of their underlying evidence.
+This handbook synthesizes the Agora writing reference, the consolidated
+human-voice reference, and three research reports listed below. The research
+reports inform the rules but do not override the scope or limits of their
+underlying evidence.
 
 Supplied source set:
 
 - User-provided transcript: `agora style marketing.md` (received 2026-07-17).
-- User-provided reference: `ai-writing-tells-reference (1).md` (received
-  2026-07-17).
+- User-maintained consolidated reference: `Anti-AI-Writing-Tells.md` (updated
+  2026-07-17). It preserves every operational ban from the earlier
+  `ai-writing-tells-reference (1).md`, removes only unsupported numerical
+  detection claims and fixed editing quotas, and adds evidence-backed limits.
 - User-provided research: `Emotional Persuasion and Argument Sequencing in
   Marketing and Sales.md` (received 2026-07-17).
 - User-provided research: `Evidence on Marketing Copy Length and Structure
@@ -508,10 +514,45 @@ response time must be verified before use.
 
 ## Human voice and AI-writing-tell gate
 
-The goal is not to disguise authorship. The goal is specific, accurate,
-author-owned writing that fits the channel.
+Apply this gate to every Agora deliverable, including private writing, public
+copy, interface text, outreach, editorial work, and spoken scripts. The goal is
+not to disguise authorship. Produce specific, accurate, author-owned writing
+that fits its channel and survives factual review.
 
-### Core tests
+The consolidated human-voice reference originates in Wikipedia's operational
+AI-cleanup guidance. Editors use those patterns to flag and clean likely
+model-written prose, and related editorial systems can adopt the same cues.
+Agora therefore treats the listed items as mandatory output bans. One cue does
+not prove authorship, and following the bans cannot guarantee non-detection.
+Detector scores remain secondary signals with false-positive, domain-shift, and
+versioning limits.
+
+### Global output bans
+
+Unless immutable source text or an explicit legal, technical, brand, or user
+requirement makes preservation necessary, final Agora copy must contain:
+
+- zero generated em dashes;
+- zero curly or smart quotation marks;
+- zero prompt acknowledgements or task meta-commentary;
+- zero stock phrase templates;
+- zero generic significance tails;
+- zero fabricated citations, quotations, anecdotes, memories, motives,
+  credentials, opinions, comparisons, or facts;
+- zero banned vocabulary or connectives without a narrow documented exception;
+- zero unneeded conclusion or recap paragraphs;
+- zero generated tripartite templates;
+- zero generated `Not only... but also...` constructions;
+- zero deliberate errors, fake informality, synonym soup, or detector-evasion
+  promises.
+
+Use straight quotes. Replace each generated em dash with a comma, colon,
+parentheses, or a new sentence. Preserve banned text only inside verified
+quotations, legal wording, code, identifiers, proper names, required technical
+terms, or other immutable material. `HOUSE` records the operational basis of
+these rules; it does not make them optional.
+
+### Global core tests
 
 - **Competitor-swap test:** if replacing the subject with any competitor leaves
   the paragraph accurate, rewrite it with a real mechanism, fact, situation,
@@ -521,40 +562,174 @@ author-owned writing that fits the channel.
   of the buyer, verify, qualify, or remove it.
 - **Density test:** judge clusters and repeated templates, not one ordinary word
   in isolation.
+- **Fidelity test:** compare the revision against the fact ledger. Restore every
+  material condition, uncertainty, attribution, name, number, date, quotation,
+  citation, and technical term.
 
-High-risk clusters include vague verbs such as `unlock`, `leverage`, `elevate`,
-and `transform`; inflated adjectives such as `seamless`, `robust`,
-`groundbreaking`, and `world-class`; and generic nouns such as `landscape`,
-`ecosystem`, `journey`, and `game-changer`.
+### Banned vocabulary and connectives
 
-Review or remove:
+Strip these terms by default. Retain one only when it is exact, load-bearing,
+technically required, a verified proper name, immutable verbatim text, or an
+explicit user or house requirement. Document why no concrete alternative is
+more accurate.
 
-- stock openers and prompt acknowledgements;
-- formal connective chains;
-- significance tails that explain why a sentence matters instead of adding
-  evidence;
-- repeated three-part lists;
-- repeated `Not only... but also...` structures;
-- heading restatements and automatic paragraph summaries;
-- symmetrical sections that give every point equal weight;
-- generic conclusions that do not decide, request, or direct;
-- repeated bold-label bullets and decorative mid-prose emphasis;
-- fabricated citations, anecdotes, motives, opinions, or credentials;
-- random errors or slang added to look human.
+- **Verbs:** `delve`, `underscore`, `showcase`, `foster`, `navigate` as a
+  metaphor, `harness`, `leverage`, `unlock`, `unleash`, `empower`, `streamline`,
+  `bolster`, `elevate`, `facilitate`, `enhance`, vague `optimize`, metaphorical
+  `drive`, metaphorical `craft`, `forge`, and `spearhead`.
+- **Adjectives:** `pivotal`, `crucial`, `vital`, `essential`, `robust`,
+  `seamless`, `holistic`, `comprehensive`, `multifaceted`, `nuanced`,
+  `intricate`, `meticulous`, `profound`, `transformative`, `groundbreaking`,
+  `revolutionary`, `cutting-edge`, `state-of-the-art`, `world-class`,
+  `best-in-class`, `unparalleled`, `unprecedented`, `remarkable`, `noteworthy`,
+  `notable`, `significant`, `invaluable`, `indispensable`, `paramount`,
+  `breathtaking`, `stunning`, `vibrant`, `rich` in phrases such as `rich
+  history`, `bespoke`, and `curated`.
+- **Nouns, especially as metaphors:** `tapestry`, `landscape`, `realm`,
+  `ecosystem`, `journey`, `testament`, `frontier`, `forefront`, `cornerstone`,
+  `backbone`, `lifeblood`, `powerhouse`, `trailblazer`, and `game-changer`.
+- **Connectives:** `moreover`, `furthermore`, `additionally`, `in addition`,
+  `notably`, `importantly`, `indeed`, `in essence`, `in summary`, `in
+  conclusion`, `ultimately`, `that said`, `on the other hand`, and `on one
+  hand`.
 
-Necessary technical terms, an earned rhetorical triplet, a natural fragment,
-or an author-consistent punctuation choice may remain in ordinary writing. For
-gated CiteSurge public pages, the repository scanner is stricter:
+Delete a connective when the relationship remains clear. When one is required
+by a formal genre, use the shortest accurate transition.
+
+### Banned templates and significance tails
+
+Delete every generated occurrence of:
+
+- `It's important to note that...`;
+- `It's worth noting` or `It's worth mentioning`;
+- `In today's fast-paced world...`;
+- `In the ever-evolving landscape of...`;
+- `In the realm of...`;
+- `A testament to...`;
+- `Stands as a...`;
+- `Serves as a...`;
+- `Plays a crucial`, `pivotal`, or `vital role in...`;
+- `Not only X but also Y`;
+- `Whether you're X or Y...`;
+- `From X to Y, [subject] has...`;
+- `At its core...`;
+- `When it comes to...`;
+- `Navigating the complexities of...`;
+- `Unlocking the potential of...`;
+- `Harnessing the power of...`;
+- `Paving the way for...`;
+- `Setting the stage for...`;
+- `Bringing X to the forefront`.
+
+Delete generated tails such as:
+
+- `..., emphasizing the significance of...`;
+- `..., reflecting the continued relevance of...`;
+- `..., underscoring the importance of...`;
+- `..., highlighting its role in...`;
+- `..., demonstrating its impact on...`;
+- `..., marking a turning point in...`;
+- `..., cementing its place as...`;
+- `..., solidifying its reputation for...`;
+- `..., showcasing its commitment to...`.
+
+End with information or a specific, supportable inference.
+
+### Banned structural and typography patterns
+
+Remove:
+
+- prompt acknowledgements, including `Certainly`, `Of course`, `Absolutely`,
+  `Great question`, or any acknowledgement of the prompt;
+- every paragraph ending with a summary or significance sentence;
+- generated tripartite parallelism used as a rhetorical template;
+- repeated or generated `Not only... but also...` structures;
+- headings followed by a sentence that restates the heading;
+- repeated `**Bold label:** sentence` bullets;
+- balanced both-sides framing that refuses to make a supported claim;
+- conclusions or summary sections in formats that do not need them;
+- generic positive framing that replaces a fact;
+- `Some argue... others contend...` without named sources;
+- definitions repeated across sections;
+- smooth transitions that conceal unrelated facts;
+- topic sentences that restate headings;
+- title case for generic concepts;
+- mid-paragraph bold outside technical, accessibility, or explicit house needs.
+
+Use zero generated em dashes and zero curly or smart quotes. Use straight
+quotes. Use an en dash only when formal publication style requires it;
+otherwise use a hyphen.
+
+Reject prompt leakage immediately, including `Here is your article`, `As an AI
+language model`, `Up to my last training update`, `I hope this helps`, `Let me
+know if you would like`, `Certainly! Here's a`, `Sure, I can help with that`,
+any task meta-commentary, or any reference to the commissioning user inside the
+deliverable. Return the deliverable itself.
+
+### Author voice, genre, and meaning
+
+When authentic author samples are available, profile recurring sentence length,
+paragraph rhythm, formality, contractions, function words, punctuation,
+qualification, directness, humor, openings, turns, and endings. Use stable habits
+without copying phrases, subject matter, or one-off quirks. When samples are
+missing, preserve credible individual choices and request author review rather
+than inventing an idiolect.
+
+Fit the genre. A professional email should surface context and request quickly.
+An executive memo should lead with the decision or finding. Academic and legal
+work must preserve required terminology and citations. Spoken work must sound
+natural when read aloud. Written GEO/AEO work must remain specific without
+forcing identical headings, paragraph lengths, or miniature conclusions.
+
+Never humanize by changing facts, names, figures, dates, quotations, citations,
+causality, uncertainty, legal meaning, or product terminology. Never upload
+confidential, privileged, unpublished, regulated, or personally sensitive text
+to an external detector or rewriting service without authorization and a review
+of its retention and training terms.
+
+### Detector limits and research basis
+
+Never promise that copy is "undetectable", claim that a detector score proves
+authorship, or optimize toward one changing classifier at the expense of truth,
+voice, or clarity. If detector testing is authorized, calibrate against several
+known-human samples from the same author and genre, use multiple methods when
+feasible, record tool and version, and stop detector-driven editing after two
+rounds unless another pass independently improves the prose.
+
+The earlier source gave `3-5x` em-dash usage and about `90%` experienced-reader
+detection as numerical claims without a supporting source. Do not repeat those
+numbers as scientific facts. This does not weaken any output ban. The bans are
+mandatory because the source patterns are used operationally in Wikipedia-style
+AI cleanup and related editorial screening, not because a percentage guarantees
+detection or non-detection.
+
+The human-voice reference grounds these limits in:
+
+- [RAID benchmark](https://arxiv.org/abs/2405.07940);
+- [Krishna et al. on paraphrasing attacks](https://arxiv.org/abs/2303.13408);
+- [DAMAGE shared task overview](https://aclanthology.org/2025.genaidetect-1.9/);
+- [Practical examination of AI-generated text detectors](https://aclanthology.org/2025.findings-naacl.271/);
+- [Detector bias against non-native English writers](https://arxiv.org/abs/2304.02819);
+- [GPTZero detector methodology](https://arxiv.org/abs/2602.13042);
+- [Can AI-Generated Text be Reliably Detected?](https://arxiv.org/abs/2303.11156);
+- [Almost AI, Almost Human](https://arxiv.org/abs/2502.15666);
+- [Human heuristics for AI-generated language are flawed](https://arxiv.org/abs/2206.07271);
+- [Function Word Adjacency Networks](https://arxiv.org/abs/1406.4469).
+
+### CiteSurge-only scanner controls
+
+For gated CiteSurge public pages, the repository scanner enforces the global
+prompt-leakage and quote bans and adds CiteSurge-only machine thresholds:
 
 - prompt leakage or acknowledgement openers fail immediately;
-- em dashes and curly quote characters or entities in prose fail;
+- curly quote characters or entities in prose fail under the global rule;
 - three or more watchlist indicators in one prose block fail;
 - the same template or significance-tail fingerprint repeated twice fails;
 - a single watchlist occurrence is informational, not an automatic failure.
 
-Use `content/ai-writing-tells.md` for rationale and
-`content/ai-writing-tells.ts` for the current machine-readable rules. Never
-promise that copy is "undetectable" or optimize it toward one detector score.
+Use `content/ai-writing-tells.md` for CiteSurge rationale and
+`content/ai-writing-tells.ts` for its current scanner rules. Do not apply those
+CiteSurge-specific thresholds, files, or release gates to another brand.
 
 ## Written GEO/AEO and citability gate
 
@@ -782,7 +957,11 @@ context and reduces uncertainty.
   as a universal performance law.
 - [ ] CTA names a real next action and adds no new claim.
 - [ ] Competitor-swap, read-aloud, defense, and density tests pass.
-- [ ] No fabricated detail, fake urgency, prompt leakage, or detector promise.
+- [ ] Zero banned vocabulary, connectives, templates, significance tails,
+  generated em dashes, and curly or smart quotes without a narrow documented
+  exception.
+- [ ] No fabricated detail, fake urgency, prompt leakage, artificial human
+  texture, or detector promise.
 - [ ] Written utility, product, comparison, and question-led copy answers early;
   all written copy names entities and keeps key evidence blocks self-contained.
 - [ ] Material written claims have exact, current, preferably primary sources.

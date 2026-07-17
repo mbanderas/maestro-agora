@@ -1,6 +1,6 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Install Maestro: Agora, the evidence-led marketing skill for AI coding agents.",
   "type": "module",
   "bin": {
