@@ -39,6 +39,11 @@ try {
   });
   if (result.error) throw result.error;
   assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.doesNotMatch(
+    result.stderr,
+    /auto-corrected|bin\[agora\]/i,
+    "npm must not normalize away the agora executable",
+  );
 
   const payload = JSON.parse(result.stdout);
   assert.equal(payload.length, 1, "npm pack should describe exactly one package");

@@ -4,7 +4,7 @@
   "description": "Install Maestro: Agora, the evidence-led marketing skill for AI coding agents.",
   "type": "module",
   "bin": {
-    "agora": "./scripts/install.mjs"
+    "agora": "scripts/install.mjs"
   },
   "files": [
     ".agents/plugins/marketplace.json",
