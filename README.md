@@ -16,11 +16,11 @@ Agora is a portable Agent Skill for marketing, sales, editorial, interface, outr
 
 Give it product truth, evidence, constraints, and one desired action. The skill instructs the agent to return the shortest complete, ready-to-use draft first.
 
-> **One suite: fuse the answer, make the case, guard the spend.**
->
-> - **[Maestro Frontier](https://github.com/mbanderas/maestro)** — Fuses the model CLIs you already run into one judged, grounded answer.
-> - **[Maestro Agora](https://github.com/mbanderas/maestro-agora)** — Turns verified product truth into concise, argument-first copy without inventing the proof.
-> - **[Maestro CostGuard](https://github.com/mbanderas/costguard)** — Audits CI and cloud infrastructure for cost leaks and shows what to fix.
+**One suite: fuse the answer, make the case, guard the spend.**
+
+- **[Maestro Frontier](https://github.com/mbanderas/maestro)** — Fuses the model CLIs you already run into one judged, grounded answer.
+- **[Maestro Agora](https://github.com/mbanderas/maestro-agora)** — Turns verified product truth into concise, argument-first copy without inventing the proof.
+- **[Maestro CostGuard](https://github.com/mbanderas/costguard)** — Audits CI and cloud infrastructure for cost leaks and shows what to fix.
 
 ## Install
 
