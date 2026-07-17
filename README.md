@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/mbanderas/maestro-agora/actions/workflows/validate.yml"><img alt="Validation status" src="https://github.com/mbanderas/maestro-agora/actions/workflows/validate.yml/badge.svg" /></a>
-  <a href="https://www.npmjs.com/package/@maestrofrontier/agora"><img alt="npm version" src="https://img.shields.io/npm/v/@maestrofrontier/agora" /></a>
+  <a href="https://www.npmjs.com/package/@maestroagora/agora"><img alt="npm version" src="https://img.shields.io/npm/v/@maestroagora/agora" /></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-7c3aed" /></a>
 </p>
 
@@ -27,7 +27,7 @@ Give it product truth, evidence, constraints, and one desired action. The skill 
 One command installs Agora for the shared Agent Skills path and Claude Code:
 
 ```sh
-npx -y @maestrofrontier/agora
+npx -y @maestroagora/agora
 ```
 
 The default user install writes the same reviewed skill to:
@@ -38,9 +38,9 @@ The default user install writes the same reviewed skill to:
 Choose a native target or project-local scope when you need one:
 
 ```sh
-npx -y @maestrofrontier/agora --target cursor --scope project
-npx -y @maestrofrontier/agora --target codex,claude --scope user
-npx -y @maestrofrontier/agora --target universal --dry-run
+npx -y @maestroagora/agora --target cursor --scope project
+npx -y @maestroagora/agora --target codex,claude --scope user
+npx -y @maestroagora/agora --target universal --dry-run
 ```
 
 Supported targets are `universal`, `shared`, `codex`, `claude`, `cursor`, `gemini`, `copilot`, and `windsurf`. Add `--force` only when you intend to replace a different copy at the exact `agora` destination.
@@ -126,7 +126,7 @@ skills/agora/
 
 ```sh
 npm run check
-npx -y @maestrofrontier/agora --dry-run
+npx -y @maestroagora/agora --dry-run
 ```
 
 The validation suite checks the strict skill root, plugin manifests, relative links, installer behavior, and the exact npm package allowlist.

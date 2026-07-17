@@ -150,7 +150,7 @@ async function main() {
   );
 
   const packageJson = await readJson(join(ROOT, "package.json"));
-  check(packageJson.name === "@maestrofrontier/agora", "package name must match the public npm package");
+  check(packageJson.name === "@maestroagora/agora", "package name must match the public npm package");
   check(packageJson.version === "1.0.0", "package version must match the launch version");
   check(packageJson.bin?.agora === "./scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.license === "MIT", "package must declare the MIT license");
