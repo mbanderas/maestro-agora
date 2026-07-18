@@ -166,7 +166,7 @@ npm run check
 npx -y @maestroagora/agora --dry-run
 ```
 
-The validation suite checks the strict skill root, the v1.1.0 behavior contract, plugin metadata, relative links, installer behavior, and the exact npm package allowlist. A committed blind-eval corpus covers mode and surface combinations without calling a model during CI.
+The validation suite checks the strict skill root, the v1.1 behavior contract, plugin metadata, relative links, installer behavior, and the exact npm package allowlist. A committed blind-eval corpus covers mode and surface combinations without calling a model during CI.
 
 ## License
 

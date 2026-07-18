@@ -1,6 +1,6 @@
 {
   "name": "maestro-agora",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Maestro: Agora writes truthful commercial, editorial, interface, and spoken copy without outrunning the proof.",
   "author": {
     "name": "Mark Laursen",
@@ -33,9 +33,7 @@
     "defaultPrompt": [
       "/agora sell Rewrite this page from one real buyer stake to a defensible belief and one supported action.",
       "/agora invest Write an objective investor profile that makes the company mechanism and investment relevance clear.",
-      "/agora position Turn these verified facts into a proof-bounded company description for this surface.",
-      "/agora inform Explain this topic from the supplied sources without turning it into a sales pitch.",
-      "/agora transact Rewrite this confirmation so the state, consequence, and next action are clear."
+      "/agora position Turn these verified facts into a proof-bounded company description for this surface."
     ]
   }
 }

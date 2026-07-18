@@ -270,7 +270,7 @@ async function main() {
 
   const packageJson = await readJson(join(ROOT, "package.json"));
   check(packageJson.name === "@maestroagora/agora", "package name must match the public npm package");
-  check(packageJson.version === "1.1.0", "package version must match the minor release");
+  check(packageJson.version === "1.1.1", "package version must match the patch release");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.license === "MIT", "package must declare the MIT license");
 
@@ -282,6 +282,16 @@ async function main() {
   check(
     codexPlugin.interface?.composerIcon === "./assets/icon.png",
     "Codex plugin must use the Agora icon",
+  );
+  check(
+    Array.isArray(codexPlugin.interface?.defaultPrompt) && codexPlugin.interface.defaultPrompt.length === 3,
+    "Codex plugin must expose exactly three supported default prompts",
+  );
+  check(
+    codexPlugin.interface.defaultPrompt.every(
+      (prompt) => typeof prompt === "string" && prompt.length <= 128 && prompt.startsWith("/agora "),
+    ),
+    "every Codex default prompt must activate /agora and fit the 128-character client limit",
   );
 
   const claudePlugin = await readJson(join(ROOT, ".claude-plugin", "plugin.json"));

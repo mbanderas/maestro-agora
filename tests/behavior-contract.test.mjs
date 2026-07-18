@@ -9,15 +9,17 @@ const SKILL_ROOT = join(ROOT, "skills", "agora");
 const SKILL_PATH = join(SKILL_ROOT, "SKILL.md");
 const REFERENCE_PATH = join(SKILL_ROOT, "references", "agora-marketing.md");
 const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
+const CODEX_PLUGIN_PATH = join(ROOT, ".codex-plugin", "plugin.json");
 const LINK_FIXTURE_PATH = join(ROOT, "tests", "fixtures", "reference-links.v1.0.1.json");
 const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.1.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, openaiYaml, linkFixture, manifest] = await Promise.all([
+const [skill, reference, openaiYaml, codexPlugin, linkFixture, manifest] = await Promise.all([
   readFile(SKILL_PATH, "utf8"),
   readFile(REFERENCE_PATH, "utf8"),
   readFile(OPENAI_PATH, "utf8"),
+  readFile(CODEX_PLUGIN_PATH, "utf8").then(JSON.parse),
   readFile(LINK_FIXTURE_PATH, "utf8").then(JSON.parse),
   readFile(MANIFEST_PATH, "utf8").then(JSON.parse),
 ]);
@@ -288,6 +290,20 @@ test("OpenAI interface metadata matches the v1.1.0 contract", () => {
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expected);
+});
+
+test("Codex plugin metadata stays within the supported default-prompt limit", () => {
+  assert.equal(codexPlugin.version, "1.1.1");
+  assert.ok(
+    codexPlugin.interface.defaultPrompt.every(
+      (prompt) => typeof prompt === "string" && prompt.length <= 128 && prompt.startsWith("/agora "),
+    ),
+  );
+  assert.deepEqual(codexPlugin.interface.defaultPrompt, [
+    "/agora sell Rewrite this page from one real buyer stake to a defensible belief and one supported action.",
+    "/agora invest Write an objective investor profile that makes the company mechanism and investment relevance clear.",
+    "/agora position Turn these verified facts into a proof-bounded company description for this surface.",
+  ]);
 });
 
 test("blind evaluation corpus is isolated, leak-free, and contract-complete", async () => {
