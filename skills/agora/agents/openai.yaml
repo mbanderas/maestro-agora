@@ -1,4 +1,4 @@
 interface:
   display_name: "Maestro: Agora"
-  short_description: "Evidence-led marketing across every channel"
-  default_prompt: "Use $agora to write concise, evidence-led copy for this asset."
+  short_description: "Truthful arguments for buyers and investors"
+  default_prompt: "Use $agora to lead one audience from a real stake to a defensible buying or investment belief, then return ready-to-use copy."
