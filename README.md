@@ -12,14 +12,14 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-7c3aed" /></a>
 </p>
 
-Agora is a portable Agent Skill for marketing, sales, editorial, interface, outreach, and spoken copy. It gives an AI agent a research-backed argument method, a strict claim gate, channel-aware brevity rules, and written GEO/AEO guidance. A persuasive framework is never permission to invent the proof.
+Agora is a portable Agent Skill for truthful persuasion. It turns verified company and product truth into a supported path from a real stake to a defensible belief. The method covers buyer, investor, company-positioning, informational, and transactional copy. It never authorizes a claim the proof cannot carry.
 
-Give it product truth, evidence, constraints, and one desired action. The skill instructs the agent to return the shortest complete, ready-to-use draft first.
+Give it the real situation, evidence, material limits, and requested surface. Agora returns ready-to-use copy first and puts any material verification need after the draft.
 
-**One suite: fuse the answer, make the case, guard the spend.**
+**Related Maestro tools:**
 
 - **[Maestro Frontier](https://github.com/mbanderas/maestro):** Fuses the model CLIs you already run into one judged, grounded answer.
-- **[Maestro Agora](https://github.com/mbanderas/maestro-agora):** Turns verified product truth into concise, argument-first copy without inventing the proof.
+- **[Maestro Agora](https://github.com/mbanderas/maestro-agora):** Turns verified truth into proof-bounded arguments for buyers and investors, including objective company positioning.
 - **[Maestro CostGuard](https://github.com/mbanderas/costguard):** Audits CI and cloud infrastructure for cost leaks and shows what to fix.
 
 ## Install
@@ -65,33 +65,70 @@ The npm installer is the broadest route across IDEs. The native plugin commands 
 
 ## Use Agora
 
-Invoke the skill directly, then provide the facts it may use:
+Invoke the skill directly, name a mode when you want one, then provide the facts it may use:
 
 ```text
-/agora Rewrite this upgrade screen. Keep one CTA. Use only these verified facts: ...
+/agora sell Rewrite this upgrade screen from one real buyer stake to a defensible belief. Keep one supported CTA. Use only these verified facts: ...
 ```
 
 In Codex, `$agora` and the skills picker can also select the installed skill. Other hosts may expose skills through their own picker or mention syntax; asking the agent to "use the agora skill" remains portable.
 
-Agora activates for writing, rewriting, shortening, critiquing, and planning:
+### Commercial modes
 
-- Marketing and sales copy, CTAs, and microcopy.
-- Landing, product, and comparison pages.
-- Email, direct outreach, ads, and social posts.
-- Mobile onboarding, upgrade, and paywall screens.
-- Editorial content.
-- Audio and video scripts plus titles, descriptions, transcripts, captions, show notes, and companion pages.
+An explicit mode wins. When no mode is named, Agora infers one from the requested asset and the audience's decision.
+
+| Mode | Use or infer it for |
+|---|---|
+| `SELL` | Marketing, sales, ads, landing pages, outreach, or paywalls |
+| `INVEST` | Investors, funding, pitches, or capital-focused profiles |
+| `POSITION` | Company profiles, category narratives, or brand descriptions |
+| `INFORM` | Editorial or educational work |
+| `TRANSACT` | Buttons, confirmations, alerts, or utility microcopy |
+
+### Surface routing
+
+Mode and surface are separate decisions. An investor description on Crunchbase is `INVEST` on an indexable public, objective profile surface. A paywall is `SELL` on a written interface surface. A published transcript is written even when its source script is spoken.
+
+| Surface | Treatment |
+|---|---|
+| `INDEXABLE_PUBLIC` | Public claim review, written human-voice and GEO/AEO gates, plus a technical publication handoff |
+| `PUBLIC_NON_INDEXABLE_WRITTEN` | Public claim review, written semantic and evidence rules, plus the human-voice gate; skip crawl and index checks |
+| `WRITTEN_PRIVATE` | Proof fidelity, concrete entities, self-contained claims, and the human-voice gate |
+| `SPOKEN_ONLY` | Proof review, cadence, breath, timing, and listener comprehension; skip GEO/AEO formatting |
+| `HYBRID` | Route every spoken and written derivative separately |
+
+### Commercial spine
+
+For `SELL`, `INVEST`, and `POSITION`, Agora constructs this exact sequence:
+
+```text
+Recognizable reality -> consequence or opportunity -> new decision criterion -> company or product mechanism -> defensible destination belief -> action or investment relevance.
+```
+
+Moves may share sentences; none may disappear.
+
+1. Recognizable reality. Name the audience's current situation without inventing pain, motive, or urgency.
+2. Consequence or opportunity. Make one truthful stake felt through a concrete business effect, decision risk, or available gain.
+3. New decision criterion. Establish what a credible choice must do, based on the supplied facts.
+4. Company or product mechanism. Explain what changes, what causes the change, and what limits apply.
+5. Defensible destination belief. Land one supported commercial conclusion.
+6. Action or investment relevance. State the logical next step, or why the company merits evaluation when the channel does not permit a CTA.
+
+### Objective-channel cap
+
+On objective platforms such as Crunchbase, the channel caps tone, not argument. Agora keeps the commercial spine factual and compact. It does not replace the stake with hype or force a sales command where investment relevance is the permitted close. If the channel conflicts with the requested commercial job, Agora returns usable copy first and names the conflict afterward.
 
 ## What the skill enforces
 
-Agora silently routes each asset as indexable public, public non-indexable written, private written, spoken-only, or hybrid. It then applies only the controls that fit the surface.
+Agora chooses the commercial job before it formats the surface. Proof review happens before the later formatting and compression passes.
 
-- **Argument before ornament.** Build one defensible belief shift, one decision path, and one primary action.
-- **Proof beside the claim.** Preserve source, scope, date, qualification, and material limitations.
-- **Shortest complete draft.** Remove repetition before evidence, legal meaning, accessibility, or next-step clarity.
-- **Hard writing-tell bans.** Cut Wikipedia-style flagged vocabulary, connectives, templates, significance tails, generated em dashes, curly quotes, fabricated texture, and decorative recaps.
-- **Claim gate.** Narrow, omit, or flag unsupported claims instead of supplying missing features, prices, routes, urgency, scarcity, testimonials, or results.
-- **Ready copy first.** Return one usable draft without exposing private reasoning or producing near-duplicate variants unless asked.
+- Preserve every load-bearing move for `SELL`, `INVEST`, and `POSITION` work before formatting the channel.
+- Keep proof beside the claim, with its source, scope, date, qualification, and material limits.
+- Use the strongest factual argument an objective channel permits instead of settling for a hollow profile.
+- Cut Wikipedia-style flagged vocabulary, connectives, templates, significance tails, generated em dashes, curly quotes, fabricated texture, and decorative recaps.
+- Narrow, omit, or flag unsupported claims instead of supplying missing features, prices, routes, urgency, scarcity, testimonials, or results.
+- Return one usable draft before assumptions, verification needs, or an objective-channel conflict.
+- Remove repetition before cutting a stake, mechanism, proof limit, destination belief, or action relevance.
 
 The skill improves process discipline; it does not replace source review, legal review, or final human verification.
 
@@ -129,7 +166,7 @@ npm run check
 npx -y @maestroagora/agora --dry-run
 ```
 
-The validation suite checks the strict skill root, plugin manifests, relative links, installer behavior, and the exact npm package allowlist.
+The validation suite checks the strict skill root, the v1.1.0 behavior contract, plugin metadata, relative links, installer behavior, and the exact npm package allowlist. A committed blind-eval corpus covers mode and surface combinations without calling a model during CI.
 
 ## License
 

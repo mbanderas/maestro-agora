@@ -1,7 +1,7 @@
 {
   "name": "maestro-agora",
-  "version": "1.0.1",
-  "description": "Maestro: Agora turns verified product truth into concise, argument-first copy across written and spoken channels.",
+  "version": "1.1.0",
+  "description": "Maestro: Agora writes truthful commercial, editorial, interface, and spoken copy without outrunning the proof.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Maestro: Agora",
-    "shortDescription": "Evidence-led, argument-first copy across every channel",
-    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that turns supplied product truth and proof into concise marketing, sales, editorial, outreach, interface, and spoken copy while preserving claim limits.",
+    "shortDescription": "Truthful arguments for buyers and investors",
+    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that writes proof-bounded buyer, investor, positioning, editorial, interface, and spoken copy for its surface.",
     "developerName": "Mark Laursen",
     "category": "Productivity",
     "capabilities": [
@@ -31,9 +31,11 @@
     "brandColor": "#7C3AED",
     "composerIcon": "./assets/icon.png",
     "defaultPrompt": [
-      "/agora Rewrite this page around one defensible argument and CTA.",
-      "/agora Shorten this copy without losing proof or qualifications.",
-      "/agora Draft a spoken script from the verified facts below."
+      "/agora sell Rewrite this page from one real buyer stake to a defensible belief and one supported action.",
+      "/agora invest Write an objective investor profile that makes the company mechanism and investment relevance clear.",
+      "/agora position Turn these verified facts into a proof-bounded company description for this surface.",
+      "/agora inform Explain this topic from the supplied sources without turning it into a sales pitch.",
+      "/agora transact Rewrite this confirmation so the state, consequence, and next action are clear."
     ]
   }
 }

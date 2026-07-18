@@ -1,7 +1,7 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.0.1",
-  "description": "Install Maestro: Agora, the evidence-led marketing skill for AI coding agents.",
+  "version": "1.1.0",
+  "description": "Install Maestro: Agora for truthful buyer, investor, positioning, editorial, interface, and spoken copy that never outruns the proof.",
   "type": "module",
   "bin": {
     "agora": "scripts/install.mjs"
@@ -23,7 +23,7 @@
     "check": "npm run validate && npm test && npm run pack:check",
     "pack:check": "node scripts/pack-check.mjs",
     "prepublishOnly": "npm run check",
-    "test": "node --test tests/install.test.mjs",
+    "test": "node --test tests/behavior-contract.test.mjs tests/install.test.mjs",
     "validate": "node scripts/validate.mjs"
   },
   "engines": {

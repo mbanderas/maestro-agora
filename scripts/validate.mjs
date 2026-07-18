@@ -117,6 +117,23 @@ async function main() {
       (frontmatter.get("description") || "").length <= 1024,
       "SKILL.md description must be at most 1024 characters",
     );
+    const triggerDescription = frontmatter.get("description") || "";
+    for (const requiredTrigger of [
+      "Write, rewrite, shorten, critique, or plan",
+      "marketing and sales copy",
+      "CTAs and microcopy",
+      "landing, product, and comparison pages",
+      "email and direct outreach",
+      "mobile onboarding, upgrade, and paywall screens",
+      "ads and social posts",
+      "editorial or educational content",
+      "spoken audio/video scripts plus written derivatives",
+    ]) {
+      check(
+        triggerDescription.includes(requiredTrigger),
+        `SKILL.md description must preserve trigger breadth: ${requiredTrigger}`,
+      );
+    }
   }
   check(skill.split(/\r?\n/).length < 500, "SKILL.md must stay under 500 lines");
   check(
@@ -126,6 +143,58 @@ async function main() {
   check(
     skill.includes("[references/agora-marketing.md](references/agora-marketing.md)"),
     "SKILL.md must link its canonical reference",
+  );
+  check(
+    skill.includes("Load the authority progressively"),
+    "SKILL.md must load the canonical reference progressively",
+  );
+  check(
+    skill.includes("and `Human voice and AI-writing-tell gate`."),
+    "SKILL.md must always load the global human-voice gate",
+  );
+  for (const mode of ["SELL", "INVEST", "POSITION", "INFORM", "TRANSACT"]) {
+    check(skill.includes(`\`${mode}\``), `SKILL.md must define the ${mode} mode`);
+  }
+  check(
+    skill.includes("An explicit mode wins"),
+    "SKILL.md must let an explicit mode override inference",
+  );
+  check(
+    skill.includes("Do not confuse mode with surface"),
+    "SKILL.md must route commercial mode and surface separately",
+  );
+  check(
+    skill.includes("Recognizable reality -> consequence or opportunity -> new decision criterion -> company or product mechanism -> defensible destination belief -> action or investment relevance"),
+    "SKILL.md must preserve the mandatory commercial spine",
+  );
+  check(
+    skill.includes("Moves may share sentences; none may disappear"),
+    "SKILL.md must preserve every commercial-spine move",
+  );
+  check(
+    skill.includes("Commercial job -> destination belief -> argument -> proof gate -> channel formatting -> written GEO/AEO when applicable -> AI-writing-tell edit -> compression"),
+    "SKILL.md must preserve the exact construction order",
+  );
+  check(
+    skill.includes("Channel rules cap tone without deleting the argument") &&
+      skill.includes("For objective platforms such as Crunchbase, write the strongest objective argument permitted and explain any channel conflict after the copy"),
+    "SKILL.md must preserve the objective-channel cap",
+  );
+  check(
+    skill.includes("prove a premise, resolve an objection, or enable action"),
+    "SKILL.md must require every fact to advance the argument",
+  );
+  check(
+    skill.includes("category definition, claim-ledger paraphrase, or feature inventory"),
+    "SKILL.md must reject non-persuasive fact restatements",
+  );
+  check(
+    skill.includes("Reject primary brand verbs such as `shows`, `helps`, `supports`, or `built for`"),
+    "SKILL.md must enforce the weak-primary-verb rule",
+  );
+  check(
+    skill.includes("Return ready-to-use copy first"),
+    "SKILL.md must return ready copy before notes",
   );
   check(
     skill.includes("Do not generate em dashes or curly or smart quotes in final copy"),
@@ -139,7 +208,21 @@ async function main() {
   const referencePath = join(SKILL_ROOT, "references", "agora-marketing.md");
   const reference = await readFile(referencePath, "utf8");
   for (const required of [
+    "## Core doctrine",
+    "## The destination belief",
+    "## Mechanism and company transformation",
+    "## Commercial modes",
+    "## Construction order",
     "## Evidence register",
+    "## Rejection gates",
+    "## Spoken delivery",
+    "## Applied weak and strong pairs",
+    "### Company positioning",
+    "### Investor description",
+    "### Hero",
+    "### Paywall",
+    "### Cold email",
+    "### Spoken pitch",
     "## Human voice and AI-writing-tell gate",
     "### Global output bans",
     "### Banned vocabulary and connectives",
@@ -154,6 +237,18 @@ async function main() {
   ]) {
     check(reference.includes(required), `canonical reference is missing: ${required}`);
   }
+  const orderedReferenceSections = [
+    "## Core doctrine",
+    "## The destination belief",
+    "## Mechanism and company transformation",
+    "## Commercial modes",
+    "## Construction order",
+  ];
+  const referenceIndexes = orderedReferenceSections.map((section) => reference.indexOf(section));
+  check(
+    referenceIndexes.every((index, position) => index >= 0 && (position === 0 || index > referenceIndexes[position - 1])),
+    "canonical reference must lead with doctrine, destination belief, mechanism, modes, and construction order",
+  );
 
   const openaiYaml = await readFile(join(SKILL_ROOT, "agents", "openai.yaml"), "utf8");
   check(/^interface:\r?$/m.test(openaiYaml), "agents/openai.yaml must define interface");
@@ -164,10 +259,18 @@ async function main() {
     openaiYaml.includes("$agora"),
     "agents/openai.yaml default_prompt must invoke the skill",
   );
+  check(
+    openaiYaml.includes('short_description: "Truthful arguments for buyers and investors"'),
+    "agents/openai.yaml short_description must match the v1.1.0 contract",
+  );
+  check(
+    openaiYaml.includes('default_prompt: "Use $agora to lead one audience from a real stake to a defensible buying or investment belief, then return ready-to-use copy."'),
+    "agents/openai.yaml default_prompt must match the v1.1.0 contract",
+  );
 
   const packageJson = await readJson(join(ROOT, "package.json"));
   check(packageJson.name === "@maestroagora/agora", "package name must match the public npm package");
-  check(packageJson.version === "1.0.1", "package version must match the patch release");
+  check(packageJson.version === "1.1.0", "package version must match the minor release");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.license === "MIT", "package must declare the MIT license");
 
