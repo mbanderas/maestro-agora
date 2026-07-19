@@ -101,6 +101,14 @@ async function main() {
     readFile(openaiPath, "utf8"),
   ]);
 
+  for (const [file, content] of [
+    ["skills/agora/SKILL.md", skill],
+    ["skills/agora/references/agora-marketing.md", reference],
+    ["skills/agora/agents/openai.yaml", openaiYaml],
+  ]) {
+    check(!content.includes("\r\n"), `${file} must use LF line endings`);
+  }
+
   const frontmatter = parseFrontmatter(skill);
   check(frontmatter !== null, "SKILL.md must have YAML frontmatter");
   if (frontmatter) {
@@ -220,7 +228,7 @@ async function main() {
   const packageJson = await readJson(join(ROOT, "package.json"));
   const gitAttributes = await readFile(join(ROOT, ".gitattributes"), "utf8");
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.2.1", "package version must be 1.2.1");
+  check(packageJson.version === "1.2.2", "package version must be 1.2.2");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.license === "MIT", "package must use MIT");
   check(/^\* text=auto eol=lf$/m.test(gitAttributes), "Git must enforce LF for text files");

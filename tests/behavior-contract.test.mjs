@@ -229,7 +229,7 @@ test("public files contain no project-specific residue or temporary citations", 
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.2.1 release contract", () => {
+test("metadata matches the v1.2.2 release contract", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
@@ -238,11 +238,14 @@ test("metadata matches the v1.2.1 release contract", () => {
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.2.1");
+  assert.equal(packageJson.version, "1.2.2");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
   assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
   assert.match(gitAttributes, /^\*\.png binary$/m);
+  assert.doesNotMatch(skill, /\r\n/);
+  assert.doesNotMatch(reference, /\r\n/);
+  assert.doesNotMatch(openaiYaml, /\r\n/);
   assert.equal(codexPlugin.interface.shortDescription, "Argument-first copy that earns belief");
   assert.ok(
     codexPlugin.interface.defaultPrompt.every(

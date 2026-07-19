@@ -1,6 +1,6 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Install Maestro: Agora for argument-first buyer, investor, positioning, editorial, interface, and spoken copy grounded in verified facts.",
   "type": "module",
   "bin": {
