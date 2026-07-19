@@ -1,7 +1,7 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.1.1",
-  "description": "Install Maestro: Agora for truthful buyer, investor, positioning, editorial, interface, and spoken copy that never outruns the proof.",
+  "version": "1.2.0",
+  "description": "Install Maestro: Agora for argument-first buyer, investor, positioning, editorial, interface, and spoken copy grounded in verified facts.",
   "type": "module",
   "bin": {
     "agora": "scripts/install.mjs"

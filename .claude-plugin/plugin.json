@@ -1,8 +1,8 @@
 {
   "name": "maestro-agora",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "displayName": "Maestro: Agora",
-  "description": "Use /agora for truthful buyer, investor, positioning, editorial, interface, and spoken copy that preserves proof limits.",
+  "description": "Use /agora for argument-first buyer, investor, positioning, editorial, interface, and spoken copy grounded in verified facts.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"

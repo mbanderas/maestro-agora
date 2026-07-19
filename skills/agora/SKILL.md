@@ -1,158 +1,164 @@
 ---
 name: agora
-description: Write, rewrite, shorten, critique, or plan truthful persuasion and objective company positioning with the Agora argument-first method. Use when invoked as `/agora` or for marketing and sales copy; investor, funding, pitch, company-profile, category, or brand descriptions; CTAs and microcopy; landing, product, and comparison pages; email and direct outreach; mobile onboarding, upgrade, and paywall screens; ads and social posts; editorial or educational content; and spoken audio/video scripts plus written derivatives such as titles, descriptions, transcripts, captions, show notes, and companion pages.
+description: Write, rewrite, shorten, critique, or plan truthful argument-first persuasion. Use when invoked as `/agora` or for marketing and sales copy; investor, funding, pitch, company-profile, category, or brand descriptions; CTAs and microcopy; landing, product, and comparison pages; email and direct outreach; mobile onboarding, upgrade, and paywall screens; ads and social posts; editorial or educational content; and spoken audio/video scripts plus written derivatives such as titles, descriptions, transcripts, captions, show notes, and companion pages.
 ---
 
 # Maestro: Agora
 
 ## Accept direct invocation
 
-Treat `/agora` as explicit activation. Use all text after the command as the task. If no task follows, ask for the asset or source copy.
+Treat `/agora` as explicit activation. Use all text after the command as the task. If no task follows, ask for the asset or source material.
 
 ## Load the authority progressively
 
-Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Load only the sections required for the current job:
+Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Read only the sections the task needs:
 
-1. Always read `Core doctrine`, `The destination belief`, `Mechanism and company transformation`, `Commercial modes`, `Construction order`, `Proof and claim control`, and `Human voice and AI-writing-tell gate`.
-2. For `SELL`, `INVEST`, or `POSITION`, also read `Emotion without hype`, `CTA standard`, `Rejection gates`, and the closest factual pair under `Applied weak and strong pairs`.
-3. For written work, read `Written GEO/AEO and citability gate`. Load engine-specific boundaries only for engine-specific technical advice.
-4. For spoken work, read `Spoken delivery`. Apply the written gates separately to any published title, description, transcript, caption, show note, or companion page.
-5. For CiteSurge work only, read the CiteSurge-specific controls. Never apply them to another brand.
-6. Load the evidence register when making or reviewing a research-backed general claim. Do not load it merely to draft from supplied product facts.
+1. Always read `Core doctrine`, `Conflict hierarchy`, `Argument engine`, `Proof salience`, `Truth and ethical limits`, and `Human voice and AI-writing-tell gate`.
+2. For `SELL`, `INVEST`, or `POSITION`, also read `Emotion as consequential meaning`, `Commercial routing`, and the closest pair in `Applied weak and strong pairs`.
+3. For a written asset, read `Written GEO/AEO and citability`. For indexable public work, also read `Technical publication boundaries`.
+4. For spoken work, read `Spoken delivery`. Apply written rules separately to any published title, description, transcript, caption, show note, or companion page.
+5. Read `Evidence register` only when making or reviewing a research-backed general claim.
 
-Treat current user-supplied facts, product documentation, live behavior, legal constraints, brand guidance, and approved claim sources as product truth. Examples teach structure, not facts.
+Locate the named headings and read those sections only. Do not load the entire reference unless the task genuinely spans most of it.
 
-Resolve conflicts in this order: truth and safety; verified facts and brand constraints; the audience's decision; clarity and citability; persuasion; brevity; stylistic polish. Infer only low-risk context. Ask a question only when the answer would materially change the audience, offer, claim, or action; otherwise omit or narrow the unsupported point.
+Treat source material supplied in the current task as the available product truth. Do not import facts, claim rules, or release controls from another task, repository, company, or example. Examples teach structure, never facts.
 
-## Choose the commercial job
+## Resolve conflicts
 
-Select one primary mode before drafting. An explicit mode wins. Otherwise infer it from the audience, requested asset, and decision:
+Apply this order:
 
-| Mode | Infer when the task concerns |
+1. Truth, safety, law, and immutable requirements.
+2. Supplied facts, approved sources, and material qualifiers.
+3. The requested decision and surface.
+4. Decision relevance and proof salience.
+5. Emotional relevance and channel fit.
+6. Compression and human voice.
+7. Silent publication hygiene when it does not reduce factual clarity.
+
+When soft rules conflict, preserve the strongest truthful argument. Ask only when missing information would materially change the audience, offer, claim, or action. Otherwise narrow or omit the unsupported point.
+
+## Choose the job
+
+Select one primary mode. An explicit mode wins unless it would require factual distortion.
+
+| Mode | Use or infer it for |
 |---|---|
-| `INVEST` | Investors, funding, pitches, or capital-focused profiles |
-| `SELL` | Marketing, sales, ads, landing pages, outreach, or paywalls |
-| `POSITION` | Company profiles, category narratives, or brand descriptions |
+| `POSITION` | Default for company profiles, directory entries, About copy, category narratives, website summaries, or objective descriptions |
+| `SELL` | Marketing, sales, ads, landing pages, product pages, outreach, upgrades, or paywalls |
+| `INVEST` | Actual funding, capital-allocation, investment-memo, diligence, investor-pitch, or fundraising work |
 | `INFORM` | Editorial or educational work |
-| `TRANSACT` | Buttons, confirmations, alerts, or utility microcopy |
+| `TRANSACT` | Buttons, confirmations, alerts, forms, or utility microcopy |
 
-Do not confuse mode with surface. An investor description on Crunchbase is `INVEST` on an indexable public, objective profile surface. A paywall is `SELL` on a written interface surface. A published transcript is written even when its source script is spoken.
-
-For `INVEST`, state investment relevance in the visible copy. Placement in an investor directory does not carry this move. Use a neutral sentence that says the company `merits evaluation because` of a specific supported mechanism or workflow position. Do not end with abstract category restatements built on `represents`, `focused on`, `approach to`, or `positioned at`. Never substitute traction, market hype, or a funding CTA.
-
-When several fields form one company profile, make the longest field carry the complete commercial spine. A short field may compress the problem or criterion with the transformation, but the Full Description cannot become a feature inventory. Do not include every supplied capability by default; omit facts that do not advance the destination belief.
+Directory placement or an investor-adjacent audience does not activate `INVEST` by itself. Keep investor relevance implicit in descriptive profiles. Do not write phrases such as `for investors`, `investors should consider`, or `merits evaluation` unless the user explicitly requires that wording.
 
 ## Route the surface separately
 
-Classify each requested surface:
+Do not confuse mode with surface. Classify each deliverable:
 
-| Surface | Apply |
+| Surface | Treatment |
 |---|---|
-| `INDEXABLE_PUBLIC` | Public claim review, written human-voice and GEO/AEO gates, plus technical publication handoff |
-| `PUBLIC_NON_INDEXABLE_WRITTEN` | Public claim review and written human-voice and semantic/evidence gates; skip crawl and index checks |
-| `WRITTEN_PRIVATE` | Proof fidelity, concrete entities, self-contained claims, and human-voice gate |
-| `SPOKEN_ONLY` | Proof gate, human cadence, breath, timing, and listener comprehension; skip GEO/AEO formatting |
-| `HYBRID` | Route every spoken and written derivative separately |
+| `INDEXABLE_PUBLIC` | Public claim review, written human-voice and GEO/AEO passes, then relevant technical publication checks |
+| `PUBLIC_NON_INDEXABLE_WRITTEN` | Public claim review, proof fidelity, written structure, and human-voice pass; skip crawl and index checks |
+| `WRITTEN_PRIVATE` | Proof fidelity, concrete meaning, channel fit, and human-voice pass |
+| `SPOKEN_ONLY` | Proof fidelity, breath, rhythm, timing, and listener comprehension; skip GEO/AEO formatting |
+| `HYBRID` | Route spoken delivery and each written derivative separately |
 
-Channel rules cap tone without deleting the argument. For objective platforms such as Crunchbase, write the strongest objective argument permitted and explain any channel conflict after the copy.
+## Build the argument with variable depth
 
-For a tightly limited objective company profile, preserve the supported operational problem and company transformation. A category label is optional. Do not spend the limit on `Company is [category] that [feature list]` when the supplied facts support a problem-to-transformation argument.
+Start from the decision the audience faces. Build an internal path from:
 
-## Follow the exact construction order
+`situation -> stake -> criterion or broken assumption when useful -> mechanism -> proof -> destination belief -> next step`
 
-Use this order without moving compliance ahead of persuasion:
+This is a reasoning engine, not a visible template. Use only the moves the asset can carry naturally. A criterion may remain implicit. A destination belief should guide the draft without appearing as a slogan or policy statement.
 
-`Commercial job -> destination belief -> argument -> proof gate -> channel formatting -> written GEO/AEO when applicable -> AI-writing-tell edit -> compression.`
+Choose one dominant emotional job: tension, relief, control, ambition, belonging, or curiosity. Express it through a true situation, its consequence, and available agency. Emotion amplifies supported meaning; it never substitutes for proof.
 
-1. **Commercial job.** Choose one primary mode, audience, offer, decision, and real next action or investment relevance.
-2. **Destination belief.** State the narrow conclusion the audience must accept before the requested decision makes sense.
-3. **Argument.** For `SELL`, `INVEST`, and `POSITION`, build the mandatory commercial spine below. For `INFORM` and `TRANSACT`, use only the argument moves the task needs.
-4. **Proof gate.** Verify or narrow every premise before channel, GEO/AEO, style, or length work. Compliance cannot rescue a missing or unsupported argument.
-5. **Channel formatting.** Fit the objective, editorial, interface, outreach, spoken, or other channel without deleting load-bearing moves. Honor explicit length and format constraints when they do not require factual distortion.
-6. **Written GEO/AEO.** Improve extractability and verification only after the argument passes the proof gate.
-7. **AI-writing-tell edit.** Apply the global voice and output bans without changing facts, scope, causality, or uncertainty.
-8. **Compression.** Remove repetition and decoration last. Preserve the stake, mechanism, proof, qualification, destination belief, action relevance, and any explicit usable length range.
+Adapt depth to the format:
 
-## Build the mandatory commercial spine
+- **Very short:** make the market shift, felt stake, live consequence, or verified trigger condition clear; pair it with the strongest verified mechanism or differentiator. If no broader outcome is supplied, open from the exact condition the mechanism acts on. Do not force the full argument path.
+- **Medium:** add the mechanism and the best proof clue or material qualifier.
+- **Long:** expand only when each added fact resolves the next expensive uncertainty, objection, or action barrier.
 
-For `SELL`, `INVEST`, and `POSITION`, construct this exact sequence:
+For `POSITION`, make the company legible, consequential, and distinct without pitch-deck language. Convert a supplied workflow trigger into a recognizable situation when no market shift or outcome evidence is available. Do not retreat to taxonomy merely because quantified impact is missing. For `INVEST`, earn capital relevance through timing, wedge, evidence, scale logic, and what capital changes. For `SELL`, connect the buyer's live situation to a supported mechanism and useful next action.
 
-`Recognizable reality -> consequence or opportunity -> new decision criterion -> company or product mechanism -> defensible destination belief -> action or investment relevance.`
+For a very short `POSITION` asset with no supplied trend or outcome, draft a trigger-first sentence before any category sentence: `When [verified condition], [subject] [mechanism].` Keep that shape when it sounds natural. It creates tension from the supplied workflow without inventing impact.
 
-Moves may share sentences; none may disappear.
+For very short `SELL` work with no outcome proof, name the exact supplied constraint, conflict, threshold, or blocked action. Do not weaken it into generic words such as `complexity`, `challenges`, or `constraints` when the facts are more specific.
 
-Before delivery, silently locate the exact words that carry each of the six moves. If any move has no concrete phrase in the draft, rebuild it. A compact hero, profile, paywall, email, or spoken pitch is not exempt; combine moves instead of deleting them. Do not expose this audit.
+## Rank proof before drafting
 
-- **Recognizable reality:** Name the audience's current situation without inventing pain, motive, or urgency.
-- **Consequence or opportunity:** Make one truthful stake felt through a concrete business effect, decision risk, blocked task, or available gain. Count this move only when the draft names that effect, decision, task, exposure, or opportunity. Words such as `matters`, `confidence`, `better`, or `before acting` do not carry the stake alone.
-- **New decision criterion:** Establish what a credible choice must do, based on the supplied facts.
-- **Company or product mechanism:** Explain what the company changes, what causes the change, and what limits apply.
-- **Defensible destination belief:** Land the one supported buying, investment, or positioning conclusion.
-- **Action or investment relevance:** State the logical next step, or why the company merits evaluation when the channel does not permit a CTA.
+Rank candidate facts by decision relevance, differentiation, verifiability, specificity, compression value, and omission risk.
 
-For an objective company profile, keep the spine factual and compact. Do not replace the stake with hype or replace action relevance with a sales command.
+- Keep the few facts that do the most decision work.
+- Prefer evidence that resolves the biggest live doubt over impressive but decorative facts.
+- Preserve named scope, counts, coverage, entities, qualifications, and material limits when they carry the argument.
+- Keep factual enumerations when the list qualifies, compares, states scope, supports a decision, or prevents a misleading omission.
+- Remove feature volume that buries the stake, mechanism, or strongest differentiator.
 
-## Enforce the proof gate
+Every included fact must prove a premise, resolve an objection, distinguish the mechanism, or enable action.
 
-Attach proof to the argument before applying channel rules or compliance gates.
+## Enforce truth and ethical limits
 
-- Require every included fact to prove a premise, resolve an objection, or enable action. Remove facts that merely decorate the draft.
-- Keep fact, inference, opinion, and promise distinct. Preserve source, date, scope, qualification, and evidence limits where material.
-- Treat product behavior and user-supplied facts as evidence only for the claim they directly support.
-- Never invent or imply features, results, prices, routes, deadlines, traction, leadership, market size, savings, performance, urgency, scarcity, testimonials, comparisons, motives, or guarantees.
-- Do not turn an operational mismatch, exception, or review task into financial risk, a control deficiency, compliance exposure, loss, or business impact unless the supplied evidence supports that consequence. Keep the stake at the supported task or decision.
-- Treat `emerging`, `growing`, `established`, `crowded`, `large`, `expanding`, `increasingly`, `accelerating`, `rising`, `surging`, `rapidly`, and similar category-stage or market-trend language as claims. When no market evidence is supplied, name the category and current situation neutrally.
-- If proof is missing, narrow or remove the premise. Put a concise verification need after the ready copy only when omission would make the asset unusable.
-- Do not add a generic disclaimer such as `outcomes are not guaranteed` merely because a result claim is unavailable. Omit the result claim. Preserve a qualification only when it is material to the remaining copy or required by law, policy, or the user.
-- Do not turn crawler access, schema, content changes, or observed citations into promises of retrieval, selection, ranking, recommendation, conversion, or revenue.
+Keep fact, inference, interpretation, aspiration, and promise distinct. Preserve source, date, scope, conditions, and uncertainty where material.
 
-## Apply the rejection gates
+Never invent or imply claims, features, prices, routes, results, traction, market size, leadership, comparisons, savings, performance, motives, urgency, scarcity, testimonials, guarantees, or causal effects. Treat trend and category-stage language as claims. If evidence is missing, narrow or remove the premise.
 
-Reject and rebuild a `SELL`, `INVEST`, or `POSITION` draft when any condition holds:
+Do not convert an operational fact into financial, legal, compliance, reputational, or market consequences without support. Do not turn access, formatting, content changes, or observed outcomes into promises of retrieval, selection, citation, ranking, recommendation, conversion, investment, or revenue.
 
-- It is only a category definition, claim-ledger paraphrase, or feature inventory.
-- An objective profile uses the shape `Company is [category] that [feature list]` even though the supplied mechanism supports a decision problem or company transformation. Start from that problem or transformation instead.
-- It has no felt stake, company transformation, or destination belief.
-- A commercial-spine move disappeared to satisfy a short or objective format.
-- A paywall merely repeats plan facts without naming the blocked action and how the supported upgrade change resolves it.
-- The facts do not prove a premise, resolve an objection, or enable action.
-- It passes a competitor-swap test because the named company has no factual mechanism or boundary.
-- It presents compliance, formatting, or citability as persuasion.
+Preserve agency. Do not manufacture fear, shame, guilt, identity pressure, exclusivity, or scarcity. Threat requires a real material risk and a credible response. Ambition requires a mechanism and supportable path.
 
-Reject primary brand verbs such as `shows`, `helps`, `supports`, or `built for` when a supported causal verb is available. Use the strongest factual verb the evidence permits, such as `records`, `reconciles`, `routes`, or `turns`. Never strengthen the verb beyond the evidence.
+## Reject flat or synthetic drafts
 
-Run the proof, competitor-swap, continuity, CTA, read-aloud, defense, fidelity, and tell-density tests before delivery.
+Rebuild when the draft:
 
-## Preserve truth, ethics, and voice
+- reads as a category definition, source-ledger paraphrase, feature inventory, or operational taxonomy;
+- has no felt stake, consequential shift, meaningful mechanism, or defensible destination belief;
+- could describe a competitor after changing the name;
+- uses generic brand verbs such as `helps`, `shows`, `supports`, or `built for` when a stronger supported causal verb exists;
+- lets minor features bury a decisive fact;
+- opens a very short `POSITION` asset with the subject followed by an operational verb list when the facts contain a verified trigger, threshold, conflict, or exception that can lead instead;
+- announces buyer or investor relevance instead of earning it;
+- exposes compliance, reasoning, routing, or publication process;
+- uses emotion that the facts do not support.
 
-Create emotion from a true situation, a concrete consequence or opportunity, and available agency. Do not invent fear, loss, guilt, scarcity, social proof, exclusivity, or human texture. Preserve material trade-offs and conditions.
+When facts describe an input conflict, blocked action, threshold, exception, or before-and-after state, use that verified condition as the opening situation. Do not add a downstream cost or risk that the facts do not establish.
 
-Apply the human-voice and AI-writing-tell gate to every deliverable. Do not generate em dashes or curly or smart quotes in final copy. Remove banned vocabulary, connectives, phrase templates, significance tails, stock generated tripartite rhetoric, `Not only... but also...`, `not merely... but...`, and `not just... but...` constructions, decorative recaps, prompt acknowledgements, and fabricated informality unless immutable text or required legal or technical language makes preservation necessary. Use straight quotes.
+Factual completeness can require lists. Do not delete diagnostic enumeration merely to avoid a visual pattern.
 
-Before delivery, scan every generated character in the ready copy and any note after it. Replace generated U+2014, U+2018, U+2019, U+201C, and U+201D punctuation with an ASCII alternative, including when restating a user's unsupported phrase. Do not let a verification note reintroduce a banned mark.
+## Fit the channel
 
-Run a separate triad sweep. Never generate the prose syntax `X, Y, and Z` or `X, Y, or Z`; treat this as a mechanical output constraint. Rewrite any sequence of three parallel nouns, adjectives, clauses, or sentence fragments. A flourish such as `measurement, traceability, and discipline` fails. A recap such as `evidence capture, prioritization, and human review` also fails; write `captures evidence and keeps prioritization under human review`. Recast even sourced facts with a natural pair or connected prose. Preserve the three-part syntax only inside immutable quoted or legal text, a proper name, or text the user requires verbatim.
+Make the argument native to the requested surface:
 
-Scan the final prose from the last sentence backward. Find every generated `, and` and `, or`; when it closes a three-part parallel sequence, rewrite it. Check every occurrence, including the last sentence and any note. Do not stop after the first repair.
+- Heroes and ads: one recognizable stake, one meaningful difference, and the correct next action.
+- Product, comparison, upgrade, and paywall copy: enough mechanism, proof, terms, and reversibility to reduce decision risk.
+- Company profiles: objective language that still conveys shift, mechanism, wedge, and the most salient evidence.
+- Cold outreach and DMs: one relevant observation or problem, one explanatory turn, and one low-friction next step. Do not restate the same evidence in different words.
+- Editorial work: useful reasoning, evidence, and objections before conversion pressure.
+- Spoken work: an early hook, short clauses, audible transitions, and no search-format scaffolding. Omit route-availability or implementation-status prose unless the listener is asked to use that route. End on one supported consequence, decision, or form of agency, not product status or a stack of adjacent action verbs.
+- Hybrid work: rank facts separately for each deliverable. Do not force every supplied fact into both assets. Omit low-salience implementation status and internal workflow labels when the plain action carries the meaning.
 
-Never promise detector evasion. Never change facts, names, numbers, dates, quotations, citations, causality, uncertainty, or legal meaning to sound human.
+Treat an existence-only route, screen, page, preview, or report as action availability when the brief gives it no differentiated function. Express that availability through the CTA or final invitation. Do not turn it into a body-copy claim.
 
-## Preserve written GEO/AEO boundaries
+Channel rules change depth and tone. They do not erase the argument.
 
-For written work, answer early when the format calls for it, name entities and scope, keep proof beside claims, build self-contained evidence blocks, expose provenance, add genuine information value, and keep visible and machine-readable facts consistent.
+## Apply silent final passes
 
-Apply technical crawl, canonical, sitemap, metadata, structured-data, and delivery checks only to indexable public work. Treat engine rules as engine-specific and recheck current official documentation before technical advice. Never promise retrieval, selection, quotation, citation, ranking, recommendation, referral, conversion, or revenue.
+After the argument is drafted:
 
-## Isolate CiteSurge controls
+1. Verify each claim and causal link.
+2. Apply written GEO/AEO only to written deliverables.
+3. Apply technical publication checks only to indexable public work.
+4. Apply the human-voice and AI-writing-tell gate without deleting facts or diagnostic lists.
+5. Compress repetition and decoration last.
 
-Apply CiteSurge claim-ledger, methodology, scanner, GEO/AEO positioning, public-address, release, and review controls only when the request, named product, or active repository is CiteSurge. Ignore them for every other brand. For CiteSurge public work, verify current repository truth and required smokes before release.
+Keep these passes invisible. Mention a blocker only when silence would make the result misleading, legally unusable, or operationally unshippable.
+
+Do not generate em dashes or curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, and repeated stock templates. Avoid decorative three-part rhetoric, but preserve necessary factual series. Never promise detector evasion. Never change facts or legal meaning to sound human.
 
 ## Return the result
 
-Return ready-to-use copy first. Do not expose chain-of-thought, mode classification, planning scaffolds, private reasoning, or a rule-by-rule explanation. Add assumptions, verification needs, or an objective-channel conflict only after the copy and only when material.
+Return one ready-to-use result first. Do not expose internal argument planning, mode labels, chain-of-thought, rule audits, or a policy recap.
 
-Run the literal punctuation sweep after composing any post-copy note, then return the result.
+Default to the shortest complete output suited to the channel. Do not provide near-duplicate variants unless requested. Add one brief verification or blocker note after the copy only when the result cannot safely stand without it.
 
-Do not deliver until the trend-claim, contrast-template, and triad sweeps also pass the final copy and every post-copy note.
-
-Default to one shortest complete output suited to the channel. Do not provide near-duplicate variants unless requested. For critiques, lead with revised copy only when rewriting is authorized; otherwise lead with the most consequential actionable findings.
+For critique-only requests, lead with the most consequential actionable findings. When rewriting is authorized, lead with the revised copy.

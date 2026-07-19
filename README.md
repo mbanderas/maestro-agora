@@ -12,19 +12,21 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-7c3aed" /></a>
 </p>
 
-Agora is a portable Agent Skill for truthful persuasion. It turns verified company and product truth into a supported path from a real stake to a defensible belief. The method covers buyer, investor, company-positioning, informational, and transactional copy. It never authorizes a claim the proof cannot carry.
+Most writing tools start with words. Agora starts with the decision behind them.
 
-Give it the real situation, evidence, material limits, and requested surface. Agora returns ready-to-use copy first and puts any material verification need after the draft.
+Give it verified facts, the real audience, and the surface where the copy will live. Agora finds the consequential shift or stake, explains the mechanism that changes it, selects the proof that matters most, and turns that case into channel-native copy. The result can feel urgent, ambitious, reassuring, or direct. It cannot outrun the evidence.
 
-**Related Maestro tools:**
+Use Agora for landing pages, ads, company profiles, investor narratives, sales email, product copy, paywalls, editorial work, interface text, and spoken scripts.
+
+**One suite: fuse the answer, make the case, guard the spend.**
 
 - **[Maestro Frontier](https://github.com/mbanderas/maestro):** Fuses the model CLIs you already run into one judged, grounded answer.
-- **[Maestro Agora](https://github.com/mbanderas/maestro-agora):** Turns verified truth into proof-bounded arguments for buyers and investors, including objective company positioning.
+- **[Maestro Agora](https://github.com/mbanderas/maestro-agora):** Turns verified product truth into concise, argument-first copy without inventing the proof.
 - **[Maestro CostGuard](https://github.com/mbanderas/costguard):** Audits CI and cloud infrastructure for cost leaks and shows what to fix.
 
 ## Install
 
-One command installs Agora for the shared Agent Skills path and Claude Code:
+Install Agora across the shared Agent Skills path and Claude Code:
 
 ```sh
 npx -y @maestroagora/agora
@@ -35,7 +37,7 @@ The default user install writes the same reviewed skill to:
 - `~/.agents/skills/agora` for Codex and Agent Skills-compatible tools.
 - `~/.claude/skills/agora` for Claude Code.
 
-Choose a native target or project-local scope when you need one:
+Choose a target or project-local scope when needed:
 
 ```sh
 npx -y @maestroagora/agora --target cursor --scope project
@@ -44,6 +46,12 @@ npx -y @maestroagora/agora --target universal --dry-run
 ```
 
 Supported targets are `universal`, `shared`, `codex`, `claude`, `cursor`, `gemini`, `copilot`, and `windsurf`. Add `--force` only when you intend to replace a different copy at the exact `agora` destination.
+
+Update an existing user installation:
+
+```sh
+npx -y @maestroagora/agora@latest --target universal --scope user --force
+```
 
 ### Native plugin install
 
@@ -61,84 +69,100 @@ codex plugin marketplace add mbanderas/maestro-agora
 codex plugin add maestro-agora@maestro-agora
 ```
 
-The npm installer is the broadest route across IDEs. The native plugin commands install the repository's matching Claude or Codex manifest.
+The npm installer is the broadest route across IDEs. Native plugin commands use the matching Claude or Codex manifest from this repository.
 
 ## Use Agora
 
-Invoke the skill directly, name a mode when you want one, then provide the facts it may use:
+Invoke the skill directly and provide the facts it may use:
 
 ```text
-/agora sell Rewrite this upgrade screen from one real buyer stake to a defensible belief. Keep one supported CTA. Use only these verified facts: ...
+/agora Rewrite this upgrade screen. Make the blocked action matter, state the plan difference clearly, and use one supported CTA.
 ```
 
-In Codex, `$agora` and the skills picker can also select the installed skill. Other hosts may expose skills through their own picker or mention syntax; asking the agent to "use the agora skill" remains portable.
+Choose a mode when you want to override inference:
 
-### Commercial modes
+```text
+/agora position Turn these verified facts into a 35-word company profile.
+/agora sell Build a homepage hero around the strongest buyer stake this evidence supports.
+/agora invest Write a one-paragraph capital case from timing, mechanism, proof, and use of funds.
+/agora inform Explain this research finding for a public article.
+/agora transact Rewrite this confirmation so the state and next action are unmistakable.
+```
 
-An explicit mode wins. When no mode is named, Agora infers one from the requested asset and the audience's decision.
+In Codex, `$agora` and the skills picker can also select the installed skill. Other hosts may expose skills through a picker or mention syntax. Asking the agent to "use the Agora skill" remains portable.
+
+## How the persuasion engine works
+
+Agora reasons through a variable-depth path:
+
+```text
+situation -> stake -> criterion when useful -> mechanism -> proof -> destination belief -> next step
+```
+
+That path stays internal. It is not a paragraph template.
+
+- Very short copy pairs the strongest market shift, felt stake, or live consequence with the strongest verified differentiator.
+- Medium copy adds the mechanism and the proof clue or qualifier that matters most.
+- Long copy expands only when another fact resolves a real objection or expensive uncertainty.
+
+This keeps a 35-word profile from sounding like a compressed pitch deck. It also keeps a full investor narrative from collapsing into a feature list.
+
+### Mode routing
 
 | Mode | Use or infer it for |
 |---|---|
-| `SELL` | Marketing, sales, ads, landing pages, outreach, or paywalls |
-| `INVEST` | Investors, funding, pitches, or capital-focused profiles |
-| `POSITION` | Company profiles, category narratives, or brand descriptions |
-| `INFORM` | Editorial or educational work |
-| `TRANSACT` | Buttons, confirmations, alerts, or utility microcopy |
+| `POSITION` | Company profiles, directories, About copy, website summaries, category narratives, and objective descriptions |
+| `SELL` | Marketing, sales, ads, landing pages, product pages, outreach, upgrades, and paywalls |
+| `INVEST` | Actual funding, capital-allocation, diligence, investor-pitch, and fundraising work |
+| `INFORM` | Editorial and educational work |
+| `TRANSACT` | Buttons, confirmations, alerts, forms, and utility microcopy |
 
-### Surface routing
+`POSITION` is the default for descriptive company profiles, even when investors may read them. Agora makes relevance emerge from the shift, mechanism, wedge, and proof. It does not insert phrases such as "for investors" or "merits evaluation."
 
-Mode and surface are separate decisions. An investor description on Crunchbase is `INVEST` on an indexable public, objective profile surface. A paywall is `SELL` on a written interface surface. A published transcript is written even when its source script is spoken.
+### Proof salience
+
+Agora ranks facts by decision relevance, differentiation, verifiability, specificity, compression value, and omission risk.
+
+It keeps the facts that change the decision. A measured outcome may outrank five minor features. A named list of supported engines may be the proof when scope is the decision. Diagnostic enumeration stays. Decorative feature volume goes.
+
+### Emotion without invention
+
+Agora chooses one dominant emotional job, such as tension, relief, control, ambition, belonging, or curiosity. It expresses that feeling through a real situation, a supportable consequence, and available agency.
+
+It never manufactures fear, urgency, scarcity, loss, social proof, intimacy, or certainty. Emotion makes the facts consequential. It does not replace them.
+
+## Surface routing
+
+Mode and surface are separate decisions.
 
 | Surface | Treatment |
 |---|---|
-| `INDEXABLE_PUBLIC` | Public claim review, written human-voice and GEO/AEO gates, plus a technical publication handoff |
-| `PUBLIC_NON_INDEXABLE_WRITTEN` | Public claim review, written semantic and evidence rules, plus the human-voice gate; skip crawl and index checks |
-| `WRITTEN_PRIVATE` | Proof fidelity, concrete entities, self-contained claims, and the human-voice gate |
-| `SPOKEN_ONLY` | Proof review, cadence, breath, timing, and listener comprehension; skip GEO/AEO formatting |
-| `HYBRID` | Route every spoken and written derivative separately |
+| `INDEXABLE_PUBLIC` | Public claim review, human-voice and GEO/AEO passes, then relevant technical publication checks |
+| `PUBLIC_NON_INDEXABLE_WRITTEN` | Public claim review, written evidence structure, and human-voice pass; no crawl or index checks |
+| `WRITTEN_PRIVATE` | Proof fidelity, channel fit, concrete meaning, and human-voice pass |
+| `SPOKEN_ONLY` | Proof review, cadence, breath, timing, and listener comprehension; no GEO/AEO formatting |
+| `HYBRID` | Spoken delivery and each written derivative are routed separately |
 
-### Commercial spine
+Published titles, descriptions, transcripts, captions, show notes, and companion pages receive written treatment. Spoken-only delivery stays free of search-format scaffolding.
 
-For `SELL`, `INVEST`, and `POSITION`, Agora constructs this exact sequence:
+## Silent safeguards
 
-```text
-Recognizable reality -> consequence or opportunity -> new decision criterion -> company or product mechanism -> defensible destination belief -> action or investment relevance.
-```
+Agora builds the argument before it runs publication and style checks. Those checks remain invisible unless the delivered copy would otherwise be misleading, legally unusable, or operationally unshippable.
 
-Moves may share sentences; none may disappear.
+- Unsupported claims are narrowed or removed, not buried under a disclaimer.
+- Facts, inference, interpretation, aspiration, and promises remain distinct.
+- GEO/AEO improves written clarity and evidence structure after the argument exists.
+- Human-voice cleanup removes prompt leakage, canned templates, generic significance tails, generated em dashes, and smart quotes.
+- Necessary factual series survive the cleanup.
+- One ready-to-use result comes first. Near-duplicate variants appear only when requested.
 
-1. Recognizable reality. Name the audience's current situation without inventing pain, motive, or urgency.
-2. Consequence or opportunity. Make one truthful stake felt through a concrete business effect, decision risk, or available gain.
-3. New decision criterion. Establish what a credible choice must do, based on the supplied facts.
-4. Company or product mechanism. Explain what changes, what causes the change, and what limits apply.
-5. Defensible destination belief. Land one supported commercial conclusion.
-6. Action or investment relevance. State the logical next step, or why the company merits evaluation when the channel does not permit a CTA.
-
-### Objective-channel cap
-
-On objective platforms such as Crunchbase, the channel caps tone, not argument. Agora keeps the commercial spine factual and compact. It does not replace the stake with hype or force a sales command where investment relevance is the permitted close. If the channel conflicts with the requested commercial job, Agora returns usable copy first and names the conflict afterward.
-
-## What the skill enforces
-
-Agora chooses the commercial job before it formats the surface. Proof review happens before the later formatting and compression passes.
-
-- Preserve every load-bearing move for `SELL`, `INVEST`, and `POSITION` work before formatting the channel.
-- Keep proof beside the claim, with its source, scope, date, qualification, and material limits.
-- Use the strongest factual argument an objective channel permits instead of settling for a hollow profile.
-- Cut Wikipedia-style flagged vocabulary, connectives, templates, significance tails, generated em dashes, curly quotes, fabricated texture, and decorative recaps.
-- Narrow, omit, or flag unsupported claims instead of supplying missing features, prices, routes, urgency, scarcity, testimonials, or results.
-- Return one usable draft before assumptions, verification needs, or an objective-channel conflict.
-- Remove repetition before cutting a stake, mechanism, proof limit, destination belief, or action relevance.
-
-The skill improves process discipline; it does not replace source review, legal review, or final human verification.
+The skill improves writing discipline. It does not replace source review, legal review, or final human judgment.
 
 ## Written GEO/AEO boundaries
 
-For written assets, Agora treats generative-engine optimization and answer-engine optimization as clarity and evidence work: answer the reader's question early, name entities and scope, keep proof adjacent to claims, expose provenance, and make useful passages self-contained.
+For written assets, Agora answers the reader's question early when the format calls for it, names entities and scope, keeps proof beside claims, exposes real provenance, and builds useful passages that remain accurate when quoted alone.
 
-For indexable public pages, it can also flag technical publication checks such as crawlability, canonical consistency, structured data, and sitemap inclusion. These practices can improve eligibility and citability; they cannot promise retrieval, selection, quotation, citation, ranking, recommendation, referral, conversion, or revenue.
-
-Spoken-only delivery skips GEO/AEO formatting. Published titles, descriptions, transcripts, captions, show notes, and companion pages receive the written treatment separately.
+For indexable public pages, Agora can also flag relevant crawlability, canonical, sitemap, metadata, structured-data, accessibility, and delivery checks. These practices can improve eligibility and citability. They cannot promise retrieval, selection, quotation, citation, ranking, recommendation, referral, conversion, or revenue.
 
 ## How Agora works
 
@@ -146,7 +170,7 @@ Spoken-only delivery skips GEO/AEO formatting. Published titles, descriptions, t
   <img src="assets/agora-orbit.svg" alt="Animated flow from verified truth and evidence through argument, proof, voice, and action into ready copy" width="100%" />
 </p>
 
-The public skill stays intentionally small:
+The skill itself stays intentionally small:
 
 ```text
 skills/agora/
@@ -157,7 +181,7 @@ skills/agora/
     └── agora-marketing.md
 ```
 
-`SKILL.md` contains the operating workflow. `references/agora-marketing.md` is the canonical authority for evidence grades, ethical limits, persuasion controls, AI-writing-tell checks, and GEO/AEO boundaries. CiteSurge-specific rules remain isolated to CiteSurge work.
+`SKILL.md` is the concise operating contract. `references/agora-marketing.md` holds the original doctrine, research evidence grades, ethical limits, channel rules, AI-writing-tell controls, GEO/AEO boundaries, examples, and evaluation guidance.
 
 ## Verify the package
 
@@ -166,7 +190,7 @@ npm run check
 npx -y @maestroagora/agora --dry-run
 ```
 
-The validation suite checks the strict skill root, the v1.1 behavior contract, plugin metadata, relative links, installer behavior, and the exact npm package allowlist. A committed blind-eval corpus covers mode and surface combinations without calling a model during CI.
+The validation suite checks the strict three-file skill root, the v1.2 behavior contract, plugin metadata, relative links, installer behavior, source-link retention, project-agnostic content, and the exact npm package allowlist. A committed blind-eval corpus covers known failure modes without passing expected answers or grading rules into generation.
 
 ## License
 

@@ -1,6 +1,6 @@
 {
   "name": "maestro-agora",
-  "description": "Self-hosted marketplace for Maestro: Agora, the truthful persuasion skill.",
+  "description": "Self-hosted marketplace for Maestro: Agora, the argument-first persuasion skill.",
   "owner": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -9,7 +9,7 @@
     {
       "name": "maestro-agora",
       "source": "./",
-      "description": "Turn verified truth into proof-bounded commercial, editorial, interface, and spoken copy for its real audience and surface."
+      "description": "Turn verified facts into consequential commercial, editorial, interface, and spoken arguments for the real decision."
     }
   ]
 }

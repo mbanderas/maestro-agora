@@ -1,0 +1,196 @@
+{
+  "schema_version": 2,
+  "skill_version": "1.2.0",
+  "generation_contract": {
+    "pass_to_model": [
+      "prompt_file"
+    ],
+    "never_pass_to_model": [
+      "manifest.json",
+      "case metadata",
+      "rubric",
+      "incumbent label",
+      "expected output"
+    ],
+    "fresh_context_per_case": true,
+    "isolated_skill_copy": true
+  },
+  "adjudication": {
+    "method": "blind-pairwise",
+    "randomize_order": true,
+    "swap_order": true,
+    "escalate_on_order_flip": true,
+    "absolute_vetoes": [
+      "fabricated-fact",
+      "unsupported-causality",
+      "context-leakage",
+      "visible-compliance-leakage"
+    ]
+  },
+  "rubric": {
+    "scale": "1-5",
+    "dimensions": [
+      "argument-inevitability",
+      "sustained-emotional-relevance",
+      "proof-salience",
+      "mechanism-differentiation",
+      "natural-channel-fit",
+      "truth-discipline"
+    ]
+  },
+  "cases": [
+    {
+      "id": "position-directory-short",
+      "prompt_file": "prompts/position-directory-short.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "company-positioning",
+      "format_budget": "very-short",
+      "hard_gates": ["position-default", "stake-plus-differentiator", "no-investor-speak", "proof-discipline"]
+    },
+    {
+      "id": "invest-one-paragraph-diligence",
+      "prompt_file": "prompts/invest-one-paragraph-diligence.md",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "asset": "investor-description",
+      "format_budget": "medium",
+      "hard_gates": ["capital-relevance", "proof-discipline", "no-invented-traction", "no-compliance-note"]
+    },
+    {
+      "id": "position-proof-scope",
+      "prompt_file": "prompts/position-proof-scope.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "asset": "company-positioning",
+      "format_budget": "medium",
+      "hard_gates": ["named-scope-survives", "mechanism-survives", "no-taxonomy-collapse"]
+    },
+    {
+      "id": "short-mechanism-not-taxonomy",
+      "prompt_file": "prompts/short-mechanism-not-taxonomy.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "company-positioning",
+      "format_budget": "very-short",
+      "hard_gates": ["stake-plus-differentiator", "mechanism-survives", "no-feature-inventory"]
+    },
+    {
+      "id": "enumeration-necessary",
+      "prompt_file": "prompts/enumeration-necessary.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "product-copy",
+      "format_budget": "medium",
+      "hard_gates": ["diagnostic-enumeration-survives", "material-limit-survives", "proof-discipline"]
+    },
+    {
+      "id": "silent-compliance",
+      "prompt_file": "prompts/silent-compliance.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "company-positioning",
+      "format_budget": "medium",
+      "hard_gates": ["unsupported-claim-removed", "no-release-note", "ready-copy-first"]
+    },
+    {
+      "id": "hybrid-surface-split",
+      "prompt_file": "prompts/hybrid-surface-split.md",
+      "expected_mode": "SELL",
+      "expected_surface": "HYBRID",
+      "asset": "hybrid-overview",
+      "format_budget": "mixed",
+      "hard_gates": ["spoken-written-split", "spoken-no-search-scaffolding", "written-self-contained"]
+    },
+    {
+      "id": "objective-vs-investment-position",
+      "prompt_file": "prompts/objective-vs-investment-position.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "asset": "company-positioning",
+      "format_budget": "medium",
+      "hard_gates": ["position-default", "no-capital-ask", "implicit-relevance"]
+    },
+    {
+      "id": "objective-vs-investment-invest",
+      "prompt_file": "prompts/objective-vs-investment-invest.md",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "asset": "investor-description",
+      "format_budget": "medium",
+      "hard_gates": ["capital-relevance", "use-of-funds-survives", "proof-discipline"]
+    },
+    {
+      "id": "proof-salience-vs-feature-volume",
+      "prompt_file": "prompts/proof-salience-vs-feature-volume.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "landing-hero",
+      "format_budget": "very-short",
+      "hard_gates": ["decisive-proof-survives", "minor-features-compressed", "supported-cta"]
+    },
+    {
+      "id": "position-no-investor-cosplay",
+      "prompt_file": "prompts/position-no-investor-cosplay.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "company-positioning",
+      "format_budget": "medium",
+      "hard_gates": ["no-investor-speak", "objective-argument", "proof-salience"]
+    },
+    {
+      "id": "spoken-no-search-scaffolding",
+      "prompt_file": "prompts/spoken-no-search-scaffolding.md",
+      "expected_mode": "SELL",
+      "expected_surface": "SPOKEN_ONLY",
+      "asset": "spoken-script",
+      "format_budget": "spoken-short",
+      "hard_gates": ["spoken-cadence", "no-geo-formatting", "supported-stake"]
+    },
+    {
+      "id": "factual-triplet-survives",
+      "prompt_file": "prompts/factual-triplet-survives.md",
+      "expected_mode": "SELL",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "asset": "product-copy",
+      "format_budget": "very-short",
+      "hard_gates": ["diagnostic-enumeration-survives", "no-scope-invention", "natural-voice"]
+    },
+    {
+      "id": "sell-mobile-paywall",
+      "prompt_file": "prompts/sell-mobile-paywall.md",
+      "expected_mode": "SELL",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "asset": "paywall",
+      "format_budget": "very-short",
+      "hard_gates": ["blocked-action", "plan-difference", "no-fake-urgency", "supported-cta"]
+    },
+    {
+      "id": "sell-b2b-cold-email",
+      "prompt_file": "prompts/sell-b2b-cold-email.md",
+      "expected_mode": "SELL",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "asset": "cold-email",
+      "format_budget": "medium",
+      "hard_gates": ["specific-observation", "no-invented-impact", "low-friction-ask"]
+    },
+    {
+      "id": "unsupported-proof",
+      "prompt_file": "prompts/unsupported-proof.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "landing-hero",
+      "format_budget": "very-short",
+      "hard_gates": ["unsupported-claim-removed", "no-fabrication", "no-generic-disclaimer"]
+    },
+    {
+      "id": "direct-agora-invest",
+      "prompt_file": "prompts/direct-agora-invest.md",
+      "expected_mode": "INVEST",
+      "expected_surface": "SPOKEN_ONLY",
+      "asset": "spoken-pitch",
+      "format_budget": "spoken-short",
+      "hard_gates": ["direct-activation", "capital-relevance", "spoken-cadence", "truth-discipline"]
+    }
+  ]
+}
