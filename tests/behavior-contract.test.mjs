@@ -59,7 +59,7 @@ function externalUrls(markdown) {
 }
 
 test("skill frontmatter and direct activation remain portable", () => {
-  const frontmatter = skill.match(/^---\n([\s\S]*?)\n---\n/);
+  const frontmatter = skill.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
   assert.ok(frontmatter, "SKILL.md needs frontmatter");
   const keys = [...frontmatter[1].matchAll(/^([a-z_-]+):/gm)].map((match) => match[1]);
   assert.deepEqual(keys, ["name", "description"]);
