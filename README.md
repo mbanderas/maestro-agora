@@ -12,11 +12,11 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-7c3aed" /></a>
 </p>
 
-Most writing tools start with words. Agora starts with the decision behind them.
+Words cannot rescue a missing argument. Agora starts with the decision behind the copy.
 
 Give it verified facts, the real audience, and the surface where the copy will live. Agora finds the consequential shift or stake, explains the mechanism that changes it, selects the proof that matters most, and turns that case into channel-native copy. The result can feel urgent, ambitious, reassuring, or direct. It cannot outrun the evidence.
 
-Use Agora for landing pages, ads, company profiles, investor narratives, sales email, product copy, paywalls, editorial work, interface text, and spoken scripts.
+Use Agora for landing pages, ads, company profiles, investor narratives, sales emails, product copy, paywalls, editorial work, interface text, and spoken scripts.
 
 **One suite: fuse the answer, make the case, guard the spend.**
 
@@ -36,6 +36,14 @@ The default user install writes the same reviewed skill to:
 
 - `~/.agents/skills/agora` for Codex and Agent Skills-compatible tools.
 - `~/.claude/skills/agora` for Claude Code.
+
+Install only the user-level Codex skill:
+
+```sh
+npx -y @maestroagora/agora --target codex --scope user
+```
+
+Open a new task or restart the host after installation so its skill registry and slash menu reload.
 
 Choose a target or project-local scope when needed:
 
@@ -190,7 +198,7 @@ npm run check
 npx -y @maestroagora/agora --dry-run
 ```
 
-The validation suite checks the strict three-file skill root, the v1.2 behavior contract, plugin metadata, relative links, installer behavior, source-link retention, project-agnostic content, and the exact npm package allowlist. A committed blind-eval corpus covers known failure modes without passing expected answers or grading rules into generation.
+The validation suite checks the strict three-file skill root, current behavior and release contracts, plugin metadata, relative links, installer behavior, source-link retention, project-agnostic content, line-ending parity, and the exact npm package allowlist. A committed blind-eval corpus covers known failure modes without passing expected answers or grading rules into generation.
 
 ## License
 
