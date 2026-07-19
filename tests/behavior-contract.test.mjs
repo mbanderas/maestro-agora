@@ -12,12 +12,13 @@ const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
 const CODEX_PLUGIN_PATH = join(ROOT, ".codex-plugin", "plugin.json");
 const CLAUDE_PLUGIN_PATH = join(ROOT, ".claude-plugin", "plugin.json");
 const PACKAGE_PATH = join(ROOT, "package.json");
+const GITATTRIBUTES_PATH = join(ROOT, ".gitattributes");
 const LINK_FIXTURE_PATH = join(ROOT, "tests", "fixtures", "reference-links.v1.0.1.json");
 const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.2.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, openaiYaml, codexPlugin, claudePlugin, packageJson, linkFixture, manifest] =
+const [skill, reference, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
@@ -25,6 +26,7 @@ const [skill, reference, openaiYaml, codexPlugin, claudePlugin, packageJson, lin
     readFile(CODEX_PLUGIN_PATH, "utf8").then(JSON.parse),
     readFile(CLAUDE_PLUGIN_PATH, "utf8").then(JSON.parse),
     readFile(PACKAGE_PATH, "utf8").then(JSON.parse),
+    readFile(GITATTRIBUTES_PATH, "utf8"),
     readFile(LINK_FIXTURE_PATH, "utf8").then(JSON.parse),
     readFile(MANIFEST_PATH, "utf8").then(JSON.parse),
   ]);
@@ -227,7 +229,7 @@ test("public files contain no project-specific residue or temporary citations", 
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.2.0 behavior contract", () => {
+test("metadata matches the v1.2.1 release contract", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
@@ -236,9 +238,11 @@ test("metadata matches the v1.2.0 behavior contract", () => {
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.2.0");
+  assert.equal(packageJson.version, "1.2.1");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
+  assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
+  assert.match(gitAttributes, /^\*\.png binary$/m);
   assert.equal(codexPlugin.interface.shortDescription, "Argument-first copy that earns belief");
   assert.ok(
     codexPlugin.interface.defaultPrompt.every(
