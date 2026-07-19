@@ -1,1387 +1,760 @@
-# Agora Marketing
+# Agora marketing authority
 
-Canonical skill reference adapted from the user-provided handbook dated
-2026-07-17 and rebuilt for the v1.1.0 persuasion contract. The source transcript
-is summarized as operating doctrine, not published verbatim. Evidence grades,
-limits, ethical controls, and durable source links remain authoritative.
+This reference combines the original Agora argument-first doctrine with research on persuasion psychology, investor communication, channel behavior, proof salience, human voice, and written discoverability. Use it as an authority library, not as a visible template.
 
 ## Contents
 
 - [Core doctrine](#core-doctrine)
-- [The destination belief](#the-destination-belief)
-- [Mechanism and company transformation](#mechanism-and-company-transformation)
-- [Commercial modes](#commercial-modes)
-- [Construction order](#construction-order)
-- [Portable LLM activation contract](#portable-llm-activation-contract)
-- [Source basis and authority](#source-basis-and-authority)
-- [Format router](#format-router)
-- [Required brief](#required-brief)
-- [Build the argument](#build-the-argument)
-- [Emotion without hype](#emotion-without-hype)
-- [Mechanism controls](#mechanism-controls)
-- [Proof and claim control](#proof-and-claim-control)
-- [Rejection gates](#rejection-gates)
-- [Concision and format standard](#concision-and-format-standard)
+- [Conflict hierarchy](#conflict-hierarchy)
+- [Commercial routing](#commercial-routing)
+- [Surface routing](#surface-routing)
+- [Argument engine](#argument-engine)
+- [Emotion as consequential meaning](#emotion-as-consequential-meaning)
+- [Proof salience](#proof-salience)
+- [Truth and ethical limits](#truth-and-ethical-limits)
+- [Short, medium, and long forms](#short-medium-and-long-forms)
+- [Channel architecture](#channel-architecture)
+- [Mechanism and differentiation](#mechanism-and-differentiation)
 - [CTA standard](#cta-standard)
 - [Spoken delivery](#spoken-delivery)
 - [Human voice and AI-writing-tell gate](#human-voice-and-ai-writing-tell-gate)
-- [Written GEO/AEO and citability gate](#written-geoaeo-and-citability-gate)
-- [Operational workflow](#operational-workflow)
+- [Written GEO/AEO and citability](#written-geoaeo-and-citability)
+- [Technical publication boundaries](#technical-publication-boundaries)
 - [Applied weak and strong pairs](#applied-weak-and-strong-pairs)
-- [Release checklist](#release-checklist)
-- [Experiment and learning standard](#experiment-and-learning-standard)
+- [Evaluation contract](#evaluation-contract)
 - [Evidence register](#evidence-register)
 - [Evidence maintenance](#evidence-maintenance)
-- [Change log](#change-log)
 
 ## Core doctrine
 
-**Compelling argument before compelling words.**
+Build the supportable argument first. Then make it feel consequential through channel-fit emotion, mechanism clarity, and the smallest proof set that reduces the next real uncertainty. Never let wording outrun proof.
 
-Agora leads one audience from a real stake to one defensible buying,
-investment, or positioning belief. Persuasion is the supported path between
-those points. It is not a feature inventory, category definition, compliance
-pass, or pile of claims.
+Agora does not mean "logic instead of emotion." It means deciding what the audience should conclude and why that conclusion is supportable before spending rhetorical energy. Emotion gives supported facts personal importance. Narrative can carry an argument. Neither can replace the argument.
 
-For `SELL`, `INVEST`, and `POSITION`, use this mandatory commercial spine:
+The working sequence is:
 
-`Recognizable reality -> consequence or opportunity -> new decision criterion -> company or product mechanism -> defensible destination belief -> action or investment relevance.`
+1. Identify the real decision and the audience's role in it.
+2. Find the true situation, shift, or blocked job that makes the decision matter.
+3. Explain the causal mechanism that changes the situation.
+4. Select the proof that resolves the most expensive live uncertainty.
+5. Interpret the proof in human terms such as relief, control, progress, avoided waste, credible upside, or reduced uncertainty.
+6. Preserve agency and make the next step proportionate to the evidence.
 
-Moves may share sentences; none may disappear. An objective channel can cap
-tone and length, but it cannot delete the argument.
+Verified facts are raw material for premises, not ready-made copy. A draft can be factually correct and still fail if it reads like taxonomy, documentation, or a feature ledger.
 
-Before delivery, silently locate the exact words that carry each of the six
-moves. If any move has no concrete phrase in the draft, rebuild it. Compact
-heroes, profiles, paywalls, emails, and spoken pitches are not exempt. Combine
-moves rather than deleting them, and do not expose the audit.
+Persuasion outcomes are not interchangeable. Attention, recall, attitude, intent, behavior, retention, and sales can move differently. Never describe one as if it proves another. Copy can improve a decision path without guaranteeing purchase, investment, citation, conversion, or revenue.
 
-Truth and safety outrank persuasion. Verified facts and brand constraints
-outrank polish. A flat but supported case can be edited. Hype without proof
-cannot.
+## Conflict hierarchy
 
-When rules conflict, use this priority: truth and safety; verified facts and
-brand constraints; the audience's decision; clarity and citability;
-persuasion; brevity; stylistic polish.
+Apply this hierarchy when instructions compete:
 
-## The destination belief
+1. Truth, safety, law, and immutable requirements.
+2. Supplied facts, approved sources, and material qualifiers.
+3. The audience's actual decision and requested surface.
+4. Decision relevance and proof salience.
+5. Emotional relevance and channel fit.
+6. Compression and human voice.
+7. Silent publication hygiene, only when it does not reduce clarity.
 
-Every asset needs one primary destination belief: the conclusion the audience
-must accept before the next decision makes sense.
+Higher levels always win. A style cleanup may not delete a material fact. Compression may not turn a bounded claim into certainty. GEO/AEO may not displace the argument. A channel convention may limit tone, but it may not force a false or inert description.
 
-A valid destination belief is:
+Use only source material supplied or approved in the current context. Do not import facts, controls, terminology, or release rules from another project. Examples in this reference are fictional and teach structure only.
 
-- specific to the audience, commercial job, and moment;
-- necessary for buying, investing, positioning, understanding, or acting;
-- supported by supplied or verified evidence;
-- narrow enough for one asset;
-- honest about conditions and uncertainty.
+## Commercial routing
 
-Write it before drafting the visible copy. Do not expose it as planning
-scaffolding. Do not replace it with a category label, slogan, or list of
-capabilities.
+Choose the requested commercial job separately from the publication surface.
 
-Simple transactional copy may need only one claim and one action. Do not force
-a full commercial spine onto a confirmation, alert, or known utility task.
+### POSITION
 
-## Mechanism and company transformation
+Use `POSITION` by default for company profiles, directory entries, About copy, website summaries, category descriptions, metadata, partner profiles, and objective company descriptions.
 
-The mechanism explains what the company or product changes, what causes that
-change, why the change matters to this audience, and what limits apply. It is
-the reason the destination belief can follow from the facts.
+The job is to make the subject:
 
-Count the consequence or opportunity move only when the copy names a concrete
-business effect, decision risk, blocked task, exposure, or available gain.
-Words such as `matters`, `confidence`, `better`, or `before acting` do not carry
-the stake by themselves.
+- legible inside a category;
+- consequential because of a real shift or stake;
+- distinct because of a concrete mechanism or wedge;
+- credible because the strongest available evidence is visible.
 
-Company transformation is the factual movement the company creates between
-the recognizable reality and the useful after-state. For example, software may
-turn observed answer evidence into prioritized work, or turn mismatched finance
-records into routed exceptions. The transformation must be supported by
-supplied product behavior. It is not a performance promise.
+Let commercial or investor relevance emerge from those facts. Do not announce it with phrases such as "for investors," "investors should consider," or "merits evaluation." Placement in an investor-adjacent directory does not change a descriptive field into an investment pitch.
 
-Use a supported causal or operating verb as the primary brand verb. Reject
-`shows`, `helps`, `supports`, or `built for` when a stronger factual verb is
-available. Prefer exact verbs such as `records`, `reconciles`, `routes`, or
-`turns`. Never strengthen the verb beyond the evidence.
+### SELL
 
-A mechanism may be standard. Explain its fit and execution instead of inventing
-exclusivity, branded jargon, or superiority.
+Use `SELL` for marketing, sales, landing pages, ads, product pages, comparisons, email, outreach, upgrades, onboarding, and paywalls.
 
-## Commercial modes
+The job is to connect a live buyer situation to a supported mechanism, make the outcome consequential, reduce the next uncertainty, and offer the correct next action. Do not assume that the strongest action is always a purchase or meeting. A demo, evidence review, reply, trial, comparison, or saved item may be the natural next step.
 
-Choose one primary mode. An explicit mode wins. Otherwise infer it from the
-audience, asset, and decision:
+### INVEST
 
-| Mode | Infer when the task concerns |
+Use `INVEST` only for an actual capital decision: a fundraising deck, investor pitch, investment memo, diligence summary, capital-allocation analysis, or fundraising email.
+
+The job is to earn investment relevance through:
+
+- a consequential change or market timing;
+- a mechanism or wedge that is not generic;
+- evidence proportionate to the claim;
+- a plausible route from present capability to larger value;
+- what capital would change, when that fact is supplied.
+
+Do not replace evidence with passion, confidence, prestige, market adjectives, or founder mythology. Keep early-stage and public-market claims distinct.
+
+### INFORM
+
+Use `INFORM` for editorial, educational, research, explanatory, or thought-leadership work. Lead with the reader's question. Build understanding before conversion pressure. Preserve sources, uncertainty, counterevidence, and genuine disagreement.
+
+### TRANSACT
+
+Use `TRANSACT` for buttons, confirmations, warnings, errors, permissions, settings, and utility microcopy. State the current condition, the action, and the consequence. Do not manufacture emotional stakes for routine interface work.
+
+## Surface routing
+
+Classify each deliverable by access and medium:
+
+| Surface | Required treatment |
 |---|---|
-| `INVEST` | Investors, funding, pitches, or capital-focused profiles |
-| `SELL` | Marketing, sales, ads, landing pages, outreach, or paywalls |
-| `POSITION` | Company profiles, category narratives, or brand descriptions |
-| `INFORM` | Editorial or educational work |
-| `TRANSACT` | Buttons, confirmations, alerts, or utility microcopy |
+| `INDEXABLE_PUBLIC` | Public claim review, written argument, human-voice pass, GEO/AEO pass, then relevant crawl and publication checks |
+| `PUBLIC_NON_INDEXABLE_WRITTEN` | Public claim review, written argument, evidence structure, and human-voice pass; skip crawl and index checks |
+| `WRITTEN_PRIVATE` | Proof fidelity, channel fit, concrete meaning, and human-voice pass |
+| `SPOKEN_ONLY` | Proof fidelity, cadence, breath, timing, listener orientation, and no GEO/AEO formatting |
+| `HYBRID` | Separate the spoken source from every written derivative and route each independently |
 
-Mode answers "what commercial job must the copy do?" Surface answers "where
-and how will the copy appear?" Route them separately. A Crunchbase investor
-description is `INVEST` on an objective indexable surface. A published video
-description is written even when the related script is spoken.
+A private PDF and a public web page can use the same commercial mode but need different publication handling. A video script is spoken. Its title, description, captions, transcript, show notes, and companion page are written derivatives.
 
-For a tightly limited objective company profile, preserve the supported
-operational problem and company transformation. A category label is optional.
-Do not spend the limit on `Company is [category] that [feature list]` when the
-supplied facts support a problem-to-transformation argument.
+## Argument engine
 
-`SELL`, `INVEST`, and `POSITION` require the complete commercial spine.
-`INFORM` requires a defensible informational conclusion and source fidelity,
-without manufacturing a sales case. `TRANSACT` requires the clearest supported
-action, state, and consequence, without manufacturing stakes.
+Use this as an internal variable-depth engine:
 
-For `INVEST`, state investment relevance in the visible copy. Placement in an
-investor directory does not carry this move. Use a neutral sentence that says
-the company `merits evaluation because` of a specific supported mechanism or
-workflow position. Do not end with abstract category restatements built on
-`represents`, `focused on`, `approach to`, or `positioned at`. Do not substitute
-traction, market hype, or a funding CTA.
+`situation -> stake -> criterion or broken assumption when useful -> mechanism -> proof -> destination belief -> next step`
 
-When several fields form one company profile, make the longest field carry the
-complete commercial spine. A short field may compress the problem or criterion
-with the transformation, but the Full Description cannot become a feature
-inventory. Do not include every supplied capability by default. Omit facts
-that do not advance the destination belief.
+The moves are tools, not a mandatory visible sequence.
 
-## Construction order
+### Situation
 
-Use this exact order:
+Name the reality the audience recognizes. Use a current task, behavior, shift, constraint, trigger condition, or opportunity. Do not invent pain, motive, market motion, or urgency.
 
-`Commercial job -> destination belief -> argument -> proof gate -> channel formatting -> written GEO/AEO when applicable -> AI-writing-tell edit -> compression.`
+When no market trend or outcome evidence is supplied, derive the opening from the mechanism's verified trigger. A mismatch between records supports "When the records disagree." A full plan limit supports "When every slot is in use." A request routed by location supports "When service requests arrive from different sites." These openings restate supplied operating conditions. They do not invent financial, legal, or performance consequences.
 
-The proof gate comes before channel compliance. A polished, objective,
-extractable, or natural-sounding draft still fails when its premise is missing
-or unsupported.
+### Stake
 
-Channel rules cap tone without deleting the argument. For objective platforms
-such as Crunchbase, write the strongest objective argument permitted and
-explain any channel conflict after the copy.
+Show what the situation changes for the audience. Prefer a concrete consequence or available gain over abstract importance. Examples include rework before close, uncertainty during review, missed time with family, a blocked creative act, delayed cash, wasted spend, or a clearer path to approval. Use only stakes the facts support. The verified trigger or blocked task can carry the stake when no downstream outcome is established.
 
-## Portable LLM activation contract
+### Criterion or broken assumption
 
-When this file is supplied, installed as a skill, or retrieved into context,
-use it for writing, rewriting, shortening, critiquing, or planning marketing,
-sales, investor, positioning, editorial, interface, outreach, and spoken copy.
+Introduce a new decision criterion only when it sharpens the argument. A comparison page often needs one. A one-line description often does not. The criterion should follow from the situation and supplied facts, not from a generic template.
 
-When activated, the LLM must:
+### Mechanism
 
-1. Select the explicit or inferred commercial mode, then route each surface
-   separately.
-2. Build the destination belief and argument before proof, compliance, voice,
-   or compression passes.
-3. For `SELL`, `INVEST`, and `POSITION`, include every commercial-spine move.
-4. Require every fact to prove a premise, resolve an objection, or enable
-   action. Narrow or remove unsupported claims.
-5. Return ready-to-use copy first. Do not expose chain-of-thought, mode labels,
-   planning scaffolds, or rule-by-rule reasoning.
-6. Apply the written GEO/AEO layer only to written surfaces. Apply technical
-   publication checks only to indexable public surfaces.
-7. Apply the human-voice and AI-writing-tell gate to every deliverable,
-   including zero generated em dashes, smart quotes, stock templates, and
-   generated tripartite rhetoric.
-8. Never invent a fact, route, price, result, source, urgency, scarcity,
-   testimonial, comparison, market claim, or proof point.
+Explain what the product or company changes, how it changes it, and where the boundary lies. Prefer causal verbs that name an action: reconciles, routes, records, compares, detects, schedules, restores, or calculates. Do not strengthen the verb beyond the evidence.
 
-This is a decision system, not a visible template. Vary the surface structure
-while preserving the required reasoning moves.
+### Proof
 
-## Source basis and authority
+Attach the best evidence to the premise it supports. Proof can be a direct outcome, diagnostic comparison, measured behavior, named scope, verified mechanism, constrained case, or credible external source. A list of minor features is not proof of a major claim.
 
-This handbook synthesizes the Agora writing reference, the consolidated
-human-voice reference, and three research reports. The research informs the
-rules but does not override the scope or limits of its evidence.
+### Destination belief
 
-Supplied source set:
+Define the narrow conclusion that makes the requested decision sensible. Keep it internal unless it reads naturally in the channel. The destination belief is not a slogan, recap, or claim of leadership.
 
-- User-provided transcript: `agora style marketing.md` (received 2026-07-17).
-- User-maintained consolidated reference: `Anti-AI-Writing-Tells.md` (updated
-  2026-07-17). It preserves every operational ban from the earlier
-  `ai-writing-tells-reference (1).md`, removes unsupported numerical detection
-  claims and fixed editing quotas, and adds evidence-backed limits.
-- User-provided research: `Emotional Persuasion and Argument Sequencing in
-  Marketing and Sales.md` (received 2026-07-17).
-- User-provided research: `Evidence on Marketing Copy Length and Structure
-  Across Digital Formats.md` (received 2026-07-17).
-- User-provided research: `Current Evidence on AI Search Visibility Across
-  ChatGPT Search, Claude Web Search, Perplexity, Gemini and Google AI Overviews,
-  Bing Copilot, and Grok.md` (received 2026-07-17).
-- CiteSurge-only repository authorities: `content/ai-writing-tells.md`,
-  `content/ai-writing-tells.ts`, `docs/product/content-audit.md`,
-  `docs/staff/02-marketing-runbook.md`, and
-  `docs/staff/public-claim-ledger.md`.
+### Next step
 
-- The Agora transcript supplies the argument-first doctrine. It is a
-  direct-response lens, not a universal law or factual claim source.
-- The human-voice reference supplies an editing model based on pattern density,
-  specificity, source fidelity, and author ownership. It does not promise
-  detector evasion.
-- The persuasion research supports argument quality, vivid concrete imagery,
-  positive affect, diagnostic proof, and manageable information load. It also
-  shows that narrative, fear, guilt, scarcity, loss framing, and mechanism
-  language are conditional tools rather than universal conversion laws.
-- The copy-structure research supports format-specific decisions and testing,
-  not one universal short-copy rule.
-- The AI-search research supports clear, self-contained, evidence-bearing
-  passages and engine-specific technical controls. It does not establish a
-  universal citation formula.
-- `content/ai-writing-tells.ts` is the automated scanner authority for gated
-  CiteSurge public copy.
-- `docs/staff/public-claim-ledger.md` controls what CiteSurge may claim in
-  public. It overrides examples, old copy, briefs, and this handbook.
-- `docs/handbook/02-methodology-hiding-rule.md` controls what CiteSurge may
-  disclose about internal methods.
-- Current product docs and live behavior control capability truth.
+Make the action feasible and proportionate. Clarify what happens next. Preserve choice. For positioning work, the next step can remain implicit.
 
-When this file is used outside CiteSurge, replace repository-specific claim and
-methodology controls with the user's verified product truth, legal constraints,
-brand guidance, and source ledger. If those materials are unavailable, do not
-assume that an example in this file authorizes the claim.
+### Continuity test
 
-Evidence labels used in this file:
+Each sentence should make the next one feel earned. If paragraphs can be rearranged without changing the force of the argument, the draft may be a fact pile rather than a case. If the company name can be swapped for a competitor without factual damage, the mechanism or wedge is missing.
 
-| Label | Meaning |
+## Emotion as consequential meaning
+
+Choose one dominant emotional job. Do not spray emotional language across the draft.
+
+| Emotional job | Use when the supportable meaning is |
 |---|---|
-| `A` | Current first-party or official documentation for the named system. |
-| `B` | Controlled, peer-reviewed, preregistered, meta-analytic, or scoped reproducible research. |
-| `C` | Observational platform data, vendor study, or bounded case evidence. |
-| `D` | Contradiction, missing evidence, or an unresolved claim. Do not teach it as fact. |
-| `HOUSE` | Editorial convention chosen for consistency and usability. |
-| `EVIDENCE-INFORMED` | Direction supported within a limited population, channel, or outcome. |
-| `TEST` | A practical starting variant that requires local measurement. |
+| Tension | A real cost, risk, contradiction, or blocked task is already present |
+| Relief | The offer removes a credible burden, uncertainty, or recurring failure |
+| Control | The audience gains visibility, reversibility, time, or command over a decision |
+| Ambition | A supportable new capability or market opening creates attainable upside |
+| Belonging | Real identity, community, or shared standards matter to the decision |
+| Curiosity | A surprising but defensible mechanism or result invites further attention |
 
-Do not turn a `HOUSE`, `C`, or `TEST` rule into a scientific claim. No evidence
-grade authorizes transfer to an unmeasured audience, channel, or outcome. A
-result for attention, fluency, click-through, or reply rate is not evidence of
-trust, qualified demand, citation, conversion, or revenue unless those outcomes
-were measured separately.
+Express emotion through `situation + consequence + available agency`.
 
-## Format router
+Turn features into outcomes, then outcomes into stakes:
 
-Route the surface only after choosing the commercial mode. Surface rules change
-delivery and publication checks; they do not change the commercial job.
+- Encryption can mean lower exposure during a client audit.
+- Speed can mean control over waiting, queues, or deadlines.
+- Accuracy can mean less rework, waste, or embarrassment.
+- Ease can mean lower activation energy and a more feasible next step.
+- A novel capability needs a working mechanism and proof, not novelty adjectives.
 
-| Asset class | Required treatment |
+Match the frame to the audience's role or goal only when that fit is supplied or safely inferable. Never fabricate intimacy, aspiration, identity, or private knowledge.
+
+Emotion does not always beat logic. Narrative is not always better than analysis. Fear, loss framing, scarcity, personalization, authority, and vividness all depend on context. Treat them as bounded tools, never universal rules.
+
+## Proof salience
+
+Rank each candidate fact against six signals:
+
+| Signal | Question |
 |---|---|
-| `INDEXABLE_PUBLIC` | Agora argument, human-voice gate, full written GEO/AEO content gate, claim/source review, and technical publication handoff. |
-| `PUBLIC_NON_INDEXABLE_WRITTEN` | Agora argument, human-voice gate, written semantic/evidence rules, and public claim review. Use for ads, social posts, decks, and PDFs without an indexable page. Skip canonical, schema, sitemap, and indexability checks. |
-| `WRITTEN_PRIVATE` | Agora argument, human-voice gate, concrete entities, self-contained claims, and evidence fidelity. Skip crawl, canonical, sitemap, schema, and indexability checks because the asset has no public URL. |
-| `SPOKEN_ONLY` | Agora argument, human cadence, and claim gate. Skip GEO/AEO formatting. Write for breath, delivery, timing, and listener comprehension. |
-| `HYBRID` | Classify each output separately. A video script can be spoken-only; its public title, description, transcript, captions, show notes, and companion page are written assets. |
-
-Keep CTA labels as short as clarity permits. Specificity and a predictable next
-step outrank an arbitrary word count. For written public assets, optimize the
-claim block around the CTA for extraction and evidence; do not stuff proof,
-definitions, or query phrases into the button label.
-
-Use the complete definition and applicable checks in the written GEO/AEO gate
-below. No asset can promise citation, ranking, recommendation, or sale.
-
-Channel rules cap tone without deleting the argument. For objective platforms
-such as Crunchbase, write the strongest objective argument permitted and
-explain any channel conflict after the copy.
-
-## Required brief
-
-Capture these inputs before drafting. Infer only low-risk details from supplied
-context; state consequential assumptions outside the final copy.
-
-```text
-Explicit or inferred mode:
-Asset class and channel:
-Audience and buying context:
-Awareness or intent stage:
-Problem, desire, or decision:
-Current belief:
-Destination belief:
-Offer, action, or investment relevance:
-Verified proof and sources:
-Claim and methodology limits:
-Voice samples or brand traits:
-Length and format constraints:
-```
-
-If the brief contains several audiences, beliefs, or CTAs, choose one primary
-path. Split distinct paths into separate assets rather than joining them with a
-long sentence.
-
-## Build the argument
-
-For `SELL`, `INVEST`, and `POSITION`, use this complete sequence:
-
-1. **Recognizable reality.** Name the situation in language the audience would
-   recognize.
-2. **Consequence or opportunity.** State one concrete business effect,
-   decision risk, or available gain without inventing severity or likelihood.
-3. **New decision criterion.** Establish what a credible choice must do.
-4. **Company or product mechanism.** Explain what changes, what causes the
-   change, why it matters, and what limits apply.
-5. **Defensible destination belief.** Land the supported conclusion that makes
-   the buying, investment, or positioning decision rational.
-6. **Action or investment relevance.** Present the next step, or explain why
-   the company merits evaluation when the channel does not permit a CTA.
-
-Moves may share sentences; none may disappear. Broken assumptions, comparison,
-diagnostic proof, after-state, objections, and illustration are optional
-supporting moves. Use them only when they strengthen the required spine.
-
-The compact logical form is:
-
-```text
-The desired result requires X.
-The current approach lacks X, within the stated scope.
-This offer provides X, supported by Y.
-Therefore this offer is a credible next step for this audience.
-```
-
-This syllogism is a house derivation from the transcript's argument-first idea,
-not a quoted Agora formula. If any premise cannot be proved, revise the premise
-or reduce the claim.
-
-Fit the expression to the decision without changing the sequence:
-
-- For a high-consideration or B2B decision, a useful default is concrete stake,
-  truthful mechanism, diagnostic proof, relevant limits, brief illustration,
-  then CTA. Treat this as an evidence-aligned heuristic, not a universal law.
-- For a low-cost, hedonic, or early-awareness asset, vivid use, positive affect,
-  and mental imagery may do more work before the proof. The claim still needs
-  support before the action.
-- For `INFORM`, lead with the answer and preserve source fidelity. Do not
-  manufacture a buying argument.
-- For `TRANSACT`, lead with the action or state. Do not manufacture a story or
-  commercial stake.
-
-### Argument continuity test
-
-For every block, ask:
-
-- What belief does the reader hold before this block?
-- What new information or feeling does this block add?
-- Why does the next block follow?
-- Would deleting this block weaken the case?
-
-Delete blocks that repeat the destination, decorate a claim, or smooth a
-transition without adding information.
-
-## Emotion without hype
-
-Emotion comes from a real situation and its consequence, not from inflated
-word choice.
-
-`HOUSE`: When several tensions would blur the decision, choose one primary
-emotional job for the block:
-
-- tension from a recognized problem;
-- relief from reduced uncertainty or effort;
-- control from clear evidence and a next step;
-- ambition tied to a credible outcome;
-- identity or belonging supported by the audience context;
-- curiosity created by a meaningful information gap.
-
-Then make it concrete:
-
-```text
-Situation + consequence + available agency
-```
-
-Prefer "Your team cannot tell which source shaped the answer" over "Navigate
-the complex AI landscape with confidence." The first gives the reader a scene,
-a problem, and a reason to care. The second asks generic words to carry the
-emotion.
-
-Rules:
-
-- For truthful fear or risk, state bounded severity and likelihood, then give a
-  credible response-efficacy path. Do not leave the reader trapped.
-- `HOUSE`: Prefer one dominant emotional tension when several would blur the
-  decision.
-- Make the desired change observable in the reader's work or life.
-- Prefer a concrete image or consequence to an extra adjective. Stronger
-  arguments, imagery, and positive affect can help persuasion; excessive
-  information load can hurt it. These are average effects, not permission to
-  decorate every sentence.
-- Do not invent fears, motives, memories, pain, testimonials, urgency, or
-  scarcity.
-- Do not shame, corner, or conceal material conditions.
-- Preserve honest trade-offs. Trust is part of persuasion.
-
-Conditional persuasion controls:
-
-| Persuasion device | Safe operating rule |
-|---|---|
-| Narrative | Use a short story or scene to illustrate relevant evidence. Do not assume stories beat facts or use a story as proof. |
-| Curiosity | Open a non-material information gap. Never hide mechanism, fit, price, risk, evidence, or the next step. |
-| Fear or risk | State truthful, bounded severity and likelihood, then a credible response-efficacy path. Most supporting research is non-commercial. |
-| Loss framing | `TEST` only. Compare it with neutral or gain framing and track intent and reactance, not attention alone. Agency does not make it reliably effective. |
-| Guilt | Use sparingly, if at all. Never shame, coerce, or imply moral failure to force action. |
-| Scarcity | State only a real, current, relevant limit. No fake inventory, countdown resets, or invented demand. |
-| Social proof | Use auditable, comparable, scoped evidence. Popularity without relevance is not proof. |
-
-Treat named psychological effects as hypotheses for the audience, channel, and
-outcome. Never teach the lore that people always buy on emotion and justify
-with logic, that stories always beat facts, or that one emotion-first sequence
-works everywhere.
-
-## Mechanism controls
-
-The Agora source favors a unique mechanism: a specific reason the offer can
-produce the desired result. Keep the useful part; reject invented exclusivity.
-
-A clear mechanism statement answers:
-
-- What changes?
-- What causes that change?
-- Why is this approach relevant to the audience's problem?
-- What evidence supports the difference?
-- What conditions or limits apply?
-
-Use "proprietary," "unique," "only," "superior," or market-leadership language
-only when current evidence authorizes the exact claim. If the approach is
-different but not exclusive, name the concrete difference. If it is standard,
-explain its fit and execution instead of creating branded jargon.
-
-A coherent, truthful causal explanation can make an offer easier to understand
-and can raise perceived efficacy. It does not prove actual efficacy. A coined
-mechanism is optional; a real reason to believe is not. Never retrofit technical
-language around an unsupported outcome.
-
-Reject a weak primary brand verb when a stronger factual operating verb is
-available. `Shows`, `helps`, `supports`, and `built for` often hide the company
-transformation. Prefer the exact supplied behavior, such as `records`,
-`reconciles`, `routes`, or `turns`. Do not imply causality or performance that
-the evidence does not establish.
-
-For CiteSurge public copy, describe differentiation at the principle,
-experience, evidence, and outcome level. Do not disclose prompts, formulas,
-weights, thresholds, vendor routing, fixtures, classifiers, infrastructure, or
-raw provider diagnostics. Vague "proprietary AI" language is not a substitute
-for a reason to believe.
-
-Run the education-leakage test: if the explanation teaches the category but
-leaves the buyer equally likely to choose any competitor, decide whether
-category building is intentional. If it is not, connect the lesson to the
-offer's verified difference or fit. Never invent exclusivity to close the gap.
-
-## Proof and claim control
-
-Argument strength is limited by proof strength. Choose evidence diagnostic of
-the exact claim and decision before applying channel, GEO/AEO, voice, or length
-rules. Require every fact to prove a premise, resolve an objection, or enable
-action. A true fact that does none of those jobs is still clutter.
-
-Do not turn an operational mismatch, exception, or review task into financial
-risk, a control deficiency, compliance exposure, loss, or business impact
-unless the supplied evidence supports that consequence. Keep the stake at the
-supported task or decision.
-
-As a `HOUSE` selection order, look for:
-
-1. Current, inspectable product behavior or a non-expired approved claim.
-2. First-hand or original evidence with a disclosed method and date.
-3. Current primary or official sources that support the exact statement.
-4. A verified demonstration, comparison, or consented case record.
-5. A verified, attributable testimonial within its real scope.
-6. Corroboration that is independent, comparable, current, and within scope.
-
-Then name any material limitation that keeps the conclusion honest. A
-limitation is not evidence. No proof means narrow or remove the claim; it does
-not mean add adjectives.
-
-Treat `emerging`, `growing`, `established`, `crowded`, `large`, `expanding`,
-`increasingly`, `accelerating`, `rising`, `surging`, `rapidly`, and similar
-category-stage or market-trend language as claims. When no market evidence is
-supplied, name the category and current situation neutrally.
-
-Do not add a generic disclaimer such as `outcomes are not guaranteed` merely
-because a result claim is unavailable. Omit the result claim. Keep a
-qualification only when it is material to the remaining copy or required by
-law, policy, or the user.
-
-Across persuasion research, statistics generally outperform a lone anecdote; a
-relevant anecdote can still make an emotionally charged or self-relevant issue
-concrete. Use the story to illustrate the evidence, not replace it. In online
-review settings, valence, argument quality, usefulness, message trust, and
-source credibility predict purchase intention; raw count alone is insufficient.
-Category-specific automobile evidence shows that conflicting sources can reduce
-intent and early sales. Treat comparability, recency, and consistency as
-`HOUSE` proof-diagnosticity checks, and reconcile material discrepancies rather
-than hiding them.
-
-Keep claim types distinct:
-
-| Type | Treatment |
-|---|---|
-| Fact | Verify source, wording, date, scope, and expiry. |
-| Inference | Show what evidence supports it and retain uncertainty. |
-| Opinion | Attribute ownership; do not present it as measured fact. |
-| Promise | Confirm authority, delivery scope, conditions, and ability to perform. |
-
-For CiteSurge:
-
-- Only non-expired `LIVE` rows in `docs/staff/public-claim-ledger.md` may be
-  marketed as current.
-- `LANDED_INACTIVE`, `OPEN_PENDING`, `FUTURE`, and `UNSUPPORTED` are not current
-  capabilities.
-- Engine behavior claims need current primary support.
-- Customer-facing copy must not expose HTTP codes, auth or quota failures,
-  scraping limits, probe names, raw exceptions, or implementation diagnostics.
-- Do not promise that crawler access, schema, AI-readable files, or any single
-  content edit causes citation.
-- Keep brand mention, source selection, answer absorption, visible citation,
-  referral, recommendation, conversion, and revenue as separate measures.
-- Public positioning sells GEO/AEO. Use SEO only for necessary comparison,
-  decline, or replacement context; never sell it positively. Review every SEO
-  occurrence before publication.
-
-## Rejection gates
-
-Reject and rebuild a `SELL`, `INVEST`, or `POSITION` draft when:
-
-- it is only a category definition, claim-ledger paraphrase, or feature
-  inventory;
-- an objective profile uses the shape `Company is [category] that [feature
-  list]` even though the supplied mechanism supports a decision problem or
-  company transformation;
-- it has no felt stake, company transformation, or destination belief;
-- one of the six commercial-spine moves disappeared to satisfy a short or
-  objective format;
-- a paywall merely repeats plan facts without naming the blocked action and how
-  the supported upgrade change resolves it;
-- its facts do not prove a premise, resolve an objection, or enable action;
-- its primary brand verb is `shows`, `helps`, `supports`, or `built for` when a
-  supported causal or operating verb is available;
-- a competitor name can replace the company without changing the claim;
-- it uses compliance, formatting, or citability as a substitute for persuasion.
-
-Also reject any draft that fails the proof, continuity, CTA, read-aloud,
-defense, fidelity, or AI-writing-tell tests. Rebuild from the first failed
-premise rather than polishing the surface.
-
-## Concision and format standard
-
-There is no universal short-copy law. Write the shortest complete decision
-path for the channel, audience, stage, device, traffic source, offer complexity,
-language, and risk. One asset should still have one destination belief; one
-block should do one main job; one sentence should carry one main claim.
-
-Ranges below are editing controls or starting variants, not guaranteed optima:
-
-| Format | Working rule | Status and limit |
-|---|---|---|
-| Headline | Aim for 3-9 words; review above 12. | `HOUSE` |
-| Support line | Aim for 12-24 words; review above 30. | `HOUSE` |
-| Sentence | Keep most at 20 words or fewer; review above 25. | `EVIDENCE-INFORMED` for accessibility, based on a small screen-reader study; not a conversion law. |
-| Marketing paragraph | Usually 1-3 sentences; review above 75 words. | `HOUSE` |
-| Hero | Test roughly 25-75 total words when mobile, high intent, or urgency favors compression. | `TEST`; no universal hero optimum. |
-| Button CTA | Test 2-5 words, but use more when needed to make the action predictable. | `TEST`; clarity and transparency outrank brevity. |
-| B2B cold email | Start around 50-100 words and 3-4 sentences, then ask for interest rather than a calendar commitment. | `EVIDENCE-INFORMED`, from large observational Gong datasets; not causal or universal. |
-| Active-deal follow-up | Use roughly 3-6 short sentences with a specific next step; no hard word cap. | `TEST`; context carries more detail. |
-| Warm personal email | Start around 50-120 words when no channel constraint says otherwise. | `HOUSE` |
-| LinkedIn cold message | Test below roughly 400-500 characters with one reason to care and one low-friction ask. | `C` and `TEST`; LinkedIn findings are product- and use-case-specific. |
-| Utility, product, or question-led page | Put the answer, offer, or decision aid in the first sentence or paragraph. | `HOUSE`, aligned with general web usability; do not force this onto narrative or editorial openings. |
-| Long sales or comparison page | No global word cap. Put a useful summary before detail, use progressive disclosure, and chunk proof and objections. | `HOUSE`, aligned with general usability practice. |
-| Comparison set | Test a static table around five or fewer options; reflow or use readable cards on mobile. | `TEST`; a usability starting point, not a ranking rule. |
-| Paid ad | Obey the platform limit. Test personal or subjective framing for attention against objective, brand-consistent framing for conversion. | `TEST`; keep click-through and conversion separate. |
-| Social post | No universal character optimum. Preserve the hook, useful substance, and readable shape. | `HOUSE`; test length in the actual platform and content category. |
-
-On mobile, increase signal and reduce friction; do not merely delete words.
-Preserve meaning, evidence, button clarity, and usable comparison structure. Do
-not force legal qualifications, technical explanations, translations, or
-complex decisions into a house range. Evidence and necessary qualification are
-load-bearing; decorative setup is not.
-
-### Compression order
-
-Cut in this order:
-
-1. repeated claims and empty recaps;
-2. throat-clearing and generic introductions;
-3. adjective stacks and intensifiers;
-4. formal transitions the logic does not need;
-5. unsupported claims and secondary examples;
-6. a secondary CTA or audience path.
-
-Never cut a material condition, source, qualification, or next-step detail just
-to hit a count.
-
-Keep a sentence only if it does at least one job:
-
-- advances the destination belief;
-- proves a material claim;
-- resolves a real objection;
-- makes the action clear.
-
-If deleting it changes nothing, delete it.
+| Decision relevance | Will this fact change the reader's next decision? |
+| Differentiation | Does it make the subject less swappable? |
+| Verifiability | Can the claim be defended from supplied or approved evidence? |
+| Specificity | Does it contain a useful number, entity, scope, boundary, or concrete behavior? |
+| Compression value | Can it do two jobs, such as mechanism plus proof? |
+| Omission risk | Would removing it make the copy misleading, generic, or incomplete? |
+
+Use the proof that most reduces the next expensive uncertainty:
+
+- Belief uncertainty: direct outcome evidence or a constrained demonstration.
+- Mechanism uncertainty: a clear causal explanation or technical comparison.
+- Fit uncertainty: specifications, compatibility, use-case evidence, or fair comparison.
+- Trust uncertainty: credible third-party validation, reviews, provenance, or bounded transparency.
+- Effort uncertainty: setup requirements, progress, defaults, reversibility, or time to first value.
+- Price uncertainty: explicit terms, total cost, supported ROI, or a safe exit path.
+
+Prefer proof in this order when available:
+
+1. Direct evidence on the promised outcome.
+2. Mechanism evidence explaining why the outcome should occur.
+3. Diagnostic comparison, such as before and after or with and without.
+4. Credible external validation.
+5. A concrete case with real constraints.
+
+The order is a default, not a license to use unavailable evidence.
+
+Keep factual enumeration when the list itself is diagnostic. Engines, integrations, plan components, legal terms, supported markets, technical requirements, named coverage, chapters, or timestamps may be necessary proof. Remove ornamental lists, not decision-bearing lists.
+
+## Truth and ethical limits
+
+Never invent or imply:
+
+- product behavior, features, routes, pricing, deadlines, or availability;
+- quantified or unquantified outcomes;
+- market size, growth, trend, category maturity, or leadership;
+- traction, adoption, customers, revenue, funding, or investor interest;
+- comparisons, savings, performance, causality, or guarantees;
+- urgency, scarcity, exclusivity, testimonials, reviews, or social proof;
+- audience motives, pain, identity, beliefs, or private context.
+
+Keep fact, inference, interpretation, aspiration, and promise distinct. Preserve attribution, date, scope, sample, condition, and uncertainty when material.
+
+Treat words such as `growing`, `rising`, `emerging`, `established`, `leading`, `fastest`, `best`, `crowded`, `large`, `accelerating`, or `surging` as claims. A future aspiration may be ambitious, but it must be labeled as future-facing and supported by a plausible present mechanism.
+
+Do not convert an observed task issue into financial loss, legal exposure, compliance failure, reputational damage, or market risk without evidence. Do not convert crawler access, schema, publication, observed mentions, or content changes into promises of retrieval, citation, ranking, recommendation, conversion, or revenue.
+
+### Ethical persuasion
+
+- Preserve agency and meaningful alternatives.
+- Use threat only when the risk is real, material, and paired with an effective response.
+- Use scarcity only when the constraint is true, current, relevant, and verifiable.
+- Never use shame, moral coercion, false belonging, or identity pressure.
+- Never hide recurring charges, renewal terms, material exclusions, or reversibility.
+- Do not repeat unsupported claims until fluency makes them feel true.
+- Honest uncertainty is better than confident vagueness.
+
+If proof is missing, narrow or omit the premise. Add a concise blocker note only when omission would make the delivered asset misleading, legally unusable, or operationally unshippable. Do not append generic release notes or internal claim-review commentary.
+
+## Short, medium, and long forms
+
+Length is a channel constraint, not a persuasion doctrine.
+
+### Very short: one line to about 35 words
+
+Use a compelling market shift, felt stake, live consequence, or verified trigger condition plus the strongest verified mechanism or differentiator. When no outcome evidence exists, use the exact condition the product acts on. Do not retreat to a feature list. Compress the mechanism into the differentiator when syntax permits. Do not force objection handling, a full proof stack, a decision criterion, or visible investor relevance.
+
+For a hard character limit, count characters exactly. Preserve the strongest fact, not the greatest number of facts.
+
+### Medium: about 36 to 120 words
+
+Lead with the stake or shift. Add the mechanism and strongest proof clue. Include a material qualifier when its omission would overstate the claim. Land a natural destination belief without announcing the reasoning framework.
+
+### Long: more than about 120 words
+
+Expand only when each addition resolves a live uncertainty or objection. Long-form buyer and investment work may use situation, consequence, criterion, mechanism, proof, alternatives, timing, and next step. Do not stretch a small fact set into an essay.
+
+Short forms are compressed decisions, not miniature essays. Long forms are not permission for feature volume.
+
+## Channel architecture
+
+### Landing-page heroes and ads
+
+Assume low context and fragile attention. Name one recognizable situation or stake. Show one meaningful difference. Offer one dominant next step unless the surface is explicitly a branching flow. Do not open with a product taxonomy or an all-in-one claim.
+
+### Product pages
+
+Reduce fit and trust uncertainty. State compatibility, specifications, price, availability, logistics, terms, and returns when supplied and relevant. Put proof beside the claim it supports. Diagnostic enumeration often belongs here.
+
+### Comparison pages
+
+Organize around buyer criteria, not brand praise. State the basis of comparison and important limits. Use side-by-side facts where they reduce regret. A fair "choose this when" structure can be more persuasive than declaring a universal winner.
+
+### Company and category descriptions
+
+Default to `POSITION`. Start with a shift, stake, or changed behavior. Explain the mechanism or wedge. Add the most salient evidence the length permits. Keep the tone objective without flattening the consequence.
+
+### B2B cold email
+
+Earn relevance quickly. Use one specific observation or live problem, one explanatory turn, and one low-friction ask. Do not restate the same evidence to make the email feel fuller. Do not invent familiarity or write the full sales case into the first touch.
+
+### Direct messages
+
+Answer one live question. Add one useful next step. Use lists only when availability, pricing, steps, or options are the answer.
+
+### Consumer email and organic social
+
+Make the point useful before applying pressure. Match proof and CTA to audience warmth. Avoid over-personalization, fake urgency, and corporate repurposing language.
+
+### Mobile onboarding
+
+Restore control and justify effort. Ask only for what the current step needs. Explain permissions at the point of decision. Use progressive disclosure rather than a feature tour before activation.
+
+### Upgrades and paywalls
+
+Name the blocked action or desired capability. State what changes with the paid option. Make price, billing cadence, included value, renewal behavior, cancellation, restore, or downgrade paths explicit when supplied and required. Do not manufacture urgency.
+
+### CTAs and microcopy
+
+Describe the next concrete action. Make consequences and reversibility clear. One CTA fits a focused decision. Multiple CTAs fit genuine branching. There is no universal CTA-count rule.
+
+### Editorial content
+
+Lead with the answer or useful tension. Add original evidence, examples, sources, and objections. Let conversion follow value delivery. Do not write commodity search filler.
+
+## Mechanism and differentiation
+
+Mechanism answers three questions:
+
+1. What changes?
+2. What causes the change?
+3. What boundary or condition limits the claim?
+
+Prefer concrete verbs. `Reconciles purchase orders with invoices` carries more meaning than `helps finance teams`. `Routes exceptions to reviewers` carries more meaning than `supports workflows`.
+
+Do not mechanically ban common verbs. Reject them when they are the primary carrier of a claim and a more precise supported verb exists. `Helps` can be correct when causality is partial or indirect.
+
+Use category ambition by naming the scale of consequence, not by making an unsupported rank claim. "An operating layer for distributed battery fleets" expresses scope. "The leading battery platform" requires leadership evidence.
+
+Run these tests:
+
+- **Competitor-swap:** could another company use the same copy unchanged?
+- **Causal:** does the mechanism actually support the stated outcome?
+- **Continuity:** does each sentence earn the next?
+- **Defense:** would the author defend every claim to a skeptical reader?
+- **Fidelity:** did compression preserve all material facts and limits?
+- **Read-aloud:** does the channel-native voice sound natural?
 
 ## CTA standard
 
-A CTA should feel like the next logical step, not a sudden hard-sell voice.
+A CTA should complete the argument rather than compensate for a missing one.
 
-Every CTA must:
+Match the action to readiness:
 
-- ask for one concrete action;
-- make the next screen, reply, or commitment predictable;
-- match the audience's intent and the argument's promise;
-- use a specific verb and object when space allows;
-- avoid adding a new claim;
-- use urgency or scarcity only when verified and material;
-- point to a real route or action that works.
+- Early attention: learn, compare, see, review, or save.
+- Active evaluation: inspect evidence, try a workflow, calculate fit, or ask a focused question.
+- Ready action: start, buy, subscribe, book, submit, or upgrade.
+- Utility: continue, return, restore, confirm, cancel, or retry.
 
-Choose one primary CTA intent. A long page may repeat the same action at useful
-decision points; repetition does not create a second CTA path. In a cold B2B
-message, a low-friction interest question can be more appropriate than asking
-for a meeting immediately. In an active conversation or later deal stage, ask
-for the specific next step. Treat both as context-sensitive starting rules.
-
-Useful patterns, subject to route and offer truth:
-
-| Intent | Pattern examples |
-|---|---|
-| Discover | `See the evidence`, `Read the method` |
-| Compare | `Compare approaches`, `Compare plans` |
-| Evaluate | `Review your gaps`, `View the plan` |
-| Act | `Request an audit`, `Book a review` |
-
-Prefer a precise action over `Learn more`, `Get started`, `Unlock your
-potential`, or `Start your journey`, unless the surrounding interface already
-makes the outcome unambiguous. Keep supporting proof or risk-reversal in nearby
-microcopy, not inside the button. Claims such as "No card required" or a
-response time must be verified before use.
+Use a verb that tells the reader what happens. Do not use a high-commitment CTA when the copy only supports a low-commitment test. Do not add urgency without a real clock or constraint.
 
 ## Spoken delivery
 
-Spoken work keeps the selected commercial mode and proof gate. `SELL`,
-`INVEST`, and `POSITION` scripts still require the complete commercial spine,
-but the moves should sound like one person making one case rather than reading
-a framework aloud.
+Spoken copy is heard once in sequence. Optimize for breath, rhythm, memory, and listener orientation.
 
-- Write for breath, emphasis, timing, and listener comprehension.
-- Put the recognizable reality and stake early enough to orient the listener.
-- Use concrete nouns and operating verbs. Cut stacked abstractions.
-- Preserve qualifications and attribution without forcing citation syntax into
-  the spoken line.
-- Read the script aloud and revise any sentence the intended speaker would not
-  say.
-- Skip written GEO/AEO formatting for spoken-only delivery.
-- Route every published title, description, transcript, caption, show note,
-  and companion page as a separate written surface.
+- Open with a concrete situation, contrast, question, or result the evidence supports.
+- Use shorter clauses and audible transitions.
+- Repeat only a load-bearing anchor, not the whole argument.
+- Prefer words that are easy to say and understand at natural speed.
+- Turn objections into beats rather than footnotes.
+- Keep dense lists out of speech unless each item matters and can be heard distinctly.
+- Do not speak headings, keywords, metadata, citations, or GEO/AEO scaffolding aloud.
+- Omit implementation-status facts such as route availability unless the listener is asked to act on that route.
+- End on one supported consequence, decision, or form of agency rather than a product-status sentence or a stack of adjacent action verbs.
+
+For hybrid work, write the script for listening. Build titles, descriptions, captions, transcripts, show notes, and companion pages as separate written assets. Rank facts separately for each asset. Do not force every supplied fact into both. Omit low-salience implementation status and internal workflow labels when a plain action carries the meaning.
+
+Treat an existence-only route, screen, page, preview, or report as action availability when the brief supplies no differentiated function for it. Express that availability through the CTA or final invitation. Do not turn it into a body-copy claim.
 
 ## Human voice and AI-writing-tell gate
 
-Apply this gate to every Agora deliverable, including private writing, public
-copy, interface text, outreach, editorial work, and spoken scripts. The goal is
-not to disguise authorship. Produce specific, accurate, author-owned writing
-that fits its channel and survives factual review.
-
-The consolidated human-voice reference originates in Wikipedia's operational
-AI-cleanup guidance. Editors use those patterns to flag and clean likely
-model-written prose, and related editorial systems can adopt the same cues.
-Agora therefore treats the listed items as mandatory output bans. One cue does
-not prove authorship, and following the bans cannot guarantee non-detection.
-Detector scores remain secondary signals with false-positive, domain-shift, and
-versioning limits.
+Apply this gate after the argument and proof pass. Its purpose is specific, accurate, author-owned prose. It does not prove human authorship or guarantee detector outcomes.
 
 ### Global output bans
 
-Unless immutable source text or an explicit legal, technical, brand, or user
-requirement makes preservation necessary, final Agora copy must contain:
+Unless immutable quoted, legal, technical, or user-required text must be preserved, generate:
 
-- zero generated em dashes;
-- zero curly or smart quotation marks;
-- zero prompt acknowledgements or task meta-commentary;
-- zero stock phrase templates;
-- zero generic significance tails;
-- zero fabricated citations, quotations, anecdotes, memories, motives,
-  credentials, opinions, comparisons, or facts;
-- zero banned vocabulary or connectives without a narrow documented exception;
-- zero unneeded conclusion or recap paragraphs;
-- zero generated tripartite templates;
-- zero generated `Not only... but also...`, `not merely... but...`, or `not
-  just... but...` constructions;
-- zero deliberate errors, fake informality, synonym soup, or detector-evasion
-  promises.
+- no em dashes;
+- no curly or smart quotation marks;
+- no prompt acknowledgements or task meta-commentary;
+- no fabricated citations, quotations, anecdotes, memories, motives, credentials, or human texture;
+- no stock openings, canned contrast templates, or generic significance tails;
+- no unneeded conclusion or recap;
+- no deliberate errors, fake informality, or detector-evasion promises.
 
-Use straight quotes. Replace each generated em dash with a comma, colon,
-parentheses, or a new sentence. Preserve banned text only inside verified
-quotations, legal wording, code, identifiers, proper names, required technical
-terms, or other immutable material. `HOUSE` records the operational basis of
-these rules; it does not make them optional.
+Use straight quotes. Replace an em dash with a period, comma, colon, or parentheses. Never change facts, names, figures, dates, citations, causality, uncertainty, legal meaning, or required technical terminology to satisfy a style preference.
 
-Run a literal final-character sweep after drafting the ready copy and every
-verification note. Replace generated U+2014, U+2018, U+2019, U+201C, and U+201D
-punctuation with an ASCII alternative, including when restating a user's
-unsupported phrase. A post-copy note cannot reintroduce a banned mark.
+### AI-heavy vocabulary
 
-Run a separate triad sweep before delivery. Never generate the prose syntax
-`X, Y, and Z` or `X, Y, or Z`; treat this as a mechanical output constraint.
-Rewrite generated sequences of three parallel nouns, adjectives, clauses, or
-sentence fragments. A flourish such as `measurement, traceability, and
-discipline` fails. A recap such as `evidence capture, prioritization, and human
-review` also fails; write `captures evidence and keeps prioritization under
-human review`. Recast even sourced facts with a natural pair or connected
-prose. Preserve the three-part syntax only inside immutable quoted or legal
-text, a proper name, or text the user requires verbatim.
+Replace vague or inflated wording with concrete language when possible. Watch clusters of:
 
-Scan the final prose from the last sentence backward. Find every generated
-`, and` and `, or`; when it closes a three-part parallel sequence, rewrite it.
-Check every occurrence, including the last sentence and any note. Do not stop
-after the first repair.
+- `delve`, `showcase`, `foster`, metaphorical `navigate`, `harness`, `leverage`, `unlock`, `unleash`, `empower`, `streamline`, `elevate`, `facilitate`, vague `optimize`;
+- `pivotal`, `crucial`, `robust`, `seamless`, `holistic`, `comprehensive`, `multifaceted`, `transformative`, `groundbreaking`, `cutting-edge`, `world-class`, `best-in-class`, `unparalleled`;
+- metaphorical `tapestry`, `landscape`, `realm`, `ecosystem`, `journey`, `testament`, `frontier`, `cornerstone`, `backbone`, `powerhouse`, `game-changer`;
+- `moreover`, `furthermore`, `additionally`, `notably`, `importantly`, `in essence`, `in summary`, `in conclusion`, `ultimately`, `that said`.
 
-### Global core tests
+These words are not scientific proof of machine authorship. Retain one when it is exact, technically required, part of a proper name, immutable source text, or more accurate than a forced synonym. Judge density, repetition, and vagueness rather than one ordinary word.
 
-- **Competitor-swap test:** if replacing the subject with any competitor leaves
-  the paragraph accurate, rewrite it with a real mechanism, fact, situation,
-  boundary, or point of view.
-- **Read-aloud test:** if the intended speaker would not say it, revise it.
-- **Defense test:** if the author would hesitate to defend a sentence in front
-  of the buyer, verify, qualify, or remove it.
-- **Density test:** judge clusters and repeated templates, not one ordinary word
-  in isolation.
-- **Fidelity test:** compare the revision against the fact ledger. Restore every
-  material condition, uncertainty, attribution, name, number, date, quotation,
-  citation, and technical term.
+### Stock templates and significance tails
 
-### Banned vocabulary and connectives
+Delete or rewrite generated phrases such as:
 
-Strip these terms by default. Retain one only when it is exact, load-bearing,
-technically required, a verified proper name, immutable verbatim text, or an
-explicit user or house requirement. Document why no concrete alternative is
-more accurate.
-
-- **Verbs:** `delve`, `underscore`, `showcase`, `foster`, `navigate` as a
-  metaphor, `harness`, `leverage`, `unlock`, `unleash`, `empower`, `streamline`,
-  `bolster`, `elevate`, `facilitate`, `enhance`, vague `optimize`, metaphorical
-  `drive`, metaphorical `craft`, `forge`, and `spearhead`.
-- **Adjectives:** `pivotal`, `crucial`, `vital`, `essential`, `robust`,
-  `seamless`, `holistic`, `comprehensive`, `multifaceted`, `nuanced`,
-  `intricate`, `meticulous`, `profound`, `transformative`, `groundbreaking`,
-  `revolutionary`, `cutting-edge`, `state-of-the-art`, `world-class`,
-  `best-in-class`, `unparalleled`, `unprecedented`, `remarkable`, `noteworthy`,
-  `notable`, `significant`, `invaluable`, `indispensable`, `paramount`,
-  `breathtaking`, `stunning`, `vibrant`, `rich` in phrases such as `rich
-  history`, `bespoke`, and `curated`.
-- **Nouns, especially as metaphors:** `tapestry`, `landscape`, `realm`,
-  `ecosystem`, `journey`, `testament`, `frontier`, `forefront`, `cornerstone`,
-  `backbone`, `lifeblood`, `powerhouse`, `trailblazer`, and `game-changer`.
-- **Connectives:** `moreover`, `furthermore`, `additionally`, `in addition`,
-  `notably`, `importantly`, `indeed`, `in essence`, `in summary`, `in
-  conclusion`, `ultimately`, `that said`, `on the other hand`, and `on one
-  hand`.
-
-Delete a connective when the relationship remains clear. When one is required
-by a formal genre, use the shortest accurate transition.
-
-### Banned templates and significance tails
-
-Delete every generated occurrence of:
-
-- `It's important to note that...`;
-- `It's worth noting` or `It's worth mentioning`;
-- `In today's fast-paced world...`;
-- `In the ever-evolving landscape of...`;
-- `In the realm of...`;
-- `A testament to...`;
-- `Stands as a...`;
-- `Serves as a...`;
-- `Plays a crucial`, `pivotal`, or `vital role in...`;
+- `It is important to note that`;
+- `It is worth noting`;
+- `In today's fast-paced world`;
+- `In the ever-evolving landscape of`;
+- `At its core`;
+- `When it comes to`;
+- `A testament to`;
+- `Stands as a`;
+- `Plays a crucial role`;
 - `Not only X but also Y`;
-- `Whether you're X or Y...`;
-- `From X to Y, [subject] has...`;
-- `At its core...`;
-- `When it comes to...`;
-- `Navigating the complexities of...`;
-- `Unlocking the potential of...`;
-- `Harnessing the power of...`;
-- `Paving the way for...`;
-- `Setting the stage for...`;
-- `Bringing X to the forefront`.
+- `Not just X but Y`;
+- `Whether you are X or Y`;
+- `Unlocking the potential of`;
+- `Paving the way for`;
+- `Let me know if you would like`.
 
-Delete generated tails such as:
+Delete generic tails such as `underscoring the importance of`, `highlighting its role in`, `demonstrating its impact on`, `cementing its place as`, or `showcasing its commitment to`. End with information, action, or a supportable inference.
 
-- `..., emphasizing the significance of...`;
-- `..., reflecting the continued relevance of...`;
-- `..., underscoring the importance of...`;
-- `..., highlighting its role in...`;
-- `..., demonstrating its impact on...`;
-- `..., marking a turning point in...`;
-- `..., cementing its place as...`;
-- `..., solidifying its reputation for...`;
-- `..., showcasing its commitment to...`.
+### Structural tells
 
-End with information or a specific, supportable inference.
+Remove repeated `bold label: sentence` bullets, headings that restate themselves, identical paragraph shapes, conclusion sections that add nothing, balanced both-sides framing without named evidence, and smooth transitions that hide unrelated facts.
 
-### Banned structural and typography patterns
+Avoid decorative tripartite rhetoric used as a stock flourish. Do not ban factual three-item series. Preserve necessary enumerations when they state scope, compare options, qualify a claim, meet a legal or platform requirement, or prevent misleading omission.
 
-Remove:
+Never add fake typos, fragments, slang, personal memories, jokes, or emotional confessions to simulate humanity. If author samples are supplied, follow stable habits without copying phrases or inventing an identity.
 
-- prompt acknowledgements, including `Certainly`, `Of course`, `Absolutely`,
-  `Great question`, or any acknowledgement of the prompt;
-- every paragraph ending with a summary or significance sentence;
-- generated tripartite parallelism used as a rhetorical template;
-- repeated or generated `Not only... but also...` structures;
-- headings followed by a sentence that restates the heading;
-- repeated `**Bold label:** sentence` bullets;
-- balanced both-sides framing that refuses to make a supported claim;
-- conclusions or summary sections in formats that do not need them;
-- generic positive framing that replaces a fact;
-- `Some argue... others contend...` without named sources;
-- definitions repeated across sections;
-- smooth transitions that conceal unrelated facts;
-- topic sentences that restate headings;
-- title case for generic concepts;
-- mid-paragraph bold outside technical, accessibility, or explicit house needs.
+### Detector limits
 
-Use zero generated em dashes and zero curly or smart quotes. Use straight
-quotes. Use an en dash only when formal publication style requires it;
-otherwise use a hyphen.
+Detector outputs are noisy, version-dependent, and vulnerable to domain shift. Never promise that writing is undetectable. Never treat a score as proof of authorship. If testing is authorized, compare against known-human samples from the same author and genre, use more than one method when feasible, record tool versions, and stop detector-driven editing when another pass no longer improves the prose independently.
 
-Reject prompt leakage immediately, including `Here is your article`, `As an AI
-language model`, `Up to my last training update`, `I hope this helps`, `Let me
-know if you would like`, `Certainly! Here's a`, `Sure, I can help with that`,
-any task meta-commentary, or any reference to the commissioning user inside the
-deliverable. Return the deliverable itself.
+Research on detector limits includes the [RAID benchmark](https://arxiv.org/abs/2405.07940), [paraphrasing attacks](https://arxiv.org/abs/2303.13408), the [DAMAGE shared task](https://aclanthology.org/2025.genaidetect-1.9/), a [practical detector examination](https://aclanthology.org/2025.findings-naacl.271/), [bias against non-native English writers](https://arxiv.org/abs/2304.02819), [GPTZero methodology](https://arxiv.org/abs/2602.13042), [reliable detection limits](https://arxiv.org/abs/2303.11156), [human and AI boundary research](https://arxiv.org/abs/2502.15666), [flawed human heuristics](https://arxiv.org/abs/2206.07271), and [function-word adjacency networks](https://arxiv.org/abs/1406.4469).
 
-### Author voice, genre, and meaning
+## Written GEO/AEO and citability
 
-When authentic author samples are available, profile recurring sentence length,
-paragraph rhythm, formality, contractions, function words, punctuation,
-qualification, directness, humor, openings, turns, and endings. Use stable habits
-without copying phrases, subject matter, or one-off quirks. When samples are
-missing, preserve credible individual choices and request author review rather
-than inventing an idiolect.
+Apply these rules only to written assets. They improve clarity, extractability, and verification. They do not guarantee retrieval or citation.
 
-Fit the genre. A professional email should surface context and request quickly.
-An executive memo should lead with the decision or finding. Academic and legal
-work must preserve required terminology and citations. Spoken work must sound
-natural when read aloud. Written GEO/AEO work must remain specific without
-forcing identical headings, paragraph lengths, or miniature conclusions.
+- Answer the central question early when the format calls for it.
+- Name the subject, entity, category, scope, and time frame clearly.
+- Keep proof and qualifications beside the claims they govern.
+- Write self-contained passages that remain accurate when quoted alone.
+- Expose genuine provenance, sources, authorship, dates, and methods.
+- Add information value rather than paraphrasing a common consensus.
+- Use descriptive headings and labels that match the content beneath them.
+- Keep visible and machine-readable facts consistent.
+- Preserve necessary enumerations when they define a product, comparison, or scope.
 
-Never humanize by changing facts, names, figures, dates, quotations, citations,
-causality, uncertainty, legal meaning, or product terminology. Never upload
-confidential, privileged, unpublished, regulated, or personally sensitive text
-to an external detector or rewriting service without authorization and a review
-of its retention and training terms.
+Do not stuff keywords, write miniature conclusions under every heading, fragment prose for imagined answer engines, or add unsupported statistics for apparent authority.
 
-### Detector limits and research basis
+## Technical publication boundaries
 
-Never promise that copy is "undetectable", claim that a detector score proves
-authorship, or optimize toward one changing classifier at the expense of truth,
-voice, or clarity. If detector testing is authorized, calibrate against several
-known-human samples from the same author and genre, use multiple methods when
-feasible, record tool and version, and stop detector-driven editing after two
-rounds unless another pass independently improves the prose.
+Apply technical checks only to `INDEXABLE_PUBLIC` work and only when the task includes publication readiness.
 
-The earlier source gave `3-5x` em-dash usage and about `90%` experienced-reader
-detection as numerical claims without a supporting source. Do not repeat those
-numbers as scientific facts. This does not weaken any output ban. The bans are
-mandatory because the source patterns are used operationally in Wikipedia-style
-AI cleanup and related editorial screening, not because a percentage guarantees
-detection or non-detection.
+Check, as relevant:
 
-The human-voice reference grounds these limits in:
+- crawl access and robots directives;
+- canonical consistency;
+- sitemap inclusion and update signals;
+- unique, accurate titles and descriptions;
+- visible content parity with structured data;
+- eligible structured data and required properties;
+- accessible headings and labels;
+- server-rendered or otherwise reliably delivered primary content;
+- current official crawler and platform documentation.
 
-- [RAID benchmark](https://arxiv.org/abs/2405.07940);
-- [Krishna et al. on paraphrasing attacks](https://arxiv.org/abs/2303.13408);
-- [DAMAGE shared task overview](https://aclanthology.org/2025.genaidetect-1.9/);
-- [Practical examination of AI-generated text detectors](https://aclanthology.org/2025.findings-naacl.271/);
-- [Detector bias against non-native English writers](https://arxiv.org/abs/2304.02819);
-- [GPTZero detector methodology](https://arxiv.org/abs/2602.13042);
-- [Can AI-Generated Text be Reliably Detected?](https://arxiv.org/abs/2303.11156);
-- [Almost AI, Almost Human](https://arxiv.org/abs/2502.15666);
-- [Human heuristics for AI-generated language are flawed](https://arxiv.org/abs/2206.07271);
-- [Function Word Adjacency Networks](https://arxiv.org/abs/1406.4469).
+Crawler access affects eligibility, not selection. Structured data affects eligibility for supported features, not guaranteed display. Indexing does not guarantee retrieval, quotation, citation, ranking, recommendation, referral, conversion, or revenue.
 
-### CiteSurge-only scanner controls
-
-For gated CiteSurge public pages, the repository scanner enforces the global
-prompt-leakage and quote bans and adds CiteSurge-only machine thresholds:
-
-- prompt leakage or acknowledgement openers fail immediately;
-- curly quote characters or entities in prose fail under the global rule;
-- three or more watchlist indicators in one prose block fail;
-- the same template or significance-tail fingerprint repeated twice fails;
-- a single watchlist occurrence is informational, not an automatic failure.
-
-Use `content/ai-writing-tells.md` for CiteSurge rationale and
-`content/ai-writing-tells.ts` for its current scanner rules. Do not apply those
-CiteSurge-specific thresholds, files, or release gates to another brand.
-
-## Written GEO/AEO and citability gate
-
-Apply the semantic and evidence rules below to every written asset. Apply the
-technical rules only when the asset has an indexable public URL. Public
-non-indexable work still needs public-safe claims; private writing still needs
-clear entities and source fidelity. Spoken-only assets skip this section unless
-a written derivative is published.
-
-"Fully GEO/AEO optimized" means maximum practical extractability,
-verifiability, information value, and technical eligibility for the asset. It
-does not mean guaranteed retrieval, selection, quotation, citation, ranking,
-recommendation, referral, or sale. 2026 preprints provide descriptive,
-observational, and experimental evidence for testing modular, self-contained,
-evidence-bearing passages in some AI-search systems; they do not establish a
-universal ranking formula.
-
-### Content requirements
-
-1. **Resolve the real question early when the format calls for it.** Utility,
-   product, comparison, and question-led content should put the answer, offer,
-   or decision aid in the first sentence or paragraph. A narrative or editorial
-   opening may begin with a relevant scene, but should reveal the subject and
-   value before the setup becomes a detour.
-2. **Name the entity and scope.** Use the full brand, product, category, market,
-   date, and population where ambiguity would weaken an extracted passage.
-3. **Build self-contained evidence blocks.** A useful paragraph should preserve
-   its subject, claim, support, and material limit when quoted alone. Replace
-   vague dependencies such as "this," "it," and "as above" when context would
-   be lost.
-4. **Keep evidence next to the claim.** Name and link the exact source, date
-   material facts, distinguish fact from inference, and state relevant limits.
-   Prefer current primary or first-party sources.
-5. **Add information gain.** Contribute original data, first-hand experience,
-   a useful comparison, a reproducible demonstration, a disclosure-safe method,
-   or a defensible point of view. Do not paraphrase category consensus and call
-   it insight.
-6. **Structure around reader intent.** Use descriptive headings, definitions,
-   lists, steps, tables, or FAQs only when they make the answer easier to use.
-   Q&A formatting by itself is not a citability strategy.
-7. **Make provenance visible.** For public editorial work, show a verified
-   author or publisher, publication or review date, sources, and relevant
-   disclosures. Treat these as trust and verification practices, not universal
-   ranking factors.
-8. **Link contextually.** Connect the page to the most relevant evidence,
-   capability, comparison, trust, or next-step page. Do not chase arbitrary
-   internal-link counts.
-9. **Keep surfaces consistent.** Visible copy, metadata, structured data,
-   feeds, sales material, and machine-readable surfaces must describe the same
-   facts and scope.
-10. **Measure distinct events.** Record the engine or surface, prompt or topic,
-    market, date, and observed output. Keep brand mention, source selection,
-    answer absorption, visible citation, referral, recommendation, conversion,
-    and revenue separate.
-
-### Emotional marketing plus extractability
-
-Emotion can earn attention; a self-contained evidence block can support
-understanding and verification. A useful page-level sequence is:
-
-1. a concise hook that names a real tension or desired change;
-2. an early plain-language answer or value claim;
-3. self-contained blocks for mechanism, evidence, comparison, and limits;
-4. one primary CTA intent that follows from the supported conclusion.
-
-The hero may carry more emotion. Proof sections should carry more diagnostic
-facts. Both must use the same destination belief and claim scope. Do not repeat
-this four-part shape mechanically across every section.
-
-### Engine-specific boundaries
-
-These controls were verified against official documentation on 2026-07-17.
-Recheck them before an engine-specific recommendation; crawler names and product
-behavior can change.
-
-| System | Safe rule |
-|---|---|
-| ChatGPT Search | `OAI-SearchBot` is the Search crawler; `GPTBot` concerns potential model training; `ChatGPT-User` performs user-initiated fetches. Permission can affect eligibility, not inclusion. ChatGPT referrals can be identified with `utm_source=chatgpt.com`. |
-| Claude web search | `Claude-SearchBot`, `ClaudeBot`, and `Claude-User` have different purposes. Blocking Search or User access may reduce visibility. Do not claim a first-party citation or referral analytics method unless Anthropic documents one. |
-| Perplexity | Treat `PerplexityBot` and `Perplexity-User` separately. Current official descriptions of robots behavior are not fully consistent, so name the agent, action, source, and date rather than saying Perplexity simply respects or ignores `robots.txt`. |
-| Google AI Overviews and AI Mode | Google Search controls and Googlebot govern Search eligibility. `Google-Extended` is separate and does not control inclusion or ranking in Google Search. Google requires no special AI schema, AI text file, or special page structure; `llms.txt` is ignored by Google Search. |
-| Bing and Copilot | Bing Webmaster Tools AI Performance and Microsoft Clarity can distinguish some citations, queries, and referrals. Citation count is not proof of prominence, answer contribution, accuracy, or conversion. IndexNow is a Bing-supported freshness mechanism, not a cross-engine ranking tactic. |
-| Grok | xAI documents web-search results and citations for its API. Its `citations` field can include every URL encountered during tool search, while inline citations are answer-linked and not guaranteed; do not count every encountered URL as visible support. Public site-owner controls for Grok crawling, indexing, and training are not established in the reviewed official material. Mark them unknown rather than inferring them. |
-
-Never import one engine's crawler, metadata, structured-data, or measurement
-rule into another engine without first-party support.
-
-### Indexable-public technical handoff
-
-Copy alone cannot complete GEO/AEO. Confirm or hand off checks for:
-
-- one stable, accessible canonical URL and intentional indexability;
-- important claims and evidence available in robust, accessible page content;
-- intentional, engine-specific crawler policy;
-- HTTPS, stable delivery, useful status behavior, and crawlable links;
-- sitemap discovery and truthful freshness dates where applicable;
-- descriptive metadata aligned with visible copy;
-- contextual internal links and useful image alternatives;
-- valid structured data that matches visible facts and a supported use case;
-- consistent author, publisher, organization, and product identities.
-
-Prefer important evidence in normal accessible HTML for retrieval robustness,
-but do not claim that every engine ignores client-rendered content, PDFs,
-images, or other formats. Structured data can clarify meaning or qualify a page
-for documented features; it does not guarantee AI selection or citation.
-Google documents no special AI schema. OpenAI's documented structured metadata
-use is currently specific to Shopping, not a general ChatGPT ranking rule.
-Never invent questions, authors, dates, ratings, products, or organization
-facts for markup. Do not require `llms.txt`; Google ignores it and a citation
-effect is unproved elsewhere.
-
-### GEO/AEO anti-patterns
-
-Reject:
-
-- keyword or entity stuffing;
-- long copy written only to satisfy a word count;
-- thin definition pages and minor-query variants;
-- hidden answer text or machine-only claims;
-- fake statistics, false precision, or source laundering;
-- FAQ or Q&A blocks added only as a citability tactic;
-- duplicated passages with swapped keywords;
-- crawler permission presented as retrieval, selection, or citation;
-- structured data, authorship, dates, direct answers, or HTML rendering
-  presented as universal ranking factors;
-- citation count treated as answer contribution, accuracy, endorsement,
-  prominence, referral, or conversion;
-- `llms.txt`, IndexNow, or an engine-specific crawler rule presented as a
-  universal requirement;
-- observational movement presented as causal lift;
-- generic AI phrasing that lowers specificity and information value.
-
-## Operational workflow
-
-1. **Commercial job.** Choose the explicit or inferred mode, audience,
-   decision, and action or investment relevance. Route the surface separately.
-2. **Destination belief.** Write one supportable conclusion before drafting.
-3. **Argument.** Build the full commercial spine for `SELL`, `INVEST`, and
-   `POSITION`. Use only needed moves for `INFORM` and `TRANSACT`.
-4. **Proof gate.** Attach evidence to each premise, preserve limits, and remove
-   facts that do not prove a premise, resolve an objection, or enable action.
-5. **Channel formatting.** Fit the channel without deleting the argument. Honor
-   explicit length and format constraints when they do not require factual
-   distortion.
-6. **Written GEO/AEO when applicable.** Apply semantic and evidence rules to
-   written work. Add technical checks only for indexable public work.
-7. **AI-writing-tell edit.** Apply the global human-voice bans and tests without
-   changing factual meaning.
-8. **Compression.** Cut repetition and decoration last. Preserve proof,
-   qualifications, the destination belief, action relevance, and any explicit
-   usable length range.
-
-Use the sequence exactly: `Commercial job -> destination belief -> argument ->
-proof gate -> channel formatting -> written GEO/AEO when applicable ->
-AI-writing-tell edit -> compression.`
-
-For CiteSurge public changes, pass every changed marketing file or directory
-explicitly to `npm run dev:ai-writing-tells:scan --`, then run:
-
-```powershell
-npm run dev:public:claim-safety:smoke
-```
-
-No-argument AI scan covers only its default gated page set. Pass every changed
-marketing path explicitly. Inspect rendered copy and all changed metadata,
-schema, feed, sitemap, or AI-readable surfaces.
-
-Published Insights also require a reviewer independent from the draft owner.
-That reviewer checks rendered article, sources, claim scope, methodology
-boundary, metadata, schema, feed, and AI-readable summary. Automated checks do
-not replace this review; publication stays blocked when it is unavailable.
+Engine behavior changes. Recheck current official guidance before giving engine-specific technical advice.
 
 ## Applied weak and strong pairs
 
-These fictional pairs use the same stated facts on both sides. They teach
-construction, not standing claims. Replace every fact and CTA with verified
-product truth before use.
+All companies, facts, and results below are fictional fixtures. They teach decision structure, not claims to reuse.
 
 ### Company positioning
 
 Verified facts:
 
-> Rivet reconciles purchase orders against invoices and receipts. It flags
-> discrepancies before routing exceptions to finance teams. No performance or
-> savings claims are supplied. No traction or market claims are supplied.
+> ParcelCheck reconciles shipping manifests, scan records, and delivery confirmations. It flags mismatches and routes exceptions to logistics reviewers. No speed, savings, or error-reduction result is available.
 
 Weak:
 
-> Rivet is B2B finance software for reconciliation and exception routing.
+> ParcelCheck reconciles shipping manifests, reviews scan records, checks delivery confirmations, flags mismatches, and routes exceptions.
 
 Strong:
 
-> Finance teams have to investigate when purchase orders do not agree with
-> invoices or receipts. A useful system must identify the mismatch and put it
-> into an actionable queue. Rivet reconciles those records and flags
-> discrepancies before routing exceptions to finance. It turns document
-> matching into exception work the team can act on.
+> When shipping records disagree, ParcelCheck flags the mismatch and routes it to the logistics reviewer responsible for the decision.
 
-The weak version defines a category and inventories features. The strong
-version makes the operational stake clear and establishes the criterion. It
-then shows the transformation that supports the company position without
-adding a performance claim.
+Why: the strong version turns the verified trigger into tension, then explains the mechanism. It avoids an operational inventory without inventing a downstream result.
 
 ### Investor description
 
 Verified facts:
 
-> Northstar measures how major AI answer systems represent brands and whether
-> they cite them. It records each answer with its prompt and market context.
-> The record also preserves evidence limits. Human-reviewed findings become
-> prioritized content or technical work. The product includes dashboards and
-> reports. It also provides
-> multi-brand workspaces plus programmatic access through an API and MCP.
-> Webhooks are also available. No traction or leadership claims are supplied.
-> No pricing or market-size claims are supplied. No performance claims are
-> supplied.
+> ClaimWeave flags avoidable specialty-drug spend before adjudication. It inserts decisions into two existing reviewer systems. Pilots covered 410,000 lives and reported a 9% reduction in avoidable specialty spend over nine months. A seed round would fund additional integrations.
+
+> Specialty-drug volatility is increasing faster than ordinary review queues can absorb.
 
 Weak:
 
-> Northstar is enterprise GEO software with dashboards and human-reviewed
-> reports.
+> ClaimWeave is a groundbreaking healthcare platform positioned to transform claims and represents an attractive opportunity for investors.
 
 Strong:
 
-> Brand teams cannot choose precise work from an AI answer they cannot trace to
-> the original prompt and market context or to the sources it cited. Northstar
-> records that evidence with its limits. It then turns supported findings into
-> prioritized content or technical work under human review. Multi-brand
-> workspaces and programmatic access make the evidence usable across an
-> enterprise. For investors, Northstar is workflow software for turning
-> observed AI brand representation into governed action.
+> Specialty-drug volatility is growing faster than ordinary review queues can absorb. ClaimWeave flags avoidable spend before adjudication and inserts the decision into systems reviewers already use. Pilots covering 410,000 lives reported a 9% reduction over nine months. The seed round would expand the integration wedge that makes the workflow usable without replacing the customer's operating system.
 
-The strong version states the decision problem and mechanism. It keeps the
-boundary visible, shows the company transformation and lands the investment
-relevance. It does not invent traction or outcomes.
+Why: the investment relevance follows from timing, wedge, proof, and capital use. It is not announced as a ritual conclusion.
 
 ### Hero
 
 Verified facts:
 
-> Northstar records observed AI answers with their citation URLs. Each record
-> keeps its prompt and market context attached. It also preserves evidence
-> limits. Supported findings become prioritized work. An evidence-review route
-> exists.
+> LedgerFlow reconciles purchase orders with invoices and receipts. It routes discrepancies to finance reviewers. No time-saved or error-reduction result is available.
 
 Weak:
 
-> Better AI visibility for every brand.
+> Transform your finance operations with one seamless platform.
 
 Strong:
 
-> An AI answer without its prompt and market context or its citation record
-> cannot support a precise content decision. Northstar keeps that evidence
-> attached before turning supported findings into prioritized work. Review the
-> evidence.
+> Find invoice mismatches before close.
+>
+> LedgerFlow reconciles purchase orders, invoices, and receipts, then routes the exceptions that need a finance decision.
+>
+> See the reconciliation flow
 
-The CTA follows from the mechanism and points to a verified route. The copy
-does not promise visibility or citation. It makes no performance claim.
+Why: the hero names a credible stake and mechanism without inventing a result. The factual three-item list is necessary scope.
 
 ### Paywall
 
 Verified facts:
 
-> Briefcase Free permits three active client reports. All three slots are in
-> use. Briefcase Pro removes the active-report limit and includes PDF export.
-> An upgrade route exists. No savings or urgency claim is supplied.
+> The free plan permits three active reports. All three slots are in use. The paid plan removes the active-report limit and adds PDF export. A working upgrade route exists.
 
 Weak:
 
-> Get more from Briefcase. Upgrade now.
+> Unlock unlimited potential today.
+>
+> Upgrade now
 
 Strong:
 
-> All three Free plan report slots are in use. To create another active client
-> report, choose a plan with a higher limit. Pro removes the active-report
-> limit and includes PDF export. Upgrade to Pro.
+> Keep every client report active
+>
+> Your three free report slots are in use. Upgrade to remove the active-report limit and add PDF export.
+>
+> View upgrade options
 
-The strong version ties the current state to the decision criterion and plan
-mechanism. It lands the destination belief and action without fake urgency.
+Why: the copy makes the blocked action, plan difference, and next step explicit without fake urgency.
 
 ### Cold email
 
 Verified facts:
 
-> In a saved audit, Acme appeared in two buyer-question answers. Neither answer
-> visibly cited an Acme page. The audit preserves each answer with its prompt
-> and citation record. It contains three supported proposed fixes. The sender
-> can share it.
+> The sender found two inconsistent tax-code entries in a public catalog and saved the affected records. The sender can share a two-page review. No financial loss or error rate is known.
 
 Weak:
 
-> Hi Sam, we offer a data-led answer-engine audit with actionable insights for
-> brands. Are you free for a call?
+> We help companies optimize catalog accuracy. Are you free for a quick call?
 
 Strong:
 
+> Subject: Two tax-code conflicts in the catalog
+>
 > Hi Sam,
 >
-> Acme appeared in two buyer-question answers I checked, but neither answer
-> visibly cited an Acme page. That leaves no Acme source in the visible citation
-> record for your team to inspect. I saved each answer with its prompt and
-> citation record. The short audit also contains three supported proposed
-> fixes. Want me to send it?
+> I found two products assigned different tax codes across the public catalog and saved the affected records. I can send the two-page review if it would help your team check the source data. Worth sending it over?
 
-The strong version uses a verified observation as the stake and explains the
-evidence boundary. It asks for the smallest logical next action.
+Why: the email uses one verified observation, avoids invented impact, and asks for a low-friction next step.
 
 ### Spoken pitch
 
 Verified facts:
 
-> Rivet reconciles purchase orders against invoices and receipts. It flags
-> discrepancies before routing exceptions to finance teams. The audience is
-> investors. No traction or market-size evidence is supplied. No savings or
-> performance evidence is supplied.
+> RivetWorks reconciles purchase orders, invoices, and receipts. It flags discrepancies and routes exceptions to finance teams. No traction, savings, or market-size evidence is available.
 
 Weak:
 
-> Rivet is a B2B software platform for finance teams with reconciliation and
-> exception-management capabilities.
+> RivetWorks is revolutionizing finance through an innovative, comprehensive, and seamless AI platform.
 
 Strong:
 
-> Finance teams do not need a longer list of mismatched documents. They need
-> each exception identified and sent to the people who can resolve it. Rivet
-> reconciles the purchase order against the invoice and receipt. It flags the
-> discrepancy before routing the exception to finance. For investors, Rivet is
-> workflow software at the point where mismatched records become work.
+> Invoice problems rarely start in one file. RivetWorks reconciles the purchase order, invoice, and receipt, then sends the mismatch to the finance team that can resolve it. That gives companies one place to find exceptions before close.
 
-The strong version is written for breath. It makes the stake and criterion
-audible before explaining the mechanism. It lands the destination belief with
-investment relevance. It claims neither speed nor savings. It makes no
-market-leadership claim.
+Why: the spoken version uses short clauses, a clear mechanism, and a supported destination without search formatting or invented traction.
 
-## Release checklist
+### Necessary enumeration
 
-- [ ] Explicit or inferred commercial mode, separately routed surface,
-  audience, destination belief, and action relevance are clear.
-- [ ] `SELL`, `INVEST`, and `POSITION` include every commercial-spine move in
-  the required order, even when moves share sentences.
-- [ ] Stakes come from a real situation and leave the reader with agency.
-- [ ] Narrative, fear, loss, guilt, scarcity, curiosity, and social proof obey
-  their conditional and ethical controls.
-- [ ] Each premise is verified, qualified, or removed.
-- [ ] The proof gate ran before channel, GEO/AEO, voice, and compression work.
-- [ ] Every fact proves a premise, resolves an objection, or enables action.
-- [ ] Mechanism is concrete, disclosure-safe, and passes the education-leakage
-  test.
-- [ ] The primary brand verb states a supported transformation rather than
-  defaulting to `shows`, `helps`, `supports`, or `built for`.
-- [ ] Every block advances, proves, resolves, or directs; setup and recaps are
-  cut.
-- [ ] Length and structure fit the format; no `HOUSE` or `TEST` range is treated
-  as a universal performance law.
-- [ ] Objective channel rules cap tone without deleting the argument; any
-  material channel conflict appears after the ready copy.
-- [ ] CTA names a real next action and adds no new claim.
-- [ ] Competitor-swap, read-aloud, defense, and density tests pass.
-- [ ] Zero banned vocabulary, connectives, templates, significance tails,
-  generated em dashes, curly or smart quotes, and generated tripartite rhetoric
-  without a narrow documented exception.
-- [ ] No fabricated detail, fake urgency, prompt leakage, artificial human
-  texture, or detector promise.
-- [ ] Written utility, product, comparison, and question-led copy answers early;
-  all written copy names entities and keeps key evidence blocks self-contained.
-- [ ] Material written claims have exact, current, preferably primary sources.
-- [ ] Material inconsistencies across sources are reconciled or disclosed.
-- [ ] Structure, authorship, freshness, disclosures, and links serve reader
-  intent.
-- [ ] Public visible and machine-readable surfaces agree; indexable work has a
-  technical handoff.
-- [ ] No stuffing, thin variants, machine-only text, or citation guarantee.
-- [ ] Engine-specific crawler and measurement rules were reverified and were not
-  generalized across engines.
-- [ ] CiteSurge public claims map to non-expired `LIVE` rows.
-- [ ] CiteSurge methodology and customer-safety boundaries hold.
-- [ ] Brand mention, source selection, answer absorption, visible citation,
-  referral, recommendation, conversion, and revenue stay distinct.
-- [ ] GEO/AEO remains CiteSurge's sales frame; every SEO occurrence is reviewed.
-- [ ] Required smokes and independent editorial review pass where applicable.
-- [ ] Author can defend every sentence.
-- [ ] Ready-to-use copy appears first, with no exposed mode, scaffold, or
-  private reasoning.
+Verified facts:
 
-## Experiment and learning standard
+> A developer tool runs tests on Chrome, Firefox, and WebKit. It does not support mobile-device farms.
 
-Use local testing to adapt a `HOUSE`, `C`, `EVIDENCE-INFORMED`, or `TEST` rule.
-Do not convert a weak experiment into doctrine.
+Weak:
 
-1. Change one variable family and pre-register the audience, decision stage,
-   primary outcome, minimum useful effect, and guardrails. If several elements
-   change, label the test a full-page or full-message variant.
-2. Randomize the correct unit and control repeat exposure, sales-rep effects,
-   account overlap, and channel contamination where relevant.
-3. Calculate sample size from the current baseline, minimum useful effect,
-   power target, clustering, and multiple comparisons. Never copy a source
-   study's sample size as the new requirement.
-4. Run through the relevant business cycle. Do not stop when a result first
-   becomes favorable unless a sequential design and stopping rule were declared.
-5. Keep click-through, conversion, reply, meeting, qualified lead, close,
-   citation, referral, and revenue metrics separate.
-6. Track quality and harm guardrails: accessibility, comprehension, negative
-   replies, spam reports, unsubscribes, cost, downstream fit, and trust signals.
-7. Segment only when pre-declared and sufficiently powered.
-8. Record positive, null, mixed, harmful, and inconclusive outcomes.
-9. With low traffic, prefer comprehension tests, usability sessions, message
-   interviews, or sequential learning batches over underpowered causal claims.
-10. Promote a rule only when the observed effect matches the intended outcome
-    and survives the declared guardrails.
+> Run tests across leading browser engines.
+
+Strong:
+
+> Run the same test on Chrome, Firefox, and WebKit. Mobile-device farms are not supported.
+
+Why: the factual series defines scope and prevents a misleading generalization. Deleting it to avoid a three-item pattern would make the copy worse.
+
+## Evaluation contract
+
+Separate hard invariants from subjective quality.
+
+### Deterministic invariants
+
+Test only what must not fail:
+
+- `POSITION` defaults for descriptive company and directory surfaces.
+- `INVEST` requires an actual capital or diligence decision.
+- Very short copy uses a stake or shift plus the strongest verified differentiator.
+- Truth and proof checks occur before optional style cleanup.
+- Unsupported facts and causal links never appear.
+- Diagnostic enumeration survives.
+- Compliance and internal process remain silent unless a material blocker exists.
+- Spoken and written derivatives route separately.
+- Spoken-only copy contains no GEO/AEO scaffolding.
+- Ready-to-use copy appears before any necessary note.
+- No project-specific facts or controls leak from another context.
+
+Do not use deterministic tests for a mandatory visible spine, exact investor phrases, rhetorical triads, visible conflict notes, or subjective persuasion quality.
+
+### Blind quality evaluation
+
+Generate in fresh contexts. Pass only the case prompt to the writer. Never pass expected outputs, case metadata, rubrics, diagnoses, or incumbent labels.
+
+Compare candidates pairwise with randomized order, then swap order. Escalate an order flip or low-separability result to a third blind adjudicator or human review.
+
+Use these quality dimensions on a five-point scale:
+
+| Dimension | Strong behavior |
+|---|---|
+| Argument inevitability | Each claim earns the next and the conclusion feels specific to this decision |
+| Sustained emotional relevance | The stake remains felt without hype or coercion |
+| Proof salience | The few strongest facts do the most decision work |
+| Mechanism differentiation | The subject is difficult to swap with a competitor |
+| Natural channel fit | The output sounds native to the requested surface |
+| Truth discipline | Persuasive force reaches the evidence boundary without crossing it |
+
+Automatic failure: fabricated fact, unsupported causality, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
 
 ## Evidence register
 
-This register records the durable sources used to turn the supplied research
-into operating rules. It deliberately excludes the reports' non-portable
-session citation tokens.
+Evidence grades:
 
-### Persuasion, emotion, mechanism, and proof
+- **A:** meta-analysis, systematic review, high-value primary research, or authoritative platform documentation directly relevant to the rule.
+- **B:** useful primary or applied evidence with narrower generalizability.
+- **C:** practitioner or vendor evidence that supplies a testable prior, not a universal rule.
+- **HOUSE:** editorial or operational standard chosen for consistency, not a causal research claim.
 
-| Evidence | Grade | Operational use and limit |
-|---|---:|---|
-| [Verbal persuasion in marketing meta-analysis](https://doi.org/10.1007/s11747-025-01095-4) | `B` | Across 308 studies, argument quality, mental imagery, and positivity were positively associated with persuasion while information load was negative. Outcomes and moderators vary; this is not a conversion formula. |
-| [Delayed narrative-persuasion meta-analysis](https://doi.org/10.1093/joc/jqaa005) and [registered narrative-correction report](https://doi.org/10.1186/s41235-020-00266-x) | `B` | Narrative effects are small and conditional; equating information and comprehension can remove the advantage. Use narrative to illustrate, not replace, proof. |
-| [Anecdotal versus statistical evidence meta-analysis](https://doi.org/10.1016/j.obhdp.2020.01.006) | `B` | Statistics generally persuade more; anecdotes can help under high emotion or self-relevance. Match evidence to context without treating one story as representative. |
-| [Mechanism-based claim experiments](https://doi.org/10.1093/jcr/ucae066) | `B` | A coherent causal chain can increase fluency and perceived efficacy. The experiments do not establish actual product efficacy. |
-| [Online review meta-analysis](https://doi.org/10.1016/j.dim.2023.100058), [eWOM predictor meta-analysis](https://doi.org/10.1007/s10796-019-09924-y), and [source-credibility meta-analysis](https://doi.org/10.1016/j.jretconser.2019.01.005) | `B` | Valence, argument quality, usefulness, message trust, expertise, and relevance matter. Purchase intention is not always observed purchase behavior. |
-| [Multi-source inconsistency research](https://doi.org/10.1016/j.intmar.2021.01.003) | `B` | In an automobile experiment and sales analysis, conflicting sources reduced intent and early sales. Generalize cautiously beyond high-consideration durable goods. |
-| [Fear-appeal meta-analysis](https://doi.org/10.1037/a0039729) and [efficacy follow-up](https://doi.org/10.1093/joc/jqab049) | `B` | Average effects were positive, mainly outside commercial marketing; credible response efficacy is important. This does not license exaggeration or coercion. |
-| [Guilt meta-analysis](https://doi.org/10.3389/fpsyg.2023.1201631), [scarcity-backfire experiments](https://doi.org/10.3389/fpsyg.2024.1225011), and recent [loss-framing attention](https://doi.org/10.1093/cercor/bhaf006) and [reactance](https://doi.org/10.1016/j.jbusres.2025.115684) studies | `B` | Guilt effects are small, scarcity can backfire, and loss framing can trade attention for reactance or lower intent. Use only truthfully and test the target outcome. |
+### Persuasion, emotion, and mechanism
 
-### Copy length, structure, and CTA design
+| Grade | Source | Durable implication |
+|---|---|---|
+| A | [Johnson and Eagly, involvement meta-analysis](https://doi.org/10.1037/0033-2909.106.2.290) | High-involvement decisions place more weight on reasons that survive scrutiny. |
+| A | [Carpenter, argument quality and processing](https://doi.org/10.1111/hcre.12054) | Argument strength matters more under higher elaboration. |
+| A | [Orazi et al., analytical and narrative persuasion](https://doi.org/10.1007/s11747-025-01095-4) | Narrative and analytical routes are carriers whose effects depend on medium, category, and outcome. |
+| A | Joyal-Desmarais et al., motivational message matching meta-analysis (2022) | Relevance improves when the frame fits a real motive, value, or identity. |
+| A | [Affective and cognitive appeals across cultures](https://doi.org/10.1093/joc/jqae042) | Emotion is not universally superior; culture and context moderate effects. |
+| A | [Narrative persuasion meta-analysis](https://doi.org/10.1080/03637751.2015.1128555) | Stories can change beliefs and behavior, but do not replace proof. |
+| A | [Vividness meta-analysis](https://doi.org/10.1080/15534510.2016.1157096) | Concrete, imaginable consequences can improve attitudes and intent. |
+| A | [Source-effects meta-analysis](https://doi.org/10.1007/BF02894421) | Credibility can reduce uncertainty, but borrowed authority is not proof. |
+| A | [Online-review meta-analysis](https://doi.org/10.1016/j.dim.2023.100058) | Diagnostic reviews can strongly affect purchase intent. |
+| A | [Source credibility in electronic word of mouth](https://doi.org/10.1016/j.jretconser.2019.01.005) | Expertise and trustworthiness shape evidence adoption. |
+| A | [Fear appeal meta-analysis](https://doi.org/10.1037/a0039729) | Threat is bounded and needs efficacy; it is not a default commercial tactic. |
+| A | Shi et al., message effects on psychological reactance meta-analysis (2025) | Freedom-threatening language can increase anger and counterarguing. |
+| A | [Sponsored-content disclosure meta-analysis](https://doi.org/10.1080/00913367.2020.1765909) | Persuasion intent can activate scrutiny, so public claims need support. |
+| A | [Persuasive message pretesting](https://doi.org/10.1093/joc/jqab017) | Attitude and intent can rank variants without proving conversion magnitude. |
+| A | [Intention and behavior meta-analysis](https://doi.org/10.1037/0033-2909.132.2.249) | Intent changes translate only partly into behavior. |
+| A | [Advertising effectiveness meta-analysis](https://doi.org/10.1016/j.ijresmar.2025.04.001) | Aggregate sales effects can be modest even when persuasion metrics improve. |
 
-| Evidence | Grade | Operational use and limit |
-|---|---:|---|
-| [Sentence-length study with screen-reader users](https://doi.org/10.1007/978-3-030-49282-3_18) | `B` | A small study of 21 users favored 16-20-word sentences for comprehension. It supports an accessibility editing trigger, not a universal marketing optimum. |
-| [WCAG 2.2 guidance on headings and labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels) | `A` | Headings and labels should describe topic or purpose and need not be long. Descriptiveness outranks minimal word count. |
-| Gong analyses of [executive cold email length](https://www.gong.io/blog/do-execs-really-reply-to-cold-email-here-s-what-the-data-says), [cold-email structure](https://www.gong.io/files/gong-guide-how-to-master-cold-email-get-the-data-backed-guide-based-on-85-million-emails.pdf), [cold CTA type](https://www.gong.io/blog/this-surprising-cold-email-cta-will-help-you-book-a-lot-more-meetings), and [later-stage sales email](https://www.gong.io/blog/how-to-write-a-sales-email) | `C` | Large observational sales datasets support short first-touch messages, interest CTAs when cold, and more specific asks later. Vendor population, selection, and outcome limits remain. |
-| LinkedIn guidance for [recruiter InMail](https://www.linkedin.com/business/talent/blog/product-tips/tips-for-writing-inmails-from-linkedin-recruiters), [Sponsored Messaging](https://business.linkedin.com/advertise/ads/sponsored-messaging/tips), and [LinkedIn ad formats](https://www.linkedin.com/business/marketing/blog/linkedin-ads/a-b2b-marketers-guide-to-every-linkedin-ad-type) | `C` | Shorter message bodies performed better in the named LinkedIn products and datasets. Do not generalize their character ranges to all direct messages. |
-| [Computational-advertising text-style field study](https://doi.org/10.1016/j.fmre.2021.11.004) | `B` | Subjective, personalized text produced higher click-through while objective, brand-consistent text produced higher conversion in the studied system. Treat this as a channel-specific test hypothesis, not a universal funnel rule. |
+### Investor and company positioning
 
-### AI-search visibility and citability
+| Grade | Source | Durable implication |
+|---|---|---|
+| A- | [Navis and Glynn, legitimate distinctiveness](https://doi.org/10.5465/amr.2008.0361) | Company writing must be legible inside a category and distinct enough to deserve attention. |
+| A- | [Van Werven et al., entrepreneurial pitching](https://doi.org/10.1177/0266242618818249) | Plausibility grows through mechanism, present-state claims, and factual support. |
+| A | [Maxwell et al., angel screening](https://doi.org/10.1016/j.jbusvent.2009.09.002) | Early screening is compressed, so short profiles should surface the most decision-relevant facts. |
+| A- | [Cardon et al., motivational cues and angel investing](https://doi.org/10.1111/etap.12255) | Preparedness and evidence are distinct from generic enthusiasm. |
+| A- | [Hu et al., investor video persuasion](https://doi.org/10.1111/jofi.13471) | Positive delivery can increase funding while worsening selection when proof is weak. |
+| B+ | [Tsay, visual dominance in pitches](https://doi.org/10.5465/amd.2019.0234) | Spoken, visual, and static profile surfaces need different architectures. |
+| A- | [Colombo, signals in new-venture financing](https://doi.org/10.1177/0149206320911090) | Investors interpret bundles of costly and costless signals under uncertainty. |
 
-| Evidence | Grade | Operational use and limit |
-|---|---:|---|
-| [OpenAI crawler documentation](https://developers.openai.com/api/docs/bots) and [publisher FAQ](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq) | `A` | Distinguishes Search, training, and user-fetch agents and documents ChatGPT referral tagging. Permission affects access or eligibility, not guaranteed inclusion. |
-| [OpenAI Shopping with ChatGPT Search](https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search) | `A` | Documents structured product metadata in the Shopping context only. It is not evidence for a general ChatGPT ranking or citation factor. |
-| [Anthropic crawler guidance](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) | `A` | Distinguishes Claude's crawler purposes. Do not infer analytics, ranking factors, or cross-engine rules. |
-| [Perplexity crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) and [robots.txt help](https://www.perplexity.ai/help-center/en/articles/10354969-how-does-perplexity-follow-robots-txt) | `A` | Official pages verify the named agents and published controls. Their descriptions of robots behavior are not fully consistent, so the unresolved behavioral inference remains `D`; state the agent, action, source, and date. |
-| [Google AI-features guidance](https://developers.google.com/search/docs/appearance/ai-features) and [AI optimization guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) | `A` | Normal Google Search eligibility and controls apply; no special AI schema, text file, or page structure is required. `Google-Extended` is separate from Search inclusion and ranking. |
-| [Bing AI Performance](https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview), [Microsoft Clarity AI citations](https://learn.microsoft.com/en-us/clarity/ai-visibility/ai-citations), and [IndexNow documentation](https://www.indexnow.org/documentation) | `A` | Supports engine-specific observation of citations, queries, referrals, and freshness submission. None alone proves answer contribution, prominence, accuracy, or business effect. |
-| [xAI web-search documentation](https://docs.x.ai/developers/tools/web-search) and [xAI citation documentation](https://docs.x.ai/developers/tools/citations) | `A` | Documents API search, encountered URLs, and inline citations. Site-owner crawl, index, and training controls remain `D` because they are unknown in the reviewed official material. |
-| [Selection and answer-absorption preprint](https://arxiv.org/abs/2604.25707) | `B` | Descriptive analysis with controlled prompts supports measuring source selection separately from answer absorption; it does not establish a structural intervention effect. |
-| [Multi-engine content-structure preprint](https://arxiv.org/abs/2603.29979) | `B` | Reports experimental structural effects and supports testing self-contained, evidence-bearing passages. It remains a preprint and not a universal ranking rule. |
-| [Google AI Overview sourcing preprint](https://arxiv.org/abs/2605.14021) | `B` | Longitudinal observational evidence supports separating visible citation from claim fidelity. It is Google-specific and non-causal. |
+### Channel, CTA, and publication evidence
+
+| Grade | Source | Durable implication |
+|---|---|---|
+| A | Scheibehenne et al., choice-overload meta-analysis | There is no universal rule that fewer choices always persuade better. |
+| A | [Google Search guidance for AI features](https://developers.google.com/search/docs/appearance/ai-features) | No special AI-only optimization replaces foundational people-first search practice. |
+| A | [Google AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) | Argument and usefulness come before publication formatting. |
+| A | [W3C headings and labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels) | Descriptive structure supports comprehension and accessibility. |
+| B | [LinkedIn sponsored messaging guidance](https://business.linkedin.com/advertise/ads/sponsored-messaging/tips) | CTA count depends on whether the surface is focused or branching. |
+| C | [Gong cold-email analysis](https://www.gong.io/blog/how-to-write-a-sales-email) | Use outreach benchmarks as testable priors, not universal laws. |
+
+### Human voice and detector evidence
+
+Use the detector sources in `Human voice and AI-writing-tell gate`. They support caution about detection claims, dataset shift, paraphrasing, and human bias. The editorial bans on em dashes, curly quotes, prompt leakage, canned templates, and generic significance tails are `HOUSE` rules. They are not proof of authorship.
+
+### Preserved technical and research authorities
+
+The canonical source set also retains these authorities for engine boundaries, citability, retrieval, AI detection, copy design, and publication review:
+
+- [OpenAI bots documentation](https://developers.openai.com/api/docs/bots)
+- [OpenAI shopping with ChatGPT Search](https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search)
+- [OpenAI publisher and developer FAQ](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq)
+- [Perplexity crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
+- [Perplexity robots guidance](https://www.perplexity.ai/help-center/en/articles/10354969-how-does-perplexity-follow-robots-txt)
+- [Anthropic crawler guidance](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)
+- [xAI citations documentation](https://docs.x.ai/developers/tools/citations)
+- [xAI web-search documentation](https://docs.x.ai/developers/tools/web-search)
+- [Bing AI Performance announcement](https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview)
+- [Microsoft Clarity AI citations](https://learn.microsoft.com/en-us/clarity/ai-visibility/ai-citations)
+- [IndexNow documentation](https://www.indexnow.org/documentation)
+- [LinkedIn ad types](https://www.linkedin.com/business/marketing/blog/linkedin-ads/a-b2b-marketers-guide-to-every-linkedin-ad-type)
+- [LinkedIn InMail guidance](https://www.linkedin.com/business/talent/blog/product-tips/tips-for-writing-inmails-from-linkedin-recruiters)
+- [Gong executive cold-email analysis](https://www.gong.io/blog/do-execs-really-reply-to-cold-email-here-s-what-the-data-says)
+- [Gong cold-email CTA analysis](https://www.gong.io/blog/this-surprising-cold-email-cta-will-help-you-book-a-lot-more-meetings)
+- [Gong cold-email guide](https://www.gong.io/files/gong-guide-how-to-master-cold-email-get-the-data-backed-guide-based-on-85-million-emails.pdf)
+- [GEO research](https://arxiv.org/abs/2603.29979)
+- [Citability research](https://arxiv.org/abs/2604.25707)
+- [AI visibility research](https://arxiv.org/abs/2605.14021)
+- [Persuasion and narrative research](https://doi.org/10.1007/978-3-030-49282-3_18)
+- [Digital persuasion research](https://doi.org/10.1007/s10796-019-09924-y)
+- [Marketing response research](https://doi.org/10.1016/j.fmre.2021.11.004)
+- [Interactive marketing research](https://doi.org/10.1016/j.intmar.2021.01.003)
+- [Business research on persuasive communication](https://doi.org/10.1016/j.jbusres.2025.115684)
+- [Organizational decision research](https://doi.org/10.1016/j.obhdp.2020.01.006)
+- [Cognitive neuroscience research](https://doi.org/10.1093/cercor/bhaf006)
+- [Consumer research on message response](https://doi.org/10.1093/jcr/ucae066)
+- [Communication research on persuasion](https://doi.org/10.1093/joc/jqaa005)
+- [Communication research on narrative effects](https://doi.org/10.1093/joc/jqab049)
+- [Cognitive research on processing](https://doi.org/10.1186/s41235-020-00266-x)
+- [Guilt appeal meta-analysis](https://doi.org/10.3389/fpsyg.2023.1201631)
+- [Persuasion psychology research](https://doi.org/10.3389/fpsyg.2024.1225011)
 
 ## Evidence maintenance
 
-- Recheck official engine documentation every 30 days when this file is used
-  for engine-specific technical advice, and immediately after a crawler,
-  product, analytics, or policy change.
-- Check cited preprints quarterly for revisions, peer review, or retraction.
-- Recheck product claims, prices, routes, offers, and legal constraints at the
-  time of use; do not rely on this file as their source of truth.
-- When adding a rule, record the channel, audience, population, measured
-  outcome, date, evidence grade, and material limit.
-- Preserve contradictory and null evidence. Do not silently promote a vendor
-  association or local test into a universal rule.
-- Use durable direct URLs or DOIs. Do not copy temporary research-session
-  citation markers into this file.
+Keep research claims separate from house preferences. For every meaningful update:
 
-## Change log
+1. Record the source, date, research design, measured outcome, population, moderators, and limits.
+2. Prefer meta-analyses, systematic reviews, higher-value primary studies, and current official platform documentation.
+3. Grade evidence by directness and design, not by how useful the conclusion sounds.
+4. Treat vendor benchmarks and practitioner data as testable priors.
+5. Distinguish attention, recall, attitude, intent, behavior, retention, and sales.
+6. Do not encode a mixed or context-dependent finding as a universal rule.
+7. Recheck time-sensitive platform and engine guidance before technical advice.
+8. Remove temporary research citation tokens before publication and replace them with durable links.
+
+Change record:
 
 | Date | Change |
 |---|---|
-| 2026-07-18 | Rebuilt the persuasion contract for v1.1.0 with explicit commercial modes, a mandatory commercial spine, proof-before-compliance construction, objective-channel limits, rejection gates, progressive loading, and factual weak/strong pairs. |
-| 2026-07-17 | Integrated three commissioned research reports; replaced session-bound research artifacts with durable sources; added portable LLM activation, evidence grades, conditional persuasion controls, format-specific length and CTA guidance, engine-specific GEO/AEO boundaries, and a testing standard. |
+| 2026-07-19 | Rebuilt the authority for variable-depth persuasion, POSITION-first company profiles, proof salience, diagnostic enumeration, silent compliance, and project-agnostic operation. Added research on persuasion psychology, investor communication, channel architecture, and evaluation design. |

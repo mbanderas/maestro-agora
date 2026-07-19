@@ -1,7 +1,7 @@
 {
   "name": "maestro-agora",
-  "version": "1.1.1",
-  "description": "Maestro: Agora writes truthful commercial, editorial, interface, and spoken copy without outrunning the proof.",
+  "version": "1.2.0",
+  "description": "Maestro: Agora turns verified facts into consequential, channel-native arguments without outrunning the proof.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Maestro: Agora",
-    "shortDescription": "Truthful arguments for buyers and investors",
-    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that writes proof-bounded buyer, investor, positioning, editorial, interface, and spoken copy for its surface.",
+    "shortDescription": "Argument-first copy that earns belief",
+    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that builds consequential buyer, investor, positioning, editorial, interface, and spoken arguments from verified facts.",
     "developerName": "Mark Laursen",
     "category": "Productivity",
     "capabilities": [
@@ -31,9 +31,9 @@
     "brandColor": "#7C3AED",
     "composerIcon": "./assets/icon.png",
     "defaultPrompt": [
-      "/agora sell Rewrite this page from one real buyer stake to a defensible belief and one supported action.",
-      "/agora invest Write an objective investor profile that makes the company mechanism and investment relevance clear.",
-      "/agora position Turn these verified facts into a proof-bounded company description for this surface."
+      "/agora position Turn these facts into a consequential company description. Keep investor relevance implicit.",
+      "/agora sell Build the strongest supported buyer argument for this surface, then give one useful next action.",
+      "/agora invest Build the capital case from timing, mechanism, proof, and what this round changes."
     ]
   }
 }
