@@ -218,10 +218,13 @@ async function main() {
   );
 
   const packageJson = await readJson(join(ROOT, "package.json"));
+  const gitAttributes = await readFile(join(ROOT, ".gitattributes"), "utf8");
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.2.0", "package version must be 1.2.0");
+  check(packageJson.version === "1.2.1", "package version must be 1.2.1");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.license === "MIT", "package must use MIT");
+  check(/^\* text=auto eol=lf$/m.test(gitAttributes), "Git must enforce LF for text files");
+  check(/^\*\.png binary$/m.test(gitAttributes), "Git must preserve PNG files as binary");
 
   const codexPlugin = await readJson(join(ROOT, ".codex-plugin", "plugin.json"));
   const claudePlugin = await readJson(join(ROOT, ".claude-plugin", "plugin.json"));
