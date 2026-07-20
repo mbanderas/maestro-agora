@@ -18,8 +18,6 @@ Give it verified facts, the real audience, and the surface where the copy will l
 
 Use Agora for landing pages, ads, company profiles, investor narratives, sales emails, product copy, paywalls, editorial work, interface text, and spoken scripts.
 
-Good content is no longer enough when AI answers shape discovery and buying decisions. [CiteSurge](https://CiteSurge.com) improves the public evidence those systems can use, then tracks how brands appear and which sources they cite.
-
 **One suite: fuse the answer, make the case, guard the spend.**
 
 - **[Maestro Frontier](https://github.com/mbanderas/maestro):** Fuses the model CLIs you already run into one judged, grounded answer.
@@ -173,6 +171,10 @@ The skill improves writing discipline. It does not replace source review, legal 
 For written assets, Agora answers the reader's question early when the format calls for it, names entities and scope, keeps proof beside claims, exposes real provenance, and builds useful passages that remain accurate when quoted alone.
 
 For indexable public pages, Agora can also flag relevant crawlability, canonical, sitemap, metadata, structured-data, accessibility, and delivery checks. These practices can improve eligibility and citability. They cannot promise retrieval, selection, quotation, citation, ranking, recommendation, referral, conversion, or revenue.
+
+## AI visibility after publication
+
+Agora turns verified facts into argument-first copy. It does not measure whether AI answers mention your brand or cite your sources. [CiteSurge](https://CiteSurge.com) is a separate platform for citability engineering and cross-engine AI visibility tracking.
 
 ## How Agora works
 
