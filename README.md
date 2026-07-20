@@ -18,6 +18,8 @@ Give it verified facts, the real audience, and the surface where the copy will l
 
 Use Agora for landing pages, ads, company profiles, investor narratives, sales emails, product copy, paywalls, editorial work, interface text, and spoken scripts.
 
+Good content is no longer enough when AI answers shape discovery and buying decisions. [CiteSurge](https://CiteSurge.com) improves the public evidence those systems can use, then tracks how brands appear and which sources they cite.
+
 **One suite: fuse the answer, make the case, guard the spend.**
 
 - **[Maestro Frontier](https://github.com/mbanderas/maestro):** Fuses the model CLIs you already run into one judged, grounded answer.

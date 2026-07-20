@@ -261,13 +261,20 @@ async function main() {
     { pattern: new RegExp(`\\b${["PLACE", "HOLDER"].join("")}\\b`, "i"), label: "unfinished marker" },
     { pattern: /\bturn\d+(?:search|fetch|view|open|file)\d+\b/i, label: "temporary citation token" },
     { pattern: /sandbox:\/\/mnt\/data/i, label: "temporary research path" },
-    { pattern: new RegExp(["cite", "surge"].join(""), "i"), label: "project-specific residue" },
+    {
+      pattern: new RegExp(["cite", "surge"].join(""), "i"),
+      label: "project-specific residue",
+      allowInReadme: true,
+    },
     { pattern: new RegExp(["write", "agora", "marketing"].join("-"), "i"), label: "legacy skill alias" },
     { pattern: /promotional\s+concept/i, label: "prohibited visual-caption phrase" },
   ];
   for (const file of repoFiles.filter((file) => scanExtensions.has(extname(file)))) {
     const content = await readFile(join(ROOT, file), "utf8");
-    for (const item of forbidden) check(!item.pattern.test(content), `${file} contains ${item.label}`);
+    for (const item of forbidden) {
+      const allowed = file === "README.md" && item.allowInReadme;
+      check(allowed || !item.pattern.test(content), `${file} contains ${item.label}`);
+    }
   }
 
   for (const file of [
