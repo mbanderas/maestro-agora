@@ -137,6 +137,11 @@ async function main() {
   check(skill.split(/\r?\n/).length < 500, "SKILL.md must stay under 500 lines");
   for (const required of [
     "Treat `/agora` as explicit activation",
+    "Enforce the hard em-dash ban",
+    "Never emit the Unicode em dash character U+2014 anywhere in a response",
+    "immutable output constraint, not a style preference or a final-copy cleanup",
+    "scan the complete response character by character for U+2014",
+    "Return only after the count is zero",
     "[references/agora-marketing.md](references/agora-marketing.md)",
     "Load the authority progressively",
     "Do not confuse mode with surface",
@@ -153,7 +158,7 @@ async function main() {
     "Never invent or imply claims, features, prices, routes, results, traction",
     "Keep these passes invisible",
     "Return one ready-to-use result first",
-    "Do not generate em dashes or curly or smart quotes",
+    "Run the final U+2014 scan across the complete response",
     "preserve necessary factual series",
   ]) {
     check(skill.includes(required), `SKILL.md is missing: ${required}`);
@@ -186,6 +191,10 @@ async function main() {
     "## Spoken delivery",
     "## Human voice and AI-writing-tell gate",
     "### Global output bans",
+    "Hard invariant: emit zero U+2014 characters in the entire response",
+    "scan the complete response character by character for U+2014",
+    "The entire generated response contains zero U+2014 characters",
+    "Automatic failure: any U+2014 occurrence",
     "### AI-heavy vocabulary",
     "### Stock templates and significance tails",
     "### Structural tells",

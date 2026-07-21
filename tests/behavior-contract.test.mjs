@@ -140,7 +140,7 @@ test("truth stays hard while compliance remains silent", () => {
   assert.match(passes, /technical publication checks only to indexable public work/);
   assert.match(passes, /Keep these passes invisible/);
   assert.match(passes, /only when silence would make the result misleading, legally unusable, or operationally unshippable/);
-  assert.match(passes, /Do not generate em dashes or curly or smart quotes/);
+  assert.match(passes, /Run the final U\+2014 scan across the complete response/);
   assert.match(passes, /preserve necessary factual series/);
 
   const channel = extractSection(skill, "Fit the channel");
@@ -153,6 +153,26 @@ test("truth stays hard while compliance remains silent", () => {
   assert.match(channel, /internal workflow labels/);
   assert.match(channel, /Treat an existence-only route, screen, page, preview, or report as action availability/);
   assert.match(channel, /Do not turn it into a body-copy claim/);
+});
+
+test("U+2014 is an immutable whole-response veto", () => {
+  const ban = extractSection(skill, "Enforce the hard em-dash ban");
+  assert.match(ban, /Never emit the Unicode em dash character U\+2014 anywhere in a response/);
+  assert.match(ban, /immutable output constraint, not a style preference or a final-copy cleanup/);
+  assert.match(ban, /including ready-to-use copy, headings, lists, critique, explanations, notes, metadata, quotations/);
+  assert.match(ban, /Do not repeat U\+2014 from an input/);
+  assert.match(ban, /Never alter a quotation and still present it as exact/);
+  assert.match(ban, /scan the complete response character by character for U\+2014/);
+  assert.match(ban, /Return only after the count is zero/);
+
+  const outputBans = extractSection(reference, "Global output bans", 3);
+  assert.match(outputBans, /Hard invariant: emit zero U\+2014 characters in the entire response/);
+  assert.match(outputBans, /The U\+2014 ban is not optional/);
+
+  const evaluation = extractSection(reference, "Evaluation contract");
+  assert.match(evaluation, /entire generated response contains zero U\+2014 characters/);
+  assert.match(evaluation, /Automatic failure: any U\+2014 occurrence/);
+  assert.ok(manifest.adjudication.absolute_vetoes.includes("em-dash"));
 });
 
 test("reference leads with doctrine and keeps the deep authority library", () => {
@@ -188,7 +208,7 @@ test("reference leads with doctrine and keeps the deep authority library", () =>
   assert.match(reference, /Emotion does not always beat logic/);
   assert.match(reference, /Keep factual enumeration when the list itself is diagnostic/);
   assert.match(reference, /derive the opening from the mechanism's verified trigger/);
-  assert.match(reference, /Automatic failure: fabricated fact, unsupported causality, context leakage/);
+  assert.match(reference, /Automatic failure: any U\+2014 occurrence, fabricated fact, unsupported causality, context leakage/);
 });
 
 test("reference examples cover the known failure families", () => {
@@ -265,6 +285,7 @@ test("blind evaluation corpus tests invariants without expected-answer leakage",
   assert.equal(manifest.adjudication.swap_order, true);
   assert.equal(manifest.adjudication.escalate_on_order_flip, true);
   assert.deepEqual(manifest.adjudication.absolute_vetoes, [
+    "em-dash",
     "fabricated-fact",
     "unsupported-causality",
     "context-leakage",

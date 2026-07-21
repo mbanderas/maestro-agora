@@ -9,6 +9,14 @@ description: Write, rewrite, shorten, critique, or plan truthful argument-first 
 
 Treat `/agora` as explicit activation. Use all text after the command as the task. If no task follows, ask for the asset or source material.
 
+## Enforce the hard em-dash ban
+
+Never emit the Unicode em dash character U+2014 anywhere in a response while this skill is active. Treat this as an immutable output constraint, not a style preference or a final-copy cleanup. Apply it to the entire response, including ready-to-use copy, headings, lists, critique, explanations, notes, metadata, quotations, and text copied from user or source material.
+
+Do not repeat U+2014 from an input. Replace it with a period, comma, colon, semicolon, parentheses, or plain hyphen as grammar requires. If an exact quotation contains U+2014, paraphrase it or state that it cannot be reproduced verbatim under the active constraint. Never alter a quotation and still present it as exact.
+
+Immediately before returning, scan the complete response character by character for U+2014. Replace every occurrence, then scan again. Return only after the count is zero.
+
 ## Load the authority progressively
 
 Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Read only the sections the task needs:
@@ -150,10 +158,11 @@ After the argument is drafted:
 3. Apply technical publication checks only to indexable public work.
 4. Apply the human-voice and AI-writing-tell gate without deleting facts or diagnostic lists.
 5. Compress repetition and decoration last.
+6. Run the final U+2014 scan across the complete response and confirm zero occurrences.
 
 Keep these passes invisible. Mention a blocker only when silence would make the result misleading, legally unusable, or operationally unshippable.
 
-Do not generate em dashes or curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, and repeated stock templates. Avoid decorative three-part rhetoric, but preserve necessary factual series. Never promise detector evasion. Never change facts or legal meaning to sound human.
+Do not generate curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, and repeated stock templates. Avoid decorative three-part rhetoric, but preserve necessary factual series. Never promise detector evasion. Never change facts or legal meaning to sound human.
 
 ## Return the result
 

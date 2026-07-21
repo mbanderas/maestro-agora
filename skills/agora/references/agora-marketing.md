@@ -378,9 +378,12 @@ Apply this gate after the argument and proof pass. Its purpose is specific, accu
 
 ### Global output bans
 
-Unless immutable quoted, legal, technical, or user-required text must be preserved, generate:
+Hard invariant: emit zero U+2014 characters in the entire response. This applies to copy, headings, lists, critique, explanations, notes, metadata, quotations, and text copied from user or source material. Do not repeat U+2014 from an input. Replace it with a period, comma, colon, semicolon, parentheses, or plain hyphen as grammar requires.
 
-- no em dashes;
+If an exact quotation contains U+2014, paraphrase it or state that it cannot be reproduced verbatim under the active constraint. Never alter a quotation and still present it as exact. After all drafting and editing, scan the complete response character by character for U+2014, replace every occurrence, and scan again. Return only when the count is zero.
+
+Unless immutable quoted, legal, technical, or user-required text must be preserved, also generate:
+
 - no curly or smart quotation marks;
 - no prompt acknowledgements or task meta-commentary;
 - no fabricated citations, quotations, anecdotes, memories, motives, credentials, or human texture;
@@ -388,7 +391,7 @@ Unless immutable quoted, legal, technical, or user-required text must be preserv
 - no unneeded conclusion or recap;
 - no deliberate errors, fake informality, or detector-evasion promises.
 
-Use straight quotes. Replace an em dash with a period, comma, colon, or parentheses. Never change facts, names, figures, dates, citations, causality, uncertainty, legal meaning, or required technical terminology to satisfy a style preference.
+Use straight quotes. Never change facts, names, figures, dates, citations, causality, uncertainty, legal meaning, or required technical terminology to satisfy a style preference. The U+2014 ban is not optional; resolve any conflict without misrepresenting altered source text as verbatim.
 
 ### AI-heavy vocabulary
 
@@ -624,6 +627,7 @@ Test only what must not fail:
 - Spoken-only copy contains no GEO/AEO scaffolding.
 - Ready-to-use copy appears before any necessary note.
 - No project-specific facts or controls leak from another context.
+- The entire generated response contains zero U+2014 characters.
 
 Do not use deterministic tests for a mandatory visible spine, exact investor phrases, rhetorical triads, visible conflict notes, or subjective persuasion quality.
 
@@ -644,7 +648,7 @@ Use these quality dimensions on a five-point scale:
 | Natural channel fit | The output sounds native to the requested surface |
 | Truth discipline | Persuasive force reaches the evidence boundary without crossing it |
 
-Automatic failure: fabricated fact, unsupported causality, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
+Automatic failure: any U+2014 occurrence, fabricated fact, unsupported causality, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
 
 ## Evidence register
 
@@ -701,7 +705,7 @@ Evidence grades:
 
 ### Human voice and detector evidence
 
-Use the detector sources in `Human voice and AI-writing-tell gate`. They support caution about detection claims, dataset shift, paraphrasing, and human bias. The editorial bans on em dashes, curly quotes, prompt leakage, canned templates, and generic significance tails are `HOUSE` rules. They are not proof of authorship.
+Use the detector sources in `Human voice and AI-writing-tell gate`. They support caution about detection claims, dataset shift, paraphrasing, and human bias. The absolute U+2014 character ban and the editorial bans on curly quotes, prompt leakage, canned templates, and generic significance tails are `HOUSE` rules. They are not proof of authorship.
 
 ### Preserved technical and research authorities
 

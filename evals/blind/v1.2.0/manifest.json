@@ -21,6 +21,7 @@
     "swap_order": true,
     "escalate_on_order_flip": true,
     "absolute_vetoes": [
+      "em-dash",
       "fabricated-fact",
       "unsupported-causality",
       "context-leakage",

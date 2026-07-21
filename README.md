@@ -160,7 +160,7 @@ Agora builds the argument before it runs publication and style checks. Those che
 - Unsupported claims are narrowed or removed, not buried under a disclaimer.
 - Facts, inference, interpretation, aspiration, and promises remain distinct.
 - GEO/AEO improves written clarity and evidence structure after the argument exists.
-- Human-voice cleanup removes prompt leakage, canned templates, generic significance tails, generated em dashes, and smart quotes.
+- Human-voice cleanup removes prompt leakage, canned templates, generic significance tails, and smart quotes. A separate hard invariant bans U+2014 from the entire generated response, including copied text and commentary, with a mandatory final character scan.
 - Necessary factual series survive the cleanup.
 - One ready-to-use result comes first. Near-duplicate variants appear only when requested.
 
