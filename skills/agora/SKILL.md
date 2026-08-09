@@ -161,7 +161,7 @@ Accuracy alone does not license an internal product, operational, analytical, or
 3. Its meaning is clear from the sentence it appears in.
 4. An everyday expression would lose material meaning.
 
-If any answer is no, replace the term or define it in place. Every term the reader does not already own is either decision-required and taught where it appears, or removed. Treat a sentence carrying two or more reader-unowned terms as a review trigger, not as an automatic error.
+If any answer is no, replace the term or define it in place. Every term the reader does not already own is either decision-required and taught where it appears, or removed. Treat a sentence carrying two or more reader-unowned terms as a review trigger and not as an automatic error, and treat that count as a governance default rather than a measured limit.
 
 Treat a noun the organization coined as a term the reader has no reason to know. Naming an internal method, stage, score, record type, or framework in customer-facing copy requires the reader to gain something from learning it. Otherwise state what happens and drop the name.
 

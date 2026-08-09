@@ -227,7 +227,7 @@ test("the first-read gate is operational, not a symptom list", () => {
 
   const citability = extractSection(reference, "Written GEO/AEO and citability");
   assert.match(citability, /None of them may raise decoding effort/);
-  assert.match(citability, /The unit is the passage of two or three sentences, not the individual sentence/);
+  assert.match(citability, /The unit is the passage, not the individual sentence, and no sentence count defines it/);
 });
 
 test("CTAs name an action and a destination, never a mood", () => {
@@ -259,6 +259,40 @@ test("CTAs name an action and a destination, never a mood", () => {
     extractSection(reference, "Evaluation contract"),
     /First-read comprehension cannot be tested deterministically/,
   );
+});
+
+test("the evidence register blocks the highest-traffic myths by name", () => {
+  const register = extractSection(reference, "Evidence register");
+  assert.ok(register.includes("### Myths this document must never assert"));
+
+  const myths = extractSection(reference, "Myths this document must never assert", 3);
+  for (const blocked of [
+    "A fixed share of readers reads the headline and not the body",
+    "Any fixed optimal headline, title, or subject length",
+    "first-person button copy beats second-person copy",
+    "call to action must sit above the fold",
+    "one call to action per page always outperforms several",
+    "slogan-shaped labels convert worse as a class",
+    "copy should target a fixed reading grade",
+    "must create a new category to win",
+    "people buy on emotion and justify with logic",
+    "losses are twice as powerful as gains",
+    "open loops make copy more memorable",
+    "fear appeals backfire as a general rule",
+    "passive voice is bad",
+    "self-contained passage is a fixed number of sentences",
+    "AI-detector score establishes authorship",
+  ]) {
+    assert.ok(myths.includes(blocked), `myth guard is missing: ${blocked}`);
+  }
+  assert.match(myths, /may be written as a rule here, in any reference, or in generated copy/);
+  assert.match(myths, /check it there first/);
+
+  const invariants = extractSection(reference, "Deterministic invariants", 3);
+  assert.match(invariants, /That run length is a governance default, not a measured threshold/);
+
+  const gate = extractSection(reference, "The specialized-term gate", 3);
+  assert.match(gate, /There is no evidence-backed limit on unfamiliar terms per sentence/);
 });
 
 test("U+2014 is an immutable whole-response veto", () => {

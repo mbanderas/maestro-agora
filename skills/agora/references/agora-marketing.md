@@ -65,7 +65,7 @@ Two conflicts inside this hierarchy have repeatedly produced correct, unusable c
 
 **Qualification against comprehension.** Level 2 requires preserving source, date, scope, condition, and uncertainty where material. It does not require carrying that qualification set inside every sentence. Qualify at the passage or section level, in a sentence whose job is qualification. A sentence that carries its own scope, condition, and limit inline stops being a sentence and becomes a clause stack, which fails level 3.
 
-**Citability against comprehension.** `Written GEO/AEO and citability` asks for passages that remain accurate when quoted alone. The unit is the passage, not the sentence. Self-containment is achieved by keeping two or three sentences together, not by compressing a paragraph of context into one self-sufficient clause. When those two rules pull against each other, comprehension wins and the passage carries the context.
+**Citability against comprehension.** `Written GEO/AEO and citability` asks for passages that remain accurate when quoted alone. The unit is the passage, not the sentence. Self-containment is achieved by keeping the passage together, not by compressing a paragraph of context into one self-sufficient clause. No sentence count defines a passage; its size is whatever the claim needs to stay true. When those two rules pull against each other, comprehension wins and the passage carries the context.
 
 Level 5 contains its own trap. Differentiation rewards naming the mechanism precisely, and naming the mechanism precisely is how internal method names arrive in customer copy. Precision about what the product does is required. Exposing the name the organization gave that method is not.
 
@@ -459,7 +459,7 @@ If proof is missing, narrow or omit the premise. Add a concise blocker note only
 
 ## Short, medium, and long forms
 
-Length is a channel constraint, not a persuasion doctrine.
+Length is a channel constraint, not a persuasion doctrine. The three word counts below are governance defaults that mark where the treatment changes; no evidence establishes a length optimum, and an asset that falls between two bands takes whichever treatment its channel needs.
 
 ### Very short: one line to about 35 words
 
@@ -787,7 +787,7 @@ These rules sit at level 7 of the conflict hierarchy. None of them may raise dec
 - Answer the central question early when the format calls for it.
 - Name the subject, entity, category, scope, and time frame clearly.
 - Keep proof and qualifications near the claims they govern, in their own sentences. Near does not mean inside.
-- Write self-contained passages that remain accurate when quoted alone. The unit is the passage of two or three sentences, not the individual sentence. Do not load one clause with the context of its neighbours in order to make it quotable on its own. A passage that has to be read as a unit is correct; a sentence that has to be decoded as a specification is not.
+- Write self-contained passages that remain accurate when quoted alone. The unit is the passage, not the individual sentence, and no sentence count defines it: passage size is task-dependent and is settled by the semantic test in `Required comprehension tests`. Do not load one clause with the context of its neighbours in order to make it quotable on its own. A passage that has to be read as a unit is correct; a sentence that has to be decoded as a specification is not.
 - Expose genuine provenance, sources, authorship, dates, and methods.
 - Add information value rather than paraphrasing a common consensus.
 - Use descriptive headings and labels that match the content beneath them.
@@ -1175,7 +1175,7 @@ Test only what must not fail:
 - No call to action is drawn from the slogan-shaped list in `CTA standard`.
 - One action carries one label across a single deliverable.
 - Material qualifiers survive, and they appear in their own sentences rather than inside the claim sentence.
-- Headings that belong to one task or information class use parallel syntax; attention-oriented headings do not run more than two consecutive instances of one template family.
+- Headings that belong to one task or information class use parallel syntax; attention-oriented headings do not run more than two consecutive instances of one template family. That run length is a governance default, not a measured threshold.
 
 Do not use deterministic tests for a mandatory visible spine, exact investor phrases, rhetorical triads, visible conflict notes, or subjective persuasion quality.
 
@@ -1296,6 +1296,35 @@ What was adopted from it, and on what basis:
 What was refused and stays refused: every vendor-reported split-test figure in that pass, the claim that one CTA wording doubles conversions, the claim that superlatives destroy credibility, the rule that a comma signals a sentence needing to be broken, the read-aloud-in-a-false-accent variant, the customer-interview count offered as a sufficiency threshold, and category creation as a strategy. None of these may be written as a rule here.
 
 Two conflicts from that pass are open and stay open. Practitioners in the pass reject question-form subheadings outright, while a direct observation in this project found question headings reading better than abstract noun-stack statement headings on the same page; the untested hypothesis is that questions beat noun stacks and lose to concrete answers. Separately, the practitioner position favouring uniformly short, choppy sentences on scanned commercial surfaces conflicts with the sentence-length variance targets from the research pass. Neither side of either conflict is graded above D. Do not resolve either by writing a rule.
+
+### Myths this document must never assert
+
+These circulate constantly, arrive with a number attached, and are the most likely things a future editor reintroduces by accident. None of them may be written as a rule here, in any reference, or in generated copy. Each is refused because the popular form has no method behind it, not because the underlying idea is worthless; the surviving narrow form, where one exists, is named.
+
+| Never assert | What may be said instead |
+|---|---|
+| A fixed share of readers reads the headline and not the body, in any ratio | Nothing. No sampling frame or study travels with any version of it. |
+| Any fixed optimal headline, title, or subject length in words or characters | Front-load the discriminating information, because rendering surfaces truncate the tail. |
+| That odd numbers, power words, punctuation marks, or button colours carry a percentage lift | Wording and design effects are real and contextual, and none of these is a measured constant. |
+| That first-person button copy beats second-person copy | Pronoun framing is a test variable. The famous comparison had no pronounless arm and no located replication. |
+| That a call to action must sit above the fold | First-viewport content receives disproportionate attention. Placement is not thereby a rule. |
+| That one call to action per page always outperforms several | One campaign goal is a design doctrine. Repeated instances of one action are not competing actions. |
+| That slogan-shaped labels convert worse as a class | Reject them for operational ambiguity, which is observable. |
+| That copy should target a fixed reading grade | Readability scores are a coarse alarm and never a definition of comprehension. |
+| That buyers complete a fixed percentage of the purchase before contacting a seller | The figure varies by study, sample, and definition, and the popular version conflates three different statistics. |
+| That a company must create a new category to win | Category framing has cognitive evidence. Compulsory category invention does not. |
+| That people buy on emotion and justify with logic | No source measures the ordering. |
+| That stories are a stated multiple more memorable than facts | Narrative effects are real and modest, and statistical evidence has often won direct comparisons. |
+| That losses are twice as powerful as gains, applied to copy | Reference-dependent evaluation occurs. Framing differences in messages are commonly tiny, null, or in favour of gain framing. |
+| That a stated percentage of purchase decisions is subconscious | The figure describes general cognition, not purchases. |
+| That unresolved open loops make copy more memorable | The memory advantage did not survive meta-analysis. Use real, closable information gaps. |
+| That fear appeals backfire as a general rule | High threat with inadequate efficacy increases defensive responding. Net effects are positive on average, which licenses nothing. |
+| That average sentence length should sit under a fixed ceiling | Cadence targets in this library are governance defaults and say so. |
+| That passive voice is bad | Passive voice changes information structure. Measure its rate by register. |
+| That a self-contained passage is a fixed number of sentences | Self-containment is a semantic property, tested by `Required comprehension tests`. |
+| That an AI-detector score establishes authorship | Detector reliability is domain-dependent, degrades under obfuscation, and is biased against non-native English writing. |
+
+The full block list, with lineage and adjudication for each entry, is maintained outside the published skill. Before adding any rule that sounds familiar, check it there first.
 
 ### Human voice and detector evidence
 

@@ -225,6 +225,7 @@ async function main() {
     "### Necessary enumeration",
     "## Evaluation contract",
     "## Evidence register",
+    "### Myths this document must never assert",
     "## Evidence maintenance",
     "Keep factual enumeration when the list itself is diagnostic",
     "derive the opening from the mechanism's verified trigger",
