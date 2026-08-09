@@ -1,0 +1,46 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # OIDC token for npm trusted publishing
+
+jobs:
+  npm:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      # Trusted publishing needs npm 11.5.1 or later. Node 24 already ships a
+      # newer npm than that, so this only guards against the bundled version
+      # moving backwards.
+      - name: Ensure npm supports trusted publishing
+        run: npm install -g npm@latest
+
+      # A release tag that disagrees with package.json would publish a version
+      # nobody tagged. Fail before the registry sees it.
+      - name: Check the tag matches package.json
+        if: github.event_name == 'release'
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          packaged="$(node -p 'require("./package.json").version')"
+          if [ "$tag" != "$packaged" ]; then
+            echo "tag $GITHUB_REF_NAME does not match package.json $packaged"
+            exit 1
+          fi
+
+      # No NODE_AUTH_TOKEN. Authentication is the OIDC token above, and
+      # provenance is attached automatically on GitHub Actions.
+      # prepublishOnly runs validate, the test suite, and pack:check.
+      - run: npm publish
