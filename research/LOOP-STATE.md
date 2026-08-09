@@ -36,7 +36,7 @@ Append one line per iteration. Never rewrite history.
 
 None. The loop is complete.
 
-The one substantive gap left open by design: `references/agora-voice.md` specifies what to measure and when to refuse certification, but no measurement code exists. Until it does, `voice build` and `voice check` are specifications rather than working commands. Recorded in `research/FINAL-REPORT.md` under what remains untestable.
+The one substantive gap left open by design has since been closed. `references/agora-voice.md` specifies what to measure and when to refuse certification, and `scripts/voice-measure.mjs` with the modules under `scripts/voice/` now implements it as the `agora-voice` command, so `voice build` and `voice check` are working commands rather than specifications. All four admission gates run before a profile is certified. What remains is recorded in `research/FINAL-REPORT.md` under what remains untestable: no test can establish that a certified profile reads as the author, only that its numbers were computed from a corpus that cleared the gates.
 
 ## Do not repeat these mistakes
 

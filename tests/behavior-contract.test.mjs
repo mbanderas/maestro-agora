@@ -471,6 +471,13 @@ test("the voice reference measures, stores outside the skill, and refuses impers
   assert.match(storage, /~\/\.agora\/voices\/<slug>\.md/);
   assert.match(storage, /Never inside the skill directory/);
   assert.match(storage, /replaces the installed skill directory/);
+  assert.match(storage, /<slug>\.measurements\.json/);
+  assert.match(storage, /truncated hashes of each token run rather than as text/);
+
+  const surface = extractSection(voice, "What VOICE is");
+  assert.match(surface, /npx -p @maestroagora\/agora agora-voice build/);
+  assert.match(surface, /A profile the engine did not produce is not a profile/);
+  assert.match(surface, /Binary document formats are refused by name/);
 
   const corpus = extractSection(voice, "Corpus admission");
   assert.match(corpus, /clean author-controlled words/);
@@ -509,6 +516,11 @@ test("SKILL.md carries VOICE as a modifier with its exception written down", () 
   assert.match(job, /`VOICE` is the exception to selecting one mode/);
   assert.match(job, /`--voice <name>` loads a measured author profile/);
   assert.match(job, /Profiles are stored at `~\/\.agora\/voices\/`, never inside the skill directory/);
+  assert.match(job, /Apply the default profile to every mode/);
+  assert.match(job, /`--no-voice` or `neutral` \| Load no profile at all/);
+  assert.match(job, /Default-on changes nothing above level 6/);
+  assert.match(job, /Measurement is computed, never estimated from reading/);
+  assert.match(job, /a file that the engine did not produce is not a profile/);
 
   const conflicts = extractSection(skill, "Resolve conflicts");
   assert.match(conflicts, /An active voice profile enters at level 6/);
@@ -618,6 +630,8 @@ test("blind evaluation corpus tests invariants without expected-answer leakage",
     "reader-state-mismatch",
     "emotion-without-outcome-data",
     "voice-profile-adherence",
+    "voice-build-from-corpus",
+    "voice-owned-vocabulary-vs-tell-gate",
     "orientation-without-taxonomy",
   ]);
   const ids = new Set(manifest.cases.map((item) => item.id));

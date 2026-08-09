@@ -4,7 +4,8 @@
   "description": "Install Maestro: Agora for argument-first buyer, investor, positioning, editorial, interface, and spoken copy grounded in verified facts.",
   "type": "module",
   "bin": {
-    "agora": "scripts/install.mjs"
+    "agora": "scripts/install.mjs",
+    "agora-voice": "scripts/voice-measure.mjs"
   },
   "files": [
     ".agents/plugins/marketplace.json",
@@ -17,13 +18,15 @@
     "assets/icon.png",
     "assets/maestro-agora-banner.png",
     "scripts/install.mjs",
+    "scripts/voice-measure.mjs",
+    "scripts/voice",
     "skills/agora"
   ],
   "scripts": {
     "check": "npm run validate && npm test && npm run pack:check",
     "pack:check": "node scripts/pack-check.mjs",
     "prepublishOnly": "npm run check",
-    "test": "node --test tests/behavior-contract.test.mjs tests/install.test.mjs",
+    "test": "node --test tests/behavior-contract.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
     "validate": "node scripts/validate.mjs"
   },
   "engines": {

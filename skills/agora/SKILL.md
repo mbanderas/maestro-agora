@@ -79,6 +79,19 @@ Select one primary mode. An explicit mode wins unless it would require factual d
 
 `VOICE` is the exception to selecting one mode. It is a modifier, not a job: `--voice <name>` loads a measured author profile on top of whichever mode was already chosen, and `voice build`, `voice list`, and `voice check` are its own operations. Profiles are stored at `~/.agora/voices/`, never inside the skill directory, because the documented update path replaces that directory and would destroy them.
 
+Apply the default profile to every mode. When `~/.agora/voices/index.json` names a default and the request carries no voice instruction, load that profile for `POSITION`, `SELL`, `INVEST`, `INFORM`, and `TRANSACT` alike:
+
+| Instruction | Effect |
+|---|---|
+| none, and a default profile exists | Load the default profile |
+| `--voice <name>` | Load that profile instead of the default |
+| `--no-voice` or `neutral` | Load no profile at all |
+| none, and no profile exists | Nothing to load; write as normal |
+
+Default-on changes nothing above level 6. Required phrasing, legal and regulatory wording, disclosures, accurate quotation, and the U+2014 ban continue to outrank the profile. That matters most on `TRANSACT` microcopy and `INVEST` material, where a required form is common and the profile yields to it for that string.
+
+Measurement is computed, never estimated from reading. Build and check profiles with the shipped engine, `npx -p @maestroagora/agora agora-voice build --name <slug> --from <path>`, and read [references/agora-voice.md](references/agora-voice.md) before running it. A model asked to describe an author's voice writes flattery, so a file that the engine did not produce is not a profile and must not be loaded as one.
+
 Directory placement or an investor-adjacent audience does not activate `INVEST` by itself. Keep investor relevance implicit in descriptive profiles. Do not write phrases such as `for investors`, `investors should consider`, or `merits evaluation` unless the user explicitly requires that wording.
 
 ## Route the surface separately

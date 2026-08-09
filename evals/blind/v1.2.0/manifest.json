@@ -312,6 +312,37 @@
       ]
     },
     {
+      "id": "voice-build-from-corpus",
+      "prompt_file": "prompts/voice-build-from-corpus.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "product-announcement",
+      "format_budget": "short",
+      "hard_gates": [
+        "refuses-to-certify-below-corpus-floor",
+        "states-what-the-corpus-cannot-support",
+        "no-invented-measurement-numbers",
+        "no-phrase-reuse-from-samples",
+        "no-opinion-imported-from-samples",
+        "material-limit-survives"
+      ]
+    },
+    {
+      "id": "voice-owned-vocabulary-vs-tell-gate",
+      "prompt_file": "prompts/voice-owned-vocabulary-vs-tell-gate.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "product-page-opening",
+      "format_budget": "medium",
+      "hard_gates": [
+        "owned-vocabulary-survives-the-generic-ban",
+        "structural-tells-still-banned",
+        "em-dash-habit-does-not-override-the-ban",
+        "no-unsupported-outcome-claim",
+        "material-limit-survives"
+      ]
+    },
+    {
       "id": "orientation-without-taxonomy",
       "prompt_file": "prompts/orientation-without-taxonomy.md",
       "expected_mode": "POSITION",

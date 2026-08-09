@@ -23,7 +23,7 @@ Voice is a modifier, never a licence. It changes how a supported proposition is 
 The surface:
 
 ```text
-voice build --name <slug> --from <corpus path>
+voice build --name <slug> --from <corpus path or URL>
   Reads the corpus, measures it, writes the profile, and reports both what it
   measured and what the corpus was too small or too narrow to measure.
 
@@ -37,13 +37,28 @@ voice check --voice <slug> <draft path>
   Measures the draft against the profile and reports the drift, largest first.
 ```
 
+Every one of these runs through the shipped measurement engine rather than through model judgment:
+
+```text
+npx -p @maestroagora/agora agora-voice build --name <slug> --from <path> [--from <path>]...
+npx -p @maestroagora/agora agora-voice list
+npx -p @maestroagora/agora agora-voice check --voice <slug> <draft path>
+npx -p @maestroagora/agora agora-voice default --voice <slug>
+```
+
+`--register <name>` labels every `--from` that follows it, `--store <path>` overrides the profile directory, and `--json` returns machine-readable output. Markdown, plain text, and HTML are read. Binary document formats are refused by name rather than partially extracted, because every admission threshold counts clean words and a partial extraction would move all of them without saying so.
+
 `voice build` is a measurement task, not a description task. A model asked to describe an author's voice writes flattery. The profile leads with numbers computed from the corpus, because a number is checkable and a later draft can be measured against it. Adjectives belong in the interpretation sections, underneath the measurements they interpret.
+
+**A profile the engine did not produce is not a profile.** Do not write one by reading a corpus and describing what you notice, and do not load a hand-written file as though it were measured. Where the engine cannot run, say so and work without a profile.
 
 **Boundary:** the measurement is only as good as the pipeline. Stylometric values move when the tokenizer, sentence segmenter, parser, or normalization rules change ([Grieve](https://doi.org/10.1093/llc/fqm020)). Freeze the pipeline in the profile and use the identical one when checking a draft. A comparison across two pipelines is not a comparison.
 
 ## Where profiles live
 
 Profiles are stored at `~/.agora/voices/<slug>.md`, with `~/.agora/voices/index.json` as the registry. Never inside the skill directory.
+
+A third file, `~/.agora/voices/<slug>.measurements.json`, carries the machine-readable feature values that `voice check` compares against, so the human-readable profile never has to be parsed back. It also carries the phrase-overlap index as truncated hashes of each token run rather than as text, so the profile store never becomes a second copy of the author's corpus and cannot serve as a phrase reservoir.
 
 This is not a preference. The documented update path replaces the installed skill directory, so a profile written under `~/.claude/skills/agora/` or `~/.agents/skills/agora/` is destroyed on the next update, silently, and the user loses hours of work. `~/.agora/` also survives switching hosts, so a profile built under one client is available from another, which matches how the package already installs to both.
 
@@ -68,7 +83,7 @@ Four structural requirements sit on top of the word count. Each is a **governanc
 
 - **Document independence.** Require at least 10 independently composed documents, with no single document supplying more than 25 percent of the clean tokens. Governance default. A single long article is not equivalent to many independent samples, because cross-document stability is the thing being measured.
 - **Register subprofiles.** A register earns its own numbers only at 2,500 clean words across at least 3 independent documents. Governance default. Below that, record qualitative observations and mark every number provisional.
-- **Feature stability.** A candidate global feature fails persistence when register accounts for more than 30 percent of its document-level variance, or when deleting one document moves its pooled estimate by more than 20 percent. Both figures are governance defaults. A failing feature moves into a register override or is dropped.
+- **Feature stability.** A candidate global feature fails persistence when register accounts for more than 30 percent of its document-level variance, or when deleting one document moves its pooled estimate by more than 20 percent. Both figures are governance defaults. A failing feature moves into a register override or is dropped. The variance rule is skipped for a feature whose spread across the whole corpus is under 5 percent of its own pooled value, because a feature that barely moves has no meaningful spread for register to explain and the ratio becomes unstable at that scale. That 5 percent is also a governance default.
 - **Heterogeneity stop.** Mark the corpus not profileable as one voice when more than a third of the proposed core features fail the stability rule, when collaborative or editorial authorship cannot be separated, or when the clean corpus falls below the certification floor after exclusions. Offer to build two profiles rather than averaging two registers into a voice that belongs to nobody. Governance default.
 
 **Rule [B]: separate stable author effects from topic and register before calling anything voice.** Topic-specific information contaminates authorship features, and situation-conditioned variation is a large part of what stylometry actually measures ([Stamatatos](https://aclanthology.org/E17-1107/), [Grieve](https://doi.org/10.1515/cllt-2022-0040)). **Boundary:** a writer who only ever writes one narrow genre cannot supply enough variation to separate personal voice from that genre. Label the profile genre-bound and say so in `## Not captured`.
@@ -117,14 +132,16 @@ updated: <date>
 corpus:
   documents: <count>
   clean_words: <count>
-  genres: [<genre>, <genre>]
-  date_range: <start> to <end>
-  excluded: [<what was removed and why>]
+  raw_words: <count>
+  registers: [<register>, <register>]
+  excluded: [<what the cleaning removed, with counts>]
 pipeline:
-  tokenizer: <frozen implementation and version>
-  segmenter: <frozen implementation and version>
-  parser: <frozen implementation and version>
+  tokenizer: "<frozen implementation and version>"
+  segmenter: "<frozen implementation and version>"
+  lexicon: "<frozen implementation and version>"
+  parser: "<frozen implementation and version>"
 confidence: low | medium | production
+certified: true | false
 ---
 
 # Voice profile: <slug>

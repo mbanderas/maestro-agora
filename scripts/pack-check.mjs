@@ -20,22 +20,40 @@ const EXPECTED = [
   "assets/maestro-agora-banner.png",
   "package.json",
   "scripts/install.mjs",
+  "scripts/voice-measure.mjs",
+  "scripts/voice/check.mjs",
+  "scripts/voice/features.mjs",
+  "scripts/voice/gates.mjs",
+  "scripts/voice/ingest.mjs",
+  "scripts/voice/lexicon.mjs",
+  "scripts/voice/pipeline.mjs",
+  "scripts/voice/profile.mjs",
   "skills/agora/SKILL.md",
   "skills/agora/agents/openai.yaml",
+  "skills/agora/references/agora-craft.md",
   "skills/agora/references/agora-marketing.md",
+  "skills/agora/references/agora-voice.md",
 ].sort();
 
 const cache = await mkdtemp(join(tmpdir(), "agora-npm-pack-"));
 try {
   const npmCli = process.env.npm_execpath;
-  const command = npmCli ? process.execPath : process.platform === "win32" ? "npm.cmd" : "npm";
-  const args = npmCli
-    ? [npmCli, "pack", "--dry-run", "--json", "--ignore-scripts", "--cache", cache]
-    : ["pack", "--dry-run", "--json", "--ignore-scripts", "--cache", cache];
+  const packArgs = ["pack", "--dry-run", "--json", "--ignore-scripts", "--cache", cache];
+  // Node refuses to spawn a .cmd shim without a shell on Windows, so the direct
+  // invocation falls back to one quoted command string. Running through npm
+  // takes the npm_execpath branch and needs no shell at all.
+  const useShell = !npmCli && process.platform === "win32";
+  const command = npmCli
+    ? process.execPath
+    : useShell
+      ? ["npm.cmd", ...packArgs].map((part) => (part.includes(" ") ? `"${part}"` : part)).join(" ")
+      : "npm";
+  const args = npmCli ? [npmCli, ...packArgs] : useShell ? undefined : packArgs;
   const result = spawnSync(command, args, {
     cwd: ROOT,
     encoding: "utf8",
     windowsHide: true,
+    shell: useShell,
   });
   if (result.error) throw result.error;
   assert.equal(result.status, 0, result.stderr || result.stdout);

@@ -204,11 +204,32 @@ skills/agora/
 
 Profiles are stored at `~/.agora/voices/`, deliberately outside the skill directory, because the documented update path replaces that directory and would destroy them. Voice enters at level 6 of the conflict hierarchy: it never licenses an unsupported claim, never overrides required or legal phrasing, and never overrides the em-dash ban. It carries exactly one exception, written down because the alternative is a gate that strips the voice it was loaded to keep: a profile's measured owned-vocabulary list suppresses the generic AI-vocabulary ban for those specific words only. Building or applying a third-party profile for publication under that person's name is refused.
 
+### Building a voice profile
+
+Measurement is computed by a shipped engine, not estimated by the model, because a model asked to describe an author's voice writes flattery:
+
+```sh
+npx -p @maestroagora/agora agora-voice build --name house \
+  --register blog --from ./posts \
+  --register email --from ./letters
+
+npx -p @maestroagora/agora agora-voice list
+npx -p @maestroagora/agora agora-voice check --voice house ./draft.md
+```
+
+The engine reads Markdown, plain text, and HTML from files, directories, and URLs. It refuses binary document formats by name rather than extracting them partially, because every admission threshold counts clean author-controlled words and a partial extraction would move all of them silently. Quotations, code, tables, signatures, front matter, and headings are stripped before anything is counted, and the profile records what the cleaning removed.
+
+It measures nine feature families: sentence length with percentiles and binned shape, clause structure as a labelled conjunction proxy, function words, punctuation, paragraph shape, lexical diversity by moving-window and decay-based measures, person and stance, sentence openings, and contraction rate scoped to contexts where both forms were grammatical. Raw type-token ratio is withheld by rule, since it falls mechanically as texts grow. Anything the corpus cannot support is written as insufficient data.
+
+Four admission gates run before a profile is certified: at least 10 independent documents with none above 25 percent of clean tokens, 2,500 clean words across 3 documents before a register earns its own numbers, a two-part feature stability rule, and a heterogeneity stop that offers two profiles rather than averaging two registers into a voice belonging to nobody. Below 5,000 clean words nothing is written at all and the tool reports what the corpus needs.
+
+Once a default profile exists, it applies to every mode. Opt out per request with `--no-voice` or `neutral`, or name a different profile with `--voice <name>`.
+
 ## Change record
 
 | Version | What changed |
 |---|---|
-| 1.3.0 | Two new references. `references/agora-craft.md` covers headlines and titles per publishing surface, awareness and sophistication staging with its routing table, emotion written from a fact set that carries no outcome data, and prose rhythm. `references/agora-voice.md` adds the `VOICE` modifier: measured author profiles stored outside the skill directory, a refusal floor below 5,000 clean author-controlled words, level-6 placement in the conflict hierarchy, the owned-vocabulary exception to the AI-vocabulary ban, and a refusal for third-party profiling intended for publication under that person's name. The Evidence register gains `Myths this document must never assert`, naming twenty-one high-traffic myths with what may be said instead. Four new applied pairs and six reworked, covering category orientation, superlative against specific, a label that overstates its click, and heading variety across one page. Blind eval corpus grows from 21 cases to 26. Two internal contradictions removed: the two-or-three-sentence passage unit that the same document had already refuted, and an unlabelled numeric threshold in the deterministic invariants. |
+| 1.3.0 | `VOICE` becomes executable. A deterministic measurement engine ships as the `agora-voice` command: a frozen tokenizer, sentence segmenter, and lexicon; ingestion and cleaning for Markdown, plain text, and HTML from files, directories, and URLs, with binary formats refused by name; nine measured feature families with withheld rather than guessed values; all four corpus admission gates; profile and registry writing under `~/.agora/voices/`; and `voice check` with draft-length bands, register matching, and a phrase-overlap index stored as hashed token runs rather than as corpus text. A default profile now applies to every mode, with `--no-voice` and `neutral` as the opt-outs. Two blind eval cases added for build-from-corpus and the owned-vocabulary-against-tell-gate conflict. Two new references. `references/agora-craft.md` covers headlines and titles per publishing surface, awareness and sophistication staging with its routing table, emotion written from a fact set that carries no outcome data, and prose rhythm. `references/agora-voice.md` adds the `VOICE` modifier: measured author profiles stored outside the skill directory, a refusal floor below 5,000 clean author-controlled words, level-6 placement in the conflict hierarchy, the owned-vocabulary exception to the AI-vocabulary ban, and a refusal for third-party profiling intended for publication under that person's name. The Evidence register gains `Myths this document must never assert`, naming twenty-one high-traffic myths with what may be said instead. Four new applied pairs and six reworked, covering category orientation, superlative against specific, a label that overstates its click, and heading variety across one page. Blind eval corpus grows from 21 cases to 26. Two internal contradictions removed: the two-or-three-sentence passage unit that the same document had already refuted, and an unlabelled numeric threshold in the deterministic invariants. The validator now enumerates files through git's own ignore rules rather than walking the working directory, so scratch that exists only in a working copy no longer decides whether the repository is valid. |
 | 1.2.2 | Hard ban on the U+2014 character across the entire response, enforced as an immutable output constraint rather than a final-copy cleanup. |
 | 1.2.1 | First-read comprehension gate, specialized-term gate, and CTA standard. Comprehension moved above compression, citability, and differentiation in the conflict hierarchy. |
 | 1.2.0 | Blind evaluation corpus with a generation contract, pairwise adjudication, and absolute vetoes. |
