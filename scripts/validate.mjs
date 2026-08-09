@@ -12,6 +12,7 @@ const REQUIRED_SKILL_FILES = [
   "agents/openai.yaml",
   "references/agora-craft.md",
   "references/agora-marketing.md",
+  "references/agora-voice.md",
 ].sort((a, b) => a.localeCompare(b));
 const errors = [];
 
@@ -96,11 +97,13 @@ async function main() {
   const skillPath = join(SKILL_ROOT, "SKILL.md");
   const referencePath = join(SKILL_ROOT, "references", "agora-marketing.md");
   const craftPath = join(SKILL_ROOT, "references", "agora-craft.md");
+  const voicePath = join(SKILL_ROOT, "references", "agora-voice.md");
   const openaiPath = join(SKILL_ROOT, "agents", "openai.yaml");
-  const [skill, reference, craft, openaiYaml] = await Promise.all([
+  const [skill, reference, craft, voice, openaiYaml] = await Promise.all([
     readFile(skillPath, "utf8"),
     readFile(referencePath, "utf8"),
     readFile(craftPath, "utf8"),
+    readFile(voicePath, "utf8"),
     readFile(openaiPath, "utf8"),
   ]);
 
@@ -108,6 +111,7 @@ async function main() {
     ["skills/agora/SKILL.md", skill],
     ["skills/agora/references/agora-marketing.md", reference],
     ["skills/agora/references/agora-craft.md", craft],
+    ["skills/agora/references/agora-voice.md", voice],
     ["skills/agora/agents/openai.yaml", openaiYaml],
   ]) {
     check(!content.includes("\r\n"), `${file} must use LF line endings`);
@@ -148,7 +152,13 @@ async function main() {
     "Return only after the count is zero",
     "[references/agora-marketing.md](references/agora-marketing.md)",
     "[references/agora-craft.md](references/agora-craft.md)",
+    "[references/agora-voice.md](references/agora-voice.md)",
     "Load the authority progressively",
+    "`VOICE` is the exception to selecting one mode",
+    "Profiles are stored at `~/.agora/voices/`, never inside the skill directory",
+    "An active voice profile enters at level 6",
+    "never overrides the U+2014 ban",
+    "Refuse to build or apply a voice profile of a named third party",
     "Do not confuse mode with surface",
     "Directory placement or an investor-adjacent audience does not activate `INVEST` by itself",
     "situation -> stake -> criterion or broken assumption when useful -> mechanism -> proof -> destination belief -> next step",
@@ -253,6 +263,27 @@ async function main() {
     check(craft.includes(required), `craft reference is missing: ${required}`);
   }
 
+  for (const required of [
+    "## What VOICE is",
+    "## Where profiles live",
+    "## Corpus admission",
+    "## What gets measured",
+    "## The profile format",
+    "## Writing to a profile",
+    "## Voice against the tell gate",
+    "## Checking adherence",
+    "## Refusals",
+    "### The owned-vocabulary exception",
+    "`~/.agora/voices/<slug>.md`, with `~/.agora/voices/index.json`",
+    "Refuse to certify a profile",
+    "Voice never overrides the U+2014 ban",
+    "suppresses the generic AI-vocabulary ban for those specific words, and only those",
+    "publication under that person's name",
+    "governance default",
+  ]) {
+    check(voice.includes(required), `voice reference is missing: ${required}`);
+  }
+
   check(/^interface:\r?$/m.test(openaiYaml), "agents/openai.yaml must define interface");
   check(openaiYaml.includes('display_name: "Maestro: Agora"'), "agents/openai.yaml has the wrong display name");
   check(openaiYaml.includes('short_description: "Argument-first copy that earns belief"'), "agents/openai.yaml has the wrong short description");
@@ -323,6 +354,7 @@ async function main() {
     "skills/agora/SKILL.md",
     "skills/agora/references/agora-marketing.md",
     "skills/agora/references/agora-craft.md",
+    "skills/agora/references/agora-voice.md",
   ]) {
     const content = await readFile(join(ROOT, file), "utf8");
     check(!/[\u2014\u2018\u2019\u201c\u201d]/.test(content), `${file} contains banned typography`);

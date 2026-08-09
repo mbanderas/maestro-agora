@@ -9,6 +9,7 @@ const SKILL_ROOT = join(ROOT, "skills", "agora");
 const SKILL_PATH = join(SKILL_ROOT, "SKILL.md");
 const REFERENCE_PATH = join(SKILL_ROOT, "references", "agora-marketing.md");
 const CRAFT_PATH = join(SKILL_ROOT, "references", "agora-craft.md");
+const VOICE_PATH = join(SKILL_ROOT, "references", "agora-voice.md");
 const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
 const CODEX_PLUGIN_PATH = join(ROOT, ".codex-plugin", "plugin.json");
 const CLAUDE_PLUGIN_PATH = join(ROOT, ".claude-plugin", "plugin.json");
@@ -19,11 +20,12 @@ const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.2.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, craft, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, linkFixture, manifest] =
+const [skill, reference, craft, voice, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
     readFile(CRAFT_PATH, "utf8"),
+    readFile(VOICE_PATH, "utf8"),
     readFile(OPENAI_PATH, "utf8"),
     readFile(CODEX_PLUGIN_PATH, "utf8").then(JSON.parse),
     readFile(CLAUDE_PLUGIN_PATH, "utf8").then(JSON.parse),
@@ -52,6 +54,10 @@ function extractSection(markdown, heading, level = 2) {
     }
   }
   return lines.slice(start + 1, end).join("\n");
+}
+
+function withoutCodeFences(markdown) {
+  return normalizeNewlines(markdown).replace(/^```[\s\S]*?^```$/gm, "");
 }
 
 function externalUrls(markdown) {
@@ -412,6 +418,79 @@ test("SKILL.md loads the craft reference only when the task needs it", () => {
   assert.match(loading, /Do not load it for routine/);
 });
 
+test("the voice reference measures, stores outside the skill, and refuses impersonation", () => {
+  const headings = [...withoutCodeFences(voice).matchAll(/^## (.+)$/gm)].map((match) => match[1]);
+  assert.deepEqual(headings, [
+    "Contents",
+    "What VOICE is",
+    "Where profiles live",
+    "Corpus admission",
+    "What gets measured",
+    "The profile format",
+    "Writing to a profile",
+    "Voice against the tell gate",
+    "Checking adherence",
+    "Refusals",
+  ]);
+
+  const storage = extractSection(voice, "Where profiles live");
+  assert.match(storage, /~\/\.agora\/voices\/<slug>\.md/);
+  assert.match(storage, /Never inside the skill directory/);
+  assert.match(storage, /replaces the installed skill directory/);
+
+  const corpus = extractSection(voice, "Corpus admission");
+  assert.match(corpus, /clean author-controlled words/);
+  assert.match(corpus, /Under 5,000 \| \*\*Refuse to certify a profile/);
+  assert.match(corpus, /Heterogeneity stop/);
+  for (const governed of ["10 independently composed documents", "25 percent", "30 percent", "20 percent"]) {
+    assert.ok(corpus.includes(governed), `corpus admission is missing ${governed}`);
+  }
+  assert.match(corpus, /Governance default/i);
+
+  const gate = extractSection(voice, "Voice against the tell gate");
+  assert.ok(gate.includes("### The owned-vocabulary exception"));
+  assert.match(gate, /Voice enters at \*\*level 6\*\* of the conflict hierarchy/);
+  assert.match(gate, /Voice never licenses a claim the facts do not support/);
+  assert.match(gate, /Voice never overrides the U\+2014 ban/);
+  assert.match(gate, /suppresses the generic AI-vocabulary ban for those specific words, and only those/);
+  assert.match(gate, /It suppresses the vocabulary ban only/);
+
+  const refusals = extractSection(voice, "Refusals");
+  assert.match(refusals, /Refuse to build or apply a profile of a named third party where the purpose is publication under that person's name/);
+  assert.match(refusals, /False endorsement/);
+  assert.match(refusals, /Fabricated positions/);
+  assert.match(refusals, /decline it rather than negotiate/);
+
+  const adherence = extractSection(voice, "Checking adherence");
+  assert.match(adherence, /Author approval:/);
+  assert.match(adherence, /Never treat a detector score as evidence of authorship/);
+});
+
+test("SKILL.md carries VOICE as a modifier with its exception written down", () => {
+  const loading = extractSection(skill, "Load the authority progressively");
+  assert.match(loading, /\[references\/agora-voice\.md\]\(references\/agora-voice\.md\)/);
+  assert.match(loading, /Do not load it for ordinary human-voice cleanup/);
+
+  const job = extractSection(skill, "Choose the job");
+  assert.match(job, /`VOICE` is the exception to selecting one mode/);
+  assert.match(job, /`--voice <name>` loads a measured author profile/);
+  assert.match(job, /Profiles are stored at `~\/\.agora\/voices\/`, never inside the skill directory/);
+
+  const conflicts = extractSection(skill, "Resolve conflicts");
+  assert.match(conflicts, /An active voice profile enters at level 6/);
+  assert.match(conflicts, /never overrides the U\+2014 ban/);
+  assert.match(conflicts, /the evidence wins and the profile yields for that sentence/);
+
+  const passes = extractSection(skill, "Apply silent final passes");
+  assert.match(passes, /owned-vocabulary list, and only those words, are exempt/);
+  assert.match(passes, /strips the voice it was loaded to keep/);
+  assert.match(passes, /never makes an unsupported claim writable/);
+
+  const truth = extractSection(skill, "Enforce truth and ethical limits");
+  assert.match(truth, /Refuse to build or apply a voice profile of a named third party/);
+  assert.match(truth, /declined rather than negotiated/);
+});
+
 test("v1.0.1 source links remain available", () => {
   assert.equal(linkFixture.source, "v1.0.1:skills/agora/references/agora-marketing.md");
   assert.equal(linkFixture.urls.length, 51);
@@ -421,7 +500,7 @@ test("v1.0.1 source links remain available", () => {
 });
 
 test("public files contain no project-specific residue or temporary citations", () => {
-  const publicText = [skill, reference, craft, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
+  const publicText = [skill, reference, craft, voice, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
   assert.doesNotMatch(publicText, new RegExp(["cite", "surge"].join(""), "i"));
   assert.doesNotMatch(publicText, /turn\d+(?:search|fetch|view|open|file)\d+/i);
   assert.doesNotMatch(publicText, /sandbox:\/\/mnt\/data/i);
@@ -445,6 +524,7 @@ test("metadata matches the v1.2.2 release contract", () => {
   assert.doesNotMatch(skill, /\r\n/);
   assert.doesNotMatch(reference, /\r\n/);
   assert.doesNotMatch(craft, /\r\n/);
+  assert.doesNotMatch(voice, /\r\n/);
   assert.doesNotMatch(openaiYaml, /\r\n/);
   assert.equal(codexPlugin.interface.shortDescription, "Argument-first copy that earns belief");
   assert.ok(

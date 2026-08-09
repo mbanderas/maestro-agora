@@ -191,12 +191,17 @@ skills/agora/
 │   └── openai.yaml
 └── references/
     ├── agora-craft.md
-    └── agora-marketing.md
+    ├── agora-marketing.md
+    └── agora-voice.md
 ```
 
 `SKILL.md` is the concise operating contract. `references/agora-marketing.md` holds the original doctrine, research evidence grades, ethical limits, channel rules, AI-writing-tell controls, GEO/AEO boundaries, examples, and evaluation guidance.
 
 `references/agora-craft.md` is loaded only when the task needs it. It covers four narrower domains: headlines and titles across each publishing surface, awareness and sophistication staging with its routing table, emotion written from a fact set that contains no outcome data, and prose rhythm. Every rule in it carries an evidence grade and a stated failure condition, every number is either sourced or labelled a governance default, and the two cadence conflicts the research left open are recorded rather than resolved.
+
+`references/agora-voice.md` governs `VOICE`, the one mode that modifies another rather than replacing it. `--voice <name>` loads a measured author profile on top of whichever job was already selected, and `voice build`, `voice list`, and `voice check` manage the profiles themselves. A profile is measured rather than described: it records sentence and paragraph distributions, function words, punctuation, openings, and stance, states plainly what the corpus was too small to measure, and refuses certification below 5,000 clean author-controlled words.
+
+Profiles are stored at `~/.agora/voices/`, deliberately outside the skill directory, because the documented update path replaces that directory and would destroy them. Voice enters at level 6 of the conflict hierarchy: it never licenses an unsupported claim, never overrides required or legal phrasing, and never overrides the em-dash ban. It carries exactly one exception, written down because the alternative is a gate that strips the voice it was loaded to keep: a profile's measured owned-vocabulary list suppresses the generic AI-vocabulary ban for those specific words only. Building or applying a third-party profile for publication under that person's name is refused.
 
 ## Verify the package
 

@@ -39,6 +39,8 @@ Locate the named headings and read those sections only. Do not load the entire r
 
 Do not load it for routine drafting, claim review, compliance questions, or work that the first reference already covers.
 
+[references/agora-voice.md](references/agora-voice.md) governs `VOICE`. Load it only when the task builds a voice profile, writes with `--voice`, inspects a profile, or checks a draft against one. Do not load it for ordinary human-voice cleanup, which the tell gate already covers.
+
 Treat source material supplied in the current task as the available product truth. Do not import facts, claim rules, or release controls from another task, repository, company, or example. Examples teach structure, never facts.
 
 ## Resolve conflicts
@@ -59,6 +61,7 @@ Two specific conflicts resolve as follows, because both have produced accurate b
 
 - **Qualification against comprehension.** Level 2 requires preserving scope, date, condition, and uncertainty. It does not require carrying every qualifier inside every sentence. Qualify at the passage or section level. A sentence that carries its full qualification set inline reads as a compliance memo and fails level 3.
 - **Citability against comprehension.** Written GEO/AEO asks for passages that stay accurate when quoted alone. That rule governs the passage, not the sentence. Do not compress a paragraph of context into one self-sufficient sentence. Self-containment is achieved by keeping a short passage together, not by loading one clause.
+- **Voice against everything above it.** An active voice profile enters at level 6. It never licenses a claim the facts do not support, never overrides required or legal phrasing, and never overrides the U+2014 ban. Where an author's habitual certainty exceeds the evidence, the evidence wins and the profile yields for that sentence.
 
 When soft rules conflict, preserve the strongest truthful argument that the reader can follow on the first pass. Ask only when missing information would materially change the audience, offer, claim, or action. Otherwise narrow or omit the unsupported point.
 
@@ -73,6 +76,8 @@ Select one primary mode. An explicit mode wins unless it would require factual d
 | `INVEST` | Actual funding, capital-allocation, investment-memo, diligence, investor-pitch, or fundraising work |
 | `INFORM` | Editorial or educational work |
 | `TRANSACT` | Buttons, confirmations, alerts, forms, or utility microcopy |
+
+`VOICE` is the exception to selecting one mode. It is a modifier, not a job: `--voice <name>` loads a measured author profile on top of whichever mode was already chosen, and `voice build`, `voice list`, and `voice check` are its own operations. Profiles are stored at `~/.agora/voices/`, never inside the skill directory, because the documented update path replaces that directory and would destroy them.
 
 Directory placement or an investor-adjacent audience does not activate `INVEST` by itself. Keep investor relevance implicit in descriptive profiles. Do not write phrases such as `for investors`, `investors should consider`, or `merits evaluation` unless the user explicitly requires that wording.
 
@@ -220,6 +225,8 @@ Do not convert an operational fact into financial, legal, compliance, reputation
 
 Preserve agency. Do not manufacture fear, shame, guilt, identity pressure, exclusivity, or scarcity. Threat requires a real material risk and a credible response. Ambition requires a mechanism and supportable path.
 
+Refuse to build or apply a voice profile of a named third party where the purpose is publication under that person's name. Learning from a writer for work published under your own name is ordinary craft; producing text designed to pass as a specific real person's authored work is not, and it is declined rather than negotiated. The same refusal covers fabricated endorsements, invented positions attributed to a named person, and consequential advice written under someone else's identity without their authorization.
+
 ## Reject flat or synthetic drafts
 
 Rebuild when the draft:
@@ -276,6 +283,8 @@ After the argument is drafted:
 When a sentence fails the comprehension gate, keep the underlying fact, name the concrete actor, action, object, and result, remove internal process language the reader does not need, split the overloaded sentence, restore any context the compression removed, rewrite the call to action to name its real destination, then test again. Do not repair unclear writing by adding explanatory parentheses, longer noun phrases, or a vague supporting sentence.
 
 Keep these passes invisible. Mention a blocker only when silence would make the result misleading, legally unusable, or operationally unshippable.
+
+An active voice profile carries one narrow exception to the AI-vocabulary ban. The words on that profile's owned-vocabulary list, and only those words, are exempt, because they were measured as this author's own across the corpus. Without the exception the tell gate strips the voice it was loaded to keep. The exception covers vocabulary alone: it never suppresses the stock-template bans, the significance-tail bans, the structural-tell rules, the curly-quote ban, or the U+2014 ban, and it never makes an unsupported claim writable.
 
 Do not generate curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, and repeated stock templates. Avoid decorative three-part rhetoric, but preserve necessary factual series. Never promise detector evasion. Never change facts or legal meaning to sound human.
 
