@@ -610,6 +610,15 @@ test("blind evaluation corpus tests invariants without expected-answer leakage",
     "factual-triplet-survives",
     "unsupported-proof",
     "direct-agora-invest",
+    "plain-language-insider-terms",
+    "cta-names-its-destination",
+    "qualifiers-without-clause-stacking",
+    "multi-asset-shape-variance",
+    "headline-set-across-surfaces",
+    "reader-state-mismatch",
+    "emotion-without-outcome-data",
+    "voice-profile-adherence",
+    "orientation-without-taxonomy",
   ]);
   const ids = new Set(manifest.cases.map((item) => item.id));
   for (const id of requiredIds) assert.ok(ids.has(id), `missing regression case: ${id}`);

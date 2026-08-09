@@ -250,6 +250,81 @@
         "cta-destination-named",
         "no-invented-outcome"
       ]
+    },
+    {
+      "id": "headline-set-across-surfaces",
+      "prompt_file": "prompts/headline-set-across-surfaces.md",
+      "expected_mode": "SELL",
+      "expected_surface": "HYBRID",
+      "asset": "headline-set",
+      "format_budget": "mixed",
+      "hard_gates": [
+        "surface-specific-headlines",
+        "heading-shape-variance",
+        "front-loaded-under-truncation",
+        "preview-advances-subject",
+        "no-invented-outcome"
+      ]
+    },
+    {
+      "id": "reader-state-mismatch",
+      "prompt_file": "prompts/reader-state-mismatch.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "landing-hero",
+      "format_budget": "medium",
+      "hard_gates": [
+        "opening-matches-reader-state",
+        "no-coined-term-in-opening",
+        "mechanism-in-plain-language",
+        "material-limit-survives",
+        "commitment-matches-destination"
+      ]
+    },
+    {
+      "id": "emotion-without-outcome-data",
+      "prompt_file": "prompts/emotion-without-outcome-data.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "product-copy",
+      "format_budget": "medium",
+      "hard_gates": [
+        "consequence-from-supplied-mechanics",
+        "no-asserted-feeling",
+        "irreversibility-survives",
+        "no-invented-outcome",
+        "cta-destination-named"
+      ]
+    },
+    {
+      "id": "voice-profile-adherence",
+      "prompt_file": "prompts/voice-profile-adherence.md",
+      "expected_mode": "SELL",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "asset": "newsletter-update",
+      "format_budget": "medium",
+      "hard_gates": [
+        "voice-habits-transferred",
+        "no-phrase-reuse-from-samples",
+        "no-opinion-imported-from-samples",
+        "evidence-outranks-habitual-certainty",
+        "material-limit-survives"
+      ]
+    },
+    {
+      "id": "orientation-without-taxonomy",
+      "prompt_file": "prompts/orientation-without-taxonomy.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "landing-hero",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "reader-owned-category-present",
+        "differentiator-beyond-category",
+        "no-internal-term-exposure",
+        "cta-destination-named",
+        "no-invented-outcome"
+      ]
     }
   ]
 }
