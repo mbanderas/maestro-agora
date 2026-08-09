@@ -870,9 +870,9 @@ Strong:
 >
 > LedgerFlow reconciles purchase orders, invoices, and receipts, then routes the exceptions that need a finance decision.
 >
-> See the reconciliation flow
+> See how a mismatch gets resolved
 
-Why: the hero names a credible stake and mechanism without inventing a result. The factual three-item list is necessary scope.
+Why: the hero names a credible stake and mechanism without inventing a result. The factual three-item list is necessary scope. The label names what the reader will know afterwards rather than the screen they will be moved to, which is the difference between an outcome label and a transition label.
 
 ### Paywall
 
@@ -964,6 +964,8 @@ Strong:
 
 Why: the internal name teaches the reader nothing and costs them a decode. The strong version names the situation the practice owner recognizes and the change that follows. The mechanism survives; only the label is gone.
 
+Boundary: this is a rule about coined nouns, not about technical vocabulary. `Triage`, `controlled drug register`, and `practice management system` are terms a practice owner already shops for, and removing them would cost precision and buy nothing. The test is whether the reader owns the word before arriving, not whether the word is difficult.
+
 ### Abstraction stacking
 
 Verified facts:
@@ -978,7 +980,7 @@ Strong:
 
 > We weigh the shipment at pickup and again at delivery. If the two differ by more than two percent, a person checks it before it moves on.
 
-Why: the weak version contains no actor and four abstract nouns doing the work of two verbs. It is not false, it is undecodable at reading speed. The strong version names who acts, on what, and what triggers the check.
+Why: the weak version is accurate and undecodable at reading speed. Nobody acts in it, nothing happens at a moment, and the threshold that decides everything has disappeared into `alignment`. The strong version names who acts, on what, and what triggers the check. The defect is not the number of abstract nouns, which is not a measure of anything; it is that no actor, action, or result can be recovered from them.
 
 ### Methodology in customer copy
 
@@ -995,6 +997,8 @@ Strong:
 > Every claim is checked by software before it goes out. If something does not match, a certified coder looks at it before submission, not after the denial.
 
 Why: the weak version describes the company's process architecture to an audience that only needs to know what happens to their claims. Stage numbers, record separation, and adjudication are internal concerns. The strong version keeps both checks, the ordering, and the credential, and drops the method's self-description.
+
+Boundary: the same facts written for a different reader can keep the architecture. A procurement reviewer comparing three billing services, or a compliance officer checking separation of duties, is asking about the process itself, and the methodology page exists for exactly that reader. Awareness decides how much of this the opening has to supply; sophistication decides how much of it the comparison demands. Do not strip the method from a surface whose reader came to inspect it.
 
 ### Slogan-shaped CTA
 
@@ -1016,6 +1020,8 @@ Strong:
 
 Why: neither weak line tells the reader what they get or what happens next. The strong headline names the answer the report contains, and the label names the artifact the reader receives. Neither invents a saving.
 
+The basis for rejecting the weak version is operational ambiguity, not a conversion claim. `Take control of your energy` is not banned as a sentence; it is banned as the only thing on the button. It could sit above the control as persuasion copy with `Generate my usage report` underneath it, and then both jobs are done by the element suited to each.
+
 ### CTA destination clarity
 
 Verified facts:
@@ -1032,11 +1038,11 @@ Strong:
 
 > Find out whether you meet the lending criteria before you apply.
 >
-> Check eligibility, two minutes, no documents needed
+> Check eligibility
 >
-> This check does not affect your credit score.
+> Two minutes, no documents. This is not an application and it does not affect your credit score.
 
-Why: the weak label promises an application the reader is not ready to make and hides the low commitment that would have earned the click. The strong version names the destination, the cost in time, what is required, and the reversibility, all from supplied facts.
+Why: the weak label promises an application the reader is not ready to make and hides the low commitment that would have earned the click. The strong version names the destination in the label and puts the time cost, the requirement, and the reversibility in the line underneath, which is where they belong. Loading all of that into the label itself makes the control unreadable and still leaves the reassurance in the wrong place. Every one of those reassurances is a supplied fact; none of them would be writable otherwise.
 
 ### Overloaded qualification
 
@@ -1055,6 +1061,94 @@ Strong:
 > This only covers machines where you have installed and switched on a sensor.
 
 Why: every qualifier in the weak version is material and none of it is deleted. It moves to its own sentence, which is where qualification belongs. The claim is now readable at speed and the limit is now more visible, not less.
+
+Boundary: this works because the limit can stand as its own sentence next to the claim. Where a qualifier changes the meaning of the specific words it sits beside, it stays inline. `Reported by Friday for samples that arrive before noon on Tuesday` cannot be split without making the first half false.
+
+### Category orientation
+
+Verified facts:
+
+> Northbeam Machine Co. repairs, rebuilds, and resells commercial espresso machines across one metropolitan region. When a repair will keep a machine in the workshop for more than a day, Northbeam lends the customer a working machine. Customers are cafe and restaurant owners. No downtime, revenue, or satisfaction figure is available.
+
+Weak:
+
+> Northbeam Machine Co. is a lifecycle asset partner for hospitality beverage equipment, covering acquisition, maintenance, refurbishment, and resale.
+
+Strong:
+
+> Northbeam repairs commercial espresso machines. If yours needs more than a day in the workshop, we lend you one that works until it comes back.
+
+Why: nothing in the weak version is untrue, and it fails anyway. `Lifecycle asset partner` is a category the reader has to construct before they can tell whether this company touches their problem, and `hospitality beverage equipment` makes them translate their own espresso machine into a class they do not use the word for. The strong version names a category the reader already owns in three words, then immediately says the thing no other repair shop on the street is saying.
+
+The lesson is not that category language is a defect. Both versions name a category. The weak one names a coined class and stops there; the strong one names a class the reader already carries and then differentiates. On a warm surface, a second-touch email or a returning customer's account page, the orientation is already done and the category noun can go.
+
+### Superlative against specific
+
+Verified facts:
+
+> Fieldmark Labs tests farm soil samples for nitrogen, phosphorus, potassium, and pH. Samples arriving before noon on Tuesday are reported by Friday of the same week. The two other laboratories serving the region publish turnaround times of ten and fourteen days, and those published times were checked this season. Customers are arable farmers and agronomists.
+
+Weak:
+
+> The fastest soil results in the region.
+
+Strong:
+
+> Post a sample on Tuesday morning and the nitrogen, phosphorus, potassium, and pH numbers come back on Friday. The next fastest laboratory in the region publishes a ten-day turnaround.
+
+Why: the weak line is true, supported, and publishable. It fails for the reader, not for the truth rules. A superlative asks to be believed at the moment the reader is discounting vendor claims hardest, it is the sentence every laboratory in the category writes, and it hides the only thing the farmer actually needs, which is whether the result arrives before the window for spreading closes. The strong version publishes the fact the superlative was compressing, so the reader checks instead of trusting.
+
+Boundary: the comparison sentence is only writable because the competitors' published turnarounds are supplied and dated. Without that, the second sentence goes and the first one stands alone. And a specific has to be the relevant specific: the accreditation number is also checkable and does not answer the question the farmer arrived with.
+
+### CTA that overstates the click
+
+Verified facts:
+
+> Riverside Adult Education runs an evening welding course with limited places. A visitor submits a form giving their name, email, and previous experience. Every submission goes to the course tutor, who confirms or declines within three working days. Submitting the form does not reserve a place. The body copy on the page states this correctly.
+
+Weak:
+
+> Join the class
+
+Strong:
+
+> Request a place
+>
+> The tutor replies within three working days. You will need to say what welding you have done before.
+
+Why: nothing on the weak page is false. The body copy says places are confirmed by the tutor, and a reader who reads the whole page is correctly informed. The label still fails, because readers act on the label and not on the paragraph, and `Join the class` describes an outcome the click does not produce. The reader who clicks it believes they are enrolled, and finds out otherwise three days later.
+
+This is the reader-side half of truth discipline. The copy did not lie; it created a belief the product does not deliver, which is the same damage arriving by a different route. The strong label names what the click actually does, and the line underneath spends two facts to remove the two objections a reader holds at that moment.
+
+Boundary: do not hedge a control that needs no hedging. `Request a place` is right here because approval is real. On a form that does reserve the place immediately, `Request` understates the click and costs the reader the confidence they had earned.
+
+### Heading variety across one page
+
+Verified facts:
+
+> Kestrel Frames builds modular greenhouse frames for market gardens. Frames arrive flat-packed on a single pallet. Two people assemble a standard bay in about four hours. The frames are rated to 90 mph winds. Individual struts can be ordered on their own. The structural guarantee runs ten years. One page carries all five sections.
+
+Weak:
+
+> When the delivery arrives, the frame is flat-packed onto one pallet.
+> When two people build a standard bay, it takes about four hours.
+> When the wind reaches 90 mph, the frame is rated to hold.
+> When a single strut bends, you order that strut on its own.
+> When ten years have passed, the structural guarantee still applies.
+
+Strong:
+
+> Flat-packed onto one pallet
+> Two people can raise a bay in about four hours
+> If a strut bends, order that strut
+> Rated to 90 mph
+> The guarantee covers the structure for ten years
+
+Why: every weak heading is accurate, and each one on its own is a shape this document sanctions for a short asset with no outcome evidence. Run through five sections it becomes a machine signature: the reader stops reading the headings and starts recognizing the template, which is the opposite of what a heading is for. Sanctioned shapes are the most likely source of this failure precisely because nothing flags them one at a time.
+
+The strong set carries the same five facts in three syntactic families, with no family used twice in a row. Judge this by the tell rather than by a count: the twelve-heading concentration default in `Corpus-level variance` is a governance default written for a rolling window, and it does not scale down to a set of five. The question to answer here is whether a reader can tell the sections apart at a glance.
+
+Boundary: this applies to attention-oriented headings that compete with each other. If these five were steps in an assembly procedure, the parallel template would be correct and forcing variety into them would damage the page.
 
 ## Evaluation contract
 

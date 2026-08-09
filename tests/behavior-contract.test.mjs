@@ -327,6 +327,10 @@ test("reference examples cover the known failure families", () => {
     "Slogan-shaped CTA",
     "CTA destination clarity",
     "Overloaded qualification",
+    "Category orientation",
+    "Superlative against specific",
+    "CTA that overstates the click",
+    "Heading variety across one page",
   ]);
 
   for (const heading of headings) {

@@ -16,7 +16,7 @@ Raw transcripts and per-gap extracts live in the session scratch directory and a
 | Churnkey | Writing for more conversions: a masterclass in conversion copywriting / Joanna | 45 |
 | David Perell | Learn Copywriting in 76 Minutes – Harry Dry | 71 |
 | David Perell | Marketing Genius Writes Same Ad 22 Times – Harry Dry | 11 |
-| David Perell | The 3 Rules of Copywriting — Harry Dry | 12 |
+| David Perell | The 3 Rules of Copywriting, Harry Dry | 12 |
 | Digital Marketing Radio | How to use emotional targeting strategies to enhance your website conversion r | 35 |
 | Freshchat | The No B.S guide to CRO - Peep Laja | 16 |
 | Fullfunnel io | How to differentiate your product with Peep Laja | 59 |
