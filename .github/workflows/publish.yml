@@ -22,11 +22,12 @@ jobs:
           registry-url: https://registry.npmjs.org
           package-manager-cache: false
 
-      # Trusted publishing needs npm 11.5.1 or later. Node 24 already ships a
-      # newer npm than that, so this only guards against the bundled version
-      # moving backwards.
-      - name: Ensure npm supports trusted publishing
-        run: npm install -g npm@latest
+      # Trusted publishing needs npm 11.5.1 or later, and the npm bundled with
+      # Node 24 already satisfies that. Do not upgrade to npm@latest here: it
+      # pulls whatever major has shipped since, which is how a release path
+      # inherits a breaking change nobody tested against.
+      - name: Record the toolchain
+        run: node --version && npm --version
 
       # A release tag that disagrees with package.json would publish a version
       # nobody tagged. Fail before the registry sees it.

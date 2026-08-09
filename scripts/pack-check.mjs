@@ -63,9 +63,14 @@ try {
     "npm must not normalize away the agora executable",
   );
 
+  // npm 11 and earlier describe the pack as an array of packages. npm 12 returns
+  // an object keyed by package name instead (npm/cli#9247). Accept both, so the
+  // release path does not break on an npm major this repository never pinned.
   const payload = JSON.parse(result.stdout);
-  assert.equal(payload.length, 1, "npm pack should describe exactly one package");
-  const packed = payload[0].files.map((file) => file.path.replaceAll("\\", "/")).sort();
+  const packages = Array.isArray(payload) ? payload : Object.values(payload);
+  assert.equal(packages.length, 1, "npm pack should describe exactly one package");
+  assert.ok(Array.isArray(packages[0]?.files), "npm pack did not report a file list");
+  const packed = packages[0].files.map((file) => file.path.replaceAll("\\", "/")).sort();
   assert.deepEqual(packed, EXPECTED, "npm package contents differ from the reviewed allowlist");
   process.stdout.write(`Package contents passed: ${packed.length} files\n`);
 } finally {
