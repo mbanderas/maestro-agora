@@ -124,6 +124,7 @@ This keeps a 35-word profile from sounding like a compressed pitch deck. It also
 | `INVEST` | Actual funding, capital-allocation, diligence, investor-pitch, and fundraising work |
 | `INFORM` | Editorial and educational work |
 | `TRANSACT` | Buttons, confirmations, alerts, forms, and utility microcopy |
+| `VOICE` | A modifier on any of the above, not a job of its own. `--voice <name>` writes in a measured author profile |
 
 `POSITION` is the default for descriptive company profiles, even when investors may read them. Agora makes relevance emerge from the shift, mechanism, wedge, and proof. It does not insert phrases such as "for investors" or "merits evaluation."
 
@@ -202,6 +203,17 @@ skills/agora/
 `references/agora-voice.md` governs `VOICE`, the one mode that modifies another rather than replacing it. `--voice <name>` loads a measured author profile on top of whichever job was already selected, and `voice build`, `voice list`, and `voice check` manage the profiles themselves. A profile is measured rather than described: it records sentence and paragraph distributions, function words, punctuation, openings, and stance, states plainly what the corpus was too small to measure, and refuses certification below 5,000 clean author-controlled words.
 
 Profiles are stored at `~/.agora/voices/`, deliberately outside the skill directory, because the documented update path replaces that directory and would destroy them. Voice enters at level 6 of the conflict hierarchy: it never licenses an unsupported claim, never overrides required or legal phrasing, and never overrides the em-dash ban. It carries exactly one exception, written down because the alternative is a gate that strips the voice it was loaded to keep: a profile's measured owned-vocabulary list suppresses the generic AI-vocabulary ban for those specific words only. Building or applying a third-party profile for publication under that person's name is refused.
+
+## Change record
+
+| Version | What changed |
+|---|---|
+| 1.3.0 | Two new references. `references/agora-craft.md` covers headlines and titles per publishing surface, awareness and sophistication staging with its routing table, emotion written from a fact set that carries no outcome data, and prose rhythm. `references/agora-voice.md` adds the `VOICE` modifier: measured author profiles stored outside the skill directory, a refusal floor below 5,000 clean author-controlled words, level-6 placement in the conflict hierarchy, the owned-vocabulary exception to the AI-vocabulary ban, and a refusal for third-party profiling intended for publication under that person's name. The Evidence register gains `Myths this document must never assert`, naming twenty-one high-traffic myths with what may be said instead. Four new applied pairs and six reworked, covering category orientation, superlative against specific, a label that overstates its click, and heading variety across one page. Blind eval corpus grows from 21 cases to 26. Two internal contradictions removed: the two-or-three-sentence passage unit that the same document had already refuted, and an unlabelled numeric threshold in the deterministic invariants. |
+| 1.2.2 | Hard ban on the U+2014 character across the entire response, enforced as an immutable output constraint rather than a final-copy cleanup. |
+| 1.2.1 | First-read comprehension gate, specialized-term gate, and CTA standard. Comprehension moved above compression, citability, and differentiation in the conflict hierarchy. |
+| 1.2.0 | Blind evaluation corpus with a generation contract, pairwise adjudication, and absolute vetoes. |
+
+Every rule added in 1.3.0 carries an evidence grade and a stated failure condition. Every numeric threshold in the references is either followed by a source link or labelled a governance default in the same sentence. Two conflicts the research left open are recorded rather than resolved.
 
 ## Verify the package
 

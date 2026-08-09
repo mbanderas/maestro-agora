@@ -296,7 +296,7 @@ async function main() {
   const packageJson = await readJson(join(ROOT, "package.json"));
   const gitAttributes = await readFile(join(ROOT, ".gitattributes"), "utf8");
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.2.2", "package version must be 1.2.2");
+  check(packageJson.version === "1.3.0", "package version must be 1.3.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.license === "MIT", "package must use MIT");
   check(/^\* text=auto eol=lf$/m.test(gitAttributes), "Git must enforce LF for text files");

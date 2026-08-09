@@ -541,7 +541,7 @@ test("public files contain no project-specific residue or temporary citations", 
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.2.2 release contract", () => {
+test("metadata matches the v1.3.0 release contract", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
@@ -550,7 +550,7 @@ test("metadata matches the v1.2.2 release contract", () => {
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.2.2");
+  assert.equal(packageJson.version, "1.3.0");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
   assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
