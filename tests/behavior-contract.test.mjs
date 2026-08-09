@@ -155,6 +155,104 @@ test("truth stays hard while compliance remains silent", () => {
   assert.match(channel, /Do not turn it into a body-copy claim/);
 });
 
+test("comprehension outranks compression, citability, and differentiation", () => {
+  const conflicts = extractSection(skill, "Resolve conflicts");
+  assert.match(conflicts, /3\. Immediate comprehension by the intended audience\./);
+  assert.match(conflicts, /7\. Compression, rhythm, style, and publication optimization\./);
+  assert.match(
+    conflicts,
+    /Compression, cleverness, citability, technical precision, and rhetorical force never make the writing harder to understand/,
+  );
+  assert.match(conflicts, /Qualify at the passage or section level/);
+  assert.match(conflicts, /That rule governs the passage, not the sentence/);
+
+  const referenceHierarchy = extractSection(reference, "Conflict hierarchy");
+  assert.match(referenceHierarchy, /3\. Immediate comprehension by the intended audience\./);
+  assert.match(referenceHierarchy, /Copy that is accurate and unreadable has failed/);
+  assert.match(referenceHierarchy, /Qualification against comprehension/);
+  assert.match(referenceHierarchy, /Citability against comprehension/);
+});
+
+test("the first-read gate is operational, not a symptom list", () => {
+  const gate = extractSection(skill, "Pass the first-read comprehension gate");
+  assert.match(gate, /Plain language is not simple language/);
+  assert.match(gate, /does not know the organization's internal vocabulary/);
+  assert.match(gate, /Rewrite any sentence an intended reader could not restate after reading it once/);
+  assert.match(gate, /depends on undefined internal terminology/);
+  assert.match(gate, /hides the actor, the action, the object, or the result/);
+  assert.match(gate, /is technically correct and practically unclear/);
+  assert.match(gate, /Every term the reader does not already own is either decision-required and taught where it appears, or removed/);
+  assert.match(gate, /Treat a noun the organization coined as a term the reader has no reason to know/);
+  assert.match(gate, /who or what acts, what it does, what it acts on, and what changes for the reader/);
+  assert.match(gate, /highest-frequency verb the reader already owns/);
+  assert.match(gate, /Abstract nouns are not banned/);
+  assert.match(gate, /Abstract nouns are not banned and must not be counted/);
+  assert.match(gate, /twenty unrelated companies could publish it unchanged/);
+  assert.match(gate, /parallel syntax is correct and should be kept/);
+  assert.match(gate, /Treat that as a working default, not a measured threshold/);
+
+  const section = extractSection(reference, "Plain language and first-read comprehension");
+  for (const heading of [
+    "The reader model",
+    "The first-read test",
+    "The specialized-term gate",
+    "Abstraction control",
+    "The anti-slogan rule",
+    "Corpus-level variance",
+    "Failure handling",
+    "Required comprehension tests",
+  ]) {
+    assert.ok(section.includes(`### ${heading}`), `comprehension section missing ${heading}`);
+  }
+  assert.match(section, /precise language with low decoding effort/);
+  assert.match(section, /Industry familiarity is not the same as familiarity with one organization's terms/);
+  assert.match(section, /Compression that raises decoding effort is not compression/);
+  assert.match(section, /Do not repair unclear writing by adding more jargon/);
+  assert.match(section, /Do not apply this test to a single sentence/);
+  assert.match(section, /There is no optimal passage length/);
+  assert.match(section, /Do not count them/);
+  assert.match(section, /Where repetition is correct/);
+
+  const passes = extractSection(skill, "Apply silent final passes");
+  assert.match(passes, /Run the first-read comprehension gate, the specialized-term gate, and the CTA gate/);
+  assert.match(passes, /before any style, compression, or publication pass/);
+
+  const citability = extractSection(reference, "Written GEO/AEO and citability");
+  assert.match(citability, /None of them may raise decoding effort/);
+  assert.match(citability, /The unit is the passage of two or three sentences, not the individual sentence/);
+});
+
+test("CTAs name an action and a destination, never a mood", () => {
+  const cta = extractSection(skill, "Write the CTA as an action label");
+  assert.match(cta, /A call to action names an action, not a mood/);
+  assert.match(cta, /clear verb \+ concrete object, destination, or result/);
+  assert.match(cta, /Never make the reader infer what opens/);
+  assert.match(cta, /Keep one canonical label for one materially identical action/);
+  assert.match(cta, /Reject them for operational ambiguity/);
+  assert.match(cta, /Do not claim they convert worse; no controlled evidence supports that/);
+
+  const standard = extractSection(reference, "CTA standard");
+  assert.match(standard, /A CTA is an action label, not a slogan/);
+  assert.match(standard, /Name the outcome the reader ends up with, not the motion the interface performs/);
+  for (const slogan of ["Take control", "Unlock your potential", "Get clarity", "Start your journey"]) {
+    assert.ok(standard.includes(slogan), `CTA standard is missing the slogan case ${slogan}`);
+  }
+  assert.ok(standard.includes("### What the reader must never have to infer"));
+  assert.ok(standard.includes("### Consistency across a surface"));
+  assert.match(standard, /One materially identical action gets one canonical label/);
+  assert.match(standard, /No controlled evidence establishes that slogan-shaped labels as a class convert worse/);
+  assert.match(standard, /Do not encode a pronoun ranking/);
+
+  const invariants = extractSection(reference, "Deterministic invariants", 3);
+  assert.match(invariants, /Every call to action names a verb plus a concrete object, destination, or result/);
+  assert.match(invariants, /No internal method, stage, score, record-type, tier, or framework name appears/);
+  assert.match(invariants, /attention-oriented headings do not run more than two consecutive instances/);
+  assert.match(
+    extractSection(reference, "Evaluation contract"),
+    /First-read comprehension cannot be tested deterministically/,
+  );
+});
+
 test("U+2014 is an immutable whole-response veto", () => {
   const ban = extractSection(skill, "Enforce the hard em-dash ban");
   assert.match(ban, /Never emit the Unicode em dash character U\+2014 anywhere in a response/);
@@ -189,6 +287,7 @@ test("reference leads with doctrine and keeps the deep authority library", () =>
   for (const heading of [
     "Emotion as consequential meaning",
     "Proof salience",
+    "Plain language and first-read comprehension",
     "Truth and ethical limits",
     "Short, medium, and long forms",
     "Channel architecture",
@@ -222,6 +321,12 @@ test("reference examples cover the known failure families", () => {
     "Cold email",
     "Spoken pitch",
     "Necessary enumeration",
+    "Insider terminology",
+    "Abstraction stacking",
+    "Methodology in customer copy",
+    "Slogan-shaped CTA",
+    "CTA destination clarity",
+    "Overloaded qualification",
   ]);
 
   for (const heading of headings) {

@@ -192,6 +192,64 @@
       "asset": "spoken-pitch",
       "format_budget": "spoken-short",
       "hard_gates": ["direct-activation", "capital-relevance", "spoken-cadence", "truth-discipline"]
+    },
+    {
+      "id": "plain-language-insider-terms",
+      "prompt_file": "prompts/plain-language-insider-terms.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "product-copy",
+      "format_budget": "medium",
+      "hard_gates": [
+        "no-internal-term-exposure",
+        "actor-action-object-visible",
+        "material-limit-survives",
+        "first-read-comprehension",
+        "supported-cta"
+      ]
+    },
+    {
+      "id": "cta-names-its-destination",
+      "prompt_file": "prompts/cta-names-its-destination.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "landing-hero",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "cta-destination-named",
+        "no-slogan-cta",
+        "commitment-matches-destination",
+        "distinguishable-branch-labels",
+        "no-fake-urgency"
+      ]
+    },
+    {
+      "id": "qualifiers-without-clause-stacking",
+      "prompt_file": "prompts/qualifiers-without-clause-stacking.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "product-copy",
+      "format_budget": "medium",
+      "hard_gates": [
+        "material-limit-survives",
+        "qualifiers-in-own-sentences",
+        "no-legal-register-drift",
+        "first-read-comprehension"
+      ]
+    },
+    {
+      "id": "multi-asset-shape-variance",
+      "prompt_file": "prompts/multi-asset-shape-variance.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "asset": "overview-page",
+      "format_budget": "mixed",
+      "hard_gates": [
+        "heading-shape-variance",
+        "no-internal-term-exposure",
+        "cta-destination-named",
+        "no-invented-outcome"
+      ]
     }
   ]
 }

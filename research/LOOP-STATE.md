@@ -1,0 +1,39 @@
+# Agora hardening loop: state
+
+Single source of truth for loop progress. The loop reads this first and updates it last, every iteration.
+
+Status values: `TODO`, `IN_PROGRESS`, `DONE`, `BLOCKED`.
+
+## Phases
+
+| # | Phase | Status | Notes |
+|---|---|---|---|
+| 1 | Absorb the YouTube corrections into existing sections | DONE | Orientation/taxonomy, internal-boredom warning, search-paste competitor test, specificity-over-superlative, falsifiability, objection microcopy. All graded. |
+| 2 | Rebuild the fixture corpus as fresh fictional pairs | TODO | |
+| 3 | New reference `agora-craft.md`: headlines, staging, emotion, prosody | TODO | Breaks the three-file root. Allowlist update required in the same commit. |
+| 4 | New reference `agora-voice.md` plus VOICE mode | TODO | |
+| 5 | Folklore guard and evidence-register consolidation | TODO | |
+| 6 | Eval corpus expansion and blind adjudication | TODO | |
+| 7 | Release prep: version, change record, README | TODO | |
+
+## Iteration log
+
+Append one line per iteration. Never rewrite history.
+
+| Date | Phase | What actually changed | Tests |
+|---|---|---|---|
+| 2026-08-09 | 0 | Loop state created. Prior work: diagnosis, six graded research runs, YouTube mining pass, comprehension and CTA gate landed and rebased. 20/20 tests. | pass |
+| 2026-08-09 | 1 | SKILL.md: orientation-is-not-taxonomy paragraph, internal-fatigue warning next to corpus variance, search-paste and falsifiability procedures in the anti-slogan pass, two failure-list bullets rewritten. Reference: new `Orientation against taxonomy`, `Specificity against superlative`, `Differentiation tests`, `Microcopy under the control`; falsifiability check added to `Abstraction control`; competitor-swap row made operational and given a boundary; internal-fatigue paragraph added to `Corpus-level variance`; over-narrow-label boundary added to `The required shape`; new `Practitioner craft pass` subsection in the Evidence register recording what was adopted, what stays refused, and two open conflicts. Every added rule carries a grade and a failure condition. No new numbers. Curly apostrophe removed from `research/mined-sources.md`. | 20/20 pass; validator 16 pre-existing failures, none in files touched |
+
+## Standing blockers
+
+None.
+
+## Do not repeat these mistakes
+
+Recorded from the session that produced the current state. Each cost real rework.
+
+1. **A threshold was invented and shipped.** Four numeric rules (one unfamiliar concept per sentence, two abstract nouns per clause, two-or-three-sentence passages, no shared heading templates) were written as doctrine and later refuted by the research. Never write a number into the authority document without a source or an explicit governance label.
+2. **A rule was generalized past its evidence.** The anti-repetition rule was actively harmful for task headings, where parallel syntax is correct. Split rules by function before stating them.
+3. **Completion was claimed without a tool call.** Work was reported as started when nothing had run. Report only what the transcript shows.
+4. **The client name leaked into a research file** and tripped the validator. The residue check is case-insensitive and covers every file in the repo.

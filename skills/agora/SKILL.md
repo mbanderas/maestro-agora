@@ -21,8 +21,9 @@ Immediately before returning, scan the complete response character by character 
 
 Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Read only the sections the task needs:
 
-1. Always read `Core doctrine`, `Conflict hierarchy`, `Argument engine`, `Proof salience`, `Truth and ethical limits`, and `Human voice and AI-writing-tell gate`.
+1. Always read `Core doctrine`, `Conflict hierarchy`, `Argument engine`, `Proof salience`, `Plain language and first-read comprehension`, `Truth and ethical limits`, and `Human voice and AI-writing-tell gate`.
 2. For `SELL`, `INVEST`, or `POSITION`, also read `Emotion as consequential meaning`, `Commercial routing`, and the closest pair in `Applied weak and strong pairs`.
+2b. For any asset containing a call to action, button, or closing invitation, also read `CTA standard`.
 3. For a written asset, read `Written GEO/AEO and citability`. For indexable public work, also read `Technical publication boundaries`.
 4. For spoken work, read `Spoken delivery`. Apply written rules separately to any published title, description, transcript, caption, show note, or companion page.
 5. Read `Evidence register` only when making or reviewing a research-backed general claim.
@@ -37,13 +38,20 @@ Apply this order:
 
 1. Truth, safety, law, and immutable requirements.
 2. Supplied facts, approved sources, and material qualifiers.
-3. The requested decision and surface.
-4. Decision relevance and proof salience.
-5. Emotional relevance and channel fit.
-6. Compression and human voice.
-7. Silent publication hygiene when it does not reduce factual clarity.
+3. Immediate comprehension by the intended audience.
+4. The requested decision and surface.
+5. Decision relevance, proof salience, and differentiation.
+6. Emotional relevance and channel fit.
+7. Compression, rhythm, style, and publication optimization.
 
-When soft rules conflict, preserve the strongest truthful argument. Ask only when missing information would materially change the audience, offer, claim, or action. Otherwise narrow or omit the unsupported point.
+Compression, cleverness, citability, technical precision, and rhetorical force never make the writing harder to understand than the facts require. When a lower level would cost first-read comprehension, the lower level yields.
+
+Two specific conflicts resolve as follows, because both have produced accurate but unreadable copy:
+
+- **Qualification against comprehension.** Level 2 requires preserving scope, date, condition, and uncertainty. It does not require carrying every qualifier inside every sentence. Qualify at the passage or section level. A sentence that carries its full qualification set inline reads as a compliance memo and fails level 3.
+- **Citability against comprehension.** Written GEO/AEO asks for passages that stay accurate when quoted alone. That rule governs the passage, not the sentence. Do not compress a paragraph of context into one self-sufficient sentence. Self-containment is achieved by keeping a short passage together, not by loading one clause.
+
+When soft rules conflict, preserve the strongest truthful argument that the reader can follow on the first pass. Ask only when missing information would materially change the audience, offer, claim, or action. Otherwise narrow or omit the unsupported point.
 
 ## Choose the job
 
@@ -105,6 +113,94 @@ Rank candidate facts by decision relevance, differentiation, verifiability, spec
 
 Every included fact must prove a premise, resolve an objection, distinguish the mechanism, or enable action.
 
+## Pass the first-read comprehension gate
+
+Factual accuracy is not sufficient. Copy also fails when the wording makes the reader decode internal terminology, reconstruct a missing relationship, or translate an abstraction into a concrete action.
+
+Plain language is not simple language. It is precise language with low decoding effort. Expert audiences keep their technical precision and still lose the unnecessary abstraction, compressed syntax, and in-house shorthand.
+
+### Model the reader
+
+Write for someone who is intelligent, understands their own job, has not read the documentation, does not know the organization's internal vocabulary, will not stop to decode a sentence, and is deciding whether the next line deserves attention. Familiarity with an industry is not familiarity with one organization's terms.
+
+### Test every customer-facing sentence
+
+Rewrite any sentence an intended reader could not restate after reading it once. A sentence fails when it:
+
+- depends on undefined internal terminology;
+- introduces more than one unfamiliar concept at a time;
+- hides the actor, the action, the object, or the result;
+- uses an abstract noun where a concrete verb would be clearer;
+- describes an internal method instead of what the reader needs to know;
+- compresses several reasoning steps into insider shorthand;
+- sounds like a specification, a compliance memo, or an academic method section when the surface does not call for that register;
+- is technically correct and practically unclear;
+- needs a different paragraph to become understandable;
+- sounds impressive before it communicates anything concrete.
+
+### Gate specialized terms
+
+Accuracy alone does not license an internal product, operational, analytical, or methodological term. Before using one, confirm all four:
+
+1. The intended audience already knows it.
+2. It is necessary for accuracy.
+3. Its meaning is clear from the sentence it appears in.
+4. An everyday expression would lose material meaning.
+
+If any answer is no, replace the term or define it in place. Every term the reader does not already own is either decision-required and taught where it appears, or removed. Treat a sentence carrying two or more reader-unowned terms as a review trigger, not as an automatic error.
+
+Treat a noun the organization coined as a term the reader has no reason to know. Naming an internal method, stage, score, record type, or framework in customer-facing copy requires the reader to gain something from learning it. Otherwise state what happens and drop the name.
+
+### Prefer actor, action, object, result
+
+Answer these before drafting a sentence: who or what acts, what it does, what it acts on, and what changes for the reader.
+
+Choose the highest-frequency verb the reader already owns that preserves the factual relation and tells them what the action does. Verbs such as check, compare, find, show, verify, measure, review, choose, send, create, remove, correct, approve, reject, schedule, and calculate are a useful house lexicon, not a required set. A specialized verb wins whenever it names the exact action and the reader owns that word.
+
+Rewrite noun-heavy constructions into direct actions. Abstract nouns are not banned and must not be counted. Rewrite an abstraction when it conceals an actor, action, causal relation, or consequence the reader needs, and leave it when it carries cohesion or names an established concept. The check on each abstract noun is whether a specific actor, a finite action, and the object or result can still be recovered, and whether the reader needs them.
+
+Weak:
+
+> Evaluate whether configured operational surfaces produced compliant outcomes for the declared workflow scope.
+
+Strong:
+
+> Check whether each system finished the task you assigned it.
+
+The strong version is longer in words and shorter in effort. That trade is correct.
+
+### Reject slogans that survive only on tone
+
+For every headline, subheading, closing line, and call to action, ask what it means literally, what action or condition it names, whether it stays useful once the dramatic tone is removed, whether twenty unrelated companies could publish it unchanged, and whether the reader learns anything or only receives a mood. If the literal meaning is thin, rewrite it.
+
+Run the last question as a procedure rather than a judgment where the line is short enough to search: paste it into a search engine and read how many unrelated companies already publish it unchanged. Ask also what would make the sentence false. A sentence nothing could contradict is not a claim, whatever its tone. Neither check applies to navigation labels, category nouns, or utility microcopy, which are not claims and are not supposed to be falsifiable.
+
+### Manage shape across a corpus
+
+Repeating one sanctioned shape across a page or site can produce a corpus that reads as generated even when every line passes on its own. Split this by function before acting on it.
+
+Where headings belong to the same task or information class, parallel syntax is correct and should be kept. Forcing variety into a procedure list damages it.
+
+Where headings and hooks compete for attention, manage concentration instead of demanding uniqueness. Across roughly twelve such headings, keep at least four distinct syntactic families and avoid more than two consecutive instances of one family. Treat that as a working default, not a measured threshold.
+
+The team's own fatigue with a line is not a reader-side signal. The people who write and approve the copy see it every working day and the buyer sees it once, so "we have been saying this forever" is not evidence that anything is failing. Change a line because a reader-side test failed it, because the facts changed, or because a measured result says so. This removes one bad reason to change; it is not a defence of an unvaried corpus, so still run the variance check on the artifact.
+
+## Write the CTA as an action label
+
+A call to action names an action, not a mood. It tells the reader what happens after they choose it.
+
+Use `clear verb + concrete object, destination, or result`. Match the commitment to the destination and to the evidence the copy has actually delivered. Do not put a dramatic or high-commitment label on an informational destination.
+
+Workable shapes include `View the report`, `Compare plans`, `Check eligibility`, `See the recommended fixes`, `Review the evidence`, `Book a product demo`, `Start the assessment`, `Download the guide`, `Contact the sales team`, and `Retry the payment`.
+
+Reject slogan-shaped labels such as `Take control`, `Move with confidence`, `Fix what matters`, `See the difference`, `Unlock your potential`, `Transform your results`, `Start your journey`, `Make it count`, and `Get clarity`. Reject them for operational ambiguity, because the reader cannot tell what the control does. Do not claim they convert worse; no controlled evidence supports that. Each becomes usable once it names its destination, as `Get clarity on close risks` does. A slogan may sit beside the control as persuasion copy.
+
+Avoid the generic labels for the same reason: `Learn more`, `Get started`, `Submit`, `Explore`, `Discover`, `Click here`, and bare product names. On a consequential or irreversible dialog, name the operation rather than using `OK` or `Yes`.
+
+Never make the reader infer what opens, what they receive, what they must supply, whether the action is immediate, whether it begins a purchase, form, demo, download, or review, or what commitment it creates.
+
+Keep one canonical label for one materially identical action. The rule is strongest on controls that perform the same action and weaker on destination links, where a navigation label and a task invitation may legitimately differ. Repeating one goal down a long page is permitted for convenience; do not claim a lift from it.
+
 ## Enforce truth and ethical limits
 
 Keep fact, inference, interpretation, aspiration, and promise distinct. Preserve source, date, scope, conditions, and uncertainty where material.
@@ -119,15 +215,22 @@ Preserve agency. Do not manufacture fear, shame, guilt, identity pressure, exclu
 
 Rebuild when the draft:
 
-- reads as a category definition, source-ledger paraphrase, feature inventory, or operational taxonomy;
+- describes the subject only in category terms, or reads as a source-ledger paraphrase, feature inventory, or operational taxonomy;
 - has no felt stake, consequential shift, meaningful mechanism, or defensible destination belief;
-- could describe a competitor after changing the name;
+- repeats a line that unrelated companies already publish unchanged, which the search-paste check makes testable;
 - uses generic brand verbs such as `helps`, `shows`, `supports`, or `built for` when a stronger supported causal verb exists;
 - lets minor features bury a decisive fact;
 - opens a very short `POSITION` asset with the subject followed by an operational verb list when the facts contain a verified trigger, threshold, conflict, or exception that can lead instead;
 - announces buyer or investor relevance instead of earning it;
 - exposes compliance, reasoning, routing, or publication process;
-- uses emotion that the facts do not support.
+- uses emotion that the facts do not support;
+- names an internal method, stage, record type, or score where the reader only needs to know what happens;
+- stacks abstract nouns instead of naming an actor, an action, and a result;
+- reads as quotable while its literal meaning stays thin;
+- closes on a call to action that hides what the reader gets;
+- runs one attention-oriented heading template through a whole deliverable.
+
+Naming the category is orientation, not taxonomy, and the two are opposite defects. A cold reader has to know what this is before any difference can land, and a category noun they already own answers that in two or three words. The failure is stopping there, so that every other member of the category could publish the same sentence. Orient inside a category the reader owns, then say what is different about this one. A warm surface has already done the orienting and does not need to repeat it.
 
 When facts describe an input conflict, blocked action, threshold, exception, or before-and-after state, use that verified condition as the opening situation. Do not add a downstream cost or risk that the facts do not establish.
 
@@ -154,11 +257,14 @@ Channel rules change depth and tone. They do not erase the argument.
 After the argument is drafted:
 
 1. Verify each claim and causal link.
-2. Apply written GEO/AEO only to written deliverables.
-3. Apply technical publication checks only to indexable public work.
-4. Apply the human-voice and AI-writing-tell gate without deleting facts or diagnostic lists.
-5. Compress repetition and decoration last.
-6. Run the final U+2014 scan across the complete response and confirm zero occurrences.
+2. Run the first-read comprehension gate, the specialized-term gate, and the CTA gate. These run before any style, compression, or publication pass, and their result outranks all three.
+3. Apply written GEO/AEO only to written deliverables, at passage level rather than sentence level.
+4. Apply technical publication checks only to indexable public work.
+5. Apply the human-voice and AI-writing-tell gate without deleting facts or diagnostic lists.
+6. Compress repetition and decoration last, and only where compression does not raise decoding effort.
+7. Run the final U+2014 scan across the complete response and confirm zero occurrences.
+
+When a sentence fails the comprehension gate, keep the underlying fact, name the concrete actor, action, object, and result, remove internal process language the reader does not need, split the overloaded sentence, restore any context the compression removed, rewrite the call to action to name its real destination, then test again. Do not repair unclear writing by adding explanatory parentheses, longer noun phrases, or a vague supporting sentence.
 
 Keep these passes invisible. Mention a blocker only when silence would make the result misleading, legally unusable, or operationally unshippable.
 

@@ -11,6 +11,7 @@ This reference combines the original Agora argument-first doctrine with research
 - [Argument engine](#argument-engine)
 - [Emotion as consequential meaning](#emotion-as-consequential-meaning)
 - [Proof salience](#proof-salience)
+- [Plain language and first-read comprehension](#plain-language-and-first-read-comprehension)
 - [Truth and ethical limits](#truth-and-ethical-limits)
 - [Short, medium, and long forms](#short-medium-and-long-forms)
 - [Channel architecture](#channel-architecture)
@@ -50,13 +51,23 @@ Apply this hierarchy when instructions compete:
 
 1. Truth, safety, law, and immutable requirements.
 2. Supplied facts, approved sources, and material qualifiers.
-3. The audience's actual decision and requested surface.
-4. Decision relevance and proof salience.
-5. Emotional relevance and channel fit.
-6. Compression and human voice.
-7. Silent publication hygiene, only when it does not reduce clarity.
+3. Immediate comprehension by the intended audience.
+4. The audience's actual decision and requested surface.
+5. Decision relevance, proof salience, and differentiation.
+6. Emotional relevance and channel fit.
+7. Compression, rhythm, style, and publication optimization.
 
 Higher levels always win. A style cleanup may not delete a material fact. Compression may not turn a bounded claim into certainty. GEO/AEO may not displace the argument. A channel convention may limit tone, but it may not force a false or inert description.
+
+Comprehension sits above decision relevance, proof, differentiation, emotion, compression, and citability. Precision that the reader cannot decode is not precision delivered. Copy that is accurate and unreadable has failed.
+
+Two conflicts inside this hierarchy have repeatedly produced correct, unusable copy. Resolve them this way.
+
+**Qualification against comprehension.** Level 2 requires preserving source, date, scope, condition, and uncertainty where material. It does not require carrying that qualification set inside every sentence. Qualify at the passage or section level, in a sentence whose job is qualification. A sentence that carries its own scope, condition, and limit inline stops being a sentence and becomes a clause stack, which fails level 3.
+
+**Citability against comprehension.** `Written GEO/AEO and citability` asks for passages that remain accurate when quoted alone. The unit is the passage, not the sentence. Self-containment is achieved by keeping two or three sentences together, not by compressing a paragraph of context into one self-sufficient clause. When those two rules pull against each other, comprehension wins and the passage carries the context.
+
+Level 5 contains its own trap. Differentiation rewards naming the mechanism precisely, and naming the mechanism precisely is how internal method names arrive in customer copy. Precision about what the product does is required. Exposing the name the organization gave that method is not.
 
 Use only source material supplied or approved in the current context. Do not import facts, controls, terminology, or release rules from another project. Examples in this reference are fictional and teach structure only.
 
@@ -222,6 +233,200 @@ The order is a default, not a license to use unavailable evidence.
 
 Keep factual enumeration when the list itself is diagnostic. Engines, integrations, plan components, legal terms, supported markets, technical requirements, named coverage, chapters, or timestamps may be necessary proof. Remove ornamental lists, not decision-bearing lists.
 
+## Plain language and first-read comprehension
+
+A draft can satisfy every truth rule and still fail, because the reader cannot extract the meaning at reading speed. This section governs that failure. It applies to every mode and every audience, including expert ones.
+
+**Evidence status.** The core of this section is supported: jargon measurably reduces processing fluency, and concrete actor-action-result language is preferred when equally accurate. The numeric thresholds this section originally carried were tested against the research and did not survive. They have been removed rather than softened. Where a checkable default is still needed to run a writing system, it is labelled as governance, not as a finding. See `Plain language, terminology, and CTA evidence` for the grades.
+
+Plain language is not simple language. It is precise language with low decoding effort. The goal is not a lower reading level. The goal is that an intended reader arrives at the intended meaning on the first pass, without re-reading, without a glossary, and without reconstructing a relationship the sentence left out.
+
+### The reader model
+
+Write for a reader who:
+
+- is intelligent and competent in their own work;
+- understands their own job, problem, or situation;
+- does not know the organization's internal vocabulary;
+- has not read the documentation, the methodology page, or the specification;
+- will not stop to decode an unclear sentence;
+- is deciding, sentence by sentence, whether the next one deserves attention.
+
+Industry familiarity is not the same as familiarity with one organization's terms. A finance director knows reconciliation. They do not know what one vendor calls its reconciliation stages. A developer knows caching. They do not know a company's internal name for its cache tier.
+
+For an explicitly technical audience, keep the technical precision the accuracy requires. Remove the unnecessary abstraction, the compressed syntax, and the in-house shorthand anyway. Technical readers are not served by clause stacks; they are simply better at tolerating them, and tolerance is not comprehension.
+
+### The first-read test
+
+Reject or rewrite any customer-facing sentence when an intelligent member of the intended audience could not restate its meaning after reading it once.
+
+A sentence fails when it:
+
+- depends on undefined internal terminology;
+- combines several unfamiliar concepts into one statement;
+- hides the actor, the action, the object, or the outcome;
+- uses an abstract noun where a concrete verb would be clearer;
+- describes an internal method instead of what the reader needs to know;
+- compresses multiple reasoning steps into insider shorthand;
+- sounds like legal documentation, an academic method section, a compliance memo, or a technical specification when the surface does not call for that register;
+- is technically correct and practically unclear;
+- requires information from another paragraph to become understandable;
+- sounds impressive before it communicates anything concrete.
+
+The last item is the hardest to catch from inside the draft, because impressive and clear feel similar to an author who already knows the answer. Use the literal-meaning test in `Required comprehension tests` on any sentence that felt satisfying to write.
+
+### The specialized-term gate
+
+Do not expose internal product, operational, analytical, or methodological terminology merely because it is accurate.
+
+Before using a specialized term, confirm all four:
+
+1. The intended audience already knows it.
+2. The term is necessary for accuracy.
+3. Its meaning is clear from the sentence it appears in.
+4. A shorter everyday expression would lose important meaning.
+
+If any answer is no, replace the term or define it in place.
+
+The operative rule is a disposal rule, not a counting rule: **every term the reader does not already own must be either decision-required and taught in place, or removed.** There is no evidence-backed limit on unfamiliar terms per sentence. Vocabulary-coverage research shows that unknown vocabulary impairs comprehension, but the relationship is continuous rather than a step function, and the coverage thresholds in that literature concern extended reading rather than short commercial copy ([Kremmel et al., 2023](https://doi.org/10.1111/lang.12622)).
+
+"At most one unfamiliar concept per sentence" survives only as a house guardrail with no measured basis. Use it to trigger a review, never to justify a rewrite on its own. Jargon does measurably reduce processing fluency, which is the real support for this gate ([Shulman et al., 2020](https://journals.sagepub.com/doi/10.1177/0261927X20902177)).
+
+Treat any noun the organization coined as a term the reader has no reason to know. A method name, stage name, score name, record type, tier name, or framework name earns its place in customer-facing copy only when the reader gains something from learning it, and the gain has to exceed the cost of learning it mid-sentence. Otherwise state what happens and omit the name.
+
+The same rule applies to a distinction the organization finds important. An internal distinction between two of its own concepts is not automatically a distinction the reader needs. If the copy has to teach the distinction before the sentence makes sense, the distinction belongs in a later paragraph or not at all.
+
+### Abstraction control
+
+Abstract nouns are not banned. They fail when they conceal something the reader needs.
+
+Do not count them. A controlled eye-tracking study found no independent comprehension penalty for nominalizations against recommended sentential constructions ([Balling, 2018](https://doi.org/10.1177/0047281617696983)). Any fixed density limit is invented. Nominalizations legitimately create cohesion, name recurring processes, and encode established domain concepts, and their frequency varies strongly by subject matter.
+
+The operative rule: **rewrite an abstraction when it conceals an actor, action, causal relation, or observable consequence the reader needs. Do not rewrite because a clause crossed a noun count.** Naming the actor changes how readers assign cause and responsibility ([Fausey and Boroditsky, 2010](https://doi.org/10.3758/PBR.17.5.644)).
+
+The test to run on each abstract or nominalized noun:
+
+```text
+Can a specific actor be recovered?
+Can a finite action be recovered?
+Can the object or result be recovered?
+Does the reader need that actor, action, or result?
+
+If the reader needs it and any of the first three is missing, rewrite.
+```
+
+Prefer actor, action, object, and result. Before writing a sentence, answer:
+
+- Who or what acts?
+- What does it do?
+- What does it act on?
+- What changes for the reader?
+
+Choose the highest-frequency verb the reader already owns that preserves the factual relation and tells them what the action will do. Word frequency reliably predicts processing ease, so a familiar verb is a real advantage, but no particular verb list is a standard. Verbs such as check, compare, find, show, verify, measure, review, choose, send, create, remove, correct, approve, reject, schedule, and calculate are a useful house lexicon of concrete actions, not a required vocabulary. A specialized verb beats a generic one whenever it names the exact action and the reader owns it: `reconcile`, `encrypt`, `deploy`, and `amortize` are clearer than `process`, `run`, or `do` for a reader who has those words.
+
+Rewrite noun-heavy constructions into direct actions.
+
+Weak:
+
+> Evaluate whether configured operational surfaces produced compliant outcomes for the declared workflow scope.
+
+Strong:
+
+> Check whether each system finished the task you assigned it.
+
+The strong version is less compressed and communicates the actual idea. That trade is correct. Compression that raises decoding effort is not compression, it is transfer of work to the reader.
+
+**The falsifiability check.** Before accepting a sentence that carries a claim, ask what would make it false. If no observation, number, condition, or counterexample could contradict it, the sentence is not a claim and it is not carrying the argument, whatever its tone. `Built for teams that care about accuracy` cannot be false. `Flags a mismatch before the ledger closes` can be false, and is therefore worth reading. This is the sharper form of the abstraction test, because it does not depend on judging whether a noun is abstract enough to rewrite.
+
+Where the falsifiability check fails: descriptive orientation, navigation labels, category nouns, and utility microcopy are not claims and are not supposed to be falsifiable. `Pricing` cannot be false and is correct. Applied to every sentence, this test produces a page that argues in every line, which is its own failure. Grade: HOUSE procedure, practitioner origin at Grade D, no effect on reader response claimed.
+
+### The anti-slogan rule
+
+Reject sentences that sound quotable and lose their meaning under literal reading.
+
+For every headline, subheading, closing line, and call to action, ask:
+
+1. What does this mean in concrete terms?
+2. What action or condition does it describe?
+3. Would the sentence remain useful with its dramatic tone removed?
+4. Could twenty unrelated companies publish it unchanged?
+5. Is the reader learning something, or only receiving a mood?
+
+If the literal meaning is weak, rewrite it. A line that survives only on rhythm is decoration in the position where the argument should be.
+
+### Corpus-level variance
+
+A sentence shape that is correct once can become a tell when it is used across a set of assets. This effect is real in attention-oriented copy and wrong to generalize, so split it by function before applying it.
+
+**Where repetition is correct.** When headings are members of the same task or information class, parallel syntax is functional metadata and should be preserved. Documentation style guidance recommends parallel structure for procedural and task-oriented headings, because predictable grammar helps a reader recognize equivalent information types ([Microsoft step-by-step instructions](https://learn.microsoft.com/en-us/style-guide/procedures-instructions/writing-step-by-step-instructions), [Google headings](https://developers.google.com/style/headings)). An anti-repetition rule applied here actively damages the page:
+
+Damaged by forced variety:
+
+> Importing your records
+> How do column mappings work?
+> Errors: what to know
+> The secret to retrying
+
+Correct:
+
+> Import records
+> Map columns
+> Resolve errors
+> Retry an import
+
+Stop parallelizing only when the headings stop representing equivalent units.
+
+**Where repetition costs.** For attention-oriented headings and hooks, manage template concentration rather than demand uniqueness. No measured threshold exists. There is no evidence that a publication's response declines after readers see the same headline syntax a given number of times, and the adjacent evidence does not transfer cleanly: banner blindness is visual and positional rather than syntactic ([NN/g banner blindness](https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/)), and large-scale headline analysis documents stylistic convergence across outlets rather than response decay ([Nature HSSC, 2025](https://www.nature.com/articles/s41599-025-04514-7)).
+
+Governance default, not a finding: across a rolling window of twelve attention-oriented headlines or major headings, keep at least four distinct syntactic families and avoid runs longer than two consecutive instances of one non-functional hook family. Read the template signature as `clause type + lead device + promise structure`, so that `declarative + audience callout + benefit`, `interrogative + direct address + problem`, `imperative + no lead device + action`, and `fragment + number + list scope` count as different families.
+
+Apply this across sessions when the brief names sibling assets that already exist.
+
+**Internal fatigue is not a reader-side signal.** The people who write and approve the copy see it every working day; the buyer sees it once, if at all. A line the room has grown tired of is not thereby failing, and "we have been saying this forever, everyone knows it already" is not evidence about the reader. Change a line because a reader-side test failed it, because the facts changed, or because a measured result says so. Do not change it to relieve the authors.
+
+Where this warning fails: internal boredom and a genuine template tell look identical from inside the room, so this is not a defence of an unvaried corpus. Run the concentration check above on the artifact and let that decide. The warning removes one bad reason to change a line; it supplies no reason to keep one. Grade: HOUSE. The observation is a practitioner one from the craft pass at Grade C, without a published method, and claims no effect on response in either direction.
+
+### Failure handling
+
+When copy fails these tests:
+
+1. Preserve the underlying fact.
+2. Identify the concrete actor, action, object, and result.
+3. Remove internal process language unless the reader needs it.
+4. Split overloaded sentences.
+5. Replace abstractions with observable actions or conditions.
+6. Restore necessary context that compression removed.
+7. Rewrite the call to action to name its actual destination.
+8. Test the revision again.
+
+Do not repair unclear writing by adding more jargon, explanatory parentheses, longer noun phrases, or vague supporting sentences. Those raise word count and decoding effort at the same time.
+
+### Required comprehension tests
+
+Run all of these before accepting customer-facing writing.
+
+| Test | Question |
+|---|---|
+| First-read | Can the intended reader restate the sentence after one reading? |
+| Actor-action-object | Is it clear who or what acts, what the action is, and what it affects? |
+| Abstraction | Can any abstract noun be replaced with a concrete action, object, condition, or result? |
+| Insider-language | Would the sentence still make sense to someone who has never seen the organization's internal terminology? |
+| Read-aloud | Does it sound like something a competent person would say to another person? |
+| Competitor-swap | Paste the line into a search engine: do unrelated companies already publish it unchanged? |
+| Falsifiability | Could this sentence be false? If nothing could contradict it, it is not a claim. |
+| Literal-meaning | With the rhetorical tone removed, does it still carry useful information? |
+| CTA-destination | Does the call to action accurately describe what happens after selection? |
+| Passage-quotation | Would the passage remain accurate and understandable if quoted on its own? |
+| Corpus-variance | Do attention-oriented headings in this deliverable cluster on one template? |
+
+The passage-quotation test is semantic, not numeric. A passage passes when it names or unmistakably identifies its subject, states the claim with any qualifier that keeps the claim true, leaves no pronoun or deictic whose antecedent sits outside the passage, preserves the comparison baseline where one is required, and keeps the causal or evidentiary context where that context is needed to interpret the claim.
+
+There is no optimal passage length. Passage-retrieval research does not establish a universal two or three sentence unit, and the workable size is task-dependent. A simple factual claim can be self-contained in one sentence; a qualified causal, comparative, legal, medical, or statistical claim can need more than three. Do not apply this test to a single sentence and then load that sentence with the context of its neighbours. That is the failure mode this test is most often used to justify.
+
+The competitor-swap test is a procedure, not a judgment. Paste the candidate line into a search engine inside quotation marks and read the first page of results. Unrelated companies publishing the same sentence is the finding. The conceptual version, that a line a competitor could sign is not carrying your argument, is the reasoning behind the check; the search is the check itself, because judging whether a competitor could use a line depends entirely on how generously you imagine the competitor.
+
+Where the search-paste test fails: a long, specific, or newly published line returns nothing, and a zero-result search is not evidence that the line is good. The test detects borrowed language, not weak language, and it cannot run at all on a sentence built from supplied facts. Fall back to the literal-meaning and falsifiability tests there. Grade: HOUSE procedure. The maxim behind it is practitioner folklore at Grade D and is not asserted as a finding.
+
 ## Truth and ethical limits
 
 Never invent or imply:
@@ -276,7 +481,9 @@ Short forms are compressed decisions, not miniature essays. Long forms are not p
 
 ### Landing-page heroes and ads
 
-Assume low context and fragile attention. Name one recognizable situation or stake. Show one meaningful difference. Offer one dominant next step unless the surface is explicitly a branching flow. Do not open with a product taxonomy or an all-in-one claim.
+Assume low context and fragile attention. Name one recognizable situation or stake. Show one meaningful difference. Offer one dominant next step unless the surface is explicitly a branching flow.
+
+Give the reader a category they already own before or inside the first differentiating claim, then say what is different about this one. See `Mechanism and differentiation > Orientation against taxonomy`. Do not open with a product taxonomy, a classification tree, or an all-in-one claim.
 
 ### Product pages
 
@@ -332,9 +539,66 @@ Do not mechanically ban common verbs. Reject them when they are the primary carr
 
 Use category ambition by naming the scale of consequence, not by making an unsupported rank claim. "An operating layer for distributed battery fleets" expresses scope. "The leading battery platform" requires leadership evidence.
 
+Differentiation pressure is the main route by which internal method names reach customer copy. Naming the mechanism precisely is required. Naming it in the organization's own vocabulary is not. Describe what the mechanism does in words the reader already owns, and reserve the internal name for surfaces where the reader has agreed to learn it, such as documentation, a methodology page, or a technical annex.
+
+Two separate reader properties decide this, and collapsing them into one is the usual mistake.
+
+**Awareness decides how much conceptual context the opening must supply. Sophistication decides how much differentiation and claim resistance the message must overcome.** Name a mechanism early only when the reader already understands enough of the problem and solution space that the name reduces comparison cost instead of creating vocabulary cost.
+
+Before that point a coined mechanism is not precision from the reader's side. It is one more object to learn. Unfamiliar jargon measurably reduces processing fluency ([Shulman et al., 2020](https://journals.sagepub.com/doi/10.1177/0261927X20902177)), so plain-language meaning should precede an unfamiliar proper noun whenever the reader lacks the vocabulary. Familiar technical terminology used by a technical evaluator is not functioning as jargon and this rule does not apply to it.
+
+Experienced or skeptical audiences need credibility rather than louder claims. Once persuasive motive becomes visible, readers apply what they know about persuasion and discount accordingly ([Campbell and Kirmani, 2000](https://academic.oup.com/jcr/article-abstract/27/1/69/1791556)). In a claim-saturated market, increase verifiability before increasing rhetorical intensity.
+
+### Orientation against taxonomy
+
+Orientation pressure and differentiation pressure point in opposite directions, and a draft can fail in either direction. The current failure list treats category language as a defect, and that is only half true.
+
+A cold reader answers three questions before any differentiation can land: where am I, what is this, and why here. A category noun the reader already owns answers the second in two or three words, and nothing else answers it as cheaply. Company writing has to be legible inside a category and distinct enough to deserve attention at the same time, and neither half substitutes for the other ([Navis and Glynn, legitimate distinctiveness](https://doi.org/10.5465/amr.2008.0361)).
+
+So:
+
+- **Naming the category orients.** `A payroll system for restaurant groups` is not a taxonomy retreat. It is the cheapest available answer to what this is, and it borrows a structure the reader has already built.
+- **Describing yourself only in category terms leaves you swappable.** The defect is not the category noun. It is stopping at the category noun, so that every other member of the category could publish the same sentence unchanged.
+
+The working order on a cold surface is orient, then differentiate, usually inside one sentence. Reach for an existing category the reader owns before inventing one, because a coined category asks the reader to build the structure themselves before they have a reason to.
+
+Where this fails:
+
+- On a warm surface the orienting is already done, and repeating the category noun spends attention the reader has already given. A second-touch email, a pricing page, or an in-product upgrade screen does not reintroduce the category.
+- Orientation does not license opening with a taxonomy tree, a product-line inventory, or an all-in-one claim. One category noun is orientation; a classification is not.
+- When the supplied facts contain a verified trigger, threshold, conflict, or exception, that condition can carry the opening and the category noun can follow inside the same sentence. Do not retreat to a category sentence merely because quantified impact is missing.
+
+Grade: A- for the requirement that writing be legible inside a category and distinct within it, from the source linked above. HOUSE for the instruction to lead a cold commercial surface with a reader-owned category noun; two practitioners in the craft pass assert it independently at Grade C, neither with a published method.
+
+### Specificity against superlative
+
+Given a supported specific and an unsupported superlative that point at the same fact, ship the specific.
+
+A superlative is a rank claim. `Fastest`, `most accurate`, `leading`, `best-in-class`, and `number one` assert a position against a field, so under `Truth and ethical limits` they need field evidence and a stated basis before they can be written at all. The checkable fact usually says more and costs less:
+
+Weak, and true:
+
+> The quickest turnaround in commercial plan review.
+
+Strong:
+
+> Plan review comes back in three working days.
+
+The second is not stronger because superlatives underperform. It is stronger because it is verifiable, because it survives a reader who already discounts vendor intensity ([Campbell and Kirmani, 2000](https://academic.oup.com/jcr/article-abstract/27/1/69/1791556)), and because it tells the reader something they can act on. The same logic applies to category-generic benefit phrasing: `increase your sales` and `save time` are promises every competitor in the category is also making, so they select nobody.
+
+Where this fails:
+
+- A specific is only stronger when it is supplied and verified. Never manufacture a number to escape a superlative. Narrow the claim or drop it.
+- A superlative with a stated basis, a date, and a publishable source is a claim like any other and may be used. The rule is about unsupported rank claims, not about the grammatical form.
+- Precision has a cost. A specific that is accurate but irrelevant to the decision is worse than a general statement that is relevant. Rank by decision relevance first, then by specificity.
+
+Grade: HOUSE, resting on the truth rules above it. Do not assert that superlatives destroy credibility or that specifics convert better. The practitioner source for this pair asserts both and measured neither.
+
+### Differentiation tests
+
 Run these tests:
 
-- **Competitor-swap:** could another company use the same copy unchanged?
+- **Competitor-swap:** paste the line into a search engine and count the unrelated companies publishing it unchanged. Judge it only when the line is too long or too specific to search, and read the procedure and its boundary in `Plain language and first-read comprehension > Required comprehension tests`.
 - **Causal:** does the mechanism actually support the stated outcome?
 - **Continuity:** does each sentence earn the next?
 - **Defense:** would the author defend every claim to a skeptical reader?
@@ -343,16 +607,88 @@ Run these tests:
 
 ## CTA standard
 
-A CTA should complete the argument rather than compensate for a missing one.
+A CTA is an action label, not a slogan. It should complete the argument rather than compensate for a missing one.
 
-Match the action to readiness:
+### The required shape
+
+Every CTA tells the reader what will happen after they select it. The working shape is:
+
+`clear verb + concrete object, destination, or result`
+
+Workable labels name the thing on the other side: `View the report`, `Compare plans`, `Check eligibility`, `See the recommended fixes`, `Review the evidence`, `Book a product demo`, `Start the assessment`, `Download the guide`, `Contact the sales team`, `Retry the payment`.
+
+Name the outcome the reader ends up with, not the motion the interface performs. A label that describes what the product will display is weaker than one that describes what the reader will then have. Prefer the artifact or answer over the transition to it.
+
+Specificity has a failure at the far end. A label narrowed past the range of reasons a reader might select it turns away the readers it did not name: a contact control labelled `Ask about pricing` excludes the reader holding a security question, and the repair is a broader label, not a longer one. Name the destination precisely enough that nothing has to be inferred, and no more precisely than the destination actually is. This boundary is HOUSE, from a single practitioner teardown at Grade D; no effect on response is claimed.
+
+### Slogan-shaped labels
+
+Reject labels that carry force and hide the action: `Take control`, `Move with confidence`, `Fix what matters`, `See the difference`, `Unlock your potential`, `Transform your results`, `Start your journey`, `Make it count`, `Get clarity`.
+
+The basis for rejecting these is operational ambiguity, not a conversion claim. **No controlled evidence establishes that slogan-shaped labels as a class convert worse than action labels as a class.** Do not assert that they do. What is supported is the underlying clarity requirement: a control should describe its own purpose and destination ([NN/g, Better Link Labels](https://www.nngroup.com/articles/better-link-labels/), [W3C, Link Purpose](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html)).
+
+The enforceable rule: reject a slogan-shaped primary label when it cannot answer what the reader will have, know, start, change, send, open, or commit to next.
+
+Each of these has a narrow condition where it is correct. `Get clarity` works once it names its object, as in `Get clarity on close risks`. `Take control` works as an entry point to a literal control centre when the adjacent copy makes that meaning unmistakable. `Start your journey` works for a named onboarding programme the surrounding copy identifies. The pattern is that the label becomes valid when the destination is supplied, not when the tone is softened.
+
+A slogan may sit next to the control as persuasion copy. The restriction applies to the action label's informational job, not to the headline above it.
+
+Also avoid the weaker generic labels for the same reason: `Learn more`, `Get started`, `Submit`, `Explore`, `Discover`, `Click here`, `Request information`, and bare product names. `Next` is correct between explanatory or editable steps, and the final step should name the real action. On a consequential or irreversible dialog, name the operation rather than using `OK` or `Yes`, so the reader does not have to reparse the prompt to know what the button does ([NN/g confirmation dialogs](https://www.nngroup.com/articles/confirmation-dialog/)).
+
+Do not encode a pronoun ranking. The widely cited first-person result compared `Start my free trial` against `Start your free trial` on one site with incomplete method reporting, and no independent replication was located. It does not establish that `Start my trial` beats `Start trial`. Treat first-person framing as a testable variable, never a house rule.
+
+### Microcopy under the control
+
+The line under a button does work the label cannot, because the label has to stay short and the objection does not.
+
+Build it from the objections the reader is holding at that exact moment, not from a template. Enumerate them first, in the reader's own words: how long is this going to take, do I need something I do not have, what happens to what I enter, am I committing to anything, is this meant for someone like me. Then answer only the ones this destination actually raises.
+
+Four questions cover most controls, and the microcopy answers whichever of them the reader cannot already answer:
+
+1. What is the goal of this step?
+2. How does it work?
+3. What do I walk away with?
+4. Who is this for?
+
+Where the commitment is genuinely ambiguous, say what it is not: `no card required`, `you can change this later`, `this sends a request and does not book the slot`. Every reassurance is a claim and inherits the truth rules. Write none the supplied facts do not support, and never soften a real commitment with a line implying reversibility the product does not offer.
+
+Where this fails:
+
+- Microcopy is not a place to relocate a claim the body copy could not support.
+- Reassurance under a low-friction control adds friction by implying the action was risky. Use it where commitment, cost, data handling, or duration is genuinely in question, and nowhere else.
+- Answering all four questions under every control produces a page of hedges. One or two lines, at the point of decision.
+
+Grade: HOUSE procedure, from a practitioner teardown at Grade C with no method reported. The underlying requirement that a control describes its own purpose and consequence is the same clarity evidence cited above ([NN/g, Better Link Labels](https://www.nngroup.com/articles/better-link-labels/), [W3C, Link Purpose](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html)).
+
+### What the reader must never have to infer
+
+- what opens;
+- what they receive;
+- what they must provide;
+- whether the action is immediate;
+- whether the action starts a purchase, form, demo, download, or review;
+- what commitment the action creates.
+
+If the destination is a form, the label should imply a form. If the destination is a document, the label should name the document. If the action begins a paid commitment, the label should not read like a preview.
+
+### Match commitment to readiness and to destination
 
 - Early attention: learn, compare, see, review, or save.
 - Active evaluation: inspect evidence, try a workflow, calculate fit, or ask a focused question.
 - Ready action: start, buy, subscribe, book, submit, or upgrade.
 - Utility: continue, return, restore, confirm, cancel, or retry.
 
-Use a verb that tells the reader what happens. Do not use a high-commitment CTA when the copy only supports a low-commitment test. Do not add urgency without a real clock or constraint.
+Do not use a high-commitment CTA when the copy only supports a low-commitment test. Do not use a dramatic label when the destination is informational. Do not add urgency without a real clock or constraint.
+
+### Consistency across a surface
+
+One materially identical action gets one canonical label. Links to the same destination should carry the same description, and components with the same functionality should be identified consistently ([W3C, Link Purpose](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html), [NN/g, Consistency and Standards](https://www.nngroup.com/articles/consistency-and-standards/)).
+
+The rule is strongest on controls that perform the same action. It is weaker on destination links, where context can legitimately change the wording: `Pricing` in global navigation and `Compare plans` in a hero can point at the same page without confusing anyone, because one is a destination label and the other is a task invitation.
+
+Repeating one goal down a long page creates several access points to one offer, not several offers. That is permitted for convenience. No published evidence establishes an optimal repetition interval, so do not claim a lift from repetition and do not enforce a spacing rule.
+
+Where a page genuinely branches, the labels should differ in destination, not merely in phrasing.
 
 ## Spoken delivery
 
@@ -430,6 +766,8 @@ Delete generic tails such as `underscoring the importance of`, `highlighting its
 
 Remove repeated `bold label: sentence` bullets, headings that restate themselves, identical paragraph shapes, conclusion sections that add nothing, balanced both-sides framing without named evidence, and smooth transitions that hide unrelated facts.
 
+Extend this to the whole deliverable, not one passage. Headings that share a syntactic template across a page, and calls to action that share a template across a site, are the same defect at a larger scale. A set of headings built as a count followed by a singular abstract noun, or every heading opening with the same conditional clause, is a structural tell even when each heading is accurate and each was written to a sanctioned shape. Sanctioned shapes are the most likely source of this failure, because nothing flags them individually.
+
 Avoid decorative tripartite rhetoric used as a stock flourish. Do not ban factual three-item series. Preserve necessary enumerations when they state scope, compare options, qualify a claim, meet a legal or platform requirement, or prevent misleading omission.
 
 Never add fake typos, fragments, slang, personal memories, jokes, or emotional confessions to simulate humanity. If author samples are supplied, follow stable habits without copying phrases or inventing an identity.
@@ -444,10 +782,12 @@ Research on detector limits includes the [RAID benchmark](https://arxiv.org/abs/
 
 Apply these rules only to written assets. They improve clarity, extractability, and verification. They do not guarantee retrieval or citation.
 
+These rules sit at level 7 of the conflict hierarchy. None of them may raise decoding effort. Where one of them would, comprehension wins.
+
 - Answer the central question early when the format calls for it.
 - Name the subject, entity, category, scope, and time frame clearly.
-- Keep proof and qualifications beside the claims they govern.
-- Write self-contained passages that remain accurate when quoted alone.
+- Keep proof and qualifications near the claims they govern, in their own sentences. Near does not mean inside.
+- Write self-contained passages that remain accurate when quoted alone. The unit is the passage of two or three sentences, not the individual sentence. Do not load one clause with the context of its neighbours in order to make it quotable on its own. A passage that has to be read as a unit is correct; a sentence that has to be decoded as a specification is not.
 - Expose genuine provenance, sources, authorship, dates, and methods.
 - Add information value rather than paraphrasing a common consensus.
 - Use descriptive headings and labels that match the content beneath them.
@@ -608,6 +948,114 @@ Strong:
 
 Why: the factual series defines scope and prevents a misleading generalization. Deleting it to avoid a three-item pattern would make the copy worse.
 
+### Insider terminology
+
+Verified facts:
+
+> A veterinary practice platform assigns each incoming client message to the staff member qualified to answer it. The company calls this step "care-path routing" internally. Clients of the platform are practice owners and office managers. No response-time or satisfaction result is available.
+
+Weak:
+
+> Care-path routing assigns inbound client communications to the appropriate qualified responder.
+
+Strong:
+
+> When a client messages the practice, the message goes to the person qualified to answer it, not to a shared inbox.
+
+Why: the internal name teaches the reader nothing and costs them a decode. The strong version names the situation the practice owner recognizes and the change that follows. The mechanism survives; only the label is gone.
+
+### Abstraction stacking
+
+Verified facts:
+
+> A freight brokerage compares the weight recorded at pickup with the weight recorded at delivery, and holds any shipment where the two differ by more than two percent for a human check. Customers are shippers and logistics managers.
+
+Weak:
+
+> Our exception governance layer enables continuous alignment between origin and destination measurement events across the fulfilment lifecycle.
+
+Strong:
+
+> We weigh the shipment at pickup and again at delivery. If the two differ by more than two percent, a person checks it before it moves on.
+
+Why: the weak version contains no actor and four abstract nouns doing the work of two verbs. It is not false, it is undecodable at reading speed. The strong version names who acts, on what, and what triggers the check.
+
+### Methodology in customer copy
+
+Verified facts:
+
+> A clinical billing service reviews every claim twice: once by software before submission and once by a certified coder when the software flags a mismatch. It publishes a methodology page describing both stages. The audience for the marketing page is practice administrators.
+
+Weak:
+
+> Stage one applies automated pre-submission validation. Stage two introduces certified human adjudication for flagged variances, preserving the separation between automated and manual review records.
+
+Strong:
+
+> Every claim is checked by software before it goes out. If something does not match, a certified coder looks at it before submission, not after the denial.
+
+Why: the weak version describes the company's process architecture to an audience that only needs to know what happens to their claims. Stage numbers, record separation, and adjudication are internal concerns. The strong version keeps both checks, the ordering, and the credential, and drops the method's self-description.
+
+### Slogan-shaped CTA
+
+Verified facts:
+
+> A home energy app can produce a report showing which appliances used the most electricity last month. The report is free and takes about a minute to generate. No savings figure is available.
+
+Weak:
+
+> Take control of your energy.
+>
+> Get started
+
+Strong:
+
+> See which appliances used the most power last month.
+>
+> Generate my usage report
+
+Why: neither weak line tells the reader what they get or what happens next. The strong headline names the answer the report contains, and the label names the artifact the reader receives. Neither invents a saving.
+
+### CTA destination clarity
+
+Verified facts:
+
+> A business lender lets a prospective borrower enter revenue, time trading, and industry to see whether they meet the published lending criteria. The check takes two minutes, requires no documents, and does not affect a credit score. It is not an application.
+
+Weak:
+
+> Move forward with confidence.
+>
+> Apply now
+
+Strong:
+
+> Find out whether you meet the lending criteria before you apply.
+>
+> Check eligibility, two minutes, no documents needed
+>
+> This check does not affect your credit score.
+
+Why: the weak label promises an application the reader is not ready to make and hides the low commitment that would have earned the click. The strong version names the destination, the cost in time, what is required, and the reversibility, all from supplied facts.
+
+### Overloaded qualification
+
+Verified facts:
+
+> A workplace safety monitor records equipment temperature every thirty seconds and alerts a supervisor when a reading passes the threshold configured for that machine. Readings come only from sensors the customer has installed and enabled. The monitor cannot report on machines without a sensor.
+
+Weak:
+
+> The monitor records temperature observations at thirty-second intervals for configured, customer-enabled sensor endpoints and issues supervisor notifications when a recorded value exceeds the per-asset threshold in effect at the time of observation, subject to sensor availability.
+
+Strong:
+
+> The monitor reads each machine's temperature every thirty seconds. When a reading passes the limit you set for that machine, the supervisor gets an alert.
+>
+> This only covers machines where you have installed and switched on a sensor.
+
+Why: every qualifier in the weak version is material and none of it is deleted. It moves to its own sentence, which is where qualification belongs. The claim is now readable at speed and the limit is now more visible, not less.
+
 ## Evaluation contract
 
 Separate hard invariants from subjective quality.
@@ -628,8 +1076,16 @@ Test only what must not fail:
 - Ready-to-use copy appears before any necessary note.
 - No project-specific facts or controls leak from another context.
 - The entire generated response contains zero U+2014 characters.
+- No internal method, stage, score, record-type, tier, or framework name appears in customer-facing copy unless the supplied brief states that the audience already uses it.
+- Every call to action names a verb plus a concrete object, destination, or result.
+- No call to action is drawn from the slogan-shaped list in `CTA standard`.
+- One action carries one label across a single deliverable.
+- Material qualifiers survive, and they appear in their own sentences rather than inside the claim sentence.
+- Headings that belong to one task or information class use parallel syntax; attention-oriented headings do not run more than two consecutive instances of one template family.
 
 Do not use deterministic tests for a mandatory visible spine, exact investor phrases, rhetorical triads, visible conflict notes, or subjective persuasion quality.
+
+First-read comprehension cannot be tested deterministically. Treat it as a blind-quality dimension, scored by a reader who has not seen the source facts.
 
 ### Blind quality evaluation
 
@@ -647,6 +1103,8 @@ Use these quality dimensions on a five-point scale:
 | Mechanism differentiation | The subject is difficult to swap with a competitor |
 | Natural channel fit | The output sounds native to the requested surface |
 | Truth discipline | Persuasive force reaches the evidence boundary without crossing it |
+| First-read comprehension | An intended reader who has not seen the source facts extracts the meaning on one pass |
+| Concrete action clarity | Actor, action, object, and result are visible, and the call to action names its destination |
 
 Automatic failure: any U+2014 occurrence, fabricated fact, unsupported causality, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
 
@@ -702,6 +1160,48 @@ Evidence grades:
 | A | [W3C headings and labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels) | Descriptive structure supports comprehension and accessibility. |
 | B | [LinkedIn sponsored messaging guidance](https://business.linkedin.com/advertise/ads/sponsored-messaging/tips) | CTA count depends on whether the surface is focused or branching. |
 | C | [Gong cold-email analysis](https://www.gong.io/blog/how-to-write-a-sales-email) | Use outreach benchmarks as testable priors, not universal laws. |
+
+### Plain language, terminology, and CTA evidence
+
+The comprehension and CTA rules were tested against the research literature after they were drafted. Seven load-bearing claims were adjudicated. Four did not survive and have been removed from the rules rather than softened.
+
+| Claim as originally written | Verdict | Grade | What replaced it |
+|---|---|---|---|
+| At most one unfamiliar concept per sentence | Refuted as a measured limit | D | A disposal rule: every reader-unowned term is taught in place or removed. Vocabulary coverage impairs comprehension continuously, not as a per-sentence step function ([Kremmel et al., 2023](https://doi.org/10.1111/lang.12622)) |
+| Two abstract nouns in a clause is one too many, three is a rewrite | Refuted; the numbers are invented | D | Rewrite an abstraction only when it conceals an actor, action, causal relation, or consequence the reader needs. Controlled eye-tracking found no independent comprehension penalty for nominalization ([Balling, 2018](https://doi.org/10.1177/0047281617696983)) |
+| A self-contained passage is two or three sentences | Refuted; no optimum exists | D | A semantic self-containment test. Passage size is task-dependent |
+| No two headings in one deliverable share a syntactic template | Refuted as a universal rule, and harmful where applied to task headings | D | Split by function: parallel syntax is correct for same-class headings; template concentration is managed for attention-oriented ones under a stated governance default |
+| A fixed preferred-verb list improves comprehension | Not supported as a standard | D for the list, A for the principle | Choose the highest-frequency reader-owned verb that preserves the factual relation. Word frequency reliably predicts processing ease; this particular list is a house lexicon |
+| Slogan-shaped CTA labels fail readers | Rejection stands, basis corrected | D for any conversion claim, C for the clarity requirement | Reject on operational ambiguity, supported by link-purpose and label guidance. No controlled evidence shows slogans convert worse as a class |
+| Buyer sophistication decides whether a mechanism name helps | Partly right, conflated two axes | D for the original sentence, B for the jargon evidence beneath it | Awareness decides conceptual context; sophistication decides differentiation and claim resistance. Jargon reduces processing fluency ([Shulman et al., 2020](https://journals.sagepub.com/doi/10.1177/0261927X20902177)) |
+
+What survived with real support: jargon measurably reduces processing fluency; naming an actor changes how readers assign cause ([Fausey and Boroditsky, 2010](https://doi.org/10.3758/PBR.17.5.644)); word frequency predicts processing ease; controls should describe their own destination; one canonical label per materially identical action ([W3C, Link Purpose](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html), [NN/g, Consistency and Standards](https://www.nngroup.com/articles/consistency-and-standards/)); persuasion knowledge makes visible motive costly ([Campbell and Kirmani, 2000](https://academic.oup.com/jcr/article-abstract/27/1/69/1791556)); reading aloud improves error detection.
+
+Two findings in this section are house observations from a diagnosed production failure rather than literature: a sentence carrying its full qualification set inline reads as a compliance memo, and a set of marketing headings built on one template reads as generated. Both were observed directly. Neither has a measured effect size.
+
+Remaining governance defaults, explicitly not findings: the twelve-headline template-concentration window, and the review trigger for a sentence carrying two or more reader-unowned terms.
+
+Do not promote any governance default into a graded rule without recording the source, design, population, and limits required by `Evidence maintenance`.
+
+### Practitioner craft pass
+
+A separate mining pass over published practitioner talks supplied procedures and exemplars rather than evidence. Nothing from that pass is graded above C and most of it is D, because the medium reports assertions without method. The ceiling is a property of the source, not a judgment about the practitioners, several of whom publish better-supported material elsewhere.
+
+What was adopted from it, and on what basis:
+
+| Item | Status here | Basis |
+|---|---|---|
+| A reader-owned category noun orients a cold reader | Rule, in `Mechanism and differentiation > Orientation against taxonomy` | A- for the legibility-and-distinctiveness requirement ([Navis and Glynn](https://doi.org/10.5465/amr.2008.0361)); HOUSE for the instruction to lead with the category noun |
+| Paste the line into a search engine | Procedure, replacing the judgment form of the competitor-swap test | HOUSE. The maxim behind it is folklore at D and is not asserted |
+| Write a sentence that could be false | Procedure, in `Abstraction control` | HOUSE. The origin is an unattributable D-grade maxim |
+| Objection-built microcopy under a control | Procedure, in `CTA standard > Microcopy under the control` | HOUSE, alongside the link-purpose evidence that supports the label rules |
+| A team's boredom with its own copy is not a defect | Warning, in `Corpus-level variance` | HOUSE. Practitioner observation at C, no method |
+| Prefer a checkable specific to an unsupported superlative | Rule, in `Specificity against superlative` | HOUSE, resting on the truth rules. The practitioner claim that superlatives destroy credibility is D and is not asserted |
+| An over-narrow control label excludes readers it did not name | Boundary, in `The required shape` | HOUSE. One teardown, Grade D, no effect claimed |
+
+What was refused and stays refused: every vendor-reported split-test figure in that pass, the claim that one CTA wording doubles conversions, the claim that superlatives destroy credibility, the rule that a comma signals a sentence needing to be broken, the read-aloud-in-a-false-accent variant, the customer-interview count offered as a sufficiency threshold, and category creation as a strategy. None of these may be written as a rule here.
+
+Two conflicts from that pass are open and stay open. Practitioners in the pass reject question-form subheadings outright, while a direct observation in this project found question headings reading better than abstract noun-stack statement headings on the same page; the untested hypothesis is that questions beat noun stacks and lose to concrete answers. Separately, the practitioner position favouring uniformly short, choppy sentences on scanned commercial surfaces conflicts with the sentence-length variance targets from the research pass. Neither side of either conflict is graded above D. Do not resolve either by writing a rule.
 
 ### Human voice and detector evidence
 
@@ -761,4 +1261,7 @@ Change record:
 
 | Date | Change |
 |---|---|
+| 2026-08-09 | Ran the graded research pass against the seven load-bearing claims. Removed four refuted thresholds: the per-sentence unfamiliar-concept limit, the abstract-noun count, the two-or-three-sentence passage unit, and universal heading-template uniqueness. Rebased abstraction control on actor recovery, the verb guidance on word frequency, the slogan-CTA rejection on operational ambiguity rather than a conversion claim, and mechanism naming on the separate awareness and sophistication axes. Split corpus variance by function so parallel syntax survives where it is functional metadata. Added the pronoun-ranking prohibition and the label-consistency boundary. |
+| 2026-08-09 | Marked the new comprehension and CTA rules HOUSE and provisional, and recorded the seven unsourced load-bearing claims in `Evidence register` pending a graded research pass. |
+| 2026-08-09 | Added `Plain language and first-read comprehension`. Raised comprehension to level 3 of the conflict hierarchy and resolved its two standing conflicts with material qualification and with citability. Rebuilt `CTA standard` around action labels, destination clarity, and cross-surface consistency. Scoped passage self-containment to the passage rather than the sentence. Added the differentiation counterweight to `Mechanism and differentiation`, corpus-level repetition to `Structural tells`, six applied pairs across new business types, and matching invariants and quality dimensions. |
 | 2026-07-19 | Rebuilt the authority for variable-depth persuasion, POSITION-first company profiles, proof salience, diagnostic enumeration, silent compliance, and project-agnostic operation. Added research on persuasion psychology, investor communication, channel architecture, and evaluation design. |
