@@ -461,17 +461,17 @@ If proof is missing, narrow or omit the premise. Add a concise blocker note only
 
 Length is a channel constraint, not a persuasion doctrine. The three word counts below are governance defaults that mark where the treatment changes; no evidence establishes a length optimum, and an asset that falls between two bands takes whichever treatment its channel needs.
 
-### Very short: one line to about 35 words
+### Very short: one line to about 35 words (governance default)
 
 Use a compelling market shift, felt stake, live consequence, or verified trigger condition plus the strongest verified mechanism or differentiator. When no outcome evidence exists, use the exact condition the product acts on. Do not retreat to a feature list. Compress the mechanism into the differentiator when syntax permits. Do not force objection handling, a full proof stack, a decision criterion, or visible investor relevance.
 
 For a hard character limit, count characters exactly. Preserve the strongest fact, not the greatest number of facts.
 
-### Medium: about 36 to 120 words
+### Medium: about 36 to 120 words (governance default)
 
 Lead with the stake or shift. Add the mechanism and strongest proof clue. Include a material qualifier when its omission would overstate the claim. Land a natural destination belief without announcing the reasoning framework.
 
-### Long: more than about 120 words
+### Long: more than about 120 words (governance default)
 
 Expand only when each addition resolves a live uncertainty or objection. Long-form buyer and investment work may use situation, consequence, criterion, mechanism, proof, alternatives, timing, and next step. Do not stretch a small fact set into an essay.
 

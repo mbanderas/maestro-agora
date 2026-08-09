@@ -58,7 +58,7 @@ Measure **clean author-controlled words**: the author's own prose after removing
 | Clean words | Disposition | Basis |
 |---|---|---|
 | Under 5,000 | **Refuse to certify a profile.** Report what was found and what the corpus needs. | **B.** Controlled sample-size experiments put minimum stable stylometric samples at roughly 2,500 words for some corpora and around 5,000 for most modern-language English text; below the stable region estimates are unreliable rather than merely noisy ([Eder](https://doi.org/10.1093/llc/fqt066)). |
-| 5,000 to 10,000 | Build with `confidence: low`. Restrict the measured section to features that stay stable on short texts, and write a loud `## Not captured`. | **B**, same source. |
+| 5,000 to 10,000 | Build with `confidence: low`. Restrict the measured section to features that stay stable on short texts, and write a loud `## Not captured`. | **B**, from the same sample-size experiments ([Eder](https://doi.org/10.1093/llc/fqt066)). |
 | 10,000 and above | Production minimum for a persistent profile. | **C.** More than 10,000 words per author is the traditional reliable minimum in attribution research ([Luyckx and Daelemans](https://aclanthology.org/C08-1065/)). |
 | 20,000 to 30,000 | Preferred tier. Enough to estimate tails, rare punctuation, paragraph distributions, and more than one register without one document dominating. | Governance default, chosen as an engineering target and not an empirical threshold. |
 
@@ -81,7 +81,7 @@ Four structural requirements sit on top of the word count. Each is a **governanc
 
 Stylometry has no single fingerprint. Attribution works by combining partially discriminative feature families, and topic and register are the major confounders ([Grieve](https://doi.org/10.1093/llc/fqm020), [Stamatatos](https://aclanthology.org/E17-1107/)).
 
-**Rule [B]: treat function words, punctuation, syntax, and character patterns as a bundle. Never declare one of them a voice fingerprint.** **Boundary:** a constrained genre with plenty of data can make one family highly predictive without making it a general property of that author.
+**Rule [B]: treat function words, punctuation, syntax, and character patterns as a bundle. Never declare one of them a voice fingerprint** ([Grieve](https://doi.org/10.1093/llc/fqm020), [Stamatatos](https://aclanthology.org/E17-1107/))**. Boundary:** a constrained genre with plenty of data can make one family highly predictive without making it a general property of that author.
 
 **Rule [B]: store distributions, not only averages.** For sentence and paragraph length, record at least the median, the standard deviation, the tenth and ninetieth percentiles, and the binned shape alongside the mean. Distributional spread separates texts whose central tendencies overlap ([Munoz-Ortiz et al.](https://doi.org/10.1007/s10462-024-10903-2)). **Boundary:** percentiles and shape statistics are unstable on very few observations, so a short corpus gets a median and a mean and an explicit note that the tails are unknown.
 
