@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { spawnSync } from "node:child_process";
 import { access, readFile, readdir } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -39,6 +40,26 @@ async function listFiles(root, base = root, ignored = new Set()) {
     if (entry.isFile()) files.push(relative(base, path).replaceAll("\\", "/"));
   }
   return files;
+}
+
+// Files git would carry: tracked plus untracked, minus everything the standard
+// ignore sources exclude (.gitignore, .git/info/exclude, the global excludes
+// file). Scratch that only exists in a working copy is not the repository and
+// must not decide whether the repository is valid. Returns null outside a git
+// checkout, such as an unpacked tarball, so the caller can fall back to walking
+// the directory.
+function gitFiles(root) {
+  const result = spawnSync("git", ["ls-files", "--cached", "--others", "--exclude-standard", "-z"], {
+    cwd: root,
+    encoding: "utf8",
+  });
+  if (result.error || result.status !== 0) return null;
+  const files = result.stdout.split("\0").filter(Boolean);
+  return files.length > 0 ? files : null;
+}
+
+async function repoFileList(root, ignored) {
+  return gitFiles(root) ?? (await listFiles(root, root, ignored));
 }
 
 function parseFrontmatter(markdown) {
@@ -156,6 +177,11 @@ async function main() {
     "Load the authority progressively",
     "`VOICE` is the exception to selecting one mode",
     "Profiles are stored at `~/.agora/voices/`, never inside the skill directory",
+    "Apply the default profile to every mode",
+    "`--no-voice` or `neutral`",
+    "Default-on changes nothing above level 6",
+    "Measurement is computed, never estimated from reading",
+    "a file that the engine did not produce is not a profile",
     "An active voice profile enters at level 6",
     "never overrides the U+2014 ban",
     "Refuse to build or apply a voice profile of a named third party",
@@ -281,6 +307,10 @@ async function main() {
     "suppresses the generic AI-vocabulary ban for those specific words, and only those",
     "publication under that person's name",
     "governance default",
+    "npx -p @maestroagora/agora agora-voice build",
+    "A profile the engine did not produce is not a profile",
+    "<slug>.measurements.json",
+    "truncated hashes of each token run",
   ]) {
     check(voice.includes(required), `voice reference is missing: ${required}`);
   }
@@ -298,6 +328,14 @@ async function main() {
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
   check(packageJson.version === "1.3.0", "package version must be 1.3.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
+  check(packageJson.bin?.["agora-voice"] === "scripts/voice-measure.mjs", "package must expose the agora-voice bin");
+  for (const shipped of ["scripts/voice-measure.mjs", "scripts/voice"]) {
+    check(packageJson.files?.includes(shipped), `package files must ship ${shipped}`);
+  }
+  check(
+    (packageJson.scripts?.test || "").includes("tests/voice-measure.test.mjs"),
+    "npm test must run the voice measurement suite",
+  );
   check(packageJson.license === "MIT", "package must use MIT");
   check(/^\* text=auto eol=lf$/m.test(gitAttributes), "Git must enforce LF for text files");
   check(/^\*\.png binary$/m.test(gitAttributes), "Git must preserve PNG files as binary");
@@ -322,7 +360,7 @@ async function main() {
   const claudeMarketplace = await readJson(join(ROOT, ".claude-plugin", "marketplace.json"));
   check(claudeMarketplace.plugins?.some((plugin) => plugin.name === "maestro-agora"), "Claude marketplace is missing Agora");
 
-  const repoFiles = await listFiles(ROOT, ROOT, new Set([".git", "node_modules"]));
+  const repoFiles = await repoFileList(ROOT, new Set([".git", "node_modules"]));
   const scanExtensions = new Set([".md", ".mjs", ".json", ".yaml", ".yml", ".svg"]);
   const forbidden = [
     { pattern: /\[(?:TODO|TBD)(?::[^\]]*)?\]/i, label: "TODO marker" },
