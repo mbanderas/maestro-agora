@@ -8,6 +8,7 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SKILL_ROOT = join(ROOT, "skills", "agora");
 const SKILL_PATH = join(SKILL_ROOT, "SKILL.md");
 const REFERENCE_PATH = join(SKILL_ROOT, "references", "agora-marketing.md");
+const CRAFT_PATH = join(SKILL_ROOT, "references", "agora-craft.md");
 const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
 const CODEX_PLUGIN_PATH = join(ROOT, ".codex-plugin", "plugin.json");
 const CLAUDE_PLUGIN_PATH = join(ROOT, ".claude-plugin", "plugin.json");
@@ -18,10 +19,11 @@ const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.2.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, linkFixture, manifest] =
+const [skill, reference, craft, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
+    readFile(CRAFT_PATH, "utf8"),
     readFile(OPENAI_PATH, "utf8"),
     readFile(CODEX_PLUGIN_PATH, "utf8").then(JSON.parse),
     readFile(CLAUDE_PLUGIN_PATH, "utf8").then(JSON.parse),
@@ -342,6 +344,74 @@ test("reference examples cover the known failure families", () => {
   }
 });
 
+test("the craft reference carries the four unabsorbed domains with graded rules", () => {
+  const headings = [...craft.matchAll(/^## (.+)$/gm)].map((match) => match[1]);
+  assert.deepEqual(headings, [
+    "Contents",
+    "How to read the grades",
+    "Headlines and titles",
+    "Awareness and sophistication staging",
+    "Emotion under a truth constraint",
+    "Prosody and rhythm",
+    "Open conflicts in this reference",
+  ]);
+
+  assert.match(craft, /\[agora-marketing\.md\]\(agora-marketing\.md\)/);
+  assert.match(craft, /Nothing here outranks the conflict hierarchy/);
+
+  const headlines = extractSection(craft, "Headlines and titles");
+  for (const heading of [
+    "The competing jobs",
+    "Surface mechanics",
+    "The specificity ladder",
+    "Archetypes and their conditions",
+    "The curiosity gap and its handoff",
+    "Corpus variance, split by function",
+  ]) {
+    assert.ok(headlines.includes(`### ${heading}`), `headline section missing ${heading}`);
+  }
+  assert.match(headlines, /optimize the headline against the next decision the reader actually makes/);
+  assert.match(headlines, /never add a number because exact numbers look credible/);
+  assert.match(headlines, /A template is `clause type \+ lead device \+ promise structure`/);
+
+  const staging = extractSection(craft, "Awareness and sophistication staging");
+  assert.match(staging, /practitioner segmentation heuristic, never as a measured law/);
+  assert.match(staging, /Every cell below is \*\*HOUSE\/PI\*\*/);
+  assert.match(staging, /mechanism prominence is not monotonic/);
+  assert.match(staging, /never report a bounce as evidence that a staging mismatch caused the failure/);
+  assert.doesNotMatch(staging, /Schwartz/);
+
+  const emotion = extractSection(craft, "Emotion under a truth constraint");
+  assert.ok(emotion.includes("### Emotion from a fact set with no outcome data"));
+  assert.ok(emotion.includes("### Permission to write flat"));
+  assert.match(emotion, /do not add emotion\. Increase resolution around the emotionally consequential facts/);
+  assert.match(emotion, /the correct output is then flat/);
+  assert.match(emotion, /Do not default to loss framing/);
+  assert.match(emotion, /never advertise the prevalence of an undesirable behavior/i);
+
+  const prosody = extractSection(craft, "Prosody and rhythm");
+  assert.match(prosody, /Every value in the table below is a \*\*governance default\*\*/);
+  assert.match(prosody, /diagnostic signal, not a verdict/);
+  assert.match(prosody, /this document adopts neither as universal/);
+  assert.match(prosody, /Do not report either as a finding/);
+
+  const conflicts = extractSection(craft, "Open conflicts in this reference");
+  assert.match(conflicts, /Question-form subheadings/);
+  assert.match(conflicts, /Sentence cadence/);
+  assert.match(conflicts, /Do not close either by writing a rule/);
+});
+
+test("SKILL.md loads the craft reference only when the task needs it", () => {
+  const loading = extractSection(skill, "Load the authority progressively");
+  assert.match(loading, /\[references\/agora-craft\.md\]\(references\/agora-craft\.md\)/);
+  assert.match(loading, /Load it only for the job it covers/);
+  assert.match(loading, /Headlines and titles`/);
+  assert.match(loading, /Awareness and sophistication staging`/);
+  assert.match(loading, /Emotion under a truth constraint`/);
+  assert.match(loading, /Prosody and rhythm`/);
+  assert.match(loading, /Do not load it for routine/);
+});
+
 test("v1.0.1 source links remain available", () => {
   assert.equal(linkFixture.source, "v1.0.1:skills/agora/references/agora-marketing.md");
   assert.equal(linkFixture.urls.length, 51);
@@ -351,7 +421,7 @@ test("v1.0.1 source links remain available", () => {
 });
 
 test("public files contain no project-specific residue or temporary citations", () => {
-  const publicText = [skill, reference, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
+  const publicText = [skill, reference, craft, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
   assert.doesNotMatch(publicText, new RegExp(["cite", "surge"].join(""), "i"));
   assert.doesNotMatch(publicText, /turn\d+(?:search|fetch|view|open|file)\d+/i);
   assert.doesNotMatch(publicText, /sandbox:\/\/mnt\/data/i);
@@ -374,6 +444,7 @@ test("metadata matches the v1.2.2 release contract", () => {
   assert.match(gitAttributes, /^\*\.png binary$/m);
   assert.doesNotMatch(skill, /\r\n/);
   assert.doesNotMatch(reference, /\r\n/);
+  assert.doesNotMatch(craft, /\r\n/);
   assert.doesNotMatch(openaiYaml, /\r\n/);
   assert.equal(codexPlugin.interface.shortDescription, "Argument-first copy that earns belief");
   assert.ok(

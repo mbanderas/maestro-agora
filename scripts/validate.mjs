@@ -10,6 +10,7 @@ const SKILL_ROOT = join(ROOT, "skills", SKILL_NAME);
 const REQUIRED_SKILL_FILES = [
   "SKILL.md",
   "agents/openai.yaml",
+  "references/agora-craft.md",
   "references/agora-marketing.md",
 ].sort((a, b) => a.localeCompare(b));
 const errors = [];
@@ -94,16 +95,19 @@ async function main() {
 
   const skillPath = join(SKILL_ROOT, "SKILL.md");
   const referencePath = join(SKILL_ROOT, "references", "agora-marketing.md");
+  const craftPath = join(SKILL_ROOT, "references", "agora-craft.md");
   const openaiPath = join(SKILL_ROOT, "agents", "openai.yaml");
-  const [skill, reference, openaiYaml] = await Promise.all([
+  const [skill, reference, craft, openaiYaml] = await Promise.all([
     readFile(skillPath, "utf8"),
     readFile(referencePath, "utf8"),
+    readFile(craftPath, "utf8"),
     readFile(openaiPath, "utf8"),
   ]);
 
   for (const [file, content] of [
     ["skills/agora/SKILL.md", skill],
     ["skills/agora/references/agora-marketing.md", reference],
+    ["skills/agora/references/agora-craft.md", craft],
     ["skills/agora/agents/openai.yaml", openaiYaml],
   ]) {
     check(!content.includes("\r\n"), `${file} must use LF line endings`);
@@ -143,6 +147,7 @@ async function main() {
     "scan the complete response character by character for U+2014",
     "Return only after the count is zero",
     "[references/agora-marketing.md](references/agora-marketing.md)",
+    "[references/agora-craft.md](references/agora-craft.md)",
     "Load the authority progressively",
     "Do not confuse mode with surface",
     "Directory placement or an investor-adjacent audience does not activate `INVEST` by itself",
@@ -226,6 +231,28 @@ async function main() {
     check(reference.includes(required), `canonical reference is missing: ${required}`);
   }
 
+  for (const required of [
+    "## Contents",
+    "## How to read the grades",
+    "## Headlines and titles",
+    "## Awareness and sophistication staging",
+    "## Emotion under a truth constraint",
+    "## Prosody and rhythm",
+    "## Open conflicts in this reference",
+    "### The specificity ladder",
+    "### The routing table",
+    "### Emotion from a fact set with no outcome data",
+    "### Permission to write flat",
+    "### The rhythm targets",
+    "practitioner segmentation heuristic, never as a measured law",
+    "do not add emotion. Increase resolution around the emotionally consequential facts",
+    "the correct output is then flat",
+    "governance default",
+    "Do not report either as a finding",
+  ]) {
+    check(craft.includes(required), `craft reference is missing: ${required}`);
+  }
+
   check(/^interface:\r?$/m.test(openaiYaml), "agents/openai.yaml must define interface");
   check(openaiYaml.includes('display_name: "Maestro: Agora"'), "agents/openai.yaml has the wrong display name");
   check(openaiYaml.includes('short_description: "Argument-first copy that earns belief"'), "agents/openai.yaml has the wrong short description");
@@ -295,6 +322,7 @@ async function main() {
     ".codex-plugin/plugin.json",
     "skills/agora/SKILL.md",
     "skills/agora/references/agora-marketing.md",
+    "skills/agora/references/agora-craft.md",
   ]) {
     const content = await readFile(join(ROOT, file), "utf8");
     check(!/[\u2014\u2018\u2019\u201c\u201d]/.test(content), `${file} contains banned typography`);

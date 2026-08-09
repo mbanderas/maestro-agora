@@ -190,10 +190,13 @@ skills/agora/
 ├── agents/
 │   └── openai.yaml
 └── references/
+    ├── agora-craft.md
     └── agora-marketing.md
 ```
 
 `SKILL.md` is the concise operating contract. `references/agora-marketing.md` holds the original doctrine, research evidence grades, ethical limits, channel rules, AI-writing-tell controls, GEO/AEO boundaries, examples, and evaluation guidance.
+
+`references/agora-craft.md` is loaded only when the task needs it. It covers four narrower domains: headlines and titles across each publishing surface, awareness and sophistication staging with its routing table, emotion written from a fact set that contains no outcome data, and prose rhythm. Every rule in it carries an evidence grade and a stated failure condition, every number is either sourced or labelled a governance default, and the two cadence conflicts the research left open are recorded rather than resolved.
 
 ## Verify the package
 

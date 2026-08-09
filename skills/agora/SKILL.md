@@ -30,6 +30,15 @@ Use [references/agora-marketing.md](references/agora-marketing.md) as the canoni
 
 Locate the named headings and read those sections only. Do not load the entire reference unless the task genuinely spans most of it.
 
+[references/agora-craft.md](references/agora-craft.md) is a second, narrower authority covering four domains the first one does not. Load it only for the job it covers:
+
+- `Headlines and titles` for any headline, subheading, page title, search title, social title, subject line, video title, or a set of headings written for one deliverable.
+- `Awareness and sophistication staging` when the brief states or implies what the reader already knows, when deciding whether to name a mechanism, or when routing one fact set across several reader states.
+- `Emotion under a truth constraint` when choosing the emotional job, and whenever the supplied facts contain no outcome data, testimonials, or market claims.
+- `Prosody and rhythm` when rewriting for cadence, when a draft reads as machine-uniform, or when applying an authorized voice profile.
+
+Do not load it for routine drafting, claim review, compliance questions, or work that the first reference already covers.
+
 Treat source material supplied in the current task as the available product truth. Do not import facts, claim rules, or release controls from another task, repository, company, or example. Examples teach structure, never facts.
 
 ## Resolve conflicts
