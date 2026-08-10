@@ -30,8 +30,10 @@ const EXPECTED = [
   "scripts/voice/profile.mjs",
   "skills/agora/SKILL.md",
   "skills/agora/agents/openai.yaml",
+  "skills/agora/references/agora-case-studies.md",
   "skills/agora/references/agora-craft.md",
   "skills/agora/references/agora-marketing.md",
+  "skills/agora/references/agora-science.md",
   "skills/agora/references/agora-voice.md",
 ].sort();
 

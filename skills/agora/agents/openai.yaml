@@ -1,4 +1,4 @@
 interface:
   display_name: "Maestro: Agora"
-  short_description: "Argument-first copy that earns belief"
-  default_prompt: "Use $agora to turn verified facts into the strongest channel-native argument the evidence can support."
+  short_description: "Truthful persuasion, science, and case studies"
+  default_prompt: "Use $agora to turn verified facts into clear, channel-native persuasion, scientific or technical explanations, and evidence-led case studies."

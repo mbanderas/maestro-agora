@@ -1,0 +1,284 @@
+# Agora science authority
+
+This reference governs the `SCIENCE` modifier for scientific, empirical, engineering, software, data, AI, and other technical subjects. It adds evidence and explanation discipline to the primary Agora mode. It does not replace `POSITION`, `SELL`, `INVEST`, `INFORM`, or `TRANSACT`.
+
+The conflict hierarchy in [agora-marketing.md](agora-marketing.md) remains controlling. Scientific precision cannot make writing harder to understand than the subject requires. Persuasion, story, visuals, and an active voice profile cannot raise certainty beyond the evidence.
+
+## Contents
+
+- [Activate and route SCIENCE](#activate-and-route-science)
+- [Build the claim ledger](#build-the-claim-ledger)
+- [Choose sources for the claim](#choose-sources-for-the-claim)
+- [Preserve scientific integrity](#preserve-scientific-integrity)
+- [Model the audience and goal](#model-the-audience-and-goal)
+- [Open with a supported knowledge gap](#open-with-a-supported-knowledge-gap)
+- [Explain mechanisms and technical systems](#explain-mechanisms-and-technical-systems)
+- [Use analogies and visuals as bounded models](#use-analogies-and-visuals-as-bounded-models)
+- [Write scientific and technical video](#write-scientific-and-technical-video)
+- [Compose SCIENCE with other Agora controls](#compose-science-with-other-agora-controls)
+- [Refusals and failure conditions](#refusals-and-failure-conditions)
+- [Evaluation contract](#evaluation-contract)
+- [Evidence register](#evidence-register)
+
+## Activate and route SCIENCE
+
+Activate `SCIENCE` when the asset explains, teaches, compares, summarizes, or persuades through scientific evidence or technical behavior. Select one internal route:
+
+| Route | Use for | Evidence focus |
+|---|---|---|
+| `EMPIRICAL` | Studies, experiments, observations, measurements, datasets, and research findings | Design, population, measurement, effect, uncertainty, and applicability |
+| `TECHNICAL` | Systems, interfaces, mechanisms, architecture, software, engineering, and failure behavior | Inputs, state changes, outputs, dependencies, constraints, and tradeoffs |
+| `MIXED` | An empirical result explained through a technical or scientific mechanism | Keep observed result and proposed explanation distinct |
+
+Choose the primary mode first. A public science explainer is normally `INFORM + SCIENCE`. A technical product page is `SELL + SCIENCE`. An investor memo about a research platform is `INVEST + SCIENCE`. The modifier controls what the evidence permits and how the explanation works; the mode controls the decision the reader faces.
+
+Rule [HOUSE]: do not treat all technical writing as empirical science. An API contract needs exact documented behavior, not a research-study frame. Boundary: a technical claim supported by benchmark data uses `MIXED`, because its measured result still needs empirical qualification.
+
+## Build the claim ledger
+
+Classify every material claim before drafting. Never raise a claim's certainty while simplifying it.
+
+| Claim class | Meaning | Permitted treatment |
+|---|---|---|
+| Direct observation or measured result | The named source measured or observed it | State design, scope, comparator, outcome, and uncertainty when material |
+| Established fact or current consensus | Multiple relevant authorities support it within a named domain | Name scope and current authority; do not imply unanimity |
+| Model or proposed mechanism | Explains how a result may arise | Present as model or mechanism, not as an observed result |
+| Interpretation | A reasoned reading of evidence | Attribute it and show the evidence it interprets |
+| Implication | A possible consequence for a decision or system | State the additional assumptions between result and consequence |
+| Recommendation | An action proposed from evidence plus values, costs, or constraints | Separate the evidence from the judgment that selects the action |
+| Hypothesis or speculation | Testable or exploratory possibility | Label it directly; do not use certainty syntax |
+| Unknown or unmeasured | Evidence does not answer the question | Say `unknown`, `not measured`, or the narrower exact condition |
+
+Rule [A]: distinguish a study result from its interpretation and from a recommendation. Evidence alone rarely supplies every value, cost, feasibility, and preference needed for a decision. Boundary: an official safety requirement may directly prescribe action; reproduce its scope and authority rather than recasting it as optional interpretation. See [Cochrane on interpreting results and drawing conclusions](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-15).
+
+## Choose sources for the claim
+
+Source choice follows the claim, not a universal prestige ladder.
+
+1. Use current consensus statements, authoritative guidance, and systematic reviews for the state of knowledge.
+2. Use primary papers and datasets for a specific study, observation, or measured result.
+3. Use official standards, specifications, and product documentation for technical behavior.
+4. Use reputable secondary sources for orientation and discovery, then follow them to primary support for material claims.
+5. Use practitioner sources for communication procedures and examples, not as proof that a scientific or commercial effect occurs.
+
+Rule [A]: for medical, legal, financial, safety-critical, or rapidly changing technical claims, retrieve current authoritative sources before writing. The static skill cannot establish current facts. Boundary: stable explanatory mechanics may still rely on a supplied canonical source when the user has fixed the source set.
+
+Rule [HOUSE]: match the source date to the claim's drift risk. A current software behavior needs current official documentation. A historical experiment needs its original paper plus later correction or replication when material.
+
+When sources disagree:
+
+- Identify whether they measured the same population, intervention, comparator, outcome, and period.
+- Separate genuine scientific disagreement from different questions or definitions.
+- Weight sources by relevance, design, directness, and certainty.
+- Do not manufacture a balanced debate between a strong consensus and unsupported fringe assertion.
+- Do not hide credible disagreement merely to produce a cleaner story.
+
+## Preserve scientific integrity
+
+### Scope the result
+
+Include when material:
+
+- study design;
+- population and sample;
+- intervention or exposure;
+- comparator;
+- outcome and measurement method;
+- time period;
+- baseline and denominator;
+- estimate and uncertainty;
+- material exclusions;
+- applicability outside the studied setting.
+
+Qualification belongs next to the claim it changes. It does not need to occupy every sentence. Use a short passage, table, caption, or adjacent note when that preserves both accuracy and comprehension.
+
+### Separate causality
+
+Use causal verbs only when the design and source support them.
+
+| Evidence permits | Prefer |
+|---|---|
+| Direct causal support within stated conditions | `caused`, `increased`, `reduced` |
+| Observational relationship | `was associated with`, `tracked with`, `coincided with` |
+| Mechanistic compatibility | `is consistent with`, `could explain`, `supports the proposed mechanism` |
+| Early or limited evidence | `suggests`, `may`, `provides preliminary evidence` |
+| No measurement | `unknown`, `not measured`, `not established` |
+
+Never convert association into causation, mechanism into outcome, or temporal order into effect.
+
+### Preserve statistical meaning
+
+Rule [A]: report magnitude and uncertainty, not a significance label alone. A small p-value does not establish effect size, importance, certainty, or a useful decision. See the [ASA statement on p-values](https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf) and [Cochrane's interpretation guidance](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-15).
+
+When material:
+
+- Give absolute and relative effects together.
+- State the baseline risk or denominator.
+- Distinguish statistical significance from practical importance.
+- State the uncertainty interval without translating it into certainty it does not provide.
+- Do not interpret `not statistically significant` as proof of no effect.
+- Do not imply replication or consensus from one study.
+- Distinguish exploratory from confirmatory analysis when the source does.
+- Preserve risk of bias, indirectness, inconsistency, imprecision, and publication-bias limits when they affect the conclusion.
+
+### Calibrate uncertainty
+
+Use the narrowest accurate certainty language. `Observed` names a result. `Supports` names evidentiary weight. `Suggests` signals limited support. `May` identifies a possibility. `Remains unknown` identifies a gap.
+
+Rule [A]: absence of evidence is not evidence of absence unless the study had enough sensitivity, power, and scope to make the null informative. Boundary: a well-designed equivalence or non-inferiority analysis may support a bounded no-material-difference conclusion.
+
+## Model the audience and goal
+
+Classify the intended reader:
+
+| Audience | Preserve | Remove or explain |
+|---|---|---|
+| General public | Concrete phenomenon, scale, mechanism, uncertainty, and consequence | Unintroduced field shorthand and method detail that does not change meaning |
+| Adjacent expert | Cross-domain definitions, assumptions, and mechanism | Local jargon and compressed inferential steps |
+| Domain expert | Exact technical terms, design, uncertainty, and edge conditions | Introductory explanation the decision does not need |
+| Technical or policy decision-maker | Options, evidence strength, tradeoffs, costs, failure modes, and action conditions | Detail that does not change the decision |
+
+Rule [A/HOUSE]: align the communication method with the audience and the actual goal. The National Academies concludes that effective science communication depends on the communicator's goal and context; the audience table above is an Agora routing aid rather than a measured four-stage law. See [Communicating Science Effectively](https://nap.nationalacademies.org/catalog/23674/communicating-science-effectively-a-research-agenda).
+
+Do not assume an expert audience wants abstraction or emotional absence. Experts need exact terms where they compress shared meaning, concrete causal steps where they do not, and enough consequence to understand why the issue matters.
+
+## Open with a supported knowledge gap
+
+Choose an opening that serves the audience's question:
+
+- A supported misconception.
+- A surprising observation.
+- A practical failure or anomaly.
+- A contradiction between prediction and result.
+- A question whose answer changes the reader's model.
+- The direct answer, when delay would cost safety or task completion.
+
+Rule [D]: a supported misconception can reveal that the audience's current model will not explain the result. Correct it near its introduction, then show the replacement model. This is a practitioner procedure derived from the 2026 video analysis; it is not a universal learning or retention law. Boundary: do not use it when the audience does not hold the belief, when repeating the claim would confuse, or when direct instruction is safer.
+
+Rule [D]: asking a consequential question before the explanation can create a useful information gap. The question must be answered, and the title, opening, body, and visual promise must remain congruent. Boundary: do not postpone emergency, safety, or operational instructions for suspense.
+
+Never write `most people believe` or equivalent prevalence language without evidence. Never invent a misconception to produce a hook.
+
+## Explain mechanisms and technical systems
+
+For a scientific mechanism, show:
+
+`initial condition -> acting entity or force -> state change -> observable result -> boundary`
+
+For a technical system, show:
+
+`input -> component or actor -> transformation -> state or storage -> output -> dependency -> failure mode`
+
+Use the minimum sequence the audience needs. Name the actor, action, object, and result. Preserve exact interfaces, units, and state transitions when they carry the explanation.
+
+Separate these questions:
+
+1. What happened?
+2. How was it measured or observed?
+3. What mechanism could produce it?
+4. What else could explain it?
+5. What does it imply for this audience?
+6. What remains unknown?
+
+Rule [HOUSE]: a technical explanation fails when it lists components without showing their relation, or gives a metaphor without returning to the real mechanism.
+
+## Use analogies and visuals as bounded models
+
+Every analogy must identify:
+
+- what maps;
+- what does not map;
+- where the analogy breaks;
+- whether it explains behavior, mechanism, scale, or only intuition.
+
+Rule [D/HOUSE]: use analogy as a bridge into the real definition, not as a replacement. Boundary: skip it when the audience already owns the model, when the mapping introduces a false causal picture, or when the correction would take longer than the direct explanation.
+
+Visuals must carry evidence, sequence, comparison, scale, uncertainty, or mechanism. A decorative laboratory image, molecule, dashboard, or code screen is not proof.
+
+For charts and diagrams:
+
+- State what is measured.
+- Preserve axes, units, baseline, denominator, and uncertainty.
+- Do not crop away a conflicting result or material range.
+- Mark simulated, illustrative, and observed data distinctly.
+- Match the caption's certainty to the visual evidence.
+
+## Write scientific and technical video
+
+Route narration as `SPOKEN_ONLY` and titles, descriptions, captions, transcripts, show notes, and companion pages as their own written surfaces.
+
+Use this optional sequence when the material supports it:
+
+1. Open a real question or model failure.
+2. Show the phenomenon, person, experiment, or operational consequence.
+3. Explain the mechanism in audible steps.
+4. Return to the phenomenon with the model changed.
+5. Close the question and state the evidence boundary.
+
+Rule [D]: an A-thread can carry the human, visual, experimental, or operational sequence while a B-thread carries the technical mechanism. Alternate only when each return advances the same explanation. Boundary: do not intercut two weak threads, interrupt a short explanation, or claim the structure improves retention without direct measurement.
+
+Title and thumbnail may create curiosity but cannot imply a different result, certainty, scale, or mechanism than the body supplies. Do not infer a performance law from one video's views or a creator's account of analytics.
+
+## Compose SCIENCE with other Agora controls
+
+### `SELL + SCIENCE`
+
+Use the strongest commercial claim supported by the technical or empirical evidence. Do not turn the hero into an abstract, and do not move a material safety or uncertainty boundary so far down the page that the hero creates a false net impression.
+
+### `CASE_STUDY + SCIENCE`
+
+Load [agora-case-studies.md](agora-case-studies.md). Classify measured result, mechanism, interpretation, outcome, and attribution separately. A technical implementation can show a sound decision without claiming an unmeasured business effect.
+
+### `VOICE + SCIENCE`
+
+An authorized profile enters at hierarchy level 6. Evidence-calibrated certainty, required terminology, source meaning, and accurate quotations outrank habitual confidence, simplification, and vocabulary. Do not transfer a source author's opinions or certainty into a new claim.
+
+### `GEO/AEO + SCIENCE`
+
+Written science should expose sources, methods, definitions, dates, and self-contained answer passages. The hero or spoken opening does not need to carry the full method. Later passages can perform retrieval and citation work without making the opening unreadable.
+
+## Refusals and failure conditions
+
+Refuse or narrow work that would require:
+
+- fabricating a paper, source, statistic, consensus, quote, result, or mechanism;
+- presenting medical, legal, financial, or safety advice as current without authoritative verification;
+- hiding uncertainty or a material competing explanation;
+- converting a correlation into a causal claim;
+- using a false misconception or false balance for drama;
+- altering a source quotation and presenting it as exact;
+- using decorative visuals as evidence;
+- implying that views, clicks, or narration establish a learning or sales effect.
+
+## Evaluation contract
+
+Hard gates:
+
+- Claim classes remain distinct.
+- Source scope survives.
+- Causality is calibrated.
+- Statistical magnitude and uncertainty survive when material.
+- No invented misconception, consensus, or mechanism.
+- Analogy boundary is explicit when analogy carries the explanation.
+- Title, visual, opening, and body promises agree.
+- First-read comprehension survives technical precision.
+
+Blind-quality dimensions:
+
+- Hook payoff.
+- Conceptual clarity.
+- Claim separation.
+- Uncertainty calibration.
+- Causal and statistical integrity.
+- Analogy boundaries.
+- Visual and narrative integration.
+- Audience fit.
+
+## Evidence register
+
+- **A:** [National Academies, Communicating Science Effectively](https://nap.nationalacademies.org/catalog/23674/communicating-science-effectively-a-research-agenda) for goal- and context-dependent communication, not for a universal story formula.
+- **A:** [Cochrane Handbook chapter 15](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-15) for effect interpretation, uncertainty, applicability, and the distinction between evidence and recommendations.
+- **A:** [Cochrane Handbook chapter 14](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-14) for absolute and relative effects and structured certainty assessment.
+- **A:** [ASA statement on p-values](https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf) for limits on p-value interpretation.
+- **D:** 2026 practitioner videos on misconception hooks, question-first explanation, A/B threading, audience adaptation, visual explanation, and bounded analogy. These support procedures to test, never universal outcome claims.
+- **HOUSE:** route names, audience table, claim-ledger format, system sequence, and evaluation gates. They operationalize the stronger authorities and carry the boundaries stated above.

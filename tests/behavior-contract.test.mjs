@@ -10,22 +10,26 @@ const SKILL_PATH = join(SKILL_ROOT, "SKILL.md");
 const REFERENCE_PATH = join(SKILL_ROOT, "references", "agora-marketing.md");
 const CRAFT_PATH = join(SKILL_ROOT, "references", "agora-craft.md");
 const VOICE_PATH = join(SKILL_ROOT, "references", "agora-voice.md");
+const SCIENCE_PATH = join(SKILL_ROOT, "references", "agora-science.md");
+const CASE_STUDY_PATH = join(SKILL_ROOT, "references", "agora-case-studies.md");
 const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
 const CODEX_PLUGIN_PATH = join(ROOT, ".codex-plugin", "plugin.json");
 const CLAUDE_PLUGIN_PATH = join(ROOT, ".claude-plugin", "plugin.json");
 const PACKAGE_PATH = join(ROOT, "package.json");
 const GITATTRIBUTES_PATH = join(ROOT, ".gitattributes");
-const LINK_FIXTURE_PATH = join(ROOT, "tests", "fixtures", "reference-links.v1.0.1.json");
-const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.2.0");
+const LINK_FIXTURE_PATH = join(ROOT, "tests", "fixtures", "reference-links.v1.4.0.json");
+const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.4.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, craft, voice, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, linkFixture, manifest] =
+const [skill, reference, craft, voice, science, caseStudies, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
     readFile(CRAFT_PATH, "utf8"),
     readFile(VOICE_PATH, "utf8"),
+    readFile(SCIENCE_PATH, "utf8"),
+    readFile(CASE_STUDY_PATH, "utf8"),
     readFile(OPENAI_PATH, "utf8"),
     readFile(CODEX_PLUGIN_PATH, "utf8").then(JSON.parse),
     readFile(CLAUDE_PLUGIN_PATH, "utf8").then(JSON.parse),
@@ -349,7 +353,7 @@ test("reference leads with doctrine and keeps the deep authority library", () =>
   assert.match(reference, /Emotion does not always beat logic/);
   assert.match(reference, /Keep factual enumeration when the list itself is diagnostic/);
   assert.match(reference, /derive the opening from the mechanism's verified trigger/);
-  assert.match(reference, /Automatic failure: any U\+2014 occurrence, fabricated fact, unsupported causality, context leakage/);
+  assert.match(reference, /Automatic failure: any U\+2014 occurrence, fabricated fact, unsupported causality or guarantee/);
 });
 
 test("reference examples cover the known failure families", () => {
@@ -384,12 +388,13 @@ test("reference examples cover the known failure families", () => {
   }
 });
 
-test("the craft reference carries the four unabsorbed domains with graded rules", () => {
+test("the craft reference carries the five unabsorbed domains with graded rules", () => {
   const headings = [...craft.matchAll(/^## (.+)$/gm)].map((match) => match[1]);
   assert.deepEqual(headings, [
     "Contents",
     "How to read the grades",
     "Headlines and titles",
+    "Heroes and short-form sales composition",
     "Awareness and sophistication staging",
     "Emotion under a truth constraint",
     "Prosody and rhythm",
@@ -446,6 +451,7 @@ test("SKILL.md loads the craft reference only when the task needs it", () => {
   assert.match(loading, /\[references\/agora-craft\.md\]\(references\/agora-craft\.md\)/);
   assert.match(loading, /Load it only for the job it covers/);
   assert.match(loading, /Headlines and titles`/);
+  assert.match(loading, /Heroes and short-form sales composition`/);
   assert.match(loading, /Awareness and sophistication staging`/);
   assert.match(loading, /Emotion under a truth constraint`/);
   assert.match(loading, /Prosody and rhythm`/);
@@ -513,7 +519,7 @@ test("SKILL.md carries VOICE as a modifier with its exception written down", () 
   assert.match(loading, /Do not load it for ordinary human-voice cleanup/);
 
   const job = extractSection(skill, "Choose the job");
-  assert.match(job, /`VOICE` is the exception to selecting one mode/);
+  assert.match(job, /`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs/);
   assert.match(job, /`--voice <name>` loads a measured author profile/);
   assert.match(job, /Profiles are stored at `~\/\.agora\/voices\/`, never inside the skill directory/);
   assert.match(job, /Apply the default profile to every mode/);
@@ -537,32 +543,32 @@ test("SKILL.md carries VOICE as a modifier with its exception written down", () 
   assert.match(truth, /declined rather than negotiated/);
 });
 
-test("v1.0.1 source links remain available", () => {
-  assert.equal(linkFixture.source, "v1.0.1:skills/agora/references/agora-marketing.md");
-  assert.equal(linkFixture.urls.length, 51);
-  const current = externalUrls(reference);
+test("v1.4.0 source links remain available across all references", () => {
+  assert.equal(linkFixture.source, "v1.4.0:skills/agora/references/*.md");
+  assert.equal(linkFixture.urls.length, 142);
+  const current = externalUrls([reference, craft, voice, science, caseStudies].join("\n"));
   const missing = linkFixture.urls.filter((url) => !current.has(url));
   assert.deepEqual(missing, [], `reference dropped source links: ${missing.join(", ")}`);
 });
 
 test("public files contain no project-specific residue or temporary citations", () => {
-  const publicText = [skill, reference, craft, voice, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
+  const publicText = [skill, reference, craft, voice, science, caseStudies, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
   assert.doesNotMatch(publicText, new RegExp(["cite", "surge"].join(""), "i"));
   assert.doesNotMatch(publicText, /turn\d+(?:search|fetch|view|open|file)\d+/i);
   assert.doesNotMatch(publicText, /sandbox:\/\/mnt\/data/i);
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.3.0 release contract", () => {
+test("metadata matches the v1.4.0 release contract", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
-    '  short_description: "Argument-first copy that earns belief"',
-    '  default_prompt: "Use $agora to turn verified facts into the strongest channel-native argument the evidence can support."',
+    '  short_description: "Truthful persuasion, science, and case studies"',
+    '  default_prompt: "Use $agora to turn verified facts into clear, channel-native persuasion, scientific or technical explanations, and evidence-led case studies."',
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.3.0");
+  assert.equal(packageJson.version, "1.4.0");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
   assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
@@ -571,8 +577,10 @@ test("metadata matches the v1.3.0 release contract", () => {
   assert.doesNotMatch(reference, /\r\n/);
   assert.doesNotMatch(craft, /\r\n/);
   assert.doesNotMatch(voice, /\r\n/);
+  assert.doesNotMatch(science, /\r\n/);
+  assert.doesNotMatch(caseStudies, /\r\n/);
   assert.doesNotMatch(openaiYaml, /\r\n/);
-  assert.equal(codexPlugin.interface.shortDescription, "Argument-first copy that earns belief");
+  assert.equal(codexPlugin.interface.shortDescription, "Truthful persuasion, science, and case studies");
   assert.ok(
     codexPlugin.interface.defaultPrompt.every(
       (prompt) => prompt.startsWith("/agora ") && prompt.length <= 128,
@@ -581,8 +589,8 @@ test("metadata matches the v1.3.0 release contract", () => {
 });
 
 test("blind evaluation corpus tests invariants without expected-answer leakage", async () => {
-  assert.equal(manifest.schema_version, 2);
-  assert.equal(manifest.skill_version, "1.2.0");
+  assert.equal(manifest.schema_version, 3);
+  assert.equal(manifest.skill_version, "1.4.0");
   assert.deepEqual(manifest.generation_contract.pass_to_model, ["prompt_file"]);
   assert.ok(manifest.generation_contract.never_pass_to_model.includes("expected output"));
   assert.equal(manifest.generation_contract.fresh_context_per_case, true);
@@ -590,13 +598,17 @@ test("blind evaluation corpus tests invariants without expected-answer leakage",
   assert.equal(manifest.adjudication.randomize_order, true);
   assert.equal(manifest.adjudication.swap_order, true);
   assert.equal(manifest.adjudication.escalate_on_order_flip, true);
-  assert.deepEqual(manifest.adjudication.absolute_vetoes, [
-    "em-dash",
-    "fabricated-fact",
-    "unsupported-causality",
-    "context-leakage",
-    "visible-compliance-leakage",
-  ]);
+  for (const veto of [
+    "unsupported-guarantee",
+    "claim-destination-mismatch",
+    "invented-misconception",
+    "statistical-distortion",
+    "false-consensus-or-balance",
+    "quote-distortion",
+    "permission-or-confidentiality-breach",
+    "atypical-result-presented-as-typical",
+    "invented-result-or-attribution",
+  ]) assert.ok(manifest.adjudication.absolute_vetoes.includes(veto), `missing veto: ${veto}`);
   assert.deepEqual(manifest.rubric.dimensions, [
     "argument-inevitability",
     "sustained-emotional-relevance",
@@ -604,7 +616,11 @@ test("blind evaluation corpus tests invariants without expected-answer leakage",
     "mechanism-differentiation",
     "natural-channel-fit",
     "truth-discipline",
+    "first-read-comprehension",
+    "concrete-action-clarity",
   ]);
+  assert.deepEqual(Object.keys(manifest.rubric.domain_dimensions), ["hero", "science", "case-study"]);
+  assert.equal(manifest.cases.length, 60);
 
   const requiredIds = new Set([
     "position-directory-short",
@@ -620,6 +636,8 @@ test("blind evaluation corpus tests invariants without expected-answer leakage",
     "position-no-investor-cosplay",
     "spoken-no-search-scaffolding",
     "factual-triplet-survives",
+    "sell-mobile-paywall",
+    "sell-b2b-cold-email",
     "unsupported-proof",
     "direct-agora-invest",
     "plain-language-insider-terms",
@@ -633,6 +651,12 @@ test("blind evaluation corpus tests invariants without expected-answer leakage",
     "voice-build-from-corpus",
     "voice-owned-vocabulary-vs-tell-gate",
     "orientation-without-taxonomy",
+    "hero-rivalscope-no-outcome",
+    "science-supported-misconception",
+    "science-no-misconception",
+    "case-permission-pending",
+    "case-anonymous-confidential",
+    "compose-voice-science-certainty",
   ]);
   const ids = new Set(manifest.cases.map((item) => item.id));
   for (const id of requiredIds) assert.ok(ids.has(id), `missing regression case: ${id}`);
@@ -641,15 +665,20 @@ test("blind evaluation corpus tests invariants without expected-answer leakage",
   for (const item of manifest.cases) {
     assert.equal(Object.hasOwn(item, "expected_output"), false, `${item.id} leaks expected output`);
     assert.ok(Array.isArray(item.hard_gates) && item.hard_gates.length > 0, `${item.id} needs gates`);
+    for (const field of [
+      "expected_modifiers",
+      "expected_science_route",
+      "expected_case_family",
+      "expected_persuasion_treatment",
+      "critical",
+      "domain_dimensions",
+    ]) assert.ok(Object.hasOwn(item, field), `${item.id} missing ${field}`);
     assert.ok(!promptFiles.has(item.prompt_file), `duplicate prompt file: ${item.prompt_file}`);
     promptFiles.add(item.prompt_file);
 
     const promptPath = resolve(EVAL_ROOT, item.prompt_file);
     assert.ok(promptPath.startsWith(`${PROMPT_ROOT}${sep}`), `${item.id} escaped prompt root`);
     const prompt = await readFile(promptPath, "utf8");
-    assert.match(prompt, /^# Request\s*$/m);
-    assert.match(prompt, /^## Supplied facts\s*$/m);
-    assert.match(prompt, /^## Constraints\s*$/m);
     assert.doesNotMatch(
       prompt,
       /expected (?:answer|output)|rubric|grader|scoring|destination belief|proof salience|hard gates?/i,

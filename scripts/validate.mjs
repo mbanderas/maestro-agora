@@ -11,8 +11,10 @@ const SKILL_ROOT = join(ROOT, "skills", SKILL_NAME);
 const REQUIRED_SKILL_FILES = [
   "SKILL.md",
   "agents/openai.yaml",
+  "references/agora-case-studies.md",
   "references/agora-craft.md",
   "references/agora-marketing.md",
+  "references/agora-science.md",
   "references/agora-voice.md",
 ].sort((a, b) => a.localeCompare(b));
 const errors = [];
@@ -118,12 +120,16 @@ async function main() {
   const skillPath = join(SKILL_ROOT, "SKILL.md");
   const referencePath = join(SKILL_ROOT, "references", "agora-marketing.md");
   const craftPath = join(SKILL_ROOT, "references", "agora-craft.md");
+  const sciencePath = join(SKILL_ROOT, "references", "agora-science.md");
+  const caseStudyPath = join(SKILL_ROOT, "references", "agora-case-studies.md");
   const voicePath = join(SKILL_ROOT, "references", "agora-voice.md");
   const openaiPath = join(SKILL_ROOT, "agents", "openai.yaml");
-  const [skill, reference, craft, voice, openaiYaml] = await Promise.all([
+  const [skill, reference, craft, science, caseStudy, voice, openaiYaml] = await Promise.all([
     readFile(skillPath, "utf8"),
     readFile(referencePath, "utf8"),
     readFile(craftPath, "utf8"),
+    readFile(sciencePath, "utf8"),
+    readFile(caseStudyPath, "utf8"),
     readFile(voicePath, "utf8"),
     readFile(openaiPath, "utf8"),
   ]);
@@ -132,6 +138,8 @@ async function main() {
     ["skills/agora/SKILL.md", skill],
     ["skills/agora/references/agora-marketing.md", reference],
     ["skills/agora/references/agora-craft.md", craft],
+    ["skills/agora/references/agora-science.md", science],
+    ["skills/agora/references/agora-case-studies.md", caseStudy],
     ["skills/agora/references/agora-voice.md", voice],
     ["skills/agora/agents/openai.yaml", openaiYaml],
   ]) {
@@ -157,6 +165,8 @@ async function main() {
       "mobile onboarding, upgrade, and paywall screens",
       "ads and social posts",
       "editorial or educational content",
+      "scientific communication, technical explanation, research communication, and science video scripts",
+      "customer success, creative portfolio, and technical implementation case studies",
       "spoken audio/video scripts plus written derivatives",
     ]) {
       check(description.includes(trigger), `SKILL.md description lost trigger breadth: ${trigger}`);
@@ -174,8 +184,16 @@ async function main() {
     "[references/agora-marketing.md](references/agora-marketing.md)",
     "[references/agora-craft.md](references/agora-craft.md)",
     "[references/agora-voice.md](references/agora-voice.md)",
+    "[references/agora-science.md](references/agora-science.md)",
+    "[references/agora-case-studies.md](references/agora-case-studies.md)",
     "Load the authority progressively",
-    "`VOICE` is the exception to selecting one mode",
+    "`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs",
+    "Select persuasion treatment internally",
+    "`COMMERCIALLY_ASSERTIVE`",
+    "`PROMOTIONAL` requires explicit campaign context and verified support",
+    "For `HERO + SCIENCE`",
+    "For `CASE_STUDY + SELL`",
+    "For `SCIENCE + VOICE`",
     "Profiles are stored at `~/.agora/voices/`, never inside the skill directory",
     "Apply the default profile to every mode",
     "`--no-voice` or `neutral`",
@@ -272,11 +290,15 @@ async function main() {
     "## Contents",
     "## How to read the grades",
     "## Headlines and titles",
+    "## Heroes and short-form sales composition",
     "## Awareness and sophistication staging",
     "## Emotion under a truth constraint",
     "## Prosody and rhythm",
     "## Open conflicts in this reference",
     "### The specificity ladder",
+    "### Separate the safety floor from the optimization target",
+    "### Map promise grammar to evidence",
+    "### Permanent RivalScope regression fixture",
     "### The routing table",
     "### Emotion from a fact set with no outcome data",
     "### Permission to write flat",
@@ -288,6 +310,52 @@ async function main() {
     "Do not report either as a finding",
   ]) {
     check(craft.includes(required), `craft reference is missing: ${required}`);
+  }
+
+  for (const required of [
+    "## Contents",
+    "## Activate and route SCIENCE",
+    "## Build the claim ledger",
+    "## Choose sources for the claim",
+    "## Preserve scientific integrity",
+    "## Open with a supported knowledge gap",
+    "## Explain mechanisms and technical systems",
+    "## Use analogies and visuals as bounded models",
+    "## Write scientific and technical video",
+    "## Compose SCIENCE with other Agora controls",
+    "`EMPIRICAL`",
+    "`TECHNICAL`",
+    "`MIXED`",
+    "Never raise a claim's certainty while simplifying it",
+    "absence of evidence is not evidence of absence",
+    "Never invent a misconception",
+    "A-thread",
+  ]) {
+    check(science.includes(required), `science reference is missing: ${required}`);
+  }
+
+  for (const required of [
+    "## Contents",
+    "## Choose the case family and decision",
+    "## Build the evidence packet",
+    "## Classify results before writing",
+    "## Calibrate causality and metrics",
+    "## Control permission and confidentiality",
+    "## Handle quotes and testimonials",
+    "## Build a structured argument",
+    "## Use visuals as evidence",
+    "## Adapt each case family",
+    "## Maintain the case",
+    "`CUSTOMER_SUCCESS`",
+    "`CREATIVE_PORTFOLIO`",
+    "`TECHNICAL_IMPLEMENTATION`",
+    "`APPROVED_PUBLIC`",
+    "`APPROVED_ANONYMIZED`",
+    "`PENDING`",
+    "`PROHIBITED`",
+    "Academic and clinical case reports",
+  ]) {
+    check(caseStudy.includes(required), `case-study reference is missing: ${required}`);
   }
 
   for (const required of [
@@ -317,16 +385,16 @@ async function main() {
 
   check(/^interface:\r?$/m.test(openaiYaml), "agents/openai.yaml must define interface");
   check(openaiYaml.includes('display_name: "Maestro: Agora"'), "agents/openai.yaml has the wrong display name");
-  check(openaiYaml.includes('short_description: "Argument-first copy that earns belief"'), "agents/openai.yaml has the wrong short description");
+  check(openaiYaml.includes('short_description: "Truthful persuasion, science, and case studies"'), "agents/openai.yaml has the wrong short description");
   check(
-    openaiYaml.includes('default_prompt: "Use $agora to turn verified facts into the strongest channel-native argument the evidence can support."'),
+    openaiYaml.includes('default_prompt: "Use $agora to turn verified facts into clear, channel-native persuasion, scientific or technical explanations, and evidence-led case studies."'),
     "agents/openai.yaml has the wrong default prompt",
   );
 
   const packageJson = await readJson(join(ROOT, "package.json"));
   const gitAttributes = await readFile(join(ROOT, ".gitattributes"), "utf8");
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.3.0", "package version must be 1.3.0");
+  check(packageJson.version === "1.4.0", "package version must be 1.4.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.bin?.["agora-voice"] === "scripts/voice-measure.mjs", "package must expose the agora-voice bin");
   for (const shipped of ["scripts/voice-measure.mjs", "scripts/voice"]) {
@@ -336,6 +404,13 @@ async function main() {
     (packageJson.scripts?.test || "").includes("tests/voice-measure.test.mjs"),
     "npm test must run the voice measurement suite",
   );
+  for (const suite of [
+    "tests/hero-contract.test.mjs",
+    "tests/science-contract.test.mjs",
+    "tests/case-study-contract.test.mjs",
+  ]) {
+    check((packageJson.scripts?.test || "").includes(suite), `npm test must run ${suite}`);
+  }
   check(packageJson.license === "MIT", "package must use MIT");
   check(/^\* text=auto eol=lf$/m.test(gitAttributes), "Git must enforce LF for text files");
   check(/^\*\.png binary$/m.test(gitAttributes), "Git must preserve PNG files as binary");
@@ -345,7 +420,7 @@ async function main() {
   check(codexPlugin.name === "maestro-agora", "Codex plugin ID must be maestro-agora");
   check(codexPlugin.version === packageJson.version, "Codex plugin version must match package");
   check(codexPlugin.skills === "./skills/", "Codex plugin must expose skills");
-  check(codexPlugin.interface?.shortDescription === "Argument-first copy that earns belief", "Codex short description is stale");
+  check(codexPlugin.interface?.shortDescription === "Truthful persuasion, science, and case studies", "Codex short description is stale");
   check(
     Array.isArray(codexPlugin.interface?.defaultPrompt) &&
       codexPlugin.interface.defaultPrompt.length === 3 &&
@@ -393,6 +468,8 @@ async function main() {
     "skills/agora/SKILL.md",
     "skills/agora/references/agora-marketing.md",
     "skills/agora/references/agora-craft.md",
+    "skills/agora/references/agora-science.md",
+    "skills/agora/references/agora-case-studies.md",
     "skills/agora/references/agora-voice.md",
   ]) {
     const content = await readFile(join(ROOT, file), "utf8");

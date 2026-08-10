@@ -1,7 +1,7 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.3.0",
-  "description": "Install Maestro: Agora for argument-first buyer, investor, positioning, editorial, interface, and spoken copy grounded in verified facts.",
+  "version": "1.4.0",
+  "description": "Install Maestro: Agora for truthful persuasion, science and technical communication, evidence-led case studies, and spoken or written copy.",
   "type": "module",
   "bin": {
     "agora": "scripts/install.mjs",
@@ -23,10 +23,13 @@
     "skills/agora"
   ],
   "scripts": {
-    "check": "npm run validate && npm test && npm run pack:check",
+    "check": "npm run validate && npm test && npm run pack:check && npm run hygiene:check",
+    "hygiene:check": "node scripts/release-hygiene.mjs",
     "pack:check": "node scripts/pack-check.mjs",
-    "prepublishOnly": "npm run check",
-    "test": "node --test tests/behavior-contract.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
+    "prepack": "npm run release:check",
+    "prepublishOnly": "npm run release:check",
+    "release:check": "npm run check",
+    "test": "node --test tests/behavior-contract.test.mjs tests/hero-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
     "validate": "node scripts/validate.mjs"
   },
   "engines": {
@@ -50,6 +53,9 @@
     "maestro",
     "marketing",
     "copywriting",
+    "science-communication",
+    "technical-writing",
+    "case-studies",
     "codex",
     "claude-code",
     "cursor",

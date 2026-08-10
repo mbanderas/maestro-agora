@@ -1,7 +1,7 @@
 {
   "name": "maestro-agora",
-  "version": "1.3.0",
-  "description": "Maestro: Agora turns verified facts into consequential, channel-native arguments without outrunning the proof.",
+  "version": "1.4.0",
+  "description": "Maestro: Agora turns verified facts into truthful persuasion, scientific and technical explanations, and evidence-led case studies.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -13,14 +13,17 @@
     "agora",
     "marketing",
     "copywriting",
+    "science-communication",
+    "technical-writing",
+    "case-studies",
     "codex",
     "skills"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Maestro: Agora",
-    "shortDescription": "Argument-first copy that earns belief",
-    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that builds consequential buyer, investor, positioning, editorial, interface, and spoken arguments from verified facts.",
+    "shortDescription": "Truthful persuasion, science, and case studies",
+    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that builds consequential commercial arguments, scientific and technical explanations, and evidence-led case studies from verified facts.",
     "developerName": "Mark Laursen",
     "category": "Productivity",
     "capabilities": [
@@ -31,9 +34,9 @@
     "brandColor": "#7C3AED",
     "composerIcon": "./assets/icon.png",
     "defaultPrompt": [
-      "/agora position Turn these facts into a consequential company description. Keep investor relevance implicit.",
-      "/agora sell Build the strongest supported buyer argument for this surface, then give one useful next action.",
-      "/agora invest Build the capital case from timing, mechanism, proof, and what this round changes."
+      "/agora sell Write the strongest truthful hero this evidence and destination can support.",
+      "/agora science Explain this technical subject clearly without overstating the evidence.",
+      "/agora case study Turn this project evidence into a clear, properly attributed case study."
     ]
   }
 }

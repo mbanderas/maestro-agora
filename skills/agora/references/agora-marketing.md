@@ -43,6 +43,10 @@ The working sequence is:
 
 Verified facts are raw material for premises, not ready-made copy. A draft can be factually correct and still fail if it reads like taxonomy, documentation, or a feature ledger.
 
+Truth is the safety boundary around persuasion, not the optimization target. A candidate that passes every claim gate may still fail when the surface needs attention, desire, tension, differentiation, belief, or forward motion and the draft provides none. Among candidates inside the evidence boundary, choose the strongest argument for the audience's next decision rather than the version that accumulates the most caution.
+
+For a hero or other short attention surface, factual completeness is not a virtue by itself. Optimize the whole composition for supported commercial force. Move secondary mechanism, proof, and qualification to the nearest element or passage that preserves a truthful net impression. See `Heroes and short-form sales composition` in [agora-craft.md](agora-craft.md).
+
 Persuasion outcomes are not interchangeable. Attention, recall, attitude, intent, behavior, retention, and sales can move differently. Never describe one as if it proves another. Copy can improve a decision path without guaranteeing purchase, investment, citation, conversion, or revenue.
 
 ## Conflict hierarchy
@@ -794,6 +798,8 @@ These rules sit at level 7 of the conflict hierarchy. None of them may raise dec
 - Keep visible and machine-readable facts consistent.
 - Preserve necessary enumerations when they define a product, comparison, or scope.
 
+Treat search, retrieval, and citation quality as properties of the page and coherent passages. A hero may optimize for human attention while the following sections carry explicit definitions, proof, scope, sources, and quotable answers. Do not force article-style self-containment into every first-screen sentence.
+
 Do not stuff keywords, write miniature conclusions under every heading, fragment prose for imagined answer engines, or add unsupported statistics for apparent authority.
 
 ## Technical publication boundaries
@@ -1176,6 +1182,10 @@ Test only what must not fail:
 - One action carries one label across a single deliverable.
 - Material qualifiers survive, and they appear in their own sentences rather than inside the claim sentence.
 - Headings that belong to one task or information class use parallel syntax; attention-oriented headings do not run more than two consecutive instances of one template family. That run length is a governance default, not a measured threshold.
+- `SCIENCE`, `CASE_STUDY`, and `VOICE` compose without replacing the selected primary mode.
+- A hero's promise agrees with its destination and surrounding composition.
+- Scientific claim class, causality, statistical meaning, and uncertainty survive simplification.
+- Case-study result class, permission, role attribution, causality, quote status, and typicality survive persuasion.
 
 Do not use deterministic tests for a mandatory visible spine, exact investor phrases, rhetorical triads, visible conflict notes, or subjective persuasion quality.
 
@@ -1199,8 +1209,11 @@ Use these quality dimensions on a five-point scale:
 | Truth discipline | Persuasive force reaches the evidence boundary without crossing it |
 | First-read comprehension | An intended reader who has not seen the source facts extracts the meaning on one pass |
 | Concrete action clarity | Actor, action, object, and result are visible, and the call to action names its destination |
+| Attention value | A short attention surface creates a supported reason to continue rather than summarizing the product |
+| Composition fit | Headline, subhead, CTA, visual context, proof, and adjacent qualification perform one compatible argument |
+| Evidence calibration | Scientific and case-study claims preserve result class, causality, uncertainty, attribution, and source scope |
 
-Automatic failure: any U+2014 occurrence, fabricated fact, unsupported causality, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
+Automatic failure: any U+2014 occurrence, fabricated fact, unsupported causality or guarantee, claim-destination mismatch, invented misconception, statistical distortion, false consensus, quote distortion, permission or confidentiality breach, atypical result presented as typical, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
 
 ## Evidence register
 

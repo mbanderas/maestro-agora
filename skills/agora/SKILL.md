@@ -1,6 +1,6 @@
 ---
 name: agora
-description: Write, rewrite, shorten, critique, or plan truthful argument-first persuasion. Use when invoked as `/agora` or for marketing and sales copy; investor, funding, pitch, company-profile, category, or brand descriptions; CTAs and microcopy; landing, product, and comparison pages; email and direct outreach; mobile onboarding, upgrade, and paywall screens; ads and social posts; editorial or educational content; and spoken audio/video scripts plus written derivatives such as titles, descriptions, transcripts, captions, show notes, and companion pages.
+description: Write, rewrite, shorten, critique, or plan truthful argument-first persuasion and evidence-led explanation. Use when invoked as `/agora` or for marketing and sales copy; investor, funding, pitch, company-profile, category, or brand descriptions; CTAs and microcopy; landing, product, and comparison pages; email and direct outreach; mobile onboarding, upgrade, and paywall screens; ads and social posts; editorial or educational content; scientific communication, technical explanation, research communication, and science video scripts; customer success, creative portfolio, and technical implementation case studies; and spoken audio/video scripts plus written derivatives such as titles, descriptions, transcripts, captions, show notes, and companion pages.
 ---
 
 # Maestro: Agora
@@ -30,9 +30,10 @@ Use [references/agora-marketing.md](references/agora-marketing.md) as the canoni
 
 Locate the named headings and read those sections only. Do not load the entire reference unless the task genuinely spans most of it.
 
-[references/agora-craft.md](references/agora-craft.md) is a second, narrower authority covering four domains the first one does not. Load it only for the job it covers:
+[references/agora-craft.md](references/agora-craft.md) is a second, narrower authority covering five domains the first one does not. Load it only for the job it covers:
 
 - `Headlines and titles` for any headline, subheading, page title, search title, social title, subject line, video title, or a set of headings written for one deliverable.
+- `Heroes and short-form sales composition` for a homepage hero, campaign hero, pricing hero, short ad, subject line, sales opening, or another attention-led `SELL` surface.
 - `Awareness and sophistication staging` when the brief states or implies what the reader already knows, when deciding whether to name a mechanism, or when routing one fact set across several reader states.
 - `Emotion under a truth constraint` when choosing the emotional job, and whenever the supplied facts contain no outcome data, testimonials, or market claims.
 - `Prosody and rhythm` when rewriting for cadence, when a draft reads as machine-uniform, or when applying an authorized voice profile.
@@ -40,6 +41,10 @@ Locate the named headings and read those sections only. Do not load the entire r
 Do not load it for routine drafting, claim review, compliance questions, or work that the first reference already covers.
 
 [references/agora-voice.md](references/agora-voice.md) governs `VOICE`. Load it only when the task builds a voice profile, writes with `--voice`, inspects a profile, or checks a draft against one. Do not load it for ordinary human-voice cleanup, which the tell gate already covers.
+
+[references/agora-science.md](references/agora-science.md) governs `SCIENCE`. Load it for scientific research, empirical findings, engineering or systems explanation, software, data, AI, technical subjects, research communication, science video, or evidence-led persuasion using scientific or technical claims. Do not load it merely because a product is called technical.
+
+[references/agora-case-studies.md](references/agora-case-studies.md) governs `CASE_STUDY`. Load it for customer success, creative portfolio, or technical implementation case studies. Academic and clinical case reports are outside this modifier. Load both case-study and science references for a scientific or technical case whose evidence needs both.
 
 Treat source material supplied in the current task as the available product truth. Do not import facts, claim rules, or release controls from another task, repository, company, or example. Examples teach structure, never facts.
 
@@ -77,7 +82,9 @@ Select one primary mode. An explicit mode wins unless it would require factual d
 | `INFORM` | Editorial or educational work |
 | `TRANSACT` | Buttons, confirmations, alerts, forms, or utility microcopy |
 
-`VOICE` is the exception to selecting one mode. It is a modifier, not a job: `--voice <name>` loads a measured author profile on top of whichever mode was already chosen, and `voice build`, `voice list`, and `voice check` are its own operations. Profiles are stored at `~/.agora/voices/`, never inside the skill directory, because the documented update path replaces that directory and would destroy them.
+`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs. Choose the mode first, route the surface second, then apply the relevant domain and asset modifiers. Apply `VOICE` afterward at conflict level 6. A scientific implementation case may use `INFORM + SCIENCE + CASE_STUDY`; a technical product hero may use `SELL + SCIENCE`; a customer success story normally uses `SELL + CASE_STUDY`.
+
+`--voice <name>` loads a measured author profile on top of whichever mode was already chosen, and `voice build`, `voice list`, and `voice check` are its own operations. Profiles are stored at `~/.agora/voices/`, never inside the skill directory, because the documented update path replaces that directory and would destroy them.
 
 Apply the default profile to every mode. When `~/.agora/voices/index.json` names a default and the request carries no voice instruction, load that profile for `POSITION`, `SELL`, `INVEST`, `INFORM`, and `TRANSACT` alike:
 
@@ -105,6 +112,23 @@ Do not confuse mode with surface. Classify each deliverable:
 | `WRITTEN_PRIVATE` | Proof fidelity, concrete meaning, channel fit, and human-voice pass |
 | `SPOKEN_ONLY` | Proof fidelity, breath, rhythm, timing, and listener comprehension; skip GEO/AEO formatting |
 | `HYBRID` | Route spoken delivery and each written derivative separately |
+
+## Select persuasion treatment internally
+
+For commercial work, select one internal treatment. Do not expose the label unless the user asks for the reasoning.
+
+| Treatment | Default use | Objective |
+|---|---|---|
+| `INFORMATIONAL` | Documentation, methodology, audit, legal, safety, and utility states | Accurate understanding |
+| `PERSUASIVE_EXPLANATORY` | Product sections, comparisons, buyer guides, case studies, and mid-funnel pages | Supported belief through mechanism and proof |
+| `COMMERCIALLY_ASSERTIVE` | Homepage and campaign heroes, ads, subject lines, and sales openings | Attention, desire, distinction, and continuation |
+| `PROMOTIONAL` | Warm launches and limited campaigns with supplied urgency, novelty, availability, or outcome evidence | Decisive action |
+
+`SELL` plus an attention surface defaults to `COMMERCIALLY_ASSERTIVE`. Mid-funnel `SELL` defaults to `PERSUASIVE_EXPLANATORY`. `PROMOTIONAL` requires explicit campaign context and verified support. Missing support lowers the treatment. No treatment weakens truth, safety, offer, qualification, or destination fidelity.
+
+For a hero or other attention-led `SELL` composition, do not spend the subhead inventorying inputs, features, outputs, or methodology omitted from the headline. Use it for one reader-owned bridge from promise to belief: the minimum category, mechanism, difference, or proof needed to trust the next step. Compress multiple data feeds into the relation they establish. Move remaining scope below the hero. The canonical procedure and boundary are in `Heroes and short-form sales composition`.
+
+For `HERO + SCIENCE`, keep the first screen persuasive and comprehensible while preserving material uncertainty close enough to prevent a false net impression. For `CASE_STUDY + SELL`, use evidence and structure without turning the asset into a chronology or academic report. For `SCIENCE + VOICE`, evidence-calibrated certainty and required terminology override the profile.
 
 ## Build the argument with variable depth
 
