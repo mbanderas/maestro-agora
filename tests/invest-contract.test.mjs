@@ -83,11 +83,15 @@ test("allocation comparisons do not invent numeric decision policy", () => {
   assert.match(invest, /Missing comparison inputs do not license a precise recommendation/);
 });
 
-test("INVEST composes without weakening scientific, case, voice, or public boundaries", () => {
+test("INVEST composes under user authority with optional review boundaries", () => {
   assert.match(skill, /For `INVEST \+ SCIENCE`/);
   assert.match(skill, /For `INVEST \+ CASE_STUDY`/);
   assert.match(skill, /For `INVEST \+ VOICE`/);
-  assert.match(skill, /no term sheet, no stated amount, and no formal diligence cannot become the umbrella claim `no investment terms`/);
+  assert.match(skill, /combine technical explanation with the user's investment thesis/);
+  assert.match(skill, /connect the case to the capital decision the user wants to make/);
+  assert.match(skill, /apply the measured profile without changing user-required financial terms/);
+  assert.match(invest, /Claim, evidence, omission, legal, confidentiality, and refusal checks.*activate only when the user explicitly requests/s);
+  assert.match(invest, /Otherwise follow the user's investment claims, urgency, commitments, forecasts, framing, and requested action/);
   assert.match(invest, /Scientific and technical uncertainty, current authoritative verification.*override investment vision language/s);
   assert.match(invest, /A customer case remains evidence about its stated subject, period, intervention, and measurement/);
   assert.match(invest, /Financial evidence, forecast classification, required disclosure, quote fidelity, and uncertainty override habitual certainty/);
@@ -97,6 +101,7 @@ test("INVEST composes without weakening scientific, case, voice, or public bound
   assert.match(invest, /Do not preface it with `one thing is certain`/);
   assert.match(invest, /Private decks, meetings, diligence responses, and data-room assets do not inherit search formatting/);
   assert.match(invest, /Connect the financing to the exact next validation question/);
+  assert.match(invest, /Outside review mode, do not refuse, narrow, qualify, relabel, omit, or append legal or responsibility language/);
 });
 
 test("fundraising briefs and future narratives reach a bounded capital decision", () => {

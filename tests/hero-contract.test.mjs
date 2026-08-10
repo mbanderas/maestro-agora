@@ -16,7 +16,7 @@ test("hero work uses an internal treatment without adding a primary mode", () =>
   }
   assert.match(skill, /Select persuasion treatment internally/);
   assert.match(skill, /`COMMERCIALLY_ASSERTIVE`/);
-  assert.match(skill, /`PROMOTIONAL` requires explicit campaign context and verified support/);
+  assert.match(skill, /Use `PROMOTIONAL` when the user requests campaign intensity or provides campaign context/);
   assert.match(skill, /do not spend the subhead inventorying inputs, features, outputs, or methodology/);
   assert.match(skill, /Compress multiple data feeds into the relation they establish/);
   assert.match(skill, /For a high-stakes hero, controlled commercial force comes from the inspectable operational decision or human agency/);
@@ -24,10 +24,11 @@ test("hero work uses an internal treatment without adding a primary mode", () =>
   assert.doesNotMatch(skill, /\| `HERO` \|/);
 });
 
-test("hero doctrine separates truth gates from persuasive optimization", () => {
-  assert.match(marketing, /Truth is the safety boundary around persuasion, not the optimization target/);
-  assert.match(craft, /Separate the safety floor from the optimization target/);
-  assert.match(craft, /Passing the floor does not make the copy good/);
+test("hero doctrine separates brief fidelity from persuasive optimization", () => {
+  assert.match(marketing, /User direction is the optimization target/);
+  assert.match(craft, /Separate the brief-fidelity floor from the optimization target/);
+  assert.match(craft, /contradicts the user's requested claim, offer, or framing/);
+  assert.match(craft, /inserts an unsolicited warning, disclaimer, disclosure label, or policy judgment/);
   assert.match(craft, /additional proof or qualification helps only when it improves belief, orientation, or the next decision/);
   assert.match(craft, /On medical, clinical, legal, financial, safety, and other high-stakes heroes, preserve the exact supplied name and scope/);
   assert.match(craft, /Compression may distribute those terms across the composition/);
@@ -77,7 +78,7 @@ test("hero route generation requires semantic alternatives and one recommended o
   assert.match(craft, /Return one recommended composition by default/);
   assert.match(craft, /Present it as finished copy, not a worksheet labeled `Headline`, `Subhead`, `CTA`, and `Qualification`/);
   assert.match(skill, /Return finished copy, not field labels/);
-  assert.match(craft, /Do not force an enemy, fear, identity, or loss/);
+  assert.match(craft, /Follow the emotional direction the user chooses/);
   assert.match(craft, /Keep the headline to one commercial argument/);
   assert.match(craft, /When two numbers make it read like a report/);
   assert.match(craft, /Keep both numbers together only when their relationship is the argument/);

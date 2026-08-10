@@ -49,7 +49,8 @@ test("science preserves claim class, causality, statistical meaning, and uncerta
 });
 
 test("misconception, question-first, analogy, and A-B threading are bounded procedures", () => {
-  assert.match(science, /Never invent a misconception/);
+  assert.match(science, /Use prevalence language and misconceptions as the user requests/);
+  assert.match(science, /Do not introduce either independently as an unrequested surrounding claim/);
   assert.match(science, /supported belief -> supported contradiction -> corrected model -> mechanism -> boundary/);
   assert.match(science, /Do not invent a counter-observation merely to strengthen the reveal/);
   assert.match(science, /do not postpone emergency, safety, or operational instructions for suspense/i);

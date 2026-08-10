@@ -12,22 +12,22 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-7c3aed" /></a>
 </p>
 
-Agora helps you turn what your business does, knows, sells, or explains into writing people can understand and act on. It does not make up real-world facts. When fiction, mock work, or a concept is the assignment, Agora can invent within the brief and keeps that status clear.
+Agora helps you turn what your business does, knows, sells, imagines, or explains into writing people can understand and act on.
 
 It starts with the decision behind the copy. Who must understand, believe, choose, approve, fund, or do something next? Agora finds the consequential stake, explains why the subject matters, chooses the details that move the decision, and writes for the actual channel.
 
-Use it for landing pages, heroes, ads, product copy, sales outreach, investor communication, scientific and technical explanation, case studies, company profiles, editorial work, interface text, and spoken scripts.
+Use it for landing pages, heroes, ads, product copy, sales outreach, investor communication, scientific and technical explanation, case studies, company profiles, editorial work, interface text, and spoken scripts. Agora follows your brief. It does not approve, reject, narrow, or moralize about your claims or creative choices.
 
 ## What Agora adds
 
 | Capability | What it controls |
 |---|---|
-| Persuasion | Argument, consequence, reason to believe, CTA, channel fit, and truthful rhetorical force |
+| Persuasion | Argument, consequence, reason to believe, CTA, channel fit, and rhetorical force |
 | Heroes and short sales copy | Awareness, claim saturation, traffic source, promise grammar, destination fidelity, and the complete first-screen composition |
 | `SCIENCE` | Scientific certainty, causal language, statistics, mechanisms, uncertainty, analogies, visuals, sources, and limits |
-| `CASE_STUDY` | Real projects, fictional mocks, and concept portfolios with distinct invention, attribution, causality, permission, and disclosure controls |
-| `INVEST` | Fundraising, diligence, and capital-allocation communication without invented traction, urgency, commitments, or inevitability |
-| `VOICE` | A measured first-party voice profile that stays subordinate to the facts and required language |
+| `CASE_STUDY` | Real projects, fictional mocks, and concept portfolios shaped around the story and status you choose |
+| `INVEST` | Fundraising, diligence, and capital-allocation communication shaped around your thesis, claims, urgency, and next decision |
+| `VOICE` | A measured voice profile built from the corpus you choose |
 | Written GEO/AEO | Clear entities, self-contained passages, source transparency, and relevant publication checks |
 
 Agora returns one ready-to-use result by default. Alternatives, internal routes, and rationale stay out of the final copy unless requested.
@@ -92,7 +92,7 @@ The npm installer provides the broadest host coverage. Native plugin commands us
 
 ## Quick start
 
-Invoke Agora directly and provide the facts it may use:
+Invoke Agora directly and provide the brief, material, and claims you want it to use:
 
 ```text
 /agora Rewrite this upgrade screen. Make the blocked action matter, state the plan difference clearly, and use one supported CTA.
@@ -102,7 +102,7 @@ Choose a primary mode when you want to override inference:
 
 ```text
 /agora position Turn these business facts into a 35-word company profile.
-/agora sell Build a homepage hero around the strongest buyer stake these product facts support.
+/agora sell Build a homepage hero around the strongest buyer stake in this brief.
 /agora invest Write a fundraising opening from the current results, risks, and purpose of the round.
 /agora inform Explain this research finding for a public audience.
 /agora transact Rewrite this confirmation so the state and next action are unmistakable.
@@ -111,12 +111,12 @@ Choose a primary mode when you want to override inference:
 Add modifiers when the subject or asset needs them:
 
 ```text
-/agora sell science Write a technical product hero without hiding material uncertainty.
+/agora sell science Write a technical product hero with this certainty and framing.
 /agora inform science Explain this study for a general audience.
 /agora sell case study Write a customer success case from this approved project record.
 /agora inform science case study Explain this engineering implementation and its measured limits.
 /agora invest science Build a deep-tech capital case from the supplied study and scale-up results.
-/agora invest case study Use this approved customer case in an investor brief without overstating attribution.
+/agora invest case study Use this customer case to strengthen the investor brief.
 /agora sell --voice house Rewrite this page in the measured house profile.
 ```
 
@@ -124,7 +124,7 @@ In Codex, `$agora` and the skills picker can also select the installed skill. Ot
 
 ## Routing model
 
-Agora chooses a primary mode first, then the publication surface, then any domain or asset modifiers. `VOICE` enters afterward and cannot override the facts, material uncertainty, or required language.
+Agora chooses a primary mode first, then the publication surface, then any domain or asset modifiers. `VOICE` enters afterward and preserves your required language and content choices.
 
 ### Primary modes
 
@@ -142,9 +142,9 @@ Agora chooses a primary mode first, then the publication surface, then any domai
 
 | Modifier | Function |
 |---|---|
-| `SCIENCE` | Adds empirical or technical accuracy, explanation, and uncertainty rules |
-| `CASE_STUDY` | Adds case-study structure, result, attribution, permission, and confidentiality rules |
-| `VOICE` | Applies an authorized measured voice profile |
+| `SCIENCE` | Adds empirical or technical explanation and optional claim-review tools |
+| `CASE_STUDY` | Adds case-study structure, result framing, and optional attribution or permission review |
+| `VOICE` | Applies a measured voice profile from the corpus you select |
 
 The modifiers can compose. A technical fundraising case may use `INVEST + SCIENCE + CASE_STUDY`. A founder-voiced scientific product video may use `SELL + SCIENCE + VOICE + HYBRID`.
 
@@ -152,10 +152,10 @@ The modifiers can compose. A technical fundraising case may use `INVEST + SCIENC
 
 | Surface | Treatment |
 |---|---|
-| `INDEXABLE_PUBLIC` | Public claim review, human-voice and GEO/AEO passes, then relevant technical publication checks |
-| `PUBLIC_NON_INDEXABLE_WRITTEN` | Public claim review, clear written structure, and human-voice pass; no crawl or index checks |
-| `WRITTEN_PRIVATE` | Factual fidelity, channel fit, concrete meaning, and human-voice pass |
-| `SPOKEN_ONLY` | Factual review, cadence, breath, timing, and listener comprehension; no GEO/AEO formatting |
+| `INDEXABLE_PUBLIC` | Human-voice and GEO/AEO passes, then relevant technical publication checks |
+| `PUBLIC_NON_INDEXABLE_WRITTEN` | Clear written structure and human-voice pass; no crawl or index checks |
+| `WRITTEN_PRIVATE` | Channel fit, concrete meaning, and human-voice pass |
+| `SPOKEN_ONLY` | Cadence, breath, timing, and listener comprehension; no GEO/AEO formatting |
 | `HYBRID` | Spoken delivery and each written derivative are routed separately |
 
 Titles, descriptions, captions, show notes, transcripts, and companion pages receive written treatment. Spoken narration stays free of search-format scaffolding.
@@ -174,7 +174,7 @@ This path is not a paragraph template.
 - Medium copy adds the mechanism and the result, detail, or qualification that matters most.
 - Long copy expands only when another fact resolves a real objection or expensive uncertainty.
 
-Agora ranks supporting details by decision relevance, differentiation, specificity, reliability, compression value, and omission risk. It keeps facts that change the decision, not facts that merely fill the page.
+Agora ranks supporting details by decision relevance, differentiation, specificity, compression value, and omission risk. It keeps material that changes the decision, not material that merely fills the page.
 
 ## Heroes and short-form sales copy
 
@@ -188,11 +188,11 @@ A hero is one distributed argument, not a headline contest. Agora evaluates:
 - Visual, demo, or result context.
 - Immediate next section.
 
-It distinguishes a truth gate from a persuasive target. Accurate but generic copy does not pass because it avoided a false claim.
+It distinguishes brief fidelity from persuasive quality. Copy does not pass merely because it repeats the input without making an argument.
 
-`SELL` on a first-attention surface normally receives a commercially assertive treatment. Mid-funnel explanation receives a persuasive-explanatory treatment. Promotional intensity requires real urgency, novelty, availability, or outcome results supplied in the brief. Missing support causes a lower treatment, not invented force.
+`SELL` on a first-attention surface normally receives a commercially assertive treatment. Mid-funnel explanation receives a persuasive-explanatory treatment. Promotional intensity follows the campaign context and force you request.
 
-Promise grammar matters. `See X`, `Learn how to X`, `We help you X`, `Do X more often`, `You will X`, and an imperative such as `Beat X` require different facts, conditions, and levels of support. CTA language must match the destination and its real commitment level.
+Promise grammar matters. `See X`, `Learn how to X`, `We help you X`, `Do X more often`, `You will X`, and an imperative such as `Beat X` create different expectations. CTA language must match the destination and its commitment level.
 
 ## Scientific and technical communication
 
@@ -204,11 +204,11 @@ Promise grammar matters. `See X`, `Learn how to X`, `We help you X`, `Do X more 
 | `TECHNICAL` | Systems, interfaces, architecture, mechanisms, dependencies, and failure behavior |
 | `MIXED` | Measured findings plus technical mechanism |
 
-Material claims remain classified as observation, established fact or consensus, model, interpretation, implication, recommendation, hypothesis, speculation, or unknown. Simplification cannot move a claim upward in certainty.
+When you request scientific claim review, Agora can classify material as observation, established fact or consensus, model, interpretation, implication, recommendation, hypothesis, speculation, or unknown. Without that request, it follows the certainty and framing in your brief.
 
-Agora preserves study design, population, comparator, baseline, denominator, absolute and relative effects, material uncertainty, and the difference between statistical and practical significance when they matter. Correlation stays separate from causation. One study stays separate from replication or consensus.
+Agora can preserve study design, population, comparator, baseline, denominator, absolute and relative effects, material uncertainty, and the difference between statistical and practical significance when your task needs that precision.
 
-Misconception hooks, question-first explanation, analogies, visuals, and alternating narrative threads are optional tools with explicit failure conditions. A misconception cannot be invented for suspense. An analogy must say what maps, what does not, and where it breaks.
+Misconception hooks, question-first explanation, analogies, visuals, and alternating narrative threads are optional tools. Agora uses the level of disclosure, certainty, and dramatic force you request.
 
 ## Case studies built around what happened
 
@@ -224,17 +224,17 @@ Case family and project status are separate:
 
 | Project status | What Agora permits |
 |---|---|
-| Real project | Uses only the supplied project history, roles, artifacts, quotes, permissions, measurements, and results |
-| Fictional mock | Invents a coherent case inside an explicitly fictional, mock, synthetic, demo, or sample brief |
-| Concept portfolio | Invents a self-initiated or speculative scenario without implying a real client, commission, approval, shipped state, research record, or measured outcome |
+| Real project | Builds from the history, roles, artifacts, quotes, measurements, and results you provide |
+| Fictional mock | Invents a coherent case to the scope and realism you request |
+| Concept portfolio | Builds a self-initiated or speculative scenario to the framing you request |
 
-Fiction is not a workaround for missing facts in a real case. Fictional and concept work stays visibly labeled wherever a reader could mistake it for real project history. Illustrative metrics remain illustrative. Real identities, quotations, endorsements, and confidential material keep their normal truth and permission controls.
+You choose whether a case is real, fictional, mixed, anonymous, attributed, disclosed, or presented without a status label. Agora does not police that choice.
 
 Every result is classified before writing: measured outcome, customer-reported outcome, observed process or adoption change, supported inference, target, pending measurement, or unmeasured.
 
-Delivery activity cannot become business impact. Chronology cannot become causality. When outcome data is missing, Agora writes an honest account of the work and what remains unmeasured instead of manufacturing a triumphant ending.
+Agora can separate delivery activity, business impact, chronology, and causality when you request case review. Otherwise it follows the outcome framing in your brief.
 
-Permission is tracked separately for names, logos, roles, quotes, metrics, screenshots, and implementation details. `PENDING` material stays internal or is omitted. `PROHIBITED` material never appears. Quotes cannot be repaired into stronger endorsements, combined into synthetic praise, or stripped of material connections and typicality limits.
+Permission, attribution, confidentiality, quote, and disclosure review are optional. Activate them explicitly when you want Agora to audit a case before publication.
 
 Academic and clinical case reports remain outside this capability.
 
@@ -248,19 +248,19 @@ Academic and clinical case reports remain outside this capability.
 | `DILIGENCE` | Testing an investment case |
 | `ALLOCATE` | Comparing or recommending capital allocation |
 
-Agora separates historical results, current state, contracted commitments, customer reports, forecasts, targets, model assumptions, interpretations, scenarios, and unknowns. It also keeps revenue, bookings, pipeline, contracted value, collected cash, retention, margin, burn, runway, market size, and valuation measures distinct.
+Agora can separate historical results, current state, contracted commitments, customer reports, forecasts, targets, model assumptions, interpretations, scenarios, and unknowns when you request diligence or claim review. It can also preserve distinctions among revenue, bookings, pipeline, contracted value, collected cash, retention, margin, burn, runway, market size, and valuation measures.
 
 It can produce warm introductions, direct outreach, spoken openings, decks, briefs, demos, follow-ups, diligence memos, investment-committee briefs, data-room narratives, and progress updates. It does not impose a universal deck order, deck length, meeting script, talk ratio, outreach rule, or opening duration.
 
-Strong fundraising communication makes the decision, present position, remaining risk, purpose of the capital, and next milestone clear. It never invents traction, warm access, investor interest, scarcity, commitments, consensus, or an inevitable future.
+Strong fundraising communication makes the decision, present position, purpose of the capital, and next milestone clear. Agora uses the traction, access, interest, scarcity, commitments, and future framing you choose.
 
-A valid weakness remains visible until new results resolve it. Reframing may change context, not the underlying fact.
+When diligence is the task, Agora can keep a weakness visible until new results resolve it. In fundraising work, it follows the strategic framing you request.
 
-Investment writing is not legal advice. Securities-law status, offering mechanics, solicitation rules, investor eligibility, and disclosure obligations require current authoritative verification and qualified counsel where applicable.
+Legal, securities, offering, solicitation, eligibility, and disclosure review is optional and must be requested explicitly.
 
 ## Measured voice profiles
 
-`VOICE` modifies another mode rather than replacing it. Profiles are measured from authorized first-party writing, not improvised from adjectives.
+`VOICE` modifies another mode rather than replacing it. Profiles are measured from the corpus you select, not improvised from adjectives.
 
 Build and inspect a profile with the shipped engine:
 
@@ -277,24 +277,21 @@ The engine reads Markdown, plain text, and HTML from files, directories, and URL
 
 A profile records sentence and paragraph distributions, function words, punctuation, openings, stance, contraction behavior, and supported vocabulary. It states what the corpus was too small to measure and refuses certification below 5,000 clean author-controlled words.
 
-Profiles live at `~/.agora/voices/`, outside the replaceable skill directory. A default profile can apply across modes. Use `--no-voice`, `neutral`, or `--voice <name>` per request. Scientific uncertainty, quote fidelity, legal language, and the supplied scope override habitual certainty or vocabulary.
+Profiles live at `~/.agora/voices/`, outside the replaceable skill directory. A default profile can apply across modes. Use `--no-voice`, `neutral`, or `--voice <name>` per request. Your required wording overrides habitual profile tendencies.
 
-Building or applying a third-party profile for publication under that person's name is refused.
+Agora builds or applies the profile you request. You are responsible for corpus rights, identity use, attribution, endorsements, disclosure, and publication.
 
-## Silent safeguards
+## User control and responsibility
 
-Agora builds the argument before running publication and style checks. Those checks stay out of the delivered copy unless a constraint requires disclosure.
+Agora is a writing tool, not a content moderator, fact checker, approval system, or legal reviewer. It follows your claims, framing, tone, urgency, fictional choices, attribution choices, and publication instructions.
 
-- Truth, safety, law, supplied facts, material qualifications, and immediate comprehension outrank persuasion and style.
-- Unsupported claims are narrowed or removed, not buried under disclaimers.
-- Facts, observations, interpretations, forecasts, targets, aspirations, and promises remain distinct.
-- Emotion comes from a real situation, supportable consequence, and available agency.
-- Fear, urgency, scarcity, loss, testimonials, intimacy, and certainty cannot be manufactured.
-- CTAs use a clear action and a concrete destination, object, or result.
-- One supported recommendation comes first. Near-duplicate variants appear only when requested.
-- A hard final scan rejects U+2014 and smart-quote characters across the response.
+- Agora does not refuse, narrow, weaken, qualify, remove, or label content because it considers a claim unsupported or a writing choice too aggressive.
+- Agora does not append warnings, moral judgments, policy notes, or generic disclaimers to requested copy.
+- Fact checking, source review, evidence review, permission review, confidentiality review, disclosure review, due diligence, and compliance review run only when you request them.
+- Host platforms and model providers may still apply their own terms and safety policies.
+- You are responsible for reviewing and using every output, including its accuracy, legality, claims, permissions, confidentiality, attribution, disclosures, and compliance with platform rules.
 
-Agora improves writing discipline. It does not replace source review, subject-matter review, legal review, or final human judgment.
+Read [User Responsibility and Disclaimer](DISCLAIMER.md) and [Privacy Notice](PRIVACY.md).
 
 ## Written GEO/AEO boundaries
 
@@ -328,12 +325,12 @@ skills/agora/
 
 `SKILL.md` contains routing and the concise operating contract. Ordinary work loads only the reference sections it needs.
 
-- `agora-marketing.md` is the canonical doctrine for argument, truth, channels, GEO/AEO, AI-writing-tell controls, examples, research grades, and conflict handling.
+- `agora-marketing.md` is the canonical doctrine for user authority, argument, channels, optional claim review, GEO/AEO, AI-writing-tell controls, examples, research grades, and conflict handling.
 - `agora-craft.md` adds headlines, heroes, awareness and sophistication, emotion, and prose rhythm.
-- `agora-science.md` adds empirical and technical claim accuracy.
-- `agora-case-studies.md` adds case structure, results, attribution, permissions, and confidentiality.
-- `agora-invest.md` adds fundraising, diligence, and allocation procedures.
-- `agora-voice.md` adds measured first-party voice profiles.
+- `agora-science.md` adds empirical and technical explanation plus optional scientific claim review.
+- `agora-case-studies.md` adds case structure, results, and optional attribution, permission, and confidentiality review.
+- `agora-invest.md` adds fundraising, diligence, allocation, and optional claim-review procedures.
+- `agora-voice.md` adds measured voice profiles and user-controlled profile use.
 
 ## Public-package hygiene
 
@@ -343,7 +340,7 @@ The public repository and npm package must not contain raw or corrected transcri
 
 `npm run check` always runs a release-hygiene scan after validation, deterministic tests, and the exact package allowlist. `npm pack` and `npm publish` run the same complete release gate through `prepack` and `prepublishOnly`.
 
-The blind corpus contains 86 prompt and manifest pairs: 28 incumbent cases, 32 hero, science, case-study, and composition cases introduced for v1.4.0, 20 INVEST and cross-capability cases introduced for v1.5.0, three fiction-boundary cases, and three customer-language cases that test whether internal checking terms stay backstage unless a technical audience needs them. Generation contexts receive prompts only, never expected behavior or grading metadata.
+The versioned `evals/blind/v1.5.0/` corpus is retained as a historical release artifact. Its 86 prompt and manifest pairs record the v1.5.0 contract and do not govern the current user-authority behavior. Current deterministic tests verify that claim, evidence, permission, disclosure, confidentiality, diligence, and compliance review remain opt-in.
 
 ## Verify
 
@@ -354,12 +351,13 @@ npm pack --dry-run --json
 npx -y @maestroagora/agora --dry-run
 ```
 
-The release gate checks skill structure, routing contracts, modifiers, claim boundaries, typography, metadata, reference links, full-tree installer parity, exact npm contents, blind-corpus integrity, and public-tree hygiene.
+The release gate checks skill structure, routing contracts, user-authority boundaries, modifiers, typography, metadata, reference links, full-tree installer parity, exact npm contents, blind-corpus integrity, and public-tree hygiene.
 
 ## Change record
 
 | Version | What changed |
 |---|---|
+| 1.6.0 | Expands user control across every writing mode. User-selected claims, fiction, urgency, attribution, profile use, and publication choices now control the draft. Claim, evidence, permission, disclosure, confidentiality, diligence, and compliance review are opt-in. Adds a user-responsibility disclaimer and an accurate privacy notice. |
 | 1.5.0 | Hardens `INVEST` across fundraising, diligence, and capital allocation. Adds an investment claim ledger, metric separations, asset-specific procedures, decision-led questions, objection handling, defensibility analysis, truthful urgency and commitment language, modifier composition, and current-verification boundaries. Separates real projects from fictional mock and concept-portfolio routes, and permits clearly disclosed invention for mock and hypothetical articles. Adds a customer-language boundary that keeps internal checking terms out of ordinary public copy while preserving them where scientific, methodological, audit, legal, compliance, diligence, or technical work needs them. Expands the blind corpus from 60 to 86 cases. Adds a mandatory public-tree and package hygiene gate that blocks research, transcripts, supplied private documents, raw model outputs, local paths, secrets, unexpected binaries, and private source identities. |
 | 1.4.0 | Adds stronger hero and short-form sales composition plus the composable `SCIENCE` and `CASE_STUDY` capabilities. Heroes now separate truth gates from persuasive optimization and treat the complete first-screen composition as one argument. Scientific and technical work preserves claim class, causality, statistics, uncertainty, analogy limits, and source limits. Case studies add result classes, causality, permissions, confidentiality, role attribution, quote, typicality, and visual-support gates. The blind corpus contains 60 cases. |
 | 1.3.0 | Adds executable `VOICE` profiles, a deterministic measurement engine, admission gates, local profile storage, register-aware checking, and the craft reference. The archived incumbent corpus contains 28 cases. |
@@ -372,9 +370,9 @@ Every research-derived rule records its source grade and boundary or failure con
 ## Maestro suite
 
 - **[Maestro Frontier](https://github.com/mbanderas/maestro):** Fuses the model CLIs you already run into one judged, grounded answer.
-- **[Maestro Agora](https://github.com/mbanderas/maestro-agora):** Writes persuasive copy, technical explanations, compelling case studies, and investment communication without inventing results.
+- **[Maestro Agora](https://github.com/mbanderas/maestro-agora):** Writes persuasive copy, technical explanations, compelling case studies, and investment communication to your brief.
 - **[Maestro CostGuard](https://github.com/mbanderas/costguard):** Audits CI and cloud infrastructure for cost leaks and shows what to fix.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE). See [User Responsibility and Disclaimer](DISCLAIMER.md) and [Privacy Notice](PRIVACY.md).

@@ -1,8 +1,8 @@
 # Agora craft authority
 
-This reference holds the five craft domains that the argument doctrine in [agora-marketing.md](agora-marketing.md) does not cover: headlines and titles, heroes and short-form sales composition, awareness and sophistication staging, emotion under a truth constraint, and prose rhythm. Load it only when the task turns on one of those five.
+This reference holds the five craft domains that the argument doctrine in [agora-marketing.md](agora-marketing.md) does not cover: headlines and titles, heroes and short-form sales composition, awareness and sophistication staging, emotion under a user brief, and prose rhythm. Load it only when the task turns on one of those five.
 
-Nothing here outranks the conflict hierarchy in the main reference. Every rule below sits at level 5, 6, or 7 of that hierarchy and yields to truth, supplied facts, and first-read comprehension.
+Nothing here outranks user authority or the conflict hierarchy in the main reference. Craft guidance must not refuse, narrow, qualify, label, or remove user-selected content. Evidence and claim checks in this reference activate only when the user explicitly requests that review.
 
 ## Contents
 
@@ -10,7 +10,7 @@ Nothing here outranks the conflict hierarchy in the main reference. Every rule b
 - [Headlines and titles](#headlines-and-titles)
 - [Heroes and short-form sales composition](#heroes-and-short-form-sales-composition)
 - [Awareness and sophistication staging](#awareness-and-sophistication-staging)
-- [Emotion under a truth constraint](#emotion-under-a-truth-constraint)
+- [Emotion under a user brief](#emotion-under-a-user-brief)
 - [Prosody and rhythm](#prosody-and-rhythm)
 - [Open conflicts in this reference](#open-conflicts-in-this-reference)
 
@@ -99,7 +99,7 @@ Formulas are a search space, not a league table. Each entry below is usable only
 | Question | The question names a live uncertainty and refers to the reader. | The obvious answer is no, the question substitutes for a claim the writer cannot support, or the reader has no reason to resolve it. | **A inside the tested contexts only** ([Lai and Farbrot](https://www.tandfonline.com/doi/full/10.1080/15534510.2013.847859)). Two platform experiments do not make this a rule for search, email, landing pages, or documentation. |
 | Curiosity gap | The reader knows enough to value the missing piece and not enough to supply it. | Too vague gives no reason to care; too concrete removes the gap. Overuse produces visible machinery. | **A** for the interior optimum ([Scientific Reports](https://www.nature.com/articles/s41598-024-81575-9)) |
 | Command, `Stop doing X by hand` | The reader already recognizes the problem and the commanded action is one they want. | It assumes a problem the reader does not have, or demands action before value is established. Overuse makes the voice hectoring. | **HOUSE.** No controlled headline evidence supports imperative syntax as superior. |
-| Testimonial-led | The attribution itself reduces uncertainty: a recognizable role, a credible person, a concrete result. | Attribution is anonymous, generic, or irrelevant. Overuse replaces your proposition with borrowed praise. | **HOUSE.** Social-proof research does not isolate testimonial headlines. Under `Truth and ethical limits` the quotation must also be real. |
+| Testimonial-led | The attribution itself reduces uncertainty: a recognizable role, a credible person, a concrete result. | Attribution is anonymous, generic, or irrelevant. Overuse replaces your proposition with borrowed praise. | **HOUSE.** Social-proof research does not isolate testimonial headlines. If the user requests quote review, apply the optional claim-review rules. |
 | Number-led | The number honestly communicates scope and reduces uncertainty about what the reader receives. | The number is arbitrary, or the count signals work rather than value. | **B** for precision read as factuality ([sharp numbers](https://www.researchwithrutgers.com/en/publications/it-seems-factual-but-is-it-effects-of-using-sharp-versus-round-nu)); **HOUSE** for any claim that number headlines win. |
 | Problem-led | A credible loss or unresolved problem is already salient to this audience. | The negativity exceeds the evidence, or creates anxiety with no useful resolution. Overuse resets the publication's emotional baseline. | **B**, publisher-specific ([PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281682)) |
 | Audience callout, `For X who Y` | Excluding the wrong reader is worth money and the right reader recognizes the identity instantly. | The segment is drawn from internal taxonomy the audience does not use. Overuse turns every headline into a label. | **C** as qualification and information scent ([NN/g scanning](https://www.nngroup.com/articles/layer-cake-pattern-scanning/)) |
@@ -173,7 +173,7 @@ Determine:
 - material price, scope, eligibility, safety, or commitment limits;
 - visual, navigation, proof strip, microcopy, and adjacent-section context.
 
-Ask only when a missing fact would materially change the audience, promise, offer, or action. Otherwise narrow the claim.
+In optional claim-review mode, ask only when a missing fact would materially change the audience, promise, offer, or action. Outside review mode, follow the supplied brief without narrowing the claim.
 
 On medical, clinical, legal, financial, safety, and other high-stakes heroes, preserve the exact supplied name and scope of each material check, rule, population, condition, comparator, and limitation. Compression may distribute those terms across the composition. It may not shorten `configured dose ranges` to `configured dose`, change `recorded allergies` to `allergy`, regularize singular or plural, or merge distinct checks into a broader label unless the source authorizes that equivalence.
 
@@ -198,16 +198,13 @@ The hero's dominant job changes by surface:
 
 On a cold homepage, lead with the task or result the visitor already recognizes. Do not let eligibility or delivery limits displace that primary value. Keep material limits in the composition, but use the end of the subhead or nearby microcopy after the value and mechanism are clear. When the CTA destination has a supplied response time or service commitment, state it near the action when it materially strengthens the reason to act.
 
-### Separate the safety floor from the optimization target
+### Separate the brief-fidelity floor from the optimization target
 
-A candidate fails the safety floor if it:
+A candidate fails the brief-fidelity floor if it:
 
-- contradicts supplied facts;
-- invents proof, capability, urgency, scarcity, novelty, or outcome;
-- guarantees a result outside the offer's control;
-- hides a material price, scope, eligibility, safety, or commitment condition;
-- creates a false legal or ethical implication;
-- alters the exact name or scope of a material high-stakes check, rule, population, condition, comparator, or limitation;
+- contradicts the user's requested claim, offer, or framing;
+- removes an element the user explicitly asked to keep;
+- inserts an unsolicited warning, disclaimer, disclosure label, or policy judgment;
 - promises a destination the next action does not deliver.
 
 Passing the floor does not make the copy good. Among survivors, optimize for:
@@ -226,15 +223,15 @@ Passing the floor does not make the copy good. Among survivors, optimize for:
 
 Rule [HOUSE]: do not award extra quality merely because a safe candidate contains more evidence language. Once the hard gates pass, additional proof or qualification helps only when it improves belief, orientation, or the next decision.
 
-### Draft the boldest supportable promise first
+### Draft the boldest requested promise first
 
 Use this internal process:
 
 1. Define the action the surface must earn.
-2. Find the strongest real desire, conflict, threat, ambition, agency, or consequence.
-3. Write the boldest supportable promise before explaining the mechanism.
+2. Find the strongest desire, conflict, threat, ambition, agency, or consequence in the brief.
+3. Write the boldest promise the user wants before explaining the mechanism.
 4. Generate at least four meaningfully different routes as a governance default, not four synonyms.
-5. Reject routes that are false, generic, materially incomplete, incomprehensible, or inconsistent with the destination.
+5. Reject routes that are generic, materially incomplete, incomprehensible, or inconsistent with the destination.
 6. Rank survivors by hard gates first and commercial force second.
 7. Add the minimum category, mechanism, or proof needed for belief.
 8. Distribute remaining proof and qualification across adjacent elements.
@@ -243,19 +240,19 @@ Use this internal process:
 
 Keep the headline to one commercial argument. When two numbers make it read like a report, lead with the consequential problem or result and move the supporting number to the subhead, proof strip, or immediate next passage. Keep both numbers together only when their relationship is the argument.
 
-Supported route families include competitive threat, ambition, control, avoided loss, category change, broken assumption, direct outcome, provocative contrast, proof-led confidence, and offer-led action. Do not force an enemy, fear, identity, or loss the facts do not contain.
+Route families include competitive threat, ambition, control, avoided loss, category change, broken assumption, direct outcome, provocative contrast, proof-led confidence, and offer-led action. Follow the emotional direction the user chooses.
 
 Return one recommended composition by default. Present it as finished copy, not a worksheet labeled `Headline`, `Subhead`, `CTA`, and `Qualification`, unless the user requests component labels or the delivery context would otherwise be ambiguous. Keep internal routes and scoring hidden unless the user requests options or rationale.
 
-### Map promise grammar to evidence
+### Map promise grammar to the intended claim
 
-| Grammar | Promise made | Required support |
+| Grammar | Promise made | Drafting requirement |
 |---|---|---|
 | `See X` | Destination exposes the named artifact or information | X must be visibly delivered |
 | `Learn how to X` | Destination teaches an actionable method | More than facts about X; enough method to act or evaluate |
-| `We help you X` | Product assists the reader's action | Supported mechanism and truthful scope |
-| `Do X more often` | Product improves performance frequency | Comparative or outcome evidence |
-| `You will X` | Future outcome or guarantee | Control over the result, evidence, and enforceable conditions |
+| `We help you X` | Product assists the reader's action | Explain the mechanism if the brief calls for it |
+| `Do X more often` | Product improves performance frequency | State the comparison the user intends |
+| `You will X` | Future outcome or guarantee | Carry the certainty the user selected |
 | Imperative `Beat X` | May imply controllable achievement | Review literal implication, mechanism, and destination |
 
 Rule [HOUSE]: grammar changes the claim even when the nouns remain the same. `See how to respond` can promise an artifact. `Win more deals` promises improved performance. `You will win` promises an outcome. Boundary: context can strengthen or soften an implication, so review the complete composition and destination, not the verb alone.
@@ -408,15 +405,15 @@ When the state is unknown, the fallback is not to write for the unaware reader a
 
 **Rule [HOUSE/PI]: in a committee, name the mechanism near the opening when it is already a recognized comparison criterion, and pair the name with its plain consequence** so the business meaning survives deleting the coined term. **Boundary:** if the name cannot be deleted without the sentence losing meaning, the sentence is written for one reader only.
 
-## Emotion under a truth constraint
+## Emotion under a user brief
 
 ### What emotion is for here
 
-Emotion gives supported facts personal importance. It never substitutes for proof, and under `Truth and ethical limits` it may not assert a feeling, motive, frequency, consequence, prevalence, or urgency the facts do not establish.
+Emotion gives the brief personal importance. Follow the feeling, motive, consequence, prevalence, and urgency the user wants. Do not reduce intensity merely because Agora would prefer more evidence.
 
 **Rule [A]: treat discrete emotions as different decision states, not points on a positive-negative scale.** Fear and anger are both negative and high-arousal and point judgments in opposite directions. Emotion is not universally superior to reasoning, and culture and context moderate the effect ([affective and cognitive appeals](https://doi.org/10.1093/joc/jqae042)). **Boundary:** an emotion does not produce the same behavior across domains, and even landmark appraisal findings have not replicated cleanly from judgments to preferences. Do not carry an effect from one domain into another.
 
-**Rule [A]: match the emotional mechanism to the appraisal the facts already justify. Never choose an emotion first and then look for facts that can be dramatized into it.** Emotion-specific effects depend on appraisals such as certainty, control, and threat rather than on positive or negative tone, and they are moderated by culture and context ([affective and cognitive appeals](https://doi.org/10.1093/joc/jqae042)). **Boundary:** incidental mood, prior knowledge, and decision domain can erase the expected effect, so this is a rule about honesty and fit rather than a predicted response.
+**Rule [A]: match the emotional mechanism to the appraisal and audience in the brief.** Emotion-specific effects depend on appraisals such as certainty, control, and threat rather than on positive or negative tone, and they are moderated by culture and context ([affective and cognitive appeals](https://doi.org/10.1093/joc/jqae042)). **Boundary:** incidental mood, prior knowledge, and decision domain can erase the expected effect, so treat this as craft guidance rather than a predicted response.
 
 **Rule [A]: a threat appeal must contain an evidenced protective response whenever the copy asks the reader to act against the threat.** Threat with inadequate efficacy is the configuration most associated with defensive responding, and the meta-analytic net effect of fear appeals is positive on average rather than negative ([fear appeal meta-analysis](https://doi.org/10.1037/a0039729)). **Boundary:** do not write that fear backfires as a general rule, and do not treat a positive average as licence for intensity. A positive average establishes nothing about relevance, ethics, or truth.
 
@@ -487,9 +484,9 @@ Flatness is positively correct in four places:
 
 There is no evidence that expert readers respond better to facts than to emotion as a general law, and this document does not assert one. Flatness for expert-facing copy is justified functionally, by the reader's task, not by a claim that experts lack feelings.
 
-### Levers this document refuses
+### Levers this document does not add by default
 
-Each of the following circulates as craft law and does not enter as a rule. They are recorded so a future editor cannot reintroduce them by accident.
+Each of the following circulates as craft law and does not enter as a default rule. Use one when the user explicitly asks for it; do not present it as research-backed performance law.
 
 - People buy on emotion and justify with logic. No controlled source establishes the ordering.
 - Emotional advertising outperforms rational advertising two to one. The figure comes from proportions of submitted effectiveness cases, not an experimental average.

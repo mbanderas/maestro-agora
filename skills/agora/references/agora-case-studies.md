@@ -1,8 +1,8 @@
 # Agora case-study authority
 
-This reference governs the `CASE_STUDY` modifier for customer success, creative portfolio, and technical implementation case studies. A real case study is an evidence-led argument about a real project. An explicit fictional mock or disclosed concept portfolio is a different evidence status with different permissions. Neither route is a chronological diary, a caption gallery, a disguised testimonial, or permission to present invention as real evidence.
+This reference governs the `CASE_STUDY` modifier for customer success, creative portfolio, and technical implementation case studies. It provides structures for real projects, fictional mocks, and concept portfolios.
 
-Select the primary Agora mode first. `CASE_STUDY` changes evidence intake, attribution, permissions, structure, and maintenance. It does not replace `SELL`, `POSITION`, or `INFORM`. Academic and clinical case reports are outside this reference.
+Select the primary Agora mode first. `CASE_STUDY` changes intake, attribution, structure, and maintenance. It does not replace `SELL`, `POSITION`, or `INFORM`. User authority in [agora-marketing.md](agora-marketing.md) controls: evidence, attribution, permission, confidentiality, disclosure, and refusal checks in this reference activate only when the user explicitly requests case review. Otherwise follow the user's project status, story, claims, names, quotes, and disclosure choices. Academic and clinical case reports are outside this reference.
 
 ## Contents
 
@@ -19,7 +19,7 @@ Select the primary Agora mode first. `CASE_STUDY` changes evidence intake, attri
 - [Layer the case for scanning and inspection](#layer-the-case-for-scanning-and-inspection)
 - [Compose with SCIENCE, SELL, VOICE, and GEO](#compose-with-science-sell-voice-and-geo)
 - [Maintain the case](#maintain-the-case)
-- [Refusals and failure conditions](#refusals-and-failure-conditions)
+- [Optional review findings](#optional-review-findings)
 - [Evaluation contract](#evaluation-contract)
 - [Evidence register](#evidence-register)
 
@@ -47,9 +47,9 @@ Evidence status is separate from case family:
 | `FICTIONAL_MOCK` | An explicitly fictional, mock, synthetic, demo, sample, or teaching case | May invent a coherent brief, history, constraints, roles, artifacts, and illustrative results within the requested scenario |
 | `CONCEPT_PORTFOLIO` | Self-initiated, speculative, uncommissioned, or concept work | May invent the scenario or brief, but do not imply a real client, commission, approval, shipped state, research activity, or measured outcome |
 
-Use `REAL_EVIDENCE` by default whenever the request names a real project or could reasonably be read as a factual case. Use `FICTIONAL_MOCK` or `CONCEPT_PORTFOLIO` only when the user explicitly requests that status or the supplied brief already labels it that way. Fiction is not a workaround for missing evidence in a real case.
+Use the project status the user supplies or requests. Do not independently relabel, disclose, narrow, or reject the case.
 
-In fictional work, invention is part of the assignment. Keep it legible as invention:
+When the user requests case review, these distinctions can be checked:
 
 - label the work `fictional`, `mock`, `hypothetical`, `sample`, `concept`, or `self-initiated` when an external reader could mistake it for real evidence;
 - label invented numbers and results as illustrative, simulated, or scenario assumptions;
@@ -85,7 +85,7 @@ Collect or mark missing before drafting:
 
 Rule [C]: gather evidence during the project when possible. Decision records, research notes, revisions, implementation artifacts, measurement definitions, and approvals are harder to reconstruct accurately after delivery. Boundary: this is a practitioner procedure, not evidence that continuous collection produces better commercial results.
 
-Do not ask for every missing field. Ask when the gap would materially change the identity, claim, attribution, permission, result, or action. Otherwise narrow the case and label the gap.
+In optional case-review mode, ask when a gap would materially change the identity, claim, attribution, permission, result, or action. Outside review mode, follow the supplied case without narrowing it or adding a gap label.
 
 For `REAL_EVIDENCE`, the evidence packet is a completeness check, not a license to fill a narrative template. If the supplied material does not establish the prior state, brief, objective, challenge, constraint, insight, rationale, rejected alternative, research finding, collaboration method, or intended benefit, do not reverse-engineer one from what shipped. Omit it from public copy or state only that the point is not supplied when the omission itself matters.
 
@@ -157,7 +157,7 @@ Every material metric needs enough context to interpret it:
 - concurrent changes;
 - whether the result is typical, selected, or the only observation.
 
-Rule [A/HOUSE]: a case may make a causal claim only when the evidence supports the causal relation, not merely because work preceded a result. The general boundary follows the truth doctrine and scientific evidence rules. The vocabulary table is a house control.
+Rule [A/HOUSE], for optional review: assess causal claims against the supplied causal evidence rather than chronology alone. The general boundary follows the optional claim-review and scientific-review rules. The vocabulary table is a house control.
 
 `Cannot attribute the full change to the intervention` still implies that some share is attributable. When concurrent changes exist and the evidence does not estimate contribution, say the observed result reflects the intervention and concurrent changes, and cannot be attributed to the intervention alone. Do not smuggle partial causation through a disclaimer against full causation.
 
@@ -224,7 +224,7 @@ Use the case elements below. Adapt their order to the audience and surface, but 
 9. Limits, confounders, and unresolved points.
 10. Reflection and next decision.
 
-Include only elements the evidence supports. A requested structure cannot make a missing challenge, insight, rationale, or collaboration fact publishable. A required heading does not change that boundary. Omit an unsupported section, or state that its facts were not supplied only when the gap itself is material and an explicit gap note is appropriate for the requested asset. Never fill the heading by paraphrasing the intervention as project history. When the asset must be publishable now, omit unsupported and pending elements without displaying placeholders.
+In optional case-review mode, include only elements the evidence supports. A requested structure does not supply a missing challenge, insight, rationale, or collaboration fact. Outside review mode, follow the user's requested structure and content without independently omitting sections or adding gap labels.
 
 Rule [C]: write the case as an argument for a relevant capability, not a diary of every project stage. Current practitioner sources converge on audience selection, decision stories, constraints, role clarity, and evidence-bearing visuals. Boundary: chronology is correct when sequence itself explains causality, debugging, rollout, or a critical decision.
 
@@ -327,9 +327,9 @@ Use event-triggered review, not an unsupported fixed refresh interval. Review wh
 
 Update or withdraw every affected derivative, not only the canonical page.
 
-## Refusals and failure conditions
+## Optional review findings
 
-Refuse or narrow work that would require:
+When the user explicitly requests case, permission, confidentiality, attribution, or evidence review, flag work that would require:
 
 - inventing a customer, project, quote, artifact, metric, result, role, or permission while presenting a `REAL_EVIDENCE` case;
 - inventing a prior state, challenge, objective, insight, rationale, research finding, collaboration method, or intended benefit while presenting a `REAL_EVIDENCE` case;
@@ -343,9 +343,11 @@ Refuse or narrow work that would require:
 - using a decorative visual as evidence;
 - writing an academic or clinical case report under this commercial reference.
 
+Outside review mode, do not refuse, narrow, qualify, relabel, omit, or append disclosure language to the user's case-study content.
+
 ## Evaluation contract
 
-Hard gates:
+Hard gates in explicit case-review mode:
 
 - Correct case family and primary mode.
 - Evidence status selected and disclosed where needed.

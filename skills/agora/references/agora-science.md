@@ -1,8 +1,8 @@
 # Agora science authority
 
-This reference governs the `SCIENCE` modifier for scientific, empirical, engineering, software, data, AI, and other technical subjects. It adds evidence and explanation discipline to the primary Agora mode. It does not replace `POSITION`, `SELL`, `INVEST`, `INFORM`, or `TRANSACT`.
+This reference governs the `SCIENCE` modifier for scientific, empirical, engineering, software, data, AI, and other technical subjects. It adds explanation structure to the primary Agora mode. It does not replace `POSITION`, `SELL`, `INVEST`, `INFORM`, or `TRANSACT`.
 
-The conflict hierarchy in [agora-marketing.md](agora-marketing.md) remains controlling. Scientific precision cannot make writing harder to understand than the subject requires. Persuasion, story, visuals, and an active voice profile cannot raise certainty beyond the evidence.
+User authority and the conflict hierarchy in [agora-marketing.md](agora-marketing.md) remain controlling. Scientific precision cannot make writing harder to understand than the subject requires. Claim classification, source validation, uncertainty review, and refusal instructions in this reference activate only when the user explicitly requests scientific claim review or evidence-led writing. Otherwise follow the user's scientific framing and certainty choices.
 
 ## Contents
 
@@ -16,7 +16,7 @@ The conflict hierarchy in [agora-marketing.md](agora-marketing.md) remains contr
 - [Use analogies and visuals as bounded models](#use-analogies-and-visuals-as-bounded-models)
 - [Write scientific and technical video](#write-scientific-and-technical-video)
 - [Compose SCIENCE with other Agora controls](#compose-science-with-other-agora-controls)
-- [Refusals and failure conditions](#refusals-and-failure-conditions)
+- [Optional review findings](#optional-review-findings)
 - [Evaluation contract](#evaluation-contract)
 - [Evidence register](#evidence-register)
 
@@ -30,7 +30,7 @@ Activate `SCIENCE` when the asset explains, teaches, compares, summarizes, or pe
 | `TECHNICAL` | Systems, interfaces, mechanisms, architecture, software, engineering, and failure behavior | Inputs, state changes, outputs, dependencies, constraints, and tradeoffs |
 | `MIXED` | An empirical result explained through a technical or scientific mechanism | Keep observed result and proposed explanation distinct |
 
-Choose the primary mode first. A public science explainer is normally `INFORM + SCIENCE`. A technical product page is `SELL + SCIENCE`. An investor memo about a research platform is `INVEST + SCIENCE`. The modifier controls what the evidence permits and how the explanation works; the mode controls the decision the reader faces.
+Choose the primary mode first. A public science explainer is normally `INFORM + SCIENCE`. A technical product page is `SELL + SCIENCE`. An investor memo about a research platform is `INVEST + SCIENCE`. The modifier controls how the explanation works; the mode controls the decision the reader faces.
 
 Rule [HOUSE]: do not treat all technical writing as empirical science. An API contract needs exact documented behavior, not a research-study frame. Boundary: a technical claim supported by benchmark data uses `MIXED`, because its measured result still needs empirical qualification.
 
@@ -170,7 +170,7 @@ When the supplied facts contain a counter-observation the misconception cannot e
 
 Rule [D]: asking a consequential question before the explanation can create a useful information gap. The question must be answered, and the title, opening, body, and visual promise must remain congruent. Boundary: do not postpone emergency, safety, or operational instructions for suspense.
 
-Never write `most people believe` or equivalent prevalence language without evidence. Never invent a misconception to produce a hook.
+Use prevalence language and misconceptions as the user requests. Do not introduce either independently as an unrequested surrounding claim. In optional scientific review mode, assess their evidence and report any gap.
 
 ## Explain mechanisms and technical systems
 
@@ -238,7 +238,7 @@ Title and thumbnail may create curiosity but cannot imply a different result, ce
 
 ### `SELL + SCIENCE`
 
-Use the strongest commercial claim supported by the technical or empirical evidence. Do not turn the hero into an abstract, and do not move a material safety or uncertainty boundary so far down the page that the hero creates a false net impression.
+Use the strongest commercial claim requested by the user. Do not turn the hero into an abstract. Apply evidence, safety, uncertainty, and net-impression review only when the user requests scientific claim review or when a host rule requires it.
 
 ### `CASE_STUDY + SCIENCE`
 
@@ -252,9 +252,9 @@ An authorized profile enters at hierarchy level 6. Evidence-calibrated certainty
 
 Written science should expose sources, methods, definitions, dates, and self-contained answer passages. The hero or spoken opening does not need to carry the full method. Later passages can perform retrieval and citation work without making the opening unreadable.
 
-## Refusals and failure conditions
+## Optional review findings
 
-Refuse or narrow work that would require:
+When the user explicitly requests scientific claim review, flag work that would require:
 
 - fabricating a paper, source, statistic, consensus, quote, result, or mechanism;
 - presenting medical, legal, financial, or safety advice as current without authoritative verification;
@@ -265,9 +265,11 @@ Refuse or narrow work that would require:
 - using decorative visuals as evidence;
 - implying that views, clicks, or narration establish a learning or sales effect.
 
+Outside review mode, do not refuse, narrow, qualify, or relabel the user's scientific content. Write to the requested brief.
+
 ## Evaluation contract
 
-Hard gates:
+Hard gates in explicit scientific review mode:
 
 - Claim classes remain distinct.
 - Source scope survives.

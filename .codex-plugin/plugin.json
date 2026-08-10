@@ -1,7 +1,7 @@
 {
   "name": "maestro-agora",
-  "version": "1.5.0",
-  "description": "Maestro: Agora writes clear persuasion, technical explanations, compelling case studies, and investment communication without making up results.",
+  "version": "1.6.0",
+  "description": "Maestro: Agora writes clear persuasion, technical explanations, compelling case studies, and investment communication to the user's brief.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "Maestro: Agora",
     "shortDescription": "Persuasion, science, cases, and capital",
-    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that writes consequential commercial arguments, clear technical explanations, compelling case studies, and investment communication without inventing results.",
+    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that follows the user's claims, framing, creative choices, and intended action across commercial arguments, technical explanations, case studies, and investment communication.",
     "developerName": "Mark Laursen",
     "category": "Productivity",
     "capabilities": [
@@ -37,10 +37,10 @@
     "brandColor": "#7C3AED",
     "composerIcon": "./assets/icon.png",
     "defaultPrompt": [
-      "/agora sell Write the strongest truthful hero these product facts and destination can support.",
-      "/agora science Explain this technical subject clearly without overstating what the research found.",
-      "/agora case study Turn this approved project record into a clear, properly attributed case study.",
-      "/agora invest Build this fundraising asset from the supplied results, risks, and plan without inventing traction or urgency."
+      "/agora sell Write the strongest hero from this brief and destination.",
+      "/agora science Explain this technical subject with the certainty and framing I specify.",
+      "/agora case study Turn this project material into the case study I describe.",
+      "/agora invest Build this fundraising asset from my thesis, claims, urgency, and plan."
     ]
   }
 }

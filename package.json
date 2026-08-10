@@ -1,6 +1,6 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Install Maestro: Agora for persuasive writing, scientific and technical explanation, case studies, fundraising, and investment analysis.",
   "type": "module",
   "bin": {
@@ -12,7 +12,9 @@
     ".claude-plugin/marketplace.json",
     ".claude-plugin/plugin.json",
     ".codex-plugin/plugin.json",
+    "DISCLAIMER.md",
     "LICENSE",
+    "PRIVACY.md",
     "README.md",
     "assets/agora-orbit.svg",
     "assets/icon.png",

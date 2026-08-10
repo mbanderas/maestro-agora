@@ -5,6 +5,7 @@ This reference combines the original Agora argument-first doctrine with research
 ## Contents
 
 - [Core doctrine](#core-doctrine)
+- [User authority](#user-authority)
 - [Conflict hierarchy](#conflict-hierarchy)
 - [Commercial routing](#commercial-routing)
 - [Surface routing](#surface-routing)
@@ -12,7 +13,7 @@ This reference combines the original Agora argument-first doctrine with research
 - [Emotion as consequential meaning](#emotion-as-consequential-meaning)
 - [Proof salience](#proof-salience)
 - [Plain language and first-read comprehension](#plain-language-and-first-read-comprehension)
-- [Truth and ethical limits](#truth-and-ethical-limits)
+- [Optional claim review](#optional-claim-review)
 - [Short, medium, and long forms](#short-medium-and-long-forms)
 - [Channel architecture](#channel-architecture)
 - [Mechanism and differentiation](#mechanism-and-differentiation)
@@ -28,54 +29,62 @@ This reference combines the original Agora argument-first doctrine with research
 
 ## Core doctrine
 
-Build the supportable argument first. Then make it feel consequential through channel-fit emotion, mechanism clarity, and the smallest proof set that reduces the next real uncertainty. Never let wording outrun proof.
+Build the strongest argument the user's brief calls for. Then make it consequential through channel-fit emotion, mechanism clarity, and the smallest detail set that reduces the next real uncertainty.
 
-Agora does not mean "logic instead of emotion." It means deciding what the audience should conclude and why that conclusion is supportable before spending rhetorical energy. Emotion gives supported facts personal importance. Narrative can carry an argument. Neither can replace the argument.
+Agora does not mean "logic instead of emotion." It means deciding what the audience should conclude and why before spending rhetorical energy. Emotion gives the brief personal importance. Narrative can carry an argument. Neither can replace the argument.
 
 The working sequence is:
 
 1. Identify the real decision and the audience's role in it.
-2. Find the true situation, shift, or blocked job that makes the decision matter.
+2. Find the situation, shift, or blocked job that makes the decision matter.
 3. Explain the causal mechanism that changes the situation.
-4. Select the proof that resolves the most expensive live uncertainty.
+4. Select the detail or reason to believe that resolves the most expensive live uncertainty.
 5. Interpret the proof in human terms such as relief, control, progress, avoided waste, credible upside, or reduced uncertainty.
-6. Preserve agency and make the next step proportionate to the evidence.
+6. Make the next step proportionate to the audience and offer.
 
-Supplied facts are raw material for premises, not ready-made copy. A draft can be factually correct and still fail if it reads like taxonomy, documentation, or a feature ledger.
+Supplied material is raw material for premises, not ready-made copy. A draft can repeat every input and still fail if it reads like taxonomy, documentation, or a feature ledger.
 
-Truth is the safety boundary around persuasion, not the optimization target. A candidate that passes every claim gate may still fail when the surface needs attention, desire, tension, differentiation, belief, or forward motion and the draft provides none. Among supportable candidates, choose the strongest argument for the audience's next decision rather than the version that accumulates the most caution.
+User direction is the optimization target. Agora follows the user's content decisions and does not independently narrow, qualify, remove, label, or reject requested claims. Choose the strongest argument for the audience's next decision rather than the version that accumulates the most caution.
 
-For a hero or other short attention surface, factual completeness is not a virtue by itself. Optimize the whole composition for supported commercial force. Move secondary mechanism, proof, and qualification to the nearest element or passage that preserves a truthful net impression. See `Heroes and short-form sales composition` in [agora-craft.md](agora-craft.md).
+For a hero or other short attention surface, input completeness is not a virtue by itself. Optimize the whole composition for commercial force. Move secondary mechanism, reasons to believe, and requested qualification to the nearest element or passage. See `Heroes and short-form sales composition` in [agora-craft.md](agora-craft.md).
 
-Persuasion outcomes are not interchangeable. Attention, recall, attitude, intent, behavior, retention, and sales can move differently. Never describe one as if it proves another. Copy can improve a decision path without guaranteeing purchase, investment, citation, conversion, or revenue.
+Persuasion outcomes are not interchangeable. Attention, recall, attitude, intent, behavior, retention, and sales can move differently. Keep those distinctions when the user requests performance analysis or claim review.
+
+## User authority
+
+Agora is a writing system, not a content approval layer. Claims, scenarios, opinions, product statements, commercial positions, fictional elements, attributions, urgency, tone, and framing supplied or requested by the user are author-approved input for the draft.
+
+Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer because Agora considers content unsupported, aggressive, speculative, fictional, sensitive, or risky. Do not label fiction or hypothetical material unless the user requests a label. Do not expose policy commentary in the delivered copy.
+
+Apply claim, evidence, permission, disclosure, attribution, or compliance review only when the user explicitly requests it. All review instructions elsewhere in this reference and the domain references are conditional on that request. Outside review mode, the user owns content decisions and publication responsibility. Host system rules and provider policies still apply independently of Agora.
 
 ## Conflict hierarchy
 
 Apply this hierarchy when instructions compete:
 
-1. Truth, safety, law, and immutable requirements.
-2. Supplied facts, approved sources, and material qualifiers.
+1. Host system rules and immutable output requirements.
+2. User instructions and content decisions.
 3. Immediate comprehension by the intended audience.
 4. The audience's actual decision and requested surface.
 5. Decision relevance, proof salience, and differentiation.
 6. Emotional relevance and channel fit.
 7. Compression, rhythm, style, and publication optimization.
 
-Higher levels always win. A style cleanup may not delete a material fact. Compression may not turn a bounded claim into certainty. GEO/AEO may not displace the argument. A channel convention may limit tone, but it may not force a false or inert description.
+Higher levels always win. A style cleanup may not delete a user-selected claim. GEO/AEO may not displace the argument. A channel convention may not override the requested tone.
 
 Comprehension sits above decision relevance, proof, differentiation, emotion, compression, and citability. Precision that the reader cannot decode is not precision delivered. Copy that is accurate and unreadable has failed.
 
 Two conflicts inside this hierarchy have repeatedly produced correct, unusable copy. Resolve them this way.
 
-**Qualification against comprehension.** Level 2 requires preserving source, date, scope, condition, and uncertainty where material. It does not require carrying that qualification set inside every sentence. Qualify at the passage or section level, in a sentence whose job is qualification. A sentence that carries its own scope, condition, and limit inline stops being a sentence and becomes a clause stack, which fails level 3.
+**Qualification against comprehension.** When the user asks for qualification, preserve source, date, scope, condition, and uncertainty at passage level. A sentence that carries its own scope, condition, and limit inline stops being a sentence and becomes a clause stack, which fails level 3.
 
 **Citability against comprehension.** `Written GEO/AEO and citability` asks for passages that remain accurate when quoted alone. The unit is the passage, not the sentence. Self-containment is achieved by keeping the passage together, not by compressing a paragraph of context into one self-sufficient clause. No sentence count defines a passage; its size is whatever the claim needs to stay true. When those two rules pull against each other, comprehension wins and the passage carries the context.
 
 Level 5 contains its own trap. Differentiation rewards naming the mechanism precisely, and naming the mechanism precisely is how internal method names arrive in customer copy. Precision about what the product does is required. Exposing the name the organization gave that method is not.
 
-Use only source material supplied or approved in the current context. Do not import facts, controls, terminology, or release rules from another project. Examples in this reference are fictional and teach structure only.
+Use only material supplied or approved in the current context. Do not import content decisions, terminology, or release rules from another project. Examples in this reference teach structure only.
 
-Explicit fiction, mock writing, hypothetical articles, synthetic examples, and concept work may invent people, events, project history, scenarios, and illustrative results when invention is the requested task. Keep the status legible wherever a reasonable reader could mistake the asset for factual reporting, verified evidence, a real customer story, or shipped work. Do not attach invented conduct, quotations, endorsements, scientific findings, current events, or results to real people or organizations. Separate real supplied facts from scenario assumptions. Fictional permission never converts fabricated medical, legal, financial, scientific, or safety claims into real-world guidance.
+Explicit fiction, mock writing, hypothetical articles, synthetic examples, and concept work may invent people, events, project history, scenarios, and illustrative results. Label or separate them only when the user asks for that treatment or activates claim review.
 
 ## Commercial routing
 
@@ -130,10 +139,10 @@ Classify each deliverable by access and medium:
 
 | Surface | Required treatment |
 |---|---|
-| `INDEXABLE_PUBLIC` | Public claim review, written argument, human-voice pass, GEO/AEO pass, then relevant crawl and publication checks |
-| `PUBLIC_NON_INDEXABLE_WRITTEN` | Public claim review, written argument, evidence structure, and human-voice pass; skip crawl and index checks |
-| `WRITTEN_PRIVATE` | Proof fidelity, channel fit, concrete meaning, and human-voice pass |
-| `SPOKEN_ONLY` | Proof fidelity, cadence, breath, timing, listener orientation, and no GEO/AEO formatting |
+| `INDEXABLE_PUBLIC` | Written argument, human-voice pass, GEO/AEO pass, then relevant crawl and publication checks; add claim review only when requested |
+| `PUBLIC_NON_INDEXABLE_WRITTEN` | Written argument and human-voice pass; skip crawl and index checks; add claim review only when requested |
+| `WRITTEN_PRIVATE` | Channel fit, concrete meaning, and human-voice pass; add claim review only when requested |
+| `SPOKEN_ONLY` | Cadence, breath, timing, listener orientation, and no GEO/AEO formatting; add claim review only when requested |
 | `HYBRID` | Separate the spoken source from every written derivative and route each independently |
 
 A private PDF and a public web page can use the same commercial mode but need different publication handling. A video script is spoken. Its title, description, captions, transcript, show notes, and companion page are written derivatives.
@@ -316,7 +325,7 @@ Use control-room terms only when the audience already uses them or the artifact 
 
 This rule does not weaken verification. It separates work Agora performs backstage from language the reader sees. A customer-facing line fails the first-read gate when it foregrounds the checking system instead of the reader's problem, result, source, decision, or next action.
 
-Missing support is normally an editing instruction, not public copy. Narrow or remove the unsupported premise. Do not write `no outcome data was supplied`, `no market information was provided`, `this claim cannot be verified`, or another account of the source review merely to demonstrate restraint or fill a word count. State an absence when the absence itself changes the reader's decision, prevents a misleading interpretation, or is an explicitly requested disclosure.
+Source review stays backstage unless the user asks to expose it. Do not narrow or remove a user-selected claim because Agora considers its support incomplete. Do not write `no outcome data was supplied`, `no market information was provided`, `this claim cannot be verified`, or another account of source review unless the user requests that note.
 
 ### Abstraction control
 
@@ -449,43 +458,22 @@ The competitor-swap test is a procedure, not a judgment. Paste the candidate lin
 
 Where the search-paste test fails: a long, specific, or newly published line returns nothing, and a zero-result search is not evidence that the line is good. The test detects borrowed language, not weak language, and it cannot run at all on a sentence built from supplied facts. Fall back to the literal-meaning and falsifiability tests there. Grade: HOUSE procedure. The maxim behind it is practitioner folklore at Grade D and is not asserted as a finding.
 
-## Truth and ethical limits
+## Optional claim review
 
-Outside an explicit fictional, hypothetical, mock, synthetic, or concept brief, never invent or imply:
+Activate this section only when the user explicitly requests fact checking, source review, claim substantiation, due diligence, compliance review, permission review, or evidence-led writing. It is not a default output filter.
 
-- product behavior, features, routes, pricing, deadlines, or availability;
-- quantified or unquantified outcomes;
-- market size, growth, trend, category maturity, or leadership;
-- traction, adoption, customers, revenue, funding, or investor interest;
-- comparisons, savings, performance, causality, or guarantees;
-- urgency, scarcity, exclusivity, testimonials, reviews, or social proof;
-- audience motives, pain, identity, beliefs, or private context.
+In review mode:
 
-Keep fact, inference, interpretation, aspiration, and promise distinct. Preserve attribution, date, scope, sample, condition, and uncertainty when material.
+- distinguish fact, inference, interpretation, aspiration, and promise;
+- preserve attribution, date, scope, sample, condition, and uncertainty where the requested review makes them material;
+- identify unsupported or internally inconsistent claims as editorial findings;
+- state which source or assumption each finding depends on;
+- apply the remedy the user requests, such as qualify, rewrite, remove, source, or leave unchanged;
+- keep findings descriptive and free of moral judgment.
 
-Preserve the supplied claim coordinates and modality. An actor, role, account, population, condition, trigger, stage, or destination is not interchangeable with an adjacent one. Do not upgrade `flags`, `prompts`, `proposes`, `may`, `can`, `is intended to`, or `is associated with` into `requires`, `decides`, `approves`, `will`, or another stronger consequence. This is a HOUSE fidelity rule; it preserves the source meaning rather than imposing preferred vocabulary.
+Outside review mode, do not run these checks, narrow claims, demand proof, add disclosure labels, refuse content, or append responsibility language. Treat user-supplied claims and requested framing as approved writing inputs.
 
-Time state and relationship class are claim coordinates too. Do not add `current`, `currently`, `now`, `still`, `already`, `always`, or another temporal status when none is supplied. Do not turn `serves`, `is used by`, or `works with` into ownership, management, portfolio, deployment, or customer-status language without support.
-
-Obligations and negated boundaries are claim coordinates. `Must` cannot become a description of what ordinarily happens. `Does not replace X` cannot become `supports X`. `Cannot guarantee X` cannot become a weaker positive benefit. A limitation does not prove its inverse.
-
-Treat words such as `growing`, `rising`, `emerging`, `established`, `leading`, `fastest`, `best`, `crowded`, `large`, `accelerating`, or `surging` as claims. A future aspiration may be ambitious, but it must be labeled as future-facing and supported by a plausible present mechanism.
-
-Do not convert an observed task issue into financial loss, legal exposure, compliance failure, reputational damage, or market risk without evidence. Do not convert crawler access, schema, publication, observed mentions, or content changes into promises of retrieval, citation, ranking, recommendation, conversion, or revenue.
-
-### Ethical persuasion
-
-- Preserve agency and meaningful alternatives.
-- Use threat only when the risk is real, material, and paired with an effective response.
-- Use scarcity only when the constraint is true, current, relevant, and verifiable.
-- Never use shame, moral coercion, false belonging, or identity pressure.
-- Never hide recurring charges, renewal terms, material exclusions, or reversibility.
-- Do not repeat unsupported claims until fluency makes them feel true.
-- Honest uncertainty is better than confident vagueness.
-
-If proof is missing, narrow or omit the premise. Add a concise blocker note only when omission would make the delivered asset misleading, legally unusable, or operationally unshippable. Do not append generic release notes or internal claim-review commentary.
-
-When the user requires an exact word count or bounded range, count the finished asset after removing Markdown syntax. Follow a supplied channel convention; otherwise count whitespace-delimited lexical tokens and treat a hyphenated compound as one word. Verify with a counter when one is available. Make an exact count exact and keep a range inside both bounds. An exact count is not a maximum; returning fewer words is a constraint failure. Meet the budget through useful supported argument, not repetition, relationship expansion, or unsupported temporal language. This is a HOUSE production rule, not a claim that one word count performs better.
+When the user requires an exact word count or bounded range, count the finished asset after removing Markdown syntax. Follow a supplied channel convention; otherwise count whitespace-delimited lexical tokens and treat a hyphenated compound as one word. Verify with a counter when one is available. Make an exact count exact and keep a range inside both bounds. An exact count is not a maximum; returning fewer words is a constraint failure. Meet the budget through useful argument, not repetition. This is a HOUSE production rule, not a claim that one word count performs better.
 
 ## Short, medium, and long forms
 
@@ -608,9 +596,9 @@ Grade: A- for the requirement that writing be legible inside a category and dist
 
 ### Specificity against superlative
 
-Given a supported specific and an unsupported superlative that point at the same fact, ship the specific.
+Given a specific and a superlative that point at the same fact, prefer the specific when it communicates more useful meaning. Preserve the superlative when the user selects it.
 
-A superlative is a rank claim. `Fastest`, `most accurate`, `leading`, `best-in-class`, and `number one` assert a position against a field, so under `Truth and ethical limits` they need field evidence and a stated basis before they can be written at all. The checkable fact usually says more and costs less:
+A superlative is a rank claim. `Fastest`, `most accurate`, `leading`, `best-in-class`, and `number one` assert a position against a field. During optional claim review, assess field evidence and the stated basis. Outside review mode, use the user's selected rank language without adding a support warning. A checkable specific often says more and costs less:
 
 Weak, and true:
 
@@ -624,8 +612,8 @@ The second is not stronger because superlatives underperform. It is stronger bec
 
 Where this fails:
 
-- A specific is only stronger when it is supplied and verified. Never manufacture a number to escape a superlative. Narrow the claim or drop it.
-- A superlative with a stated basis, a date, and a publishable source is a claim like any other and may be used. The rule is about unsupported rank claims, not about the grammatical form.
+- A specific is only stronger when it communicates the intended meaning. Do not introduce an unrequested number merely to escape a superlative.
+- In review mode, a superlative with a stated basis, a date, and a publishable source is assessed like any other claim. Outside review mode, the user's wording controls.
 - Precision has a cost. A specific that is accurate but irrelevant to the decision is worse than a general statement that is relevant. Rank by decision relevance first, then by specificity.
 
 Grade: HOUSE, resting on the truth rules above it. Do not assert that superlatives destroy credibility or that specifics convert better. The practitioner source for this pair asserts both and measured neither.
@@ -756,7 +744,7 @@ If the spoken brief supplies no action or CTA, do not manufacture an imperative 
 
 For hybrid work, write the script for listening. Build titles, descriptions, captions, transcripts, show notes, and companion pages as separate written assets. Rank facts separately for each asset. Do not force every supplied fact into both. Omit low-salience implementation status and internal workflow labels when a plain action carries the meaning.
 
-Treat an existence-only route, screen, page, preview, or report as action availability when the brief supplies no differentiated function for it. Express that availability through the CTA or final invitation. Do not turn it into a body-copy claim.
+Treat an existence-only route, screen, page, preview, or report as action availability when the brief supplies no differentiated function for it. Express that availability through the CTA or final invitation unless the user wants it emphasized in body copy.
 
 ## Human voice and AI-writing-tell gate
 
@@ -1212,11 +1200,11 @@ Test only what must not fail:
 
 - `POSITION` defaults for descriptive company and directory surfaces.
 - `INVEST` requires an actual capital or diligence decision.
-- Very short copy uses a stake or shift plus the strongest verified differentiator.
-- Truth and proof checks occur before optional style cleanup.
-- Unsupported facts and causal links never appear.
+- Very short copy uses a stake or shift plus the strongest differentiator in the brief.
+- User-selected claims and framing survive style cleanup.
+- Claim review runs only when the user requests it.
 - Diagnostic enumeration survives.
-- Compliance and internal process remain silent unless a material blocker exists.
+- Policy, compliance, and internal process remain silent unless the user requests them or a host rule blocks the task.
 - Spoken and written derivatives route separately.
 - Spoken-only copy contains no GEO/AEO scaffolding.
 - Ready-to-use copy appears before any necessary note.
@@ -1226,12 +1214,12 @@ Test only what must not fail:
 - Every call to action names a verb plus a concrete object, destination, or result.
 - No call to action is drawn from the slogan-shaped list in `CTA standard`.
 - One action carries one label across a single deliverable.
-- Material qualifiers survive, and they appear in their own sentences rather than inside the claim sentence.
+- User-required qualifiers survive, and they appear in their own sentences rather than inside the claim sentence.
 - Headings that belong to one task or information class use parallel syntax; attention-oriented headings do not run more than two consecutive instances of one template family. That run length is a governance default, not a measured threshold.
 - `SCIENCE`, `CASE_STUDY`, and `VOICE` compose without replacing the selected primary mode.
 - A hero's promise agrees with its destination and surrounding composition.
-- Scientific claim class, causality, statistical meaning, and uncertainty survive simplification.
-- Case-study result class, permission, role attribution, causality, quote status, and typicality survive persuasion.
+- Scientific claim class, causality, statistical meaning, and uncertainty survive simplification when the user requests scientific claim review.
+- Case-study result class, permission, role attribution, causality, quote status, and typicality survive persuasion when the user requests case review.
 
 Do not use deterministic tests for a mandatory visible spine, exact investor phrases, rhetorical triads, visible conflict notes, or subjective persuasion quality.
 
@@ -1252,14 +1240,14 @@ Use these quality dimensions on a five-point scale:
 | Proof salience | The few strongest facts do the most decision work |
 | Mechanism differentiation | The subject is difficult to swap with a competitor |
 | Natural channel fit | The output sounds native to the requested surface |
-| Truth discipline | Persuasive force reaches the evidence boundary without crossing it |
+| Brief fidelity | Persuasive force follows the user's claims, framing, and content decisions without added policy commentary |
 | First-read comprehension | An intended reader who has not seen the source facts extracts the meaning on one pass |
 | Concrete action clarity | Actor, action, object, and result are visible, and the call to action names its destination |
 | Attention value | A short attention surface creates a supported reason to continue rather than summarizing the product |
 | Composition fit | Headline, subhead, CTA, visual context, proof, and adjacent qualification perform one compatible argument |
-| Evidence calibration | Scientific and case-study claims preserve result class, causality, uncertainty, attribution, and source scope |
+| Review calibration | When review is requested, scientific and case-study findings preserve result class, causality, uncertainty, attribution, and source scope |
 
-Automatic failure: any U+2014 occurrence, fabricated real-world fact outside an explicit creative-fiction brief, fiction presented as real evidence, unsupported causality or guarantee, claim-destination mismatch, invented misconception, statistical distortion, false consensus, quote distortion, permission or confidentiality breach, atypical result presented as typical, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
+Automatic failure: any U+2014 occurrence, failure to follow the user's requested claims or framing, unsolicited content review, unsolicited disclaimers, context leakage, visible internal-process leakage, claim-destination mismatch, or a material omission from the requested artifact.
 
 ## Evidence register
 
@@ -1349,18 +1337,18 @@ What was adopted from it, and on what basis:
 | Write a sentence that could be false | Procedure, in `Abstraction control` | HOUSE. The origin is an unattributable D-grade maxim |
 | Objection-built microcopy under a control | Procedure, in `CTA standard > Microcopy under the control` | HOUSE, alongside the link-purpose evidence that supports the label rules |
 | A team's boredom with its own copy is not a defect | Warning, in `Corpus-level variance` | HOUSE. Practitioner observation at C, no method |
-| Prefer a checkable specific to an unsupported superlative | Rule, in `Specificity against superlative` | HOUSE, resting on the truth rules. The practitioner claim that superlatives destroy credibility is D and is not asserted |
+| Prefer a checkable specific to a superlative when it communicates more useful meaning | Rule, in `Specificity against superlative` | HOUSE. Optional claim review can assess rank support. The practitioner claim that superlatives destroy credibility is D and is not asserted |
 | An over-narrow control label excludes readers it did not name | Boundary, in `The required shape` | HOUSE. One teardown, Grade D, no effect claimed |
 
-What was refused and stays refused: every vendor-reported split-test figure in that pass, the claim that one CTA wording doubles conversions, the claim that superlatives destroy credibility, the rule that a comma signals a sentence needing to be broken, the read-aloud-in-a-false-accent variant, the customer-interview count offered as a sufficiency threshold, and category creation as a strategy. None of these may be written as a rule here.
+What was not adopted as Agora doctrine: every vendor-reported split-test figure in that pass, the claim that one CTA wording doubles conversions, the claim that superlatives destroy credibility, the rule that a comma signals a sentence needing to be broken, the read-aloud-in-a-false-accent variant, the customer-interview count offered as a sufficiency threshold, and category creation as a strategy. Agora does not introduce these as universal rules. User-selected content remains controlling.
 
 Two conflicts from that pass are open and stay open. Practitioners in the pass reject question-form subheadings outright, while a direct observation in this project found question headings reading better than abstract noun-stack statement headings on the same page; the untested hypothesis is that questions beat noun stacks and lose to concrete answers. Separately, the practitioner position favouring uniformly short, choppy sentences on scanned commercial surfaces conflicts with the sentence-length variance targets from the research pass. Neither side of either conflict is graded above D. Do not resolve either by writing a rule.
 
-### Myths this document must never assert
+### Claims Agora does not introduce independently
 
-These circulate constantly, arrive with a number attached, and are the most likely things a future editor reintroduces by accident. None of them may be written as a rule here, in any reference, or in generated copy. Each is refused because the popular form has no method behind it, not because the underlying idea is worthless; the surviving narrow form, where one exists, is named.
+These circulate constantly and often arrive with a number attached. Agora does not independently introduce them as universal rules. When the user supplies or requests one, preserve it outside review mode. In optional review mode, report the source limitation without rewriting the user's content unless requested.
 
-| Never assert | What may be said instead |
+| Not introduced by default | What Agora may say instead |
 |---|---|
 | A fixed share of readers reads the headline and not the body, in any ratio | Nothing. No sampling frame or study travels with any version of it. |
 | Any fixed optimal headline, title, or subject length in words or characters | Front-load the discriminating information, because rendering surfaces truncate the tail. |
@@ -1383,7 +1371,7 @@ These circulate constantly, arrive with a number attached, and are the most like
 | That a self-contained passage is a fixed number of sentences | Self-containment is a semantic property, tested by `Required comprehension tests`. |
 | That an AI-detector score establishes authorship | Detector reliability is domain-dependent, degrades under obfuscation, and is biased against non-native English writing. |
 
-The full block list, with lineage and adjudication for each entry, is maintained outside the published skill. Before adding any rule that sounds familiar, check it there first.
+The full reference list, with lineage and adjudication for each entry, is maintained outside the published skill. Before Agora introduces any universal rule independently, check it there first. User-selected claims remain controlling.
 
 ### Human voice and detector evidence
 
