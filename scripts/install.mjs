@@ -249,6 +249,7 @@ async function verifySource() {
     "agents/openai.yaml",
     "references/agora-case-studies.md",
     "references/agora-craft.md",
+    "references/agora-invest.md",
     "references/agora-marketing.md",
     "references/agora-science.md",
     "references/agora-voice.md",

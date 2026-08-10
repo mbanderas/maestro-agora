@@ -175,6 +175,16 @@ Determine:
 
 Ask only when a missing fact would materially change the audience, promise, offer, or action. Otherwise narrow the claim.
 
+On medical, clinical, legal, financial, safety, and other high-stakes heroes, preserve the exact supplied name and scope of each material check, rule, population, condition, comparator, and limitation. Compression may distribute those terms across the composition. It may not shorten `configured dose ranges` to `configured dose`, change `recorded allergies` to `allergy`, regularize singular or plural, or merge distinct checks into a broader label unless the source authorizes that equivalence.
+
+Controlled intensity does not mean a capability label. Lead with the supported operational decision, inspectable reason, or human agency that matters before the consequential action. Carry the exact consequential object into the headline when it improves orientation; do not replace an order, transaction, specimen, filing, or decision with a generic alert, item, record, or issue. Prefer a concrete shape such as `Know why the order was flagged before release` over `Inspectable alerts for safer work` when the supplied mechanism supports it. Do not escalate fear, imply prevention, or promise safety. Keep material scope, required modality, and human-review limits in the same composition.
+
+Preserve high-stakes quantifiers and obligations exactly. `Every`, `each`, `a`, `may`, and `must` are not interchangeable. State the product action directly, then state the required human action directly. Do not bury the mechanism inside a `Before the reviewer...` opening when sequence is not the argument; that construction weakens the product action and can turn a requirement into a description of what usually happens.
+
+If the source says `A reviewer must review and release the item`, keep `must` in the finished composition. `Before a reviewer reviews and releases the item` and `A reviewer reviews every item` both erase the obligation and alter the quantifier.
+
+Prefer a supported evidence-access or decision-control promise over an imperative that implies controlled safety or performance. `Know why the order was flagged` promises inspectable information. `Make every alert reviewable` may imply that the product controls the review state. The imperative is usable only when the mechanism and destination actually deliver that action.
+
 The hero's dominant job changes by surface:
 
 | Surface | Dominant job | Common failure |
@@ -186,6 +196,8 @@ The hero's dominant job changes by surface:
 | Enterprise service | Establish credible stake, difference, and path to proof | Using enterprise as a reason for inert language |
 | Short ad, subject line, or sales opening | Earn the next moment with one supported tension or promise | Empty curiosity or a complete product summary |
 
+On a cold homepage, lead with the task or result the visitor already recognizes. Do not let eligibility or delivery limits displace that primary value. Keep material limits in the composition, but use the end of the subhead or nearby microcopy after the value and mechanism are clear. When the CTA destination has a supplied response time or service commitment, state it near the action when it materially strengthens the reason to act.
+
 ### Separate the safety floor from the optimization target
 
 A candidate fails the safety floor if it:
@@ -195,6 +207,7 @@ A candidate fails the safety floor if it:
 - guarantees a result outside the offer's control;
 - hides a material price, scope, eligibility, safety, or commitment condition;
 - creates a false legal or ethical implication;
+- alters the exact name or scope of a material high-stakes check, rule, population, condition, comparator, or limitation;
 - promises a destination the next action does not deliver.
 
 Passing the floor does not make the copy good. Among survivors, optimize for:
@@ -228,9 +241,11 @@ Use this internal process:
 9. Read the full composition aloud.
 10. Remove words that explain the company without increasing desire, belief, orientation, or action.
 
+Keep the headline to one commercial argument. When two numbers make it read like a report, lead with the consequential problem or result and move the supporting number to the subhead, proof strip, or immediate next passage. Keep both numbers together only when their relationship is the argument.
+
 Supported route families include competitive threat, ambition, control, avoided loss, category change, broken assumption, direct outcome, provocative contrast, proof-led confidence, and offer-led action. Do not force an enemy, fear, identity, or loss the facts do not contain.
 
-Return one recommended composition by default. Keep internal routes and scoring hidden unless the user requests options or rationale.
+Return one recommended composition by default. Present it as finished copy, not a worksheet labeled `Headline`, `Subhead`, `CTA`, and `Qualification`, unless the user requests component labels or the delivery context would otherwise be ambiguous. Keep internal routes and scoring hidden unless the user requests options or rationale.
 
 ### Map promise grammar to evidence
 

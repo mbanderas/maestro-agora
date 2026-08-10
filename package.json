@@ -1,7 +1,7 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.4.0",
-  "description": "Install Maestro: Agora for truthful persuasion, science and technical communication, evidence-led case studies, and spoken or written copy.",
+  "version": "1.5.0",
+  "description": "Install Maestro: Agora for persuasive writing, scientific and technical explanation, case studies, fundraising, and investment analysis.",
   "type": "module",
   "bin": {
     "agora": "scripts/install.mjs",
@@ -29,7 +29,7 @@
     "prepack": "npm run release:check",
     "prepublishOnly": "npm run release:check",
     "release:check": "npm run check",
-    "test": "node --test tests/behavior-contract.test.mjs tests/hero-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
+    "test": "node --test tests/behavior-contract.test.mjs tests/hero-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/invest-contract.test.mjs tests/blind-summary.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
     "validate": "node scripts/validate.mjs"
   },
   "engines": {
@@ -56,6 +56,9 @@
     "science-communication",
     "technical-writing",
     "case-studies",
+    "fundraising",
+    "investor-communications",
+    "pitch-decks",
     "codex",
     "claude-code",
     "cursor",

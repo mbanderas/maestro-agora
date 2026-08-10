@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
-import { readFile, readdir, stat } from "node:fs/promises";
+import { lstat, readFile, readdir } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -78,7 +78,7 @@ const SECRET_PATTERNS = [
   { label: "GitHub token prefix", pattern: new RegExp(["gh", "p_"].join(""), "i") },
   { label: "Slack token prefix", pattern: new RegExp(["xo", "xb-"].join(""), "i") },
   { label: "AWS access key prefix", pattern: new RegExp(["AK", "IA[0-9A-Z]{16}"].join("")) },
-  { label: "OpenAI secret prefix", pattern: new RegExp(["s", "k-(?:proj-)?[A-Za-z0-9_-]{20,}"].join("")) },
+  { label: "OpenAI secret prefix", pattern: new RegExp(["(?:^|[^A-Za-z0-9])s", "k-(?:proj-)?[A-Za-z0-9_-]{20,}"].join("")) },
   { label: "generic assigned secret", pattern: /(?:api[_-]?key|client[_-]?secret|access[_-]?token|refresh[_-]?token|password)\s*[:=]\s*["'][^"'\r\n]{8,}["']/i },
 ];
 
@@ -132,6 +132,20 @@ function isProbablyBinary(buffer) {
   return sample.includes(0);
 }
 
+function hasForbiddenPrivateArtifactSignature(buffer) {
+  const startsWith = (...bytes) => bytes.every((byte, index) => buffer[index] === byte);
+  if (buffer.subarray(0, 5).toString("ascii") === "%PDF-") return true;
+  if (startsWith(0x50, 0x4b, 0x03, 0x04) || startsWith(0x50, 0x4b, 0x05, 0x06) || startsWith(0x50, 0x4b, 0x07, 0x08)) return true;
+  if (buffer.subarray(0, 4).toString("ascii") === "Rar!") return true;
+  if (startsWith(0x37, 0x7a, 0xbc, 0xaf, 0x27, 0x1c)) return true;
+  if (buffer.subarray(0, 4).toString("ascii") === "RIFF") return true;
+  if (buffer.subarray(0, 3).toString("ascii") === "ID3") return true;
+  if (buffer.subarray(0, 4).toString("ascii") === "OggS") return true;
+  if (buffer.subarray(0, 4).toString("ascii") === "fLaC") return true;
+  if (startsWith(0x1a, 0x45, 0xdf, 0xa3)) return true;
+  return buffer.length >= 12 && buffer.subarray(4, 8).toString("ascii") === "ftyp";
+}
+
 export async function collectViolations({ root, files, privateTerms = [] }) {
   const violations = [];
   for (const input of files) {
@@ -153,13 +167,21 @@ export async function collectViolations({ root, files, privateTerms = [] }) {
     }
 
     const absolute = resolve(root, file);
-    const info = await stat(absolute).catch(() => null);
+    const info = await lstat(absolute).catch(() => null);
+    if (info?.isSymbolicLink()) {
+      violations.push(`${file}: symbolic links are forbidden in public release custody`);
+      continue;
+    }
     if (!info?.isFile()) {
       violations.push(`${file}: listed public file is missing or not a regular file`);
       continue;
     }
 
     const buffer = await readFile(absolute);
+    if (hasForbiddenPrivateArtifactSignature(buffer)) {
+      violations.push(`${file}: content has a forbidden private-artifact signature`);
+      continue;
+    }
     if (isProbablyBinary(buffer)) {
       if (!APPROVED_BINARY_FILES.has(file)) {
         violations.push(`${file}: unexpected binary file`);

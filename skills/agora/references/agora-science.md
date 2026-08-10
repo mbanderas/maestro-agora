@@ -73,6 +73,10 @@ When sources disagree:
 - Do not manufacture a balanced debate between a strong consensus and unsupported fringe assertion.
 - Do not hide credible disagreement merely to produce a cleaner story.
 
+State the central evidence-weighting correction directly. If the sources do not support describing the field as evenly divided, say that plainly before explaining the narrower minority finding. Do not make the reader infer the rejection of false balance from softer phrases such as `the disagreement is narrower`.
+
+For an unresolved minority finding, make the unknowns operational. Ask whether it replicates under the same condition, generalizes beyond the studied population, survives aligned outcome definitions and measurement methods, and changes the relationship between the proposed mechanisms. Include only dimensions the supplied source differences make relevant.
+
 ## Preserve scientific integrity
 
 ### Scope the result
@@ -106,6 +110,8 @@ Use causal verbs only when the design and source support them.
 
 Never convert association into causation, mechanism into outcome, or temporal order into effect.
 
+For a one-time observational measurement, state when temporal order is unknown and reverse causation remains possible. Name residual confounders even after stated adjustment. When proposing a stronger causal test, do not pretend an investigator can directly assign an exposure that is impractical or unethical to control. Randomize a feasible intervention, opportunity, encouragement, or program when appropriate, then measure the outcome repeatedly over time. A longitudinal design improves temporal evidence but does not become randomized merely because it has repeated measurements.
+
 ### Preserve statistical meaning
 
 Rule [A]: report magnitude and uncertainty, not a significance label alone. A small p-value does not establish effect size, importance, certainty, or a useful decision. See the [ASA statement on p-values](https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf) and [Cochrane's interpretation guidance](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-15).
@@ -113,6 +119,7 @@ Rule [A]: report magnitude and uncertainty, not a significance label alone. A sm
 When material:
 
 - Give absolute and relative effects together.
+- When event rates permit it, give natural frequencies and the absolute percentage-point change together; neither should be replaced by a relative percentage.
 - State the baseline risk or denominator.
 - Distinguish statistical significance from practical importance.
 - State the uncertainty interval without translating it into certainty it does not provide.
@@ -121,11 +128,15 @@ When material:
 - Distinguish exploratory from confirmatory analysis when the source does.
 - Preserve risk of bias, indirectness, inconsistency, imprecision, and publication-bias limits when they affect the conclusion.
 
+For patient-facing material, state when one result alone cannot determine an individual's action. Practical importance depends on event severity, baseline risk, expected benefit, alternatives, patient characteristics, and preferences, not only the relative or absolute number.
+
 ### Calibrate uncertainty
 
 Use the narrowest accurate certainty language. `Observed` names a result. `Supports` names evidentiary weight. `Suggests` signals limited support. `May` identifies a possibility. `Remains unknown` identifies a gap.
 
 Rule [A]: absence of evidence is not evidence of absence unless the study had enough sensitivity, power, and scope to make the null informative. Boundary: a well-designed equivalence or non-inferiority analysis may support a bounded no-material-difference conclusion.
+
+When weighing a minority or conflicting result, describe its design, population, outcome, comparability, replication state, and unresolved question. Do not call it `credible`, `promising`, `compelling`, `important`, or use another evaluative adjective unless the supplied synthesis supports that judgment. Preserving a finding does not require endorsing it.
 
 ## Model the audience and goal
 
@@ -154,6 +165,8 @@ Choose an opening that serves the audience's question:
 - The direct answer, when delay would cost safety or task completion.
 
 Rule [D]: a supported misconception can reveal that the audience's current model will not explain the result. Correct it near its introduction, then show the replacement model. This is a practitioner procedure derived from the 2026 video analysis; it is not a universal learning or retention law. Boundary: do not use it when the audience does not hold the belief, when repeating the claim would confuse, or when direct instruction is safer.
+
+When the supplied facts contain a counter-observation the misconception cannot explain, use that observation to make the correction decisive before teaching the replacement model. Do not invent a counter-observation merely to strengthen the reveal. An additional established fact may appear only when the source requirements for that surface permit it. The useful sequence is `supported belief -> supported contradiction -> corrected model -> mechanism -> boundary`.
 
 Rule [D]: asking a consequential question before the explanation can create a useful information gap. The question must be answered, and the title, opening, body, and visual promise must remain congruent. Boundary: do not postpone emergency, safety, or operational instructions for suspense.
 
@@ -216,6 +229,8 @@ Use this optional sequence when the material supports it:
 5. Close the question and state the evidence boundary.
 
 Rule [D]: an A-thread can carry the human, visual, experimental, or operational sequence while a B-thread carries the technical mechanism. Alternate only when each return advances the same explanation. Boundary: do not intercut two weak threads, interrupt a short explanation, or claim the structure improves retention without direct measurement.
+
+When the request explicitly requires A/B threading, make both threads visible in the spoken artifact. Use concise scene or visual cues where the medium needs them, return the A-thread at mechanism payoffs, and prevent the human or experimental thread from disappearing through the technical middle. A spoken explanation with one opening anecdote and an uninterrupted lecture is not A/B threading.
 
 Title and thumbnail may create curiosity but cannot imply a different result, certainty, scale, or mechanism than the body supplies. Do not infer a performance law from one video's views or a creator's account of analytics.
 

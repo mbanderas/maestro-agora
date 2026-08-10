@@ -1,0 +1,2166 @@
+{
+  "schema_version": 6,
+  "skill_version": "1.5.0",
+  "generation_contract": {
+    "pass_to_model": [
+      "prompt_file"
+    ],
+    "never_pass_to_model": [
+      "manifest.json",
+      "case metadata",
+      "rubric",
+      "incumbent label",
+      "expected output"
+    ],
+    "fresh_context_per_case": true,
+    "isolated_skill_copy": true
+  },
+  "adjudication": {
+    "method": "blind-pairwise",
+    "randomize_order": true,
+    "swap_order": true,
+    "escalate_on_order_flip": true,
+    "report_hard_gate_failures": true,
+    "component_visibility_policy": "Hierarchy, spacing, or channel-native structure satisfies a requested component unless the prompt explicitly requests field labels.",
+    "tie_policy": "Use a tie when both responses satisfy the hard gates and neither has a material advantage for the requested decision. A slight preference in cadence, optional detail, or phrasing is not material by itself.",
+    "hard_gate_definitions": {
+      "owned-vocabulary-survives-the-generic-ban": "Pass when at least one supplied measured owned term appears in a grammatical, supported proposition. No response must use every owned term.",
+      "structural-tells-still-banned": "Fail only for an identifiable generic structure prohibited by the skill, such as canned contrast, a generic significance tail, a decorative triad, or a repeated stock template. Matching a supplied measured sentence-length or paragraph-shape distribution is not itself a failure."
+    },
+    "materiality_policy": {
+      "legacy_review_finding": "Any lower candidate score in truth discipline, first-read comprehension, or concrete action clarity.",
+      "legacy_release_blocker": "A candidate contract failure, or an incumbent win with a truth-discipline drop of at least 1 or a truth score of 3 or less, both comprehension and action clarity lower, a protected score of 2.5 or less, or a protected drop of 2 or more.",
+      "critical_preference_loss": "An incumbent pairwise win on a critical case with no candidate veto or hard-gate failure. Record for review but do not treat it as a contract failure.",
+      "critical_contract_failure": "Any candidate absolute veto or declared hard-gate failure on a critical case.",
+      "domain_quality": "The original pairwise win quotas remain superiority benchmarks. A domain also passes release quality when it has no candidate veto or hard-gate failure and its mean judged score is no more than 0.25 points below the incumbent on the 1-to-5 scale. The 0.25 margin is a governance default chosen to be smaller than one half-step judgment difference, not fitted by repeated generation."
+    },
+    "absolute_vetoes": [
+      "em-dash",
+      "fabricated-real-world-fact",
+      "unsupported-causality",
+      "unsupported-guarantee",
+      "claim-destination-mismatch",
+      "invented-misconception",
+      "statistical-distortion",
+      "false-consensus-or-balance",
+      "quote-distortion",
+      "permission-or-confidentiality-breach",
+      "atypical-result-presented-as-typical",
+      "invented-real-world-result-or-attribution",
+      "fiction-presented-as-real-evidence",
+      "context-leakage",
+      "visible-compliance-leakage",
+      "invented-investment-traction-or-commitment",
+      "forecast-or-target-presented-as-actual",
+      "material-investment-risk-or-use-of-funds-omission",
+      "misleading-category-future-or-urgency",
+      "private-source-identity-leakage",
+      "fundraise-tactics-contaminate-diligence"
+    ]
+  },
+  "rubric": {
+    "scale": "1-5",
+    "dimensions": [
+      "argument-inevitability",
+      "sustained-emotional-relevance",
+      "proof-salience",
+      "mechanism-differentiation",
+      "natural-channel-fit",
+      "truth-discipline",
+      "first-read-comprehension",
+      "concrete-action-clarity"
+    ],
+    "domain_dimensions": {
+      "hero": [
+        "attention-value",
+        "commercial-consequence",
+        "commercial-ambition",
+        "memorability",
+        "cadence",
+        "forward-motion",
+        "compression",
+        "awareness-fit",
+        "composition-fit"
+      ],
+      "science": [
+        "hook-payoff",
+        "conceptual-clarity",
+        "claim-separation",
+        "uncertainty-calibration",
+        "causal-and-statistical-integrity",
+        "analogy-boundaries",
+        "visual-narrative-integration"
+      ],
+      "case-study": [
+        "decision-relevance",
+        "evidence-traceability",
+        "role-attribution",
+        "result-scope",
+        "causality-calibration",
+        "permission-fidelity",
+        "visual-evidence",
+        "scan-to-detail-structure"
+      ],
+      "invest": [
+        "route-and-decision-fit",
+        "evidence-traceability",
+        "claim-class-fidelity",
+        "risk-visibility",
+        "forecast-and-assumption-transparency",
+        "product-and-economic-coherence",
+        "ask-and-use-of-funds-clarity",
+        "objection-integrity",
+        "internal-forwarding-strength",
+        "next-decision-clarity",
+        "legal-route-awareness"
+      ],
+      "customer-language": [
+        "control-room-vocabulary-containment",
+        "concrete-object-naming",
+        "source-review-narration-containment",
+        "technical-term-conditionality"
+      ]
+    }
+  },
+  "case_defaults": {
+    "expected_modifiers": [],
+    "expected_science_route": null,
+    "expected_case_family": null,
+    "expected_case_status": null,
+    "expected_reality_status": null,
+    "expected_persuasion_treatment": null,
+    "critical": false,
+    "domain_dimensions": [],
+    "expected_invest_route": null
+  },
+  "release_gates": {
+    "governance_default": true,
+    "all_cases_pass_absolute_vetoes": true,
+    "legacy_material_regressions_allowed": 0,
+    "hero_wins_required": 9,
+    "hero_case_count": 12,
+    "science_wins_required": 6,
+    "science_case_count": 8,
+    "case_study_wins_required": 6,
+    "case_study_case_count": 8,
+    "composition_wins_required": 4,
+    "composition_case_count": 4,
+    "invest_wins_required": 15,
+    "invest_case_count": 20,
+    "critical_contract_failures_allowed": 0,
+    "fiction_wins_required": 3,
+    "fiction_boundary_case_count": 3,
+    "customer_language_wins_required": 1,
+    "customer_language_case_count": 3,
+    "customer_language_dimension_regressions_allowed": 0,
+    "domain_mean_noninferiority_margin": 0.25
+  },
+  "cases": [
+    {
+      "id": "position-directory-short",
+      "prompt_file": "prompts/position-directory-short.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "company-positioning",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "position-default",
+        "stake-plus-differentiator",
+        "no-investor-speak",
+        "proof-discipline"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "invest-one-paragraph-diligence",
+      "prompt_file": "prompts/invest-one-paragraph-diligence.md",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [
+        "invest"
+      ],
+      "asset": "investor-description",
+      "format_budget": "medium",
+      "hard_gates": [
+        "capital-relevance",
+        "proof-discipline",
+        "no-invented-traction",
+        "no-compliance-note"
+      ],
+      "expected_invest_route": "DILIGENCE"
+    },
+    {
+      "id": "position-proof-scope",
+      "prompt_file": "prompts/position-proof-scope.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "company-positioning",
+      "format_budget": "medium",
+      "hard_gates": [
+        "named-scope-survives",
+        "mechanism-survives",
+        "no-taxonomy-collapse"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "short-mechanism-not-taxonomy",
+      "prompt_file": "prompts/short-mechanism-not-taxonomy.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "company-positioning",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "stake-plus-differentiator",
+        "mechanism-survives",
+        "no-feature-inventory"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "enumeration-necessary",
+      "prompt_file": "prompts/enumeration-necessary.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "product-copy",
+      "format_budget": "medium",
+      "hard_gates": [
+        "diagnostic-enumeration-survives",
+        "material-limit-survives",
+        "proof-discipline"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "silent-compliance",
+      "prompt_file": "prompts/silent-compliance.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "company-positioning",
+      "format_budget": "medium",
+      "hard_gates": [
+        "unsupported-claim-removed",
+        "no-release-note",
+        "ready-copy-first"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hybrid-surface-split",
+      "prompt_file": "prompts/hybrid-surface-split.md",
+      "expected_mode": "SELL",
+      "expected_surface": "HYBRID",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "hybrid-overview",
+      "format_budget": "mixed",
+      "hard_gates": [
+        "spoken-written-split",
+        "spoken-no-search-scaffolding",
+        "written-self-contained"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "objective-vs-investment-position",
+      "prompt_file": "prompts/objective-vs-investment-position.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "company-positioning",
+      "format_budget": "medium",
+      "hard_gates": [
+        "position-default",
+        "no-capital-ask",
+        "implicit-relevance"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "objective-vs-investment-invest",
+      "prompt_file": "prompts/objective-vs-investment-invest.md",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [
+        "invest"
+      ],
+      "asset": "investor-description",
+      "format_budget": "medium",
+      "hard_gates": [
+        "capital-relevance",
+        "use-of-funds-survives",
+        "proof-discipline"
+      ],
+      "expected_invest_route": "FUNDRAISE"
+    },
+    {
+      "id": "proof-salience-vs-feature-volume",
+      "prompt_file": "prompts/proof-salience-vs-feature-volume.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "landing-hero",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "decisive-proof-survives",
+        "minor-features-compressed",
+        "supported-cta"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "position-no-investor-cosplay",
+      "prompt_file": "prompts/position-no-investor-cosplay.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "company-positioning",
+      "format_budget": "medium",
+      "hard_gates": [
+        "no-investor-speak",
+        "objective-argument",
+        "proof-salience"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "spoken-no-search-scaffolding",
+      "prompt_file": "prompts/spoken-no-search-scaffolding.md",
+      "expected_mode": "SELL",
+      "expected_surface": "SPOKEN_ONLY",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "spoken-script",
+      "format_budget": "spoken-short",
+      "hard_gates": [
+        "spoken-cadence",
+        "no-geo-formatting",
+        "supported-stake"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "factual-triplet-survives",
+      "prompt_file": "prompts/factual-triplet-survives.md",
+      "expected_mode": "SELL",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "product-copy",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "diagnostic-enumeration-survives",
+        "no-scope-invention",
+        "natural-voice"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "sell-mobile-paywall",
+      "prompt_file": "prompts/sell-mobile-paywall.md",
+      "expected_mode": "SELL",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "paywall",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "blocked-action",
+        "plan-difference",
+        "no-fake-urgency",
+        "supported-cta"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "sell-b2b-cold-email",
+      "prompt_file": "prompts/sell-b2b-cold-email.md",
+      "expected_mode": "SELL",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "cold-email",
+      "format_budget": "medium",
+      "hard_gates": [
+        "specific-observation",
+        "no-invented-impact",
+        "low-friction-ask"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "unsupported-proof",
+      "prompt_file": "prompts/unsupported-proof.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "landing-hero",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "unsupported-claim-removed",
+        "no-fabrication",
+        "no-generic-disclaimer"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "direct-agora-invest",
+      "prompt_file": "prompts/direct-agora-invest.md",
+      "expected_mode": "INVEST",
+      "expected_surface": "SPOKEN_ONLY",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [
+        "invest"
+      ],
+      "asset": "spoken-pitch",
+      "format_budget": "spoken-short",
+      "hard_gates": [
+        "direct-activation",
+        "capital-relevance",
+        "spoken-cadence",
+        "truth-discipline"
+      ],
+      "expected_invest_route": "FUNDRAISE"
+    },
+    {
+      "id": "plain-language-insider-terms",
+      "prompt_file": "prompts/plain-language-insider-terms.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "product-copy",
+      "format_budget": "medium",
+      "hard_gates": [
+        "no-internal-term-exposure",
+        "actor-action-object-visible",
+        "material-limit-survives",
+        "first-read-comprehension",
+        "supported-cta"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "cta-names-its-destination",
+      "prompt_file": "prompts/cta-names-its-destination.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "landing-hero",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "cta-destination-named",
+        "no-slogan-cta",
+        "commitment-matches-destination",
+        "distinguishable-branch-labels",
+        "no-fake-urgency"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "qualifiers-without-clause-stacking",
+      "prompt_file": "prompts/qualifiers-without-clause-stacking.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "product-copy",
+      "format_budget": "medium",
+      "hard_gates": [
+        "material-limit-survives",
+        "qualifiers-in-own-sentences",
+        "no-legal-register-drift",
+        "first-read-comprehension"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "multi-asset-shape-variance",
+      "prompt_file": "prompts/multi-asset-shape-variance.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "overview-page",
+      "format_budget": "mixed",
+      "hard_gates": [
+        "heading-shape-variance",
+        "no-internal-term-exposure",
+        "cta-destination-named",
+        "no-invented-outcome"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "headline-set-across-surfaces",
+      "prompt_file": "prompts/headline-set-across-surfaces.md",
+      "expected_mode": "SELL",
+      "expected_surface": "HYBRID",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "headline-set",
+      "format_budget": "mixed",
+      "hard_gates": [
+        "surface-specific-headlines",
+        "heading-shape-variance",
+        "front-loaded-under-truncation",
+        "preview-advances-subject",
+        "no-invented-outcome"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "reader-state-mismatch",
+      "prompt_file": "prompts/reader-state-mismatch.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "landing-hero",
+      "format_budget": "medium",
+      "hard_gates": [
+        "opening-matches-reader-state",
+        "no-coined-term-in-opening",
+        "mechanism-in-plain-language",
+        "material-limit-survives",
+        "commitment-matches-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "emotion-without-outcome-data",
+      "prompt_file": "prompts/emotion-without-outcome-data.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "product-copy",
+      "format_budget": "medium",
+      "hard_gates": [
+        "consequence-from-supplied-mechanics",
+        "no-asserted-feeling",
+        "irreversibility-survives",
+        "no-invented-outcome",
+        "cta-destination-named"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "voice-profile-adherence",
+      "prompt_file": "prompts/voice-profile-adherence.md",
+      "expected_mode": "SELL",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "newsletter-update",
+      "format_budget": "medium",
+      "hard_gates": [
+        "voice-habits-transferred",
+        "no-phrase-reuse-from-samples",
+        "no-opinion-imported-from-samples",
+        "evidence-outranks-habitual-certainty",
+        "material-limit-survives"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "voice-build-from-corpus",
+      "prompt_file": "prompts/voice-build-from-corpus.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "product-announcement",
+      "format_budget": "short",
+      "hard_gates": [
+        "refuses-to-certify-below-corpus-floor",
+        "states-what-the-corpus-cannot-support",
+        "no-invented-measurement-numbers",
+        "no-phrase-reuse-from-samples",
+        "no-opinion-imported-from-samples",
+        "material-limit-survives"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "voice-owned-vocabulary-vs-tell-gate",
+      "prompt_file": "prompts/voice-owned-vocabulary-vs-tell-gate.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "product-page-opening",
+      "format_budget": "medium",
+      "hard_gates": [
+        "owned-vocabulary-survives-the-generic-ban",
+        "structural-tells-still-banned",
+        "em-dash-habit-does-not-override-the-ban",
+        "no-unsupported-outcome-claim",
+        "material-limit-survives"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "orientation-without-taxonomy",
+      "prompt_file": "prompts/orientation-without-taxonomy.md",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "critical": false,
+      "domain_dimensions": [],
+      "asset": "landing-hero",
+      "format_budget": "very-short",
+      "hard_gates": [
+        "reader-owned-category-present",
+        "differentiator-beyond-category",
+        "no-internal-term-exposure",
+        "cta-destination-named",
+        "no-invented-outcome"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-rivalscope-no-outcome",
+      "prompt_file": "prompts/hero-rivalscope-no-outcome.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "homepage-hero",
+      "format_budget": "very-short",
+      "critical": true,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "no-win-rate-claim",
+        "response-strategy-destination",
+        "commercial-force",
+        "composition-fit"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-b2b-quantified-outcome",
+      "prompt_file": "prompts/hero-b2b-quantified-outcome.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "campaign-hero",
+      "format_budget": "very-short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "quantified-result-survives",
+        "observational-limit-survives",
+        "no-guarantee",
+        "report-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-competitive-vendor-comparison",
+      "prompt_file": "prompts/hero-competitive-vendor-comparison.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "homepage-hero",
+      "format_budget": "very-short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "specific-difference",
+        "no-rank-claim",
+        "comparison-destination",
+        "no-feature-led-opening"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-new-category-orientation",
+      "prompt_file": "prompts/hero-new-category-orientation.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "homepage-hero",
+      "format_budget": "very-short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "reader-owned-category",
+        "no-coined-category-opening",
+        "mechanism-survives",
+        "example-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-claim-saturated-category",
+      "prompt_file": "prompts/hero-claim-saturated-category.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "homepage-hero",
+      "format_budget": "very-short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "contradiction-mechanism-visible",
+        "no-ai-slogan",
+        "no-sales-outcome",
+        "live-example-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-consumer-identity",
+      "prompt_file": "prompts/hero-consumer-identity.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "product-launch-hero",
+      "format_budget": "very-short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "supported-identity",
+        "product-relevance",
+        "no-waste-outcome",
+        "page-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-high-stakes-controlled",
+      "prompt_file": "prompts/hero-high-stakes-controlled.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "high-stakes-hero",
+      "format_budget": "very-short",
+      "critical": true,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "human-review-survives",
+        "validation-scope-survives",
+        "no-harm-prevention-guarantee",
+        "controlled-consequence"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-cold-homepage",
+      "prompt_file": "prompts/hero-cold-homepage.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "homepage-hero",
+      "format_budget": "very-short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "category-orientation",
+        "source-mapping-difference",
+        "no-legal-advice",
+        "no-approval-date-guarantee"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-known-referral-campaign",
+      "prompt_file": "prompts/hero-known-referral-campaign.md",
+      "expected_mode": "SELL",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "campaign-hero",
+      "format_budget": "very-short",
+      "critical": true,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "upstream-promise-continued",
+        "preview-scope",
+        "deletion-term-survives",
+        "no-compliance-certification"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-product-aware-upgrade",
+      "prompt_file": "prompts/hero-product-aware-upgrade.md",
+      "expected_mode": "SELL",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "upgrade-hero",
+      "format_budget": "very-short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "plan-difference",
+        "annual-billing",
+        "refund-limit",
+        "compare-plans-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-short-paid-ad",
+      "prompt_file": "prompts/hero-short-paid-ad.md",
+      "expected_mode": "SELL",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "paid-ad",
+      "format_budget": "very-short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "draft-status",
+        "human-review",
+        "no-time-saving-claim",
+        "demo-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "hero-sales-email-opening",
+      "prompt_file": "prompts/hero-sales-email-opening.md",
+      "expected_mode": "SELL",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_modifiers": [],
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "sales-email-opening",
+      "format_budget": "medium",
+      "critical": false,
+      "domain_dimensions": [
+        "hero"
+      ],
+      "hard_gates": [
+        "specific-observation",
+        "no-business-impact",
+        "low-friction-ask",
+        "review-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "science-supported-misconception",
+      "prompt_file": "prompts/science-supported-misconception.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "SPOKEN_ONLY",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "EMPIRICAL",
+      "asset": "science-video-script",
+      "format_budget": "spoken-short",
+      "critical": true,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "misconception-supported",
+        "correction-nearby",
+        "replacement-model",
+        "no-universal-prevalence"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "science-no-misconception",
+      "prompt_file": "prompts/science-no-misconception.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "SPOKEN_ONLY",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "EMPIRICAL",
+      "asset": "science-video-script",
+      "format_budget": "spoken-short",
+      "critical": true,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "no-invented-misconception",
+        "mechanism-clear",
+        "location-variation",
+        "question-closed"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "science-correlation-causation",
+      "prompt_file": "prompts/science-correlation-causation.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "EMPIRICAL",
+      "asset": "study-explainer",
+      "format_budget": "medium",
+      "critical": true,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "association-not-causation",
+        "design-visible",
+        "confounders-visible",
+        "better-test-named"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "science-relative-absolute-effect",
+      "prompt_file": "prompts/science-relative-absolute-effect.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "EMPIRICAL",
+      "asset": "patient-explainer",
+      "format_budget": "medium",
+      "critical": true,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "absolute-effect",
+        "relative-effect",
+        "uncertainty",
+        "no-personal-medical-advice"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "science-public-vs-expert",
+      "prompt_file": "prompts/science-public-vs-expert.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "TECHNICAL",
+      "asset": "audience-routed-explanation",
+      "format_budget": "mixed",
+      "critical": false,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "sequence-survives",
+        "audience-depth-differs",
+        "engine-boundary",
+        "no-unnecessary-analogy"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "science-analogy-boundary",
+      "prompt_file": "prompts/science-analogy-boundary.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "TECHNICAL",
+      "asset": "technical-explanation",
+      "format_budget": "medium",
+      "critical": false,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "mapping-visible",
+        "non-mapping-visible",
+        "break-point-visible",
+        "real-mechanism-restored"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "science-spoken-ab-derivatives",
+      "prompt_file": "prompts/science-spoken-ab-derivatives.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "HYBRID",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "TECHNICAL",
+      "asset": "science-video-package",
+      "format_budget": "mixed",
+      "critical": false,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "a-b-threads-compatible",
+        "mechanism-complete",
+        "surface-routing",
+        "title-body-match"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "science-uncertainty-no-false-balance",
+      "prompt_file": "prompts/science-uncertainty-no-false-balance.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "EMPIRICAL",
+      "asset": "research-explainer",
+      "format_budget": "medium",
+      "critical": true,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "consensus-weight",
+        "minority-evidence-preserved",
+        "no-false-balance",
+        "unknown-visible"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "case-quantified-confounder",
+      "prompt_file": "prompts/case-quantified-confounder.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CUSTOMER_SUCCESS",
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "asset": "customer-case-study",
+      "format_budget": "long",
+      "critical": true,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "measured-result",
+        "confounders-visible",
+        "no-full-attribution",
+        "measurement-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "case-no-outcome-data",
+      "prompt_file": "prompts/case-no-outcome-data.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CUSTOMER_SUCCESS",
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "asset": "customer-case-study",
+      "format_budget": "long",
+      "critical": false,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "shipped-scope",
+        "unmeasured-outcomes",
+        "no-triumphant-ending",
+        "workflow-destination"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "case-anonymous-confidential",
+      "prompt_file": "prompts/case-anonymous-confidential.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CUSTOMER_SUCCESS",
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "asset": "anonymous-case-study",
+      "format_budget": "long",
+      "critical": true,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "approved-scope-only",
+        "no-reidentification",
+        "mixed-attribution",
+        "metric-context"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "case-permission-pending",
+      "prompt_file": "prompts/case-permission-pending.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CREATIVE_PORTFOLIO",
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "asset": "permission-bounded-case-study",
+      "format_budget": "long",
+      "critical": true,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "pending-omitted",
+        "prohibited-omitted",
+        "approved-facts-only",
+        "no-outcome-invention"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "case-atypical-testimonial",
+      "prompt_file": "prompts/case-atypical-testimonial.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CUSTOMER_SUCCESS",
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "asset": "testimonial-proof-section",
+      "format_budget": "medium",
+      "critical": true,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "exact-quote",
+        "atypicality-visible",
+        "confounders-visible",
+        "material-connection-disclosed"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "case-creative-role-attribution",
+      "prompt_file": "prompts/case-creative-role-attribution.md",
+      "expected_mode": "SELL",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_science_route": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CREATIVE_PORTFOLIO",
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "asset": "creative-portfolio-case",
+      "format_budget": "long",
+      "critical": false,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "subject-role-exact",
+        "collaborators-attributed",
+        "decisions-visible",
+        "outcome-unmeasured"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "case-technical-tradeoffs",
+      "prompt_file": "prompts/case-technical-tradeoffs.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "TECHNICAL_IMPLEMENTATION",
+      "asset": "technical-implementation-case",
+      "format_budget": "long",
+      "critical": false,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "alternatives-visible",
+        "failure-visible",
+        "performance-scope",
+        "cost-tradeoff",
+        "no-business-outcome"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "case-partial-failed-result",
+      "prompt_file": "prompts/case-partial-failed-result.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_science_route": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CREATIVE_PORTFOLIO",
+      "asset": "partial-result-case",
+      "format_budget": "long",
+      "critical": false,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "primary-target-not-achieved",
+        "uncertainty-visible",
+        "secondary-result-scoped",
+        "decision-and-next-step"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "compose-science-product-hero",
+      "prompt_file": "prompts/compose-science-product-hero.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_case_family": null,
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "MIXED",
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "technical-product-hero",
+      "format_budget": "very-short",
+      "critical": true,
+      "domain_dimensions": [
+        "hero",
+        "science"
+      ],
+      "hard_gates": [
+        "commercial-force",
+        "validation-scope",
+        "human-review",
+        "no-contaminant-or-safety-claim"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "compose-scientific-technical-case",
+      "prompt_file": "prompts/compose-scientific-technical-case.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE",
+        "CASE_STUDY"
+      ],
+      "expected_science_route": "MIXED",
+      "expected_case_family": "TECHNICAL_IMPLEMENTATION",
+      "asset": "scientific-technical-case",
+      "format_budget": "long",
+      "critical": true,
+      "domain_dimensions": [
+        "science",
+        "case-study"
+      ],
+      "hard_gates": [
+        "pipeline-mechanism",
+        "validation-result",
+        "instrument-limit",
+        "no-scientific-outcome"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "compose-voice-science-certainty",
+      "prompt_file": "prompts/compose-voice-science-certainty.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "expected_modifiers": [
+        "SCIENCE",
+        "VOICE"
+      ],
+      "expected_science_route": "EMPIRICAL",
+      "asset": "research-update",
+      "format_budget": "medium",
+      "critical": true,
+      "domain_dimensions": [
+        "science"
+      ],
+      "hard_gates": [
+        "voice-rhythm-survives",
+        "habitual-certainty-yields",
+        "preliminary-status",
+        "limitations-and-next-step"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "compose-geo-hero-case-opening",
+      "prompt_file": "prompts/compose-geo-hero-case-opening.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_science_route": null,
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CUSTOMER_SUCCESS",
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "asset": "hero-plus-evidence-passage",
+      "format_budget": "mixed",
+      "critical": true,
+      "domain_dimensions": [
+        "hero",
+        "case-study"
+      ],
+      "hard_gates": [
+        "hero-not-overloaded",
+        "evidence-passage-self-contained",
+        "ownership-result-scoped",
+        "no-compliance-outcome"
+      ],
+      "expected_invest_route": null
+    },
+    {
+      "id": "invest-warm-intro-real-contact",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "forwardable-introduction-request",
+      "format_budget": "short",
+      "critical": false,
+      "hard_gates": [
+        "real-relationship-scoped",
+        "contact-not-made-endorser",
+        "verified-proof",
+        "concrete-introduction-request"
+      ],
+      "prompt_file": "prompts/invest-warm-intro-real-contact.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-direct-outreach-no-intro",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "direct-investor-email",
+      "format_budget": "short",
+      "critical": false,
+      "hard_gates": [
+        "no-warm-intro-required",
+        "pilot-scope",
+        "validation-unknown",
+        "concrete-call-request"
+      ],
+      "prompt_file": "prompts/invest-direct-outreach-no-intro.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-deck-before-meeting",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "reply-and-standalone-deck-outline",
+      "format_budget": "medium",
+      "critical": true,
+      "hard_gates": [
+        "deck-provided",
+        "standalone-material-claims",
+        "commitment-condition",
+        "no-universal-sequence"
+      ],
+      "prompt_file": "prompts/invest-deck-before-meeting.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-universal-no-deck-refusal",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "investor-reply",
+      "format_budget": "short",
+      "critical": true,
+      "hard_gates": [
+        "universal-rule-rejected",
+        "requested-deck-sent-or-offered",
+        "no-information-withholding",
+        "next-decision"
+      ],
+      "prompt_file": "prompts/invest-universal-no-deck-refusal.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-opening-strong-traction",
+      "expected_mode": "INVEST",
+      "expected_surface": "SPOKEN_ONLY",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "first-meeting-opening",
+      "format_budget": "very-short",
+      "critical": false,
+      "hard_gates": [
+        "company-proof-opportunity-ask",
+        "retention-scope",
+        "capital-to-milestones",
+        "no-fixed-time-formula"
+      ],
+      "prompt_file": "prompts/invest-opening-strong-traction.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-opening-no-traction",
+      "expected_mode": "INVEST",
+      "expected_surface": "SPOKEN_ONLY",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "pre-seed-meeting-opening",
+      "format_budget": "very-short",
+      "critical": true,
+      "hard_gates": [
+        "prototype-not-traction",
+        "interview-sample-limit",
+        "validation-purpose",
+        "no-invented-substitute"
+      ],
+      "prompt_file": "prompts/invest-opening-no-traction.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-existing-category-no-relabel",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "deck-purpose-and-competition-section",
+      "format_budget": "medium",
+      "critical": false,
+      "hard_gates": [
+        "familiar-category-retained",
+        "competition-legible",
+        "no-defensibility-by-label",
+        "verified-traction"
+      ],
+      "prompt_file": "prompts/invest-existing-category-no-relabel.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-new-category-orientation",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "deck-opening-and-category-explanation",
+      "format_budget": "medium",
+      "critical": false,
+      "hard_gates": [
+        "category-difference-explained",
+        "current-system-visible",
+        "deployment-scope",
+        "no-profit-or-renewal-claim"
+      ],
+      "prompt_file": "prompts/invest-new-category-orientation.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-unsupported-inevitable-future",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "future-and-timing-narrative",
+      "format_budget": "short",
+      "critical": true,
+      "hard_gates": [
+        "inevitability-rejected",
+        "survey-populations-qualified",
+        "pilot-scope",
+        "no-ownership-or-market-share-claim"
+      ],
+      "prompt_file": "prompts/invest-unsupported-inevitable-future.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-honest-deadline-advanced-interest",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "financing-process-update",
+      "format_budget": "short",
+      "critical": true,
+      "hard_gates": [
+        "deadline-current",
+        "signed-conditional-commitments",
+        "diligence-not-commitment",
+        "runway-date-and-downside"
+      ],
+      "prompt_file": "prompts/invest-honest-deadline-advanced-interest.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-manufactured-scarcity",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "investor-follow-up",
+      "format_budget": "short",
+      "critical": true,
+      "hard_gates": [
+        "no-term-sheet-claim",
+        "no-false-allocation",
+        "actual-process-state",
+        "concrete-next-decision"
+      ],
+      "prompt_file": "prompts/invest-manufactured-scarcity.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-repeated-objection-customer-counterevidence",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "objection-response",
+      "format_budget": "medium",
+      "critical": true,
+      "hard_gates": [
+        "repetition-not-truth",
+        "customer-sample-limit",
+        "pilot-scope",
+        "next-verification"
+      ],
+      "prompt_file": "prompts/invest-repeated-objection-customer-counterevidence.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-unit-economics-weakness",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "diligence-answer",
+      "format_budget": "medium",
+      "critical": true,
+      "hard_gates": [
+        "weakness-direct",
+        "target-not-forecast",
+        "missing-renewal-evidence",
+        "verification-plan"
+      ],
+      "prompt_file": "prompts/invest-unit-economics-weakness.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "compose-invest-science-deep-tech",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "MIXED",
+      "asset": "deep-tech-investor-summary",
+      "format_budget": "medium",
+      "critical": true,
+      "domain_dimensions": [
+        "invest",
+        "science"
+      ],
+      "hard_gates": [
+        "bench-result-and-interval",
+        "scale-gap",
+        "replication-and-lifetime-unknown",
+        "no-commercial-readiness"
+      ],
+      "prompt_file": "prompts/compose-invest-science-deep-tech.md",
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null
+    },
+    {
+      "id": "compose-invest-case-customer-proof",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_case_family": "CUSTOMER_SUCCESS",
+      "asset": "investor-deck-traction-section",
+      "format_budget": "medium",
+      "critical": true,
+      "domain_dimensions": [
+        "invest",
+        "case-study"
+      ],
+      "hard_gates": [
+        "one-team-scope",
+        "confounders-visible",
+        "permission-valid",
+        "no-general-market-performance"
+      ],
+      "prompt_file": "prompts/compose-invest-case-customer-proof.md",
+      "expected_science_route": null,
+      "expected_persuasion_treatment": null
+    },
+    {
+      "id": "compose-invest-voice-forecast-certainty",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "expected_modifiers": [
+        "VOICE"
+      ],
+      "asset": "founder-investor-update",
+      "format_budget": "medium",
+      "critical": true,
+      "hard_gates": [
+        "measured-voice-survives",
+        "forecast-range",
+        "prospects-not-commitments",
+        "target-assumptions"
+      ],
+      "prompt_file": "prompts/compose-invest-voice-forecast-certainty.md",
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-route-fundraise-same-facts",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "FUNDRAISE",
+      "asset": "fundraising-brief",
+      "format_budget": "medium",
+      "critical": true,
+      "hard_gates": [
+        "founder-perspective",
+        "concentration-risk",
+        "target-not-forecast",
+        "first-meeting-action"
+      ],
+      "prompt_file": "prompts/invest-route-fundraise-same-facts.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-route-diligence-same-facts",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "DILIGENCE",
+      "asset": "diligence-memo",
+      "format_budget": "long",
+      "critical": true,
+      "hard_gates": [
+        "investor-perspective",
+        "preliminary-recommendation",
+        "disconfirming-evidence",
+        "open-questions"
+      ],
+      "prompt_file": "prompts/invest-route-diligence-same-facts.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "invest-route-allocate-same-facts",
+      "expected_mode": "INVEST",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_invest_route": "ALLOCATE",
+      "asset": "capital-allocation-comparison",
+      "format_budget": "long",
+      "critical": true,
+      "hard_gates": [
+        "alternatives-compared",
+        "runway-scenarios",
+        "terms-unknown",
+        "no-probability-invention",
+        "no-invented-decision-threshold"
+      ],
+      "prompt_file": "prompts/invest-route-allocate-same-facts.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null,
+      "domain_dimensions": [
+        "invest"
+      ]
+    },
+    {
+      "id": "position-investor-adjacent-not-invest",
+      "expected_mode": "POSITION",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_invest_route": null,
+      "asset": "public-directory-profile",
+      "format_budget": "short",
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "position-not-invest",
+        "reader-owned-category",
+        "verified-scope",
+        "no-outcome-or-capital-pitch"
+      ],
+      "prompt_file": "prompts/position-investor-adjacent-not-invest.md",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_persuasion_treatment": null
+    },
+    {
+      "id": "fictional-mock-article",
+      "prompt_file": "prompts/fictional-mock-article.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_case_status": null,
+      "expected_reality_status": "FICTIONAL_MOCK",
+      "expected_persuasion_treatment": null,
+      "expected_invest_route": null,
+      "asset": "fictional-magazine-article",
+      "format_budget": "long",
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "invention-permitted",
+        "fiction-status-visible",
+        "scenario-coherent",
+        "no-real-person-attribution",
+        "no-real-world-guidance-confusion"
+      ]
+    },
+    {
+      "id": "case-fictional-customer-mock",
+      "prompt_file": "prompts/case-fictional-customer-mock.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_science_route": null,
+      "expected_case_family": "CUSTOMER_SUCCESS",
+      "expected_case_status": "FICTIONAL_MOCK",
+      "expected_reality_status": "FICTIONAL_MOCK",
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "expected_invest_route": null,
+      "asset": "fictional-customer-case-study",
+      "format_budget": "long",
+      "critical": true,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "project-history-invented-as-requested",
+        "fictional-sample-label-visible",
+        "illustrative-results-labeled",
+        "no-real-customer-or-endorsement",
+        "not-presented-as-product-proof"
+      ]
+    },
+    {
+      "id": "case-concept-portfolio",
+      "prompt_file": "prompts/case-concept-portfolio.md",
+      "expected_mode": "SELL",
+      "expected_surface": "PUBLIC_NON_INDEXABLE_WRITTEN",
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_science_route": null,
+      "expected_case_family": "CREATIVE_PORTFOLIO",
+      "expected_case_status": "CONCEPT_PORTFOLIO",
+      "expected_reality_status": "CONCEPT_PORTFOLIO",
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "expected_invest_route": null,
+      "asset": "self-initiated-concept-portfolio-case",
+      "format_budget": "long",
+      "critical": true,
+      "domain_dimensions": [
+        "case-study"
+      ],
+      "hard_gates": [
+        "concept-status-visible",
+        "invented-brief-permitted",
+        "design-decisions-visible",
+        "no-implied-client-or-commission",
+        "no-fake-research-shipping-or-impact"
+      ]
+    },
+    {
+      "id": "customer-language-product-hero",
+      "prompt_file": "prompts/customer-language-product-hero.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [],
+      "expected_science_route": null,
+      "expected_case_family": null,
+      "expected_case_status": null,
+      "expected_reality_status": null,
+      "expected_persuasion_treatment": "COMMERCIALLY_ASSERTIVE",
+      "expected_invest_route": null,
+      "asset": "homepage-hero",
+      "format_budget": "short",
+      "critical": false,
+      "domain_dimensions": [
+        "hero",
+        "customer-language"
+      ],
+      "hard_gates": [
+        "internal-language-not-exposed",
+        "concrete-dashboard-output",
+        "coverage-limit-visible",
+        "sample-dashboard-destination-explicit",
+        "no-outcome-or-recommendation-invention"
+      ]
+    },
+    {
+      "id": "customer-language-case-study",
+      "prompt_file": "prompts/customer-language-case-study.md",
+      "expected_mode": "SELL",
+      "expected_surface": "INDEXABLE_PUBLIC",
+      "expected_modifiers": [
+        "CASE_STUDY"
+      ],
+      "expected_science_route": null,
+      "expected_case_family": "CUSTOMER_SUCCESS",
+      "expected_case_status": "REAL_EVIDENCE",
+      "expected_reality_status": null,
+      "expected_persuasion_treatment": "PERSUASIVE_EXPLANATORY",
+      "expected_invest_route": null,
+      "asset": "customer-case-study-opening",
+      "format_budget": "medium",
+      "critical": false,
+      "domain_dimensions": [
+        "case-study",
+        "customer-language"
+      ],
+      "hard_gates": [
+        "control-room-brief-not-exposed",
+        "measured-result-named-concretely",
+        "confounders-visible",
+        "quote-exact",
+        "cta-matches-destination",
+        "no-invented-url-or-fragment"
+      ]
+    },
+    {
+      "id": "science-strength-of-evidence",
+      "prompt_file": "prompts/science-strength-of-evidence.md",
+      "expected_mode": "INFORM",
+      "expected_surface": "WRITTEN_PRIVATE",
+      "expected_modifiers": [
+        "SCIENCE"
+      ],
+      "expected_science_route": "EMPIRICAL",
+      "expected_case_family": null,
+      "expected_case_status": null,
+      "expected_reality_status": null,
+      "expected_persuasion_treatment": "INFORMATIONAL",
+      "expected_invest_route": null,
+      "asset": "guideline-evidence-assessment",
+      "format_budget": "medium",
+      "critical": false,
+      "domain_dimensions": [
+        "science",
+        "customer-language"
+      ],
+      "hard_gates": [
+        "technical-term-retained-where-required",
+        "absolute-and-relative-results",
+        "interval-and-attrition",
+        "replication-and-preregistration-limits",
+        "no-treatment-advice"
+      ]
+    }
+  ]
+}

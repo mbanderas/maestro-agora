@@ -37,14 +37,27 @@ test("science preserves claim class, causality, statistical meaning, and uncerta
   assert.match(science, /Never raise a claim's certainty while simplifying it/);
   assert.match(science, /absence of evidence is not evidence of absence/);
   assert.match(science, /report magnitude and uncertainty, not a significance label alone/);
+  assert.match(science, /For a one-time observational measurement, state when temporal order is unknown and reverse causation remains possible/);
+  assert.match(science, /Randomize a feasible intervention, opportunity, encouragement, or program/);
+  assert.match(science, /give natural frequencies and the absolute percentage-point change together/);
+  assert.match(science, /one result alone cannot determine an individual's action/);
+  assert.match(science, /For an unresolved minority finding, make the unknowns operational/);
+  assert.match(science, /replicates under the same condition, generalizes beyond the studied population/);
+  assert.match(science, /If the sources do not support describing the field as evenly divided, say that plainly/);
+  assert.match(science, /Do not call it `credible`, `promising`, `compelling`, `important`/);
+  assert.match(science, /Preserving a finding does not require endorsing it/);
 });
 
 test("misconception, question-first, analogy, and A-B threading are bounded procedures", () => {
   assert.match(science, /Never invent a misconception/);
+  assert.match(science, /supported belief -> supported contradiction -> corrected model -> mechanism -> boundary/);
+  assert.match(science, /Do not invent a counter-observation merely to strengthen the reveal/);
   assert.match(science, /do not postpone emergency, safety, or operational instructions for suspense/i);
   assert.match(science, /Every analogy must identify/);
   assert.match(science, /where the analogy breaks/);
   assert.match(science, /an A-thread can carry/);
+  assert.match(science, /When the request explicitly requires A\/B threading, make both threads visible/);
+  assert.match(science, /prevent the human or experimental thread from disappearing through the technical middle/);
   assert.match(science, /do not.*claim the structure improves retention without direct measurement/is);
 });
 

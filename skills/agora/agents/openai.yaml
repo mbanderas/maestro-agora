@@ -1,4 +1,4 @@
 interface:
   display_name: "Maestro: Agora"
-  short_description: "Truthful persuasion, science, and case studies"
-  default_prompt: "Use $agora to turn verified facts into clear, channel-native persuasion, scientific or technical explanations, and evidence-led case studies."
+  short_description: "Persuasion, science, cases, and capital"
+  default_prompt: "Use $agora to write clear persuasion, technical explanations, compelling case studies, and investment communication from the facts I provide."

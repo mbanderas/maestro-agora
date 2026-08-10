@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
@@ -79,4 +79,40 @@ test("rejects unexpected binary files but permits reviewed image assets", async 
     assert.equal(violations.length, 1);
     assert.match(violations[0], /unexpected binary file/);
   });
+});
+
+test("rejects private artifact signatures hidden behind text extensions", async () => {
+  await withTree({
+    "assets/renamed-source.md": "%PDF-1.7\nprivate document\n",
+    "assets/renamed-office.txt": Buffer.from([0x50, 0x4b, 0x03, 0x04, 0, 0]),
+  }, async (root) => {
+    const violations = await collectViolations({
+      root,
+      files: ["assets/renamed-source.md", "assets/renamed-office.txt"],
+    });
+    assert.equal(violations.length, 2);
+    assert.ok(violations.every((finding) => finding.includes("forbidden private-artifact signature")));
+  });
+});
+
+test("rejects tracked symbolic links even when the destination is text", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "agora-release-hygiene-link-"));
+  try {
+    const target = join(root, "target.txt");
+    const link = join(root, "README.md");
+    await writeFile(target, "private source\n");
+    try {
+      await symlink(target, link, "file");
+    } catch (error) {
+      if (["EPERM", "EACCES", "UNKNOWN"].includes(error.code)) {
+        t.skip(`symbolic links unavailable: ${error.code}`);
+        return;
+      }
+      throw error;
+    }
+    const violations = await collectViolations({ root, files: ["README.md"] });
+    assert.deepEqual(violations, ["README.md: symbolic links are forbidden in public release custody"]);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });

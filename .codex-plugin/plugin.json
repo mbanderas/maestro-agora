@@ -1,7 +1,7 @@
 {
   "name": "maestro-agora",
-  "version": "1.4.0",
-  "description": "Maestro: Agora turns verified facts into truthful persuasion, scientific and technical explanations, and evidence-led case studies.",
+  "version": "1.5.0",
+  "description": "Maestro: Agora writes clear persuasion, technical explanations, compelling case studies, and investment communication without making up results.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -16,14 +16,17 @@
     "science-communication",
     "technical-writing",
     "case-studies",
+    "fundraising",
+    "investor-communications",
+    "pitch-decks",
     "codex",
     "skills"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Maestro: Agora",
-    "shortDescription": "Truthful persuasion, science, and case studies",
-    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that builds consequential commercial arguments, scientific and technical explanations, and evidence-led case studies from verified facts.",
+    "shortDescription": "Persuasion, science, cases, and capital",
+    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that writes consequential commercial arguments, clear technical explanations, compelling case studies, and investment communication without inventing results.",
     "developerName": "Mark Laursen",
     "category": "Productivity",
     "capabilities": [
@@ -34,9 +37,10 @@
     "brandColor": "#7C3AED",
     "composerIcon": "./assets/icon.png",
     "defaultPrompt": [
-      "/agora sell Write the strongest truthful hero this evidence and destination can support.",
-      "/agora science Explain this technical subject clearly without overstating the evidence.",
-      "/agora case study Turn this project evidence into a clear, properly attributed case study."
+      "/agora sell Write the strongest truthful hero these product facts and destination can support.",
+      "/agora science Explain this technical subject clearly without overstating what the research found.",
+      "/agora case study Turn this approved project record into a clear, properly attributed case study.",
+      "/agora invest Build this fundraising asset from the supplied results, risks, and plan without inventing traction or urgency."
     ]
   }
 }

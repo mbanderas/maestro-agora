@@ -30,6 +30,36 @@ test("case-study families and result classes are explicit", () => {
     assert.match(caseStudy, new RegExp(result));
   }
   assert.match(caseStudy, /Do not manufacture a triumphant ending/);
+  assert.match(caseStudy, /When the primary target is missed but a narrower secondary result has support, keep the decision chain exact/);
+  assert.match(caseStudy, /Do not infer that each reverted change individually lacked benefit/);
+});
+
+test("case evidence status separates real proof from explicit fiction and concept work", () => {
+  for (const status of ["REAL_EVIDENCE", "FICTIONAL_MOCK", "CONCEPT_PORTFOLIO"]) {
+    assert.ok(caseStudy.includes(`\`${status}\``), status);
+  }
+  assert.match(caseStudy, /For `REAL_EVIDENCE`, the evidence packet is a completeness check, not a license to fill a narrative template/);
+  assert.match(caseStudy, /do not reverse-engineer one from what shipped/);
+  assert.match(caseStudy, /Do not rewrite an intervention, feature, artifact, or shipped state as the customer's earlier problem, need, objective, or rationale/);
+  assert.match(caseStudy, /When a requested `Challenge` section has only a supplied baseline, state only that baseline/);
+  assert.match(caseStudy, /`Faster handling required clearer routing` invents both an objective and a causal diagnosis/);
+  assert.match(caseStudy, /A required heading does not change that boundary/);
+  assert.match(caseStudy, /Never fill the heading by paraphrasing the intervention as project history/);
+  assert.match(caseStudy, /Keep contribution units atomic/);
+  assert.match(caseStudy, /Interview count does not reveal what the interviews found/);
+  assert.match(caseStudy, /Sequence does not prove influence/);
+  assert.match(caseStudy, /Testing before shipment does not establish that each round informed revisions/);
+  assert.match(caseStudy, /`cancellation flow` does not prove a journey from initial request through confirmation or completion/);
+  assert.match(caseStudy, /a one-sentence public case or sparse sequence diagram can be complete/);
+  assert.match(caseStudy, /A newly launched control does not prove the prior process lacked that control or used its opposite/);
+  assert.match(caseStudy, /Launching an approval workflow does not establish that earlier changes were informal, unreviewed, or moved without a recorded step/);
+  assert.match(caseStudy, /In fictional work, invention is part of the assignment/);
+  assert.match(caseStudy, /label invented numbers and results as illustrative, simulated, or scenario assumptions/);
+  assert.match(caseStudy, /Fiction is not a workaround for missing evidence in a real case/);
+  assert.match(caseStudy, /A concept can demonstrate thinking and craft without manufacturing a client relationship/);
+  assert.match(caseStudy, /A requested structure cannot make a missing challenge, insight, rationale, or collaboration fact publishable/);
+  assert.match(caseStudy, /choose one central argument and one primary human, project, or decision thread/);
+  assert.match(caseStudy, /Do not distribute attention across unrelated examples until the mechanism and emotional continuity disappear/);
 });
 
 test("permissions, quotes, typicality, and confidentiality are hard boundaries", () => {
@@ -40,6 +70,10 @@ test("permissions, quotes, typicality, and confidentiality are hard boundaries",
   assert.match(caseStudy, /Never.*present an atypical experience as typical/is);
   assert.match(caseStudy, /changing a quote and presenting it as exact/);
   assert.match(caseStudy, /identifying an anonymized subject through combined details/);
+  assert.match(caseStudy, /Permission to publish a field does not supply the field's value/);
+  assert.match(caseStudy, /`Agency role is approved` does not establish whether the role was partner, lead, designer, researcher, or implementer/);
+  assert.match(caseStudy, /When an outcome exists but its permission is `PENDING`, omit the outcome and its approval status from public copy/);
+  assert.match(caseStudy, /Reserve `unmeasured` for a genuinely unmeasured outcome/);
 });
 
 test("causality and metric context cannot be inferred from chronology", () => {
@@ -50,9 +84,19 @@ test("causality and metric context cannot be inferred from chronology", () => {
     assert.match(caseStudy, new RegExp(field, "i"));
   }
   assert.match(caseStudy, /not merely because work preceded a result/);
+  assert.match(caseStudy, /`Cannot attribute the full change to the intervention` still implies that some share is attributable/);
+  assert.match(caseStudy, /Do not smuggle partial causation through a disclaimer against full causation/);
 });
 
 test("academic and clinical case reports remain outside scope", () => {
   assert.match(skill, /Academic and clinical case reports are outside this modifier/);
   assert.match(caseStudy, /Academic and clinical case reports are outside this reference/);
+});
+
+test("technical cases do not infer missing mechanics from named alternatives or controls", () => {
+  assert.match(caseStudy, /Explain what a preserved record, interface, check, or control lets the team trace, verify, compare, or investigate/);
+  assert.match(caseStudy, /Keep that operational value separate from unmeasured scientific, customer, or business impact/);
+  assert.match(caseStudy, /Do not fill missing implementation detail from the names of alternatives or controls/);
+  assert.match(caseStudy, /dual writes do not prove how paths were compared or whether migration completed/);
+  assert.match(caseStudy, /does not establish where the event traveled, that valid records were never blocked, or which component caused a cost increase/);
 });
