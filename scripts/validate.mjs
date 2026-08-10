@@ -196,7 +196,7 @@ async function main() {
     "`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs",
     "Select persuasion treatment internally",
     "`COMMERCIALLY_ASSERTIVE`",
-    "`PROMOTIONAL` requires explicit campaign context and verified support",
+    "Use `PROMOTIONAL` when the user requests campaign intensity",
     "For `HERO + SCIENCE`",
     "For `CASE_STUDY + SELL`",
     "For `SCIENCE + VOICE`",
@@ -212,29 +212,30 @@ async function main() {
     "Keep control-room vocabulary backstage",
     "Do not make control-room terms the product promise or default register of ordinary customer-facing writing",
     "Translate according to the material, not one preferred synonym",
-    "Missing support is an editing instruction unless the absence changes the reader's decision",
-    "Never fill public copy or a word count by narrating the source review",
+    "Do not narrow or omit a user-selected claim merely because Agora would prefer more support",
+    "Do not narrate internal source review in customer-facing copy unless the user asks for it",
     "When the brief names a destination artifact, surface, or state",
     "Do not replace the named destination with only a list of what it contains",
     "An active voice profile enters at level 6",
-    "never overrides the U+2014 ban",
-    "Refuse to build or apply a voice profile of a named third party",
+    "It never overrides user-required phrasing, host rules, or the U+2014 ban",
+    "Agora is a writing system, not a content approval layer",
+    "Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer",
+    "Apply factual, evidentiary, permission, disclosure, or compliance review only when the user explicitly asks",
     "Do not confuse mode with surface",
     "Directory placement or an investor-adjacent audience does not activate `INVEST` by itself",
     "situation -> stake -> criterion or broken assumption when useful -> mechanism -> proof -> destination belief -> next step",
     "reasoning engine, not a visible template",
     "Do not force the full argument path",
-    "draft a trigger-first sentence before any category sentence",
-    "Do not retreat to taxonomy merely because quantified impact is missing",
-    "For very short `SELL` work with no outcome proof",
+    "consider a trigger-first sentence before any category sentence",
+    "For very short `SELL` work",
     "Do not weaken it into generic words",
-    "decision relevance, differentiation, verifiability, specificity, compression value, and omission risk",
-    "Keep factual enumerations",
-    "Never invent or imply claims, features, prices, routes, results, traction",
+    "decision relevance, differentiation, specificity, compression value, and omission risk",
+    "Add verifiability only when the user requests claim review",
+    "Apply claim review only when requested",
     "Keep these passes invisible",
     "Return one ready-to-use result first",
     "Run the final U+2014 scan across the complete response",
-    "preserve necessary factual series",
+    "preserve necessary series",
   ]) {
     check(skill.includes(required), `SKILL.md is missing: ${required}`);
   }
@@ -264,9 +265,9 @@ async function main() {
     "## Defensibility system",
     "## Product and economics",
     "## Process urgency and commitment language",
-    "Never imply a term sheet, lead, commitment, advanced diligence, scarcity, competing demand, or closing pressure that does not exist",
+    "Claim, evidence, omission, legal, confidentiality, and refusal checks in this reference activate only when the user explicitly requests",
     "## Modifier and surface composition",
-    "## Legal and ethical boundaries",
+    "## Optional legal and claim review",
     "## Evaluation contract",
     "## Evidence register",
   ]) {
@@ -288,6 +289,7 @@ async function main() {
   for (const required of [
     "## Contents",
     "## Core doctrine",
+    "## User authority",
     "## Conflict hierarchy",
     "## Commercial routing",
     "## Surface routing",
@@ -297,9 +299,9 @@ async function main() {
     "### Keep control-room vocabulary backstage",
     "Do not present the control system as the product benefit",
     "Do not run a mechanical synonym replacement",
-    "Missing support is normally an editing instruction, not public copy",
+    "Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer",
     "preserve that name in the CTA or adjacent microcopy",
-    "## Truth and ethical limits",
+    "## Optional claim review",
     "## Short, medium, and long forms",
     "## Channel architecture",
     "## Spoken delivery",
@@ -324,9 +326,9 @@ async function main() {
     "### Necessary enumeration",
     "## Evaluation contract",
     "## Evidence register",
-    "### Myths this document must never assert",
+    "### Claims Agora does not introduce independently",
     "## Evidence maintenance",
-    "Keep factual enumeration when the list itself is diagnostic",
+    "All review instructions elsewhere in this reference and the domain references are conditional on that request",
     "derive the opening from the mechanism's verified trigger",
     "Preserve necessary enumerations",
     "Do not restate the same evidence to make the email feel fuller",
@@ -336,7 +338,7 @@ async function main() {
     "Do not force every supplied fact into both",
     "internal workflow labels",
     "Treat an existence-only route, screen, page, preview, or report as action availability",
-    "Do not turn it into a body-copy claim",
+    "unless the user wants it emphasized in body copy",
   ]) {
     check(reference.includes(required), `canonical reference is missing: ${required}`);
   }
@@ -347,12 +349,12 @@ async function main() {
     "## Headlines and titles",
     "## Heroes and short-form sales composition",
     "## Awareness and sophistication staging",
-    "## Emotion under a truth constraint",
+    "## Emotion under a user brief",
     "## Prosody and rhythm",
     "## Open conflicts in this reference",
     "### The specificity ladder",
-    "### Separate the safety floor from the optimization target",
-    "### Map promise grammar to evidence",
+    "### Separate the brief-fidelity floor from the optimization target",
+    "### Map promise grammar to the intended claim",
     "### Permanent RivalScope regression fixture",
     "### The routing table",
     "### Emotion from a fact set with no outcome data",
@@ -383,7 +385,7 @@ async function main() {
     "`MIXED`",
     "Never raise a claim's certainty while simplifying it",
     "absence of evidence is not evidence of absence",
-    "Never invent a misconception",
+    "Do not introduce either independently as an unrequested surrounding claim",
     "A-thread",
   ]) {
     check(science.includes(required), `science reference is missing: ${required}`);
@@ -422,13 +424,13 @@ async function main() {
     "## Writing to a profile",
     "## Voice against the tell gate",
     "## Checking adherence",
-    "## Refusals",
+    "## User-controlled profile use",
     "### The owned-vocabulary exception",
     "`~/.agora/voices/<slug>.md`, with `~/.agora/voices/index.json`",
     "Refuse to certify a profile",
     "Voice never overrides the U+2014 ban",
     "suppresses the generic AI-vocabulary ban for those specific words, and only those",
-    "publication under that person's name",
+    "Do not refuse profile work, interrogate ownership, demand authorization, restrict attribution, add disclosure language, or judge the intended publication",
     "governance default",
     "npx -p @maestroagora/agora agora-voice build",
     "A profile the engine did not produce is not a profile",
@@ -442,14 +444,14 @@ async function main() {
   check(openaiYaml.includes('display_name: "Maestro: Agora"'), "agents/openai.yaml has the wrong display name");
   check(openaiYaml.includes('short_description: "Persuasion, science, cases, and capital"'), "agents/openai.yaml has the wrong short description");
   check(
-    openaiYaml.includes('default_prompt: "Use $agora to write clear persuasion, technical explanations, compelling case studies, and investment communication from the facts I provide."'),
+    openaiYaml.includes('default_prompt: "Use $agora to write clear persuasion, technical explanations, compelling case studies, and investment communication from my brief and content choices."'),
     "agents/openai.yaml has the wrong default prompt",
   );
 
   const packageJson = await readJson(join(ROOT, "package.json"));
   const gitAttributes = await readFile(join(ROOT, ".gitattributes"), "utf8");
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.5.0", "package version must be 1.5.0");
+  check(packageJson.version === "1.6.0", "package version must be 1.6.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.bin?.["agora-voice"] === "scripts/voice-measure.mjs", "package must expose the agora-voice bin");
   for (const shipped of ["scripts/voice-measure.mjs", "scripts/voice"]) {

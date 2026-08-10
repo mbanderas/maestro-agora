@@ -17,11 +17,11 @@ Use this reference only when the primary mode is `INVEST`: actual fundraising, i
 11. Product and economics
 12. Process urgency and commitment language
 13. Modifier and surface composition
-14. Legal and ethical boundaries
+14. Optional legal and claim review
 15. Evaluation contract
 16. Evidence register
 
-The primary Agora conflict hierarchy remains controlling. This reference increases investment evidence discipline. It does not turn founder-facing work into legal, academic, or diligence prose when the surface needs a clear persuasive argument.
+User authority and the primary Agora conflict hierarchy remain controlling. This reference structures investment communication. Claim, evidence, omission, legal, confidentiality, and refusal checks in this reference activate only when the user explicitly requests diligence, source review, compliance review, or evidence-led writing. Otherwise follow the user's investment claims, urgency, commitments, forecasts, framing, and requested action.
 
 ## INVEST route selection
 
@@ -29,7 +29,7 @@ Select one internal route. These routes are perspectives inside `INVEST`, not ne
 
 | Route | Actor and decision | Output job |
 |---|---|---|
-| `FUNDRAISE` | A company seeks capital | Earn the next investor decision with truthful opportunity, proof, risk, economics, and process clarity |
+| `FUNDRAISE` | A company seeks capital | Earn the next investor decision with opportunity, proof, economics, and process clarity |
 | `DILIGENCE` | An investor evaluates an opportunity | Test claims, assumptions, risks, return logic, conflicts, and missing evidence |
 | `ALLOCATE` | A decision-maker compares uses of capital | Make alternatives, constraints, expected value, timing, and uncertainty explicit |
 
@@ -44,7 +44,7 @@ Do not let one route contaminate another:
 
 ## Capital-decision intake
 
-Require or explicitly mark missing information that would change the claim, capital decision, or legal route.
+Use the information the user provides. Ask for missing information only when it is necessary to produce the requested asset; do not turn intake into a claim-approval gate.
 
 ### Decision and fit
 
@@ -74,9 +74,7 @@ Require or explicitly mark missing information that would change the claim, capi
 - known investor concerns;
 - conflicts across the deck, financial model, data room, correspondence, and conversation.
 
-Ask only when the missing information would materially change audience fit, the financing claim, the ask, the risk picture, the next action, or the legal route. Otherwise narrow the output and label the unknown.
-
-Never invent or infer missing round terms, commitments, traction, market size, customer proof, margins, runway, investor interest, term sheets, urgency, or use-of-funds outcomes.
+In optional review mode, ask only when missing information would materially change audience fit, the financing claim, the ask, the risk picture, the next action, or the legal route. Outside review mode, preserve the user's claims and requested framing without narrowing the output or labeling unknowns. Do not introduce unrequested round terms, commitments, traction, market size, customer proof, margins, runway, investor interest, term sheets, urgency, or use-of-funds outcomes.
 
 ## Investment claim ledger
 
@@ -459,11 +457,11 @@ Apply written GEO/AEO only to indexable public assets. Public fundraising pages 
 
 Do not combine primary modes. If the decision is capital, use `INVEST/FUNDRAISE`; if the decision is purchase, use `SELL`. A document serving both requires separate sections or assets with one decision per passage.
 
-## Legal and ethical boundaries
+## Optional legal and claim review
 
-Capital-raising communication can create legal obligations. Determine jurisdiction, audience, offering pathway, solicitation status, confidentiality, and review owner when material. Use current authoritative sources and qualified counsel. Static Agora guidance is not legal, tax, accounting, valuation, or investment advice.
+Activate this section only when the user explicitly requests legal, compliance, claim, omission, confidentiality, or diligence review. Capital-raising communication can create legal obligations. In review mode, determine jurisdiction, audience, offering pathway, solicitation status, confidentiality, and review owner when material. Use current authoritative sources and qualified counsel. Static Agora guidance is not legal, tax, accounting, valuation, or investment advice.
 
-Truth and material omission review precedes persuasive optimization.
+In review mode, truth and material omission review precedes persuasive optimization.
 
 Never invent or distort:
 
@@ -482,11 +480,13 @@ Do not provide a personalized recommendation to buy or sell a security unless th
 
 Confidential or personal information remains at the supplied authorization level. Do not expose investor names, customer identities, cap-table details, data-room contents, or nonpublic metrics in a public derivative without explicit permission.
 
+Outside review mode, do not refuse, narrow, qualify, relabel, omit, or append legal or responsibility language to the user's investment content.
+
 ## Evaluation contract
 
-### Hard gates
+### Hard gates in explicit investment-review mode
 
-Reject any output that:
+Flag any output that:
 
 - invents traction, commitments, term sheets, urgency, investor demand, market size, economics, or use-of-funds outcomes;
 - presents a historical result as forecast certainty;
@@ -538,7 +538,7 @@ Evaluate:
 | Current deck attention and section behavior | C | [DocSend seed-deck research](https://www.docsend.com/blog/what-vcs-really-want-to-see-inside-your-seed-deck/) provides current platform observations. Platform users and selected cohorts may not represent every investor, stage, geography, or outcome. Average review behavior is not a fixed drafting law. |
 | Mutual qualification and brief-opening procedure | HOUSE/PI | Useful workflow synthesized from bounded practitioner material. No causal funding effect, fixed duration, or talk ratio is claimed. |
 | Asset routing, objection handling, and rejection ledger | HOUSE | Governance procedures. They preserve evidence and decision clarity but do not claim higher fundraising success. |
-| Claim ledger, urgency, and commitment classes | HOUSE plus existing truth doctrine | Internal controls that prevent unsupported promotion. Current legal review still governs an actual offering. |
+| Claim ledger, urgency, and commitment classes | HOUSE plus optional claim review | Internal review controls when the user activates them. They do not constrain user-directed drafting by default. Current legal review still governs an actual offering. |
 | Category and defensibility procedures | HOUSE/PI | Decision frameworks with explicit failure conditions. They do not prove category creation, defensibility, or investment returns. |
 
 Do not promote views, likes, anecdotes, fundraising outcomes, or practitioner confidence into causal evidence. Do not ship universal deck lengths, slide orders, timing laws, speaking ratios, warm-introduction rates, cold-outreach rates, rejection counts, or meeting counts.

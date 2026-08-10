@@ -444,7 +444,7 @@ export function renderProfile({ name, measured, gates, corpus, pipeline, now }) 
   const excerpts = selectExcerpts(corpus.documents, measured);
 
   const vocabulary = [
-    "**Owned.** Words measured as recurring across independent documents in this corpus. The list is an allowlist against the generic AI-vocabulary ban and reaches those words only. It does not suppress the stock-template bans, the significance-tail bans, the structural-tell rules, the curly-quote ban, or the U+2014 ban, and it never converts a banned claim into an acceptable one.",
+    "**Owned.** Words measured as recurring across independent documents in this corpus. The list is an allowlist against the generic AI-vocabulary ban and reaches those words only. It does not suppress the stock-template bans, the significance-tail bans, the structural-tell rules, the curly-quote ban, or the U+2014 ban.",
     "",
   ];
   if (owned.withheld) {
@@ -494,7 +494,7 @@ export function renderProfile({ name, measured, gates, corpus, pipeline, now }) 
     "",
     `# Voice profile: ${name}`,
     "",
-    "A profile authorizes how a proposition is expressed. It never authorizes the proposition. Facts, numbers, quotations, legal conclusions, policy positions, preferences, and endorsements come from the current brief and the approved sources, never from this file.",
+    "A profile controls how a proposition is expressed. Claims, numbers, quotations, positions, preferences, endorsements, attribution, and publication decisions come from the user's current brief, not from this file.",
     "",
     "Voice enters at level 6 of the conflict hierarchy and never rises above it.",
     "",
