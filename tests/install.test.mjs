@@ -1,14 +1,26 @@
 import assert from "node:assert/strict";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { dirname, join, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const INSTALLER = join(ROOT, "scripts", "install.mjs");
-const SOURCE_SKILL = join(ROOT, "skills", "agora", "SKILL.md");
+const SOURCE_ROOT = join(ROOT, "skills", "agora");
+
+async function listFiles(root, base = root) {
+  const { readdir } = await import("node:fs/promises");
+  const entries = await readdir(root, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+    const path = join(root, entry.name);
+    if (entry.isDirectory()) files.push(...(await listFiles(path, base)));
+    if (entry.isFile()) files.push(relative(base, path).replaceAll("\\", "/"));
+  }
+  return files;
+}
 
 function run(args) {
   return spawnSync(process.execPath, [INSTALLER, ...args], {
@@ -27,13 +39,18 @@ async function withTemp(callback) {
 }
 
 async function assertInstalled(path) {
-  const [source, installed] = await Promise.all([
-    readFile(SOURCE_SKILL, "utf8"),
-    readFile(join(path, "SKILL.md"), "utf8"),
+  const [sourceFiles, installedFiles] = await Promise.all([
+    listFiles(SOURCE_ROOT),
+    listFiles(path),
   ]);
-  assert.equal(installed, source);
-  await readFile(join(path, "agents", "openai.yaml"), "utf8");
-  await readFile(join(path, "references", "agora-marketing.md"), "utf8");
+  assert.deepEqual(installedFiles, sourceFiles);
+  for (const file of sourceFiles) {
+    const [source, installed] = await Promise.all([
+      readFile(join(SOURCE_ROOT, file)),
+      readFile(join(path, file)),
+    ]);
+    assert.deepEqual(installed, source, file);
+  }
 }
 
 test("universal user install writes the shared and Claude locations", async () => {

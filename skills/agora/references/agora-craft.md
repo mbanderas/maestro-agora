@@ -1,6 +1,6 @@
 # Agora craft authority
 
-This reference holds the four craft domains that the argument doctrine in [agora-marketing.md](agora-marketing.md) does not cover: headlines and titles, awareness and sophistication staging, emotion under a truth constraint, and prose rhythm. Load it only when the task turns on one of those four.
+This reference holds the five craft domains that the argument doctrine in [agora-marketing.md](agora-marketing.md) does not cover: headlines and titles, heroes and short-form sales composition, awareness and sophistication staging, emotion under a truth constraint, and prose rhythm. Load it only when the task turns on one of those five.
 
 Nothing here outranks the conflict hierarchy in the main reference. Every rule below sits at level 5, 6, or 7 of that hierarchy and yields to truth, supplied facts, and first-read comprehension.
 
@@ -8,6 +8,7 @@ Nothing here outranks the conflict hierarchy in the main reference. Every rule b
 
 - [How to read the grades](#how-to-read-the-grades)
 - [Headlines and titles](#headlines-and-titles)
+- [Heroes and short-form sales composition](#heroes-and-short-form-sales-composition)
 - [Awareness and sophistication staging](#awareness-and-sophistication-staging)
 - [Emotion under a truth constraint](#emotion-under-a-truth-constraint)
 - [Prosody and rhythm](#prosody-and-rhythm)
@@ -135,6 +136,177 @@ This rule is stated in full in `Plain language and first-read comprehension > Co
 **Where repetition costs [HOUSE]:** for attention-oriented headings, manage template concentration rather than demand uniqueness. Banner blindness is visual and positional rather than syntactic, so its effect does not transfer to headline grammar ([NN/g banner blindness](https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/)), and large-scale headline analysis documents stylistic convergence between outlets rather than response decay ([Nature HSSC](https://www.nature.com/articles/s41599-025-04514-7)). **Boundary:** the absence of measured decay is not permission to run one template across a site. It means the reason to vary is the reader's ability to tell sections apart, not a predicted response loss.
 
 **Reading the template signature.** A template is `clause type + lead device + promise structure`, not surface wording. `7 errors in payroll` and `11 causes of failed imports` are the same template. `Import records` and `Map columns` are the same template and correctly so.
+
+## Heroes and short-form sales composition
+
+### The unit is the composition
+
+A hero is not a compressed article, specification, methodology page, or feature inventory. It is a distributed argument whose elements share the work:
+
+- optional eyebrow;
+- headline;
+- subhead;
+- primary CTA;
+- optional secondary CTA;
+- optional proof or qualification microcopy;
+- visual or evidence context;
+- immediate next section.
+
+Rule [C/HOUSE]: judge whether the composition answers the reader's next decision, not whether one line repeats every fact. Field practitioners consistently treat headline, subhead, visual, proof, and CTA as a system; the exact composition is an Agora house model. Boundary: a material qualification cannot be hidden in an unrelated visual or distant section merely because the headline is short.
+
+The headline can carry stake or promise while the subhead carries category and mechanism. A proof strip can carry credibility. The CTA can state the available action. The next section can carry method and scope. Repetition is justified only when an element must work outside that composition.
+
+Treat the subhead as a handoff from promise to belief, not as storage for every fact omitted from the headline. Give the reader the minimum category, mechanism, difference, or proof needed to trust the next step. Do not turn the subhead into an input list, feature ledger, or compressed methodology. When several inputs prove only breadth, compress them to the reader-owned relation that matters, such as `recorded buyer decisions and public market changes`. When several outputs prove only scope, name the decision or artifact the destination actually delivers rather than inventorying every format. If removing an item does not reduce orientation, belief, distinction, or destination clarity, move it below the hero. Rule [HOUSE]: the subhead earns its space by strengthening the argument, not by making the composition more complete. Boundary: an expert evaluation surface can need several exact criteria above the fold when those criteria determine eligibility, integration, or product fit.
+
+### Diagnose the hero before drafting
+
+Determine:
+
+- intended audience and decision role;
+- awareness state;
+- message sophistication or claim saturation;
+- traffic source and upstream promise;
+- one commercial action the hero must earn;
+- actual CTA destination and commitment;
+- offer facts and mechanism;
+- strongest proof;
+- material price, scope, eligibility, safety, or commitment limits;
+- visual, navigation, proof strip, microcopy, and adjacent-section context.
+
+Ask only when a missing fact would materially change the audience, promise, offer, or action. Otherwise narrow the claim.
+
+On medical, clinical, legal, financial, safety, and other high-stakes heroes, preserve the exact supplied name and scope of each material check, rule, population, condition, comparator, and limitation. Compression may distribute those terms across the composition. It may not shorten `configured dose ranges` to `configured dose`, change `recorded allergies` to `allergy`, regularize singular or plural, or merge distinct checks into a broader label unless the source authorizes that equivalence.
+
+Controlled intensity does not mean a capability label. Lead with the supported operational decision, inspectable reason, or human agency that matters before the consequential action. Carry the exact consequential object into the headline when it improves orientation; do not replace an order, transaction, specimen, filing, or decision with a generic alert, item, record, or issue. Prefer a concrete shape such as `Know why the order was flagged before release` over `Inspectable alerts for safer work` when the supplied mechanism supports it. Do not escalate fear, imply prevention, or promise safety. Keep material scope, required modality, and human-review limits in the same composition.
+
+Preserve high-stakes quantifiers and obligations exactly. `Every`, `each`, `a`, `may`, and `must` are not interchangeable. State the product action directly, then state the required human action directly. Do not bury the mechanism inside a `Before the reviewer...` opening when sequence is not the argument; that construction weakens the product action and can turn a requirement into a description of what usually happens.
+
+If the source says `A reviewer must review and release the item`, keep `must` in the finished composition. `Before a reviewer reviews and releases the item` and `A reviewer reviews every item` both erase the obligation and alter the quantifier.
+
+Prefer a supported evidence-access or decision-control promise over an imperative that implies controlled safety or performance. `Know why the order was flagged` promises inspectable information. `Make every alert reviewable` may imply that the product controls the review state. The imperative is usable only when the mechanism and destination actually deliver that action.
+
+The hero's dominant job changes by surface:
+
+| Surface | Dominant job | Common failure |
+|---|---|---|
+| Cold homepage | Category orientation plus primary value and difference | Coined category or feature list before relevance |
+| Known-referral campaign | Continue the upstream promise and create desire for the next action | Starting a second message unrelated to the click |
+| Product launch | Make supplied novelty consequential | Calling ordinary availability a breakthrough |
+| Pricing or upgrade | Clarify offer, value difference, and commitment | Repeating education instead of helping a ready buyer act |
+| Enterprise service | Establish credible stake, difference, and path to proof | Using enterprise as a reason for inert language |
+| Short ad, subject line, or sales opening | Earn the next moment with one supported tension or promise | Empty curiosity or a complete product summary |
+
+On a cold homepage, lead with the task or result the visitor already recognizes. Do not let eligibility or delivery limits displace that primary value. Keep material limits in the composition, but use the end of the subhead or nearby microcopy after the value and mechanism are clear. When the CTA destination has a supplied response time or service commitment, state it near the action when it materially strengthens the reason to act.
+
+### Separate the safety floor from the optimization target
+
+A candidate fails the safety floor if it:
+
+- contradicts supplied facts;
+- invents proof, capability, urgency, scarcity, novelty, or outcome;
+- guarantees a result outside the offer's control;
+- hides a material price, scope, eligibility, safety, or commitment condition;
+- creates a false legal or ethical implication;
+- alters the exact name or scope of a material high-stakes check, rule, population, condition, comparator, or limitation;
+- promises a destination the next action does not deliver.
+
+Passing the floor does not make the copy good. Among survivors, optimize for:
+
+- immediate desire or tension;
+- commercial consequence;
+- differentiation;
+- memorability;
+- first-read clarity;
+- product relevance;
+- emotional force grounded in facts;
+- cadence and read-aloud force;
+- forward motion;
+- compression without decoding cost;
+- awareness, sophistication, traffic, and composition fit.
+
+Rule [HOUSE]: do not award extra quality merely because a safe candidate contains more evidence language. Once the hard gates pass, additional proof or qualification helps only when it improves belief, orientation, or the next decision.
+
+### Draft the boldest supportable promise first
+
+Use this internal process:
+
+1. Define the action the surface must earn.
+2. Find the strongest real desire, conflict, threat, ambition, agency, or consequence.
+3. Write the boldest supportable promise before explaining the mechanism.
+4. Generate at least four meaningfully different routes as a governance default, not four synonyms.
+5. Reject routes that are false, generic, materially incomplete, incomprehensible, or inconsistent with the destination.
+6. Rank survivors by hard gates first and commercial force second.
+7. Add the minimum category, mechanism, or proof needed for belief.
+8. Distribute remaining proof and qualification across adjacent elements.
+9. Read the full composition aloud.
+10. Remove words that explain the company without increasing desire, belief, orientation, or action.
+
+Keep the headline to one commercial argument. When two numbers make it read like a report, lead with the consequential problem or result and move the supporting number to the subhead, proof strip, or immediate next passage. Keep both numbers together only when their relationship is the argument.
+
+Supported route families include competitive threat, ambition, control, avoided loss, category change, broken assumption, direct outcome, provocative contrast, proof-led confidence, and offer-led action. Do not force an enemy, fear, identity, or loss the facts do not contain.
+
+Return one recommended composition by default. Present it as finished copy, not a worksheet labeled `Headline`, `Subhead`, `CTA`, and `Qualification`, unless the user requests component labels or the delivery context would otherwise be ambiguous. Keep internal routes and scoring hidden unless the user requests options or rationale.
+
+### Map promise grammar to evidence
+
+| Grammar | Promise made | Required support |
+|---|---|---|
+| `See X` | Destination exposes the named artifact or information | X must be visibly delivered |
+| `Learn how to X` | Destination teaches an actionable method | More than facts about X; enough method to act or evaluate |
+| `We help you X` | Product assists the reader's action | Supported mechanism and truthful scope |
+| `Do X more often` | Product improves performance frequency | Comparative or outcome evidence |
+| `You will X` | Future outcome or guarantee | Control over the result, evidence, and enforceable conditions |
+| Imperative `Beat X` | May imply controllable achievement | Review literal implication, mechanism, and destination |
+
+Rule [HOUSE]: grammar changes the claim even when the nouns remain the same. `See how to respond` can promise an artifact. `Win more deals` promises improved performance. `You will win` promises an outcome. Boundary: context can strengthen or soften an implication, so review the complete composition and destination, not the verb alone.
+
+### Make force carry meaning
+
+Punch is not a word-count target. Prefer:
+
+- one consequential idea per beat;
+- active and causal verbs;
+- concrete obstacles and states;
+- contrast that exposes a real asymmetry;
+- strong final words;
+- removal of setup clauses;
+- strategic fragments only when the missing syntax remains obvious;
+- controlled repetition when it builds one argument;
+- a line a salesperson could say aloud without translating it.
+
+Reject short lines whose literal meaning is thin. Reject long lines that process every input before the reader feels the stake. The best short line compresses reasoning, not meaning.
+
+### Place proof and qualification without weakening the opening
+
+Keep a material limit close enough to govern the claim. Use the headline, subhead, microcopy, proof strip, visual caption, or immediate next passage according to where the reader needs it.
+
+Rule [HOUSE]: the lower an element sits, the less it can repair a misleading first impression. A qualification directly below the CTA can bound eligibility. A methodology note several screens later cannot repair an unsupported outcome in the headline.
+
+Written GEO/AEO applies to the page and coherent passages. The hero can optimize for attention while later sections provide definitions, sources, scope, methodology, and quotable answers. Do not make every hero sentence independently extractable.
+
+### Permanent RivalScope regression fixture
+
+Available facts: RivalScope imports CRM win/loss records with named competitors and decision reasons, monitors public competitor pricing and product changes, groups buyer feedback by competitor and criterion, and produces comparison reports, battlecard inputs, and recommended messaging changes. It has no measured evidence of improving win rate, revenue, or market share. It can explain where competitors won and recommend responses. It cannot guarantee a future win.
+
+Operational and over-complete:
+
+> RivalScope combines CRM win/loss records, competitor pricing, product pages, and buyer feedback into dashboards, battlecards, and weekly recommendations.
+
+Stake-led but product-light:
+
+> Every lost deal leaves a pattern. The faster you see it, the sooner your pitch can change.
+
+Competitive and directional:
+
+> See where competitors beat you, why buyers chose them, and how to beat them next time.
+
+The third line promises access to a response strategy. It passes only when the destination supplies one. It does not permit a claim that RivalScope improves win rate or guarantees a future victory. The task is to find the strongest truthful composition, not to preserve this wording.
+
+### Evidence boundaries
+
+- **A/B:** existing headline evidence in this reference supports expectation match, bounded specificity, simplicity, and surface fit.
+- **C/D:** 2024-2026 practitioner videos support composition review, subhead handoff, benefit orientation, proof placement, and route generation as procedures to test. Their fixed five-second, percentage, and conversion claims remain unverified.
+- **HOUSE:** safety-floor split, internal route count, persuasion treatment, promise grammar table, composition model, and RivalScope fixture.
 
 ## Awareness and sophistication staging
 

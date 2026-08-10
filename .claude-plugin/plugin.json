@@ -1,8 +1,8 @@
 {
   "name": "maestro-agora",
-  "version": "1.3.0",
+  "version": "1.5.0",
   "displayName": "Maestro: Agora",
-  "description": "Use /agora for argument-first buyer, investor, positioning, editorial, interface, and spoken copy grounded in verified facts.",
+  "description": "Use /agora for persuasive writing, technical explanation, compelling case studies, fundraising, investment analysis, and spoken or written copy.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -15,6 +15,12 @@
     "agora",
     "marketing",
     "copywriting",
+    "science-communication",
+    "technical-writing",
+    "case-studies",
+    "fundraising",
+    "investor-communications",
+    "pitch-decks",
     "claude-code",
     "geo",
     "aeo"

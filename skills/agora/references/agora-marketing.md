@@ -41,7 +41,11 @@ The working sequence is:
 5. Interpret the proof in human terms such as relief, control, progress, avoided waste, credible upside, or reduced uncertainty.
 6. Preserve agency and make the next step proportionate to the evidence.
 
-Verified facts are raw material for premises, not ready-made copy. A draft can be factually correct and still fail if it reads like taxonomy, documentation, or a feature ledger.
+Supplied facts are raw material for premises, not ready-made copy. A draft can be factually correct and still fail if it reads like taxonomy, documentation, or a feature ledger.
+
+Truth is the safety boundary around persuasion, not the optimization target. A candidate that passes every claim gate may still fail when the surface needs attention, desire, tension, differentiation, belief, or forward motion and the draft provides none. Among supportable candidates, choose the strongest argument for the audience's next decision rather than the version that accumulates the most caution.
+
+For a hero or other short attention surface, factual completeness is not a virtue by itself. Optimize the whole composition for supported commercial force. Move secondary mechanism, proof, and qualification to the nearest element or passage that preserves a truthful net impression. See `Heroes and short-form sales composition` in [agora-craft.md](agora-craft.md).
 
 Persuasion outcomes are not interchangeable. Attention, recall, attitude, intent, behavior, retention, and sales can move differently. Never describe one as if it proves another. Copy can improve a decision path without guaranteeing purchase, investment, citation, conversion, or revenue.
 
@@ -71,6 +75,8 @@ Level 5 contains its own trap. Differentiation rewards naming the mechanism prec
 
 Use only source material supplied or approved in the current context. Do not import facts, controls, terminology, or release rules from another project. Examples in this reference are fictional and teach structure only.
 
+Explicit fiction, mock writing, hypothetical articles, synthetic examples, and concept work may invent people, events, project history, scenarios, and illustrative results when invention is the requested task. Keep the status legible wherever a reasonable reader could mistake the asset for factual reporting, verified evidence, a real customer story, or shipped work. Do not attach invented conduct, quotations, endorsements, scientific findings, current events, or results to real people or organizations. Separate real supplied facts from scenario assumptions. Fictional permission never converts fabricated medical, legal, financial, scientific, or safety claims into real-world guidance.
+
 ## Commercial routing
 
 Choose the requested commercial job separately from the publication surface.
@@ -92,11 +98,13 @@ Let commercial or investor relevance emerge from those facts. Do not announce it
 
 Use `SELL` for marketing, sales, landing pages, ads, product pages, comparisons, email, outreach, upgrades, onboarding, and paywalls.
 
-The job is to connect a live buyer situation to a supported mechanism, make the outcome consequential, reduce the next uncertainty, and offer the correct next action. Do not assume that the strongest action is always a purchase or meeting. A demo, evidence review, reply, trial, comparison, or saved item may be the natural next step.
+The job is to connect a live buyer situation to a supported mechanism, make the outcome consequential, reduce the next uncertainty, and offer the correct next action. Do not assume that the strongest action is always a purchase or meeting. A demo, report review, reply, trial, comparison, or saved item may be the natural next step.
 
 ### INVEST
 
 Use `INVEST` only for an actual capital decision: a fundraising deck, investor pitch, investment memo, diligence summary, capital-allocation analysis, or fundraising email.
+
+Route the perspective separately: `FUNDRAISE` for a company seeking capital, `DILIGENCE` for an investor evaluating an opportunity, and `ALLOCATE` for comparing uses of capital. Load `agora-invest.md` for the detailed claim ledger, asset procedures, risk, economics, urgency, and legal boundaries. Founder persuasion must not contaminate diligence or allocation.
 
 The job is to earn investment relevance through:
 
@@ -296,6 +304,20 @@ Treat any noun the organization coined as a term the reader has no reason to kno
 
 The same rule applies to a distinction the organization finds important. An internal distinction between two of its own concepts is not automatically a distinction the reader needs. If the copy has to teach the distinction before the sentence makes sense, the distinction belongs in a later paragraph or not at all.
 
+Preserve relationship words that carry the facts. `Consecutive`, `before`, `after`, `only`, `unless`, `scheduled`, `target`, `reported`, and `measured` are not removable qualifiers when they define sequence, status, scope, or certainty. `Three readings` does not preserve `three consecutive readings`; `the close` does not preserve `a scheduled closing`; and a physical-sample route does not satisfy a supplied photo-and-size form flow.
+
+### Keep control-room vocabulary backstage
+
+Agora uses internal terms such as `evidence`, `proof`, `verified`, `claim discipline`, `source scope`, and `evidentiary boundary` to run its own checks. Those terms are not the default language of customers. Do not present the control system as the product benefit.
+
+For ordinary marketing, product copy, customer stories, fundraising copy, company descriptions, and CTAs, name the concrete object the reader can understand or inspect: a result, finding, number, customer quote, source, report, study, test, demonstration, project record, observed change, or remaining unknown. Translate from the actual material. Do not run a mechanical synonym replacement.
+
+Use control-room terms only when the audience already uses them or the artifact requires the distinction, including scientific research, methodology, audit, legal, compliance, diligence, and technical evaluation. Even on those surfaces, choose the concrete object when it says more. `Review the results` identifies an action and object. `Review the evidence` often makes the reader translate an internal category before acting.
+
+This rule does not weaken verification. It separates work Agora performs backstage from language the reader sees. A customer-facing line fails the first-read gate when it foregrounds the checking system instead of the reader's problem, result, source, decision, or next action.
+
+Missing support is normally an editing instruction, not public copy. Narrow or remove the unsupported premise. Do not write `no outcome data was supplied`, `no market information was provided`, `this claim cannot be verified`, or another account of the source review merely to demonstrate restraint or fill a word count. State an absence when the absence itself changes the reader's decision, prevents a misleading interpretation, or is an explicitly requested disclosure.
+
 ### Abstraction control
 
 Abstract nouns are not banned. They fail when they conceal something the reader needs.
@@ -429,7 +451,7 @@ Where the search-paste test fails: a long, specific, or newly published line ret
 
 ## Truth and ethical limits
 
-Never invent or imply:
+Outside an explicit fictional, hypothetical, mock, synthetic, or concept brief, never invent or imply:
 
 - product behavior, features, routes, pricing, deadlines, or availability;
 - quantified or unquantified outcomes;
@@ -440,6 +462,12 @@ Never invent or imply:
 - audience motives, pain, identity, beliefs, or private context.
 
 Keep fact, inference, interpretation, aspiration, and promise distinct. Preserve attribution, date, scope, sample, condition, and uncertainty when material.
+
+Preserve the supplied claim coordinates and modality. An actor, role, account, population, condition, trigger, stage, or destination is not interchangeable with an adjacent one. Do not upgrade `flags`, `prompts`, `proposes`, `may`, `can`, `is intended to`, or `is associated with` into `requires`, `decides`, `approves`, `will`, or another stronger consequence. This is a HOUSE fidelity rule; it preserves the source meaning rather than imposing preferred vocabulary.
+
+Time state and relationship class are claim coordinates too. Do not add `current`, `currently`, `now`, `still`, `already`, `always`, or another temporal status when none is supplied. Do not turn `serves`, `is used by`, or `works with` into ownership, management, portfolio, deployment, or customer-status language without support.
+
+Obligations and negated boundaries are claim coordinates. `Must` cannot become a description of what ordinarily happens. `Does not replace X` cannot become `supports X`. `Cannot guarantee X` cannot become a weaker positive benefit. A limitation does not prove its inverse.
 
 Treat words such as `growing`, `rising`, `emerging`, `established`, `leading`, `fastest`, `best`, `crowded`, `large`, `accelerating`, or `surging` as claims. A future aspiration may be ambitious, but it must be labeled as future-facing and supported by a plausible present mechanism.
 
@@ -457,6 +485,8 @@ Do not convert an observed task issue into financial loss, legal exposure, compl
 
 If proof is missing, narrow or omit the premise. Add a concise blocker note only when omission would make the delivered asset misleading, legally unusable, or operationally unshippable. Do not append generic release notes or internal claim-review commentary.
 
+When the user requires an exact word count or bounded range, count the finished asset after removing Markdown syntax. Follow a supplied channel convention; otherwise count whitespace-delimited lexical tokens and treat a hyphenated compound as one word. Verify with a counter when one is available. Make an exact count exact and keep a range inside both bounds. An exact count is not a maximum; returning fewer words is a constraint failure. Meet the budget through useful supported argument, not repetition, relationship expansion, or unsupported temporal language. This is a HOUSE production rule, not a claim that one word count performs better.
+
 ## Short, medium, and long forms
 
 Length is a channel constraint, not a persuasion doctrine. The three word counts below are governance defaults that mark where the treatment changes; no evidence establishes a length optimum, and an asset that falls between two bands takes whichever treatment its channel needs.
@@ -464,6 +494,10 @@ Length is a channel constraint, not a persuasion doctrine. The three word counts
 ### Very short: one line to about 35 words (governance default)
 
 Use a compelling market shift, felt stake, live consequence, or verified trigger condition plus the strongest verified mechanism or differentiator. When no outcome evidence exists, use the exact condition the product acts on. Do not retreat to a feature list. Compress the mechanism into the differentiator when syntax permits. Do not force objection handling, a full proof stack, a decision criterion, or visible investor relevance.
+
+In a short bounded company description, give each sentence a distinct job. Use category orientation once and mechanism once. Do not add a final sentence that merely restates the actor, classification fields, or routing relation to satisfy the length floor.
+
+When a mechanism uses two or more named input fields, name the fields once. Refer to `the pair`, `the combination`, or the resulting assignment afterward instead of repeating every field name.
 
 For a hard character limit, count characters exactly. Preserve the strongest fact, not the greatest number of facts.
 
@@ -482,6 +516,8 @@ Short forms are compressed decisions, not miniature essays. Long forms are not p
 ### Landing-page heroes and ads
 
 Assume low context and fragile attention. Name one recognizable situation or stake. Show one meaningful difference. Offer one dominant next step unless the surface is explicitly a branching flow.
+
+State a material fit or exclusion boundary in a complete sentence with its subject and condition. Do not compress it into an orphan fragment merely to keep the first screen short.
 
 Give the reader a category they already own before or inside the first differentiating claim, then say what is different about this one. See `Mechanism and differentiation > Orientation against taxonomy`. Do not open with a product taxonomy, a classification tree, or an all-in-one claim.
 
@@ -615,7 +651,11 @@ Every CTA tells the reader what will happen after they select it. The working sh
 
 `clear verb + concrete object, destination, or result`
 
-Workable labels name the thing on the other side: `View the report`, `Compare plans`, `Check eligibility`, `See the recommended fixes`, `Review the evidence`, `Book a product demo`, `Start the assessment`, `Download the guide`, `Contact the sales team`, `Retry the payment`.
+Workable labels name the thing on the other side: `View the report`, `Compare plans`, `Check eligibility`, `See the recommended fixes`, `Review the results`, `Open the study`, `Book a product demo`, `Start the assessment`, `Download the guide`, `Contact the sales team`, `Retry the payment`.
+
+When a working destination is supplied but its literal URL is not, return the action label as copy. Do not invent `#`, `example.com`, a route, or a dummy href. Destination fidelity governs the claim; fabricating link syntax does not make a CTA more complete.
+
+Return a CTA label as plain copy unless the user requests markup or supplies the destination URL. Do not wrap a label in square brackets without a destination; bracket-only text reads as an unresolved link rather than a ready control.
 
 Name the outcome the reader ends up with, not the motion the interface performs. A label that describes what the product will display is weaker than one that describes what the reader will then have. Prefer the artifact or answer over the transition to it.
 
@@ -671,10 +711,14 @@ Grade: HOUSE procedure, from a practitioner teardown at Grade C with no method r
 
 If the destination is a form, the label should imply a form. If the destination is a document, the label should name the document. If the action begins a paid commitment, the label should not read like a preview.
 
+When the brief names a destination artifact, surface, or state such as a sample dashboard, report, study, form, or preview, preserve that name in the CTA or adjacent microcopy. Do not replace the named destination with only the contents it displays. `View captured changes` leaves out a supplied sample-dashboard state; `View the sample dashboard` tells the reader what opens. This is destination fidelity, not a preferred phrase.
+
+Match the route as well as the destination. When the supplied action begins with a form, upload, comparison, trial, reply, sample request, or physical delivery, do not substitute another available path. Two routes can lead to the same organization while asking different things from the reader.
+
 ### Match commitment to readiness and to destination
 
 - Early attention: learn, compare, see, review, or save.
-- Active evaluation: inspect evidence, try a workflow, calculate fit, or ask a focused question.
+- Active evaluation: review results, inspect the source material, try a workflow, calculate fit, or ask a focused question.
 - Ready action: start, buy, subscribe, book, submit, or upgrade.
 - Utility: continue, return, restore, confirm, cancel, or retry.
 
@@ -703,6 +747,12 @@ Spoken copy is heard once in sequence. Optimize for breath, rhythm, memory, and 
 - Do not speak headings, keywords, metadata, citations, or GEO/AEO scaffolding aloud.
 - Omit implementation-status facts such as route availability unless the listener is asked to act on that route.
 - End on one supported consequence, decision, or form of agency rather than a product-status sentence or a stack of adjacent action verbs.
+
+Do not restate the opening situation in the close. Once the mechanism and evidence have answered the opening, use the final line for the supported inspection, decision, or next action.
+
+Do not invent what the listener currently does, remembers, believes, or struggles with to create a closing beat. Agency must come from the supplied action or evidence.
+
+If the spoken brief supplies no action or CTA, do not manufacture an imperative close. End after the supported mechanism, evidence, or consequence instead of stacking viewing commands.
 
 For hybrid work, write the script for listening. Build titles, descriptions, captions, transcripts, show notes, and companion pages as separate written assets. Rank facts separately for each asset. Do not force every supplied fact into both. Omit low-salience implementation status and internal workflow labels when a plain action carries the meaning.
 
@@ -793,6 +843,8 @@ These rules sit at level 7 of the conflict hierarchy. None of them may raise dec
 - Use descriptive headings and labels that match the content beneath them.
 - Keep visible and machine-readable facts consistent.
 - Preserve necessary enumerations when they define a product, comparison, or scope.
+
+Treat search, retrieval, and citation quality as properties of the page and coherent passages. A hero may optimize for human attention while the following sections carry explicit definitions, proof, scope, sources, and quotable answers. Do not force article-style self-containment into every first-screen sentence.
 
 Do not stuff keywords, write miniature conclusions under every heading, fragment prose for imagined answer engines, or add unsupported statistics for apparent authority.
 
@@ -1176,6 +1228,10 @@ Test only what must not fail:
 - One action carries one label across a single deliverable.
 - Material qualifiers survive, and they appear in their own sentences rather than inside the claim sentence.
 - Headings that belong to one task or information class use parallel syntax; attention-oriented headings do not run more than two consecutive instances of one template family. That run length is a governance default, not a measured threshold.
+- `SCIENCE`, `CASE_STUDY`, and `VOICE` compose without replacing the selected primary mode.
+- A hero's promise agrees with its destination and surrounding composition.
+- Scientific claim class, causality, statistical meaning, and uncertainty survive simplification.
+- Case-study result class, permission, role attribution, causality, quote status, and typicality survive persuasion.
 
 Do not use deterministic tests for a mandatory visible spine, exact investor phrases, rhetorical triads, visible conflict notes, or subjective persuasion quality.
 
@@ -1199,8 +1255,11 @@ Use these quality dimensions on a five-point scale:
 | Truth discipline | Persuasive force reaches the evidence boundary without crossing it |
 | First-read comprehension | An intended reader who has not seen the source facts extracts the meaning on one pass |
 | Concrete action clarity | Actor, action, object, and result are visible, and the call to action names its destination |
+| Attention value | A short attention surface creates a supported reason to continue rather than summarizing the product |
+| Composition fit | Headline, subhead, CTA, visual context, proof, and adjacent qualification perform one compatible argument |
+| Evidence calibration | Scientific and case-study claims preserve result class, causality, uncertainty, attribution, and source scope |
 
-Automatic failure: any U+2014 occurrence, fabricated fact, unsupported causality, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
+Automatic failure: any U+2014 occurrence, fabricated real-world fact outside an explicit creative-fiction brief, fiction presented as real evidence, unsupported causality or guarantee, claim-destination mismatch, invented misconception, statistical distortion, false consensus, quote distortion, permission or confidentiality breach, atypical result presented as typical, context leakage, visible compliance leakage, or a material omission that makes the result misleading.
 
 ## Evidence register
 

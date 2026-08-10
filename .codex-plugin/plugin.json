@@ -1,7 +1,7 @@
 {
   "name": "maestro-agora",
-  "version": "1.3.0",
-  "description": "Maestro: Agora turns verified facts into consequential, channel-native arguments without outrunning the proof.",
+  "version": "1.5.0",
+  "description": "Maestro: Agora writes clear persuasion, technical explanations, compelling case studies, and investment communication without making up results.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -13,14 +13,20 @@
     "agora",
     "marketing",
     "copywriting",
+    "science-communication",
+    "technical-writing",
+    "case-studies",
+    "fundraising",
+    "investor-communications",
+    "pitch-decks",
     "codex",
     "skills"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Maestro: Agora",
-    "shortDescription": "Argument-first copy that earns belief",
-    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that builds consequential buyer, investor, positioning, editorial, interface, and spoken arguments from verified facts.",
+    "shortDescription": "Persuasion, science, cases, and capital",
+    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that writes consequential commercial arguments, clear technical explanations, compelling case studies, and investment communication without inventing results.",
     "developerName": "Mark Laursen",
     "category": "Productivity",
     "capabilities": [
@@ -31,9 +37,10 @@
     "brandColor": "#7C3AED",
     "composerIcon": "./assets/icon.png",
     "defaultPrompt": [
-      "/agora position Turn these facts into a consequential company description. Keep investor relevance implicit.",
-      "/agora sell Build the strongest supported buyer argument for this surface, then give one useful next action.",
-      "/agora invest Build the capital case from timing, mechanism, proof, and what this round changes."
+      "/agora sell Write the strongest truthful hero these product facts and destination can support.",
+      "/agora science Explain this technical subject clearly without overstating what the research found.",
+      "/agora case study Turn this approved project record into a clear, properly attributed case study.",
+      "/agora invest Build this fundraising asset from the supplied results, risks, and plan without inventing traction or urgency."
     ]
   }
 }
