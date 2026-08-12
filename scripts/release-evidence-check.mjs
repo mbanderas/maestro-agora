@@ -25,7 +25,7 @@ const PATHS = {
   evidence: `evals/releases/v${VERSION}.evidence.json`,
 };
 
-const REQUIRED_HASHED_FILES = [
+export const REQUIRED_HASHED_FILES = [
   PATHS.manifest,
   `evals/blind/v${VERSION}/judge-instructions.md`,
   `evals/blind/v${VERSION}/judge-schema.json`,
@@ -36,6 +36,7 @@ const REQUIRED_HASHED_FILES = [
   "scripts/blind-judgment-ingest.mjs",
   "scripts/blind-summary.mjs",
   "scripts/release-evidence-check.mjs",
+  "scripts/release-evidence-build.mjs",
   PATHS.adjudications,
   PATHS.records,
 ];
@@ -99,8 +100,14 @@ export const validateEvidenceExecution = (evidence) => {
   if (!COMMIT.test(commits.judge_protocol ?? "")) errors.push("evidence judge protocol commit is invalid");
   if (execution.generator_model !== "gpt-5.6-sol") errors.push("generator model must be gpt-5.6-sol");
   if (execution.judge_model !== "gpt-5.6-sol") errors.push("judge model must be gpt-5.6-sol");
+  if (!/^\d+\.\d+\.\d+$/.test(execution.codex_cli_version ?? "")) errors.push("Codex CLI version is invalid");
   if (execution.order_seed !== BLIND_ORDER_SEED) errors.push("blind order seed does not match protocol");
   if (execution.sandbox !== "read-only") errors.push("evaluation sandbox must be read-only");
+  const started = Date.parse(execution.started_at_utc);
+  const completed = Date.parse(execution.completed_at_utc);
+  if (!Number.isFinite(started) || !Number.isFinite(completed) || started > completed) {
+    errors.push("evaluation timing window is invalid");
+  }
   for (const flag of [
     "fresh_context_per_generation",
     "fresh_context_per_judgment",
@@ -149,6 +156,20 @@ const validateExternalArtifacts = ({ evidence, summary }) => {
     if (!artifact || artifact.file_count !== expectedCount || !SHA256.test(artifact.sha256 ?? "")) {
       errors.push(`external artifact attestation ${name} is invalid`);
     }
+  }
+  const candidateSkill = evidence.external_artifacts?.candidate_skill_copy;
+  const incumbentSkill = evidence.external_artifacts?.incumbent_skill_copy;
+  const repositorySkill = evidence.tree_hashes?.["skills/agora"];
+  if (!candidateSkill
+    || candidateSkill.file_count !== repositorySkill?.file_count
+    || candidateSkill.sha256 !== repositorySkill?.sha256) {
+    errors.push("external candidate skill copy does not match the released skill tree");
+  }
+  if (!incumbentSkill
+    || !Number.isInteger(incumbentSkill.file_count)
+    || incumbentSkill.file_count < 1
+    || !SHA256.test(incumbentSkill.sha256 ?? "")) {
+    errors.push("external incumbent skill copy attestation is invalid");
   }
   return errors;
 };
