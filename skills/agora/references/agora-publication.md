@@ -5,6 +5,7 @@ Use this reference only for an explicit request to inspect a local artifact befo
 ## Contents
 
 - [Purpose and boundary](#purpose-and-boundary)
+- [Model-level text watermark boundary](#model-level-text-watermark-boundary)
 - [Trigger and non-trigger rules](#trigger-and-non-trigger-rules)
 - [Run the audit](#run-the-audit)
 - [Interpret the report](#interpret-the-report)
@@ -22,6 +23,14 @@ Inspect the artifact that will leave the user's control. Report hidden text cont
 Never describe this audit as a watermark remover, AI detector, authorship detector, humanizer, anonymizer, metadata cleaner, or proof that a file is safe or clean. Do not promise detector evasion. A missing finding means only that the named check did not find its configured signal.
 
 Claude's documented text marking is model-level. Do not imply that a Unicode scan can detect or remove it. Unicode review and file metadata review solve narrower publication-hygiene problems.
+
+## Model-level text watermark boundary
+
+A token-distribution watermark is introduced during generation by changing token-selection probabilities. It is not a hidden Unicode string or an ordinary file property. Detection can depend on the matching tokenizer, keyed hash or partition rule, normalization procedure, statistical threshold, and enough eligible text. Without the provider's verifier or equivalent configuration, the result remains `UNKNOWN`.
+
+The Kirchenbauer et al. green-list method is one research example, not evidence that Claude uses that exact scheme. It shows why short or low-entropy text can provide weaker statistical evidence, why editing may dilute rather than deterministically remove a mark, and why a detector can normalize whitespace, homoglyph, or zero-width changes before testing. Unusual Unicode is therefore neither evidence of a model-level watermark nor reliable evidence that one was removed.
+
+Do not estimate model-level watermark status from prose style, generic AI-detector scores, ad hoc word frequencies, or the absence of metadata findings.
 
 ## Trigger and non-trigger rules
 
@@ -122,6 +131,7 @@ When remediation is requested later, name exact fields and create a separate cop
 ## Sources
 
 - Anthropic, [How Claude marks AI-generated content](https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content)
+- Kirchenbauer et al., [A Watermark for Large Language Models](https://arxiv.org/abs/2301.10226) (research mechanism example, not a Claude implementation specification)
 - Coalition for Content Provenance and Authenticity, [C2PA technical specification](https://spec.c2pa.org/specifications/specifications/2.4/specs/ContentCredentials.html)
 - Content Authenticity Initiative, [Using C2PA Tool](https://github.com/contentauth/c2pa-rs/blob/main/cli/docs/usage.md)
 - Phil Harvey, [ExifTool application documentation](https://exiftool.org/exiftool_pod2.html)

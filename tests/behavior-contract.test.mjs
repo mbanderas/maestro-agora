@@ -105,6 +105,12 @@ test("publication audit is explicit, read only, and separate from ordinary writi
   assert.match(workflow, /Use the shipped `scripts\/publication-audit\.mjs`/);
   assert.match(workflow, /Never improvise a cleaner, strip Unicode by category, remove metadata, rewrite text to evade detection/);
 
+  const watermarkBoundary = extractSection(publication, "Model-level text watermark boundary");
+  assert.match(watermarkBoundary, /introduced during generation by changing token-selection probabilities/);
+  assert.match(watermarkBoundary, /not evidence that Claude uses that exact scheme/);
+  assert.match(watermarkBoundary, /Without the provider's verifier or equivalent configuration, the result remains `UNKNOWN`/);
+  assert.match(watermarkBoundary, /Unusual Unicode is therefore neither evidence of a model-level watermark nor reliable evidence that one was removed/);
+
   assert.match(publication, /Never describe this audit as a watermark remover/);
   assert.match(publication, /Do not run it against ordinary chat text/);
   assert.match(publication, /never writes to a source file/);

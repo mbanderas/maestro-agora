@@ -113,6 +113,8 @@ test("text audit reports configured Unicode without changing source bytes", asyn
     const report = await auditPaths([path]);
     const file = report.files[0];
     assert.equal(report.schemaVersion, "agora.publication-audit.v1");
+    assert.match(report.guarantees.modelLevelTextWatermark, /Not inspected/);
+    assert.match(report.guarantees.modelLevelTextWatermark, /Unicode and metadata checks cannot answer it/);
     assert.equal(file.path, "draft.md");
     assert.equal(Object.hasOwn(file, "absolutePath"), false);
     assert.equal(file.sourceUnchanged, true);

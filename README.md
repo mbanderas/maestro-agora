@@ -145,6 +145,8 @@ Source files are read only and compared by SHA-256 before and after inspection. 
 
 This is publication hygiene, not a watermark remover or authorship detector. A result cannot prove that content is AI-generated, human-written, anonymous, clean, or safe. Claude's documented model-level text marking is not equivalent to unusual Unicode or ordinary file metadata.
 
+Model-level text watermarks are statistical generation signals, not hidden characters or metadata fields. Without the matching provider verifier or detector configuration and enough eligible text, Agora reports that question as uninspected instead of guessing from style, Unicode, or generic detector scores.
+
 ## Routing model
 
 Agora chooses a primary mode first, then the publication surface, then any domain or asset modifiers. `VOICE` enters afterward and preserves your required language and content choices.

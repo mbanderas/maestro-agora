@@ -1144,6 +1144,7 @@ export async function auditPaths(inputPaths, suppliedOptions = {}) {
         ? "c2patool receives settings that disable remote-manifest fetching. Other local tool behavior is outside Agora's control."
         : "No network-capable verifier is invoked by default.",
       interpretation: "Findings are signals, not proof of authorship, safety, cleanliness, or complete provenance.",
+      modelLevelTextWatermark: "Not inspected. Detection requires the matching provider verifier or detector configuration, normalization rules, and enough eligible text; Unicode and metadata checks cannot answer it.",
     },
     options: {
       showValues: options.showValues,
@@ -1168,6 +1169,7 @@ function humanReport(report) {
     `Files: ${report.summary.fileCount}`,
     "Source mutation: none requested; byte hashes checked after inspection.",
     "Interpretation: findings are signals, not proof that content is AI-generated, human-written, clean, or safe.",
+    "Model-level text watermark: not inspected; matching provider verifier or detector configuration required.",
     "",
   ];
   for (const file of report.files) {
