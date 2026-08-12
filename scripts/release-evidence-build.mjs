@@ -9,6 +9,7 @@ import { reduceAdjudications } from "./adjudication-reducer.mjs";
 import { ingestBlindJudgments, BLIND_ORDER_SEED } from "./blind-judgment-ingest.mjs";
 import { evaluateBlindRun } from "./blind-summary.mjs";
 import { computeEvalTreeLock } from "./eval-locks.mjs";
+import { validateEvaluationProvenance } from "./eval-provenance-check.mjs";
 import {
   deriveReleaseEvidenceSummary,
   REQUIRED_HASHED_FILES,
@@ -69,6 +70,14 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
     judgmentsDirectory: join(evaluationRoot, "judgments"),
   });
   const records = reduceAdjudications({ manifest, adjudications });
+  const provenanceErrors = await validateEvaluationProvenance({
+    root: evaluationRoot,
+    manifest,
+    adjudications,
+  });
+  if (provenanceErrors.length) {
+    throw new Error(`evaluation provenance failed:\n- ${provenanceErrors.join("\n- ")}`);
+  }
   const evaluation = evaluateBlindRun({ manifest, records, releasePlan });
   if (!evaluation.pass) {
     throw new Error(`release gates failed:\n${JSON.stringify(evaluation, null, 2)}`);
@@ -117,6 +126,7 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
       ignored_user_config: true,
       ignored_repository_rules: true,
       ephemeral_sessions: true,
+      provenance_check_passed: true,
       order_seed: BLIND_ORDER_SEED,
       reduction_policy: "Agreed mapped winners use pass 1/2 mean scores; disagreements require pass 3 winner and scores; candidate vetoes and hard-gate failures are unioned across every valid pass.",
       ...timing,

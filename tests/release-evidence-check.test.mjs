@@ -37,6 +37,7 @@ test("execution evidence freezes model, isolation, baseline, and order seed", ()
       ignored_user_config: true,
       ignored_repository_rules: true,
       ephemeral_sessions: true,
+      provenance_check_passed: true,
     },
   };
   assert.deepEqual(validateEvidenceExecution(evidence), []);

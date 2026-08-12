@@ -31,7 +31,7 @@
     "prepack": "npm run release:check",
     "prepublishOnly": "npm run release:check",
     "release:check": "npm run check",
-    "test": "node --test tests/behavior-contract.test.mjs tests/hero-contract.test.mjs tests/conversion-context-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/invest-contract.test.mjs tests/blind-summary.test.mjs tests/blind-judge-prompt.test.mjs tests/blind-judgment-ingest.test.mjs tests/adjudication-reducer.test.mjs tests/release-evidence-check.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
+    "test": "node --test tests/behavior-contract.test.mjs tests/hero-contract.test.mjs tests/conversion-context-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/invest-contract.test.mjs tests/blind-summary.test.mjs tests/blind-judge-prompt.test.mjs tests/blind-judgment-ingest.test.mjs tests/adjudication-reducer.test.mjs tests/eval-provenance-check.test.mjs tests/release-evidence-check.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
     "validate": "node scripts/validate.mjs"
   },
   "engines": {

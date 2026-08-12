@@ -32,6 +32,7 @@ export const REQUIRED_HASHED_FILES = [
   PATHS.releasePlan,
   "evals/releases/locks.json",
   "scripts/adjudication-reducer.mjs",
+  "scripts/eval-provenance-check.mjs",
   "scripts/blind-judge-prompt.mjs",
   "scripts/blind-judgment-ingest.mjs",
   "scripts/blind-summary.mjs",
@@ -115,6 +116,7 @@ export const validateEvidenceExecution = (evidence) => {
     "ignored_user_config",
     "ignored_repository_rules",
     "ephemeral_sessions",
+    "provenance_check_passed",
   ]) {
     if (execution[flag] !== true) errors.push(`execution.${flag} must be true`);
   }
