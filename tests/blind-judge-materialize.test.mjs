@@ -13,9 +13,9 @@ test("materializer derives blind order and writes one opaque prompt", async () =
     const blindRoot = join(root, "blind");
     const evaluationRoot = join(root, "evaluation");
     await mkdir(join(blindRoot, "prompts"), { recursive: true });
-    for (const side of ["candidate", "incumbent"]) {
-      await mkdir(join(evaluationRoot, `${side}-outputs`), { recursive: true });
-      await writeFile(join(evaluationRoot, `${side}-outputs`, "case-one.md"), `${side} response\n`);
+    for (const [side, directory] of [["candidate", "generation-a-outputs"], ["incumbent", "generation-b-outputs"]]) {
+      await mkdir(join(evaluationRoot, directory), { recursive: true });
+      await writeFile(join(evaluationRoot, directory, "case-one.md"), `${side} response\n`);
     }
     const manifest = {
       hard_gate_definitions: { gate: "Preserve facts." },

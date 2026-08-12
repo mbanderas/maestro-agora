@@ -5,8 +5,6 @@ import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const BANNED_TYPOGRAPHY = /[\u2014\u2018\u2019\u201C\u201D]/u;
-const CANDIDATE_FREEZE_COMMIT = "4eb65795d57c88d30517a5dcb48d61f9de213f45";
-const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
 const SKILL_READ_MARKER = "## Accept direct invocation";
 const CONVERSION_READ_MARKER = "## Route the decision before drafting";
 const AGORA_SKILL_PATH = /(?:\.agents|\.codex|\.claude)[\\/]skills[\\/]agora[\\/](?:SKILL\.md|references[\\/]agora-conversion\.md)/i;
@@ -18,20 +16,34 @@ const names = async (path) => (await readdir(path, { withFileTypes: true }))
 
 const equalNames = (actual, expected) => JSON.stringify(actual) === JSON.stringify([...expected].sort());
 
+const GENERATION_LAYOUT = {
+  candidate: {
+    outputDirectory: "generation-a-outputs",
+    logPrefix: "generation-a",
+    skillRoot: "generation-a-work/.agents/skills/agora",
+  },
+  incumbent: {
+    outputDirectory: "generation-b-outputs",
+    logPrefix: "generation-b",
+    skillRoot: "generation-b-work/.agents/skills/agora",
+  },
+};
+
 const validateGenerationSide = async ({ root, ids, side, requireConversion, errors }) => {
-  const outputDirectory = join(root, `${side}-outputs`);
+  const layout = GENERATION_LAYOUT[side];
+  const outputDirectory = join(root, layout.outputDirectory);
   const logDirectory = join(root, "generation-logs");
   const expectedOutputs = ids.map((id) => `${id}.md`);
-  const expectedLogs = ids.map((id) => `${side}-${id}.json`);
+  const expectedLogs = ids.map((id) => `${layout.logPrefix}-${id}.json`);
   const actualOutputs = await names(outputDirectory);
-  const sideLogs = (await names(logDirectory)).filter((name) => name.startsWith(`${side}-`));
+  const sideLogs = (await names(logDirectory)).filter((name) => name.startsWith(`${layout.logPrefix}-`));
   if (!equalNames(actualOutputs, expectedOutputs)) errors.push(`${side} output filenames do not match manifest cases`);
   if (!equalNames(sideLogs, expectedLogs)) errors.push(`${side} generation log filenames do not match manifest cases`);
 
   for (const id of ids) {
     const [output, logText] = await Promise.all([
       readFile(join(outputDirectory, `${id}.md`), "utf8").catch(() => ""),
-      readFile(join(logDirectory, `${side}-${id}.json`), "utf8").catch(() => ""),
+      readFile(join(logDirectory, `${layout.logPrefix}-${id}.json`), "utf8").catch(() => ""),
     ]);
     if (!output.trim()) errors.push(`${side} output ${id} is empty`);
     if (BANNED_TYPOGRAPHY.test(output)) errors.push(`${side} output ${id} contains banned typography`);
@@ -42,10 +54,9 @@ const validateGenerationSide = async ({ root, ids, side, requireConversion, erro
         || audit.model !== "gpt-5.6-sol"
         || audit.fresh_context !== true
         || audit.skill_access !== true
-        || audit.skill_root !== `${side}-work/.agents/skills/agora`
-        || audit.source_commit !== (side === "candidate" ? CANDIDATE_FREEZE_COMMIT : BASELINE_COMMIT)
+        || audit.skill_root !== layout.skillRoot
         || audit.prompt_file !== `evals/blind/v1.7.0/prompts/${id}.md`
-        || audit.output_file !== `${side}-outputs/${id}.md`) {
+        || audit.output_file !== `${layout.outputDirectory}/${id}.md`) {
         errors.push(`${side} generation ${id} has invalid runtime attestation`);
       }
       if (requireConversion && audit.conversion_reference_access !== true) {

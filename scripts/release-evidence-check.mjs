@@ -14,6 +14,10 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const VERSION = "1.7.0";
 const CANDIDATE_FREEZE_COMMIT = "4eb65795d57c88d30517a5dcb48d61f9de213f45";
 const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
+const BASELINE_SKILL_TREE = {
+  file_count: 8,
+  sha256: "ff68706d00455ec6a35351bc34b8996506bbe3a95421c2bc5480bf150f1e99aa",
+};
 const SHA256 = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
 
@@ -170,10 +174,9 @@ const validateExternalArtifacts = ({ evidence, summary }) => {
     errors.push("external candidate skill copy does not match the released skill tree");
   }
   if (!incumbentSkill
-    || !Number.isInteger(incumbentSkill.file_count)
-    || incumbentSkill.file_count < 1
-    || !SHA256.test(incumbentSkill.sha256 ?? "")) {
-    errors.push("external incumbent skill copy attestation is invalid");
+    || incumbentSkill.file_count !== BASELINE_SKILL_TREE.file_count
+    || incumbentSkill.sha256 !== BASELINE_SKILL_TREE.sha256) {
+    errors.push("external incumbent skill copy does not match the v1.6.0 skill tree");
   }
   return errors;
 };

@@ -99,8 +99,8 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
   }
 
   const timing = await timingWindow(evaluationRoot, [
-    "candidate-outputs",
-    "incumbent-outputs",
+    "generation-a-outputs",
+    "generation-b-outputs",
     "generation-logs",
     "judge-prompts",
     "judgments",
@@ -135,10 +135,10 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
     artifact_hashes: artifactHashes,
     tree_hashes: treeHashes,
     external_artifacts: {
-      candidate_skill_copy: await externalTree(evaluationRoot, "candidate-work/.agents/skills/agora"),
-      incumbent_skill_copy: await externalTree(evaluationRoot, "incumbent-work/.agents/skills/agora"),
-      candidate_outputs: await externalTree(evaluationRoot, "candidate-outputs"),
-      incumbent_outputs: await externalTree(evaluationRoot, "incumbent-outputs"),
+      candidate_skill_copy: await externalTree(evaluationRoot, "generation-a-work/.agents/skills/agora"),
+      incumbent_skill_copy: await externalTree(evaluationRoot, "generation-b-work/.agents/skills/agora"),
+      candidate_outputs: await externalTree(evaluationRoot, "generation-a-outputs"),
+      incumbent_outputs: await externalTree(evaluationRoot, "generation-b-outputs"),
       generation_logs: await externalTree(evaluationRoot, "generation-logs"),
       raw_judgments: await externalTree(evaluationRoot, "judgments"),
       judge_logs: await externalTree(evaluationRoot, "judge-logs"),

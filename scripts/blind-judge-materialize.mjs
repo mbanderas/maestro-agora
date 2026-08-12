@@ -8,6 +8,10 @@ import { buildBlindJudgePrompt } from "./blind-judge-prompt.mjs";
 import { expectedBlindOrder } from "./blind-judgment-ingest.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const OUTPUT_DIRECTORY = {
+  candidate: "generation-a-outputs",
+  incumbent: "generation-b-outputs",
+};
 
 export async function materializeBlindJudgePrompt({ evaluationRoot, manifestPath, caseId, pass }) {
   const absoluteManifestPath = resolve(manifestPath);
@@ -19,8 +23,8 @@ export async function materializeBlindJudgePrompt({ evaluationRoot, manifestPath
   const [template, originalTask, responseA, responseB] = await Promise.all([
     readFile(join(blindRoot, "judge-instructions.md"), "utf8"),
     readFile(resolve(blindRoot, item.prompt_file), "utf8"),
-    readFile(join(evaluationRoot, `${order[0]}-outputs`, `${caseId}.md`), "utf8"),
-    readFile(join(evaluationRoot, `${order[1]}-outputs`, `${caseId}.md`), "utf8"),
+    readFile(join(evaluationRoot, OUTPUT_DIRECTORY[order[0]], `${caseId}.md`), "utf8"),
+    readFile(join(evaluationRoot, OUTPUT_DIRECTORY[order[1]], `${caseId}.md`), "utf8"),
   ]);
   const prompt = buildBlindJudgePrompt({
     manifest,

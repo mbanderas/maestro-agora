@@ -12,34 +12,32 @@ const adjudications = [{ id: "case-one", passes: [{ pass: 1 }, { pass: 2 }] }];
 async function withEvidence(callback) {
   const root = await mkdtemp(join(tmpdir(), "agora-eval-provenance-"));
   try {
-    for (const directory of ["candidate-outputs", "incumbent-outputs", "generation-logs", "judge-prompts", "judgments", "judge-logs"]) {
+    for (const directory of ["generation-a-outputs", "generation-b-outputs", "generation-logs", "judge-prompts", "judgments", "judge-logs"]) {
       await mkdir(join(root, directory));
     }
-    await writeFile(join(root, "candidate-outputs", "case-one.md"), "Candidate response\n");
-    await writeFile(join(root, "incumbent-outputs", "case-one.md"), "Incumbent response\n");
-    await writeFile(join(root, "generation-logs", "candidate-case-one.json"), JSON.stringify({
+    await writeFile(join(root, "generation-a-outputs", "case-one.md"), "Candidate response\n");
+    await writeFile(join(root, "generation-b-outputs", "case-one.md"), "Incumbent response\n");
+    await writeFile(join(root, "generation-logs", "generation-a-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-subagent",
       model: "gpt-5.6-sol",
       fresh_context: true,
       skill_access: true,
       conversion_reference_access: true,
-      skill_root: "candidate-work/.agents/skills/agora",
-      source_commit: "4eb65795d57c88d30517a5dcb48d61f9de213f45",
+      skill_root: "generation-a-work/.agents/skills/agora",
       prompt_file: "evals/blind/v1.7.0/prompts/case-one.md",
-      output_file: "candidate-outputs/case-one.md",
+      output_file: "generation-a-outputs/case-one.md",
     }));
-    await writeFile(join(root, "generation-logs", "incumbent-case-one.json"), JSON.stringify({
+    await writeFile(join(root, "generation-logs", "generation-b-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-subagent",
       model: "gpt-5.6-sol",
       fresh_context: true,
       skill_access: true,
       conversion_reference_access: false,
-      skill_root: "incumbent-work/.agents/skills/agora",
-      source_commit: "524b7927648c4fce52290e9d680e1d3a3109987c",
+      skill_root: "generation-b-work/.agents/skills/agora",
       prompt_file: "evals/blind/v1.7.0/prompts/case-one.md",
-      output_file: "incumbent-outputs/case-one.md",
+      output_file: "generation-b-outputs/case-one.md",
     }));
     for (const pass of [1, 2]) {
       await writeFile(join(root, "judge-prompts", `case-one-pass${pass}.md`), "Blind prompt\n");
@@ -66,19 +64,18 @@ test("complete isolated generation and blind-judge provenance passes", async () 
 
 test("missing conversion read, banned typography, and judge skill access fail", async () => {
   await withEvidence(async (root) => {
-    await writeFile(join(root, "generation-logs", "candidate-case-one.json"), JSON.stringify({
+    await writeFile(join(root, "generation-logs", "generation-a-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-subagent",
       model: "gpt-5.6-sol",
       fresh_context: true,
       skill_access: true,
       conversion_reference_access: false,
-      skill_root: "candidate-work/.agents/skills/agora",
-      source_commit: "4eb65795d57c88d30517a5dcb48d61f9de213f45",
+      skill_root: "generation-a-work/.agents/skills/agora",
       prompt_file: "evals/blind/v1.7.0/prompts/case-one.md",
-      output_file: "candidate-outputs/case-one.md",
+      output_file: "generation-a-outputs/case-one.md",
     }));
-    await writeFile(join(root, "candidate-outputs", "case-one.md"), "Invalid \u2014 output\n");
+    await writeFile(join(root, "generation-a-outputs", "case-one.md"), "Invalid \u2014 output\n");
     await writeFile(join(root, "judge-logs", "case-one-pass1.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-subagent",
