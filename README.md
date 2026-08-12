@@ -122,6 +122,29 @@ Add modifiers when the subject or asset needs them:
 
 In Codex, `$agora` and the skills picker can also select the installed skill. Other hosts may expose skills through a picker or mention syntax. Asking the agent to use the Agora skill remains portable.
 
+## Publication privacy and provenance
+
+Agora writes copy. It does not create SVG, PNG, JPEG, PDF, DOCX, or PPTX files by itself. Other document, presentation, PDF, site, design, or image tools may place Agora copy into those artifacts.
+
+When you explicitly request a publication audit, Agora can inspect the local artifact before it leaves your control:
+
+```text
+/agora publication audit Inspect ./launch-deck.pptx before I share it.
+```
+
+Run the packaged read-only inspector directly when you want a deterministic report:
+
+```sh
+npx -y -p @maestroagora/agora@latest agora-publication-audit ./launch-deck.pptx
+npx -y -p @maestroagora/agora@latest agora-publication-audit ./public-assets --json --output audit.json
+```
+
+The inspector covers configured hidden or control characters in text, selected HTML and SVG metadata, Office properties and review material, PDF metadata, PNG and JPEG metadata containers, and C2PA carrier hints. ExifTool adds broader read-only PDF and image metadata coverage when it is already installed. `c2patool` verification is opt-in through `--verify-c2pa`, with remote-manifest fetching disabled by supplied settings.
+
+Source files are read only and compared by SHA-256 before and after inspection. Sensitive values and absolute paths are redacted by default. Missing or partial coverage is reported as `UNKNOWN`.
+
+This is publication hygiene, not a watermark remover or authorship detector. A result cannot prove that content is AI-generated, human-written, anonymous, clean, or safe. Claude's documented model-level text marking is not equivalent to unusual Unicode or ordinary file metadata.
+
 ## Routing model
 
 Agora chooses a primary mode first, then the publication surface, then any domain or asset modifiers. `VOICE` enters afterward and preserves your required language and content choices.
@@ -314,11 +337,15 @@ skills/agora/
 |-- SKILL.md
 |-- agents/
 |   `-- openai.yaml
+|-- scripts/
+|   `-- publication-audit.mjs
 `-- references/
     |-- agora-case-studies.md
+    |-- agora-conversion.md
     |-- agora-craft.md
     |-- agora-invest.md
     |-- agora-marketing.md
+    |-- agora-publication.md
     |-- agora-science.md
     `-- agora-voice.md
 ```
@@ -331,7 +358,9 @@ skills/agora/
 - `agora-case-studies.md` adds case structure, results, and optional attribution, permission, and confidentiality review.
 - `agora-conversion.md` adds bounded conversion priors, outcome matching, self-serve and enterprise route design, pricing decision contracts, decision-adjacent proof, contradiction handling, and experiment interpretation for funnel surfaces.
 - `agora-invest.md` adds fundraising, diligence, allocation, and optional claim-review procedures.
+- `agora-publication.md` adds explicit read-only publication privacy and provenance review for local artifacts.
 - `agora-voice.md` adds measured voice profiles and user-controlled profile use.
+- `publication-audit.mjs` produces a deterministic, source-preserving inspection report without a cleaning operation.
 
 ## Public-package hygiene
 
@@ -339,7 +368,7 @@ Research informed Agora, but research custody is separate from distribution.
 
 The public repository and npm package must not contain raw or corrected transcripts, caption files, supplied PDFs or office documents, audio, video, private source identities, model-output scratch, research working files, local paths, or assigned secrets.
 
-`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` adds the fail-closed v1.7 behavioral evidence verifier. `npm pack` and `npm publish` run that complete release gate through `prepack` and `prepublishOnly`.
+`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` adds the fail-closed behavioral evidence verifier. `npm pack` and `npm publish` run that complete release gate through `prepack` and `prepublishOnly`.
 
 The versioned directories under `evals/blind/` are public pairwise-release artifacts, not permanently secret holdouts. `v1.2.0`, `v1.4.0`, `v1.5.0`, and `v1.7.0` are frozen by exact tree hashes in `evals/releases/locks.json`; validation fails on additions, deletions, or edits.
 
@@ -363,6 +392,7 @@ The release gate checks skill structure, routing contracts, user-authority bound
 
 | Version | What changed |
 |---|---|
+| 1.8.0 | Adds opt-in publication privacy and provenance review plus a packaged read-only audit CLI. Reports configured hidden Unicode, document and image metadata, Office review material, and C2PA carrier or validation signals without changing source files. Redacts sensitive values and paths by default, preserves unknown coverage, and makes no watermark-removal or authorship claim. |
 | 1.7.0 | Adds a progressively loaded conversion-context reference with bounded conversion priors, downstream outcome matching, self-serve and enterprise route design, pricing decision contracts, proof placement, contradiction handling, and fail-closed behavioral release evidence. Tightens closed-world fact preservation and limits written GEO/AEO requirements to indexable public work. |
 | 1.6.0 | Expands user control across every writing mode. User-selected claims, fiction, urgency, attribution, profile use, and publication choices now control the draft. Claim, evidence, permission, disclosure, confidentiality, diligence, and compliance review are opt-in. Adds a user-responsibility disclaimer and an accurate privacy notice. |
 | 1.5.0 | Hardens `INVEST` across fundraising, diligence, and capital allocation. Adds an investment claim ledger, metric separations, asset-specific procedures, decision-led questions, objection handling, defensibility analysis, truthful urgency and commitment language, modifier composition, and current-verification boundaries. Separates real projects from fictional mock and concept-portfolio routes, and permits clearly disclosed invention for mock and hypothetical articles. Adds a customer-language boundary that keeps internal checking terms out of ordinary public copy while preserving them where scientific, methodological, audit, legal, compliance, diligence, or technical work needs them. Expands the blind corpus from 60 to 86 cases. Adds a mandatory public-tree and package hygiene gate that blocks research, transcripts, supplied private documents, raw model outputs, local paths, secrets, unexpected binaries, and private source identities. |

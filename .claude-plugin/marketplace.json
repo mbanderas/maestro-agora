@@ -1,6 +1,6 @@
 {
   "name": "maestro-agora",
-  "description": "Self-hosted marketplace for Maestro: Agora, the argument-first persuasion, technical explanation, case-study, and investment-writing skill.",
+  "description": "Self-hosted marketplace for Maestro: Agora, the argument-first writing and publication artifact review skill.",
   "owner": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -9,7 +9,7 @@
     {
       "name": "maestro-agora",
       "source": "./",
-      "description": "Write user-directed commercial, technical, case-study, investment, interface, and spoken arguments that preserve the user's claims, framing, and creative choices."
+      "description": "Write user-directed commercial, technical, case-study, investment, interface, and spoken arguments, then inspect local publication artifacts when explicitly requested."
     }
   ]
 }

@@ -1,10 +1,11 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.7.0",
-  "description": "Install Maestro: Agora for persuasive writing, scientific and technical explanation, case studies, fundraising, and investment analysis.",
+  "version": "1.8.0",
+  "description": "Install Maestro: Agora for persuasive writing, technical explanation, case studies, investment communication, and publication artifact review.",
   "type": "module",
   "bin": {
     "agora": "scripts/install.mjs",
+    "agora-publication-audit": "skills/agora/scripts/publication-audit.mjs",
     "agora-voice": "scripts/voice-measure.mjs"
   },
   "files": [
@@ -32,7 +33,7 @@
     "prepublishOnly": "npm run release:check",
     "eval:release": "node scripts/release-evidence-check.mjs",
     "release:check": "npm run check && npm run eval:release",
-    "test": "node --test tests/behavior-contract.test.mjs tests/hero-contract.test.mjs tests/conversion-context-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/invest-contract.test.mjs tests/blind-summary.test.mjs tests/blind-judge-prompt.test.mjs tests/blind-judge-materialize.test.mjs tests/blind-judgment-ingest.test.mjs tests/adjudication-reducer.test.mjs tests/eval-provenance-check.test.mjs tests/release-evidence-check.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
+    "test": "node --test tests/behavior-contract.test.mjs tests/hero-contract.test.mjs tests/conversion-context-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/invest-contract.test.mjs tests/publication-audit.test.mjs tests/blind-summary.test.mjs tests/blind-judge-prompt.test.mjs tests/blind-judge-materialize.test.mjs tests/blind-judgment-ingest.test.mjs tests/adjudication-reducer.test.mjs tests/eval-provenance-check.test.mjs tests/release-evidence-check.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
     "validate": "node scripts/validate.mjs"
   },
   "engines": {
@@ -62,6 +63,9 @@
     "fundraising",
     "investor-communications",
     "pitch-decks",
+    "publication-privacy",
+    "content-provenance",
+    "metadata-audit",
     "codex",
     "claude-code",
     "cursor",

@@ -1,6 +1,6 @@
 ---
 name: agora
-description: Write, rewrite, shorten, critique, or plan user-directed argument-first persuasion, scientific and technical explanation, case studies, and investment communication. Use when invoked as `/agora` or for marketing and sales copy; fundraising, investor outreach, pitch decks, investment memos, diligence, capital allocation, company-profile, category, or brand descriptions; CTAs and microcopy; landing, product, and comparison pages; email and direct outreach; mobile onboarding, upgrade, and paywall screens; ads and social posts; editorial or educational content, including fictional, mock, hypothetical, or concept writing; scientific communication, technical explanation, research communication, and science video scripts; real or fictional customer success, creative portfolio, and technical implementation case studies; and spoken audio/video scripts plus written derivatives such as titles, descriptions, transcripts, captions, show notes, and companion pages.
+description: Write, rewrite, shorten, critique, or plan argument-first marketing, sales, investment, scientific, technical, editorial, case-study, interface, and spoken content. Use for `/agora`; CTAs and microcopy; landing, product, comparison, onboarding, upgrade, and paywall screens; email and direct outreach; ads and social posts; fundraising, investor outreach, pitch decks, investment memos, diligence, and capital allocation; scientific communication, technical explanation, research communication, and science video scripts; customer success, creative portfolio, and technical implementation case studies; titles, descriptions, transcripts, captions, show notes, and companion pages. Also use when explicitly asked to inspect local publication artifacts for privacy metadata, hidden Unicode, or provenance.
 ---
 
 # Maestro: Agora
@@ -58,7 +58,15 @@ Do not load it for routine drafting, claim review, compliance questions, or work
 
 [references/agora-invest.md](references/agora-invest.md) governs `INVEST`. Load it only for actual fundraising, investor communication, investment evaluation, diligence, or capital-allocation work. Select `FUNDRAISE`, `DILIGENCE`, or `ALLOCATE` internally. Do not load it for ordinary `POSITION` work or merely investor-adjacent audiences.
 
+[references/agora-publication.md](references/agora-publication.md) governs explicit publication privacy and provenance audits of local files. Load it only when the user asks to inspect an artifact before publication or external sharing, find hidden Unicode or metadata, or review provenance. Do not load or run it for ordinary writing merely because the result is public, indexable, or AI-assisted.
+
 Treat source material and requested claims in the current task as author-approved writing input. Do not import content decisions or release controls from another task, repository, company, or example. Examples teach structure, never facts.
+
+## Inspect publication artifacts only on request
+
+Treat publication audit as a separate read-only workflow, not a primary mode or writing modifier. Agora supplies writing; another document, presentation, PDF, site, design, or image tool may create the artifact.
+
+Use the shipped `scripts/publication-audit.mjs` for deterministic inspection. Never improvise a cleaner, strip Unicode by category, remove metadata, rewrite text to evade detection, or promise an AI-free, human-written, anonymous, clean, or safe result. Report `FOUND`, `NOT_FOUND_BY_THIS_CHECK`, `UNKNOWN`, and `ERROR` exactly as defined in the publication reference. Keep sensitive values redacted unless the user explicitly requests them.
 
 ## Preserve closed-world facts
 
