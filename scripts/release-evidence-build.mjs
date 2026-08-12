@@ -102,6 +102,7 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
     "candidate-outputs",
     "incumbent-outputs",
     "generation-logs",
+    "judge-prompts",
     "judgments",
     "judge-logs",
   ]);
@@ -119,6 +120,8 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
       generator_model: "gpt-5.6-sol",
       judge_model: "gpt-5.6-sol",
       codex_cli_version: "0.144.0",
+      generator_runtime: "codex-cli",
+      judge_runtime: "codex-subagent",
       sandbox: "read-only",
       fresh_context_per_generation: true,
       fresh_context_per_judgment: true,
@@ -141,6 +144,7 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
       generation_logs: await externalTree(evaluationRoot, "generation-logs"),
       raw_judgments: await externalTree(evaluationRoot, "judgments"),
       judge_logs: await externalTree(evaluationRoot, "judge-logs"),
+      judge_prompts: await externalTree(evaluationRoot, "judge-prompts"),
     },
     summary: deriveReleaseEvidenceSummary({ records, adjudications, evaluation }),
   };

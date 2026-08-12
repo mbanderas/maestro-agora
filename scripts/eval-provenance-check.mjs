@@ -47,16 +47,31 @@ export async function validateEvaluationProvenance({ root, manifest, adjudicatio
   await validateGenerationSide({ root, ids, side: "incumbent", requireConversion: false, errors });
 
   const expectedJudgments = adjudications.flatMap((item) => item.passes.map((pass) => `${item.id}-pass${pass.pass}.json`));
-  const expectedJudgeLogs = adjudications.flatMap((item) => item.passes.map((pass) => `${item.id}-pass${pass.pass}.log`));
+  const expectedJudgePrompts = adjudications.flatMap((item) => item.passes.map((pass) => `${item.id}-pass${pass.pass}.md`));
+  const expectedJudgeLogs = adjudications.flatMap((item) => item.passes.map((pass) => `${item.id}-pass${pass.pass}.json`));
   const actualJudgments = await names(join(root, "judgments"));
+  const actualJudgePrompts = await names(join(root, "judge-prompts"));
   const actualJudgeLogs = await names(join(root, "judge-logs"));
   if (!equalNames(actualJudgments, expectedJudgments)) errors.push("raw judgment filenames do not match normalized passes");
+  if (!equalNames(actualJudgePrompts, expectedJudgePrompts)) errors.push("blind judge prompt filenames do not match normalized passes");
   if (!equalNames(actualJudgeLogs, expectedJudgeLogs)) errors.push("judge log filenames do not match normalized passes");
   for (const logName of expectedJudgeLogs) {
     const log = await readFile(join(root, "judge-logs", logName), "utf8").catch(() => "");
     if (!log.trim()) errors.push(`judge log ${logName} is empty`);
     if (AGORA_SKILL_PATH.test(log) || log.includes(SKILL_READ_MARKER) || log.includes(CONVERSION_READ_MARKER)) {
       errors.push(`judge log ${logName} contains Agora skill access evidence`);
+    }
+    try {
+      const audit = JSON.parse(log);
+      if (audit.schema_version !== 1
+        || audit.runtime !== "codex-subagent"
+        || audit.model !== "gpt-5.6-sol"
+        || audit.fresh_context !== true
+        || audit.skill_access !== false) {
+        errors.push(`judge log ${logName} has invalid runtime attestation`);
+      }
+    } catch {
+      errors.push(`judge log ${logName} is not valid JSON`);
     }
   }
   return errors;

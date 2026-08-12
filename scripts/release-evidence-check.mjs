@@ -34,6 +34,7 @@ export const REQUIRED_HASHED_FILES = [
   "scripts/adjudication-reducer.mjs",
   "scripts/eval-provenance-check.mjs",
   "scripts/blind-judge-prompt.mjs",
+  "scripts/blind-judge-materialize.mjs",
   "scripts/blind-judgment-ingest.mjs",
   "scripts/blind-summary.mjs",
   "scripts/release-evidence-check.mjs",
@@ -101,6 +102,8 @@ export const validateEvidenceExecution = (evidence) => {
   if (!COMMIT.test(commits.judge_protocol ?? "")) errors.push("evidence judge protocol commit is invalid");
   if (execution.generator_model !== "gpt-5.6-sol") errors.push("generator model must be gpt-5.6-sol");
   if (execution.judge_model !== "gpt-5.6-sol") errors.push("judge model must be gpt-5.6-sol");
+  if (execution.generator_runtime !== "codex-cli") errors.push("generator runtime must be codex-cli");
+  if (execution.judge_runtime !== "codex-subagent") errors.push("judge runtime must be codex-subagent");
   if (!/^\d+\.\d+\.\d+$/.test(execution.codex_cli_version ?? "")) errors.push("Codex CLI version is invalid");
   if (execution.order_seed !== BLIND_ORDER_SEED) errors.push("blind order seed does not match protocol");
   if (execution.sandbox !== "read-only") errors.push("evaluation sandbox must be read-only");
@@ -152,6 +155,7 @@ const validateExternalArtifacts = ({ evidence, summary }) => {
     raw_judgments: summary.adjudication_pass_count,
     generation_logs: summary.case_count * 2,
     judge_logs: summary.adjudication_pass_count,
+    judge_prompts: summary.adjudication_pass_count,
   };
   for (const [name, expectedCount] of Object.entries(expectedCounts)) {
     const artifact = evidence.external_artifacts?.[name];

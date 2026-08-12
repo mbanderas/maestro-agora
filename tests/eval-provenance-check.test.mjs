@@ -12,7 +12,7 @@ const adjudications = [{ id: "case-one", passes: [{ pass: 1 }, { pass: 2 }] }];
 async function withEvidence(callback) {
   const root = await mkdtemp(join(tmpdir(), "agora-eval-provenance-"));
   try {
-    for (const directory of ["candidate-outputs", "incumbent-outputs", "generation-logs", "judgments", "judge-logs"]) {
+    for (const directory of ["candidate-outputs", "incumbent-outputs", "generation-logs", "judge-prompts", "judgments", "judge-logs"]) {
       await mkdir(join(root, directory));
     }
     await writeFile(join(root, "candidate-outputs", "case-one.md"), "Candidate response\n");
@@ -23,8 +23,15 @@ async function withEvidence(callback) {
     );
     await writeFile(join(root, "generation-logs", "incumbent-case-one.log"), "## Accept direct invocation\n");
     for (const pass of [1, 2]) {
+      await writeFile(join(root, "judge-prompts", `case-one-pass${pass}.md`), "Blind prompt\n");
       await writeFile(join(root, "judgments", `case-one-pass${pass}.json`), "{}\n");
-      await writeFile(join(root, "judge-logs", `case-one-pass${pass}.log`), "Blind evaluator completed.\n");
+      await writeFile(join(root, "judge-logs", `case-one-pass${pass}.json`), JSON.stringify({
+        schema_version: 1,
+        runtime: "codex-subagent",
+        model: "gpt-5.6-sol",
+        fresh_context: true,
+        skill_access: false,
+      }));
     }
     await callback(root);
   } finally {
@@ -42,7 +49,14 @@ test("missing conversion read, banned typography, and judge skill access fail", 
   await withEvidence(async (root) => {
     await writeFile(join(root, "generation-logs", "candidate-case-one.log"), "## Accept direct invocation\n");
     await writeFile(join(root, "candidate-outputs", "case-one.md"), "Invalid \u2014 output\n");
-    await writeFile(join(root, "judge-logs", "case-one-pass1.log"), ".agents/skills/agora/SKILL.md\n");
+    await writeFile(join(root, "judge-logs", "case-one-pass1.json"), JSON.stringify({
+      schema_version: 1,
+      runtime: "codex-subagent",
+      model: "gpt-5.6-sol",
+      fresh_context: true,
+      skill_access: false,
+      path: ".agents/skills/agora/SKILL.md",
+    }));
     const errors = await validateEvaluationProvenance({ root, manifest, adjudications });
     assert.match(errors.join("\n"), /banned typography/);
     assert.match(errors.join("\n"), /conversion reference read evidence/);

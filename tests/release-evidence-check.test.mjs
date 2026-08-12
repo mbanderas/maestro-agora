@@ -27,6 +27,8 @@ test("execution evidence freezes model, isolation, baseline, and order seed", ()
       generator_model: "gpt-5.6-sol",
       judge_model: "gpt-5.6-sol",
       codex_cli_version: "0.144.0",
+      generator_runtime: "codex-cli",
+      judge_runtime: "codex-subagent",
       order_seed: BLIND_ORDER_SEED,
       sandbox: "read-only",
       started_at_utc: "2026-08-12T10:00:00.000Z",
