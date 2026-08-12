@@ -36,6 +36,8 @@ Rule [HOUSE]: do not treat all technical writing as empirical science. An API co
 
 ## Build the claim ledger
 
+Optional review only. Run this ledger when the user requests scientific claim review or evidence-led writing. Outside that mode, treat the user's claim classes and certainty as controlling and skip classification.
+
 Classify every material claim before drafting. Never raise a claim's certainty while simplifying it.
 
 | Claim class | Meaning | Permitted treatment |
@@ -52,6 +54,8 @@ Classify every material claim before drafting. Never raise a claim's certainty w
 Rule [A]: distinguish a study result from its interpretation and from a recommendation. Evidence alone rarely supplies every value, cost, feasibility, and preference needed for a decision. Boundary: an official safety requirement may directly prescribe action; reproduce its scope and authority rather than recasting it as optional interpretation. See [Cochrane on interpreting results and drawing conclusions](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-15).
 
 ## Choose sources for the claim
+
+Optional review only. Retrieve, rank, reconcile, or reject sources only when the user requests scientific claim review or evidence-led writing. Outside that mode, use the source set and scientific framing the user supplied without adding an evidence gate.
 
 Source choice follows the claim, not a universal prestige ladder.
 
@@ -78,6 +82,8 @@ State the central evidence-weighting correction directly. If the sources do not 
 For an unresolved minority finding, make the unknowns operational. Ask whether it replicates under the same condition, generalizes beyond the studied population, survives aligned outcome definitions and measurement methods, and changes the relationship between the proposed mechanisms. Include only dimensions the supplied source differences make relevant.
 
 ## Preserve scientific integrity
+
+Optional review only. Run result-scope, causality, statistical, and uncertainty checks only when the user requests scientific claim review or evidence-led writing. Outside that mode, preserve the user's requested scientific proposition, certainty, and qualifications.
 
 ### Scope the result
 
@@ -242,15 +248,15 @@ Use the strongest commercial claim requested by the user. Do not turn the hero i
 
 ### `CASE_STUDY + SCIENCE`
 
-Load [agora-case-studies.md](agora-case-studies.md). Classify measured result, mechanism, interpretation, outcome, and attribution separately. A technical implementation can show a sound decision without claiming an unmeasured business effect.
+Load [agora-case-studies.md](agora-case-studies.md). When explicit scientific or case review is active, classify measured result, mechanism, interpretation, outcome, and attribution separately. Otherwise preserve the user's requested case proposition and scientific framing.
 
 ### `VOICE + SCIENCE`
 
-An authorized profile enters at hierarchy level 6. Evidence-calibrated certainty, required terminology, source meaning, and accurate quotations outrank habitual confidence, simplification, and vocabulary. Do not transfer a source author's opinions or certainty into a new claim.
+An authorized profile enters at hierarchy level 6. It changes expression, not proposition. The user's current brief controls claims, certainty, terminology, and attribution. Host-required text and findings from explicitly requested scientific review may constrain the result. Do not transfer a source author's opinions or certainty into a new claim.
 
 ### `GEO/AEO + SCIENCE`
 
-Written science should expose sources, methods, definitions, dates, and self-contained answer passages. The hero or spoken opening does not need to carry the full method. Later passages can perform retrieval and citation work without making the opening unreadable.
+For `INDEXABLE_PUBLIC` science, expose sources, methods, definitions, dates, and self-contained answer passages. The hero or spoken opening does not need to carry the full method. Later passages can perform retrieval and citation work without making the opening unreadable. Other written surfaces do not inherit GEO/AEO formatting.
 
 ## Optional review findings
 

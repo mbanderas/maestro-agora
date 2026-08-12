@@ -44,6 +44,28 @@ test("hero doctrine separates brief fidelity from persuasive optimization", () =
   assert.match(craft, /`Know why the order was flagged` promises inspectable information/);
 });
 
+test("sales rewrites preserve delivery roles, burden, and source-relative strengths", () => {
+  assert.match(skill, /apply `Delivery-model ownership` and, when rewriting supplied copy, `Rewrite regression gate`/);
+  assert.match(skill, /Preserve user-selected framing/);
+  assert.match(skill, /rewrite regression gate when rewriting supplied copy/);
+
+  assert.match(marketing, /### Delivery-model ownership/);
+  assert.match(marketing, /This is source and offer fidelity, not claim, compliance, or moral review/);
+  assert.match(marketing, /Do not invent or magnify preparation, training, review cycles, handoffs, approvals, dependencies, response times, frequency, or internal coordination/);
+  assert.match(marketing, /A buyer-led headline can be valid when an adjacent element makes provider ownership clear/);
+  assert.match(marketing, /Repair responsibility locally/);
+
+  assert.match(marketing, /### Rewrite regression gate/);
+  assert.match(marketing, /A candidate can pass every standalone rule and still weaken the source/);
+  assert.match(marketing, /supported promise and selected certainty/);
+  assert.match(marketing, /buyer effort by type, amount, frequency, timing, dependencies, approvals, and coordination/);
+  assert.match(marketing, /Keep the source when the candidate produces no material improvement or introduces a material regression/);
+  assert.match(marketing, /Improve your brand's chances of becoming part of the answer/);
+
+  assert.match(craft, /delivery model, including what the provider performs and what the buyer must genuinely supply/);
+  assert.match(craft, /For rewrites, run `Rewrite regression gate`/);
+});
+
 test("hero is evaluated as a distributed composition", () => {
   for (const element of [
     "headline",

@@ -168,6 +168,7 @@ Determine:
 - traffic source and upstream promise;
 - one commercial action the hero must earn;
 - actual CTA destination and commitment;
+- delivery model, including what the provider performs and what the buyer must genuinely supply, decide, or approve;
 - offer facts and mechanism;
 - strongest proof;
 - material price, scope, eligibility, safety, or commitment limits;
@@ -222,6 +223,8 @@ Passing the floor does not make the copy good. Among survivors, optimize for:
 - awareness, sophistication, traffic, and composition fit.
 
 Rule [HOUSE]: do not award extra quality merely because a safe candidate contains more evidence language. Once the hard gates pass, additional proof or qualification helps only when it improves belief, orientation, or the next decision.
+
+For rewrites, run `Rewrite regression gate` from [agora-marketing.md](agora-marketing.md) before generating new routes. For `SELL`, apply `Delivery-model ownership` from the same authority. These are source-fidelity checks; user-selected framing remains controlling.
 
 ### Draft the boldest requested promise first
 
@@ -279,7 +282,7 @@ Keep a material limit close enough to govern the claim. Use the headline, subhea
 
 Rule [HOUSE]: the lower an element sits, the less it can repair a misleading first impression. A qualification directly below the CTA can bound eligibility. A methodology note several screens later cannot repair an unsupported outcome in the headline.
 
-Written GEO/AEO applies to the page and coherent passages. The hero can optimize for attention while later sections provide definitions, sources, scope, methodology, and quotable answers. Do not make every hero sentence independently extractable.
+For an `INDEXABLE_PUBLIC` page, written GEO/AEO applies to the page and coherent passages. The hero can optimize for attention while later sections provide definitions, sources, scope, methodology, and quotable answers. Do not make every hero sentence independently extractable. Other surfaces do not inherit this pass.
 
 ### Permanent RivalScope regression fixture
 
@@ -426,6 +429,16 @@ Before any threat appears in copy, all of the following must hold. This is a sys
 ### Emotion from a fact set with no outcome data
 
 This is the section that matters most, because it is Agora's normal condition. Assume the available facts contain product mechanics, workflow steps, interfaces, limits, permissions, prices, dates, terms, error states, and reversibility conditions, and contain no outcome data, no testimonials, no prevalence claims, no market claims, and no evidence of what any user feels.
+
+For a user-requested identity-led sensory opening, use this composition contract:
+
+1. The headline invites recognition of a reader identity or self-conception. It does not coin a product name, name a product attribute, or restate the note list. When aesthetic direction is the only identity input, use a reader callout such as `For those who keep their own hours` rather than product-title syntax.
+2. The subhead contains the supplied batch status, product type, complete note set, and provenance. Never turn aesthetic direction into a creation fact. `Composed in shadow`, `made for midnight`, and similar phrases invent circumstances of creation.
+3. The sensory paragraph does more than repeat the supplied note list. Use ordinary material adjectives and at least two relations or contrasts among the named materials, while avoiding effects on the wearer or audience. For cedar, black tea, and iris, `dry wood`, `tannic tea`, and `cool, powder-soft iris` are sensory descriptions; mood, attraction, projection, longevity, and performance remain unsupported effects.
+4. The factual detail line preserves every supplied size, product type, provenance, and price.
+5. The action uses `Buy` when the requested destination is purchase and no more specific user-required label overrides it.
+
+Check all five visible elements against this contract before returning the opening.
 
 That fact set is sufficient. The move is to stop treating emotion as an adjective layer over evidence and start exposing the consequential structure already inside the facts.
 

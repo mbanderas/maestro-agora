@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "path": "evals/blind/v1.2.0",
+      "file_count": 18,
+      "sha256": "170ec80457e48af50fb35cd5ddcbdd64cd91882bf71484b3bf971a91a395d03e"
+    },
+    {
+      "path": "evals/blind/v1.4.0",
+      "file_count": 61,
+      "sha256": "737ee92c2a2f48ab40e01e70767d634d5c976ac5007558065d5fff09d9ca10b5"
+    },
+    {
+      "path": "evals/blind/v1.5.0",
+      "file_count": 87,
+      "sha256": "eeeca3d14148957dfe8021b7701311ea91e51b65c264af1e63ef59c6620f0e99"
+    },
+    {
+      "path": "evals/blind/v1.7.0",
+      "file_count": 14,
+      "sha256": "4b38d9e7543a7ef9ef27ad405677e13e53589a0c5f5b0aaf5b386c8d18aeaf44"
+    }
+  ]
+}

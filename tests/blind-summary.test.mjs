@@ -1,19 +1,48 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   classifyBlindFindings,
+  evaluateBlindRun,
   isMaterialLegacyRegression,
   passesDomainQuality,
   protectedDrops,
+  requiredDimensionsForCase,
   summarizeDomainQuality,
+  validateAdjudicationRecords,
 } from "../scripts/blind-summary.mjs";
-import { readFile } from "node:fs/promises";
 
-const manifest = JSON.parse(await readFile(new URL("../evals/blind/v1.5.0/manifest.json", import.meta.url), "utf8"));
+const historical = JSON.parse(await readFile(new URL("../evals/blind/v1.5.0/manifest.json", import.meta.url), "utf8"));
+const historicalReleasePlan = JSON.parse(await readFile(new URL("../evals/releases/v1.5.0.gates.json", import.meta.url), "utf8"));
+const dimensions = [
+  "truth-discipline",
+  "first-read-comprehension",
+  "concrete-action-clarity",
+  "source-promise-preservation",
+  "buyer-effort-preservation",
+  "friction-preservation",
+  "emotional-desirability",
+  "delivery-role-preservation",
+];
+const manifest = {
+  rubric: {
+    dimensions,
+    domain_dimensions: { commercial: ["composition-fit"] },
+  },
+  cases: [
+    { id: "case-a", domain_dimensions: ["commercial"], critical: false },
+    { id: "case-b", domain_dimensions: ["commercial"], critical: true },
+  ],
+};
+
+const scores = (overrides = {}) => Object.fromEntries([
+  ...dimensions.map((dimension) => [dimension, 5]),
+  ["composition-fit", 5],
+].map(([dimension, value]) => [dimension, overrides[dimension] ?? value]));
 
 const record = ({
-  id = "case",
-  winner = "incumbent",
+  id = "case-a",
+  winner = "candidate",
   candidate = {},
   incumbent = {},
   vetoes = [],
@@ -24,110 +53,151 @@ const record = ({
     winner,
     candidateVetoes: vetoes,
     candidateHardGateFailures: hardGates,
-    candidateScores: {
-      "truth-discipline": 5,
-      "first-read-comprehension": 5,
-      "concrete-action-clarity": 5,
-      ...candidate,
-    },
-    incumbentScores: {
-      "truth-discipline": 5,
-      "first-read-comprehension": 5,
-      "concrete-action-clarity": 5,
-      ...incumbent,
-    },
+    candidateScores: scores(candidate),
+    incumbentScores: scores(incumbent),
   },
 });
 
-test("single one-point preference drop remains a review finding", () => {
-  const item = record({
-    candidate: { "concrete-action-clarity": 4 },
-  });
-  assert.deepEqual(protectedDrops(item), [{
-    dimension: "concrete-action-clarity",
-    candidate: 4,
-    incumbent: 5,
-    delta: 1,
-  }]);
-  assert.equal(isMaterialLegacyRegression(item), false);
+const completeRecords = () => [record(), record({ id: "case-b", winner: "tie" })];
+
+test("adjudication evidence requires complete unique manifest coverage", () => {
+  assert.deepEqual(validateAdjudicationRecords({ manifest, records: completeRecords() }), []);
+  assert.match(validateAdjudicationRecords({ manifest, records: [record()] })[0], /missing adjudication record case-b/);
+  assert.match(validateAdjudicationRecords({ manifest, records: [record(), record()] })[0], /duplicated/);
+  assert.match(validateAdjudicationRecords({ manifest, records: [...completeRecords(), record({ id: "unknown" })] }).join("\n"), /not declared/);
 });
 
-test("candidate win cannot become a material regression from one score preference", () => {
+test("adjudication evidence rejects missing, unknown, and invalid scores", () => {
+  const missing = completeRecords();
+  delete missing[0].final.candidateScores["buyer-effort-preservation"];
+  assert.match(validateAdjudicationRecords({ manifest, records: missing }).join("\n"), /buyer-effort-preservation must be a finite score/);
+
+  const unknown = completeRecords();
+  unknown[0].final.candidateScores.unregistered = 4;
+  assert.match(validateAdjudicationRecords({ manifest, records: unknown }).join("\n"), /undeclared dimension unregistered/);
+
+  const invalid = completeRecords();
+  invalid[0].final.incumbentScores["friction-preservation"] = 6;
+  assert.match(validateAdjudicationRecords({ manifest, records: invalid }).join("\n"), /friction-preservation must be a finite score from 1 to 5/);
+});
+
+test("candidate win cannot hide a protected commercial regression", () => {
   const item = record({
     winner: "candidate",
-    candidate: { "first-read-comprehension": 4 },
+    candidate: { "source-promise-preservation": 4 },
   });
-  assert.equal(isMaterialLegacyRegression(item), false);
+  assert.deepEqual(protectedDrops(item, dimensions).map((drop) => drop.dimension), ["source-promise-preservation"]);
+  assert.equal(isMaterialLegacyRegression(item, dimensions), true);
 });
 
-test("material truth, paired comprehension-action, and severe drops remain material", () => {
-  assert.equal(isMaterialLegacyRegression(record({ candidate: { "truth-discipline": 4 } })), true);
-  assert.equal(isMaterialLegacyRegression(record({ candidate: {
-    "first-read-comprehension": 4,
-    "concrete-action-clarity": 4,
-  } })), true);
-  assert.equal(isMaterialLegacyRegression(record({ candidate: { "concrete-action-clarity": 2.5 } })), true);
+test("hard-gate and veto failures remain material regardless of winner", () => {
+  assert.equal(isMaterialLegacyRegression(record({ hardGates: ["required-boundary"] }), dimensions), true);
+  assert.equal(isMaterialLegacyRegression(record({ vetoes: ["claim-destination-mismatch"] }), dimensions), true);
 });
 
-test("half-point truth preference and a lone competent score remain review-only", () => {
-  assert.equal(isMaterialLegacyRegression(record({
-    candidate: { "truth-discipline": 4.5 },
-  })), false);
-  assert.equal(isMaterialLegacyRegression(record({
-    candidate: { "first-read-comprehension": 3 },
-    incumbent: { "first-read-comprehension": 4 },
-  })), false);
+test("classification fails closed before interpreting malformed evidence", () => {
+  assert.throws(() => classifyBlindFindings({
+    records: [record()],
+    legacyIds: new Set(["case-a", "case-b"]),
+    criticalIds: new Set(["case-b"]),
+    manifest,
+  }), /missing adjudication record case-b/);
 });
 
-test("hard-gate failures remain material regardless of pairwise winner", () => {
-  const item = record({ winner: "candidate", hardGates: ["required-boundary"] });
-  assert.equal(isMaterialLegacyRegression(item), true);
-});
-
-test("critical preference losses stay visible without becoming contract failures", () => {
-  const preference = record({ id: "critical-preference" });
-  const failure = record({ id: "critical-failure", hardGates: ["causality"] });
+test("critical preferences stay visible and contract failures block", () => {
+  const records = completeRecords();
+  records[1].final.winner = "incumbent";
+  records[1].final.candidateHardGateFailures = ["delivery-role-preservation"];
   const result = classifyBlindFindings({
-    records: [preference, failure],
-    legacyIds: new Set(),
-    criticalIds: new Set([preference.id, failure.id]),
+    records,
+    legacyIds: new Set(["case-a", "case-b"]),
+    criticalIds: new Set(["case-b"]),
+    manifest,
   });
 
-  assert.deepEqual(result.criticalPreferenceLosses, ["critical-preference", "critical-failure"]);
-  assert.deepEqual(result.criticalContractFailures, ["critical-failure"]);
-  assert.deepEqual(result.candidateHardGateFailures, [{ id: "critical-failure", hardGates: ["causality"] }]);
+  assert.deepEqual(result.criticalPreferenceLosses, ["case-b"]);
+  assert.deepEqual(result.criticalContractFailures, ["case-b"]);
+  assert.deepEqual(result.materialLegacyRegressions, ["case-b"]);
 });
 
-test("ambiguous voice hard gates have bounded definitions", () => {
-  assert.match(manifest.adjudication.hard_gate_definitions["owned-vocabulary-survives-the-generic-ban"], /at least one supplied measured owned term/);
-  assert.match(manifest.adjudication.hard_gate_definitions["structural-tells-still-banned"], /Matching a supplied measured sentence-length or paragraph-shape distribution is not itself a failure/);
-});
+test("domain quality fails on incomplete coverage or any required score regression", () => {
+  const ids = new Set(["case-a", "case-b"]);
+  const incomplete = summarizeDomainQuality({ records: [record()], ids, manifest });
+  assert.equal(incomplete.coverageComplete, false);
+  assert.equal(passesDomainQuality({ summary: incomplete, superiorityTarget: 1, noninferiorityMargin: 0.25 }), false);
 
-test("domain quality keeps superiority targets but accepts bounded noninferiority", () => {
-  const records = [
-    record({ id: "win", winner: "candidate" }),
-    record({ id: "tie", winner: "tie", candidate: { "first-read-comprehension": 4.9 } }),
-    record({ id: "loss", winner: "incumbent", candidate: { "first-read-comprehension": 4.8 } }),
-  ];
-  const summary = summarizeDomainQuality(records, new Set(records.map((item) => item.id)));
-  assert.equal(summary.candidateWins, 1);
-  assert.equal(summary.ties, 1);
-  assert.equal(summary.incumbentWins, 1);
-  assert.equal(passesDomainQuality({ summary, superiorityTarget: 3, noninferiorityMargin: 0.25 }), true);
-});
-
-test("domain contract failures and material mean regressions still block", () => {
-  const failed = summarizeDomainQuality([
-    record({ id: "failure", winner: "candidate", hardGates: ["required-boundary"] }),
-  ], new Set(["failure"]));
-  assert.equal(passesDomainQuality({ summary: failed, superiorityTarget: 1, noninferiorityMargin: 0.25 }), false);
-
-  const regressed = summarizeDomainQuality([
-    record({ id: "regressed", candidate: {
-      "truth-discipline": 4,
-      "first-read-comprehension": 4,
-      "concrete-action-clarity": 4,
-    } }),
-  ], new Set(["regressed"]));
+  const records = completeRecords();
+  records[0].final.candidateScores["emotional-desirability"] = 4;
+  const regressed = summarizeDomainQuality({ records, ids, manifest });
+  assert.deepEqual(regressed.scoreRegressions, [{ id: "case-a", dimensions: ["emotional-desirability"] }]);
   assert.equal(passesDomainQuality({ summary: regressed, superiorityTarget: 1, noninferiorityMargin: 0.25 }), false);
+});
+
+test("complete non-regressive domain evidence can pass", () => {
+  const records = completeRecords();
+  for (const item of records) {
+    for (const dimension of Object.keys(item.final.incumbentScores)) item.final.incumbentScores[dimension] = 4.9;
+  }
+  const summary = summarizeDomainQuality({ records, ids: new Set(["case-a", "case-b"]), manifest });
+  assert.equal(summary.coverageComplete, true);
+  assert.equal(passesDomainQuality({ summary, superiorityTarget: 1, noninferiorityMargin: 0.25 }), true);
+});
+
+test("run evaluation returns evidence errors instead of passing incomplete input", () => {
+  const result = evaluateBlindRun({ manifest, records: [record()] });
+  assert.equal(result.pass, false);
+  assert.match(result.evidenceErrors.join("\n"), /missing adjudication record case-b/);
+});
+
+test("historical voice hard gates retain bounded definitions", () => {
+  assert.match(historical.adjudication.hard_gate_definitions["owned-vocabulary-survives-the-generic-ban"], /at least one supplied measured owned term/);
+  assert.match(historical.adjudication.hard_gate_definitions["structural-tells-still-banned"], /Matching a supplied measured sentence-length or paragraph-shape distribution is not itself a failure/);
+});
+
+const historicalRecords = (winner) => historical.cases.map((item) => {
+  const caseScores = Object.fromEntries(requiredDimensionsForCase(historical, item).map((dimension) => [dimension, 5]));
+  return {
+    id: item.id,
+    final: {
+      winner,
+      candidateVetoes: [],
+      candidateHardGateFailures: [],
+      candidateScores: { ...caseScores },
+      incumbentScores: { ...caseScores },
+    },
+  };
+});
+
+test("v1.5 release quotas reject complete all-tie evidence", () => {
+  const result = evaluateBlindRun({
+    manifest: historical,
+    records: historicalRecords("tie"),
+    releasePlan: historicalReleasePlan,
+  });
+  assert.equal(result.pass, false);
+  assert.equal(result.evidenceErrors.length, 0);
+  assert.ok(result.release.partitionResults.every((partition) => partition.pass === false));
+});
+
+test("v1.5 release plan maps every gate and case", () => {
+  const result = evaluateBlindRun({
+    manifest: historical,
+    records: historicalRecords("candidate"),
+    releasePlan: historicalReleasePlan,
+  });
+  assert.equal(result.pass, true);
+  assert.deepEqual(result.evidenceErrors, []);
+  assert.ok(result.release.partitionResults.every((partition) => partition.pass));
+});
+
+test("release evaluation fails closed on an incomplete gate map", () => {
+  const releasePlan = structuredClone(historicalReleasePlan);
+  releasePlan.partitions.pop();
+  const result = evaluateBlindRun({
+    manifest: historical,
+    records: historicalRecords("candidate"),
+    releasePlan,
+  });
+  assert.equal(result.pass, false);
+  assert.match(result.evidenceErrors.join("\n"), /not mapped|does not assign/);
 });

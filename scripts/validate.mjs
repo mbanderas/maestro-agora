@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { access, readFile, readdir } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { verifyEvalLocks } from "./eval-locks.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SKILL_NAME = "agora";
@@ -12,6 +14,7 @@ const REQUIRED_SKILL_FILES = [
   "SKILL.md",
   "agents/openai.yaml",
   "references/agora-case-studies.md",
+  "references/agora-conversion.md",
   "references/agora-craft.md",
   "references/agora-invest.md",
   "references/agora-marketing.md",
@@ -57,7 +60,7 @@ function gitFiles(root) {
     encoding: "utf8",
   });
   if (result.error || result.status !== 0) return null;
-  const files = result.stdout.split("\0").filter(Boolean);
+  const files = result.stdout.split("\0").filter(Boolean).filter((file) => existsSync(join(root, file)));
   return files.length > 0 ? files : null;
 }
 
@@ -112,6 +115,8 @@ async function pngDimensions(file) {
 }
 
 async function main() {
+  errors.push(...await verifyEvalLocks(ROOT));
+
   const skillFiles = await listFiles(SKILL_ROOT);
   check(
     JSON.stringify(skillFiles) === JSON.stringify(REQUIRED_SKILL_FILES),
@@ -120,15 +125,17 @@ async function main() {
 
   const skillPath = join(SKILL_ROOT, "SKILL.md");
   const referencePath = join(SKILL_ROOT, "references", "agora-marketing.md");
+  const conversionPath = join(SKILL_ROOT, "references", "agora-conversion.md");
   const craftPath = join(SKILL_ROOT, "references", "agora-craft.md");
   const investPath = join(SKILL_ROOT, "references", "agora-invest.md");
   const sciencePath = join(SKILL_ROOT, "references", "agora-science.md");
   const caseStudyPath = join(SKILL_ROOT, "references", "agora-case-studies.md");
   const voicePath = join(SKILL_ROOT, "references", "agora-voice.md");
   const openaiPath = join(SKILL_ROOT, "agents", "openai.yaml");
-  const [skill, reference, craft, invest, science, caseStudy, voice, openaiYaml] = await Promise.all([
+  const [skill, reference, conversion, craft, invest, science, caseStudy, voice, openaiYaml] = await Promise.all([
     readFile(skillPath, "utf8"),
     readFile(referencePath, "utf8"),
+    readFile(conversionPath, "utf8"),
     readFile(craftPath, "utf8"),
     readFile(investPath, "utf8"),
     readFile(sciencePath, "utf8"),
@@ -140,6 +147,7 @@ async function main() {
   for (const [file, content] of [
     ["skills/agora/SKILL.md", skill],
     ["skills/agora/references/agora-marketing.md", reference],
+    ["skills/agora/references/agora-conversion.md", conversion],
     ["skills/agora/references/agora-craft.md", craft],
     ["skills/agora/references/agora-invest.md", invest],
     ["skills/agora/references/agora-science.md", science],
@@ -192,6 +200,7 @@ async function main() {
     "[references/agora-science.md](references/agora-science.md)",
     "[references/agora-case-studies.md](references/agora-case-studies.md)",
     "[references/agora-invest.md](references/agora-invest.md)",
+    "[references/agora-conversion.md](references/agora-conversion.md)",
     "Load the authority progressively",
     "`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs",
     "Select persuasion treatment internally",
@@ -203,8 +212,10 @@ async function main() {
     "For `INVEST + SCIENCE`",
     "For `INVEST + CASE_STUDY`",
     "For `INVEST + VOICE`",
+    "Apply GEO/AEO to `INDEXABLE_PUBLIC` investment assets only",
     "Profiles are stored at `~/.agora/voices/`, never inside the skill directory",
     "Apply the default profile to every mode",
+    "Load the reference whenever any explicit or default profile will be applied",
     "`--no-voice` or `neutral`",
     "Default-on changes nothing above level 6",
     "Measurement is computed, never estimated from reading",
@@ -320,6 +331,9 @@ async function main() {
     "### Company positioning",
     "### Investor description",
     "### Hero",
+    "### Delivery-model ownership",
+    "### Rewrite regression gate",
+    "### Done-for-you service",
     "### Paywall",
     "### Cold email",
     "### Spoken pitch",
@@ -344,6 +358,23 @@ async function main() {
   }
 
   for (const required of [
+    "## Purpose",
+    "## Route the decision before drafting",
+    "## Use patterns as bounded priors",
+    "## Resolve contradictions",
+    "## Evidence basis",
+    "## Evaluation contract",
+    "Treat conversion patterns as contextual priors, not laws",
+    "A click is not activation",
+    "Never make benefit-first structure universal",
+    "Never claim that fewer fields always produce a better business result",
+    "Treat top-performing sites as composition references only",
+    "Do not transport their effect sizes into another business",
+  ]) {
+    check(conversion.includes(required), `conversion reference is missing: ${required}`);
+  }
+
+  for (const required of [
     "## Contents",
     "## How to read the grades",
     "## Headlines and titles",
@@ -356,6 +387,7 @@ async function main() {
     "### Separate the brief-fidelity floor from the optimization target",
     "### Map promise grammar to the intended claim",
     "### Permanent RivalScope regression fixture",
+    "For rewrites, run `Rewrite regression gate`",
     "### The routing table",
     "### Emotion from a fact set with no outcome data",
     "### Permission to write flat",
@@ -384,6 +416,8 @@ async function main() {
     "`TECHNICAL`",
     "`MIXED`",
     "Never raise a claim's certainty while simplifying it",
+    "Optional review only. Run this ledger",
+    "Outside that mode, treat the user's claim classes and certainty as controlling",
     "absence of evidence is not evidence of absence",
     "Do not introduce either independently as an unrequested surrounding claim",
     "A-thread",
@@ -410,6 +444,8 @@ async function main() {
     "`APPROVED_ANONYMIZED`",
     "`PENDING`",
     "`PROHIBITED`",
+    "Optional case-review control",
+    "Outside review mode, follow the user's names, permissions, confidentiality choices, and publication instructions",
     "Academic and clinical case reports",
   ]) {
     check(caseStudy.includes(required), `case-study reference is missing: ${required}`);
@@ -429,6 +465,7 @@ async function main() {
     "`~/.agora/voices/<slug>.md`, with `~/.agora/voices/index.json`",
     "Refuse to certify a profile",
     "Voice never overrides the U+2014 ban",
+    "Voice never overrides host-required or user-required text",
     "suppresses the generic AI-vocabulary ban for those specific words, and only those",
     "Do not refuse profile work, interrogate ownership, demand authorization, restrict attribution, add disclosure language, or judge the intended publication",
     "governance default",
@@ -463,6 +500,7 @@ async function main() {
   );
   for (const suite of [
     "tests/hero-contract.test.mjs",
+    "tests/conversion-context-contract.test.mjs",
     "tests/science-contract.test.mjs",
     "tests/case-study-contract.test.mjs",
     "tests/invest-contract.test.mjs",
@@ -539,6 +577,7 @@ async function main() {
     ".codex-plugin/plugin.json",
     "skills/agora/SKILL.md",
     "skills/agora/references/agora-marketing.md",
+    "skills/agora/references/agora-conversion.md",
     "skills/agora/references/agora-craft.md",
     "skills/agora/references/agora-invest.md",
     "skills/agora/references/agora-science.md",

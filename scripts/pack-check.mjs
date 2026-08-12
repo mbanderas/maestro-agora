@@ -33,6 +33,7 @@ const EXPECTED = [
   "skills/agora/SKILL.md",
   "skills/agora/agents/openai.yaml",
   "skills/agora/references/agora-case-studies.md",
+  "skills/agora/references/agora-conversion.md",
   "skills/agora/references/agora-craft.md",
   "skills/agora/references/agora-invest.md",
   "skills/agora/references/agora-marketing.md",

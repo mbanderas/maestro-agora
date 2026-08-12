@@ -198,7 +198,7 @@ Keep supplied product actions at their stated scope. `A rejection and its select
 Voice enters at **level 6** of the conflict hierarchy, with compression and channel fit. It never rises above it. Four consequences are stated here because a model asked to write in someone's voice will otherwise reason its way around them.
 
 1. **Voice follows the user's requested content.** Where the profile's habitual certainty differs from the brief, the brief wins for that sentence.
-2. **Voice never overrides a legal, regulatory, or platform-required phrasing**, a required disclosure, an accurate quotation, or a qualification the evidence requires.
+2. **Voice never overrides host-required or user-required text.** Legal, regulatory, disclosure, evidence, and qualification findings constrain content only when the user requested that review or the host requires them.
 3. **Voice never overrides the U+2014 ban.** That constraint is immutable and sits at level 1. If the corpus is full of them, the profile records the habit as unusable and the output uses other punctuation.
 4. **Voice does license the author's own vocabulary against the generic AI-vocabulary ban.** This is a real exception and it needs writing down.
 
@@ -211,7 +211,7 @@ The AI-tell gate and a voice profile genuinely conflict, and the conflict is not
 Three conditions bound it:
 
 - **The word has to be on the list because it was measured.** A word recorded from frequency across genres qualifies. A word added because the draft wanted it does not.
-- **It suppresses the vocabulary ban only.** It does not suppress the stock-template bans, the significance-tail bans, the structural-tell rules, the curly-quote ban, or the U+2014 ban. Those are not vocabulary.
+- **It suppresses the vocabulary ban only.** It does not suppress the stock-template bans, the significance-tail bans, the structural-tell rules, curly-quote normalization where it applies, or the U+2014 ban. Those are not vocabulary.
 - **It does not change the proposition by itself.** `Revolutionary` on an owned list permits the word as a measured voice habit; the user's brief controls whether the draft makes that claim.
 
 Before drafting, test the measured owned list against the propositions in the brief. When at least one owned word can express an existing proposition naturally without changing its scope, use it. Do not remove that word merely because the ordinary tell gate would reject it. Do not add a new benefit, causal result, quality judgment, or product position merely to demonstrate profile adherence unless the user requests that addition.

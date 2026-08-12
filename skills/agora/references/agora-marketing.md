@@ -173,6 +173,48 @@ Introduce a new decision criterion only when it sharpens the argument. A compari
 
 Explain what the product or company changes, how it changes it, and where the boundary lies. Prefer causal verbs that name an action: reconciles, routes, records, compares, detects, schedules, restores, or calculates. Do not strengthen the verb beyond the evidence.
 
+### Delivery-model ownership
+
+For `SELL`, when the brief supplies delivery roles or they are safely inferable from the offer, identify who supplies inputs, who performs the value-producing work, and which choices or approvals remain with the buyer. Preserve that assignment in the copy. Explicit user framing controls. This is source and offer fidelity, not claim, compliance, or moral review.
+
+When an offer is done-for-you, the provider owns the difficult work it sells. Do not rewrite that work as a buyer command such as `earn`, `build`, `master`, `take charge`, or `do the work` when the offer exists to remove that burden. Such a rewrite changes relief into an obligation and can make provider non-performance sound like buyer inadequacy.
+
+Preserve buyer burden as well as actor assignment. Do not invent or magnify preparation, training, review cycles, handoffs, approvals, dependencies, response times, frequency, or internal coordination. A provider can retain the headline task while the copy quietly turns low-input delivery into project management for the buyer.
+
+Do not turn this into a pronoun or imperative ban. `Get paid faster` can name a result. `See where competitors beat you` can name information the product supplies. A buyer-led headline can be valid when an adjacent element makes provider ownership clear. Training, coaching, fitness, education, and deliberate DIY tools can correctly foreground buyer effort because that effort is part of the offer. Collaborative delivery can require genuine buyer actions and bounded approvals. Judge responsibility for producing the value, not whether the sentence uses `you`.
+
+Before approving a `SELL` candidate, ask:
+
+1. Who performs the difficult or value-producing action?
+2. What must the buyer genuinely supply, choose, approve, or do?
+3. Does the line make the offer sound like a new chore?
+4. Did the draft change how much work the buyer performs, how often, how soon, or through how many dependencies?
+5. If the result does not happen, does the line imply provider non-performance or buyer inadequacy?
+6. Did the rewrite move work from the provider or product to the buyer?
+
+Reject a candidate when it contradicts the supplied delivery model. Repair responsibility locally. Preserve the strongest supported buyer promise, relief, and emotional job; the provider does not need to become the headline subject. Grade: HOUSE fidelity rule. It makes no claim that provider-led grammar converts better.
+
+### Rewrite regression gate
+
+When the user asks to rewrite, improve, polish, shorten, or adapt existing copy, compare the candidate with the source before calling it stronger. A candidate can pass every standalone rule and still weaken the source.
+
+Build a private source ledger before drafting:
+
+- supported promise and selected certainty;
+- dominant emotional job and buyer benefit;
+- provider and buyer roles;
+- buyer effort by type, amount, frequency, timing, dependencies, approvals, and coordination;
+- friction removed, preserved, or introduced;
+- strongest proof, mechanism, and differentiator;
+- CTA destination, commitment, and reversibility;
+- memorable language or tension that carries real meaning.
+
+The requested transformation may change any ledger item it necessarily targets, and explicit user direction controls. Otherwise, preserve every unaffected commercial job. Prefer a local repair over a full conceptual rewrite when the source already performs strongly. Keep the source when the candidate produces no material improvement or introduces a material regression.
+
+Run the comparison across the full composition, not sentence by sentence. A headline can carry the buyer promise while the subhead establishes provider ownership. A shorter sentence can be better even when a later sentence preserves qualification or proof. Keep the ledger and comparison private unless the user asks for analysis.
+
+Grade: HOUSE fidelity procedure. It does not claim that any one promise, emotion, effort profile, or composition converts better.
+
 ### Proof
 
 Attach the best evidence to the premise it supports. Proof can be a direct outcome, diagnostic comparison, measured behavior, named scope, verified mechanism, constrained case, or credible external source. A list of minor features is not proof of a major claim.
@@ -440,6 +482,8 @@ Run all of these before accepting customer-facing writing.
 |---|---|
 | First-read | Can the intended reader restate the sentence after one reading? |
 | Actor-action-object | Is it clear who or what acts, what the action is, and what it affects? |
+| Delivery-model ownership | Does the provider or product still perform the work the offer sells, without invented or magnified buyer burden? |
+| Rewrite regression | Does every source strength outside the requested transformation survive or materially improve? |
 | Abstraction | Can any abstract noun be replaced with a concrete action, object, condition, or result? |
 | Insider-language | Would the sentence still make sense to someone who has never seen the organization's internal terminology? |
 | Read-aloud | Does it sound like something a competent person would say to another person? |
@@ -818,7 +862,7 @@ Research on detector limits includes the [RAID benchmark](https://arxiv.org/abs/
 
 ## Written GEO/AEO and citability
 
-Apply these rules only to written assets. They improve clarity, extractability, and verification. They do not guarantee retrieval or citation.
+Apply these rules only to `INDEXABLE_PUBLIC` assets. They improve clarity, extractability, and verification. They do not guarantee retrieval or citation. Other written surfaces retain ordinary argument, comprehension, channel-fit, and human-voice passes without GEO/AEO formatting.
 
 These rules sit at level 7 of the conflict hierarchy. None of them may raise decoding effort. Where one of them would, comprehension wins.
 
@@ -913,6 +957,24 @@ Strong:
 > See how a mismatch gets resolved
 
 Why: the hero names a credible stake and mechanism without inventing a result. The factual three-item list is necessary scope. The label names what the reader will know afterwards rather than the screen they will be moved to, which is the difference between an outcome label and a transition label.
+
+### Done-for-you service
+
+Verified facts:
+
+> AnswerReach is a done-for-you service. Its specialists audit a brand's site, implement approved changes, and monitor whether the brand appears in AI-generated answers. The client supplies access and approvals. The work can improve the brand's chances of appearing, but it cannot guarantee inclusion.
+
+Weak:
+
+> AI search is a conversation. Earn your place in the answer.
+
+Strong:
+
+> Improve your brand's chances of becoming part of the answer.
+>
+> AnswerReach audits your site, implements approved changes, and monitors AI answers. You provide access and approvals.
+
+Why: the weak line turns work sold by the provider into a buyer obligation and makes failure sound deserved. The strong composition keeps the desired buyer benefit in the headline, establishes provider ownership in the subhead, preserves the chance-improvement boundary, and limits the buyer role to supplied inputs. Buyer-facing grammar is not the defect.
 
 ### Paywall
 
@@ -1218,6 +1280,8 @@ Test only what must not fail:
 - Headings that belong to one task or information class use parallel syntax; attention-oriented headings do not run more than two consecutive instances of one template family. That run length is a governance default, not a measured threshold.
 - `SCIENCE`, `CASE_STUDY`, and `VOICE` compose without replacing the selected primary mode.
 - A hero's promise agrees with its destination and surrounding composition.
+- `SELL` copy preserves the supplied delivery model: provider work remains with the provider, and only genuine inputs, decisions, approvals, or DIY work remain with the buyer.
+- A rewrite preserves every source strength outside the transformation the user requested, including promise, emotional job, role assignment, burden, friction, proof, differentiation, and CTA commitment.
 - Scientific claim class, causality, statistical meaning, and uncertainty survive simplification when the user requests scientific claim review.
 - Case-study result class, permission, role attribution, causality, quote status, and typicality survive persuasion when the user requests case review.
 
@@ -1242,12 +1306,14 @@ Use these quality dimensions on a five-point scale:
 | Natural channel fit | The output sounds native to the requested surface |
 | Brief fidelity | Persuasive force follows the user's claims, framing, and content decisions without added policy commentary |
 | First-read comprehension | An intended reader who has not seen the source facts extracts the meaning on one pass |
-| Concrete action clarity | Actor, action, object, and result are visible, and the call to action names its destination |
+| Concrete action clarity | Actor, action, object, and result are visible, the actor matches the supplied delivery model, and the call to action names its destination |
+| Delivery-model fit | Provider work remains with the provider, while genuine buyer inputs, decisions, approvals, and DIY work remain with the buyer |
+| Source-relative rewrite quality | The candidate materially improves the requested property without weakening unaffected commercial strengths |
 | Attention value | A short attention surface creates a supported reason to continue rather than summarizing the product |
 | Composition fit | Headline, subhead, CTA, visual context, proof, and adjacent qualification perform one compatible argument |
 | Review calibration | When review is requested, scientific and case-study findings preserve result class, causality, uncertainty, attribution, and source scope |
 
-Automatic failure: any U+2014 occurrence, failure to follow the user's requested claims or framing, unsolicited content review, unsolicited disclaimers, context leakage, visible internal-process leakage, claim-destination mismatch, or a material omission from the requested artifact.
+Automatic failure: any U+2014 occurrence, failure to follow the user's requested claims or framing, unsolicited content review, unsolicited disclaimers, context leakage, visible internal-process leakage, claim-destination mismatch, delivery-model mismatch, source-relative commercial regression, or a material omission from the requested artifact.
 
 ## Evidence register
 

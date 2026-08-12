@@ -78,6 +78,8 @@ In optional review mode, ask only when missing information would materially chan
 
 ## Investment claim ledger
 
+Use this ledger for `DILIGENCE`, evidence-led `ALLOCATE`, or when the user explicitly requests claim, source, omission, or compliance review. For ordinary `FUNDRAISE` drafting outside review mode, preserve the user's claim classes, certainty, forecasts, commitments, framing, and requested action. Do not independently narrow them.
+
 Classify every material investment claim before drafting.
 
 | Class | Meaning | Required treatment |
@@ -396,7 +398,7 @@ Compare the named alternatives over the same period, operating base, and decisio
 
 Do not invent a minimum-runway threshold, financing trigger, hurdle rate, portfolio weight, stop-loss, decision date, or other numeric policy. Use a supplied policy when authorized. If the task explicitly asks for a new governance rule, label the number as a proposed governance default and expose the reason, owner, review point, and failure condition. Otherwise state the decision condition qualitatively.
 
-When financing terms, operating sensitivities, or material outcome evidence are missing, narrow the conclusion. The supported decision may be to preserve an available option, obtain the missing evidence, or defer authorization. Missing comparison inputs do not license a precise recommendation.
+In `DILIGENCE`, evidence-led `ALLOCATE`, or explicit review mode, narrow a conclusion when financing terms, operating sensitivities, or material outcome evidence are missing. The supported decision may be to preserve an available option, obtain the missing evidence, or defer authorization. Missing comparison inputs do not license a precise recommendation in those routes. Outside them, follow the user's requested conclusion and framing.
 
 ## Process urgency and commitment language
 
@@ -425,7 +427,7 @@ Keep commitment classes exact:
 
 Never imply a term sheet, lead, commitment, advanced diligence, scarcity, competing demand, or closing pressure that does not exist. Do not behave as if a term sheet exists to manufacture social proof. Do not withhold basic information as a reward for engagement.
 
-A true fact can still mislead through omitted context. Review the net impression created by timing, quantity, investor names, and commitment language.
+A true fact can still mislead through omitted context. When omission or claim review is active, review the net impression created by timing, quantity, investor names, and commitment language. Outside review mode, preserve the user's supplied urgency and process framing.
 
 Lock process-state language to the supplied class in every derivative phrase. A `scheduled closing` remains scheduled; a `target close` remains a target; a `current allocation` remains current only for its supplied date. Do not shorten these to `the close`, `ahead of the close`, `closing now`, or another phrase that turns a plan into a settled event.
 
@@ -433,17 +435,17 @@ Lock process-state language to the supplied class in every derivative phrase. A 
 
 ### `INVEST + SCIENCE`
 
-Load both references. Scientific and technical uncertainty, current authoritative verification, calibrated causality, and exact terminology override investment vision language. Explain the mechanism clearly enough for the decision role. Do not convert technical possibility into product readiness, regulatory clearance, customer demand, or commercial scale.
+Load both references. Explain the mechanism clearly enough for the decision role. The user's investment thesis and scientific framing control. Current authoritative verification, causality review, and uncertainty recalibration apply only when the user requests scientific, diligence, source, or claim review.
 
 Connect the financing to the exact next validation question: what effect, condition, scale, replication, lifetime, safety, cost, or customer evidence the capital is meant to test. `Validation financing` alone is not a decision-ready use of funds.
 
 ### `INVEST + CASE_STUDY`
 
-Load both references. A customer case remains evidence about its stated subject, period, intervention, and measurement. It is not proof of general market performance, typicality, causal product impact, or future company results unless the evidence separately supports those claims.
+Load both references. Preserve the case proposition and investment interpretation the user requests. Test generalization, typicality, causality, and future-result support only when the user requests case, diligence, source, or claim review.
 
 ### `INVEST + VOICE`
 
-Financial evidence, forecast classification, required disclosure, quote fidelity, and uncertainty override habitual certainty, bravado, compression, or informality in the profile.
+Voice changes expression, not the investment proposition. The user's current brief controls claims, forecasts, certainty, commitments, quotes, and attribution. Host-required text and findings from explicitly requested investment review may constrain the result.
 
 When a confident profile uses `will require` for a necessary condition, name the concrete action each dependency must complete. Write `renewals to close` and `contracts to sign`, not a compressed noun list that leaves completion implicit. State the condition directly. Do not preface it with `one thing is certain` or another certainty claim merely to imitate the profile.
 
@@ -451,7 +453,7 @@ Preserve the exact actor, present status, and dependency while applying rhythm. 
 
 ### `INVEST + GEO/AEO`
 
-Apply written GEO/AEO only to indexable public assets. Public fundraising pages require current legal-route and page-level claim review. Private decks, meetings, diligence responses, and data-room assets do not inherit search formatting.
+Apply written GEO/AEO only to `INDEXABLE_PUBLIC` assets. Legal-route and page-level claim review remain opt-in unless a host rule requires them. Private decks, meetings, diligence responses, and data-room assets do not inherit search formatting.
 
 ### `FUNDRAISE + SELL`
 

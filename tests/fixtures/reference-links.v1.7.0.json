@@ -2,6 +2,7 @@
   "source": "unreleased:skills/agora/references/*.md",
   "reference_files": [
     "skills/agora/references/agora-case-studies.md",
+    "skills/agora/references/agora-conversion.md",
     "skills/agora/references/agora-craft.md",
     "skills/agora/references/agora-invest.md",
     "skills/agora/references/agora-marketing.md",
@@ -148,6 +149,21 @@
     "https://www.nber.org/papers/w22587",
     "https://www.sec.gov/resources-small-businesses/capital-raising-building-blocks",
     "https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels",
-    "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html"
+    "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html",
+    "https://baymard.com/research/checkout-usability",
+    "https://digitalcommons.uri.edu/cba_facpubs/326/",
+    "https://digitalcommons.uri.edu/cba_facpubs/44/",
+    "https://journals.sagepub.com/doi/10.1177/00222429221141066",
+    "https://marketingexperiments.com/conversion-marketing/optimizing-web-forms-2",
+    "https://marketingexperiments.com/lead-generation/lead-generation-testing-form-field-length-reduces-cost-per-lead-by-10-66",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC8287523/",
+    "https://www.sec.gov/Archives/edgar/data/1467623/000146762326000008/dbx-20251231.htm",
+    "https://www.sec.gov/Archives/edgar/data/1447669/000144766926000021/twlo-20251231.htm",
+    "https://www.sec.gov/Archives/edgar/data/0001441816/000144181625000101/mdb2025annualreport.pdf",
+    "https://zapier.com/blog/zapier-sales-team-upmarket/",
+    "https://keap.com/pricing",
+    "https://customer.io/pricing",
+    "https://www.clay.com/pricing",
+    "https://www.holistics.io/pricing/?region=us"
   ]
 }

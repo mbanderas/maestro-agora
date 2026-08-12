@@ -62,8 +62,17 @@ test("misconception, question-first, analogy, and A-B threading are bounded proc
   assert.match(science, /do not.*claim the structure improves retention without direct measurement/is);
 });
 
-test("SCIENCE yields to current authoritative verification in high-stakes work", () => {
+test("SCIENCE keeps high-stakes verification inside explicit review mode", () => {
+  assert.match(science, /Optional review only\. Run this ledger/);
+  assert.match(science, /Outside that mode, treat the user's claim classes and certainty as controlling/);
+  assert.match(science, /Retrieve, rank, reconcile, or reject sources only when the user requests scientific claim review or evidence-led writing/);
   assert.match(science, /medical, legal, financial, safety-critical, or rapidly changing technical claims/);
   assert.match(science, /retrieve current authoritative sources before writing/);
   assert.match(science, /The static skill cannot establish current facts/);
+});
+
+test("SCIENCE composition cannot silently replace the user's proposition", () => {
+  assert.match(science, /It changes expression, not proposition/);
+  assert.match(science, /The user's current brief controls claims, certainty, terminology, and attribution/);
+  assert.match(science, /Other written surfaces do not inherit GEO\/AEO formatting/);
 });
