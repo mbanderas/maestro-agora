@@ -1,0 +1,5 @@
+/agora --no-voice
+
+Write a low-commitment signup module for Kiln Atlas, which is giving away a PDF field guide to diagnosing common ceramic glaze defects. Closed facts: the guide is 18 pages; it covers pinholing, crazing, crawling, blistering, and color variation; each section includes photographs and a troubleshooting checklist; it does not prescribe firing schedules because kilns, clay bodies, and glazes vary; access requires only an email address; submitting also opts the reader into a twice-monthly studio note; every email includes unsubscribe; no claim is available about subscriber count, improvement rate, or expert endorsement. Visitors arrive from an educational article and may resist turning a useful article into a sales exchange.
+
+Deliver one embedded form with: a headline under 10 words, body copy of 35-55 words, one email label, one consent line that makes the twice-monthly note explicit, button text, a privacy reassurance under 14 words, and the success-state message. Do not invent proof, urgency, bonuses, personalization, or a separate sales call.

@@ -10,6 +10,7 @@ const SKILL_ROOT = join(ROOT, "skills", "agora");
 const EVAL_ROOT = join(ROOT, "evals", "prospective", "conversion-context-v1.0.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const FROZEN_ROOT = join(ROOT, "evals", "blind", "v1.7.0");
+const REGRESSION_ROOT = join(ROOT, "evals", "regression", "conversion-context-v1.7.0-development");
 
 const [skill, conversion, craft, manifest] = await Promise.all([
   readFile(join(SKILL_ROOT, "SKILL.md"), "utf8"),
@@ -18,9 +19,10 @@ const [skill, conversion, craft, manifest] = await Promise.all([
   readFile(join(EVAL_ROOT, "manifest.json"), "utf8").then(JSON.parse),
 ]);
 
-const [frozenManifest, frozenReleasePlan] = await Promise.all([
+const [frozenManifest, frozenReleasePlan, regressionManifest] = await Promise.all([
   readFile(join(FROZEN_ROOT, "manifest.json"), "utf8").then(JSON.parse),
   readFile(join(ROOT, "evals", "releases", "v1.7.0.gates.json"), "utf8").then(JSON.parse),
+  readFile(join(REGRESSION_ROOT, "manifest.json"), "utf8").then(JSON.parse),
 ]);
 
 test("conversion context loads progressively without adding a mode", () => {
@@ -274,7 +276,7 @@ test("prospective pack is evaluator-compatible but not release evidence", async 
   assert.deepEqual(validateAdjudicationRecords({ manifest, records: completeRecords }), []);
 });
 
-test("v1.7 conversion release pack is frozen, fully mapped, and fail-closed", () => {
+test("v1.7 conversion release pack is fresh, fully mapped, and fail-closed", async () => {
   assert.equal(frozenManifest.status, "frozen-release");
   assert.equal(frozenManifest.skill_version, "1.7.0");
   assert.equal(frozenManifest.release_gates.conversion_case_count, 13);
@@ -284,6 +286,48 @@ test("v1.7 conversion release pack is frozen, fully mapped, and fail-closed", ()
     /description of what a quotation says is not verbatim wording/,
   );
   assert.deepEqual(frozenReleasePlan.legacy_case_ids, []);
+
+  const releaseIds = frozenManifest.cases.map((item) => item.id);
+  assert.deepEqual(releaseIds, frozenReleasePlan.partitions[0].case_ids);
+  assert.equal(new Set(releaseIds).size, 13);
+  assert.equal(frozenManifest.cases.filter((item) => item.critical).length, 10);
+  for (const id of ["home-retrofit-terms", "cold-storage-monitoring-proof"]) {
+    assert.equal(frozenManifest.cases.find((item) => item.id === id)?.critical, true);
+  }
+
+  const releasePromptFiles = new Set();
+  for (const item of frozenManifest.cases) {
+    assert.equal(item.prompt_file, `prompts/${item.id}.md`);
+    assert.ok(!releasePromptFiles.has(item.prompt_file), `duplicate release prompt: ${item.prompt_file}`);
+    releasePromptFiles.add(item.prompt_file);
+    const prompt = await readFile(join(FROZEN_ROOT, item.prompt_file), "utf8");
+    assert.match(prompt, /^\/agora --no-voice\r?\n/);
+    assert.doesNotMatch(prompt, /expected (?:answer|output)|rubric|grader|scoring|hard gates?/i, `${item.id} contains evaluator leakage`);
+    assert.doesNotMatch(prompt, /[\u2014\u2018\u2019\u201c\u201d]/, `${item.id} contains banned typography`);
+    assert.doesNotMatch(prompt, /[A-Za-z]:[\\/]Users[\\/]/, `${item.id} contains a local path`);
+  }
+  const actualReleasePrompts = (await readdir(join(FROZEN_ROOT, "prompts")))
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => `prompts/${file}`)
+    .sort();
+  assert.deepEqual(actualReleasePrompts, [...releasePromptFiles].sort());
+
+  assert.match(
+    await readFile(join(FROZEN_ROOT, "prompts", "checkout-grinder-choice.md"), "utf8"),
+    /no product-specific espresso suitability claim or espresso test result is available/,
+  );
+  assert.match(
+    await readFile(join(FROZEN_ROOT, "prompts", "geothermal-lead-screen.md"), "utf8"),
+    /every submission goes through manual review/,
+  );
+  assert.match(
+    await readFile(join(FROZEN_ROOT, "prompts", "linen-jacket-identity.md"), "utf8"),
+    /Sensory wording may describe only/,
+  );
+  assert.match(
+    await readFile(join(FROZEN_ROOT, "prompts", "specimen-courier-risk.md"), "utf8"),
+    /three-step interaction description limited to/,
+  );
 
   const records = frozenManifest.cases.map((item) => ({
     id: item.id,
@@ -305,4 +349,21 @@ test("v1.7 conversion release pack is frozen, fully mapped, and fail-closed", ()
   const winning = evaluateBlindRun({ manifest: frozenManifest, records, releasePlan: frozenReleasePlan });
   assert.equal(winning.pass, true);
   assert.deepEqual(winning.evidenceErrors, []);
+});
+
+test("development fixtures remain regression-only and cannot enter the superiority partition", async () => {
+  const releaseIds = new Set(frozenReleasePlan.partitions.flatMap((partition) => partition.case_ids));
+  const regressionIds = new Set(regressionManifest.cases.map((item) => item.id));
+
+  assert.equal(regressionIds.size, 13);
+  assert.equal([...regressionIds].some((id) => releaseIds.has(id)), false);
+  assert.ok(regressionIds.has("checkout-trust-relevance"));
+  assert.ok(regressionIds.has("enterprise-proof-placement"));
+
+  const expectedPromptFiles = regressionManifest.cases.map((item) => item.prompt_file).sort();
+  const actualPromptFiles = (await readdir(join(REGRESSION_ROOT, "prompts")))
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => `prompts/${file}`)
+    .sort();
+  assert.deepEqual(actualPromptFiles, expectedPromptFiles);
 });

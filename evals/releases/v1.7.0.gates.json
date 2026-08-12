@@ -13,19 +13,19 @@
       "case_count_gate": "conversion_case_count",
       "wins_required_gate": "conversion_wins_required",
       "case_ids": [
-        "checkout-trust-relevance",
-        "qualified-demo-form",
-        "low-commitment-report-form",
-        "activation-aware-onboarding",
-        "paywall-retained-revenue",
-        "utilitarian-product-benefit",
-        "identity-led-product-opening",
-        "contradictory-case-transfer",
-        "dual-route-enterprise-pricing",
-        "sales-led-no-invented-self-serve",
-        "enterprise-risk-specificity",
-        "pricing-decision-contract",
-        "enterprise-proof-placement"
+        "checkout-grinder-choice",
+        "geothermal-lead-screen",
+        "glaze-guide-form",
+        "volunteer-roster-activation",
+        "pronunciation-paywall",
+        "loading-ramp-mat",
+        "linen-jacket-identity",
+        "telehealth-banner-review",
+        "caption-api-pricing",
+        "aerospace-traceability-brief",
+        "specimen-courier-risk",
+        "home-retrofit-terms",
+        "cold-storage-monitoring-proof"
       ]
     }
   ]

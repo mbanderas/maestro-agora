@@ -1,0 +1,5 @@
+/agora --no-voice
+
+Write the subscription paywall shown in Lilt Practice after a learner completes three free pronunciation exercises. Closed facts: free users can repeat those three exercises indefinitely; Plus costs USD 11.99 monthly or USD 79.99 annually, billed in full; Plus unlocks 240 additional exercises, slow playback, saved practice lists, and device sync; there is a seven-day trial only on the annual plan; the annual plan renews automatically unless canceled at least 24 hours before renewal; canceling during the trial retains access until the trial ends; scores are automated estimates and are not language-certification results; there are no verified learning-outcome figures. The user can close the paywall and keep using the free exercises.
+
+Deliver a paywall composition with headline, 35-55 word body, four benefit bullets, two plan cards each containing price and exact billing or trial terms, primary and secondary actions, a close label, the score limitation in plain language, and a renewal note. Do not invent a discount percentage, scarcity, user counts, guarantees, or features.
