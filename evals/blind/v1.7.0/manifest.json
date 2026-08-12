@@ -43,7 +43,7 @@
     "no-nearby-metric-substitution": "The response preserves the stated business outcome instead of replacing it with clicks, completions, or another nearby event.",
     "no-universal-prior": "The response does not turn a contextual conversion pattern into a law or fixed optimum.",
     "no-effect-transfer-in-review": "When review is requested, the response does not carry a reported effect size into a different business, audience, or surface.",
-    "no-invented-proof-or-rationale": "The response uses only supplied proof, terms, permissions, data-use reasons, and operational facts.",
+    "no-invented-proof-or-rationale": "The response uses only supplied proof, terms, permissions, data-use reasons, and operational facts. A description of what a quotation says is not verbatim wording; reconstructing it inside quotation marks is invented proof.",
     "no-unauthorized-funnel-change": "The response preserves required fields, choices, steps, and commitments unless the user authorizes changes.",
     "commitment-and-terms-preserved": "The action label and surrounding copy state the supplied commitment, terms, reversibility, and next step clearly.",
     "route-reality-preserved": "The response distinguishes supplied self-serve and enterprise routes and does not invent a route that the business does not offer.",

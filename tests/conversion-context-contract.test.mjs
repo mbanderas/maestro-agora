@@ -46,17 +46,17 @@ test("closed-world core stays compact while conversion contracts load progressiv
   assert.match(conversion, /Request received\. We will send the report to your work email\./);
   assert.match(conversion, /Treat activation and setup completion as separate states/);
   assert.match(conversion, /Keep full price units visible in every variant/);
-  assert.match(conversion, /do not invent a calculation formula, subtract refunds, add completion metrics/);
-  assert.match(conversion, /visible `Customer quote` block with an attributed paraphrase/);
+  assert.match(conversion, /Preserve every supplied denominator and time horizon, wait until that horizon is observable/);
+  assert.match(conversion, /render a visible attributed paraphrase at the requested proof position/);
   assert.match(conversion, /For a practical replacement-product composition/);
   assert.match(conversion, /Never write `cloud-based`, `cloud deployment only`, or `cloud-only`/);
   assert.match(conversion, /Never write `before offering a meeting time`/);
   assert.match(conversion, /The visible composition and the numbered placement order must describe one identical sequence/);
-  assert.match(conversion, /For a two-route pricing composition/);
+  assert.match(conversion, /For a multi-route composition/);
   assert.match(conversion, /For a sales-led factory-planning route/);
   assert.match(conversion, /For a high-ticket self-serve plan/);
   assert.match(conversion, /For a migration proof section/);
-  assert.match(conversion, /For this bounded enterprise capability set/);
+  assert.match(conversion, /Do not let enterprise claim safety flatten the argument into an evaluation checklist/);
 });
 
 test("conversion priors preserve context, objectives, and user authority", () => {
@@ -108,8 +108,8 @@ test("closed-world briefs block plausible but unsupplied conversion details", ()
   assert.match(conversion, /For an experiment with possible repeat exposure, use a stable assignment unit/);
   assert.match(conversion, /For a decision-grade experiment brief in an evidence review, include the controls required to run and interpret the test/);
   assert.match(conversion, /a completed-first-order outcome requires new customers rather than a mixed new-and-returning population/);
-  assert.match(conversion, /Keep a requested concise experiment plan bounded to the stated decision/);
-  assert.match(conversion, /`Revenue less refunds` does not authorize subtracting chargebacks/);
+  assert.match(conversion, /Concision compresses phrasing, not interpretability/);
+  assert.match(conversion, /A named financial measure does not authorize adding chargebacks, fees, taxes/);
   assert.match(conversion, /Generic enterprise capability does not authorize claims about spreadsheets replaced, integrations, migration sequence, rollout order, packaged scope, implementation-plan delivery, or post-review follow-up/);
   assert.match(conversion, /do not assign the manager or plan any action the brief does not name/);
   assert.match(conversion, /A requirement for internal review is not a requirement for approval/);
@@ -128,8 +128,8 @@ test("closed-world briefs block plausible but unsupplied conversion details", ()
   assert.match(conversion, /When a supplied customer is described as named but the name itself is absent, do not create a fill-in token/);
   assert.match(conversion, /Attribute it as `a named customer`/);
   assert.match(conversion, /implementation note explaining that proof does not imply causality does not satisfy this requirement/);
-  assert.match(conversion, /render a visible `Customer quote` block with an attributed paraphrase at the named placement/);
-  assert.match(conversion, /For a practical replacement-product composition, avoid repeating the maintenance interval/);
+  assert.match(conversion, /A description of what a customer quote or statement says does not supply verbatim wording/);
+  assert.match(conversion, /For a practical replacement-product composition, lead with the maintenance or replacement job/);
   assert.match(conversion, /^### Identity-led openings without invented provenance$/m);
   assert.match(conversion, /make the headline express a reader identity or self-conception/);
   assert.match(conversion, /use a reader callout such as `For those who keep their own hours`/);
@@ -138,18 +138,15 @@ test("closed-world briefs block plausible but unsupplied conversion details", ()
   assert.match(conversion, /Connect supplied capabilities to recognizable organizational requirements without assigning unsupplied product behavior/);
   assert.match(conversion, /Employees can sign in through your organization's SAML setup/);
   assert.match(conversion, /Never upgrade a migration plan to a `documented plan`, `written plan`, `rollout plan`, or implementation process/);
-  assert.match(conversion, /For this bounded enterprise capability set, write `migration plan` exactly/);
-  assert.match(conversion, /Never write `defined plan`, `clear plan`, `agreed plan`, `guided plan`, `planned move`/);
-  assert.match(conversion, /Administrative access follows role, so employee sign-in and administrative authority remain separate decisions\./);
-  assert.match(conversion, /Use this finished-copy order: hero without a CTA/);
-  assert.match(conversion, /The exact fit block is/);
+  assert.match(conversion, /Do not let enterprise claim safety flatten the argument into an evaluation checklist/);
+  assert.match(conversion, /A reader job is not a product category, plan-selection instruction, evaluation process, CTA destination, or capability inventory/);
   assert.match(conversion, /Never write `cloud-based`, `cloud deployment only`, or `cloud-only`/);
   assert.match(conversion, /Prefer concrete capability sentences over abstract phrases/);
   assert.match(conversion, /A trial does not establish automatic billing, renewal, access after expiration, or cancellation mechanics/);
   assert.match(conversion, /A supplied result is not a quotation, does not establish causality, and does not belong to a specific plan/);
   assert.match(conversion, /Keep full price units visible in every variant/);
   assert.match(conversion, /Treat activation and setup completion as separate states/);
-  assert.match(conversion, /do not invent a calculation formula, subtract refunds, add completion metrics/);
+  assert.match(conversion, /Do not invent business metrics, financial adjustments, eligibility rules, instrumentation events/);
   assert.match(conversion, /A supplied sensory note does not establish temporal progression, projection, persistence, noticeability, mood, or effect/);
   assert.match(conversion, /When direction is unknown, state a non-directional hypothesis such as `may change`, not `will increase`/);
 });
@@ -162,13 +159,12 @@ test("enterprise conversion architecture preserves real routes and decision term
   assert.match(conversion, /Do not hide a supplied public price merely because a custom enterprise route also exists/);
   assert.match(conversion, /absence of self-serve, a trial, instant purchase, and public price does not establish the absence of a standard configuration/);
   assert.match(conversion, /put destination microcopy immediately after each action/);
-  assert.match(conversion, /Show the calculable combined amount due today/);
+  assert.match(conversion, /Arithmetic can establish a total, not shared collection timing/);
   assert.match(conversion, /Do not use `enterprise-grade` as the sole explanation/);
   assert.match(conversion, /Place proof where it resolves the live doubt/);
-  assert.match(conversion, /After both complete plan cards, add a visible `Customer result` block/);
-  assert.match(conversion, /Place directly below both plan cards/);
-  assert.match(conversion, /For one named customer, monthly report preparation fell from six hours to two after adoption/);
-  assert.match(conversion, /visible `Customer quote` block with an attributed paraphrase/);
+  assert.match(conversion, /establish the strongest supported shared job before distinguishing buying routes/);
+  assert.match(conversion, /Put a platform-wide result after the route comparison, outside any one plan/);
+  assert.match(conversion, /Use quotation marks only for verbatim wording supplied by the user/);
   assert.match(conversion, /do not rename a supplied migration manager as an owner, lead, contact, or coordinator/);
   assert.match(conversion, /Do not copy a competitor's headline formula, current category fashion, or AI language/);
 });
@@ -253,6 +249,10 @@ test("v1.7 conversion release pack is frozen, fully mapped, and fail-closed", ()
   assert.equal(frozenManifest.skill_version, "1.7.0");
   assert.equal(frozenManifest.release_gates.conversion_case_count, 13);
   assert.equal(frozenManifest.release_gates.conversion_wins_required, 10);
+  assert.match(
+    frozenManifest.hard_gate_definitions["no-invented-proof-or-rationale"],
+    /description of what a quotation says is not verbatim wording/,
+  );
   assert.deepEqual(frozenReleasePlan.legacy_case_ids, []);
 
   const records = frozenManifest.cases.map((item) => ({

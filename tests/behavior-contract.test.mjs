@@ -206,7 +206,7 @@ test("user authority controls requested content", () => {
   assert.match(passes, /An exact count is not a maximum, and the shortest-complete-output default does not override it/);
   assert.match(passes, /Build a private ledger of every explicit output constraint/);
   assert.match(passes, /Implication does not satisfy an explicit scope, exclusion, format, sequence, route, status, or length requirement/);
-  assert.match(passes, /For conversion compositions, verify that displayed copy follows the returned placement order exactly/);
+  assert.match(passes, /For conversion compositions, load and apply the surface-specific route, pricing, experiment, proof, and placement contracts/);
   assert.match(passes, /preserve necessary series/);
 
   const channel = extractSection(skill, "Fit the channel");
