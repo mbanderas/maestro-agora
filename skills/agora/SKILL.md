@@ -27,7 +27,7 @@ Do not wrap a generated UI label in quotation marks when hierarchy, bold text, o
 
 ## Load the authority progressively
 
-[references/agora-conversion.md](references/agora-conversion.md) governs conversion-context work. Load it immediately when the user asks to improve conversion, plan or interpret a funnel experiment, compare conversion variants, select performance measures, or optimize landing, product, pricing, enterprise, paywall, checkout, form, upgrade, or onboarding writing. This load is mandatory and precedes the general marketing and optional craft reads below. Treat it as a bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws.
+[references/agora-conversion.md](references/agora-conversion.md) governs conversion-context work. Load it immediately when the task writes, rewrites, plans, reviews, compares, tests, measures, or optimizes a conversion-relevant landing page, product page, pricing page, enterprise page, paywall, checkout, form, upgrade path, onboarding sequence, funnel, or experiment. Also load it when the user asks to improve conversion or interpret conversion evidence. New drafts count; do not require the user to say `conversion` or `optimize`. This load is mandatory and precedes the general marketing and optional craft reads below. Treat it as a bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws.
 
 Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Read only the sections the task needs:
 

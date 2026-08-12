@@ -24,8 +24,9 @@ const [frozenManifest, frozenReleasePlan] = await Promise.all([
 
 test("conversion context loads progressively without adding a mode", () => {
   assert.match(skill, /\[references\/agora-conversion\.md\]\(references\/agora-conversion\.md\) governs conversion-context work/);
-  assert.match(skill, /improve conversion, plan or interpret a funnel experiment, compare conversion variants, select performance measures/);
-  assert.match(skill, /landing, product, pricing, enterprise, paywall, checkout, form, upgrade, or onboarding writing/);
+  assert.match(skill, /writes, rewrites, plans, reviews, compares, tests, measures, or optimizes a conversion-relevant/);
+  assert.match(skill, /landing page, product page, pricing page, enterprise page, paywall, checkout, form, upgrade path, onboarding sequence, funnel, or experiment/);
+  assert.match(skill, /New drafts count; do not require the user to say `conversion` or `optimize`/);
   assert.match(skill, /This load is mandatory and precedes the general marketing and optional craft reads below/);
   assert.match(skill, /bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws/);
   assert.ok(skill.indexOf("references/agora-conversion.md") < skill.indexOf("Use [references/agora-marketing.md]"));
