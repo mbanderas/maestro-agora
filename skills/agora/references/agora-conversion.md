@@ -42,6 +42,8 @@ Apply these non-inference classes across categories:
 
 These limits prohibit invented vendor facts, not useful buyer-side interpretation. Translate a supplied capability into the actor who can use or review it, the decision or uncertainty it directly addresses, and any supplied boundary. Do not add product behavior or an outcome to make that connection. Avoid tautological noun repetition such as saying a review feature enables review or a control capability provides control; name the supported buyer action or leave the capability concrete.
 
+Prefer the action verb supplied by the brief when it precisely names the task. Necessary entailments and direct, bounded buyer interpretations are allowed. Do not invent an intermediate operation, vendor behavior, or outcome to make the argument flow.
+
 Classify every requested component before drafting: implementation recommendation, visible copy, or both. Return each explicitly. Keep editorial directions outside ready-to-use copy, while using labels around the copy when needed to distinguish requested components. If a component cannot be completed without adding a fact, use accurate structure around available facts rather than inventing the missing proposition. Do not append omission rationale unless the user requests analysis.
 
 ### Benefit-first composition
@@ -53,6 +55,10 @@ Use a benefit-first opening as a strong candidate when a practical audience arri
 Place the strongest relevant supplied proof near the uncertainty it resolves when the user asks for page composition. Trust signals belong near a consequential or risky action only when they answer the reader's live concern. Social proof must match the audience, use case, and decision. Do not scatter decorative badges, invent trust marks, or impose a fixed seal count.
 
 For a commitment area, make the final action, material terms, and relevant supplied proof scannable at the decision they qualify. Do not force a universal element count or fixed order. Give each component one incremental decision job: orient, explain the commitment, collect an input, resolve an uncertainty, disclose a boundary, or enable the action. Repeat only material terms or boundaries that must remain decision-adjacent when a component or variant can be encountered independently.
+
+For parallel options, each primary decision unit must carry its supported route type, exclusivity status, material commitment, and action or destination. An FAQ may reinforce the route distinction, but it cannot be the first component that supplies it. Do not imply an unsupplied route or exclusivity status.
+
+Every checklist or readiness item must add a distinct verification, dependency, consequence, or preparation action grounded in supplied facts. Do not use `review` or `confirm` merely to restate a claim from an earlier section. Direct, bounded buyer implications are allowed; unsupplied vendor behavior and outcomes are not.
 
 When the user asks for both visible composition and placement or implementation instructions, make them describe the same interface state. State explicit remove, retain, relocate, replace, or rewrite actions for named defects. Keep those actions outside the ready copy and do not count them as interface elements.
 
@@ -108,6 +114,8 @@ Treat a pricing page as a complete buying decision, not a tariff. Use the applic
 Do not hide a supplied public price merely because a custom enterprise route also exists. Do not publish a private price, invent a discount, or add a public self-serve offer the user did not supply. When the brief intentionally withholds price, make the actual quoting or scoping process clear instead.
 
 Keep destination microcopy adjacent to each action when the label alone cannot carry the supported route consequence. Show a combined amount under a timing label only when every included amount shares that supplied timing. Arithmetic can establish a total, not shared collection timing. Otherwise state each amount with only its own supplied timing. Do not infer when a subscription, fee, access period, or later process begins.
+
+Run a temporal audit across collection, access, and start language. When their sequence is absent, keep the known terms in separate clauses or sentences. Do not connect them with `after`, `before`, `then`, or `until`; those words create an unsupplied order.
 
 ### Explain enterprise value through operational requirements
 

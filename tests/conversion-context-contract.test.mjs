@@ -41,6 +41,9 @@ test("closed-world core delegates general conversion contracts", () => {
   assert.match(skill, /Write only supplied facts and necessary logical entailments/);
   assert.match(skill, /Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, and destinations/);
   assert.match(skill, /Never fill plausible defaults, strengthen or rename facts, convert a paraphrase into a quotation/);
+  assert.match(skill, /Prefer the supplied task verb when it precisely names the action/);
+  assert.match(skill, /Necessary entailments and direct, bounded buyer interpretations are allowed/);
+  assert.match(skill, /Invented intermediate operations, vendor behavior, and outcomes are not/);
   assert.match(skill, /apply its surface-specific route, pricing, experiment, proof, qualification, and placement contracts/);
   assert.match(skill, /classify every requested component as an implementation recommendation, visible copy, or both/i);
   assert.match(skill, /Examples in this skill and its references illustrate reasoning only/);
@@ -85,6 +88,8 @@ test("closed-world conversion contracts preserve fact dimensions", () => {
   assert.match(conversion, /These limits prohibit invented vendor facts, not useful buyer-side interpretation/);
   assert.match(conversion, /actor who can use or review it, the decision or uncertainty it directly addresses/);
   assert.match(conversion, /Avoid tautological noun repetition/);
+  assert.match(conversion, /Prefer the action verb supplied by the brief when it precisely names the task/);
+  assert.match(conversion, /Do not invent an intermediate operation, vendor behavior, or outcome to make the argument flow/);
 });
 
 test("component and flow contracts preserve action hierarchy", () => {
@@ -104,6 +109,10 @@ test("component and flow contracts preserve action hierarchy", () => {
   assert.match(conversion, /optional action after the event remains secondary/);
   assert.match(conversion, /Optional consent remains visually and semantically separate from the primary action/);
   assert.match(conversion, /The name of an event establishes only that the event occurred/);
+  assert.match(conversion, /each primary decision unit must carry its supported route type, exclusivity status, material commitment, and action or destination/);
+  assert.match(conversion, /FAQ may reinforce the route distinction, but it cannot be the first component that supplies it/);
+  assert.match(conversion, /Every checklist or readiness item must add a distinct verification, dependency, consequence, or preparation action grounded in supplied facts/);
+  assert.match(conversion, /Do not use `review` or `confirm` merely to restate a claim from an earlier section/);
 });
 
 test("pricing, route, proof, and persuasion contracts remain general", () => {
@@ -113,6 +122,8 @@ test("pricing, route, proof, and persuasion contracts remain general", () => {
   assert.match(conversion, /Treat a pricing page as a complete buying decision, not a tariff/);
   assert.match(conversion, /Do not hide a supplied public price merely because a custom enterprise route also exists/);
   assert.match(conversion, /Arithmetic can establish a total, not shared collection timing/);
+  assert.match(conversion, /Run a temporal audit across collection, access, and start language/);
+  assert.match(conversion, /Do not connect them with `after`, `before`, `then`, or `until`/);
   assert.match(conversion, /Preserve exact capability names, regions, role names, availability windows, document status, access conditions, and exclusions/);
   assert.match(conversion, /Do not infer a positive delivery model from an excluded one/);
   assert.match(conversion, /Do not let enterprise claim safety flatten the argument into an evaluation checklist/);
@@ -178,6 +189,46 @@ test("structurally different holdouts map to shared invariants", () => {
       contracts: [
         /unknown next destination, use neutral continuation language/,
         /explain the known transition in adjacent microcopy/,
+      ],
+    },
+  ];
+
+  for (const holdout of holdouts) {
+    for (const contract of holdout.contracts) {
+      assert.match(conversion, contract, `${holdout.id} lacks transferable contract ${contract}`);
+    }
+  }
+});
+
+test("unseen-domain holdouts map to abstract decision and entailment contracts", () => {
+  const holdouts = [
+    {
+      id: "harbor-berth-options",
+      contracts: [
+        /each primary decision unit must carry its supported route type, exclusivity status, material commitment, and action or destination/,
+        /FAQ may reinforce the route distinction, but it cannot be the first component that supplies it/,
+      ],
+    },
+    {
+      id: "archive-preservation-readiness",
+      contracts: [
+        /Every checklist or readiness item must add a distinct verification, dependency, consequence, or preparation action grounded in supplied facts/,
+        /Direct, bounded buyer implications are allowed; unsupplied vendor behavior and outcomes are not/,
+      ],
+    },
+    {
+      id: "seasonal-lease-timing",
+      contracts: [
+        /When their sequence is absent, keep the known terms in separate clauses or sentences/,
+        /Do not connect them with `after`, `before`, `then`, or `until`/,
+      ],
+    },
+    {
+      id: "fleet-handoff-entailment",
+      contracts: [
+        /Prefer the action verb supplied by the brief when it precisely names the task/,
+        /Necessary entailments and direct, bounded buyer interpretations are allowed/,
+        /Do not invent an intermediate operation, vendor behavior, or outcome/,
       ],
     },
   ];
