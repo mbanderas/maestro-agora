@@ -94,12 +94,29 @@ test("closed-world conversion contracts preserve fact dimensions", () => {
   assert.match(conversion, /Do not invent an intermediate operation, vendor behavior, or outcome to make the argument flow/);
 });
 
+test("conversion procedure static contract", () => {
+  const procedure = conversion.match(/Use this private conversion procedure:[^\n]+/)?.[0] ?? "";
+  assert.match(procedure, /identify the strongest supported reader decision/);
+  assert.match(procedure, /plan the requested components/);
+  assert.match(procedure, /parties \| action \| object \| scope \| conditions \| timing \| modality \| state \| route or next state/);
+  assert.match(procedure, /to its first carrying component/);
+  assert.match(procedure, /compare every relationship and operator with the source/);
+  assert.match(procedure, /correct unsupported changes; then rerun the contract and hierarchy checks/);
+  assert.match(procedure, /Preserve requested controls and states in literal, channel-native form/);
+  assert.ok(procedure.split(/\s+/).length <= 110);
+  assert.equal((procedure.match(/`/g) ?? []).length, 2);
+  assert.doesNotMatch(procedure, /\b[a-z]+(?:-[a-z]+){3,}\b/);
+  assert.doesNotMatch(procedure, /\b(?:example|such as|versus)\b/i);
+  assert.doesNotMatch(skill, /private immutable relation ledger|semantic-delta audit|contract-safe skeleton|parties \| action|present state -> control|first carrying component/);
+});
+
 test("component and flow contracts preserve action hierarchy", () => {
-  assert.match(conversion, /Classify every requested component before drafting: implementation recommendation, visible copy, or both/);
+  assert.match(conversion, /plan the requested components as implementation recommendations, visible copy, or both/);
   assert.match(conversion, /Keep editorial directions outside ready-to-use copy/);
   assert.match(skill, /worksheet-label ban applies inside ready-to-use copy/);
   assert.match(craft, /Keep worksheet labels out of the ready-to-use copy/);
   assert.match(conversion, /Give each component one incremental decision job/);
+  assert.match(conversion, /Remove repetition without reducing material coverage/);
   assert.match(conversion, /Repeat only material terms or boundaries that must remain decision-adjacent/);
   assert.match(conversion, /make them describe the same interface state/);
 
@@ -107,6 +124,8 @@ test("component and flow contracts preserve action hierarchy", () => {
   assert.match(conversion, /supported buyer commitment and its object or destination/);
   assert.match(conversion, /unknown next destination, use neutral continuation language/);
   assert.match(conversion, /Trace a primary-action spine across every multi-step flow/);
+  assert.match(conversion, /present state -> control -> immediate effect -> next visible state -> conditional later state/);
+  assert.match(conversion, /keep unsupplied states unknown/);
   assert.match(conversion, /prerequisite cannot replace activation/);
   assert.match(conversion, /optional action after the event remains secondary/);
   assert.match(conversion, /Optional consent remains visually and semantically separate from the primary action/);
