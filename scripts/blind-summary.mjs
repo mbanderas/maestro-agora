@@ -5,6 +5,8 @@ import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
+import { validateEligibility } from "./blind-eligibility.mjs";
+
 export const LEGACY_PROTECTED_DIMENSIONS = [
   "argument-inevitability",
   "sustained-emotional-relevance",
@@ -56,9 +58,22 @@ export const validateAdjudicationRecords = ({ manifest, records, requireComplete
     }
     if (!VALID_WINNERS.has(final.winner)) errors.push(`${label} has invalid winner ${String(final.winner)}`);
 
-    for (const field of ["candidateVetoes", "candidateHardGateFailures"]) {
+    for (const field of [
+      "candidateVetoes",
+      "candidateHardGateFailures",
+      "incumbentHardGateFailures",
+    ]) {
       if (!Array.isArray(final[field]) || final[field].some((value) => typeof value !== "string")) {
         errors.push(`${label} ${field} must be a string array`);
+      } else if (new Set(final[field]).size !== final[field].length) {
+        errors.push(`${label} ${field} contains duplicates`);
+      }
+    }
+
+    const allowedHardGates = new Set(item.hard_gates ?? []);
+    for (const field of ["candidateHardGateFailures", "incumbentHardGateFailures"]) {
+      for (const gate of Array.isArray(final[field]) ? final[field] : []) {
+        if (!allowedHardGates.has(gate)) errors.push(`${label} ${field} contains undeclared hard gate ${gate}`);
       }
     }
 
@@ -81,6 +96,14 @@ export const validateAdjudicationRecords = ({ manifest, records, requireComplete
         if (!allowed.has(dimension)) errors.push(`${label} ${side} contains undeclared dimension ${dimension}`);
       }
     }
+    errors.push(...validateEligibility({
+      winner: final.winner,
+      candidateHardGateFailures: final.candidateHardGateFailures,
+      incumbentHardGateFailures: final.incumbentHardGateFailures,
+      candidateScores: final.candidateScores,
+      incumbentScores: final.incumbentScores,
+      label,
+    }));
   }
 
   if (requireComplete) {
@@ -92,13 +115,20 @@ export const validateAdjudicationRecords = ({ manifest, records, requireComplete
   return errors;
 };
 
-export const protectedDrops = (record, dimensions = LEGACY_PROTECTED_DIMENSIONS) => dimensions
-  .map((dimension) => {
-    const candidate = score(record.final.candidateScores, dimension);
-    const incumbent = score(record.final.incumbentScores, dimension);
-    return { dimension, candidate, incumbent, delta: incumbent - candidate };
-  })
-  .filter((row) => Number.isFinite(row.candidate) && Number.isFinite(row.incumbent) && row.delta > 0);
+export const incumbentContractFailures = (record) => ({
+  hardGates: [...new Set(record.final.incumbentHardGateFailures ?? [])],
+});
+
+export const protectedDrops = (record, dimensions = LEGACY_PROTECTED_DIMENSIONS) => {
+  if (incumbentContractFailures(record).hardGates.length) return [];
+  return dimensions
+    .map((dimension) => {
+      const candidate = score(record.final.candidateScores, dimension);
+      const incumbent = score(record.final.incumbentScores, dimension);
+      return { dimension, candidate, incumbent, delta: incumbent - candidate };
+    })
+    .filter((row) => Number.isFinite(row.candidate) && Number.isFinite(row.incumbent) && row.delta > 0);
+};
 
 export const candidateContractFailures = (record) => ({
   vetoes: [...new Set(record.final.candidateVetoes ?? [])],
@@ -113,16 +143,29 @@ export const summarizeDomainQuality = ({ records, ids, manifest }) => {
   const selected = records.filter((record) => ids.has(record.id));
   const selectedIds = new Set(selected.map((record) => record.id));
   const missingIds = [...ids].filter((id) => !selectedIds.has(id));
-  const candidateValues = selected.flatMap((record) => Object.values(record.final.candidateScores).map(Number));
-  const incumbentValues = selected.flatMap((record) => Object.values(record.final.incumbentScores).map(Number));
+  const comparable = selected.filter(
+    (record) => incumbentContractFailures(record).hardGates.length === 0,
+  );
+  const candidateValues = comparable.flatMap(
+    (record) => Object.values(record.final.candidateScores).map(Number),
+  );
+  const incumbentValues = comparable.flatMap(
+    (record) => Object.values(record.final.incumbentScores).map(Number),
+  );
   const candidateMean = mean(candidateValues);
   const incumbentMean = mean(incumbentValues);
   const contractFailures = [];
+  const incumbentHardGateFailures = [];
   const scoreRegressions = [];
 
   for (const record of selected) {
     const contract = candidateContractFailures(record);
     if (contract.vetoes.length || contract.hardGates.length) contractFailures.push(record.id);
+    const incumbentContract = incumbentContractFailures(record);
+    if (incumbentContract.hardGates.length) {
+      incumbentHardGateFailures.push({ id: record.id, hardGates: incumbentContract.hardGates });
+      continue;
+    }
     const item = manifest.cases.find((candidate) => candidate.id === record.id);
     const drops = protectedDrops(record, requiredDimensionsForCase(manifest, item));
     if (drops.length) scoreRegressions.push({ id: record.id, dimensions: drops.map((drop) => drop.dimension) });
@@ -133,23 +176,27 @@ export const summarizeDomainQuality = ({ records, ids, manifest }) => {
     observed: selected.length,
     coverageComplete: missingIds.length === 0,
     missingIds,
-    candidateWins: selected.filter((record) => record.final.winner === "candidate").length,
+    comparableCaseCount: comparable.length,
+    totalCandidateWins: selected.filter((record) => record.final.winner === "candidate").length,
+    comparableCandidateWins: comparable.filter((record) => record.final.winner === "candidate").length,
     ties: selected.filter((record) => record.final.winner === "tie").length,
     incumbentWins: selected.filter((record) => record.final.winner === "incumbent").length,
     candidateMean,
     incumbentMean,
     meanDelta: candidateMean - incumbentMean,
     contractFailures,
+    incumbentHardGateFailures,
     scoreRegressions,
   };
 };
 
 export const passesDomainQuality = ({ summary, superiorityTarget, noninferiorityMargin }) =>
   summary.coverageComplete
+  && summary.comparableCaseCount >= superiorityTarget
   && summary.contractFailures.length === 0
   && summary.scoreRegressions.length === 0
   && Number.isFinite(summary.meanDelta)
-  && summary.candidateWins >= superiorityTarget
+  && summary.comparableCandidateWins >= superiorityTarget
   && summary.meanDelta >= -noninferiorityMargin;
 
 export const isMaterialLegacyRegression = (record, dimensions = LEGACY_PROTECTED_DIMENSIONS) => {
@@ -168,6 +215,7 @@ export const classifyBlindFindings = ({ records, legacyIds, criticalIds, manifes
   const criticalPreferenceLosses = [];
   const criticalContractFailures = [];
   const candidateHardGateFailures = [];
+  const incumbentHardGateFailures = [];
 
   for (const record of records) {
     const contract = candidateContractFailures(record);
@@ -175,6 +223,10 @@ export const classifyBlindFindings = ({ records, legacyIds, criticalIds, manifes
     const dimensions = requiredDimensionsForCase(manifest, item);
     if (contract.hardGates.length) {
       candidateHardGateFailures.push({ id: record.id, hardGates: contract.hardGates });
+    }
+    const incumbentContract = incumbentContractFailures(record);
+    if (incumbentContract.hardGates.length) {
+      incumbentHardGateFailures.push({ id: record.id, hardGates: incumbentContract.hardGates });
     }
 
     if (legacyIds.has(record.id) && isMaterialLegacyRegression(record, dimensions)) {
@@ -194,6 +246,7 @@ export const classifyBlindFindings = ({ records, legacyIds, criticalIds, manifes
     criticalPreferenceLosses,
     criticalContractFailures,
     candidateHardGateFailures,
+    incumbentHardGateFailures,
   };
 };
 
@@ -253,10 +306,11 @@ export const evaluateReleaseGates = ({ manifest, records, releasePlan }) => {
 
     const summary = summarizeDomainQuality({ records, ids, manifest });
     const pass = summary.coverageComplete
+      && summary.comparableCaseCount >= winsRequired
       && summary.contractFailures.length === 0
       && summary.scoreRegressions.length <= regressionsAllowed
       && Number.isFinite(summary.meanDelta)
-      && summary.candidateWins >= winsRequired
+      && summary.comparableCandidateWins >= winsRequired
       && summary.meanDelta >= -noninferiorityMargin;
     partitionResults.push({ id: partition.id, pass, winsRequired, regressionsAllowed, summary });
   }
@@ -269,6 +323,9 @@ export const evaluateReleaseGates = ({ manifest, records, releasePlan }) => {
     0,
   );
   if (requireNoVetoes === true && candidateVetoCount > 0) errors.push("candidate absolute vetoes are present");
+  if (findings && findings.candidateHardGateFailures.length > 0) {
+    errors.push("candidate hard-gate failures are present");
+  }
   if (findings && findings.materialLegacyRegressions.length > legacyAllowed) {
     errors.push(`legacy material regressions exceed ${legacyAllowed}`);
   }

@@ -15,11 +15,15 @@
     },
     "aHardGateFailures": {
       "type": "array",
-      "items": { "type": "string" }
+      "description": "Every listed hard gate applies. Include each failed gate ID; an omitted gate ID is recorded as passed. Null and unevaluable states are forbidden.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
     },
     "bHardGateFailures": {
       "type": "array",
-      "items": { "type": "string" }
+      "description": "Every listed hard gate applies. Include each failed gate ID; an omitted gate ID is recorded as passed. Null and unevaluable states are forbidden.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
     },
     "rationale": {
       "type": "string"

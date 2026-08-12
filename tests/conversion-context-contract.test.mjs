@@ -11,9 +11,10 @@ const EVAL_ROOT = join(ROOT, "evals", "prospective", "conversion-context-v1.0.0"
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const FROZEN_ROOT = join(ROOT, "evals", "blind", "v1.7.0");
 
-const [skill, conversion, manifest] = await Promise.all([
+const [skill, conversion, craft, manifest] = await Promise.all([
   readFile(join(SKILL_ROOT, "SKILL.md"), "utf8"),
   readFile(join(SKILL_ROOT, "references", "agora-conversion.md"), "utf8"),
+  readFile(join(SKILL_ROOT, "references", "agora-craft.md"), "utf8"),
   readFile(join(EVAL_ROOT, "manifest.json"), "utf8").then(JSON.parse),
 ]);
 
@@ -33,30 +34,15 @@ test("conversion context loads progressively without adding a mode", () => {
   assert.doesNotMatch(skill, /\| `CONVERSION` \|/);
 });
 
-test("closed-world core stays compact while conversion contracts load progressively", () => {
+test("closed-world core delegates general conversion contracts", () => {
   assert.match(skill, /^## Preserve closed-world facts$/m);
   assert.match(skill, /Write only supplied facts and necessary logical entailments/);
   assert.match(skill, /Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, and destinations/);
   assert.match(skill, /Never fill plausible defaults, strengthen or rename facts, convert a paraphrase into a quotation/);
-  assert.match(skill, /When the conversion overlay is loaded, apply its surface-specific route, pricing, experiment, proof, qualification, and placement contracts/);
-  assert.match(skill, /Return only the requested components/);
-  assert.doesNotMatch(skill, /A two-variant paywall keeps every supplied buying term/);
-  assert.doesNotMatch(skill, /An enterprise page whose only supplied capabilities are SAML SSO/);
-
-  assert.match(conversion, /Request received\. We will send the report to your work email\./);
-  assert.match(conversion, /Treat activation and setup completion as separate states/);
-  assert.match(conversion, /Keep full price units visible in every variant/);
-  assert.match(conversion, /Preserve every supplied denominator and time horizon, wait until that horizon is observable/);
-  assert.match(conversion, /render a visible attributed paraphrase at the requested proof position/);
-  assert.match(conversion, /For a practical replacement-product composition/);
-  assert.match(conversion, /Never write `cloud-based`, `cloud deployment only`, or `cloud-only`/);
-  assert.match(conversion, /Never write `before offering a meeting time`/);
-  assert.match(conversion, /The visible composition and the numbered placement order must describe one identical sequence/);
-  assert.match(conversion, /For a multi-route composition/);
-  assert.match(conversion, /For a sales-led factory-planning route/);
-  assert.match(conversion, /For a high-ticket self-serve plan/);
-  assert.match(conversion, /For a migration proof section/);
-  assert.match(conversion, /Do not let enterprise claim safety flatten the argument into an evaluation checklist/);
+  assert.match(skill, /apply its surface-specific route, pricing, experiment, proof, qualification, and placement contracts/);
+  assert.match(skill, /classify every requested component as an implementation recommendation, visible copy, or both/i);
+  assert.match(skill, /Examples in this skill and its references illustrate reasoning only/);
+  assert.match(skill, /Reproduce wording only when the current brief marks it `REQUIRED EXACT`/);
 });
 
 test("conversion priors preserve context, objectives, and user authority", () => {
@@ -75,98 +61,141 @@ test("conversion priors preserve context, objectives, and user authority", () =>
   assert.match(conversion, /A click is not activation, a completed form is not a qualified lead, purchase intent is not a purchase/);
   assert.match(conversion, /Do not invent a company KPI or claim a likely lift/);
   assert.match(conversion, /Never make benefit-first structure universal/);
-  assert.match(conversion, /Do not scatter decorative badges, invent trust marks, or impose a fixed seal count/);
   assert.match(conversion, /Never claim that fewer fields always produce a better business result/);
-  assert.match(conversion, /Do not turn an analytics objective into a customer-facing claim/);
   assert.match(conversion, /Treat top-performing sites as composition references only/);
   assert.match(conversion, /Do not transport their effect sizes into another business/);
   assert.match(conversion, /Outside explicit review mode, preserve the user's supplied claims and framing/);
 });
 
-test("closed-world briefs block plausible but unsupplied conversion details", () => {
+test("closed-world conversion contracts preserve fact dimensions", () => {
   assert.match(skill, /A section labeled `Supplied facts`, `Supplied terms`, or equivalent is a closed fact set/);
-  assert.match(skill, /In every drafting task, treat the user's named product, offer, customer, proof, route, price, permission, process, timing, legal, operational, and outcome facts as complete factual authority/);
   assert.match(skill, /A request to write, rewrite, recommend, compose, or improve conversion is not authorization to invent business facts/);
-  assert.match(skill, /resolve each named defect explicitly with an action such as remove, relocate, replace, retain, or rewrite/);
-  assert.match(skill, /Write only supplied facts and necessary logical entailments/);
   assert.match(skill, /For every draft, build a private fact ledger covering the complete response/);
   assert.match(skill, /Plausibility, convention, usefulness, and likely implementation do not count as entailment/);
-  assert.match(skill, /Do not append a process explanation, compliance note, self-audit, rationale, alternate route, or offer to do more/);
-  assert.match(conversion, /^### Closed-world conversion briefs$/m);
-  assert.match(conversion, /Payment processed by a named provider does not establish security, encryption, a particular widget, or a field layout/);
-  assert.match(conversion, /omission from the placement list is not enough/);
-  assert.match(conversion, /A monthly renewal term does not establish an immediate first charge/);
-  assert.match(conversion, /An optional consent choice does not establish unsubscribe mechanics, confirmation branching, merge fields, or future message frequency/);
-  assert.match(conversion, /Preserve the supplied consent scope exactly/);
-  assert.match(conversion, /A required permission does not establish a manual fallback, skipped path, post-permission success, or extra data use/);
-  assert.match(conversion, /A successful account sync does not establish automatic budget construction, automatic updates, absence of manual entry, notification subjects, or any post-sync customer result/);
-  assert.match(conversion, /do not invent a motivational before-state, problem contrast, data recency, estimate comparison, settings path, or reason the user should care/);
-  assert.match(conversion, /When submission starts review and a meeting may be offered afterward, the action requests review/);
-  assert.match(conversion, /Preserve every explicit funnel boundary the user supplies/);
-  assert.match(conversion, /do not call the action an immediate download or invent a file type, link, merge field, delivery time, unsubscribe term, or confirmation branch/);
-  assert.match(conversion, /Write proposed test procedures as recommendations, not facts about the current analytics, checkout, accounting, refund window, payment method, customer behavior, cash flow, churn, or decision policy/);
-  assert.match(conversion, /For an experiment with possible repeat exposure, use a stable assignment unit/);
-  assert.match(conversion, /For a decision-grade experiment brief in an evidence review, include the controls required to run and interpret the test/);
-  assert.match(conversion, /a completed-first-order outcome requires new customers rather than a mixed new-and-returning population/);
-  assert.match(conversion, /Concision compresses phrasing, not interpretability/);
-  assert.match(conversion, /A named financial measure does not authorize adding chargebacks, fees, taxes/);
-  assert.match(conversion, /Generic enterprise capability does not authorize claims about spreadsheets replaced, integrations, migration sequence, rollout order, packaged scope, implementation-plan delivery, or post-review follow-up/);
-  assert.match(conversion, /do not assign the manager or plan any action the brief does not name/);
-  assert.match(conversion, /A requirement for internal review is not a requirement for approval/);
-  assert.match(conversion, /The absence of on-premises deployment does not establish cloud-only delivery/);
-  assert.match(conversion, /A request form destination does not establish which fields it collects/);
-  assert.match(conversion, /The existence of a plan or named manager is not proof of downtime, duration, or success/);
-  assert.match(conversion, /Do not explain how the plan or manager works, what either controls, when either acts, or why outcomes vary/);
-  assert.match(conversion, /Risk specificity can be contextual without becoming causal/);
-  assert.match(conversion, /For a payment-area composition, make the final commitment scannable/);
-  assert.match(conversion, /visible composition and the numbered placement order must describe one identical sequence/);
-  assert.match(conversion, /payment fields; shipping and return terms; `Your order will be charged immediately`; purchase button/);
-  assert.match(conversion, /When an enterprise demo request starts specialist review, keep the familiar heading `Request an enterprise demo`/);
-  assert.match(conversion, /Continues to the next step\. Your subscription does not start here\./);
-  assert.match(conversion, /Each complete variant must repeat every material price, charge, renewal, cancellation, access, and no-trial term/);
-  assert.match(conversion, /When reviewing a proposed rule for `every CTA`, distinguish commitment actions from navigation and informational controls/);
-  assert.match(conversion, /When a supplied customer is described as named but the name itself is absent, do not create a fill-in token/);
-  assert.match(conversion, /Attribute it as `a named customer`/);
-  assert.match(conversion, /implementation note explaining that proof does not imply causality does not satisfy this requirement/);
-  assert.match(conversion, /A description of what a customer quote or statement says does not supply verbatim wording/);
-  assert.match(conversion, /For a practical replacement-product composition, lead with the maintenance or replacement job/);
-  assert.match(conversion, /^### Identity-led openings without invented provenance$/m);
-  assert.match(conversion, /make the headline express a reader identity or self-conception/);
-  assert.match(conversion, /use a reader callout such as `For those who keep their own hours`/);
-  assert.match(conversion, /Do not mistake the ban on invented effects for a ban on sensory writing/);
-  assert.match(conversion, /at least two concrete material adjectives and at least one relation or contrast among the notes/);
-  assert.match(conversion, /Connect supplied capabilities to recognizable organizational requirements without assigning unsupplied product behavior/);
-  assert.match(conversion, /Employees can sign in through your organization's SAML setup/);
-  assert.match(conversion, /Never upgrade a migration plan to a `documented plan`, `written plan`, `rollout plan`, or implementation process/);
-  assert.match(conversion, /Do not let enterprise claim safety flatten the argument into an evaluation checklist/);
-  assert.match(conversion, /A reader job is not a product category, plan-selection instruction, evaluation process, CTA destination, or capability inventory/);
-  assert.match(conversion, /Never write `cloud-based`, `cloud deployment only`, or `cloud-only`/);
-  assert.match(conversion, /Prefer concrete capability sentences over abstract phrases/);
-  assert.match(conversion, /A trial does not establish automatic billing, renewal, access after expiration, or cancellation mechanics/);
-  assert.match(conversion, /A supplied result is not a quotation, does not establish causality, and does not belong to a specific plan/);
-  assert.match(conversion, /Keep full price units visible in every variant/);
-  assert.match(conversion, /Treat activation and setup completion as separate states/);
-  assert.match(conversion, /Do not invent business metrics, financial adjustments, eligibility rules, instrumentation events/);
-  assert.match(conversion, /A supplied sensory note does not establish temporal progression, projection, persistence, noticeability, mood, or effect/);
-  assert.match(conversion, /When direction is unknown, state a non-directional hypothesis such as `may change`, not `will increase`/);
+
+  assert.match(conversion, /Track facts at the level of actor, action, object, status, timing, scope, qualifier, evidence form, route, destination, permission, consent, price, term, and limitation/);
+  assert.match(conversion, /Support for one field does not supply an adjacent field/);
+  assert.match(conversion, /price, billing period, renewal, trial, cancellation right.*does not establish collection timing/s);
+  assert.match(conversion, /permission or consent choice does not establish a fallback.*extra data use/s);
+  assert.match(conversion, /A result does not become a quotation, causal claim, customer identity, segment result, or plan-specific result/);
+  assert.match(conversion, /named role, plan, review, or process does not establish a different role name, approval, ownership, deliverable, authority, schedule, coverage, or result/);
+  assert.match(conversion, /stated exclusion does not establish the unnamed alternative/);
+  assert.match(conversion, /These limits prohibit invented vendor facts, not useful buyer-side interpretation/);
+  assert.match(conversion, /actor who can use or review it, the decision or uncertainty it directly addresses/);
+  assert.match(conversion, /Avoid tautological noun repetition/);
 });
 
-test("enterprise conversion architecture preserves real routes and decision terms", () => {
+test("component and flow contracts preserve action hierarchy", () => {
+  assert.match(conversion, /Classify every requested component before drafting: implementation recommendation, visible copy, or both/);
+  assert.match(conversion, /Keep editorial directions outside ready-to-use copy/);
+  assert.match(skill, /worksheet-label ban applies inside ready-to-use copy/);
+  assert.match(craft, /Keep worksheet labels out of the ready-to-use copy/);
+  assert.match(conversion, /Give each component one incremental decision job/);
+  assert.match(conversion, /Repeat only material terms or boundaries that must remain decision-adjacent/);
+  assert.match(conversion, /make them describe the same interface state/);
+
+  assert.match(conversion, /conversion overlay never waives the canonical CTA standard/);
+  assert.match(conversion, /supported buyer commitment and its object or destination/);
+  assert.match(conversion, /unknown next destination, use neutral continuation language/);
+  assert.match(conversion, /Trace a primary-action spine across every multi-step flow/);
+  assert.match(conversion, /prerequisite cannot replace activation/);
+  assert.match(conversion, /optional action after the event remains secondary/);
+  assert.match(conversion, /Optional consent remains visually and semantically separate from the primary action/);
+  assert.match(conversion, /The name of an event establishes only that the event occurred/);
+});
+
+test("pricing, route, proof, and persuasion contracts remain general", () => {
   assert.match(conversion, /make both routes legible without pretending they perform the same job/);
   assert.match(conversion, /Do not treat the absence of a sales team as a conversion ideal or an eligibility test/);
   assert.match(conversion, /do not invent a signup, trial, public price, or instant-purchase route/);
   assert.match(conversion, /Treat a pricing page as a complete buying decision, not a tariff/);
   assert.match(conversion, /Do not hide a supplied public price merely because a custom enterprise route also exists/);
-  assert.match(conversion, /absence of self-serve, a trial, instant purchase, and public price does not establish the absence of a standard configuration/);
-  assert.match(conversion, /put destination microcopy immediately after each action/);
   assert.match(conversion, /Arithmetic can establish a total, not shared collection timing/);
-  assert.match(conversion, /Do not use `enterprise-grade` as the sole explanation/);
-  assert.match(conversion, /Place proof where it resolves the live doubt/);
+  assert.match(conversion, /Preserve exact capability names, regions, role names, availability windows, document status, access conditions, and exclusions/);
+  assert.match(conversion, /Do not infer a positive delivery model from an excluded one/);
+  assert.match(conversion, /Do not let enterprise claim safety flatten the argument into an evaluation checklist/);
   assert.match(conversion, /establish the strongest supported shared job before distinguishing buying routes/);
-  assert.match(conversion, /Put a platform-wide result after the route comparison, outside any one plan/);
   assert.match(conversion, /Use quotation marks only for verbatim wording supplied by the user/);
-  assert.match(conversion, /do not rename a supplied migration manager as an owner, lead, contact, or coordinator/);
-  assert.match(conversion, /Do not copy a competitor's headline formula, current category fashion, or AI language/);
+  assert.match(conversion, /summary of what someone said supplies meaning, not exact speech/);
+  assert.match(conversion, /support and evidence gap as separate facts/);
+  assert.match(skill, /after that floor passes, preserve the strongest supported reader job, task, or operational decision as the argument/);
+});
+
+test("frozen fixture recipes are absent from reusable skill guidance", () => {
+  const reusable = [skill, conversion, craft].join("\n");
+  const leakedRecipes = [
+    /Request received\. We will send the report to your work email\./,
+    /Request an enterprise demo/,
+    /Send demo request for review/,
+    /Continues to the next step\. Your subscription does not start here\./,
+    /Your order will be charged immediately/,
+    /successful account sync/,
+    /factory-planning route/,
+    /plant-data review/,
+    /high-ticket self-serve plan/,
+    /Employees can sign in through your organization's SAML setup/,
+    /EU or US region choice/,
+    /security report available under NDA/,
+    /For a migration proof section/,
+    /Attribute it as `a named customer`/,
+    /For a practical replacement-product composition/,
+    /restrained nocturnal fragrance opening/,
+    /For those who keep their own hours/,
+    /dry wood.*tannic tea.*powder-soft iris/s,
+    /The action uses `Buy`/,
+  ];
+  for (const recipe of leakedRecipes) assert.doesNotMatch(reusable, recipe);
+});
+
+test("structurally different holdouts map to shared invariants", () => {
+  const holdouts = [
+    {
+      id: "permit-gated-calibration",
+      contracts: [
+        /Trace a primary-action spine/,
+        /prerequisite cannot replace activation/,
+        /optional action after the event remains secondary/,
+      ],
+    },
+    {
+      id: "museum-membership-renewal",
+      contracts: [
+        /every material price, unit, timing, charge, renewal, cancellation, access, trial, permission, and limitation/,
+        /Arithmetic can establish a total, not shared collection timing/,
+      ],
+    },
+    {
+      id: "regulated-document-review",
+      contracts: [
+        /actor who can use or review it, the decision or uncertainty it directly addresses/,
+        /Use quotation marks only for verbatim wording supplied by the user/,
+      ],
+    },
+    {
+      id: "unknown-kiosk-transition",
+      contracts: [
+        /unknown next destination, use neutral continuation language/,
+        /explain the known transition in adjacent microcopy/,
+      ],
+    },
+  ];
+
+  for (const holdout of holdouts) {
+    for (const contract of holdout.contracts) {
+      assert.match(conversion, contract, `${holdout.id} lacks transferable contract ${contract}`);
+    }
+  }
+});
+
+test("experiment guidance preserves interpretability without a frozen recipe", () => {
+  assert.match(conversion, /preserve enough structure to interpret the named business outcome/);
+  assert.match(conversion, /Define the eligible population and outcome denominator consistently/);
+  assert.match(conversion, /Use stable assignment when repeat exposure could cross variants/);
+  assert.match(conversion, /Specify an unchanged comparator and an isolated treatment from available inputs/);
+  assert.match(conversion, /Separate the primary outcome from guardrails and diagnostics/);
+  assert.match(conversion, /Use direction-neutral hypotheses and symmetrical decisions for benefit, harm, null, and uncertainty/);
+  assert.match(conversion, /Present population, measurement, sample-size, interval, exclusion, duration, and stopping methods as proposed procedures/);
+  assert.doesNotMatch(conversion, /completed-first-order outcome requires new customers/);
 });
 
 test("research-derived guidance stays observed, contextual, or explicitly unproven", () => {
@@ -237,6 +266,7 @@ test("prospective pack is evaluator-compatible but not release evidence", async 
       winner: "tie",
       candidateVetoes: [],
       candidateHardGateFailures: [],
+      incumbentHardGateFailures: [],
       candidateScores: Object.fromEntries(manifest.rubric.dimensions.map((dimension) => [dimension, 5])),
       incumbentScores: Object.fromEntries(manifest.rubric.dimensions.map((dimension) => [dimension, 5])),
     },
@@ -261,6 +291,7 @@ test("v1.7 conversion release pack is frozen, fully mapped, and fail-closed", ()
       winner: "tie",
       candidateVetoes: [],
       candidateHardGateFailures: [],
+      incumbentHardGateFailures: [],
       candidateScores: Object.fromEntries(frozenManifest.rubric.dimensions.map((dimension) => [dimension, 5])),
       incumbentScores: Object.fromEntries(frozenManifest.rubric.dimensions.map((dimension) => [dimension, 5])),
     },

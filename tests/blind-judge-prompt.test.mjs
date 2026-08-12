@@ -1,7 +1,17 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import { buildBlindJudgePrompt, normalizeOriginalTask } from "../scripts/blind-judge-prompt.mjs";
+
+const judgeInstructions = await readFile(
+  new URL("../evals/blind/v1.7.0/judge-instructions.md", import.meta.url),
+  "utf8",
+);
+const judgeSchema = JSON.parse(await readFile(
+  new URL("../evals/blind/v1.7.0/judge-schema.json", import.meta.url),
+  "utf8",
+));
 
 const manifest = {
   hard_gate_definitions: {
@@ -70,4 +80,21 @@ test("unknown hard gates and malformed templates fail closed", () => {
     }),
     /RESPONSE_B.*exactly once/,
   );
+});
+
+test("versioned judge protocol anchors every score and forbids unknown gate states", () => {
+  for (const anchor of [1, 2, 3, 4, 5]) {
+    assert.match(judgeInstructions, new RegExp(`- ${anchor}:`));
+  }
+  assert.match(judgeInstructions, /Every hard gate listed below applies independently to both responses/);
+  assert.match(judgeInstructions, /gate ID absent from the array means the response passed/);
+  assert.match(judgeInstructions, /Hard gates override scores/);
+  assert.match(judgeInstructions, /uniquely invalid response cannot score above the valid response/);
+
+  for (const field of ["aHardGateFailures", "bHardGateFailures"]) {
+    assert.ok(judgeSchema.required.includes(field));
+    assert.equal(judgeSchema.properties[field].type, "array");
+    assert.equal(judgeSchema.properties[field].uniqueItems, true);
+    assert.deepEqual(judgeSchema.properties[field].items.type, "string");
+  }
 });

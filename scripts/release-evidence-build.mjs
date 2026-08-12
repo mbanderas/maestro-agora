@@ -6,6 +6,7 @@ import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { reduceAdjudications } from "./adjudication-reducer.mjs";
+import { ELIGIBILITY_POLICY } from "./blind-eligibility.mjs";
 import { ingestBlindJudgments, BLIND_ORDER_SEED } from "./blind-judgment-ingest.mjs";
 import { evaluateBlindRun } from "./blind-summary.mjs";
 import { computeEvalTreeLock } from "./eval-locks.mjs";
@@ -13,12 +14,17 @@ import { validateEvaluationProvenance } from "./eval-provenance-check.mjs";
 import {
   deriveReleaseEvidenceSummary,
   REQUIRED_HASHED_FILES,
+  REQUIRED_PROTOCOL_FILES,
 } from "./release-evidence-check.mjs";
+import { validateGitReleaseProvenance } from "./release-git-provenance.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const VERSION = "1.7.0";
-const CANDIDATE_FREEZE_COMMIT = "4eb65795d57c88d30517a5dcb48d61f9de213f45";
 const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
+const BASELINE_SKILL_TREE = {
+  file_count: 8,
+  sha256: "ff68706d00455ec6a35351bc34b8996506bbe3a95421c2bc5480bf150f1e99aa",
+};
 const COMMIT = /^[a-f0-9]{40}$/;
 
 const repoPath = (...parts) => join(ROOT, ...parts);
@@ -59,7 +65,8 @@ const externalTree = async (evaluationRoot, path) => {
   return { file_count: value.file_count, sha256: value.sha256 };
 };
 
-async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
+async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, judgeProtocolCommit }) {
+  if (!COMMIT.test(candidateFreezeCommit)) throw new Error("candidate freeze commit must be a 40-character Git commit");
   if (!COMMIT.test(judgeProtocolCommit)) throw new Error("judge protocol commit must be a 40-character Git commit");
   const manifestPath = repoPath("evals", "blind", `v${VERSION}`, "manifest.json");
   const releasePlanPath = repoPath("evals", "releases", `v${VERSION}.gates.json`);
@@ -83,15 +90,6 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
     throw new Error(`release gates failed:\n${JSON.stringify(evaluation, null, 2)}`);
   }
 
-  const adjudicationsPath = repoPath("evals", "releases", `v${VERSION}.adjudications.json`);
-  const recordsPath = repoPath("evals", "releases", `v${VERSION}.records.json`);
-  await writeFile(adjudicationsPath, json(adjudications), "utf8");
-  await writeFile(recordsPath, json(records), "utf8");
-
-  const artifactHashes = {};
-  for (const path of REQUIRED_HASHED_FILES) {
-    artifactHashes[path] = await sha256File(repoPath(...path.split("/")));
-  }
   const treeHashes = {};
   for (const path of ["skills/agora", `evals/blind/v${VERSION}`]) {
     const value = await computeEvalTreeLock(ROOT, path);
@@ -106,16 +104,55 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
     "judgments",
     "judge-logs",
   ]);
+  const externalArtifacts = {
+    candidate_skill_copy: await externalTree(evaluationRoot, "generation-a-work/.agents/skills/agora"),
+    incumbent_skill_copy: await externalTree(evaluationRoot, "generation-b-work/.agents/skills/agora"),
+    candidate_outputs: await externalTree(evaluationRoot, "generation-a-outputs"),
+    incumbent_outputs: await externalTree(evaluationRoot, "generation-b-outputs"),
+    generation_logs: await externalTree(evaluationRoot, "generation-logs"),
+    raw_judgments: await externalTree(evaluationRoot, "judgments"),
+    judge_logs: await externalTree(evaluationRoot, "judge-logs"),
+    judge_prompts: await externalTree(evaluationRoot, "judge-prompts"),
+  };
+  const repositorySkill = treeHashes["skills/agora"];
+  if (externalArtifacts.candidate_skill_copy.file_count !== repositorySkill.file_count
+    || externalArtifacts.candidate_skill_copy.sha256 !== repositorySkill.sha256) {
+    throw new Error("external candidate skill copy does not match the released skill tree");
+  }
+  if (externalArtifacts.incumbent_skill_copy.file_count !== BASELINE_SKILL_TREE.file_count
+    || externalArtifacts.incumbent_skill_copy.sha256 !== BASELINE_SKILL_TREE.sha256) {
+    throw new Error("external incumbent skill copy does not match the v1.6.0 skill tree");
+  }
+  const commits = {
+    candidate_freeze: candidateFreezeCommit,
+    judge_protocol: judgeProtocolCommit,
+    baseline_ref: "v1.6.0",
+    baseline: BASELINE_COMMIT,
+  };
+  const gitErrors = await validateGitReleaseProvenance({
+    root: ROOT,
+    commits,
+    startedAtUtc: timing.started_at_utc,
+    evidenceTreeHashes: treeHashes,
+    requiredProtocolFiles: REQUIRED_PROTOCOL_FILES,
+    protocolTreePath: `evals/blind/v${VERSION}`,
+  });
+  if (gitErrors.length) throw new Error(`Git release provenance failed:\n- ${gitErrors.join("\n- ")}`);
+
+  const adjudicationsPath = repoPath("evals", "releases", `v${VERSION}.adjudications.json`);
+  const recordsPath = repoPath("evals", "releases", `v${VERSION}.records.json`);
+  await writeFile(adjudicationsPath, json(adjudications), "utf8");
+  await writeFile(recordsPath, json(records), "utf8");
+
+  const artifactHashes = {};
+  for (const path of REQUIRED_HASHED_FILES) {
+    artifactHashes[path] = await sha256File(repoPath(...path.split("/")));
+  }
   const evidence = {
     schema_version: 1,
     skill_version: VERSION,
     status: "passed",
-    commits: {
-      candidate_freeze: CANDIDATE_FREEZE_COMMIT,
-      judge_protocol: judgeProtocolCommit,
-      baseline_ref: "v1.6.0",
-      baseline: BASELINE_COMMIT,
-    },
+    commits,
     execution: {
       generator_model: "gpt-5.6-sol",
       judge_model: "gpt-5.6-sol",
@@ -129,21 +166,13 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
       runtime_attestations_verified: true,
       provenance_check_passed: true,
       order_seed: BLIND_ORDER_SEED,
-      reduction_policy: "Agreed mapped winners use pass 1/2 mean scores; disagreements require pass 3 winner and scores; candidate vetoes and hard-gate failures are unioned across every valid pass.",
+      eligibility_policy: ELIGIBILITY_POLICY,
+      reduction_policy: "Agreed mapped winners and hard-gate sets use pass 1/2 mean scores. Winner or either side's hard-gate disagreement requires pass 3 winner and scores. Both sides' hard-gate failures are unioned across every used pass, then the eligible winner is derived from the union.",
       ...timing,
     },
     artifact_hashes: artifactHashes,
     tree_hashes: treeHashes,
-    external_artifacts: {
-      candidate_skill_copy: await externalTree(evaluationRoot, "generation-a-work/.agents/skills/agora"),
-      incumbent_skill_copy: await externalTree(evaluationRoot, "generation-b-work/.agents/skills/agora"),
-      candidate_outputs: await externalTree(evaluationRoot, "generation-a-outputs"),
-      incumbent_outputs: await externalTree(evaluationRoot, "generation-b-outputs"),
-      generation_logs: await externalTree(evaluationRoot, "generation-logs"),
-      raw_judgments: await externalTree(evaluationRoot, "judgments"),
-      judge_logs: await externalTree(evaluationRoot, "judge-logs"),
-      judge_prompts: await externalTree(evaluationRoot, "judge-prompts"),
-    },
+    external_artifacts: externalArtifacts,
     summary: deriveReleaseEvidenceSummary({ records, adjudications, evaluation }),
   };
   await writeFile(repoPath("evals", "releases", `v${VERSION}.evidence.json`), json(evidence), "utf8");
@@ -151,17 +180,18 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
-  const [evaluationRoot, judgeProtocolCommit] = process.argv.slice(2);
-  if (!evaluationRoot || !judgeProtocolCommit) {
-    process.stderr.write("Usage: node scripts/release-evidence-build.mjs <external-evaluation-root> <judge-protocol-commit>\n");
+  const [evaluationRoot, candidateFreezeCommit, judgeProtocolCommit] = process.argv.slice(2);
+  if (!evaluationRoot || !candidateFreezeCommit || !judgeProtocolCommit) {
+    process.stderr.write("Usage: node scripts/release-evidence-build.mjs <external-evaluation-root> <candidate-freeze-commit> <judge-protocol-commit>\n");
     process.exitCode = 2;
   } else {
     try {
       const evidence = await buildReleaseEvidence({
         evaluationRoot: resolve(evaluationRoot),
+        candidateFreezeCommit,
         judgeProtocolCommit,
       });
-      process.stdout.write(`Release evidence built: ${evidence.summary.candidate_wins} candidate wins across ${evidence.summary.case_count} cases\n`);
+      process.stdout.write(`Release evidence built: ${evidence.summary.comparable_candidate_wins} comparable candidate wins (${evidence.summary.total_candidate_wins} total) across ${evidence.summary.case_count} cases\n`);
     } catch (error) {
       process.stderr.write(`${error.message}\n`);
       process.exitCode = 1;

@@ -6,13 +6,14 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { reduceAdjudications } from "./adjudication-reducer.mjs";
+import { ELIGIBILITY_POLICY } from "./blind-eligibility.mjs";
 import { evaluateBlindRun } from "./blind-summary.mjs";
 import { BLIND_ORDER_SEED, expectedBlindOrder } from "./blind-judgment-ingest.mjs";
 import { computeEvalTreeLock } from "./eval-locks.mjs";
+import { validateGitReleaseProvenance } from "./release-git-provenance.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const VERSION = "1.7.0";
-const CANDIDATE_FREEZE_COMMIT = "4eb65795d57c88d30517a5dcb48d61f9de213f45";
 const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
 const BASELINE_SKILL_TREE = {
   file_count: 8,
@@ -36,6 +37,8 @@ export const REQUIRED_HASHED_FILES = [
   PATHS.releasePlan,
   "evals/releases/locks.json",
   "scripts/adjudication-reducer.mjs",
+  "scripts/blind-eligibility.mjs",
+  "scripts/eval-locks.mjs",
   "scripts/eval-provenance-check.mjs",
   "scripts/blind-judge-prompt.mjs",
   "scripts/blind-judge-materialize.mjs",
@@ -43,14 +46,20 @@ export const REQUIRED_HASHED_FILES = [
   "scripts/blind-summary.mjs",
   "scripts/release-evidence-check.mjs",
   "scripts/release-evidence-build.mjs",
+  "scripts/release-git-provenance.mjs",
   PATHS.adjudications,
   PATHS.records,
 ];
+
+export const REQUIRED_PROTOCOL_FILES = REQUIRED_HASHED_FILES.filter(
+  (path) => path !== PATHS.adjudications && path !== PATHS.records,
+);
 
 const EXACT_PASS_KEYS = [
   "candidateHardGateFailures",
   "candidateScores",
   "candidateVetoes",
+  "incumbentHardGateFailures",
   "incumbentScores",
   "order",
   "pass",
@@ -72,7 +81,9 @@ export const deriveReleaseEvidenceSummary = ({ records, adjudications, evaluatio
     pass: evaluation.pass,
     case_count: records.length,
     adjudication_pass_count: adjudications.reduce((total, item) => total + item.passes.length, 0),
-    candidate_wins: records.filter((record) => record.final.winner === "candidate").length,
+    total_candidate_wins: domain.totalCandidateWins
+      ?? records.filter((record) => record.final.winner === "candidate").length,
+    comparable_candidate_wins: domain.comparableCandidateWins ?? 0,
     ties: records.filter((record) => record.final.winner === "tie").length,
     incumbent_wins: records.filter((record) => record.final.winner === "incumbent").length,
     candidate_veto_count: records.reduce(
@@ -83,6 +94,15 @@ export const deriveReleaseEvidenceSummary = ({ records, adjudications, evaluatio
       (total, record) => total + new Set(record.final.candidateHardGateFailures).size,
       0,
     ),
+    incumbent_hard_gate_failure_count: records.reduce(
+      (total, record) => total + new Set(record.final.incumbentHardGateFailures).size,
+      0,
+    ),
+    incumbent_invalid_case_count: records.filter(
+      (record) => new Set(record.final.incumbentHardGateFailures).size > 0,
+    ).length,
+    comparable_case_count: domain.comparableCaseCount ?? 0,
+    incumbent_hard_gate_findings: domain.incumbentHardGateFailures ?? [],
     score_regression_count: domain.scoreRegressions?.length ?? 0,
     candidate_mean: domain.candidateMean,
     incumbent_mean: domain.incumbentMean,
@@ -97,9 +117,7 @@ export const validateEvidenceExecution = (evidence) => {
   if (evidence?.schema_version !== 1) errors.push("evidence schema_version must be 1");
   if (evidence?.skill_version !== VERSION) errors.push(`evidence skill_version must be ${VERSION}`);
   if (evidence?.status !== "passed") errors.push("evidence status must be passed");
-  if (commits.candidate_freeze !== CANDIDATE_FREEZE_COMMIT) {
-    errors.push("evidence candidate freeze commit does not match the frozen candidate");
-  }
+  if (!COMMIT.test(commits.candidate_freeze ?? "")) errors.push("evidence candidate freeze commit is invalid");
   if (commits.baseline !== BASELINE_COMMIT || commits.baseline_ref !== "v1.6.0") {
     errors.push("evidence baseline does not match v1.6.0");
   }
@@ -109,6 +127,9 @@ export const validateEvidenceExecution = (evidence) => {
   if (execution.generator_runtime !== "codex-subagent") errors.push("generator runtime must be codex-subagent");
   if (execution.judge_runtime !== "codex-subagent") errors.push("judge runtime must be codex-subagent");
   if (execution.order_seed !== BLIND_ORDER_SEED) errors.push("blind order seed does not match protocol");
+  if (execution.eligibility_policy !== ELIGIBILITY_POLICY) {
+    errors.push("evaluation eligibility policy does not match protocol");
+  }
   if (execution.context_fork !== "none") errors.push("evaluation contexts must not inherit prior turns");
   const started = Date.parse(execution.started_at_utc);
   const completed = Date.parse(execution.completed_at_utc);
@@ -244,6 +265,15 @@ export async function verifyReleaseEvidence(root = ROOT) {
       errors.push(`tree hash mismatch: ${path}`);
     }
   }
+
+  errors.push(...await validateGitReleaseProvenance({
+    root,
+    commits: evidence.commits,
+    startedAtUtc: evidence.execution?.started_at_utc,
+    evidenceTreeHashes: evidence.tree_hashes,
+    requiredProtocolFiles: REQUIRED_PROTOCOL_FILES,
+    protocolTreePath: `evals/blind/v${VERSION}`,
+  }));
 
   return errors;
 }

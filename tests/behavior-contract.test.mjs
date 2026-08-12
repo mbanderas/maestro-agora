@@ -201,7 +201,8 @@ test("user authority controls requested content", () => {
   assert.match(passes, /visible wording or measured property/);
   assert.match(passes, /format, sequence, route, status, or length requirement/);
   assert.match(passes, /hierarchy, spacing, or channel-native structure/);
-  assert.match(passes, /Do not add worksheet labels merely to prove/);
+  assert.match(passes, /worksheet-label ban applies inside ready-to-use copy/);
+  assert.match(passes, /Labels remain available outside the copy when the user requests labeled fields/);
   assert.match(passes, /an exact count is exact or a bounded count is inside the range/);
   assert.match(passes, /An exact count is not a maximum, and the shortest-complete-output default does not override it/);
   assert.match(passes, /Build a private ledger of every explicit output constraint/);
@@ -526,7 +527,8 @@ test("the craft reference carries the five unabsorbed domains with graded rules"
 
   const emotion = extractSection(craft, "Emotion under a user brief");
   assert.ok(emotion.includes("### Emotion from a fact set with no outcome data"));
-  assert.match(emotion, /For a user-requested identity-led sensory opening/);
+  assert.match(emotion, /For identity-led or sensory commercial work, ground recognition in the audience or aesthetic direction the brief supplies/);
+  assert.match(emotion, /Do not turn aesthetic direction into a creation fact, audience behavior, wearer effect, or performance claim/);
   assert.ok(emotion.includes("### Permission to write flat"));
   assert.match(emotion, /do not add emotion\. Increase resolution around the emotionally consequential facts/);
   assert.match(emotion, /the correct output is then flat/);

@@ -98,8 +98,9 @@ test("claim grammar and RivalScope remain bounded by destination and outcome evi
 test("hero route generation requires semantic alternatives and one recommended output", () => {
   assert.match(craft, /at least four meaningfully different routes as a governance default, not four synonyms/);
   assert.match(craft, /Return one recommended composition by default/);
-  assert.match(craft, /Present it as finished copy, not a worksheet labeled `Headline`, `Subhead`, `CTA`, and `Qualification`/);
-  assert.match(skill, /Return finished copy, not field labels/);
+  assert.match(craft, /Keep worksheet labels out of the ready-to-use copy/);
+  assert.match(craft, /Use labels around the copy when the user requests component fields/);
+  assert.match(skill, /Return finished copy, not a worksheet/);
   assert.match(craft, /Follow the emotional direction the user chooses/);
   assert.match(craft, /Keep the headline to one commercial argument/);
   assert.match(craft, /When two numbers make it read like a report/);

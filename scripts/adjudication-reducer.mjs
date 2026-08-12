@@ -4,6 +4,12 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
+import {
+  adjudicationsDisagree,
+  deriveEligibleWinner,
+  validateEligibility,
+} from "./blind-eligibility.mjs";
+
 const VALID_WINNERS = new Set(["candidate", "incumbent", "tie"]);
 const VALID_SIDES = new Set(["candidate", "incumbent"]);
 
@@ -88,6 +94,17 @@ const validatePass = ({ pass, item, manifest, dimensions, allowedVetoes, label, 
   for (const gate of failures) {
     if (!allowedGates.has(gate)) errors.push(`${label}.candidateHardGateFailures contains unknown gate ${gate}`);
   }
+
+  const incumbentFailures = uniqueStrings(
+    pass.incumbentHardGateFailures,
+    `${label}.incumbentHardGateFailures`,
+    errors,
+  );
+  for (const gate of incumbentFailures) {
+    if (!allowedGates.has(gate)) errors.push(`${label}.incumbentHardGateFailures contains unknown gate ${gate}`);
+  }
+
+  errors.push(...validateEligibility({ ...pass, label }));
 };
 
 const union = (passes, field) => [...new Set(passes.flatMap((pass) => pass[field]))];
@@ -182,13 +199,17 @@ export function reduceAdjudications({ manifest, adjudications }) {
       errors.push(`${label} passes 1 and 2 must use swapped order`);
     }
 
-    const winnersDiffer = first.winner !== second.winner;
-    if (winnersDiffer && !third) errors.push(`${label} requires pass 3 because mapped winners differ`);
-    if (!winnersDiffer && third) errors.push(`${label} forbids pass 3 because mapped winners agree`);
-    if (winnersDiffer && !third) continue;
+    const passesDisagree = adjudicationsDisagree(first, second);
+    if (passesDisagree && !third) {
+      errors.push(`${label} requires pass 3 because mapped winners or hard-gate failure sets differ`);
+    }
+    if (!passesDisagree && third) {
+      errors.push(`${label} forbids pass 3 because mapped winners and hard-gate failure sets agree`);
+    }
+    if (passesDisagree && !third) continue;
 
-    const usedPasses = winnersDiffer ? [first, second, third] : [first, second];
-    const scorePass = winnersDiffer ? third : null;
+    const usedPasses = passesDisagree ? [first, second, third] : [first, second];
+    const scorePass = passesDisagree ? third : null;
     const candidateScores = {};
     const incumbentScores = {};
     for (const dimension of dimensions) {
@@ -200,12 +221,30 @@ export function reduceAdjudications({ manifest, adjudications }) {
         : (first.incumbentScores?.[dimension] + second.incumbentScores?.[dimension]) / 2;
     }
 
+    const candidateHardGateFailures = union(usedPasses, "candidateHardGateFailures");
+    const incumbentHardGateFailures = union(usedPasses, "incumbentHardGateFailures");
+    const baseWinner = scorePass ? scorePass.winner : first.winner;
+    const winner = deriveEligibleWinner({
+      baseWinner,
+      candidateHardGateFailures,
+      incumbentHardGateFailures,
+    });
+    errors.push(...validateEligibility({
+      winner,
+      candidateHardGateFailures,
+      incumbentHardGateFailures,
+      candidateScores,
+      incumbentScores,
+      label: `${label} final`,
+    }));
+
     records.push({
       id: item.id,
       final: {
-        winner: scorePass ? scorePass.winner : first.winner,
+        winner,
         candidateVetoes: union(usedPasses, "candidateVetoes"),
-        candidateHardGateFailures: union(usedPasses, "candidateHardGateFailures"),
+        candidateHardGateFailures,
+        incumbentHardGateFailures,
         candidateScores,
         incumbentScores,
       },

@@ -5,6 +5,8 @@ import { access, readFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
+import { adjudicationsDisagree, validateEligibility } from "./blind-eligibility.mjs";
+
 export const BLIND_ORDER_SEED = "agora-v1.7.0-blind-order-v1";
 
 const VALID_JUDGE_WINNERS = new Set(["A", "B", "tie"]);
@@ -88,7 +90,7 @@ export const normalizeBlindJudgment = ({ manifest, item, pass, judgment }) => {
     : (judgment.winner === "A" ? aSide : bSide);
   if (!VALID_MAPPED_WINNERS.has(winner)) throw new Error("failed to map blind winner");
 
-  return {
+  const normalized = {
     pass,
     order,
     winner,
@@ -98,7 +100,16 @@ export const normalizeBlindJudgment = ({ manifest, item, pass, judgment }) => {
     candidateHardGateFailures: aSide === "candidate"
       ? judgment.aHardGateFailures
       : judgment.bHardGateFailures,
+    incumbentHardGateFailures: aSide === "incumbent"
+      ? judgment.aHardGateFailures
+      : judgment.bHardGateFailures,
   };
+  const eligibilityErrors = validateEligibility({
+    ...normalized,
+    label: `case ${item.id} pass ${pass}`,
+  });
+  if (eligibilityErrors.length) throw new Error(eligibilityErrors.join("\n"));
+  return normalized;
 };
 
 const fileExists = async (path) => access(path).then(() => true, () => false);
@@ -114,7 +125,7 @@ export const ingestBlindJudgments = async ({ manifest, judgmentsDirectory }) => 
       passes.push(normalizeBlindJudgment({ manifest, item, pass, judgment }));
     }
 
-    const needsThird = passes[0].winner !== passes[1].winner;
+    const needsThird = adjudicationsDisagree(passes[0], passes[1]);
     const thirdPath = join(judgmentsDirectory, `${item.id}-pass3.json`);
     const hasThird = await fileExists(thirdPath);
     if (needsThird && !hasThird) throw new Error(`missing tie-break judgment ${item.id} pass 3`);

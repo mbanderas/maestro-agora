@@ -39,17 +39,19 @@ const pass = ({
   incumbent = scores(4, 4),
   vetoes = [],
   hardGates = [],
+  incumbentHardGates = [],
 }) => ({
   pass: number,
   order,
   winner,
   candidateVetoes: vetoes,
   candidateHardGateFailures: hardGates,
+  incumbentHardGateFailures: incumbentHardGates,
   candidateScores: candidate,
   incumbentScores: incumbent,
 });
 
-test("agreed swapped passes reduce to mapped means and union all failures", () => {
+test("agreed swapped passes reduce to mapped means", () => {
   const adjudications = [{
     id: "case-a",
     passes: [
@@ -65,7 +67,6 @@ test("agreed swapped passes reduce to mapped means and union all failures", () =
         order: ["incumbent", "candidate"],
         candidate: scores(4, 5),
         incumbent: scores(4, 4),
-        hardGates: ["route-reality-preserved"],
       }),
     ],
   }];
@@ -75,14 +76,15 @@ test("agreed swapped passes reduce to mapped means and union all failures", () =
     final: {
       winner: "candidate",
       candidateVetoes: ["fabricated-fact"],
-      candidateHardGateFailures: ["route-reality-preserved"],
+      candidateHardGateFailures: [],
+      incumbentHardGateFailures: [],
       candidateScores: scores(4.5, 4),
       incumbentScores: scores(3.5, 4),
     },
   }]);
 });
 
-test("winner disagreement requires pass 3 and uses its scores while preserving every failure", () => {
+test("winner disagreement requires pass 3 and uses its scores", () => {
   const adjudications = [{
     id: "case-a",
     passes: [
@@ -90,7 +92,6 @@ test("winner disagreement requires pass 3 and uses its scores while preserving e
         number: 1,
         order: ["candidate", "incumbent"],
         winner: "candidate",
-        hardGates: ["route-reality-preserved"],
       }),
       pass({
         number: 2,
@@ -104,7 +105,6 @@ test("winner disagreement requires pass 3 and uses its scores while preserving e
         winner: "tie",
         candidate: scores(4, 3),
         incumbent: scores(4, 3),
-        hardGates: ["full-composition-fit"],
       }),
     ],
   }];
@@ -114,13 +114,144 @@ test("winner disagreement requires pass 3 and uses its scores while preserving e
   assert.deepEqual(record.final.candidateScores, scores(4, 3));
   assert.deepEqual(record.final.incumbentScores, scores(4, 3));
   assert.deepEqual(record.final.candidateVetoes, ["fabricated-fact"]);
+  assert.deepEqual(record.final.candidateHardGateFailures, []);
+  assert.deepEqual(record.final.incumbentHardGateFailures, []);
+});
+
+test("gate-set disagreement requires pass 3 even when mapped winners agree", () => {
+  const missingTieBreak = [{
+    id: "case-a",
+    passes: [
+      pass({ number: 1, order: ["candidate", "incumbent"], winner: "incumbent" }),
+      pass({
+        number: 2,
+        order: ["incumbent", "candidate"],
+        winner: "incumbent",
+        candidate: scores(3, 3),
+        incumbent: scores(4, 4),
+        hardGates: ["route-reality-preserved"],
+      }),
+    ],
+  }];
+  assert.throws(
+    () => reduceAdjudications({ manifest, adjudications: missingTieBreak }),
+    /requires pass 3 because mapped winners or hard-gate failure sets differ/,
+  );
+
+  missingTieBreak[0].passes.push(pass({
+    number: 3,
+    order: ["candidate", "incumbent"],
+    winner: "incumbent",
+    candidate: scores(3, 3),
+    incumbent: scores(4, 4),
+    hardGates: ["full-composition-fit"],
+  }));
+  const [record] = reduceAdjudications({ manifest, adjudications: missingTieBreak });
+  assert.equal(record.final.winner, "incumbent");
   assert.deepEqual(record.final.candidateHardGateFailures, [
     "route-reality-preserved",
     "full-composition-fit",
   ]);
+  assert.deepEqual(record.final.incumbentHardGateFailures, []);
 });
 
-test("pass 3 is required exactly when mapped winners differ", () => {
+test("reducer unions both sides and derives final eligibility from the union", () => {
+  const adjudications = [{
+    id: "case-a",
+    passes: [
+      pass({
+        number: 1,
+        order: ["candidate", "incumbent"],
+        winner: "incumbent",
+        candidate: scores(3, 3),
+        incumbent: scores(4, 4),
+        hardGates: ["route-reality-preserved"],
+      }),
+      pass({
+        number: 2,
+        order: ["incumbent", "candidate"],
+        winner: "candidate",
+        candidate: scores(4, 4),
+        incumbent: scores(3, 3),
+        incumbentHardGates: ["full-composition-fit"],
+      }),
+      pass({
+        number: 3,
+        order: ["candidate", "incumbent"],
+        winner: "tie",
+        candidate: scores(4, 4),
+        incumbent: scores(4, 4),
+      }),
+    ],
+  }];
+  const [record] = reduceAdjudications({ manifest, adjudications });
+  assert.equal(record.final.winner, "tie");
+  assert.deepEqual(record.final.candidateHardGateFailures, ["route-reality-preserved"]);
+  assert.deepEqual(record.final.incumbentHardGateFailures, ["full-composition-fit"]);
+  assert.deepEqual(record.final.candidateScores, scores(4, 4));
+  assert.deepEqual(record.final.incumbentScores, scores(4, 4));
+});
+
+test("union-level invalidity rejects contradictory tie-break scores", () => {
+  const adjudications = [{
+    id: "case-a",
+    passes: [
+      pass({
+        number: 1,
+        order: ["candidate", "incumbent"],
+        winner: "incumbent",
+        candidate: scores(3, 3),
+        incumbent: scores(4, 4),
+        hardGates: ["route-reality-preserved"],
+      }),
+      pass({
+        number: 2,
+        order: ["incumbent", "candidate"],
+        winner: "candidate",
+        candidate: scores(4, 4),
+        incumbent: scores(3, 3),
+      }),
+      pass({
+        number: 3,
+        order: ["candidate", "incumbent"],
+        winner: "candidate",
+        candidate: scores(5, 5),
+        incumbent: scores(4, 4),
+      }),
+    ],
+  }];
+
+  assert.throws(
+    () => reduceAdjudications({ manifest, adjudications }),
+    /case case-a final\.candidateScores\.brief-fidelity cannot exceed incumbentScores\.brief-fidelity/,
+  );
+});
+
+test("an incumbent-only union failure makes candidate the eligible winner", () => {
+  const incumbentInvalid = (number, order) => pass({
+    number,
+    order,
+    winner: "candidate",
+    candidate: scores(4, 4),
+    incumbent: scores(3, 3),
+    incumbentHardGates: ["route-reality-preserved"],
+  });
+  const [record] = reduceAdjudications({
+    manifest,
+    adjudications: [{
+      id: "case-a",
+      passes: [
+        incumbentInvalid(1, ["candidate", "incumbent"]),
+        incumbentInvalid(2, ["incumbent", "candidate"]),
+      ],
+    }],
+  });
+  assert.equal(record.final.winner, "candidate");
+  assert.deepEqual(record.final.candidateHardGateFailures, []);
+  assert.deepEqual(record.final.incumbentHardGateFailures, ["route-reality-preserved"]);
+});
+
+test("pass 3 is required exactly when mapped adjudications differ", () => {
   const missingTieBreak = [{
     id: "case-a",
     passes: [
@@ -130,7 +261,7 @@ test("pass 3 is required exactly when mapped winners differ", () => {
   }];
   assert.throws(
     () => reduceAdjudications({ manifest, adjudications: missingTieBreak }),
-    /requires pass 3 because mapped winners differ/,
+    /requires pass 3 because mapped winners or hard-gate failure sets differ/,
   );
 
   const surplusTieBreak = [{
@@ -143,7 +274,36 @@ test("pass 3 is required exactly when mapped winners differ", () => {
   }];
   assert.throws(
     () => reduceAdjudications({ manifest, adjudications: surplusTieBreak }),
-    /forbids pass 3 because mapped winners agree/,
+    /forbids pass 3 because mapped winners and hard-gate failure sets agree/,
+  );
+});
+
+test("reducer rejects ineligible winner and critical-score contradictions", () => {
+  const invalidWinner = [{
+    id: "case-a",
+    passes: [
+      pass({
+        number: 1,
+        order: ["candidate", "incumbent"],
+        winner: "tie",
+        candidate: scores(3, 3),
+        incumbent: scores(4, 4),
+        hardGates: ["route-reality-preserved"],
+      }),
+      pass({ number: 2, order: ["incumbent", "candidate"] }),
+    ],
+  }];
+  assert.throws(
+    () => reduceAdjudications({ manifest, adjudications: invalidWinner }),
+    /winner must be incumbent because only candidate fails hard gates/,
+  );
+
+  const invalidScore = structuredClone(invalidWinner);
+  invalidScore[0].passes[0].winner = "incumbent";
+  invalidScore[0].passes[0].candidateScores = scores(5, 5);
+  assert.throws(
+    () => reduceAdjudications({ manifest, adjudications: invalidScore }),
+    /candidateScores\.brief-fidelity cannot exceed incumbentScores\.brief-fidelity/,
   );
 });
 

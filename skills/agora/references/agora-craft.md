@@ -245,7 +245,7 @@ Keep the headline to one commercial argument. When two numbers make it read like
 
 Route families include competitive threat, ambition, control, avoided loss, category change, broken assumption, direct outcome, provocative contrast, proof-led confidence, and offer-led action. Follow the emotional direction the user chooses.
 
-Return one recommended composition by default. Present it as finished copy, not a worksheet labeled `Headline`, `Subhead`, `CTA`, and `Qualification`, unless the user requests component labels or the delivery context would otherwise be ambiguous. Keep internal routes and scoring hidden unless the user requests options or rationale.
+Return one recommended composition by default. Keep worksheet labels out of the ready-to-use copy. Use labels around the copy when the user requests component fields, when implementation recommendations need them, or when the delivery context would otherwise be ambiguous. Keep internal routes and scoring hidden unless the user requests options or rationale.
 
 ### Map promise grammar to the intended claim
 
@@ -430,15 +430,7 @@ Before any threat appears in copy, all of the following must hold. This is a sys
 
 This is the section that matters most, because it is Agora's normal condition. Assume the available facts contain product mechanics, workflow steps, interfaces, limits, permissions, prices, dates, terms, error states, and reversibility conditions, and contain no outcome data, no testimonials, no prevalence claims, no market claims, and no evidence of what any user feels.
 
-For a user-requested identity-led sensory opening, use this composition contract:
-
-1. The headline invites recognition of a reader identity or self-conception. It does not coin a product name, name a product attribute, or restate the note list. When aesthetic direction is the only identity input, use a reader callout such as `For those who keep their own hours` rather than product-title syntax.
-2. The subhead contains the supplied batch status, product type, complete note set, and provenance. Never turn aesthetic direction into a creation fact. `Composed in shadow`, `made for midnight`, and similar phrases invent circumstances of creation.
-3. The sensory paragraph does more than repeat the supplied note list. Use ordinary material adjectives and at least two relations or contrasts among the named materials, while avoiding effects on the wearer or audience. For cedar, black tea, and iris, `dry wood`, `tannic tea`, and `cool, powder-soft iris` are sensory descriptions; mood, attraction, projection, longevity, and performance remain unsupported effects.
-4. The factual detail line preserves every supplied size, product type, provenance, and price.
-5. The action uses `Buy` when the requested destination is purchase and no more specific user-required label overrides it.
-
-Check all five visible elements against this contract before returning the opening.
+For identity-led or sensory commercial work, ground recognition in the audience or aesthetic direction the brief supplies. Do not turn aesthetic direction into a creation fact, audience behavior, wearer effect, or performance claim. Transform supplied sensory material through concrete relationships rather than repeating a list, while preserving material product facts and limitations at the decision where they matter. Let each component advance a different decision job. Label the action from the supplied commitment and destination, not a category-default verb.
 
 That fact set is sufficient. The move is to stop treating emotion as an adjective layer over evidence and start exposing the consequential structure already inside the facts.
 

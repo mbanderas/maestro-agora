@@ -30,8 +30,18 @@ const manifest = {
     domain_dimensions: { commercial: ["composition-fit"] },
   },
   cases: [
-    { id: "case-a", domain_dimensions: ["commercial"], critical: false },
-    { id: "case-b", domain_dimensions: ["commercial"], critical: true },
+    {
+      id: "case-a",
+      domain_dimensions: ["commercial"],
+      critical: false,
+      hard_gates: ["required-boundary", "delivery-role-preservation"],
+    },
+    {
+      id: "case-b",
+      domain_dimensions: ["commercial"],
+      critical: true,
+      hard_gates: ["required-boundary", "delivery-role-preservation"],
+    },
   ],
 };
 
@@ -47,12 +57,14 @@ const record = ({
   incumbent = {},
   vetoes = [],
   hardGates = [],
+  incumbentHardGates = [],
 } = {}) => ({
   id,
   final: {
     winner,
     candidateVetoes: vetoes,
     candidateHardGateFailures: hardGates,
+    incumbentHardGateFailures: incumbentHardGates,
     candidateScores: scores(candidate),
     incumbentScores: scores(incumbent),
   },
@@ -79,6 +91,28 @@ test("adjudication evidence rejects missing, unknown, and invalid scores", () =>
   const invalid = completeRecords();
   invalid[0].final.incumbentScores["friction-preservation"] = 6;
   assert.match(validateAdjudicationRecords({ manifest, records: invalid }).join("\n"), /friction-preservation must be a finite score from 1 to 5/);
+});
+
+test("adjudication evidence rejects hard-gate-ineligible final winners", () => {
+  const records = completeRecords();
+  records[0].final.incumbentHardGateFailures = ["required-boundary"];
+  records[0].final.winner = "tie";
+  assert.match(
+    validateAdjudicationRecords({ manifest, records }).join("\n"),
+    /winner must be candidate because only incumbent fails hard gates/,
+  );
+});
+
+test("adjudication evidence rejects invalid-side score advantages", () => {
+  const records = completeRecords();
+  records[0].final.incumbentHardGateFailures = ["required-boundary"];
+  records[0].final.winner = "candidate";
+  records[0].final.incumbentScores["brief-fidelity"] = 5;
+  records[0].final.candidateScores["brief-fidelity"] = 4;
+  assert.match(
+    validateAdjudicationRecords({ manifest, records }).join("\n"),
+    /incumbentScores\.brief-fidelity cannot exceed candidateScores\.brief-fidelity/,
+  );
 });
 
 test("candidate win cannot hide a protected commercial regression", () => {
@@ -133,6 +167,103 @@ test("domain quality fails on incomplete coverage or any required score regressi
   assert.equal(passesDomainQuality({ summary: regressed, superiorityTarget: 1, noninferiorityMargin: 0.25 }), false);
 });
 
+test("incumbent-invalid cases are findings and excluded from scores and superiority quota", () => {
+  const records = completeRecords();
+  records[1] = record({
+    id: "case-b",
+    winner: "candidate",
+    candidate: { "emotional-desirability": 1 },
+    incumbent: { "emotional-desirability": 5 },
+    incumbentHardGates: ["required-boundary"],
+  });
+  const ids = new Set(["case-a", "case-b"]);
+  const summary = summarizeDomainQuality({ records, ids, manifest });
+  assert.equal(summary.comparableCaseCount, 1);
+  assert.equal(summary.totalCandidateWins, 2);
+  assert.equal(summary.comparableCandidateWins, 1);
+  assert.deepEqual(summary.scoreRegressions, []);
+  assert.equal(summary.candidateMean, 5);
+  assert.equal(summary.incumbentMean, 5);
+  assert.deepEqual(summary.incumbentHardGateFailures, [{
+    id: "case-b",
+    hardGates: ["required-boundary"],
+  }]);
+  assert.equal(passesDomainQuality({
+    summary,
+    superiorityTarget: 2,
+    noninferiorityMargin: 0.25,
+  }), false);
+
+  const findings = classifyBlindFindings({
+    records,
+    legacyIds: ids,
+    criticalIds: new Set(["case-b"]),
+    manifest,
+  });
+  assert.deepEqual(findings.incumbentHardGateFailures, [{
+    id: "case-b",
+    hardGates: ["required-boundary"],
+  }]);
+});
+
+test("partition superiority gate fails when comparable denominator is below its win quota", () => {
+  const records = completeRecords();
+  records[1] = record({
+    id: "case-b",
+    winner: "candidate",
+    incumbentHardGates: ["required-boundary"],
+  });
+  const gatedManifest = {
+    ...manifest,
+    skill_version: "test",
+    release_gates: {
+      governance_default: true,
+      all_cases_pass_absolute_vetoes: true,
+      legacy_material_regressions_allowed: 0,
+      critical_contract_failures_allowed: 0,
+      domain_mean_noninferiority_margin: 0.25,
+      conversion_case_count: 2,
+      conversion_wins_required: 2,
+    },
+  };
+  const releasePlan = {
+    schema_version: 1,
+    skill_version: "test",
+    governance_default_gate: "governance_default",
+    absolute_veto_gate: "all_cases_pass_absolute_vetoes",
+    legacy_regressions_allowed_gate: "legacy_material_regressions_allowed",
+    critical_contract_failures_allowed_gate: "critical_contract_failures_allowed",
+    noninferiority_margin_gate: "domain_mean_noninferiority_margin",
+    legacy_case_ids: [],
+    partitions: [{
+      id: "conversion",
+      case_count_gate: "conversion_case_count",
+      wins_required_gate: "conversion_wins_required",
+      case_ids: ["case-a", "case-b"],
+    }],
+  };
+  const result = evaluateBlindRun({ manifest: gatedManifest, records, releasePlan });
+  assert.equal(result.pass, false);
+  assert.equal(result.release.partitionResults[0].summary.totalCandidateWins, 2);
+  assert.equal(result.release.partitionResults[0].summary.comparableCandidateWins, 1);
+  assert.equal(result.release.partitionResults[0].summary.comparableCaseCount, 1);
+});
+
+test("domain quality fails closed when no case has a valid incumbent comparator", () => {
+  const records = [
+    record({ incumbentHardGates: ["required-boundary"] }),
+    record({ id: "case-b", incumbentHardGates: ["required-boundary"] }),
+  ];
+  const summary = summarizeDomainQuality({
+    records,
+    ids: new Set(["case-a", "case-b"]),
+    manifest,
+  });
+  assert.equal(summary.comparableCaseCount, 0);
+  assert.equal(Number.isNaN(summary.candidateMean), true);
+  assert.equal(passesDomainQuality({ summary, superiorityTarget: 1, noninferiorityMargin: 0.25 }), false);
+});
+
 test("complete non-regressive domain evidence can pass", () => {
   const records = completeRecords();
   for (const item of records) {
@@ -149,6 +280,20 @@ test("run evaluation returns evidence errors instead of passing incomplete input
   assert.match(result.evidenceErrors.join("\n"), /missing adjudication record case-b/);
 });
 
+test("any candidate hard-gate failure blocks the run", () => {
+  const records = completeRecords();
+  records[0] = record({
+    winner: "incumbent",
+    hardGates: ["required-boundary"],
+  });
+  const result = evaluateBlindRun({ manifest, records });
+  assert.equal(result.pass, false);
+  assert.deepEqual(result.findings.candidateHardGateFailures, [{
+    id: "case-a",
+    hardGates: ["required-boundary"],
+  }]);
+});
+
 test("historical voice hard gates retain bounded definitions", () => {
   assert.match(historical.adjudication.hard_gate_definitions["owned-vocabulary-survives-the-generic-ban"], /at least one supplied measured owned term/);
   assert.match(historical.adjudication.hard_gate_definitions["structural-tells-still-banned"], /Matching a supplied measured sentence-length or paragraph-shape distribution is not itself a failure/);
@@ -162,6 +307,7 @@ const historicalRecords = (winner) => historical.cases.map((item) => {
       winner,
       candidateVetoes: [],
       candidateHardGateFailures: [],
+      incumbentHardGateFailures: [],
       candidateScores: { ...caseScores },
       incumbentScores: { ...caseScores },
     },
