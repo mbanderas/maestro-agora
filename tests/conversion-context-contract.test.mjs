@@ -26,7 +26,9 @@ test("conversion context loads progressively without adding a mode", () => {
   assert.match(skill, /\[references\/agora-conversion\.md\]\(references\/agora-conversion\.md\) governs conversion-context work/);
   assert.match(skill, /improve conversion, plan or interpret a funnel experiment, compare conversion variants, select performance measures/);
   assert.match(skill, /landing, product, pricing, enterprise, paywall, checkout, form, upgrade, or onboarding writing/);
+  assert.match(skill, /This load is mandatory and precedes the general marketing and optional craft reads below/);
   assert.match(skill, /bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws/);
+  assert.ok(skill.indexOf("references/agora-conversion.md") < skill.indexOf("Use [references/agora-marketing.md]"));
   assert.doesNotMatch(skill, /\| `CONVERSION` \|/);
 });
 

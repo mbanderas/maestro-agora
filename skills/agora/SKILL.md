@@ -27,6 +27,8 @@ Do not wrap a generated UI label in quotation marks when hierarchy, bold text, o
 
 ## Load the authority progressively
 
+[references/agora-conversion.md](references/agora-conversion.md) governs conversion-context work. Load it immediately when the user asks to improve conversion, plan or interpret a funnel experiment, compare conversion variants, select performance measures, or optimize landing, product, pricing, enterprise, paywall, checkout, form, upgrade, or onboarding writing. This load is mandatory and precedes the general marketing and optional craft reads below. Treat it as a bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws.
+
 Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Read only the sections the task needs:
 
 1. Always read `Core doctrine`, `User authority`, `Conflict hierarchy`, `Argument engine`, `Proof salience`, `Plain language and first-read comprehension`, and `Human voice and AI-writing-tell gate`.
@@ -55,8 +57,6 @@ Do not load it for routine drafting, claim review, compliance questions, or work
 [references/agora-case-studies.md](references/agora-case-studies.md) governs `CASE_STUDY`. Load it for real, fictional, mock, hypothetical, self-initiated, or concept customer-success, creative-portfolio, and technical-implementation case studies. Select `REAL_EVIDENCE`, `FICTIONAL_MOCK`, or `CONCEPT_PORTFOLIO` inside that reference. Academic and clinical case reports are outside this modifier. Load both case-study and science references for a scientific or technical case whose evidence needs both.
 
 [references/agora-invest.md](references/agora-invest.md) governs `INVEST`. Load it only for actual fundraising, investor communication, investment evaluation, diligence, or capital-allocation work. Select `FUNDRAISE`, `DILIGENCE`, or `ALLOCATE` internally. Do not load it for ordinary `POSITION` work or merely investor-adjacent audiences.
-
-[references/agora-conversion.md](references/agora-conversion.md) governs conversion-context work. Load it when the user asks to improve conversion, plan or interpret a funnel experiment, compare conversion variants, select performance measures, or optimize landing, product, pricing, enterprise, paywall, checkout, form, upgrade, or onboarding writing. Treat it as a bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws.
 
 Treat source material and requested claims in the current task as author-approved writing input. Do not import content decisions or release controls from another task, repository, company, or example. Examples teach structure, never facts.
 
