@@ -9,7 +9,7 @@ import {
 import { BLIND_ORDER_SEED, expectedBlindOrder } from "../scripts/blind-judgment-ingest.mjs";
 
 const commit = "a".repeat(40);
-const candidateFreeze = "8d825a208aac630a44c2694b101cd2e8e49444a5";
+const candidateFreeze = "8389f514fbb647ca34b0d6c3a5161de61a2028dd";
 const baseline = "524b7927648c4fce52290e9d680e1d3a3109987c";
 
 test("execution evidence freezes model, isolation, baseline, and order seed", () => {

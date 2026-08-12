@@ -12,7 +12,7 @@ import { computeEvalTreeLock } from "./eval-locks.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const VERSION = "1.7.0";
-const CANDIDATE_FREEZE_COMMIT = "8d825a208aac630a44c2694b101cd2e8e49444a5";
+const CANDIDATE_FREEZE_COMMIT = "8389f514fbb647ca34b0d6c3a5161de61a2028dd";
 const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
 const SHA256 = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;

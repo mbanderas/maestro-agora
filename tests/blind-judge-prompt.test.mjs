@@ -41,6 +41,10 @@ test("judge prompt strips only the activation directive and preserves blind orde
 
 test("ordinary original-task text remains unchanged", () => {
   assert.equal(normalizeOriginalTask("Write /agora literally."), "Write /agora literally.");
+  assert.equal(
+    normalizeOriginalTask("/agora --no-voice Write the page."),
+    "Write the page.",
+  );
 });
 
 test("unknown hard gates and malformed templates fail closed", () => {

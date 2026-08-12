@@ -15,7 +15,7 @@ const replaceOnce = (source, name, value) => {
 };
 
 export const normalizeOriginalTask = (task) => task
-  .replace(/^\uFEFF?\/agora --no-voice[ \t]*(?:\r?\n|$)/, "")
+  .replace(/^\uFEFF?\/agora --no-voice(?:[ \t]+|\r?\n)?/, "")
   .trim();
 
 export const buildBlindJudgePrompt = ({ manifest, item, template, originalTask, responseA, responseB }) => {
