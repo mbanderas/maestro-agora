@@ -139,6 +139,9 @@ const mean = (values) => values.length
   ? values.reduce((total, value) => total + value, 0) / values.length
   : Number.NaN;
 
+export const requiredComparableWins = ({ comparableCaseCount, minimumWinRate }) =>
+  Math.ceil(minimumWinRate * comparableCaseCount);
+
 export const summarizeDomainQuality = ({ records, ids, manifest }) => {
   const selected = records.filter((record) => ids.has(record.id));
   const selectedIds = new Set(selected.map((record) => record.id));
@@ -296,7 +299,33 @@ export const evaluateReleaseGates = ({ manifest, records, releasePlan }) => {
     }
 
     const expectedCount = useGate(partition.case_count_gate);
-    const winsRequired = useGate(partition.wins_required_gate);
+    const usesFixedWinQuota = typeof partition.wins_required_gate === "string";
+    const usesMinimumComparableCases = typeof partition.minimum_comparable_cases_gate === "string";
+    const usesMinimumWinRate = typeof partition.minimum_win_rate_gate === "string";
+    const usesDynamicWinRate = usesMinimumComparableCases || usesMinimumWinRate;
+    let fixedWinsRequired;
+    let minimumComparableCases;
+    let minimumWinRate;
+
+    if (usesFixedWinQuota && usesDynamicWinRate) {
+      errors.push(`partition ${partition.id} cannot combine a fixed win quota with comparable win-rate gates`);
+    } else if (usesDynamicWinRate) {
+      if (!usesMinimumComparableCases || !usesMinimumWinRate) {
+        errors.push(`partition ${partition.id} must map both minimum_comparable_cases_gate and minimum_win_rate_gate`);
+      }
+      if (usesMinimumComparableCases) minimumComparableCases = useGate(partition.minimum_comparable_cases_gate);
+      if (usesMinimumWinRate) minimumWinRate = useGate(partition.minimum_win_rate_gate);
+      if (!Number.isInteger(minimumComparableCases) || minimumComparableCases < 1) {
+        errors.push(`${partition.minimum_comparable_cases_gate} must be a positive integer`);
+      }
+      if (!Number.isFinite(minimumWinRate) || minimumWinRate <= 0 || minimumWinRate > 1) {
+        errors.push(`${partition.minimum_win_rate_gate} must be greater than 0 and no greater than 1`);
+      }
+    } else if (usesFixedWinQuota) {
+      fixedWinsRequired = useGate(partition.wins_required_gate);
+    } else {
+      errors.push(`partition ${partition.id} must map either wins_required_gate or comparable win-rate gates`);
+    }
     const regressionsAllowed = partition.dimension_regressions_allowed_gate
       ? useGate(partition.dimension_regressions_allowed_gate)
       : 0;
@@ -305,14 +334,28 @@ export const evaluateReleaseGates = ({ manifest, records, releasePlan }) => {
     }
 
     const summary = summarizeDomainQuality({ records, ids, manifest });
+    const winsRequired = usesDynamicWinRate
+      ? requiredComparableWins({ comparableCaseCount: summary.comparableCaseCount, minimumWinRate })
+      : fixedWinsRequired;
+    const comparableDenominatorPasses = usesDynamicWinRate
+      ? summary.comparableCaseCount >= minimumComparableCases
+      : summary.comparableCaseCount >= winsRequired;
     const pass = summary.coverageComplete
-      && summary.comparableCaseCount >= winsRequired
+      && comparableDenominatorPasses
       && summary.contractFailures.length === 0
       && summary.scoreRegressions.length <= regressionsAllowed
       && Number.isFinite(summary.meanDelta)
       && summary.comparableCandidateWins >= winsRequired
       && summary.meanDelta >= -noninferiorityMargin;
-    partitionResults.push({ id: partition.id, pass, winsRequired, regressionsAllowed, summary });
+    partitionResults.push({
+      id: partition.id,
+      pass,
+      winsRequired,
+      minimumComparableCases,
+      minimumWinRate,
+      regressionsAllowed,
+      summary,
+    });
   }
 
   for (const id of manifestIds) if (!assignedIds.has(id)) errors.push(`release plan does not assign case ${id}`);

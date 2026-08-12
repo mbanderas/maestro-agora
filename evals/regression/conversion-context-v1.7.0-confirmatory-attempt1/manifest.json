@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "status": "frozen-release",
+  "skill_version": "1.7.0",
+  "generation_contract": {
+    "pass_to_model": [
+      "prompt_file"
+    ],
+    "never_pass_to_model": [
+      "manifest.json",
+      "case metadata",
+      "rubric",
+      "release gates",
+      "incumbent label"
+    ],
+    "fresh_context_per_case": true,
+    "isolated_skill_copy": true
+  },
+  "adjudication": {
+    "method": "blind-pairwise",
+    "randomize_order": true,
+    "swap_order": true,
+    "escalate_on_order_flip": true,
+    "report_hard_gate_failures": true,
+    "tie_policy": "Use a tie when both responses satisfy every declared boundary and neither has a material advantage for the supplied decision."
+  },
+  "rubric": {
+    "scale": "1-5",
+    "dimensions": [
+      "brief-fidelity",
+      "first-read-comprehension",
+      "concrete-action-clarity",
+      "outcome-fit",
+      "funnel-stage-fit",
+      "commitment-fit",
+      "prior-calibration",
+      "contradiction-handling",
+      "composition-fit"
+    ],
+    "domain_dimensions": {}
+  },
+  "hard_gate_definitions": {
+    "no-nearby-metric-substitution": "The response preserves the stated business outcome instead of replacing it with clicks, completions, or another nearby event.",
+    "no-universal-prior": "The response does not turn a contextual conversion pattern into a law or fixed optimum.",
+    "no-effect-transfer-in-review": "When review is requested, the response does not carry a reported effect size into a different business, audience, or surface.",
+    "no-invented-proof-or-rationale": "The response uses only supplied proof, terms, permissions, data-use reasons, and operational facts. A description of what a quotation says is not verbatim wording; reconstructing it inside quotation marks is invented proof.",
+    "no-unauthorized-funnel-change": "The response preserves required fields, choices, steps, and commitments unless the user authorizes changes.",
+    "commitment-and-terms-preserved": "The action label and surrounding copy state the supplied commitment, terms, reversibility, and next step clearly.",
+    "route-reality-preserved": "The response distinguishes supplied self-serve and enterprise routes and does not invent a route that the business does not offer.",
+    "pricing-decision-contract-preserved": "The response keeps supplied public prices, billing periods, limits, enterprise differences, and material buying terms visible at the decision.",
+    "enterprise-risk-specificity": "The response connects supplied enterprise capabilities to concrete organizational requirements instead of relying on generic enterprise language.",
+    "proof-uncertainty-match": "The response places supplied proof near the doubt it actually resolves and does not use unrelated proof to imply an unsupported capability.",
+    "user-framing-preserved": "The response follows the user's selected emotional and commercial framing instead of replacing it with a preferred pattern.",
+    "full-composition-fit": "The response optimizes the requested composition as a whole rather than treating one isolated element as the complete intervention."
+  },
+  "release_gates": {
+    "governance_default": true,
+    "all_cases_pass_absolute_vetoes": true,
+    "legacy_material_regressions_allowed": 0,
+    "conversion_wins_required": 10,
+    "conversion_case_count": 13,
+    "critical_contract_failures_allowed": 0,
+    "domain_mean_noninferiority_margin": 0.25
+  },
+  "cases": [
+    {
+      "id": "checkout-grinder-choice",
+      "prompt_file": "prompts/checkout-grinder-choice.md",
+      "archetype": "ecommerce decision and checkout",
+      "primary_outcome": "help a qualified shopper decide and complete checkout without disguising product or return constraints",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "no-unauthorized-funnel-change",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "geothermal-lead-screen",
+      "prompt_file": "prompts/geothermal-lead-screen.md",
+      "archetype": "B2B lead qualification",
+      "primary_outcome": "increase the proportion of feasible commercial-site inquiries while preserving manual qualification",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "route-reality-preserved",
+        "enterprise-risk-specificity",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "glaze-guide-form",
+      "prompt_file": "prompts/glaze-guide-form.md",
+      "archetype": "low-commitment content form",
+      "primary_outcome": "earn informed guide signups without hiding the email subscription",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "no-unauthorized-funnel-change",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "volunteer-roster-activation",
+      "prompt_file": "prompts/volunteer-roster-activation.md",
+      "archetype": "activation flow",
+      "primary_outcome": "move coordinators to a sent first invitation while preserving control over when email is triggered",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "pronunciation-paywall",
+      "prompt_file": "prompts/pronunciation-paywall.md",
+      "archetype": "subscription and paywall",
+      "primary_outcome": "support an informed paid-plan choice without obscuring the free route, automated-score limitation, or renewal terms",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "no-unauthorized-funnel-change",
+        "pricing-decision-contract-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "loading-ramp-mat",
+      "prompt_file": "prompts/loading-ramp-mat.md",
+      "archetype": "utilitarian product",
+      "primary_outcome": "enable a dimensional and use-case fit decision before minimum-quantity ordering",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "linen-jacket-identity",
+      "prompt_file": "prompts/linen-jacket-identity.md",
+      "archetype": "identity and sensory product",
+      "primary_outcome": "make the jacket's aesthetic and tactile character legible while protecting fit and return decisions",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "proof-uncertainty-match",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "telehealth-banner-review",
+      "prompt_file": "prompts/telehealth-banner-review.md",
+      "archetype": "evidence-review experiment",
+      "primary_outcome": "turn a bounded experiment result into a copy decision without expanding its evidentiary scope",
+      "review_mode": true,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "no-universal-prior",
+        "no-effect-transfer-in-review",
+        "no-invented-proof-or-rationale",
+        "proof-uncertainty-match",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "caption-api-pricing",
+      "prompt_file": "prompts/caption-api-pricing.md",
+      "archetype": "dual self-serve and enterprise pricing",
+      "primary_outcome": "let buyers choose the correct buying route and understand usage economics",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "pricing-decision-contract-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "aerospace-traceability-brief",
+      "prompt_file": "prompts/aerospace-traceability-brief.md",
+      "archetype": "sales-led enterprise",
+      "primary_outcome": "generate technically plausible discovery requests for a paid enterprise pilot",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "route-reality-preserved",
+        "enterprise-risk-specificity",
+        "pricing-decision-contract-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "specimen-courier-risk",
+      "prompt_file": "prompts/specimen-courier-risk.md",
+      "archetype": "enterprise risk and capability explanation",
+      "primary_outcome": "make operational value understandable without implying that software assumes specimen or transport responsibility",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "enterprise-risk-specificity",
+        "proof-uncertainty-match",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "home-retrofit-terms",
+      "prompt_file": "prompts/home-retrofit-terms.md",
+      "archetype": "high-ticket pricing timing and terms",
+      "primary_outcome": "enable an informed high-value acceptance decision with payment triggers, exclusions, and timing uncertainty intact",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "pricing-decision-contract-preserved",
+        "proof-uncertainty-match",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "cold-storage-monitoring-proof",
+      "prompt_file": "prompts/cold-storage-monitoring-proof.md",
+      "archetype": "enterprise proof placement",
+      "primary_outcome": "place bounded operational, technical, and security evidence where it resolves the relevant enterprise concern",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "no-effect-transfer-in-review",
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "enterprise-risk-specificity",
+        "proof-uncertainty-match",
+        "full-composition-fit"
+      ]
+    }
+  ]
+}

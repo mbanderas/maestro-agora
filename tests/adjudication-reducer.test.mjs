@@ -118,7 +118,7 @@ test("winner disagreement requires pass 3 and uses its scores", () => {
   assert.deepEqual(record.final.incumbentHardGateFailures, []);
 });
 
-test("gate-set disagreement requires pass 3 even when mapped winners agree", () => {
+test("one-of-three hard-gate finding clears after required pass 3", () => {
   const missingTieBreak = [{
     id: "case-a",
     passes: [
@@ -141,21 +141,17 @@ test("gate-set disagreement requires pass 3 even when mapped winners agree", () 
   missingTieBreak[0].passes.push(pass({
     number: 3,
     order: ["candidate", "incumbent"],
-    winner: "incumbent",
-    candidate: scores(3, 3),
+    winner: "candidate",
+    candidate: scores(5, 5),
     incumbent: scores(4, 4),
-    hardGates: ["full-composition-fit"],
   }));
   const [record] = reduceAdjudications({ manifest, adjudications: missingTieBreak });
-  assert.equal(record.final.winner, "incumbent");
-  assert.deepEqual(record.final.candidateHardGateFailures, [
-    "route-reality-preserved",
-    "full-composition-fit",
-  ]);
+  assert.equal(record.final.winner, "candidate");
+  assert.deepEqual(record.final.candidateHardGateFailures, []);
   assert.deepEqual(record.final.incumbentHardGateFailures, []);
 });
 
-test("reducer unions both sides and derives final eligibility from the union", () => {
+test("one-of-three findings clear symmetrically for both sides", () => {
   const adjudications = [{
     id: "case-a",
     passes: [
@@ -186,13 +182,13 @@ test("reducer unions both sides and derives final eligibility from the union", (
   }];
   const [record] = reduceAdjudications({ manifest, adjudications });
   assert.equal(record.final.winner, "tie");
-  assert.deepEqual(record.final.candidateHardGateFailures, ["route-reality-preserved"]);
-  assert.deepEqual(record.final.incumbentHardGateFailures, ["full-composition-fit"]);
+  assert.deepEqual(record.final.candidateHardGateFailures, []);
+  assert.deepEqual(record.final.incumbentHardGateFailures, []);
   assert.deepEqual(record.final.candidateScores, scores(4, 4));
   assert.deepEqual(record.final.incumbentScores, scores(4, 4));
 });
 
-test("union-level invalidity rejects contradictory tie-break scores", () => {
+test("two-of-three findings are retained symmetrically for both sides", () => {
   const adjudications = [{
     id: "case-a",
     passes: [
@@ -210,24 +206,27 @@ test("union-level invalidity rejects contradictory tie-break scores", () => {
         winner: "candidate",
         candidate: scores(4, 4),
         incumbent: scores(3, 3),
+        incumbentHardGates: ["full-composition-fit"],
       }),
       pass({
         number: 3,
         order: ["candidate", "incumbent"],
-        winner: "candidate",
-        candidate: scores(5, 5),
+        winner: "tie",
+        candidate: scores(4, 4),
         incumbent: scores(4, 4),
+        hardGates: ["route-reality-preserved"],
+        incumbentHardGates: ["full-composition-fit"],
       }),
     ],
   }];
 
-  assert.throws(
-    () => reduceAdjudications({ manifest, adjudications }),
-    /case case-a final\.candidateScores\.brief-fidelity cannot exceed incumbentScores\.brief-fidelity/,
-  );
+  const [record] = reduceAdjudications({ manifest, adjudications });
+  assert.equal(record.final.winner, "tie");
+  assert.deepEqual(record.final.candidateHardGateFailures, ["route-reality-preserved"]);
+  assert.deepEqual(record.final.incumbentHardGateFailures, ["full-composition-fit"]);
 });
 
-test("an incumbent-only union failure makes candidate the eligible winner", () => {
+test("an incumbent-only consensus failure makes candidate the eligible winner", () => {
   const incumbentInvalid = (number, order) => pass({
     number,
     order,

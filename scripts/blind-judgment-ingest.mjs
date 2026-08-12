@@ -2,15 +2,21 @@
 
 import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 import { adjudicationsDisagree, validateEligibility } from "./blind-eligibility.mjs";
+import { normalizeOriginalTask } from "./blind-judge-prompt.mjs";
 
 export const BLIND_ORDER_SEED = "agora-v1.7.0-blind-order-v1";
 
 const VALID_JUDGE_WINNERS = new Set(["A", "B", "tie"]);
 const VALID_MAPPED_WINNERS = new Set(["candidate", "incumbent", "tie"]);
+const EVIDENCE_KEYS = ["excerpt", "gate", "missingPremise"];
+const OUTPUT_DIRECTORY = {
+  candidate: "generation-a-outputs",
+  incumbent: "generation-b-outputs",
+};
 
 const orderBits = (id) => createHash("sha256")
   .update(BLIND_ORDER_SEED)
@@ -68,7 +74,51 @@ const validateFailures = (failures, item, label) => {
   }
 };
 
-export const normalizeBlindJudgment = ({ manifest, item, pass, judgment }) => {
+const validateHardGateEvidence = ({ failures, evidence, response, originalTask, label }) => {
+  if (!Array.isArray(evidence)) throw new Error(`${label} must be an array`);
+  const failureSet = new Set(failures);
+  const evidenceGates = [];
+  for (const [index, entry] of evidence.entries()) {
+    const entryLabel = `${label}[${index}]`;
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+      throw new Error(`${entryLabel} must be an object`);
+    }
+    const keys = Object.keys(entry).sort();
+    if (JSON.stringify(keys) !== JSON.stringify(EVIDENCE_KEYS)) {
+      throw new Error(`${entryLabel} must contain exactly gate, excerpt, and missingPremise`);
+    }
+    for (const field of EVIDENCE_KEYS) {
+      if (typeof entry[field] !== "string" || !entry[field].trim()) {
+        throw new Error(`${entryLabel}.${field} must be a nonempty string`);
+      }
+    }
+    evidenceGates.push(entry.gate);
+    if (!response.includes(entry.excerpt)) {
+      throw new Error(`${entryLabel}.excerpt must occur verbatim in the corresponding response`);
+    }
+    if (!originalTask.includes(entry.missingPremise)) {
+      throw new Error(`${entryLabel}.missingPremise must occur verbatim in ORIGINAL TASK`);
+    }
+  }
+  if (new Set(evidenceGates).size !== evidenceGates.length) {
+    throw new Error(`${label} contains duplicate gate evidence`);
+  }
+  const actual = [...evidenceGates].sort();
+  const expected = [...failureSet].sort();
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+    throw new Error(`${label} gates must match the corresponding hard-gate failure IDs exactly once`);
+  }
+};
+
+export const normalizeBlindJudgment = ({
+  manifest,
+  item,
+  pass,
+  judgment,
+  originalTask,
+  responseA,
+  responseB,
+}) => {
   if (!item) throw new Error("unknown blind-evaluation case");
   if (!judgment || typeof judgment !== "object" || Array.isArray(judgment)) {
     throw new Error(`case ${item.id} pass ${pass} judgment must be an object`);
@@ -81,6 +131,29 @@ export const normalizeBlindJudgment = ({ manifest, item, pass, judgment }) => {
   validateScores(judgment.bScores, dimensions, `case ${item.id} pass ${pass} bScores`);
   validateFailures(judgment.aHardGateFailures, item, `case ${item.id} pass ${pass} aHardGateFailures`);
   validateFailures(judgment.bHardGateFailures, item, `case ${item.id} pass ${pass} bHardGateFailures`);
+  if (typeof originalTask !== "string" || !originalTask.trim()) {
+    throw new Error(`case ${item.id} pass ${pass} originalTask must be a nonempty string`);
+  }
+  if (typeof responseA !== "string" || !responseA.trim()) {
+    throw new Error(`case ${item.id} pass ${pass} responseA must be a nonempty string`);
+  }
+  if (typeof responseB !== "string" || !responseB.trim()) {
+    throw new Error(`case ${item.id} pass ${pass} responseB must be a nonempty string`);
+  }
+  validateHardGateEvidence({
+    failures: judgment.aHardGateFailures,
+    evidence: judgment.aHardGateEvidence,
+    response: responseA,
+    originalTask,
+    label: `case ${item.id} pass ${pass} aHardGateEvidence`,
+  });
+  validateHardGateEvidence({
+    failures: judgment.bHardGateFailures,
+    evidence: judgment.bHardGateEvidence,
+    response: responseB,
+    originalTask,
+    label: `case ${item.id} pass ${pass} bHardGateEvidence`,
+  });
 
   const order = expectedBlindOrder(item.id, pass);
   const aSide = order[0];
@@ -114,15 +187,39 @@ export const normalizeBlindJudgment = ({ manifest, item, pass, judgment }) => {
 
 const fileExists = async (path) => access(path).then(() => true, () => false);
 
-export const ingestBlindJudgments = async ({ manifest, judgmentsDirectory }) => {
+export const ingestBlindJudgments = async ({
+  manifest,
+  judgmentsDirectory,
+  evaluationRoot = dirname(judgmentsDirectory),
+  blindRoot,
+}) => {
+  if (!blindRoot) throw new Error("blindRoot is required to validate raw hard-gate evidence");
   const adjudications = [];
   for (const item of manifest.cases ?? []) {
+    const orderResponses = {};
+    const [originalTaskText, candidateResponse, incumbentResponse] = await Promise.all([
+      readFile(resolve(blindRoot, item.prompt_file), "utf8"),
+      readFile(join(evaluationRoot, OUTPUT_DIRECTORY.candidate, `${item.id}.md`), "utf8"),
+      readFile(join(evaluationRoot, OUTPUT_DIRECTORY.incumbent, `${item.id}.md`), "utf8"),
+    ]);
+    const originalTask = normalizeOriginalTask(originalTaskText);
+    orderResponses.candidate = candidateResponse;
+    orderResponses.incumbent = incumbentResponse;
     const passes = [];
     for (const pass of [1, 2]) {
       const path = join(judgmentsDirectory, `${item.id}-pass${pass}.json`);
       if (!await fileExists(path)) throw new Error(`missing raw judgment ${item.id} pass ${pass}`);
       const judgment = JSON.parse(await readFile(path, "utf8"));
-      passes.push(normalizeBlindJudgment({ manifest, item, pass, judgment }));
+      const order = expectedBlindOrder(item.id, pass);
+      passes.push(normalizeBlindJudgment({
+        manifest,
+        item,
+        pass,
+        judgment,
+        originalTask,
+        responseA: orderResponses[order[0]],
+        responseB: orderResponses[order[1]],
+      }));
     }
 
     const needsThird = adjudicationsDisagree(passes[0], passes[1]);
@@ -132,7 +229,16 @@ export const ingestBlindJudgments = async ({ manifest, judgmentsDirectory }) => 
     if (!needsThird && hasThird) throw new Error(`unexpected tie-break judgment ${item.id} pass 3`);
     if (needsThird) {
       const judgment = JSON.parse(await readFile(thirdPath, "utf8"));
-      passes.push(normalizeBlindJudgment({ manifest, item, pass: 3, judgment }));
+      const order = expectedBlindOrder(item.id, 3);
+      passes.push(normalizeBlindJudgment({
+        manifest,
+        item,
+        pass: 3,
+        judgment,
+        originalTask,
+        responseA: orderResponses[order[0]],
+        responseB: orderResponses[order[1]],
+      }));
     }
     adjudications.push({ id: item.id, passes });
   }
@@ -146,10 +252,14 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     process.exitCode = 2;
   } else {
     try {
-      const manifest = JSON.parse(await readFile(resolve(manifestPath), "utf8"));
+      const absoluteManifestPath = resolve(manifestPath);
+      const absoluteJudgmentsDirectory = resolve(judgmentsDirectory);
+      const manifest = JSON.parse(await readFile(absoluteManifestPath, "utf8"));
       const adjudications = await ingestBlindJudgments({
         manifest,
-        judgmentsDirectory: resolve(judgmentsDirectory),
+        judgmentsDirectory: absoluteJudgmentsDirectory,
+        evaluationRoot: dirname(absoluteJudgmentsDirectory),
+        blindRoot: dirname(absoluteManifestPath),
       });
       process.stdout.write(`${JSON.stringify(adjudications, null, 2)}\n`);
     } catch (error) {

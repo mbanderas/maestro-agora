@@ -11,21 +11,29 @@
     {
       "id": "conversion",
       "case_count_gate": "conversion_case_count",
-      "wins_required_gate": "conversion_wins_required",
+      "minimum_comparable_cases_gate": "conversion_minimum_comparable_cases",
+      "minimum_win_rate_gate": "conversion_minimum_win_rate",
       "case_ids": [
-        "checkout-grinder-choice",
-        "geothermal-lead-screen",
-        "glaze-guide-form",
-        "volunteer-roster-activation",
-        "pronunciation-paywall",
-        "loading-ramp-mat",
-        "linen-jacket-identity",
-        "telehealth-banner-review",
-        "caption-api-pricing",
-        "aerospace-traceability-brief",
-        "specimen-courier-risk",
-        "home-retrofit-terms",
-        "cold-storage-monitoring-proof"
+        "sable-thread-checkout",
+        "talloway-foundry-qualification",
+        "mossline-almanac-signup",
+        "choirshelf-drive-activation",
+        "endgame-orchard-paywall",
+        "boltbasin-parts-basket",
+        "night-ferry-fragrance-sample",
+        "copper-finch-experiment-review",
+        "gauge-orchard-dual-pricing",
+        "loanroom-atlas-demo-request",
+        "doorwake-capability-limits",
+        "quarry-line-engagement-terms",
+        "warden-bloom-pilot-proof",
+        "cinder-coast-donation",
+        "driftwood-letterpress-registration",
+        "purlscout-referral",
+        "looplamp-cancellation",
+        "juniper-key-booking",
+        "river-step-petition",
+        "sundial-braid-application"
       ]
     }
   ]

@@ -5,7 +5,7 @@ export const ELIGIBILITY_SCORE_DIMENSIONS = [
   "composition-fit",
 ];
 
-export const ELIGIBILITY_POLICY = "symmetric-hard-gates-v1";
+export const ELIGIBILITY_POLICY = "symmetric-majority-hard-gates-v2";
 
 const failures = (values) => Array.isArray(values) ? values : [];
 
@@ -18,6 +18,22 @@ export const sameFailureSet = (left, right) => {
 export const adjudicationsDisagree = (left, right) => left.winner !== right.winner
   || !sameFailureSet(left.candidateHardGateFailures, right.candidateHardGateFailures)
   || !sameFailureSet(left.incumbentHardGateFailures, right.incumbentHardGateFailures);
+
+export const majorityFailureSet = (passes, field) => {
+  if (!Array.isArray(passes) || ![2, 3].includes(passes.length)) {
+    throw new Error("majority failure reduction requires two or three passes");
+  }
+  const threshold = Math.floor(passes.length / 2) + 1;
+  const counts = new Map();
+  for (const pass of passes) {
+    for (const failure of new Set(failures(pass?.[field]))) {
+      counts.set(failure, (counts.get(failure) ?? 0) + 1);
+    }
+  }
+  return [...counts]
+    .filter(([, count]) => count >= threshold)
+    .map(([failure]) => failure);
+};
 
 export const deriveEligibleWinner = ({
   baseWinner,

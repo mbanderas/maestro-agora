@@ -7,6 +7,7 @@ import {
   isMaterialLegacyRegression,
   passesDomainQuality,
   protectedDrops,
+  requiredComparableWins,
   requiredDimensionsForCase,
   summarizeDomainQuality,
   validateAdjudicationRecords,
@@ -247,6 +248,106 @@ test("partition superiority gate fails when comparable denominator is below its 
   assert.equal(result.release.partitionResults[0].summary.totalCandidateWins, 2);
   assert.equal(result.release.partitionResults[0].summary.comparableCandidateWins, 1);
   assert.equal(result.release.partitionResults[0].summary.comparableCaseCount, 1);
+});
+
+const dynamicReleaseFixture = ({ caseCount, comparableCaseCount, comparableCandidateWins }) => {
+  const cases = Array.from({ length: caseCount }, (_, index) => ({
+    id: `dynamic-${index + 1}`,
+    domain_dimensions: ["commercial"],
+    critical: false,
+    hard_gates: ["required-boundary"],
+  }));
+  const dynamicManifest = {
+    rubric: manifest.rubric,
+    cases,
+    skill_version: "dynamic-test",
+    release_gates: {
+      governance_default: true,
+      all_cases_pass_absolute_vetoes: true,
+      legacy_material_regressions_allowed: 0,
+      critical_contract_failures_allowed: 0,
+      domain_mean_noninferiority_margin: 0.25,
+      conversion_case_count: caseCount,
+      conversion_minimum_comparable_cases: 13,
+      conversion_minimum_win_rate: 0.77,
+    },
+  };
+  const dynamicRecords = cases.map((item, index) => {
+    const incumbentInvalid = index >= comparableCaseCount;
+    return record({
+      id: item.id,
+      winner: incumbentInvalid || index < comparableCandidateWins ? "candidate" : "tie",
+      incumbentHardGates: incumbentInvalid ? ["required-boundary"] : [],
+    });
+  });
+  const releasePlan = {
+    schema_version: 1,
+    skill_version: "dynamic-test",
+    governance_default_gate: "governance_default",
+    absolute_veto_gate: "all_cases_pass_absolute_vetoes",
+    legacy_regressions_allowed_gate: "legacy_material_regressions_allowed",
+    critical_contract_failures_allowed_gate: "critical_contract_failures_allowed",
+    noninferiority_margin_gate: "domain_mean_noninferiority_margin",
+    legacy_case_ids: [],
+    partitions: [{
+      id: "conversion",
+      case_count_gate: "conversion_case_count",
+      minimum_comparable_cases_gate: "conversion_minimum_comparable_cases",
+      minimum_win_rate_gate: "conversion_minimum_win_rate",
+      case_ids: cases.map((item) => item.id),
+    }],
+  };
+  return { manifest: dynamicManifest, records: dynamicRecords, releasePlan };
+};
+
+test("comparable win-rate quota rounds upward at release boundaries", () => {
+  assert.equal(requiredComparableWins({ comparableCaseCount: 13, minimumWinRate: 0.77 }), 11);
+  assert.equal(requiredComparableWins({ comparableCaseCount: 20, minimumWinRate: 0.77 }), 16);
+
+  for (const [caseCount, candidateWins, expectedWins] of [[13, 11, 11], [20, 16, 16]]) {
+    const result = evaluateBlindRun(dynamicReleaseFixture({
+      caseCount,
+      comparableCaseCount: caseCount,
+      comparableCandidateWins: candidateWins,
+    }));
+    assert.equal(result.pass, true);
+    assert.equal(result.release.partitionResults[0].winsRequired, expectedWins);
+
+    const belowBoundary = evaluateBlindRun(dynamicReleaseFixture({
+      caseCount,
+      comparableCaseCount: caseCount,
+      comparableCandidateWins: candidateWins - 1,
+    }));
+    assert.equal(belowBoundary.pass, false);
+    assert.equal(belowBoundary.release.partitionResults[0].winsRequired, expectedWins);
+  }
+});
+
+test("dynamic superiority excludes invalid incumbents from its denominator", () => {
+  const result = evaluateBlindRun(dynamicReleaseFixture({
+    caseCount: 20,
+    comparableCaseCount: 13,
+    comparableCandidateWins: 11,
+  }));
+  const partition = result.release.partitionResults[0];
+  assert.equal(result.pass, true);
+  assert.equal(partition.summary.totalCandidateWins, 18);
+  assert.equal(partition.summary.comparableCaseCount, 13);
+  assert.equal(partition.summary.comparableCandidateWins, 11);
+  assert.equal(partition.winsRequired, 11);
+});
+
+test("dynamic superiority fails below its minimum comparable denominator", () => {
+  const result = evaluateBlindRun(dynamicReleaseFixture({
+    caseCount: 20,
+    comparableCaseCount: 12,
+    comparableCandidateWins: 12,
+  }));
+  const partition = result.release.partitionResults[0];
+  assert.equal(result.pass, false);
+  assert.equal(partition.summary.comparableCaseCount, 12);
+  assert.equal(partition.winsRequired, 10);
+  assert.equal(partition.pass, false);
 });
 
 test("domain quality fails closed when no case has a valid incumbent comparator", () => {

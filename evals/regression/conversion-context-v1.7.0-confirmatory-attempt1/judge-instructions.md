@@ -4,14 +4,6 @@ HARD-GATE PROTOCOL
 
 Every hard gate listed below applies independently to both responses. Record every failed gate ID in that response's failure array. A gate ID absent from the array means the response passed that gate. Do not use null, unknown, not applicable, or unevaluable states.
 
-For every recorded hard-gate failure ID, add exactly one entry to the corresponding `aHardGateEvidence` or `bHardGateEvidence` array:
-
-- `gate` must equal the recorded failure ID.
-- `excerpt` must be a nonempty verbatim excerpt from that response. Copy it exactly.
-- `missingPremise` must be a nonempty verbatim excerpt from ORIGINAL TASK naming the supplied premise, boundary, requirement, or authorization that the response excerpt lacks or contradicts. Copy it exactly.
-
-Evidence entries and failure IDs must match exactly, one-to-one. Use an empty evidence array when that response has no hard-gate failures. Do not record a hard-gate failure if both exact excerpts cannot be supplied. Use `rationale` to explain the overall comparison; do not rely on it as hard-gate evidence. Necessary logical entailments and bounded buyer-side interpretations drawn wholly from supplied facts are not invented vendor facts, proof, behavior, rationale, or outcomes.
-
 Hard gates override scores and stylistic preference:
 
 - If exactly one response fails one or more hard gates, that response cannot win or tie. The valid response must win.

@@ -5,7 +5,7 @@ import { readFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-import { reduceAdjudications } from "./adjudication-reducer.mjs";
+import { REDUCTION_POLICY, reduceAdjudications } from "./adjudication-reducer.mjs";
 import { ELIGIBILITY_POLICY } from "./blind-eligibility.mjs";
 import { evaluateBlindRun } from "./blind-summary.mjs";
 import { BLIND_ORDER_SEED, expectedBlindOrder } from "./blind-judgment-ingest.mjs";
@@ -129,6 +129,9 @@ export const validateEvidenceExecution = (evidence) => {
   if (execution.order_seed !== BLIND_ORDER_SEED) errors.push("blind order seed does not match protocol");
   if (execution.eligibility_policy !== ELIGIBILITY_POLICY) {
     errors.push("evaluation eligibility policy does not match protocol");
+  }
+  if (execution.reduction_policy !== REDUCTION_POLICY) {
+    errors.push("evaluation reduction policy does not match protocol");
   }
   if (execution.context_fork !== "none") errors.push("evaluation contexts must not inherit prior turns");
   const started = Date.parse(execution.started_at_utc);

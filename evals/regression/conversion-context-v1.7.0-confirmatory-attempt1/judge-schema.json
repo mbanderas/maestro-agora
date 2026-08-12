@@ -25,15 +25,8 @@
       "uniqueItems": true,
       "items": { "type": "string", "minLength": 1 }
     },
-    "aHardGateEvidence": {
-      "$ref": "#/$defs/hardGateEvidence"
-    },
-    "bHardGateEvidence": {
-      "$ref": "#/$defs/hardGateEvidence"
-    },
     "rationale": {
-      "type": "string",
-      "description": "Explain the overall comparison. Hard-gate evidence belongs only in the structured evidence arrays."
+      "type": "string"
     }
   },
   "required": [
@@ -42,26 +35,9 @@
     "bScores",
     "aHardGateFailures",
     "bHardGateFailures",
-    "aHardGateEvidence",
-    "bHardGateEvidence",
     "rationale"
   ],
   "$defs": {
-    "hardGateEvidence": {
-      "type": "array",
-      "description": "One entry per corresponding hard-gate failure ID, or an empty array when there are no failures.",
-      "uniqueItems": true,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "gate": { "type": "string", "minLength": 1 },
-          "excerpt": { "type": "string", "minLength": 1 },
-          "missingPremise": { "type": "string", "minLength": 1 }
-        },
-        "required": ["gate", "excerpt", "missingPremise"]
-      }
-    },
     "scores": {
       "type": "object",
       "additionalProperties": false,

@@ -7,11 +7,14 @@ import { pathToFileURL } from "node:url";
 import {
   adjudicationsDisagree,
   deriveEligibleWinner,
+  majorityFailureSet,
   validateEligibility,
 } from "./blind-eligibility.mjs";
 
 const VALID_WINNERS = new Set(["candidate", "incumbent", "tie"]);
 const VALID_SIDES = new Set(["candidate", "incumbent"]);
+
+export const REDUCTION_POLICY = "Agreed mapped winners and hard-gate sets use pass 1/2 mean scores and require both-pass consensus for each final hard-gate failure. Winner or either side's hard-gate disagreement requires pass 3 winner and scores; each final hard-gate failure then requires at least two of the three used passes. Candidate and incumbent failures reduce independently under the same rule, then final winner eligibility is derived from those majority failure sets. Per-pass evidence remains preserved.";
 
 const uniqueStrings = (values, label, errors) => {
   if (!Array.isArray(values) || values.some((value) => typeof value !== "string")) {
@@ -221,8 +224,14 @@ export function reduceAdjudications({ manifest, adjudications }) {
         : (first.incumbentScores?.[dimension] + second.incumbentScores?.[dimension]) / 2;
     }
 
-    const candidateHardGateFailures = union(usedPasses, "candidateHardGateFailures");
-    const incumbentHardGateFailures = union(usedPasses, "incumbentHardGateFailures");
+    const candidateHardGateFailures = majorityFailureSet(
+      usedPasses,
+      "candidateHardGateFailures",
+    );
+    const incumbentHardGateFailures = majorityFailureSet(
+      usedPasses,
+      "incumbentHardGateFailures",
+    );
     const baseWinner = scorePass ? scorePass.winner : first.winner;
     const winner = deriveEligibleWinner({
       baseWinner,

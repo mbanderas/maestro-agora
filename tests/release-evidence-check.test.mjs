@@ -11,6 +11,7 @@ import {
   validateEvidenceExecution,
   validateNormalizedAdjudications,
 } from "../scripts/release-evidence-check.mjs";
+import { REDUCTION_POLICY } from "../scripts/adjudication-reducer.mjs";
 import { ELIGIBILITY_POLICY } from "../scripts/blind-eligibility.mjs";
 import { BLIND_ORDER_SEED, expectedBlindOrder } from "../scripts/blind-judgment-ingest.mjs";
 import { validateGitReleaseProvenance } from "../scripts/release-git-provenance.mjs";
@@ -39,6 +40,7 @@ test("execution evidence freezes model, isolation, baseline, and order seed", ()
       judge_runtime: "codex-subagent",
       order_seed: BLIND_ORDER_SEED,
       eligibility_policy: ELIGIBILITY_POLICY,
+      reduction_policy: REDUCTION_POLICY,
       context_fork: "none",
       started_at_utc: "2026-08-12T10:00:00.000Z",
       completed_at_utc: "2026-08-12T11:00:00.000Z",
@@ -51,6 +53,7 @@ test("execution evidence freezes model, isolation, baseline, and order seed", ()
     },
   };
   assert.deepEqual(validateEvidenceExecution(evidence), []);
+  assert.equal(ELIGIBILITY_POLICY, "symmetric-majority-hard-gates-v2");
   evidence.execution.judge_model = "another-model";
   assert.match(validateEvidenceExecution(evidence).join("\n"), /judge model/);
 });

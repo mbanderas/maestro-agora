@@ -5,7 +5,7 @@ import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-import { reduceAdjudications } from "./adjudication-reducer.mjs";
+import { REDUCTION_POLICY, reduceAdjudications } from "./adjudication-reducer.mjs";
 import { ELIGIBILITY_POLICY } from "./blind-eligibility.mjs";
 import { ingestBlindJudgments, BLIND_ORDER_SEED } from "./blind-judgment-ingest.mjs";
 import { evaluateBlindRun } from "./blind-summary.mjs";
@@ -75,6 +75,8 @@ async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, jud
   const adjudications = await ingestBlindJudgments({
     manifest,
     judgmentsDirectory: join(evaluationRoot, "judgments"),
+    evaluationRoot,
+    blindRoot: dirname(manifestPath),
   });
   const records = reduceAdjudications({ manifest, adjudications });
   const provenanceErrors = await validateEvaluationProvenance({
@@ -167,7 +169,7 @@ async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, jud
       provenance_check_passed: true,
       order_seed: BLIND_ORDER_SEED,
       eligibility_policy: ELIGIBILITY_POLICY,
-      reduction_policy: "Agreed mapped winners and hard-gate sets use pass 1/2 mean scores. Winner or either side's hard-gate disagreement requires pass 3 winner and scores. Both sides' hard-gate failures are unioned across every used pass, then the eligible winner is derived from the union.",
+      reduction_policy: REDUCTION_POLICY,
       ...timing,
     },
     artifact_hashes: artifactHashes,

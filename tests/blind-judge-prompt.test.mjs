@@ -87,6 +87,10 @@ test("versioned judge protocol anchors every score and forbids unknown gate stat
     assert.match(judgeInstructions, new RegExp(`- ${anchor}:`));
   }
   assert.match(judgeInstructions, /Every hard gate listed below applies independently to both responses/);
+  assert.match(judgeInstructions, /`excerpt` must be a nonempty verbatim excerpt from that response/);
+  assert.match(judgeInstructions, /`missingPremise` must be a nonempty verbatim excerpt from ORIGINAL TASK/);
+  assert.match(judgeInstructions, /Evidence entries and failure IDs must match exactly, one-to-one/);
+  assert.match(judgeInstructions, /Necessary logical entailments and bounded buyer-side interpretations/);
   assert.match(judgeInstructions, /gate ID absent from the array means the response passed/);
   assert.match(judgeInstructions, /Hard gates override scores/);
   assert.match(judgeInstructions, /uniquely invalid response cannot score above the valid response/);
@@ -97,4 +101,13 @@ test("versioned judge protocol anchors every score and forbids unknown gate stat
     assert.equal(judgeSchema.properties[field].uniqueItems, true);
     assert.deepEqual(judgeSchema.properties[field].items.type, "string");
   }
+  for (const field of ["aHardGateEvidence", "bHardGateEvidence"]) {
+    assert.ok(judgeSchema.required.includes(field));
+    assert.equal(judgeSchema.properties[field].$ref, "#/$defs/hardGateEvidence");
+  }
+  const evidenceItem = judgeSchema.$defs.hardGateEvidence.items;
+  assert.equal(judgeSchema.additionalProperties, false);
+  assert.equal(judgeSchema.$defs.hardGateEvidence.uniqueItems, true);
+  assert.equal(evidenceItem.additionalProperties, false);
+  assert.deepEqual(evidenceItem.required, ["gate", "excerpt", "missingPremise"]);
 });

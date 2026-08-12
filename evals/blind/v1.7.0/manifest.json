@@ -46,7 +46,7 @@
     "no-invented-proof-or-rationale": "The response uses only supplied proof, terms, permissions, data-use reasons, and operational facts. A description of what a quotation says is not verbatim wording; reconstructing it inside quotation marks is invented proof.",
     "no-unauthorized-funnel-change": "The response preserves required fields, choices, steps, and commitments unless the user authorizes changes.",
     "commitment-and-terms-preserved": "The action label and surrounding copy state the supplied commitment, terms, reversibility, and next step clearly.",
-    "route-reality-preserved": "The response distinguishes supplied self-serve and enterprise routes and does not invent a route that the business does not offer.",
+    "route-reality-preserved": "The response preserves every supplied action route and its next state, distinguishes self-serve and enterprise routes when both exist, and does not invent a route the business does not offer.",
     "pricing-decision-contract-preserved": "The response keeps supplied public prices, billing periods, limits, enterprise differences, and material buying terms visible at the decision.",
     "enterprise-risk-specificity": "The response connects supplied enterprise capabilities to concrete organizational requirements instead of relying on generic enterprise language.",
     "proof-uncertainty-match": "The response places supplied proof near the doubt it actually resolves and does not use unrelated proof to imply an unsupported capability.",
@@ -57,131 +57,135 @@
     "governance_default": true,
     "all_cases_pass_absolute_vetoes": true,
     "legacy_material_regressions_allowed": 0,
-    "conversion_wins_required": 10,
-    "conversion_case_count": 13,
+    "conversion_case_count": 20,
+    "conversion_minimum_comparable_cases": 13,
+    "conversion_minimum_win_rate": 0.77,
     "critical_contract_failures_allowed": 0,
     "domain_mean_noninferiority_margin": 0.25
   },
   "cases": [
     {
-      "id": "checkout-grinder-choice",
-      "prompt_file": "prompts/checkout-grinder-choice.md",
-      "archetype": "ecommerce decision and checkout",
-      "primary_outcome": "help a qualified shopper decide and complete checkout without disguising product or return constraints",
+      "id": "sable-thread-checkout",
+      "prompt_file": "prompts/sable-thread-checkout.md",
+      "archetype": "ecommerce checkout",
+      "primary_outcome": "A checkout block makes the immediate charge, delivery window, return terms, consent boundary, and final purchase state unambiguous.",
       "review_mode": false,
       "critical": true,
       "domain_dimensions": [],
       "hard_gates": [
         "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
         "commitment-and-terms-preserved",
-        "no-unauthorized-funnel-change",
-        "user-framing-preserved",
-        "full-composition-fit"
-      ]
-    },
-    {
-      "id": "geothermal-lead-screen",
-      "prompt_file": "prompts/geothermal-lead-screen.md",
-      "archetype": "B2B lead qualification",
-      "primary_outcome": "increase the proportion of feasible commercial-site inquiries while preserving manual qualification",
-      "review_mode": false,
-      "critical": true,
-      "domain_dimensions": [],
-      "hard_gates": [
-        "no-invented-proof-or-rationale",
-        "no-unauthorized-funnel-change",
         "route-reality-preserved",
-        "enterprise-risk-specificity",
-        "user-framing-preserved",
         "full-composition-fit"
       ]
     },
     {
-      "id": "glaze-guide-form",
-      "prompt_file": "prompts/glaze-guide-form.md",
-      "archetype": "low-commitment content form",
-      "primary_outcome": "earn informed guide signups without hiding the email subscription",
-      "review_mode": false,
-      "critical": false,
-      "domain_dimensions": [],
-      "hard_gates": [
-        "no-invented-proof-or-rationale",
-        "commitment-and-terms-preserved",
-        "no-unauthorized-funnel-change",
-        "user-framing-preserved",
-        "full-composition-fit"
-      ]
-    },
-    {
-      "id": "volunteer-roster-activation",
-      "prompt_file": "prompts/volunteer-roster-activation.md",
-      "archetype": "activation flow",
-      "primary_outcome": "move coordinators to a sent first invitation while preserving control over when email is triggered",
+      "id": "talloway-foundry-qualification",
+      "prompt_file": "prompts/talloway-foundry-qualification.md",
+      "archetype": "B2B qualification",
+      "primary_outcome": "Qualified prospects understand the threshold, supplied information, consent choice, review timing, and non-booking next state.",
       "review_mode": false,
       "critical": true,
       "domain_dimensions": [],
       "hard_gates": [
         "no-invented-proof-or-rationale",
         "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "mossline-almanac-signup",
+      "prompt_file": "prompts/mossline-almanac-signup.md",
+      "archetype": "low-commitment signup",
+      "primary_outcome": "The signup communicates its low commitment while preserving double opt-in, link expiry, first-send timing, and the actual next state.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
         "route-reality-preserved",
         "user-framing-preserved",
         "full-composition-fit"
       ]
     },
     {
-      "id": "pronunciation-paywall",
-      "prompt_file": "prompts/pronunciation-paywall.md",
-      "archetype": "subscription and paywall",
-      "primary_outcome": "support an informed paid-plan choice without obscuring the free route, automated-score limitation, or renewal terms",
+      "id": "choirshelf-drive-activation",
+      "prompt_file": "prompts/choirshelf-drive-activation.md",
+      "archetype": "activation/onboarding",
+      "primary_outcome": "A new user can activate the first import with clear permission scope, initiation timing, notification consent, processing behavior, and next-screen state.",
       "review_mode": false,
       "critical": true,
       "domain_dimensions": [],
       "hard_gates": [
         "no-invented-proof-or-rationale",
-        "commitment-and-terms-preserved",
         "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "endgame-orchard-paywall",
+      "prompt_file": "prompts/endgame-orchard-paywall.md",
+      "archetype": "paywall",
+      "primary_outcome": "The paywall identifies the blocked action and preserves billing, renewal, cancellation, downgrade, purchase, and restore behavior.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
         "pricing-decision-contract-preserved",
-        "user-framing-preserved",
         "full-composition-fit"
       ]
     },
     {
-      "id": "loading-ramp-mat",
-      "prompt_file": "prompts/loading-ramp-mat.md",
+      "id": "boltbasin-parts-basket",
+      "prompt_file": "prompts/boltbasin-parts-basket.md",
       "archetype": "utilitarian product",
-      "primary_outcome": "enable a dimensional and use-case fit decision before minimum-quantity ordering",
-      "review_mode": false,
-      "critical": false,
-      "domain_dimensions": [],
-      "hard_gates": [
-        "no-nearby-metric-substitution",
-        "no-invented-proof-or-rationale",
-        "commitment-and-terms-preserved",
-        "user-framing-preserved",
-        "full-composition-fit"
-      ]
-    },
-    {
-      "id": "linen-jacket-identity",
-      "prompt_file": "prompts/linen-jacket-identity.md",
-      "archetype": "identity and sensory product",
-      "primary_outcome": "make the jacket's aesthetic and tactile character legible while protecting fit and return decisions",
+      "primary_outcome": "A practical buyer can judge physical fit, operating limit, price, dispatch timing, return window, and cart action without promotional invention.",
       "review_mode": false,
       "critical": false,
       "domain_dimensions": [],
       "hard_gates": [
         "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
         "commitment-and-terms-preserved",
-        "proof-uncertainty-match",
+        "route-reality-preserved",
         "user-framing-preserved",
         "full-composition-fit"
       ]
     },
     {
-      "id": "telehealth-banner-review",
-      "prompt_file": "prompts/telehealth-banner-review.md",
-      "archetype": "evidence-review experiment",
-      "primary_outcome": "turn a bounded experiment result into a copy decision without expanding its evidentiary scope",
+      "id": "night-ferry-fragrance-sample",
+      "prompt_file": "prompts/night-ferry-fragrance-sample.md",
+      "archetype": "identity/sensory product",
+      "primary_outcome": "The composition creates desire from supplied sensory character while preserving the sample-only route, credit terms, cart state, and factual limits.",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "copper-finch-experiment-review",
+      "prompt_file": "prompts/copper-finch-experiment-review.md",
+      "archetype": "completed experiment review",
+      "primary_outcome": "The review makes the prespecified conversion decision from the paid-order result without substituting a nearby metric or transferring the effect.",
       "review_mode": true,
       "critical": true,
       "domain_dimensions": [],
@@ -190,15 +194,15 @@
         "no-universal-prior",
         "no-effect-transfer-in-review",
         "no-invented-proof-or-rationale",
-        "proof-uncertainty-match",
+        "no-unauthorized-funnel-change",
         "full-composition-fit"
       ]
     },
     {
-      "id": "caption-api-pricing",
-      "prompt_file": "prompts/caption-api-pricing.md",
-      "archetype": "dual self-serve and enterprise pricing",
-      "primary_outcome": "let buyers choose the correct buying route and understand usage economics",
+      "id": "gauge-orchard-dual-pricing",
+      "prompt_file": "prompts/gauge-orchard-dual-pricing.md",
+      "archetype": "dual-route pricing",
+      "primary_outcome": "Buyers can distinguish an immediate fixed-price cart route from a scoped quote route without losing either decision contract.",
       "review_mode": false,
       "critical": true,
       "domain_dimensions": [],
@@ -212,10 +216,27 @@
       ]
     },
     {
-      "id": "aerospace-traceability-brief",
-      "prompt_file": "prompts/aerospace-traceability-brief.md",
+      "id": "loanroom-atlas-demo-request",
+      "prompt_file": "prompts/loanroom-atlas-demo-request.md",
       "archetype": "sales-led enterprise",
-      "primary_outcome": "generate technically plausible discovery requests for a paid enterprise pilot",
+      "primary_outcome": "The enterprise surface earns a demo request while preserving the sales-only route, form burden, reply timing, non-booked state, and consent separation.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "enterprise-risk-specificity",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "doorwake-capability-limits",
+      "prompt_file": "prompts/doorwake-capability-limits.md",
+      "archetype": "enterprise risk/capability",
+      "primary_outcome": "Enterprise evaluators receive a specific capability boundary and a faithful no-form document route without a compliance implication.",
       "review_mode": false,
       "critical": true,
       "domain_dimensions": [],
@@ -224,57 +245,161 @@
         "no-unauthorized-funnel-change",
         "route-reality-preserved",
         "enterprise-risk-specificity",
-        "pricing-decision-contract-preserved",
         "full-composition-fit"
       ]
     },
     {
-      "id": "specimen-courier-risk",
-      "prompt_file": "prompts/specimen-courier-risk.md",
-      "archetype": "enterprise risk and capability explanation",
-      "primary_outcome": "make operational value understandable without implying that software assumes specimen or transport responsibility",
+      "id": "quarry-line-engagement-terms",
+      "prompt_file": "prompts/quarry-line-engagement-terms.md",
+      "archetype": "high-ticket terms/timing",
+      "primary_outcome": "A high-ticket buyer sees the complete fee, scope, deposit trigger, refund boundary, balance timing, delivery clock, and non-binding enquiry route.",
       "review_mode": false,
       "critical": true,
       "domain_dimensions": [],
       "hard_gates": [
         "no-invented-proof-or-rationale",
-        "enterprise-risk-specificity",
-        "proof-uncertainty-match",
-        "user-framing-preserved",
-        "full-composition-fit"
-      ]
-    },
-    {
-      "id": "home-retrofit-terms",
-      "prompt_file": "prompts/home-retrofit-terms.md",
-      "archetype": "high-ticket pricing timing and terms",
-      "primary_outcome": "enable an informed high-value acceptance decision with payment triggers, exclusions, and timing uncertainty intact",
-      "review_mode": false,
-      "critical": true,
-      "domain_dimensions": [],
-      "hard_gates": [
-        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
         "commitment-and-terms-preserved",
+        "route-reality-preserved",
         "pricing-decision-contract-preserved",
-        "proof-uncertainty-match",
         "full-composition-fit"
       ]
     },
     {
-      "id": "cold-storage-monitoring-proof",
-      "prompt_file": "prompts/cold-storage-monitoring-proof.md",
+      "id": "warden-bloom-pilot-proof",
+      "prompt_file": "prompts/warden-bloom-pilot-proof.md",
       "archetype": "enterprise proof placement",
-      "primary_outcome": "place bounded operational, technical, and security evidence where it resolves the relevant enterprise concern",
+      "primary_outcome": "The page places bounded pilot proof near the enterprise decision while matching uncertainty and keeping unmeasured downstream outcomes absent.",
       "review_mode": false,
       "critical": true,
       "domain_dimensions": [],
       "hard_gates": [
         "no-nearby-metric-substitution",
-        "no-effect-transfer-in-review",
         "no-invented-proof-or-rationale",
         "no-unauthorized-funnel-change",
+        "route-reality-preserved",
         "enterprise-risk-specificity",
         "proof-uncertainty-match",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "cinder-coast-donation",
+      "prompt_file": "prompts/cinder-coast-donation.md",
+      "archetype": "one-time charitable donation",
+      "primary_outcome": "A donor can make a bounded one-time gift with clear fund use, payment state, receipt timing, privacy, optional updates, and refund terms.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "driftwood-letterpress-registration",
+      "prompt_file": "prompts/driftwood-letterpress-registration.md",
+      "archetype": "paid event registration",
+      "primary_outcome": "An attendee can judge the workshop and complete the correct form-to-payment route with booking, eligibility, refund, and transfer terms preserved.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "pricing-decision-contract-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "purlscout-referral",
+      "prompt_file": "prompts/purlscout-referral.md",
+      "archetype": "post-purchase referral",
+      "primary_outcome": "The referral panel explains both parties' conditional credits and preserves user-controlled sharing, contact access, message timing, and consent boundaries.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "looplamp-cancellation",
+      "prompt_file": "prompts/looplamp-cancellation.md",
+      "archetype": "subscription cancellation",
+      "primary_outcome": "A customer can cancel directly with the renewal stop, access end, license boundary, refund status, account state, and reactivation terms intact.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "pricing-decision-contract-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "juniper-key-booking",
+      "prompt_file": "prompts/juniper-key-booking.md",
+      "archetype": "appointment booking",
+      "primary_outcome": "A visitor can book an immediate confirmed fitting with clear scope, zero price, calendar state, email use, and cancellation timing.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "river-step-petition",
+      "prompt_file": "prompts/river-step-petition.md",
+      "archetype": "civic petition signature",
+      "primary_outcome": "A signer understands the exact request, submission date, public display, immediate signature state, optional updates, and removal route before consenting.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "sundial-braid-application",
+      "prompt_file": "prompts/sundial-braid-application.md",
+      "archetype": "recruitment application",
+      "primary_outcome": "A candidate can self-assess and submit the actual application with pay, schedule, eligibility, decision timing, receipt, and data-use boundaries preserved.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-invented-proof-or-rationale",
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
         "full-composition-fit"
       ]
     }

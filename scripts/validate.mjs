@@ -487,8 +487,12 @@ async function main() {
 
   const packageJson = await readJson(join(ROOT, "package.json"));
   const gitAttributes = await readFile(join(ROOT, ".gitattributes"), "utf8");
+  const [validateWorkflow, publishWorkflow] = await Promise.all([
+    readFile(join(ROOT, ".github", "workflows", "validate.yml"), "utf8"),
+    readFile(join(ROOT, ".github", "workflows", "publish.yml"), "utf8"),
+  ]);
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.6.0", "package version must be 1.6.0");
+  check(packageJson.version === "1.7.0", "package version must be 1.7.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.bin?.["agora-voice"] === "scripts/voice-measure.mjs", "package must expose the agora-voice bin");
   for (const shipped of ["scripts/voice-measure.mjs", "scripts/voice"]) {
@@ -497,6 +501,26 @@ async function main() {
   check(
     (packageJson.scripts?.test || "").includes("tests/voice-measure.test.mjs"),
     "npm test must run the voice measurement suite",
+  );
+  check(
+    packageJson.scripts?.["eval:release"] === "node scripts/release-evidence-check.mjs",
+    "eval:release must verify v1.7 release evidence",
+  );
+  check(
+    packageJson.scripts?.["release:check"] === "npm run check && npm run eval:release",
+    "release:check must fail closed on v1.7 release evidence",
+  );
+  check(
+    /actions\/checkout@[\s\S]{0,160}fetch-depth:\s*0/.test(validateWorkflow),
+    "validation CI must fetch full Git history for release provenance",
+  );
+  check(
+    /actions\/checkout@[\s\S]{0,160}fetch-depth:\s*0/.test(publishWorkflow),
+    "publish CI must fetch full Git history for release provenance",
+  );
+  check(
+    !/^\s*workflow_dispatch:\s*$/m.test(publishWorkflow),
+    "publish CI must be release-tag triggered only",
   );
   for (const suite of [
     "tests/hero-contract.test.mjs",

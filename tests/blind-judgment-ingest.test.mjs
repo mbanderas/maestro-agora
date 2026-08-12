@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
@@ -20,7 +20,36 @@ const scores = (value) => Object.fromEntries(dimensions.map((dimension) => [dime
 const manifest = {
   rubric: { dimensions, domain_dimensions: {} },
 };
-const item = { id: "case-one", domain_dimensions: [], hard_gates: ["fact-boundary"] };
+const item = {
+  id: "case-one",
+  domain_dimensions: [],
+  hard_gates: ["fact-boundary"],
+  prompt_file: "prompts/case-one.md",
+};
+const originalTask = "Write the page. Closed facts: supplied premise.";
+const sideResponses = {
+  candidate: "Candidate response with an unsupported claim.",
+  incumbent: "Incumbent response with a supported claim.",
+};
+const evidenceFor = (failures, response) => failures.map((gate) => ({
+  gate,
+  excerpt: response,
+  missingPremise: "Closed facts: supplied premise.",
+}));
+const contextForPass = (pass) => {
+  const order = expectedBlindOrder(item.id, pass);
+  return {
+    originalTask,
+    responseA: sideResponses[order[0]],
+    responseB: sideResponses[order[1]],
+  };
+};
+const normalize = (values) => normalizeBlindJudgment({
+  manifest,
+  item,
+  ...values,
+  ...contextForPass(values.pass),
+});
 
 const rawJudgment = ({
   pass,
@@ -32,8 +61,16 @@ const rawJudgment = ({
 }) => {
   const order = expectedBlindOrder(item.id, pass);
   const values = {
-    candidate: { scores: scores(candidateScore), failures: candidateFailures },
-    incumbent: { scores: scores(incumbentScore), failures: incumbentFailures },
+    candidate: {
+      scores: scores(candidateScore),
+      failures: candidateFailures,
+      evidence: evidenceFor(candidateFailures, sideResponses.candidate),
+    },
+    incumbent: {
+      scores: scores(incumbentScore),
+      failures: incumbentFailures,
+      evidence: evidenceFor(incumbentFailures, sideResponses.incumbent),
+    },
   };
   return {
     winner: winner === "tie" ? "tie" : (order[0] === winner ? "A" : "B"),
@@ -41,6 +78,8 @@ const rawJudgment = ({
     bScores: values[order[1]].scores,
     aHardGateFailures: values[order[0]].failures,
     bHardGateFailures: values[order[1]].failures,
+    aHardGateEvidence: values[order[0]].evidence,
+    bHardGateEvidence: values[order[1]].evidence,
     rationale: "Private raw rationale",
   };
 };
@@ -55,9 +94,8 @@ test("seeded orders are deterministic and pass 2 swaps pass 1", () => {
 
 test("raw A/B judgment maps deterministically and drops rationale", () => {
   const order = expectedBlindOrder(item.id, 1);
-  const normalized = normalizeBlindJudgment({
-    manifest,
-    item,
+  const context = contextForPass(1);
+  const normalized = normalize({
     pass: 1,
     judgment: {
       winner: "A",
@@ -65,6 +103,8 @@ test("raw A/B judgment maps deterministically and drops rationale", () => {
       bScores: scores(3),
       aHardGateFailures: [],
       bHardGateFailures: ["fact-boundary"],
+      aHardGateEvidence: [],
+      bHardGateEvidence: evidenceFor(["fact-boundary"], context.responseB),
       rationale: "Private raw rationale",
     },
   });
@@ -80,12 +120,14 @@ test("raw A/B judgment maps deterministically and drops rationale", () => {
     order[0] === "incumbent" ? [] : ["fact-boundary"],
   );
   assert.equal("rationale" in normalized, false);
+  assert.equal("aHardGateEvidence" in normalized, false);
+  assert.equal("bHardGateEvidence" in normalized, false);
+  assert.equal("candidateHardGateEvidence" in normalized, false);
+  assert.equal("incumbentHardGateEvidence" in normalized, false);
 });
 
 test("normalization maps both sides' failures and enforces symmetric winner eligibility", () => {
-  const mapped = normalizeBlindJudgment({
-    manifest,
-    item,
+  const mapped = normalize({
     pass: 1,
     judgment: rawJudgment({
       pass: 1,
@@ -98,9 +140,7 @@ test("normalization maps both sides' failures and enforces symmetric winner elig
   assert.deepEqual(mapped.incumbentHardGateFailures, ["fact-boundary"]);
   assert.equal(mapped.winner, "tie");
 
-  assert.throws(() => normalizeBlindJudgment({
-    manifest,
-    item,
+  assert.throws(() => normalize({
     pass: 1,
     judgment: rawJudgment({
       pass: 1,
@@ -109,9 +149,7 @@ test("normalization maps both sides' failures and enforces symmetric winner elig
     }),
   }), /winner must be incumbent because only candidate fails hard gates/);
 
-  assert.throws(() => normalizeBlindJudgment({
-    manifest,
-    item,
+  assert.throws(() => normalize({
     pass: 1,
     judgment: rawJudgment({
       pass: 1,
@@ -120,9 +158,7 @@ test("normalization maps both sides' failures and enforces symmetric winner elig
     }),
   }), /winner must be incumbent because only candidate fails hard gates/);
 
-  assert.throws(() => normalizeBlindJudgment({
-    manifest,
-    item,
+  assert.throws(() => normalize({
     pass: 1,
     judgment: rawJudgment({
       pass: 1,
@@ -134,9 +170,7 @@ test("normalization maps both sides' failures and enforces symmetric winner elig
 });
 
 test("normalization rejects a uniquely invalid side scoring above the valid side", () => {
-  assert.throws(() => normalizeBlindJudgment({
-    manifest,
-    item,
+  assert.throws(() => normalize({
     pass: 1,
     judgment: rawJudgment({
       pass: 1,
@@ -146,6 +180,70 @@ test("normalization rejects a uniquely invalid side scoring above the valid side
       incumbentScore: 4,
     }),
   }), /candidateScores\.composition-fit cannot exceed incumbentScores\.composition-fit/);
+});
+
+test("hard-gate evidence is required, exact, verbatim, and source-bound", () => {
+  const context = contextForPass(1);
+  const valid = {
+    winner: "B",
+    aScores: scores(3),
+    bScores: scores(4),
+    aHardGateFailures: ["fact-boundary"],
+    bHardGateFailures: [],
+    aHardGateEvidence: evidenceFor(["fact-boundary"], context.responseA),
+    bHardGateEvidence: [],
+    rationale: "A crosses the supplied fact boundary.",
+  };
+  assert.doesNotThrow(() => normalize({ pass: 1, judgment: valid }));
+
+  const missingEvidence = structuredClone(valid);
+  delete missingEvidence.aHardGateEvidence;
+  assert.throws(
+    () => normalize({ pass: 1, judgment: missingEvidence }),
+    /aHardGateEvidence must be an array/,
+  );
+
+  const mismatchedGate = structuredClone(valid);
+  mismatchedGate.aHardGateEvidence[0].gate = "different-gate";
+  assert.throws(
+    () => normalize({ pass: 1, judgment: mismatchedGate }),
+    /gates must match the corresponding hard-gate failure IDs exactly once/,
+  );
+
+  const absentExcerpt = structuredClone(valid);
+  absentExcerpt.aHardGateEvidence[0].excerpt = "Text absent from response A";
+  assert.throws(
+    () => normalize({ pass: 1, judgment: absentExcerpt }),
+    /excerpt must occur verbatim in the corresponding response/,
+  );
+
+  const absentPremise = structuredClone(valid);
+  absentPremise.aHardGateEvidence[0].missingPremise = "Text absent from original task";
+  assert.throws(
+    () => normalize({ pass: 1, judgment: absentPremise }),
+    /missingPremise must occur verbatim in ORIGINAL TASK/,
+  );
+
+  const extraProperty = structuredClone(valid);
+  extraProperty.aHardGateEvidence[0].note = "not allowed";
+  assert.throws(
+    () => normalize({ pass: 1, judgment: extraProperty }),
+    /must contain exactly gate, excerpt, and missingPremise/,
+  );
+});
+
+test("a response with no hard-gate failures requires an empty evidence array", () => {
+  const valid = rawJudgment({ pass: 1, winner: "tie" });
+  assert.doesNotThrow(() => normalize({ pass: 1, judgment: valid }));
+  valid.aHardGateEvidence.push({
+    gate: "fact-boundary",
+    excerpt: contextForPass(1).responseA,
+    missingPremise: "Closed facts: supplied premise.",
+  });
+  assert.throws(
+    () => normalize({ pass: 1, judgment: valid }),
+    /gates must match the corresponding hard-gate failure IDs exactly once/,
+  );
 });
 
 test("every eligibility-critical dimension rejects an invalid-side score advantage", () => {
@@ -170,14 +268,24 @@ test("every eligibility-critical dimension rejects an invalid-side score advanta
 
 test("ingestion requires pass 3 when either mapped failure set differs", async () => {
   const root = await mkdtemp(join(tmpdir(), "agora-blind-ingest-"));
+  const judgmentsDirectory = join(root, "judgments");
   const fullManifest = { ...manifest, cases: [item] };
   try {
     await Promise.all([
-      writeFile(join(root, "case-one-pass1.json"), JSON.stringify(rawJudgment({
+      mkdir(join(root, "prompts"), { recursive: true }),
+      mkdir(join(root, "generation-a-outputs"), { recursive: true }),
+      mkdir(join(root, "generation-b-outputs"), { recursive: true }),
+      mkdir(judgmentsDirectory, { recursive: true }),
+    ]);
+    await Promise.all([
+      writeFile(join(root, item.prompt_file), `/agora --no-voice\n${originalTask}\n`),
+      writeFile(join(root, "generation-a-outputs", "case-one.md"), sideResponses.candidate),
+      writeFile(join(root, "generation-b-outputs", "case-one.md"), sideResponses.incumbent),
+      writeFile(join(judgmentsDirectory, "case-one-pass1.json"), JSON.stringify(rawJudgment({
         pass: 1,
         winner: "incumbent",
       }))),
-      writeFile(join(root, "case-one-pass2.json"), JSON.stringify(rawJudgment({
+      writeFile(join(judgmentsDirectory, "case-one-pass2.json"), JSON.stringify(rawJudgment({
         pass: 2,
         winner: "incumbent",
         candidateFailures: ["fact-boundary"],
@@ -186,11 +294,16 @@ test("ingestion requires pass 3 when either mapped failure set differs", async (
       }))),
     ]);
     await assert.rejects(
-      ingestBlindJudgments({ manifest: fullManifest, judgmentsDirectory: root }),
+      ingestBlindJudgments({
+        manifest: fullManifest,
+        judgmentsDirectory,
+        evaluationRoot: root,
+        blindRoot: root,
+      }),
       /missing tie-break judgment case-one pass 3/,
     );
 
-    await writeFile(join(root, "case-one-pass3.json"), JSON.stringify(rawJudgment({
+    await writeFile(join(judgmentsDirectory, "case-one-pass3.json"), JSON.stringify(rawJudgment({
       pass: 3,
       winner: "incumbent",
       candidateFailures: ["fact-boundary"],
@@ -199,7 +312,9 @@ test("ingestion requires pass 3 when either mapped failure set differs", async (
     })));
     const [adjudication] = await ingestBlindJudgments({
       manifest: fullManifest,
-      judgmentsDirectory: root,
+      judgmentsDirectory,
+      evaluationRoot: root,
+      blindRoot: root,
     });
     assert.equal(adjudication.passes.length, 3);
   } finally {
@@ -208,9 +323,7 @@ test("ingestion requires pass 3 when either mapped failure set differs", async (
 });
 
 test("normalization rejects undeclared failures and incomplete scores", () => {
-  assert.throws(() => normalizeBlindJudgment({
-    manifest,
-    item,
+  assert.throws(() => normalize({
     pass: 1,
     judgment: {
       winner: "tie",
@@ -218,12 +331,12 @@ test("normalization rejects undeclared failures and incomplete scores", () => {
       bScores: scores(5),
       aHardGateFailures: [],
       bHardGateFailures: [],
+      aHardGateEvidence: [],
+      bHardGateEvidence: [],
     },
   }), /every declared dimension exactly once/);
 
-  assert.throws(() => normalizeBlindJudgment({
-    manifest,
-    item,
+  assert.throws(() => normalize({
     pass: 1,
     judgment: {
       winner: "tie",
@@ -231,6 +344,8 @@ test("normalization rejects undeclared failures and incomplete scores", () => {
       bScores: scores(5),
       aHardGateFailures: ["unknown"],
       bHardGateFailures: [],
+      aHardGateEvidence: [],
+      bHardGateEvidence: [],
     },
   }), /undeclared hard gate/);
 });

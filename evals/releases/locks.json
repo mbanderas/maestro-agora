@@ -18,8 +18,13 @@
     },
     {
       "path": "evals/blind/v1.7.0",
-      "file_count": 16,
-      "sha256": "b71f33990c49768e9d1bd70e6ae16f47c5a9fe811073be4848ed8bb4225efbbe"
+      "file_count": 23,
+      "sha256": "8c801b0d32ef90e0ae2cb766094d288e17fbee1aae7df392f154585f7bdaa6ed"
+    },
+    {
+      "path": "evals/regression/conversion-context-v1.7.0-confirmatory-attempt1",
+      "file_count": 17,
+      "sha256": "d77487f0da38fe17d83078b55c921ece17744738ac0a1f2aa490777799a94c7b"
     },
     {
       "path": "evals/regression/conversion-context-v1.7.0-development",

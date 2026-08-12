@@ -11,6 +11,7 @@ const EVAL_ROOT = join(ROOT, "evals", "prospective", "conversion-context-v1.0.0"
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const FROZEN_ROOT = join(ROOT, "evals", "blind", "v1.7.0");
 const REGRESSION_ROOT = join(ROOT, "evals", "regression", "conversion-context-v1.7.0-development");
+const ATTEMPT1_ROOT = join(ROOT, "evals", "regression", "conversion-context-v1.7.0-confirmatory-attempt1");
 
 const [skill, conversion, craft, manifest] = await Promise.all([
   readFile(join(SKILL_ROOT, "SKILL.md"), "utf8"),
@@ -19,10 +20,11 @@ const [skill, conversion, craft, manifest] = await Promise.all([
   readFile(join(EVAL_ROOT, "manifest.json"), "utf8").then(JSON.parse),
 ]);
 
-const [frozenManifest, frozenReleasePlan, regressionManifest] = await Promise.all([
+const [frozenManifest, frozenReleasePlan, regressionManifest, attempt1Manifest] = await Promise.all([
   readFile(join(FROZEN_ROOT, "manifest.json"), "utf8").then(JSON.parse),
   readFile(join(ROOT, "evals", "releases", "v1.7.0.gates.json"), "utf8").then(JSON.parse),
   readFile(join(REGRESSION_ROOT, "manifest.json"), "utf8").then(JSON.parse),
+  readFile(join(ATTEMPT1_ROOT, "manifest.json"), "utf8").then(JSON.parse),
 ]);
 
 test("conversion context loads progressively without adding a mode", () => {
@@ -327,23 +329,31 @@ test("prospective pack is evaluator-compatible but not release evidence", async 
   assert.deepEqual(validateAdjudicationRecords({ manifest, records: completeRecords }), []);
 });
 
-test("v1.7 conversion release pack is fresh, fully mapped, and fail-closed", async () => {
+test("v1.7 second conversion release pack is fresh, fully mapped, and fail-closed", async () => {
   assert.equal(frozenManifest.status, "frozen-release");
   assert.equal(frozenManifest.skill_version, "1.7.0");
-  assert.equal(frozenManifest.release_gates.conversion_case_count, 13);
-  assert.equal(frozenManifest.release_gates.conversion_wins_required, 10);
+  assert.equal(frozenManifest.release_gates.conversion_case_count, 20);
+  assert.equal(frozenManifest.release_gates.conversion_minimum_comparable_cases, 13);
+  assert.equal(frozenManifest.release_gates.conversion_minimum_win_rate, 0.77);
   assert.match(
     frozenManifest.hard_gate_definitions["no-invented-proof-or-rationale"],
     /description of what a quotation says is not verbatim wording/,
   );
+  assert.match(
+    frozenManifest.hard_gate_definitions["route-reality-preserved"],
+    /preserves every supplied action route and its next state/,
+  );
   assert.deepEqual(frozenReleasePlan.legacy_case_ids, []);
+  assert.equal(frozenReleasePlan.partitions[0].minimum_comparable_cases_gate, "conversion_minimum_comparable_cases");
+  assert.equal(frozenReleasePlan.partitions[0].minimum_win_rate_gate, "conversion_minimum_win_rate");
+  assert.equal(Object.hasOwn(frozenReleasePlan.partitions[0], "wins_required_gate"), false);
 
   const releaseIds = frozenManifest.cases.map((item) => item.id);
   assert.deepEqual(releaseIds, frozenReleasePlan.partitions[0].case_ids);
-  assert.equal(new Set(releaseIds).size, 13);
-  assert.equal(frozenManifest.cases.filter((item) => item.critical).length, 10);
-  for (const id of ["home-retrofit-terms", "cold-storage-monitoring-proof"]) {
-    assert.equal(frozenManifest.cases.find((item) => item.id === id)?.critical, true);
+  assert.equal(new Set(releaseIds).size, 20);
+  assert.equal(frozenManifest.cases.filter((item) => item.critical).length, 18);
+  for (const id of ["boltbasin-parts-basket", "night-ferry-fragrance-sample"]) {
+    assert.equal(frozenManifest.cases.find((item) => item.id === id)?.critical, false);
   }
 
   const releasePromptFiles = new Set();
@@ -363,21 +373,25 @@ test("v1.7 conversion release pack is fresh, fully mapped, and fail-closed", asy
     .sort();
   assert.deepEqual(actualReleasePrompts, [...releasePromptFiles].sort());
 
+  const talloway = frozenManifest.cases.find((item) => item.id === "talloway-foundry-qualification");
+  const doorwake = frozenManifest.cases.find((item) => item.id === "doorwake-capability-limits");
+  const wardenBloom = frozenManifest.cases.find((item) => item.id === "warden-bloom-pilot-proof");
+  const sundialBraid = frozenManifest.cases.find((item) => item.id === "sundial-braid-application");
+  assert.equal(talloway.hard_gates.includes("enterprise-risk-specificity"), false);
+  assert.equal(doorwake.hard_gates.includes("proof-uncertainty-match"), false);
+  assert.equal(wardenBloom.hard_gates.includes("no-effect-transfer-in-review"), false);
+  assert.equal(sundialBraid.hard_gates.includes("enterprise-risk-specificity"), false);
   assert.match(
-    await readFile(join(FROZEN_ROOT, "prompts", "checkout-grinder-choice.md"), "utf8"),
-    /no product-specific espresso suitability claim or espresso test result is available/,
+    await readFile(join(FROZEN_ROOT, "prompts", "talloway-foundry-qualification.md"), "utf8"),
+    /a submit control label/,
   );
   assert.match(
-    await readFile(join(FROZEN_ROOT, "prompts", "geothermal-lead-screen.md"), "utf8"),
-    /every submission goes through manual review/,
+    await readFile(join(FROZEN_ROOT, "prompts", "quarry-line-engagement-terms.md"), "utf8"),
+    /rows for scope, payment, survey window, and drawing delivery/,
   );
   assert.match(
-    await readFile(join(FROZEN_ROOT, "prompts", "linen-jacket-identity.md"), "utf8"),
-    /Sensory wording may describe only/,
-  );
-  assert.match(
-    await readFile(join(FROZEN_ROOT, "prompts", "specimen-courier-risk.md"), "utf8"),
-    /three-step interaction description limited to/,
+    await readFile(join(FROZEN_ROOT, "prompts", "river-step-petition.md"), "utf8"),
+    /remove@riverstep\.pt/,
   );
 
   const records = frozenManifest.cases.map((item) => ({
@@ -400,6 +414,19 @@ test("v1.7 conversion release pack is fresh, fully mapped, and fail-closed", asy
   const winning = evaluateBlindRun({ manifest: frozenManifest, records, releasePlan: frozenReleasePlan });
   assert.equal(winning.pass, true);
   assert.deepEqual(winning.evidenceErrors, []);
+  assert.equal(winning.release.partitionResults[0].winsRequired, 16);
+
+  for (const [index, record] of records.entries()) {
+    record.final.winner = index < 11 || index >= 13 ? "candidate" : "tie";
+    if (index >= 13) {
+      const item = frozenManifest.cases[index];
+      record.final.incumbentHardGateFailures = [item.hard_gates[0]];
+    }
+  }
+  const minimumDenominator = evaluateBlindRun({ manifest: frozenManifest, records, releasePlan: frozenReleasePlan });
+  assert.equal(minimumDenominator.pass, true);
+  assert.equal(minimumDenominator.release.partitionResults[0].summary.comparableCaseCount, 13);
+  assert.equal(minimumDenominator.release.partitionResults[0].winsRequired, 11);
 });
 
 test("development fixtures remain regression-only and cannot enter the superiority partition", async () => {
@@ -417,4 +444,20 @@ test("development fixtures remain regression-only and cannot enter the superiori
     .map((file) => `prompts/${file}`)
     .sort();
   assert.deepEqual(actualPromptFiles, expectedPromptFiles);
+});
+
+test("spent attempt1 pack remains immutable regression evidence and cannot re-enter superiority", async () => {
+  const releaseIds = new Set(frozenReleasePlan.partitions.flatMap((partition) => partition.case_ids));
+  const attempt1Ids = new Set(attempt1Manifest.cases.map((item) => item.id));
+  assert.equal(attempt1Manifest.cases.length, 13);
+  assert.equal([...attempt1Ids].some((id) => releaseIds.has(id)), false);
+
+  const expectedPromptFiles = attempt1Manifest.cases.map((item) => item.prompt_file).sort();
+  const actualPromptFiles = (await readdir(join(ATTEMPT1_ROOT, "prompts")))
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => `prompts/${file}`)
+    .sort();
+  assert.deepEqual(actualPromptFiles, expectedPromptFiles);
+  assert.equal((await readdir(ATTEMPT1_ROOT)).sort().join(","), "README.md,judge-instructions.md,judge-schema.json,manifest.json,prompts");
+  assert.match(await readFile(join(ATTEMPT1_ROOT, "README.md"), "utf8"), /failed its release gates/);
 });
