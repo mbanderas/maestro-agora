@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
-const PLACEHOLDERS = ["HARD_GATES", "ORIGINAL_TASK", "RESPONSE_A", "RESPONSE_B"];
+const TEMPLATE_TOKENS = ["HARD_GATES", "ORIGINAL_TASK", "RESPONSE_A", "RESPONSE_B"];
 
 const replaceOnce = (source, name, value) => {
   const token = `{{${name}}}`;
@@ -35,8 +35,8 @@ export const buildBlindJudgePrompt = ({ manifest, item, template, originalTask, 
   };
 
   let prompt = template.trim();
-  for (const name of PLACEHOLDERS) prompt = replaceOnce(prompt, name, values[name]);
-  if (/\{\{[A-Z_]+\}\}/.test(prompt)) throw new Error("judge template contains an unknown placeholder");
+  for (const name of TEMPLATE_TOKENS) prompt = replaceOnce(prompt, name, values[name]);
+  if (/\{\{[A-Z_]+\}\}/.test(prompt)) throw new Error("judge template contains an unknown token");
   return `${prompt}\n`;
 };
 
