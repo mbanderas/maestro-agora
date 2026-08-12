@@ -9,7 +9,7 @@ import {
 import { BLIND_ORDER_SEED, expectedBlindOrder } from "../scripts/blind-judgment-ingest.mjs";
 
 const commit = "a".repeat(40);
-const candidateFreeze = "8389f514fbb647ca34b0d6c3a5161de61a2028dd";
+const candidateFreeze = "4eb65795d57c88d30517a5dcb48d61f9de213f45";
 const baseline = "524b7927648c4fce52290e9d680e1d3a3109987c";
 
 test("execution evidence freezes model, isolation, baseline, and order seed", () => {
@@ -26,19 +26,17 @@ test("execution evidence freezes model, isolation, baseline, and order seed", ()
     execution: {
       generator_model: "gpt-5.6-sol",
       judge_model: "gpt-5.6-sol",
-      codex_cli_version: "0.144.0",
-      generator_runtime: "codex-cli",
+      generator_runtime: "codex-subagent",
       judge_runtime: "codex-subagent",
       order_seed: BLIND_ORDER_SEED,
-      sandbox: "read-only",
+      context_fork: "none",
       started_at_utc: "2026-08-12T10:00:00.000Z",
       completed_at_utc: "2026-08-12T11:00:00.000Z",
       fresh_context_per_generation: true,
       fresh_context_per_judgment: true,
       isolated_skill_copy: true,
-      ignored_user_config: true,
-      ignored_repository_rules: true,
-      ephemeral_sessions: true,
+      raw_outputs_outside_repository: true,
+      runtime_attestations_verified: true,
       provenance_check_passed: true,
     },
   };

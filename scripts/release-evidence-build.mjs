@@ -17,7 +17,7 @@ import {
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const VERSION = "1.7.0";
-const CANDIDATE_FREEZE_COMMIT = "8389f514fbb647ca34b0d6c3a5161de61a2028dd";
+const CANDIDATE_FREEZE_COMMIT = "4eb65795d57c88d30517a5dcb48d61f9de213f45";
 const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
 const COMMIT = /^[a-f0-9]{40}$/;
 
@@ -119,16 +119,14 @@ async function buildReleaseEvidence({ evaluationRoot, judgeProtocolCommit }) {
     execution: {
       generator_model: "gpt-5.6-sol",
       judge_model: "gpt-5.6-sol",
-      codex_cli_version: "0.144.0",
-      generator_runtime: "codex-cli",
+      generator_runtime: "codex-subagent",
       judge_runtime: "codex-subagent",
-      sandbox: "read-only",
       fresh_context_per_generation: true,
       fresh_context_per_judgment: true,
       isolated_skill_copy: true,
-      ignored_user_config: true,
-      ignored_repository_rules: true,
-      ephemeral_sessions: true,
+      context_fork: "none",
+      raw_outputs_outside_repository: true,
+      runtime_attestations_verified: true,
       provenance_check_passed: true,
       order_seed: BLIND_ORDER_SEED,
       reduction_policy: "Agreed mapped winners use pass 1/2 mean scores; disagreements require pass 3 winner and scores; candidate vetoes and hard-gate failures are unioned across every valid pass.",

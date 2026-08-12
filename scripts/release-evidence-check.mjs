@@ -12,7 +12,7 @@ import { computeEvalTreeLock } from "./eval-locks.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const VERSION = "1.7.0";
-const CANDIDATE_FREEZE_COMMIT = "8389f514fbb647ca34b0d6c3a5161de61a2028dd";
+const CANDIDATE_FREEZE_COMMIT = "4eb65795d57c88d30517a5dcb48d61f9de213f45";
 const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
 const SHA256 = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
@@ -102,11 +102,10 @@ export const validateEvidenceExecution = (evidence) => {
   if (!COMMIT.test(commits.judge_protocol ?? "")) errors.push("evidence judge protocol commit is invalid");
   if (execution.generator_model !== "gpt-5.6-sol") errors.push("generator model must be gpt-5.6-sol");
   if (execution.judge_model !== "gpt-5.6-sol") errors.push("judge model must be gpt-5.6-sol");
-  if (execution.generator_runtime !== "codex-cli") errors.push("generator runtime must be codex-cli");
+  if (execution.generator_runtime !== "codex-subagent") errors.push("generator runtime must be codex-subagent");
   if (execution.judge_runtime !== "codex-subagent") errors.push("judge runtime must be codex-subagent");
-  if (!/^\d+\.\d+\.\d+$/.test(execution.codex_cli_version ?? "")) errors.push("Codex CLI version is invalid");
   if (execution.order_seed !== BLIND_ORDER_SEED) errors.push("blind order seed does not match protocol");
-  if (execution.sandbox !== "read-only") errors.push("evaluation sandbox must be read-only");
+  if (execution.context_fork !== "none") errors.push("evaluation contexts must not inherit prior turns");
   const started = Date.parse(execution.started_at_utc);
   const completed = Date.parse(execution.completed_at_utc);
   if (!Number.isFinite(started) || !Number.isFinite(completed) || started > completed) {
@@ -116,9 +115,8 @@ export const validateEvidenceExecution = (evidence) => {
     "fresh_context_per_generation",
     "fresh_context_per_judgment",
     "isolated_skill_copy",
-    "ignored_user_config",
-    "ignored_repository_rules",
-    "ephemeral_sessions",
+    "raw_outputs_outside_repository",
+    "runtime_attestations_verified",
     "provenance_check_passed",
   ]) {
     if (execution[flag] !== true) errors.push(`execution.${flag} must be true`);

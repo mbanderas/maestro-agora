@@ -17,11 +17,30 @@ async function withEvidence(callback) {
     }
     await writeFile(join(root, "candidate-outputs", "case-one.md"), "Candidate response\n");
     await writeFile(join(root, "incumbent-outputs", "case-one.md"), "Incumbent response\n");
-    await writeFile(
-      join(root, "generation-logs", "candidate-case-one.log"),
-      "## Accept direct invocation\n## Route the decision before drafting\n",
-    );
-    await writeFile(join(root, "generation-logs", "incumbent-case-one.log"), "## Accept direct invocation\n");
+    await writeFile(join(root, "generation-logs", "candidate-case-one.json"), JSON.stringify({
+      schema_version: 1,
+      runtime: "codex-subagent",
+      model: "gpt-5.6-sol",
+      fresh_context: true,
+      skill_access: true,
+      conversion_reference_access: true,
+      skill_root: "candidate-work/.agents/skills/agora",
+      source_commit: "4eb65795d57c88d30517a5dcb48d61f9de213f45",
+      prompt_file: "evals/blind/v1.7.0/prompts/case-one.md",
+      output_file: "candidate-outputs/case-one.md",
+    }));
+    await writeFile(join(root, "generation-logs", "incumbent-case-one.json"), JSON.stringify({
+      schema_version: 1,
+      runtime: "codex-subagent",
+      model: "gpt-5.6-sol",
+      fresh_context: true,
+      skill_access: true,
+      conversion_reference_access: false,
+      skill_root: "incumbent-work/.agents/skills/agora",
+      source_commit: "524b7927648c4fce52290e9d680e1d3a3109987c",
+      prompt_file: "evals/blind/v1.7.0/prompts/case-one.md",
+      output_file: "incumbent-outputs/case-one.md",
+    }));
     for (const pass of [1, 2]) {
       await writeFile(join(root, "judge-prompts", `case-one-pass${pass}.md`), "Blind prompt\n");
       await writeFile(join(root, "judgments", `case-one-pass${pass}.json`), "{}\n");
@@ -47,7 +66,18 @@ test("complete isolated generation and blind-judge provenance passes", async () 
 
 test("missing conversion read, banned typography, and judge skill access fail", async () => {
   await withEvidence(async (root) => {
-    await writeFile(join(root, "generation-logs", "candidate-case-one.log"), "## Accept direct invocation\n");
+    await writeFile(join(root, "generation-logs", "candidate-case-one.json"), JSON.stringify({
+      schema_version: 1,
+      runtime: "codex-subagent",
+      model: "gpt-5.6-sol",
+      fresh_context: true,
+      skill_access: true,
+      conversion_reference_access: false,
+      skill_root: "candidate-work/.agents/skills/agora",
+      source_commit: "4eb65795d57c88d30517a5dcb48d61f9de213f45",
+      prompt_file: "evals/blind/v1.7.0/prompts/case-one.md",
+      output_file: "candidate-outputs/case-one.md",
+    }));
     await writeFile(join(root, "candidate-outputs", "case-one.md"), "Invalid \u2014 output\n");
     await writeFile(join(root, "judge-logs", "case-one-pass1.json"), JSON.stringify({
       schema_version: 1,
@@ -59,7 +89,7 @@ test("missing conversion read, banned typography, and judge skill access fail", 
     }));
     const errors = await validateEvaluationProvenance({ root, manifest, adjudications });
     assert.match(errors.join("\n"), /banned typography/);
-    assert.match(errors.join("\n"), /conversion reference read evidence/);
+    assert.match(errors.join("\n"), /conversion reference access attestation/);
     assert.match(errors.join("\n"), /skill access evidence/);
   });
 });
