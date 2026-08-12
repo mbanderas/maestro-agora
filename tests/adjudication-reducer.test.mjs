@@ -31,6 +31,12 @@ const scores = (brief, composition) => ({
   "composition-fit": composition,
 });
 
+const evidence = (gates, side, number) => gates.map((gate) => ({
+  gate,
+  excerpt: `${side} excerpt for ${gate} on pass ${number}`,
+  missingPremise: `supplied premise for ${gate}`,
+}));
+
 const pass = ({
   number,
   order,
@@ -46,7 +52,9 @@ const pass = ({
   winner,
   candidateVetoes: vetoes,
   candidateHardGateFailures: hardGates,
+  candidateHardGateEvidence: evidence(hardGates, "candidate", number),
   incumbentHardGateFailures: incumbentHardGates,
+  incumbentHardGateEvidence: evidence(incumbentHardGates, "incumbent", number),
   candidateScores: candidate,
   incumbentScores: incumbent,
 });
@@ -77,7 +85,9 @@ test("agreed swapped passes reduce to mapped means", () => {
       winner: "candidate",
       candidateVetoes: ["fabricated-fact"],
       candidateHardGateFailures: [],
+      candidateHardGateEvidence: [],
       incumbentHardGateFailures: [],
+      incumbentHardGateEvidence: [],
       candidateScores: scores(4.5, 4),
       incumbentScores: scores(3.5, 4),
     },
@@ -188,42 +198,139 @@ test("one-of-three findings clear symmetrically for both sides", () => {
   assert.deepEqual(record.final.incumbentScores, scores(4, 4));
 });
 
-test("two-of-three findings are retained symmetrically for both sides", () => {
-  const adjudications = [{
-    id: "case-a",
-    passes: [
-      pass({
-        number: 1,
-        order: ["candidate", "incumbent"],
-        winner: "incumbent",
-        candidate: scores(3, 3),
-        incumbent: scores(4, 4),
-        hardGates: ["route-reality-preserved"],
-      }),
-      pass({
-        number: 2,
-        order: ["incumbent", "candidate"],
-        winner: "candidate",
-        candidate: scores(4, 4),
-        incumbent: scores(3, 3),
-        incumbentHardGates: ["full-composition-fit"],
-      }),
-      pass({
-        number: 3,
-        order: ["candidate", "incumbent"],
-        winner: "tie",
-        candidate: scores(4, 4),
-        incumbent: scores(4, 4),
-        hardGates: ["route-reality-preserved"],
-        incumbentHardGates: ["full-composition-fit"],
-      }),
-    ],
-  }];
+test("same-order two-of-three hard-gate findings clear symmetrically", () => {
+  for (const side of ["candidate", "incumbent"]) {
+    const gate = side === "candidate" ? "route-reality-preserved" : "full-composition-fit";
+    const gateArgs = side === "candidate" ? { hardGates: [gate] } : { incumbentHardGates: [gate] };
+    const winner = side === "candidate" ? "incumbent" : "candidate";
+    const scoreArgs = side === "candidate"
+      ? { candidate: scores(3, 3), incumbent: scores(4, 4) }
+      : { candidate: scores(4, 4), incumbent: scores(3, 3) };
+    const [record] = reduceAdjudications({
+      manifest,
+      adjudications: [{
+        id: "case-a",
+        passes: [
+          pass({
+            number: 1,
+            order: ["candidate", "incumbent"],
+            winner,
+            ...scoreArgs,
+            ...gateArgs,
+          }),
+          pass({
+            number: 2,
+            order: ["incumbent", "candidate"],
+            winner,
+            ...scoreArgs,
+          }),
+          pass({
+            number: 3,
+            order: ["candidate", "incumbent"],
+            winner,
+            ...scoreArgs,
+            ...gateArgs,
+          }),
+        ],
+      }],
+    });
+    assert.deepEqual(record.final[`${side}HardGateFailures`], []);
+    assert.deepEqual(record.final[`${side}HardGateEvidence`], []);
+  }
+});
 
-  const [record] = reduceAdjudications({ manifest, adjudications });
-  assert.equal(record.final.winner, "tie");
-  assert.deepEqual(record.final.candidateHardGateFailures, ["route-reality-preserved"]);
-  assert.deepEqual(record.final.incumbentHardGateFailures, ["full-composition-fit"]);
+test("cross-order two-of-three hard-gate findings retain symmetrically", () => {
+  for (const side of ["candidate", "incumbent"]) {
+    const gate = side === "candidate" ? "route-reality-preserved" : "full-composition-fit";
+    const gateArgs = side === "candidate" ? { hardGates: [gate] } : { incumbentHardGates: [gate] };
+    const winner = side === "candidate" ? "incumbent" : "candidate";
+    const scoreArgs = side === "candidate"
+      ? { candidate: scores(3, 3), incumbent: scores(4, 4) }
+      : { candidate: scores(4, 4), incumbent: scores(3, 3) };
+    const [record] = reduceAdjudications({
+      manifest,
+      adjudications: [{
+        id: "case-a",
+        passes: [
+          pass({
+            number: 1,
+            order: ["candidate", "incumbent"],
+            winner,
+            ...scoreArgs,
+            ...gateArgs,
+          }),
+          pass({
+            number: 2,
+            order: ["incumbent", "candidate"],
+            winner,
+            ...scoreArgs,
+          }),
+          pass({
+            number: 3,
+            order: ["incumbent", "candidate"],
+            winner,
+            ...scoreArgs,
+            ...gateArgs,
+          }),
+        ],
+      }],
+    });
+    assert.deepEqual(record.final[`${side}HardGateFailures`], [gate]);
+    assert.deepEqual(
+      record.final[`${side}HardGateEvidence`][0].observations.map(({ pass: number, order }) => ({
+        pass: number,
+        order,
+      })),
+      [
+        { pass: 1, order: ["candidate", "incumbent"] },
+        { pass: 3, order: ["incumbent", "candidate"] },
+      ],
+    );
+  }
+});
+
+test("swapped-order two-of-two hard-gate findings retain symmetrically", () => {
+  for (const side of ["candidate", "incumbent"]) {
+    const gate = side === "candidate" ? "route-reality-preserved" : "full-composition-fit";
+    const gateArgs = side === "candidate" ? { hardGates: [gate] } : { incumbentHardGates: [gate] };
+    const winner = side === "candidate" ? "incumbent" : "candidate";
+    const scoreArgs = side === "candidate"
+      ? { candidate: scores(3, 3), incumbent: scores(4, 4) }
+      : { candidate: scores(4, 4), incumbent: scores(3, 3) };
+    const [record] = reduceAdjudications({
+      manifest,
+      adjudications: [{
+        id: "case-a",
+        passes: [
+          pass({
+            number: 1,
+            order: ["candidate", "incumbent"],
+            winner,
+            ...scoreArgs,
+            ...gateArgs,
+          }),
+          pass({
+            number: 2,
+            order: ["incumbent", "candidate"],
+            winner,
+            ...scoreArgs,
+            ...gateArgs,
+          }),
+        ],
+      }],
+    });
+    assert.deepEqual(record.final[`${side}HardGateFailures`], [gate]);
+    assert.deepEqual(
+      record.final[`${side}HardGateEvidence`][0].observations.map(({ pass: number, order }) => ({
+        pass: number,
+        order,
+      })),
+      [
+        { pass: 1, order: ["candidate", "incumbent"] },
+        { pass: 2, order: ["incumbent", "candidate"] },
+      ],
+    );
+  }
 });
 
 test("an incumbent-only consensus failure makes candidate the eligible winner", () => {
@@ -375,6 +482,36 @@ test("reducer rejects missing or unknown dimensions, gates, vetoes, and cases", 
       assert.match(error.message, /unknown-case is not declared/);
       return true;
     },
+  );
+});
+
+test("reducer requires exact one-to-one structured evidence", () => {
+  const invalid = pass({
+    number: 1,
+    order: ["candidate", "incumbent"],
+    winner: "incumbent",
+    candidate: scores(3, 3),
+    incumbent: scores(4, 4),
+    hardGates: ["route-reality-preserved"],
+  });
+  invalid.candidateHardGateEvidence[0].extra = "not normalized";
+  const adjudications = [{
+    id: "case-a",
+    passes: [
+      invalid,
+      pass({
+        number: 2,
+        order: ["incumbent", "candidate"],
+        winner: "incumbent",
+        candidate: scores(3, 3),
+        incumbent: scores(4, 4),
+        hardGates: ["route-reality-preserved"],
+      }),
+    ],
+  }];
+  assert.throws(
+    () => reduceAdjudications({ manifest, adjudications }),
+    /must contain exactly gate, excerpt, and missingPremise/,
   );
 });
 

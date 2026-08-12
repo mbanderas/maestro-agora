@@ -7,14 +7,14 @@ import { pathToFileURL } from "node:url";
 import {
   adjudicationsDisagree,
   deriveEligibleWinner,
-  majorityFailureSet,
   validateEligibility,
 } from "./blind-eligibility.mjs";
 
 const VALID_WINNERS = new Set(["candidate", "incumbent", "tie"]);
 const VALID_SIDES = new Set(["candidate", "incumbent"]);
+const EVIDENCE_KEYS = ["excerpt", "gate", "missingPremise"];
 
-export const REDUCTION_POLICY = "Agreed mapped winners and hard-gate sets use pass 1/2 mean scores and require both-pass consensus for each final hard-gate failure. Winner or either side's hard-gate disagreement requires pass 3 winner and scores; each final hard-gate failure then requires at least two of the three used passes. Candidate and incumbent failures reduce independently under the same rule, then final winner eligibility is derived from those majority failure sets. Per-pass evidence remains preserved.";
+export const REDUCTION_POLICY = "Passes 1 and 2 use swapped A/B orders. Agreed mapped winners and hard-gate sets use pass 1/2 mean scores. Winner or either side's hard-gate-set disagreement requires pass 3 winner and scores. A final candidate or incumbent hard-gate failure requires observations in at least two used passes and across both distinct A/B order configurations; agreement in passes 1 and 2 satisfies both requirements, while a same-order two-of-three finding clears. Candidate and incumbent failures reduce independently under this symmetric rule, then final winner eligibility derives from the retained failure sets. Candidate vetoes remain the union of used passes. Normalized adjudications retain every pass's structured gate evidence; final records retain every supporting source-pass observation for each retained hard-gate failure.";
 
 const uniqueStrings = (values, label, errors) => {
   if (!Array.isArray(values) || values.some((value) => typeof value !== "string")) {
@@ -73,6 +73,36 @@ const validateScores = (scores, dimensions, label, errors) => {
   }
 };
 
+const validateEvidence = (evidence, failures, label, errors) => {
+  if (!Array.isArray(evidence)) {
+    errors.push(`${label} must be an array`);
+    return;
+  }
+  const gates = [];
+  for (const [index, entry] of evidence.entries()) {
+    const entryLabel = `${label}[${index}]`;
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+      errors.push(`${entryLabel} must be an object`);
+      continue;
+    }
+    const keys = Object.keys(entry).sort();
+    if (JSON.stringify(keys) !== JSON.stringify(EVIDENCE_KEYS)) {
+      errors.push(`${entryLabel} must contain exactly gate, excerpt, and missingPremise`);
+      continue;
+    }
+    for (const field of EVIDENCE_KEYS) {
+      if (typeof entry[field] !== "string" || !entry[field].trim()) {
+        errors.push(`${entryLabel}.${field} must be a nonempty string`);
+      }
+    }
+    gates.push(entry.gate);
+  }
+  if (new Set(gates).size !== gates.length) errors.push(`${label} contains duplicate gate evidence`);
+  if (JSON.stringify([...gates].sort()) !== JSON.stringify([...failures].sort())) {
+    errors.push(`${label} gates must match the corresponding hard-gate failure IDs exactly once`);
+  }
+};
+
 const validatePass = ({ pass, item, manifest, dimensions, allowedVetoes, label, errors }) => {
   if (!pass || typeof pass !== "object" || Array.isArray(pass)) {
     errors.push(`${label} must be an object`);
@@ -107,10 +137,53 @@ const validatePass = ({ pass, item, manifest, dimensions, allowedVetoes, label, 
     if (!allowedGates.has(gate)) errors.push(`${label}.incumbentHardGateFailures contains unknown gate ${gate}`);
   }
 
+  validateEvidence(
+    pass.candidateHardGateEvidence,
+    failures,
+    `${label}.candidateHardGateEvidence`,
+    errors,
+  );
+  validateEvidence(
+    pass.incumbentHardGateEvidence,
+    incumbentFailures,
+    `${label}.incumbentHardGateEvidence`,
+    errors,
+  );
+
   errors.push(...validateEligibility({ ...pass, label }));
 };
 
 const union = (passes, field) => [...new Set(passes.flatMap((pass) => pass[field]))];
+
+const orderRobustFailureSet = (passes, field) => {
+  const observations = new Map();
+  for (const pass of passes) {
+    for (const failure of new Set(pass[field])) {
+      const finding = observations.get(failure) ?? { passes: 0, orders: new Set() };
+      finding.passes += 1;
+      finding.orders.add(JSON.stringify(pass.order));
+      observations.set(failure, finding);
+    }
+  }
+  return [...observations]
+    .filter(([, finding]) => finding.passes >= 2 && finding.orders.size >= 2)
+    .map(([failure]) => failure);
+};
+
+const reduceEvidence = ({ passes, failures, failureField, evidenceField }) => failures.map((gate) => ({
+  gate,
+  observations: passes
+    .filter((pass) => pass[failureField].includes(gate))
+    .map((pass) => {
+      const evidence = pass[evidenceField].find((entry) => entry.gate === gate);
+      return {
+        pass: pass.pass,
+        order: pass.order,
+        excerpt: evidence.excerpt,
+        missingPremise: evidence.missingPremise,
+      };
+    }),
+}));
 
 export function reduceAdjudications({ manifest, adjudications }) {
   const errors = [];
@@ -224,11 +297,11 @@ export function reduceAdjudications({ manifest, adjudications }) {
         : (first.incumbentScores?.[dimension] + second.incumbentScores?.[dimension]) / 2;
     }
 
-    const candidateHardGateFailures = majorityFailureSet(
+    const candidateHardGateFailures = orderRobustFailureSet(
       usedPasses,
       "candidateHardGateFailures",
     );
-    const incumbentHardGateFailures = majorityFailureSet(
+    const incumbentHardGateFailures = orderRobustFailureSet(
       usedPasses,
       "incumbentHardGateFailures",
     );
@@ -246,6 +319,18 @@ export function reduceAdjudications({ manifest, adjudications }) {
       incumbentScores,
       label: `${label} final`,
     }));
+    const candidateHardGateEvidence = reduceEvidence({
+      passes: usedPasses,
+      failures: candidateHardGateFailures,
+      failureField: "candidateHardGateFailures",
+      evidenceField: "candidateHardGateEvidence",
+    });
+    const incumbentHardGateEvidence = reduceEvidence({
+      passes: usedPasses,
+      failures: incumbentHardGateFailures,
+      failureField: "incumbentHardGateFailures",
+      evidenceField: "incumbentHardGateEvidence",
+    });
 
     records.push({
       id: item.id,
@@ -253,7 +338,9 @@ export function reduceAdjudications({ manifest, adjudications }) {
         winner,
         candidateVetoes: union(usedPasses, "candidateVetoes"),
         candidateHardGateFailures,
+        candidateHardGateEvidence,
         incumbentHardGateFailures,
+        incumbentHardGateEvidence,
         candidateScores,
         incumbentScores,
       },

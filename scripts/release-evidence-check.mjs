@@ -8,19 +8,27 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { REDUCTION_POLICY, reduceAdjudications } from "./adjudication-reducer.mjs";
 import { ELIGIBILITY_POLICY } from "./blind-eligibility.mjs";
 import { evaluateBlindRun } from "./blind-summary.mjs";
-import { BLIND_ORDER_SEED, expectedBlindOrder } from "./blind-judgment-ingest.mjs";
+import {
+  BLIND_ORDER_SEED,
+  expectedBlindOrder,
+  validateNormalizedCustody,
+} from "./blind-judgment-ingest.mjs";
 import { computeEvalTreeLock } from "./eval-locks.mjs";
+import {
+  buildExternalFileManifest,
+  buildGitFileManifest,
+  sameExternalFileSet,
+  validateExternalFileManifest,
+} from "./external-artifact-manifest.mjs";
+import { validateJsonSchema } from "./json-schema-validator.mjs";
 import { validateGitReleaseProvenance } from "./release-git-provenance.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const VERSION = "1.7.0";
 const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
-const BASELINE_SKILL_TREE = {
-  file_count: 8,
-  sha256: "ff68706d00455ec6a35351bc34b8996506bbe3a95421c2bc5480bf150f1e99aa",
-};
 const SHA256 = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
+const EVIDENCE_KEYS = ["excerpt", "gate", "missingPremise"];
 
 const PATHS = {
   manifest: `evals/blind/v${VERSION}/manifest.json`,
@@ -34,11 +42,15 @@ export const REQUIRED_HASHED_FILES = [
   PATHS.manifest,
   `evals/blind/v${VERSION}/judge-instructions.md`,
   `evals/blind/v${VERSION}/judge-schema.json`,
+  `evals/releases/v${VERSION}.adjudications.schema.json`,
+  `evals/releases/v${VERSION}.records.schema.json`,
   PATHS.releasePlan,
   "evals/releases/locks.json",
   "scripts/adjudication-reducer.mjs",
   "scripts/blind-eligibility.mjs",
   "scripts/eval-locks.mjs",
+  "scripts/external-artifact-manifest.mjs",
+  "scripts/json-schema-validator.mjs",
   "scripts/eval-provenance-check.mjs",
   "scripts/blind-judge-prompt.mjs",
   "scripts/blind-judge-materialize.mjs",
@@ -56,14 +68,28 @@ export const REQUIRED_PROTOCOL_FILES = REQUIRED_HASHED_FILES.filter(
 );
 
 const EXACT_PASS_KEYS = [
+  "candidateHardGateEvidence",
   "candidateHardGateFailures",
   "candidateScores",
   "candidateVetoes",
+  "custody",
+  "incumbentHardGateEvidence",
   "incumbentHardGateFailures",
   "incumbentScores",
   "order",
   "pass",
   "winner",
+].sort();
+const EXACT_ADJUDICATION_KEYS = ["id", "passes"];
+const EXACT_EXTERNAL_ARTIFACT_KEYS = [
+  "candidate_outputs",
+  "candidate_skill_copy",
+  "generation_logs",
+  "incumbent_outputs",
+  "incumbent_skill_copy",
+  "judge_logs",
+  "judge_prompts",
+  "raw_judgments",
 ].sort();
 
 const readJson = async (root, path) => JSON.parse(await readFile(join(root, ...path.split("/")), "utf8"));
@@ -154,9 +180,33 @@ export const validateEvidenceExecution = (evidence) => {
 
 export const validateNormalizedAdjudications = ({ manifest, adjudications }) => {
   const errors = [];
+  if (!Array.isArray(adjudications)) return ["normalized adjudications must be an array"];
+  if (adjudications.length !== (manifest.cases ?? []).length) {
+    errors.push("normalized adjudications must contain every manifest case exactly once");
+  }
+  const suppliedIds = adjudications.map((item) => item?.id);
+  if (new Set(suppliedIds).size !== suppliedIds.length) {
+    errors.push("normalized adjudications contain duplicate case IDs");
+  }
   for (const [index, item] of (manifest.cases ?? []).entries()) {
     const adjudication = adjudications.find((candidate) => candidate.id === item.id);
-    if (!adjudication) continue;
+    if (!adjudication) {
+      errors.push(`normalized adjudications are missing case ${item.id}`);
+      continue;
+    }
+    if (!sameJson(Object.keys(adjudication).sort(), EXACT_ADJUDICATION_KEYS)) {
+      errors.push(`case ${item.id} contains non-normalized adjudication fields`);
+    }
+    if (!Array.isArray(adjudication.passes)) {
+      errors.push(`case ${item.id}.passes must be an array`);
+      continue;
+    }
+    const passNumbers = adjudication.passes.map((pass) => pass?.pass);
+    const canonicalPasses = adjudication.passes.length === 2 ? [1, 2] : [1, 2, 3];
+    if (!sameJson(passNumbers, canonicalPasses)) {
+      errors.push(`case ${item.id} passes must use canonical order ${canonicalPasses.join(", ")}`);
+    }
+    const stableHashes = {};
     for (const pass of adjudication.passes ?? []) {
       if (!sameJson(Object.keys(pass).sort(), EXACT_PASS_KEYS)) {
         errors.push(`case ${item.id} pass ${pass.pass} contains non-normalized fields`);
@@ -164,6 +214,44 @@ export const validateNormalizedAdjudications = ({ manifest, adjudications }) => 
       const expected = expectedBlindOrder(item.id, pass.pass);
       if (!sameJson(pass.order, expected)) {
         errors.push(`case ${item.id} pass ${pass.pass} does not match seeded blind order`);
+      }
+      for (const side of ["candidate", "incumbent"]) {
+        const failures = pass[`${side}HardGateFailures`];
+        const evidence = pass[`${side}HardGateEvidence`];
+        if (!Array.isArray(failures) || !Array.isArray(evidence)) {
+          errors.push(`case ${item.id} pass ${pass.pass} ${side} hard-gate fields must be arrays`);
+          continue;
+        }
+        const gates = [];
+        for (const [evidenceIndex, entry] of evidence.entries()) {
+          if (!entry || typeof entry !== "object" || Array.isArray(entry)
+            || !sameJson(Object.keys(entry).sort(), EVIDENCE_KEYS)) {
+            errors.push(`case ${item.id} pass ${pass.pass} ${side} evidence ${evidenceIndex} has invalid keys`);
+            continue;
+          }
+          if (EVIDENCE_KEYS.some((field) => typeof entry[field] !== "string" || !entry[field].trim())) {
+            errors.push(`case ${item.id} pass ${pass.pass} ${side} evidence ${evidenceIndex} has an empty field`);
+          }
+          gates.push(entry.gate);
+        }
+        if (new Set(gates).size !== gates.length
+          || !sameJson([...gates].sort(), [...failures].sort())) {
+          errors.push(`case ${item.id} pass ${pass.pass} ${side} evidence must match failures exactly once`);
+        }
+      }
+      errors.push(...validateNormalizedCustody({
+        custody: pass.custody,
+        manifest,
+        item,
+        pass: pass.pass,
+        label: `case ${item.id} pass ${pass.pass} custody`,
+      }));
+      for (const name of ["original_task", "candidate_response", "incumbent_response"]) {
+        const hash = pass.custody?.artifacts?.[name]?.sha256;
+        if (!(name in stableHashes)) stableHashes[name] = hash;
+        else if (stableHashes[name] !== hash) {
+          errors.push(`case ${item.id} ${name} custody hash changes across passes`);
+        }
       }
     }
     if (adjudication.id !== manifest.cases[index].id) {
@@ -173,34 +261,111 @@ export const validateNormalizedAdjudications = ({ manifest, adjudications }) => 
   return errors;
 };
 
-const validateExternalArtifacts = ({ evidence, summary }) => {
+const manifestEntry = (manifest, path) => manifest?.files?.find((file) => file.path === path);
+
+export const validateExternalArtifacts = async ({ evidence, summary, manifest, adjudications, root }) => {
   const errors = [];
-  const expectedCounts = {
-    candidate_outputs: summary.case_count,
-    incumbent_outputs: summary.case_count,
-    raw_judgments: summary.adjudication_pass_count,
-    generation_logs: summary.case_count * 2,
-    judge_logs: summary.adjudication_pass_count,
-    judge_prompts: summary.adjudication_pass_count,
+  const suppliedKeys = Object.keys(evidence.external_artifacts ?? {}).sort();
+  if (!sameJson(suppliedKeys, EXACT_EXTERNAL_ARTIFACT_KEYS)) {
+    errors.push("external_artifacts must contain every external evaluation tree exactly once");
+  }
+  const ids = (manifest.cases ?? []).map((item) => item.id);
+  const passPaths = adjudications.flatMap((item) => item.passes.map((pass) => `${item.id}-pass${pass.pass}`));
+  const roots = {
+    candidate_outputs: "generation-a-outputs",
+    incumbent_outputs: "generation-b-outputs",
+    raw_judgments: "judgments",
+    generation_logs: "generation-logs",
+    judge_logs: "judge-logs",
+    judge_prompts: "judge-prompts",
+    candidate_skill_copy: "generation-a-work/.agents/skills/agora",
+    incumbent_skill_copy: "generation-b-work/.agents/skills/agora",
   };
-  for (const [name, expectedCount] of Object.entries(expectedCounts)) {
-    const artifact = evidence.external_artifacts?.[name];
-    if (!artifact || artifact.file_count !== expectedCount || !SHA256.test(artifact.sha256 ?? "")) {
-      errors.push(`external artifact attestation ${name} is invalid`);
-    }
+  const expectedPaths = {
+    candidate_outputs: ids.map((id) => `${id}.md`),
+    incumbent_outputs: ids.map((id) => `${id}.md`),
+    raw_judgments: passPaths.map((path) => `${path}.json`),
+    generation_logs: ids.flatMap((id) => [`generation-a-${id}.json`, `generation-b-${id}.json`]),
+    judge_logs: passPaths.map((path) => `${path}.json`),
+    judge_prompts: passPaths.map((path) => `${path}.md`),
+  };
+  for (const [name, expected] of Object.entries(expectedPaths)) {
+    errors.push(...validateExternalFileManifest({
+      manifest: evidence.external_artifacts?.[name],
+      expectedRoot: roots[name],
+      expectedPaths: expected,
+      label: `external_artifacts.${name}`,
+    }));
+  }
+  for (const name of ["candidate_skill_copy", "incumbent_skill_copy"]) {
+    errors.push(...validateExternalFileManifest({
+      manifest: evidence.external_artifacts?.[name],
+      expectedRoot: roots[name],
+      label: `external_artifacts.${name}`,
+    }));
   }
   const candidateSkill = evidence.external_artifacts?.candidate_skill_copy;
   const incumbentSkill = evidence.external_artifacts?.incumbent_skill_copy;
-  const repositorySkill = evidence.tree_hashes?.["skills/agora"];
-  if (!candidateSkill
-    || candidateSkill.file_count !== repositorySkill?.file_count
-    || candidateSkill.sha256 !== repositorySkill?.sha256) {
-    errors.push("external candidate skill copy does not match the released skill tree");
+  try {
+    const repositorySkill = await buildExternalFileManifest(root, "skills/agora");
+    const normalizedRepositorySkill = { ...repositorySkill, root: roots.candidate_skill_copy };
+    if (!sameExternalFileSet(candidateSkill, normalizedRepositorySkill)) {
+      errors.push("external candidate skill copy does not match the released skill tree");
+    }
+  } catch (error) {
+    errors.push(`released skill tree could not be manifested: ${error.message}`);
   }
-  if (!incumbentSkill
-    || incumbentSkill.file_count !== BASELINE_SKILL_TREE.file_count
-    || incumbentSkill.sha256 !== BASELINE_SKILL_TREE.sha256) {
-    errors.push("external incumbent skill copy does not match the v1.6.0 skill tree");
+  try {
+    const baselineSkill = await buildGitFileManifest({
+      repositoryRoot: root,
+      commit: BASELINE_COMMIT,
+      repositoryPath: "skills/agora",
+      manifestRoot: roots.incumbent_skill_copy,
+    });
+    if (!sameExternalFileSet(incumbentSkill, baselineSkill)) {
+      errors.push("external incumbent skill copy does not match the v1.6.0 skill tree");
+    }
+  } catch (error) {
+    errors.push(`v1.6.0 skill tree could not be manifested: ${error.message}`);
+  }
+  for (const adjudication of adjudications) {
+    for (const pass of adjudication.passes) {
+      const artifacts = pass.custody?.artifacts ?? {};
+      const bindings = {
+        candidate_response: ["candidate_outputs", `${adjudication.id}.md`],
+        incumbent_response: ["incumbent_outputs", `${adjudication.id}.md`],
+        judge_prompt: ["judge_prompts", `${adjudication.id}-pass${pass.pass}.md`],
+        raw_judgment: ["raw_judgments", `${adjudication.id}-pass${pass.pass}.json`],
+        judge_log: ["judge_logs", `${adjudication.id}-pass${pass.pass}.json`],
+      };
+      for (const [artifactName, [treeName, relativePath]] of Object.entries(bindings)) {
+        const external = manifestEntry(evidence.external_artifacts?.[treeName], relativePath);
+        const custody = artifacts[artifactName];
+        if (!external || custody?.sha256 !== external.sha256) {
+          errors.push(`case ${adjudication.id} pass ${pass.pass} ${artifactName} custody hash is not bound to ${treeName}`);
+        }
+      }
+      const item = (manifest.cases ?? []).find((caseItem) => caseItem.id === adjudication.id);
+      const originalTask = artifacts.original_task;
+      const expectedOriginalPath = `evals/blind/v${manifest.skill_version}/${item?.prompt_file}`;
+      if (originalTask?.path === expectedOriginalPath) {
+        try {
+          const actualHash = await sha256File(root, expectedOriginalPath);
+          if (originalTask.sha256 !== actualHash) {
+            errors.push(`case ${adjudication.id} pass ${pass.pass} original_task custody hash differs from repository prompt`);
+          }
+        } catch (error) {
+          errors.push(`case ${adjudication.id} original task could not be hashed: ${error.message}`);
+        }
+      }
+      const logEntry = manifestEntry(
+        evidence.external_artifacts?.judge_logs,
+        `${adjudication.id}-pass${pass.pass}.json`,
+      );
+      if (logEntry?.sha256 !== artifacts.judge_log?.sha256) {
+        errors.push(`case ${adjudication.id} pass ${pass.pass} judge_run is not bound to its judge log`);
+      }
+    }
   }
   return errors;
 };
@@ -213,27 +378,61 @@ export async function verifyReleaseEvidence(root = ROOT) {
   let records;
   let evidence;
   let recordsText;
+  let adjudicationsSchema;
+  let recordsSchema;
   try {
-    [manifest, releasePlan, adjudications, records, evidence, recordsText] = await Promise.all([
+    [
+      manifest,
+      releasePlan,
+      adjudications,
+      records,
+      evidence,
+      recordsText,
+      adjudicationsSchema,
+      recordsSchema,
+    ] = await Promise.all([
       readJson(root, PATHS.manifest),
       readJson(root, PATHS.releasePlan),
       readJson(root, PATHS.adjudications),
       readJson(root, PATHS.records),
       readJson(root, PATHS.evidence),
       readFile(join(root, ...PATHS.records.split("/")), "utf8"),
+      readJson(root, `evals/releases/v${VERSION}.adjudications.schema.json`),
+      readJson(root, `evals/releases/v${VERSION}.records.schema.json`),
     ]);
   } catch (error) {
     return [`release evidence could not be loaded: ${error.message}`];
   }
 
   errors.push(...validateEvidenceExecution(evidence));
-  errors.push(...validateNormalizedAdjudications({ manifest, adjudications }));
+  let adjudicationSchemaErrors = [];
+  let recordSchemaErrors = [];
+  try {
+    adjudicationSchemaErrors = validateJsonSchema({
+      schema: adjudicationsSchema,
+      value: adjudications,
+      label: "adjudications",
+    });
+    recordSchemaErrors = validateJsonSchema({ schema: recordsSchema, value: records, label: "records" });
+  } catch (error) {
+    errors.push(`normalized schema validation could not run: ${error.message}`);
+  }
+  errors.push(...adjudicationSchemaErrors.map((error) => `adjudications schema: ${error}`));
+  errors.push(...recordSchemaErrors.map((error) => `records schema: ${error}`));
+  if (!adjudicationSchemaErrors.length && Array.isArray(adjudications)) {
+    try {
+      errors.push(...validateNormalizedAdjudications({ manifest, adjudications }));
+    } catch (error) {
+      errors.push(`normalized adjudication validation failed: ${error.message}`);
+    }
+  }
   if (manifest.skill_version !== VERSION || releasePlan.skill_version !== VERSION) {
     errors.push(`manifest and release plan must target ${VERSION}`);
   }
 
   let reduced;
   try {
+    if (adjudicationSchemaErrors.length) throw new Error("reduction skipped because adjudications do not match schema");
     reduced = reduceAdjudications({ manifest, adjudications });
     const expectedText = `${JSON.stringify(reduced, null, 2)}\n`;
     if (recordsText !== expectedText) errors.push("records are not the byte-for-byte reducer output");
@@ -248,7 +447,13 @@ export async function verifyReleaseEvidence(root = ROOT) {
     if (!sameJson(records, reduced)) errors.push("parsed records differ from reducer output");
     const summary = deriveReleaseEvidenceSummary({ records: reduced, adjudications, evaluation });
     if (!sameJson(evidence.summary, summary)) errors.push("evidence summary differs from derived release result");
-    errors.push(...validateExternalArtifacts({ evidence, summary }));
+    errors.push(...await validateExternalArtifacts({
+      evidence,
+      summary,
+      manifest,
+      adjudications,
+      root,
+    }));
   }
 
   const suppliedFiles = Object.keys(evidence.artifact_hashes ?? {}).sort();

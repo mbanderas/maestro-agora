@@ -1,0 +1,2 @@
+/agora --no-voice
+Write the hero, offer summary, price line, CTA, and checkout reassurance for Pinna Pantry's food-preservation course. Facts: access costs a one-time $120; buyers do not create an account before payment; the CTA goes directly to checkout; after successful payment, an email provides a link to create the login; course access begins immediately after payment; there is no subscription, demo, quiz, lead form, or required sales call. Make the purchase path feel simple and concrete. Use only these facts.

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agora v1.7.0 reduced blind records",
+  "type": "array",
+  "minItems": 25,
+  "maxItems": 25,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "final"],
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "final": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "winner",
+          "candidateVetoes",
+          "candidateHardGateFailures",
+          "candidateHardGateEvidence",
+          "incumbentHardGateFailures",
+          "incumbentHardGateEvidence",
+          "candidateScores",
+          "incumbentScores"
+        ],
+        "properties": {
+          "winner": { "enum": ["candidate", "incumbent", "tie"] },
+          "candidateVetoes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "candidateHardGateFailures": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "candidateHardGateEvidence": { "$ref": "#/$defs/reducedEvidence" },
+          "incumbentHardGateFailures": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "incumbentHardGateEvidence": { "$ref": "#/$defs/reducedEvidence" },
+          "candidateScores": { "$ref": "#/$defs/scores" },
+          "incumbentScores": { "$ref": "#/$defs/scores" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "scores": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "number", "minimum": 1, "maximum": 5 }
+    },
+    "reducedEvidence": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate", "observations"],
+        "properties": {
+          "gate": { "type": "string", "minLength": 1 },
+          "observations": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["pass", "order", "excerpt", "missingPremise"],
+              "properties": {
+                "pass": { "type": "integer", "minimum": 1, "maximum": 3 },
+                "order": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "uniqueItems": true,
+                  "items": { "enum": ["candidate", "incumbent"] }
+                },
+                "excerpt": { "type": "string", "minLength": 1 },
+                "missingPremise": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

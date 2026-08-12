@@ -10,7 +10,13 @@ import { ELIGIBILITY_POLICY } from "./blind-eligibility.mjs";
 import { ingestBlindJudgments, BLIND_ORDER_SEED } from "./blind-judgment-ingest.mjs";
 import { evaluateBlindRun } from "./blind-summary.mjs";
 import { computeEvalTreeLock } from "./eval-locks.mjs";
+import {
+  buildExternalFileManifest,
+  buildGitFileManifest,
+  sameExternalFileSet,
+} from "./external-artifact-manifest.mjs";
 import { validateEvaluationProvenance } from "./eval-provenance-check.mjs";
+import { validateJsonSchema } from "./json-schema-validator.mjs";
 import {
   deriveReleaseEvidenceSummary,
   REQUIRED_HASHED_FILES,
@@ -21,10 +27,6 @@ import { validateGitReleaseProvenance } from "./release-git-provenance.mjs";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const VERSION = "1.7.0";
 const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
-const BASELINE_SKILL_TREE = {
-  file_count: 8,
-  sha256: "ff68706d00455ec6a35351bc34b8996506bbe3a95421c2bc5480bf150f1e99aa",
-};
 const COMMIT = /^[a-f0-9]{40}$/;
 
 const repoPath = (...parts) => join(ROOT, ...parts);
@@ -60,25 +62,42 @@ const timingWindow = async (evaluationRoot, paths) => {
   };
 };
 
-const externalTree = async (evaluationRoot, path) => {
-  const value = await computeEvalTreeLock(evaluationRoot, path);
-  return { file_count: value.file_count, sha256: value.sha256 };
-};
-
 async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, judgeProtocolCommit }) {
   if (!COMMIT.test(candidateFreezeCommit)) throw new Error("candidate freeze commit must be a 40-character Git commit");
   if (!COMMIT.test(judgeProtocolCommit)) throw new Error("judge protocol commit must be a 40-character Git commit");
   const manifestPath = repoPath("evals", "blind", `v${VERSION}`, "manifest.json");
   const releasePlanPath = repoPath("evals", "releases", `v${VERSION}.gates.json`);
-  const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  const releasePlan = JSON.parse(await readFile(releasePlanPath, "utf8"));
+  const adjudicationsSchemaPath = repoPath("evals", "releases", `v${VERSION}.adjudications.schema.json`);
+  const recordsSchemaPath = repoPath("evals", "releases", `v${VERSION}.records.schema.json`);
+  const [manifest, releasePlan, adjudicationsSchema, recordsSchema] = await Promise.all([
+    readFile(manifestPath, "utf8").then(JSON.parse),
+    readFile(releasePlanPath, "utf8").then(JSON.parse),
+    readFile(adjudicationsSchemaPath, "utf8").then(JSON.parse),
+    readFile(recordsSchemaPath, "utf8").then(JSON.parse),
+  ]);
   const adjudications = await ingestBlindJudgments({
     manifest,
     judgmentsDirectory: join(evaluationRoot, "judgments"),
     evaluationRoot,
     blindRoot: dirname(manifestPath),
   });
+  const adjudicationSchemaErrors = validateJsonSchema({
+    schema: adjudicationsSchema,
+    value: adjudications,
+    label: "adjudications",
+  });
+  if (adjudicationSchemaErrors.length) {
+    throw new Error(`normalized adjudications schema failed:\n- ${adjudicationSchemaErrors.join("\n- ")}`);
+  }
   const records = reduceAdjudications({ manifest, adjudications });
+  const recordSchemaErrors = validateJsonSchema({
+    schema: recordsSchema,
+    value: records,
+    label: "records",
+  });
+  if (recordSchemaErrors.length) {
+    throw new Error(`reduced records schema failed:\n- ${recordSchemaErrors.join("\n- ")}`);
+  }
   const provenanceErrors = await validateEvaluationProvenance({
     root: evaluationRoot,
     manifest,
@@ -107,22 +126,27 @@ async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, jud
     "judge-logs",
   ]);
   const externalArtifacts = {
-    candidate_skill_copy: await externalTree(evaluationRoot, "generation-a-work/.agents/skills/agora"),
-    incumbent_skill_copy: await externalTree(evaluationRoot, "generation-b-work/.agents/skills/agora"),
-    candidate_outputs: await externalTree(evaluationRoot, "generation-a-outputs"),
-    incumbent_outputs: await externalTree(evaluationRoot, "generation-b-outputs"),
-    generation_logs: await externalTree(evaluationRoot, "generation-logs"),
-    raw_judgments: await externalTree(evaluationRoot, "judgments"),
-    judge_logs: await externalTree(evaluationRoot, "judge-logs"),
-    judge_prompts: await externalTree(evaluationRoot, "judge-prompts"),
+    candidate_skill_copy: await buildExternalFileManifest(evaluationRoot, "generation-a-work/.agents/skills/agora"),
+    incumbent_skill_copy: await buildExternalFileManifest(evaluationRoot, "generation-b-work/.agents/skills/agora"),
+    candidate_outputs: await buildExternalFileManifest(evaluationRoot, "generation-a-outputs"),
+    incumbent_outputs: await buildExternalFileManifest(evaluationRoot, "generation-b-outputs"),
+    generation_logs: await buildExternalFileManifest(evaluationRoot, "generation-logs"),
+    raw_judgments: await buildExternalFileManifest(evaluationRoot, "judgments"),
+    judge_logs: await buildExternalFileManifest(evaluationRoot, "judge-logs"),
+    judge_prompts: await buildExternalFileManifest(evaluationRoot, "judge-prompts"),
   };
-  const repositorySkill = treeHashes["skills/agora"];
-  if (externalArtifacts.candidate_skill_copy.file_count !== repositorySkill.file_count
-    || externalArtifacts.candidate_skill_copy.sha256 !== repositorySkill.sha256) {
+  const repositorySkillManifest = await buildExternalFileManifest(ROOT, "skills/agora");
+  if (externalArtifacts.candidate_skill_copy.file_count !== repositorySkillManifest.file_count
+    || externalArtifacts.candidate_skill_copy.sha256 !== repositorySkillManifest.sha256) {
     throw new Error("external candidate skill copy does not match the released skill tree");
   }
-  if (externalArtifacts.incumbent_skill_copy.file_count !== BASELINE_SKILL_TREE.file_count
-    || externalArtifacts.incumbent_skill_copy.sha256 !== BASELINE_SKILL_TREE.sha256) {
+  const baselineSkillManifest = await buildGitFileManifest({
+    repositoryRoot: ROOT,
+    commit: BASELINE_COMMIT,
+    repositoryPath: "skills/agora",
+    manifestRoot: "generation-b-work/.agents/skills/agora",
+  });
+  if (!sameExternalFileSet(externalArtifacts.incumbent_skill_copy, baselineSkillManifest)) {
     throw new Error("external incumbent skill copy does not match the v1.6.0 skill tree");
   }
   const commits = {

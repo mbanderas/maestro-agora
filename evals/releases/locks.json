@@ -18,13 +18,18 @@
     },
     {
       "path": "evals/blind/v1.7.0",
-      "file_count": 23,
-      "sha256": "8c801b0d32ef90e0ae2cb766094d288e17fbee1aae7df392f154585f7bdaa6ed"
+      "file_count": 28,
+      "sha256": "f0b90a0069967c0fe37b4a4d122d80edbc85d1d94e485374444eb4962deffb58"
     },
     {
       "path": "evals/regression/conversion-context-v1.7.0-confirmatory-attempt1",
       "file_count": 17,
       "sha256": "d77487f0da38fe17d83078b55c921ece17744738ac0a1f2aa490777799a94c7b"
+    },
+    {
+      "path": "evals/regression/conversion-context-v1.7.0-confirmatory-attempt2",
+      "file_count": 24,
+      "sha256": "41a30b857ad1d50e29785fc6e3e259de061f7d9545c3b1ecd8929e0bd46e6759"
     },
     {
       "path": "evals/regression/conversion-context-v1.7.0-development",

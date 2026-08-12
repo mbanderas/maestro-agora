@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "winner": {
+      "type": "string",
+      "enum": ["A", "B", "tie"]
+    },
+    "aScores": {
+      "$ref": "#/$defs/scores"
+    },
+    "bScores": {
+      "$ref": "#/$defs/scores"
+    },
+    "aHardGateFailures": {
+      "type": "array",
+      "description": "Every listed hard gate applies. Include each failed gate ID; an omitted gate ID is recorded as passed. Null and unevaluable states are forbidden.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "bHardGateFailures": {
+      "type": "array",
+      "description": "Every listed hard gate applies. Include each failed gate ID; an omitted gate ID is recorded as passed. Null and unevaluable states are forbidden.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "aHardGateEvidence": {
+      "$ref": "#/$defs/hardGateEvidence"
+    },
+    "bHardGateEvidence": {
+      "$ref": "#/$defs/hardGateEvidence"
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Explain the overall comparison. Hard-gate evidence belongs only in the structured evidence arrays."
+    }
+  },
+  "required": [
+    "winner",
+    "aScores",
+    "bScores",
+    "aHardGateFailures",
+    "bHardGateFailures",
+    "aHardGateEvidence",
+    "bHardGateEvidence",
+    "rationale"
+  ],
+  "$defs": {
+    "hardGateEvidence": {
+      "type": "array",
+      "description": "One entry per corresponding hard-gate failure ID, or an empty array when there are no failures.",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "gate": { "type": "string", "minLength": 1 },
+          "excerpt": { "type": "string", "minLength": 1 },
+          "missingPremise": { "type": "string", "minLength": 1 }
+        },
+        "required": ["gate", "excerpt", "missingPremise"]
+      }
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "brief-fidelity": { "type": "number", "minimum": 1, "maximum": 5 },
+        "first-read-comprehension": { "type": "number", "minimum": 1, "maximum": 5 },
+        "concrete-action-clarity": { "type": "number", "minimum": 1, "maximum": 5 },
+        "outcome-fit": { "type": "number", "minimum": 1, "maximum": 5 },
+        "funnel-stage-fit": { "type": "number", "minimum": 1, "maximum": 5 },
+        "commitment-fit": { "type": "number", "minimum": 1, "maximum": 5 },
+        "prior-calibration": { "type": "number", "minimum": 1, "maximum": 5 },
+        "contradiction-handling": { "type": "number", "minimum": 1, "maximum": 5 },
+        "composition-fit": { "type": "number", "minimum": 1, "maximum": 5 }
+      },
+      "required": [
+        "brief-fidelity",
+        "first-read-comprehension",
+        "concrete-action-clarity",
+        "outcome-fit",
+        "funnel-stage-fit",
+        "commitment-fit",
+        "prior-calibration",
+        "contradiction-handling",
+        "composition-fit"
+      ]
+    }
+  }
+}

@@ -1,9 +1,12 @@
 import assert from "node:assert/strict";
+import { execFile } from "node:child_process";
 import { readFile, readdir } from "node:fs/promises";
 import { dirname, join, resolve, sep } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 import { evaluateBlindRun, validateAdjudicationRecords } from "../scripts/blind-summary.mjs";
+import { computeEvalTreeLock } from "../scripts/eval-locks.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SKILL_ROOT = join(ROOT, "skills", "agora");
@@ -12,6 +15,8 @@ const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const FROZEN_ROOT = join(ROOT, "evals", "blind", "v1.7.0");
 const REGRESSION_ROOT = join(ROOT, "evals", "regression", "conversion-context-v1.7.0-development");
 const ATTEMPT1_ROOT = join(ROOT, "evals", "regression", "conversion-context-v1.7.0-confirmatory-attempt1");
+const ATTEMPT2_ROOT = join(ROOT, "evals", "regression", "conversion-context-v1.7.0-confirmatory-attempt2");
+const execFileAsync = promisify(execFile);
 
 const [skill, conversion, craft, manifest] = await Promise.all([
   readFile(join(SKILL_ROOT, "SKILL.md"), "utf8"),
@@ -20,11 +25,13 @@ const [skill, conversion, craft, manifest] = await Promise.all([
   readFile(join(EVAL_ROOT, "manifest.json"), "utf8").then(JSON.parse),
 ]);
 
-const [frozenManifest, frozenReleasePlan, regressionManifest, attempt1Manifest] = await Promise.all([
+const [frozenManifest, frozenReleasePlan, regressionManifest, attempt1Manifest, attempt2Manifest, releaseLocks] = await Promise.all([
   readFile(join(FROZEN_ROOT, "manifest.json"), "utf8").then(JSON.parse),
   readFile(join(ROOT, "evals", "releases", "v1.7.0.gates.json"), "utf8").then(JSON.parse),
   readFile(join(REGRESSION_ROOT, "manifest.json"), "utf8").then(JSON.parse),
   readFile(join(ATTEMPT1_ROOT, "manifest.json"), "utf8").then(JSON.parse),
+  readFile(join(ATTEMPT2_ROOT, "manifest.json"), "utf8").then(JSON.parse),
+  readFile(join(ROOT, "evals", "releases", "locks.json"), "utf8").then(JSON.parse),
 ]);
 
 test("conversion context loads progressively without adding a mode", () => {
@@ -348,12 +355,20 @@ test("prospective pack is evaluator-compatible but not release evidence", async 
   assert.deepEqual(validateAdjudicationRecords({ manifest, records: completeRecords }), []);
 });
 
-test("v1.7 second conversion release pack is fresh, fully mapped, and fail-closed", async () => {
+test("v1.7 third conversion release pack is independently authored, previously unadjudicated, fully mapped, and fail-closed", async () => {
   assert.equal(frozenManifest.status, "frozen-release");
   assert.equal(frozenManifest.skill_version, "1.7.0");
-  assert.equal(frozenManifest.release_gates.conversion_case_count, 20);
-  assert.equal(frozenManifest.release_gates.conversion_minimum_comparable_cases, 13);
+  assert.equal(frozenManifest.release_gates.conversion_case_count, 25);
+  assert.equal(frozenManifest.release_gates.conversion_minimum_comparable_cases, 16);
   assert.equal(frozenManifest.release_gates.conversion_minimum_win_rate, 0.77);
+  assert.equal(frozenManifest.release_gates.all_cases_pass_absolute_vetoes, true);
+  assert.equal(frozenManifest.release_gates.critical_contract_failures_allowed, 0);
+  assert.equal(frozenManifest.release_gates.domain_mean_noninferiority_margin, 0.25);
+  assert.deepEqual(frozenManifest.hard_gate_definitions, attempt2Manifest.hard_gate_definitions);
+  assert.deepEqual(frozenManifest.rubric, attempt2Manifest.rubric);
+  assert.deepEqual(frozenManifest.generation_contract, attempt2Manifest.generation_contract);
+  assert.deepEqual(frozenManifest.adjudication, attempt2Manifest.adjudication);
+  assert.equal(Object.hasOwn(frozenManifest, "veto_definitions"), Object.hasOwn(attempt2Manifest, "veto_definitions"));
   assert.match(
     frozenManifest.hard_gate_definitions["no-invented-proof-or-rationale"],
     /description of what a quotation says is not verbatim wording/,
@@ -366,52 +381,120 @@ test("v1.7 second conversion release pack is fresh, fully mapped, and fail-close
   assert.equal(frozenReleasePlan.partitions[0].minimum_comparable_cases_gate, "conversion_minimum_comparable_cases");
   assert.equal(frozenReleasePlan.partitions[0].minimum_win_rate_gate, "conversion_minimum_win_rate");
   assert.equal(Object.hasOwn(frozenReleasePlan.partitions[0], "wins_required_gate"), false);
+  assert.equal(Object.hasOwn(frozenReleasePlan.partitions[0], "dimension_regressions_allowed_gate"), false);
 
   const releaseIds = frozenManifest.cases.map((item) => item.id);
   assert.deepEqual(releaseIds, frozenReleasePlan.partitions[0].case_ids);
-  assert.equal(new Set(releaseIds).size, 20);
-  assert.equal(frozenManifest.cases.filter((item) => item.critical).length, 18);
-  for (const id of ["boltbasin-parts-basket", "night-ferry-fragrance-sample"]) {
-    assert.equal(frozenManifest.cases.find((item) => item.id === id)?.critical, false);
-  }
+  assert.equal(new Set(releaseIds).size, 25);
+  assert.equal(frozenManifest.cases.filter((item) => item.critical).length, 21);
+  assert.deepEqual(
+    frozenManifest.cases.filter((item) => !item.critical).map((item) => item.id),
+    [
+      "parcelpollen-label-download",
+      "moonwell-collection-card",
+      "ledgerfern-service-composition",
+      "velamend-product-proof",
+    ],
+  );
+  assert.deepEqual(
+    frozenManifest.cases.filter((item) => item.review_mode).map((item) => item.id),
+    [
+      "sonoraswitch-experiment-review",
+      "rimerelay-campaign-review",
+      "stonecrop-checkout-experiment",
+    ],
+  );
+
+  const expectedGates = {
+    "mossarc-seed-club-checkout": ["commitment-and-terms-preserved", "pricing-decision-contract-preserved", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "quillcurrent-application-deadline": ["commitment-and-terms-preserved", "route-reality-preserved", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "harborkite-onboarding-consent": ["no-unauthorized-funnel-change", "commitment-and-terms-preserved", "user-framing-preserved", "full-composition-fit", "no-invented-proof-or-rationale"],
+    "cedarvault-project-review": ["route-reality-preserved", "no-unauthorized-funnel-change", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "parcelpollen-label-download": ["route-reality-preserved", "no-invented-proof-or-rationale", "full-composition-fit", "no-unauthorized-funnel-change"],
+    "moonwell-collection-card": ["route-reality-preserved", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "flintpass-permit-renewal": ["commitment-and-terms-preserved", "pricing-decision-contract-preserved", "route-reality-preserved", "user-framing-preserved", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "sonoraswitch-experiment-review": ["no-nearby-metric-substitution", "no-invented-proof-or-rationale", "proof-uncertainty-match", "full-composition-fit"],
+    "ternroster-pilot-proof": ["proof-uncertainty-match", "no-invented-proof-or-rationale", "route-reality-preserved", "full-composition-fit"],
+    "ledgerfern-service-composition": ["full-composition-fit", "proof-uncertainty-match", "route-reality-preserved", "no-invented-proof-or-rationale"],
+    "forgemorrow-enterprise-pricing": ["enterprise-risk-specificity", "pricing-decision-contract-preserved", "route-reality-preserved", "no-unauthorized-funnel-change", "full-composition-fit", "no-invented-proof-or-rationale"],
+    "bluekeel-engagement-terms": ["commitment-and-terms-preserved", "pricing-decision-contract-preserved", "route-reality-preserved", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "lexitrellis-trial-proof": ["no-nearby-metric-substitution", "proof-uncertainty-match", "commitment-and-terms-preserved", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "rimerelay-campaign-review": ["no-nearby-metric-substitution", "proof-uncertainty-match", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "pinna-pantry-course-purchase": ["no-unauthorized-funnel-change", "route-reality-preserved", "pricing-decision-contract-preserved", "commitment-and-terms-preserved", "full-composition-fit", "no-invented-proof-or-rationale"],
+    "calyxnote-scoped-sharing": ["user-framing-preserved", "commitment-and-terms-preserved", "route-reality-preserved", "full-composition-fit", "no-invented-proof-or-rationale"],
+    "asterlock-security-deployment": ["enterprise-risk-specificity", "no-invented-proof-or-rationale", "proof-uncertainty-match", "route-reality-preserved", "full-composition-fit"],
+    "velamend-product-proof": ["proof-uncertainty-match", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "kilnwise-pricing-comparison": ["pricing-decision-contract-preserved", "commitment-and-terms-preserved", "no-unauthorized-funnel-change", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "wildfern-volunteer-intake": ["route-reality-preserved", "user-framing-preserved", "no-unauthorized-funnel-change", "no-invented-proof-or-rationale", "full-composition-fit"],
+    "juniperhearth-calculator-followup": ["route-reality-preserved", "no-unauthorized-funnel-change", "user-framing-preserved", "full-composition-fit", "no-invented-proof-or-rationale"],
+    "stonecrop-checkout-experiment": ["no-nearby-metric-substitution", "no-invented-proof-or-rationale", "proof-uncertainty-match", "full-composition-fit"],
+    "fathomfold-upgrade-sheet": ["full-composition-fit", "pricing-decision-contract-preserved", "commitment-and-terms-preserved", "route-reality-preserved", "no-unauthorized-funnel-change", "no-invented-proof-or-rationale"],
+    "lumarook-rental-request": ["commitment-and-terms-preserved", "pricing-decision-contract-preserved", "route-reality-preserved", "user-framing-preserved", "full-composition-fit", "no-invented-proof-or-rationale"],
+    "tesseraops-pricing-routes": ["pricing-decision-contract-preserved", "route-reality-preserved", "enterprise-risk-specificity", "no-unauthorized-funnel-change", "no-invented-proof-or-rationale", "commitment-and-terms-preserved", "full-composition-fit"],
+  };
+  assert.deepEqual(
+    Object.fromEntries(frozenManifest.cases.map((item) => [item.id, item.hard_gates])),
+    expectedGates,
+  );
 
   const releasePromptFiles = new Set();
+  const releasePromptTexts = new Set();
   for (const item of frozenManifest.cases) {
-    assert.equal(item.prompt_file, `prompts/${item.id}.md`);
-    assert.ok(!releasePromptFiles.has(item.prompt_file), `duplicate release prompt: ${item.prompt_file}`);
+    assert.equal(item.prompt_file, "prompts/" + item.id + ".md");
+    assert.ok(!releasePromptFiles.has(item.prompt_file), "duplicate release prompt: " + item.prompt_file);
     releasePromptFiles.add(item.prompt_file);
     const prompt = await readFile(join(FROZEN_ROOT, item.prompt_file), "utf8");
     assert.match(prompt, /^\/agora --no-voice\r?\n/);
-    assert.doesNotMatch(prompt, /expected (?:answer|output)|rubric|grader|scoring|hard gates?/i, `${item.id} contains evaluator leakage`);
-    assert.doesNotMatch(prompt, /[\u2014\u2018\u2019\u201c\u201d]/, `${item.id} contains banned typography`);
-    assert.doesNotMatch(prompt, /[A-Za-z]:[\\/]Users[\\/]/, `${item.id} contains a local path`);
+    assert.equal((prompt.match(/\/agora --no-voice/g) ?? []).length, 1);
+    assert.doesNotMatch(prompt, /expected (?:answer|output)|rubric|grader|scoring|hard gates?/i, item.id + " contains evaluator leakage");
+    assert.doesNotMatch(prompt, /[\u2014\u2018\u2019\u201c\u201d]/, item.id + " contains banned typography");
+    assert.doesNotMatch(prompt, /[A-Za-z]:[\\/]Users[\\/]/, item.id + " contains a local path");
+    assert.doesNotMatch(prompt, /^\s*[{[]/m, item.id + " contains JSON metadata");
+    releasePromptTexts.add(prompt);
   }
+  assert.equal(releasePromptTexts.size, 25);
   const actualReleasePrompts = (await readdir(join(FROZEN_ROOT, "prompts")))
     .filter((file) => file.endsWith(".md"))
-    .map((file) => `prompts/${file}`)
+    .map((file) => "prompts/" + file)
     .sort();
   assert.deepEqual(actualReleasePrompts, [...releasePromptFiles].sort());
 
-  const talloway = frozenManifest.cases.find((item) => item.id === "talloway-foundry-qualification");
-  const doorwake = frozenManifest.cases.find((item) => item.id === "doorwake-capability-limits");
-  const wardenBloom = frozenManifest.cases.find((item) => item.id === "warden-bloom-pilot-proof");
-  const sundialBraid = frozenManifest.cases.find((item) => item.id === "sundial-braid-application");
-  assert.equal(talloway.hard_gates.includes("enterprise-risk-specificity"), false);
-  assert.equal(doorwake.hard_gates.includes("proof-uncertainty-match"), false);
-  assert.equal(wardenBloom.hard_gates.includes("no-effect-transfer-in-review"), false);
-  assert.equal(sundialBraid.hard_gates.includes("enterprise-risk-specificity"), false);
+  const comparisonPacks = [
+    [EVAL_ROOT, manifest],
+    [REGRESSION_ROOT, regressionManifest],
+    [ATTEMPT1_ROOT, attempt1Manifest],
+    [ATTEMPT2_ROOT, attempt2Manifest],
+  ];
+  const priorIds = new Set(comparisonPacks.flatMap(([, priorManifest]) => priorManifest.cases.map((item) => item.id)));
+  assert.deepEqual(releaseIds.filter((id) => priorIds.has(id)), []);
+  const priorPromptTexts = new Set();
+  for (const [packRoot, priorManifest] of comparisonPacks) {
+    for (const item of priorManifest.cases) {
+      priorPromptTexts.add(await readFile(join(packRoot, item.prompt_file), "utf8"));
+    }
+  }
+  assert.deepEqual([...releasePromptTexts].filter((prompt) => priorPromptTexts.has(prompt)), []);
+
   assert.match(
-    await readFile(join(FROZEN_ROOT, "prompts", "talloway-foundry-qualification.md"), "utf8"),
-    /a submit control label/,
+    await readFile(join(FROZEN_ROOT, "prompts", "parcelpollen-label-download.md"), "utf8"),
+    /Supply a singular version and a plural version that can accept the \{count\} variable/,
   );
   assert.match(
-    await readFile(join(FROZEN_ROOT, "prompts", "quarry-line-engagement-terms.md"), "utf8"),
-    /rows for scope, payment, survey window, and drawing delivery/,
+    await readFile(join(FROZEN_ROOT, "prompts", "moonwell-collection-card.md"), "utf8"),
+    /CTA opens a catalog page for the twelve-print collection; it does not open checkout, reserve a print, or confirm availability/,
   );
-  assert.match(
-    await readFile(join(FROZEN_ROOT, "prompts", "river-step-petition.md"), "utf8"),
-    /remove@riverstep\.pt/,
-  );
+  const velamendPrompt = await readFile(join(FROZEN_ROOT, "prompts", "velamend-product-proof.md"), "utf8");
+  assert.match(velamendPrompt, /design-features paragraph/);
+  assert.doesNotMatch(velamendPrompt, /mechanism paragraph/);
+  assert.match(velamendPrompt, /rounded corners and a premeasured adhesive layer/);
+  const kilnwisePrompt = await readFile(join(FROZEN_ROOT, "prompts", "kilnwise-pricing-comparison.md"), "utf8");
+  assert.match(kilnwisePrompt, /each plan CTA selects that plan and opens billing-frequency selection; it does not charge or start the trial/);
+  assert.match(kilnwisePrompt, /when annual billing is selected, the base plan and any extra-kiln charges use the same ten-months-upfront-for-twelve-months rule/);
+  const tesseraopsPrompt = await readFile(join(FROZEN_ROOT, "prompts", "tesseraops-pricing-routes.md"), "utf8");
+  assert.match(tesseraopsPrompt, /Plant costs EUR 380 per month, billed monthly/);
+  assert.match(tesseraopsPrompt, /Network costs EUR 860 per month, billed monthly/);
+  assert.match(tesseraopsPrompt, /Enterprise pricing is custom and available only through a sales inquiry/);
+  assert.match(tesseraopsPrompt, /does not open checkout, create an account, reserve a price, or book a meeting/);
 
   const records = frozenManifest.cases.map((item) => ({
     id: item.id,
@@ -433,19 +516,30 @@ test("v1.7 second conversion release pack is fresh, fully mapped, and fail-close
   const winning = evaluateBlindRun({ manifest: frozenManifest, records, releasePlan: frozenReleasePlan });
   assert.equal(winning.pass, true);
   assert.deepEqual(winning.evidenceErrors, []);
-  assert.equal(winning.release.partitionResults[0].winsRequired, 16);
+  assert.equal(winning.release.partitionResults[0].winsRequired, 20);
 
   for (const [index, record] of records.entries()) {
-    record.final.winner = index < 11 || index >= 13 ? "candidate" : "tie";
-    if (index >= 13) {
-      const item = frozenManifest.cases[index];
-      record.final.incumbentHardGateFailures = [item.hard_gates[0]];
-    }
+    record.final.winner = index < 13 || index >= 16 ? "candidate" : "tie";
+    record.final.incumbentHardGateFailures = index >= 16
+      ? [frozenManifest.cases[index].hard_gates[0]]
+      : [];
   }
   const minimumDenominator = evaluateBlindRun({ manifest: frozenManifest, records, releasePlan: frozenReleasePlan });
   assert.equal(minimumDenominator.pass, true);
-  assert.equal(minimumDenominator.release.partitionResults[0].summary.comparableCaseCount, 13);
-  assert.equal(minimumDenominator.release.partitionResults[0].winsRequired, 11);
+  assert.equal(minimumDenominator.release.partitionResults[0].summary.comparableCaseCount, 16);
+  assert.equal(minimumDenominator.release.partitionResults[0].winsRequired, 13);
+
+  const noncritical = records.find((record) => record.id === "parcelpollen-label-download");
+  noncritical.final.candidateHardGateFailures = ["no-unauthorized-funnel-change"];
+  assert.equal(evaluateBlindRun({ manifest: frozenManifest, records, releasePlan: frozenReleasePlan }).pass, false);
+  noncritical.final.candidateHardGateFailures = [];
+
+  noncritical.final.candidateVetoes = ["absolute-veto"];
+  assert.equal(evaluateBlindRun({ manifest: frozenManifest, records, releasePlan: frozenReleasePlan }).pass, false);
+  noncritical.final.candidateVetoes = [];
+
+  noncritical.final.candidateScores["composition-fit"] = 4;
+  assert.equal(evaluateBlindRun({ manifest: frozenManifest, records, releasePlan: frozenReleasePlan }).pass, false);
 });
 
 test("development fixtures remain regression-only and cannot enter the superiority partition", async () => {
@@ -479,4 +573,43 @@ test("spent attempt1 pack remains immutable regression evidence and cannot re-en
   assert.deepEqual(actualPromptFiles, expectedPromptFiles);
   assert.equal((await readdir(ATTEMPT1_ROOT)).sort().join(","), "README.md,judge-instructions.md,judge-schema.json,manifest.json,prompts");
   assert.match(await readFile(join(ATTEMPT1_ROOT, "README.md"), "utf8"), /failed its release gates/);
+});
+
+test("spent attempt2 pack remains exact locked regression evidence and cannot re-enter superiority", async () => {
+  const releaseIds = new Set(frozenReleasePlan.partitions.flatMap((partition) => partition.case_ids));
+  const attempt2Ids = new Set(attempt2Manifest.cases.map((item) => item.id));
+  assert.equal(attempt2Manifest.cases.length, 20);
+  assert.equal([...attempt2Ids].some((id) => releaseIds.has(id)), false);
+
+  const expectedPromptFiles = attempt2Manifest.cases.map((item) => item.prompt_file).sort();
+  const actualPromptFiles = (await readdir(join(ATTEMPT2_ROOT, "prompts")))
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => `prompts/${file}`)
+    .sort();
+  assert.deepEqual(actualPromptFiles, expectedPromptFiles);
+  assert.equal((await readdir(ATTEMPT2_ROOT)).sort().join(","), "README.md,judge-instructions.md,judge-schema.json,manifest.json,prompts");
+  assert.match(await readFile(join(ATTEMPT2_ROOT, "README.md"), "utf8"), /spent by the second confirmatory run and failed its release gates/);
+  assert.match(await readFile(join(ATTEMPT2_ROOT, "README.md"), "utf8"), /regression-only/);
+
+  const lockPath = "evals/regression/conversion-context-v1.7.0-confirmatory-attempt2";
+  const expectedLock = releaseLocks.releases.find((item) => item.path === lockPath);
+  assert.ok(expectedLock, "attempt2 archive lock is missing");
+  assert.deepEqual(await computeEvalTreeLock(ROOT, lockPath), expectedLock);
+
+  const sourceFiles = [
+    "judge-instructions.md",
+    "judge-schema.json",
+    "manifest.json",
+    ...attempt2Manifest.cases.map((item) => item.prompt_file),
+  ].sort();
+  assert.equal(sourceFiles.length, 23);
+  for (const relativePath of sourceFiles) {
+    const archived = await readFile(join(ATTEMPT2_ROOT, ...relativePath.split("/")));
+    const { stdout: frozenBlob } = await execFileAsync(
+      "git",
+      ["show", `37a744703df58aca5c92421a0eb41b99e9f54fb1:evals/blind/v1.7.0/${relativePath}`],
+      { cwd: ROOT, encoding: "buffer", maxBuffer: 16 * 1024 * 1024, windowsHide: true },
+    );
+    assert.equal(Buffer.compare(archived, frozenBlob), 0, `${relativePath} differs from its attempt2 freeze blob`);
+  }
 });
