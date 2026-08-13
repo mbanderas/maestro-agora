@@ -241,31 +241,30 @@ Plain language is not simple language. It is precise language with low decoding 
 
 Write for someone who is intelligent, understands their own job, has not read the documentation, does not know the organization's internal vocabulary, will not stop to decode a sentence, and is deciding whether the next line deserves attention. Familiarity with an industry is not familiarity with one organization's terms.
 
-### Test every customer-facing sentence
+### Draft twice and return once
 
-Rewrite any sentence an intended reader could not restate after reading it once. A sentence fails when it:
+Draft the factually complete argument first. Then rewrite the whole draft for literal clarity before any style, compression, voice, or publication pass. Compare the rewrite with the factual draft so every supplied fact, qualifier, relationship, and requested claim survives. Return only the rewrite.
 
-- depends on undefined internal terminology;
-- introduces more than one unfamiliar concept at a time;
-- hides the actor, the action, the object, or the result;
-- uses an abstract noun where a concrete verb would be clearer;
-- describes an internal method instead of what the reader needs to know;
-- compresses several reasoning steps into insider shorthand;
-- sounds like a specification, a compliance memo, or an academic method section when the surface does not call for that register;
-- is technically correct and practically unclear;
-- needs a different paragraph to become understandable;
-- sounds impressive before it communicates anything concrete.
+Do not treat this as optional polish. The first draft may preserve the facts and still fail because it speaks in internal categories. The second pass must change how the reader receives the meaning, not replace a few flagged words.
 
-### Gate specialized terms
+### Run the literal clarity rewrite
 
-Accuracy alone does not license an internal product, operational, analytical, or methodological term. Before using one, confirm all four:
+Rewrite any sentence an intended reader could not restate after reading it once. For every sentence that carries a mechanism, consequence, qualification, or decision, recover:
 
-1. The intended audience already knows it.
-2. It is necessary for accuracy.
-3. Its meaning is clear from the sentence it appears in.
-4. An everyday expression would lose material meaning.
+1. The concrete actor, product, component, person, or source.
+2. The finite action.
+3. The concrete object affected.
+4. The observable result, condition, or change when the claim depends on one.
 
-If any answer is no, replace the term or define it in place. Every term the reader does not already own is either decision-required and taught where it appears, or removed. Treat a sentence carrying two or more reader-unowned terms as a review trigger and not as an automatic error, and treat that count as a governance default rather than a measured limit.
+Apply these checks during the rewrite:
+
+- **Generic referent:** Treat words such as `interface`, `surface`, `system`, `asset`, `signal`, `representation`, `direction`, `property`, `origin`, and `continuity` as review triggers, not banned words. When the reader could reasonably ask which thing the word names, replace it with the concrete referent or identify that referent in the same sentence.
+- **Observable result:** State what a person could see happen. Prefer a named product listing an item, a crawler requesting a page, or a source failing to support a claim over an internal category describing the event.
+- **Specialized term:** Keep a term only when the audience owns it, accuracy requires it, its meaning is clear where it appears, and familiar words would lose material meaning. Otherwise define or remove it. Every term the reader does not own is decision-required and taught in place, or removed.
+- **Metaphor recovery:** If a metaphor carries the mechanism, test, or consequence, replace it with the literal action or result. Keep a metaphor only when the sentence remains clear without decoding it.
+- **Qualification distribution:** Keep every material scope, date, sample, product, market, method, condition, and uncertainty. Distribute them across the shortest clear passage instead of loading them into one sentence.
+- **Noun stack:** When several abstract nouns hide how things relate, convert each needed distinction into an actor and action. Abstract nouns are not banned and must not be counted.
+- **Revision integrity:** Reject a rewrite that swaps one vague noun for another, adds explanatory parentheses, or leaves the reader to recover the same missing relationship. The revised passage must make the actor, action, object, and observable result easier to identify while preserving the facts.
 
 Treat a noun the organization coined as a term the reader has no reason to know. Naming an internal method, stage, score, record type, or framework in customer-facing copy requires the reader to gain something from learning it. Otherwise state what happens and drop the name.
 
@@ -276,24 +275,6 @@ Agora may use `evidence`, `proof`, `verified`, `claim discipline`, `source scope
 Name the concrete result, finding, number, quote, source, report, study, test, project record, observed change, or unknown instead. Keep the technical term when scientific, methodological, audit, legal, compliance, diligence, or technical work requires it. Translate according to the material, not one preferred synonym.
 
 Do not narrate internal source review in customer-facing copy unless the user asks for it. Do not narrow or omit a user-selected claim merely because Agora would prefer more support.
-
-### Prefer actor, action, object, result
-
-Answer these before drafting a sentence: who or what acts, what it does, what it acts on, and what changes for the reader.
-
-Choose the highest-frequency verb the reader already owns that preserves the factual relation and tells them what the action does. Verbs such as check, compare, find, show, verify, measure, review, choose, send, create, remove, correct, approve, reject, schedule, and calculate are a useful house lexicon, not a required set. A specialized verb wins whenever it names the exact action and the reader owns that word.
-
-Rewrite noun-heavy constructions into direct actions. Abstract nouns are not banned and must not be counted. Rewrite an abstraction when it conceals an actor, action, causal relation, or consequence the reader needs, and leave it when it carries cohesion or names an established concept. The check on each abstract noun is whether a specific actor, a finite action, and the object or result can still be recovered, and whether the reader needs them.
-
-Weak:
-
-> Evaluate whether configured operational surfaces produced compliant outcomes for the declared workflow scope.
-
-Strong:
-
-> Check whether each system finished the task you assigned it.
-
-The strong version is longer in words and shorter in effort. That trade is correct.
 
 ### Reject slogans that survive only on tone
 
@@ -387,7 +368,7 @@ After the argument is drafted:
 1. Honor the user's requested claims, framing, tone, and content decisions without adding policy commentary.
 2. For every draft, build a private fact ledger covering the complete response, including headings, labels, fill-in tokens, parentheticals, confirmations, conditional text, and rationale. Match every externally verifiable proposition to an explicit supplied fact, a necessary entailment, or explicit user authorization to invent. Delete or rewrite anything unmatched. When the brief is closed-world, apply the same test to every factual proposition. Plausibility, convention, usefulness, and likely implementation do not count as entailment.
 3. Run claim, evidence, permission, disclosure, or compliance checks only when the user requested that review.
-4. Run the first-read comprehension gate, the delivery-model ownership gate, the rewrite regression gate when rewriting supplied copy, the specialized-term gate, and the CTA gate. These run before any style, compression, or publication pass, and their result outranks all three.
+4. Draft twice and return once. Run the literal clarity rewrite, delivery-model ownership gate, rewrite regression gate when rewriting supplied copy, and CTA gate. These run before any style, compression, voice, or publication pass, and their result outranks all five.
 5. Apply written GEO/AEO only to `INDEXABLE_PUBLIC` work, at passage level rather than sentence level.
 6. Apply technical publication checks only to indexable public work.
 7. Apply the human-voice and AI-writing-tell gate without deleting user-selected claims or diagnostic lists.
@@ -399,7 +380,7 @@ After the argument is drafted:
 13. Make every requested component visibly distinguishable through hierarchy, spacing, or channel-native structure. The worksheet-label ban applies inside ready-to-use copy. Labels remain available outside the copy when the user requests labeled fields, when implementation recommendations need them, or when they are necessary to distinguish requested components.
 14. For conversion compositions, load and apply the surface-specific route, pricing, experiment, proof, and placement contracts in the conversion reference. Verify that visible copy follows any returned placement order, every material qualifier stays attached to the fact it qualifies, conditional steps remain conditional, unknown destinations remain unknown, and proof keeps its supplied form and causal status. Trace the primary-action spine across the flow. Do not let a prerequisite replace the activation event, make an optional post-event action primary, or invent a destination after an unknown transition. Audit every parallel option's primary decision unit for its supported route type, exclusivity, material commitment, and action or destination; an FAQ may reinforce this distinction but cannot supply it first. Audit every checklist or readiness item for a distinct fact-grounded verification, dependency, consequence, or preparation action rather than a generic instruction to review or confirm prior copy. When collection, access, or start order is absent, keep the known terms separate and do not connect them with `after`, `before`, `then`, or `until`. Scale experiment-plan detail to the requested depth without removing the minimum controls needed to interpret the named business outcome. Treat route, term, proof, and qualification completeness as the safety floor; after that floor passes, preserve the strongest supported reader job, task, or operational decision as the argument.
 
-When a sentence fails the comprehension gate, keep the underlying fact, name the concrete actor, action, object, and result, remove internal process language the reader does not need, split the overloaded sentence, restore any context the compression removed, rewrite the call to action to name its real destination, then test again. Do not repair unclear writing by adding explanatory parentheses, longer noun phrases, or a vague supporting sentence.
+When a sentence fails the comprehension gate, rewrite the full sentence or short passage through the literal clarity procedure, compare it with the factual draft, then test it again. Do not patch isolated trigger words or repair unclear writing with explanatory parentheses, longer noun phrases, or a vague supporting sentence.
 
 Keep these passes invisible. Mention a blocker only when a host rule or missing requirement makes the requested result impossible.
 

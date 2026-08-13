@@ -9,6 +9,14 @@ const SKILL_ROOT = join(ROOT, "skills", "agora");
 const skill = await readFile(join(SKILL_ROOT, "SKILL.md"), "utf8");
 const science = await readFile(join(SKILL_ROOT, "references", "agora-science.md"), "utf8");
 
+function extractSection(content, heading) {
+  const start = content.indexOf(`## ${heading}`);
+  assert.notEqual(start, -1, `missing section ${heading}`);
+  const rest = content.slice(start + heading.length + 3);
+  const next = rest.search(/^## /m);
+  return next === -1 ? rest : rest.slice(0, next);
+}
+
 test("SCIENCE is discoverable, progressive, and composable", () => {
   assert.match(skill, /scientific communication, technical explanation, research communication, and science video scripts/);
   assert.match(skill, /\[references\/agora-science\.md\]\(references\/agora-science\.md\)/);
@@ -60,6 +68,19 @@ test("misconception, question-first, analogy, and A-B threading are bounded proc
   assert.match(science, /When the request explicitly requires A\/B threading, make both threads visible/);
   assert.match(science, /prevent the human or experimental thread from disappearing through the technical middle/);
   assert.match(science, /do not.*claim the structure improves retention without direct measurement/is);
+});
+
+test("technical explanation exposes observable events and rendered diagrams require clearance checks", () => {
+  const mechanism = extractSection(science, "Explain mechanisms and technical systems");
+  assert.match(mechanism, /run `The literal clarity rewrite`/);
+  assert.match(mechanism, /State the observable event before its internal classification/);
+  assert.match(mechanism, /names a property without stating what a person could observe/);
+
+  const visuals = extractSection(science, "Use analogies and visuals as bounded models");
+  assert.match(visuals, /Keep labels off lines, shapes, and mixed backgrounds/);
+  assert.match(visuals, /Align text to the actual geometry/);
+  assert.match(visuals, /A color change does not fix overlap/);
+  assert.match(visuals, /require render-based visual inspection/);
 });
 
 test("SCIENCE keeps high-stakes verification inside explicit review mode", () => {
