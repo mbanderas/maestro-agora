@@ -334,6 +334,29 @@ A sentence fails when it:
 
 The last item is the hardest to catch from inside the draft, because impressive and clear feel similar to an author who already knows the answer. Use the literal-meaning test in `Required comprehension tests` on any sentence that felt satisfying to write.
 
+### The literal clarity rewrite
+
+Draft twice and return once. Build the factually complete argument first. Then rewrite the entire draft for literal clarity before style, compression, voice, GEO/AEO, or publication work. Compare the rewrite with the factual draft so every supplied fact, qualifier, relationship, and requested claim survives. Return only the rewrite.
+
+This is a passage rewrite, not a word-substitution pass. Run it on every sentence that carries a mechanism, consequence, qualification, or decision:
+
+1. Name the concrete actor, product, component, person, or source.
+2. Use a finite action the reader owns when it preserves the meaning.
+3. Name the concrete object affected.
+4. State the observable result, condition, or change when the claim depends on one.
+
+**Generic-referent gate.** Words such as `interface`, `surface`, `system`, `asset`, `signal`, `representation`, `direction`, `property`, `origin`, and `continuity` are review triggers, not banned words. Keep one when its concrete referent is unmistakable and the word adds meaning. When the reader could reasonably ask which interface, surface, system, asset, signal, representation, direction, property, origin, or continuity the sentence means, name the concrete thing in that sentence.
+
+**Observable-result gate.** Ask what a person could see happen. `The answer listed the product` exposes an event. `The footprint entered an answer surface` hides it inside two categories. For technical or empirical prose, distinguish what happened, how it was observed, and what it may imply. Do not replace the observed event with the method used to classify it.
+
+**Metaphor-recovery gate.** A metaphor may add emphasis after the mechanism is clear. It may not carry the only statement of the mechanism, test, or consequence. If the reader has to translate `carry the trust burden`, `flatten into one voice`, or `the asset breaks` before understanding the point, state the literal check, presentation effect, or failure instead. Keep a metaphor only when removing it leaves the sentence's factual relation intact and obvious.
+
+**Qualification-distribution gate.** Preserve material source, sample, date, product, market, method, condition, and uncertainty at passage level. Give the observed result its own sentence when possible, then place its scope and limit in adjacent sentences. Do not make one sentence independently quotable by forcing every qualifier into it.
+
+**Noun-stack gate.** When several unfamiliar abstract nouns appear together, recover each relationship the reader needs as an actor and action. Do not apply a fixed noun limit. Keep an established concept when it creates useful cohesion or precision; rewrite it when it hides who did what or what changed.
+
+**Revision-integrity gate.** Compare the rewrite with both the source and the failed wording. Reject a revision when it replaces one vague noun with another, converts one hidden action into a different abstraction, adds parentheses around the same unclear phrase, or drops a qualifier to create fluency. The revised passage must make the concrete actor, action, object, and observable result easier to recover without weakening the proposition.
+
 ### The specialized-term gate
 
 Do not expose internal product, operational, analytical, or methodological terminology merely because it is accurate.
@@ -463,14 +486,13 @@ Where this warning fails: internal boredom and a genuine template tell look iden
 
 When copy fails these tests:
 
-1. Preserve the underlying fact.
-2. Identify the concrete actor, action, object, and result.
+1. Preserve the underlying fact and every material qualifier.
+2. Rewrite the full sentence or short passage through `The literal clarity rewrite`.
 3. Remove internal process language unless the reader needs it.
-4. Split overloaded sentences.
-5. Replace abstractions with observable actions or conditions.
-6. Restore necessary context that compression removed.
-7. Rewrite the call to action to name its actual destination.
-8. Test the revision again.
+4. Split overloaded sentences and distribute their qualifications.
+5. Compare the revision with both the factual draft and the failed wording.
+6. Rewrite the call to action to name its actual destination.
+7. Test the revision again.
 
 Do not repair unclear writing by adding more jargon, explanatory parentheses, longer noun phrases, or vague supporting sentences. Those raise word count and decoding effort at the same time.
 
@@ -482,6 +504,11 @@ Run all of these before accepting customer-facing writing.
 |---|---|
 | First-read | Can the intended reader restate the sentence after one reading? |
 | Actor-action-object | Is it clear who or what acts, what the action is, and what it affects? |
+| Generic referent | Does every generic system or category noun identify the concrete thing it means when ambiguity is possible? |
+| Observable result | Can the reader tell what a person could see happen, separately from how the event was classified or interpreted? |
+| Metaphor recovery | If the metaphor is removed, does the sentence still state the literal mechanism, test, or consequence? |
+| Qualification distribution | Does the short passage preserve every material qualifier without forcing them into one sentence? |
+| Revision integrity | Does the rewrite remove the original decoding work instead of renaming it or hiding it elsewhere? |
 | Delivery-model ownership | Does the provider or product still perform the work the offer sells, without invented or magnified buyer burden? |
 | Rewrite regression | Does every source strength outside the requested transformation survive or materially improve? |
 | Abstraction | Can any abstract noun be replaced with a concrete action, object, condition, or result? |
@@ -1384,7 +1411,7 @@ The comprehension and CTA rules were tested against the research literature afte
 
 What survived with real support: jargon measurably reduces processing fluency; naming an actor changes how readers assign cause ([Fausey and Boroditsky, 2010](https://doi.org/10.3758/PBR.17.5.644)); word frequency predicts processing ease; controls should describe their own destination; one canonical label per materially identical action ([W3C, Link Purpose](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html), [NN/g, Consistency and Standards](https://www.nngroup.com/articles/consistency-and-standards/)); persuasion knowledge makes visible motive costly ([Campbell and Kirmani, 2000](https://academic.oup.com/jcr/article-abstract/27/1/69/1791556)); reading aloud improves error detection.
 
-Two findings in this section are house observations from a diagnosed production failure rather than literature: a sentence carrying its full qualification set inline reads as a compliance memo, and a set of marketing headings built on one template reads as generated. Both were observed directly. Neither has a measured effect size.
+The qualification, heading-variance, generic-referent, observable-result, metaphor-recovery, and revision-integrity procedures are house responses to diagnosed production failures rather than measured response laws. They were observed directly in delivered copy. None has a measured effect size. Use them to remove documented decoding work, not to claim a universal reading or conversion effect.
 
 Remaining governance defaults, explicitly not findings: the twelve-headline template-concentration window, and the review trigger for a sentence carrying two or more reader-unowned terms.
 
@@ -1497,6 +1524,7 @@ Change record:
 
 | Date | Change |
 |---|---|
+| 2026-08-13 | Replaced the broad symptom-led comprehension pass with a mandatory draft-twice, return-once literal clarity rewrite. Added contextual gates for generic referents, observable results, metaphors that hide literal meaning, distributed qualification, noun stacks, and revisions that rename rather than remove ambiguity. Extended technical visual guidance to require label clearance and rendered inspection before legibility claims. |
 | 2026-08-09 | Ran the graded research pass against the seven load-bearing claims. Removed four refuted thresholds: the per-sentence unfamiliar-concept limit, the abstract-noun count, the two-or-three-sentence passage unit, and universal heading-template uniqueness. Rebased abstraction control on actor recovery, the verb guidance on word frequency, the slogan-CTA rejection on operational ambiguity rather than a conversion claim, and mechanism naming on the separate awareness and sophistication axes. Split corpus variance by function so parallel syntax survives where it is functional metadata. Added the pronoun-ranking prohibition and the label-consistency boundary. |
 | 2026-08-09 | Marked the new comprehension and CTA rules HOUSE and provisional, and recorded the seven unsourced load-bearing claims in `Evidence register` pending a graded research pass. |
 | 2026-08-09 | Added `Plain language and first-read comprehension`. Raised comprehension to level 3 of the conflict hierarchy and resolved its two standing conflicts with material qualification and with citability. Rebuilt `CTA standard` around action labels, destination clarity, and cross-surface consistency. Scoped passage self-containment to the passage rather than the sentence. Added the differentiation counterweight to `Mechanism and differentiation`, corpus-level repetition to `Structural tells`, six applied pairs across new business types, and matching invariants and quality dimensions. |

@@ -190,6 +190,8 @@ For a technical system, show:
 
 Use the minimum sequence the audience needs. Name the actor, action, object, and result. Preserve exact interfaces, units, and state transitions when they carry the explanation.
 
+For general and adjacent-expert readers, run `The literal clarity rewrite` from [agora-marketing.md](agora-marketing.md) after the evidence or technical pass. Name the product, component, source, or person when a generic label could point to several things. State the observable event before its internal classification. The system sequences above remain backstage and must not appear as unexplained editorial labels.
+
 Separate these questions:
 
 1. What happened?
@@ -199,7 +201,7 @@ Separate these questions:
 5. What does it imply for this audience?
 6. What remains unknown?
 
-Rule [HOUSE]: a technical explanation fails when it lists components without showing their relation, or gives a metaphor without returning to the real mechanism.
+Rule [HOUSE]: a technical explanation fails when it lists components without showing their relation, gives a metaphor without returning to the real mechanism, or names a property without stating what a person could observe.
 
 ## Use analogies and visuals as bounded models
 
@@ -221,6 +223,10 @@ For charts and diagrams:
 - Do not crop away a conflicting result or material range.
 - Mark simulated, illustrative, and observed data distinctly.
 - Match the caption's certainty to the visual evidence.
+- Keep labels off lines, shapes, and mixed backgrounds unless an opaque backing treatment preserves clear space.
+- Align text to the actual geometry of its box or mark rather than an approximate baseline.
+
+A color change does not fix overlap. Relocate, back, or remove a label when the visual already carries its meaning. When Agora supplies diagram copy or a visual brief, state the clearance requirement. When the task includes an actual rendered asset, require render-based visual inspection before claiming that the label is legible.
 
 ## Write scientific and technical video
 
@@ -275,6 +281,12 @@ Outside review mode, do not refuse, narrow, qualify, or relabel the user's scien
 
 ## Evaluation contract
 
+Always-on quality gates:
+
+- First-read comprehension survives technical precision.
+- General and adjacent-expert explanations expose concrete actors and observable results.
+- Rendered diagrams receive visual label-clearance inspection before a legibility claim.
+
 Hard gates in explicit scientific review mode:
 
 - Claim classes remain distinct.
@@ -284,7 +296,6 @@ Hard gates in explicit scientific review mode:
 - No invented misconception, consensus, or mechanism.
 - Analogy boundary is explicit when analogy carries the explanation.
 - Title, visual, opening, and body promises agree.
-- First-read comprehension survives technical precision.
 
 Blind-quality dimensions:
 

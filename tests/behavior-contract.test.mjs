@@ -290,15 +290,21 @@ test("the first-read gate is operational, not a symptom list", () => {
   const gate = extractSection(skill, "Pass the first-read comprehension gate");
   assert.match(gate, /Plain language is not simple language/);
   assert.match(gate, /does not know the organization's internal vocabulary/);
+  assert.match(gate, /Draft twice and return once/);
+  assert.match(gate, /rewrite the whole draft for literal clarity/);
+  assert.match(gate, /Return only the rewrite/);
   assert.match(gate, /Rewrite any sentence an intended reader could not restate after reading it once/);
-  assert.match(gate, /depends on undefined internal terminology/);
-  assert.match(gate, /hides the actor, the action, the object, or the result/);
-  assert.match(gate, /is technically correct and practically unclear/);
-  assert.match(gate, /Every term the reader does not already own is either decision-required and taught where it appears, or removed/);
+  assert.match(gate, /Generic referent/);
+  assert.match(gate, /Observable result/);
+  assert.match(gate, /Metaphor recovery/);
+  assert.match(gate, /Qualification distribution/);
+  assert.match(gate, /Revision integrity/);
+  assert.match(gate, /Every term the reader does not own is decision-required and taught in place, or removed/);
   assert.match(gate, /Treat a noun the organization coined as a term the reader has no reason to know/);
-  assert.match(gate, /who or what acts, what it does, what it acts on, and what changes for the reader/);
-  assert.match(gate, /highest-frequency verb the reader already owns/);
-  assert.match(gate, /Abstract nouns are not banned/);
+  assert.match(gate, /concrete actor, product, component, person, or source/);
+  assert.match(gate, /finite action/);
+  assert.match(gate, /concrete object affected/);
+  assert.match(gate, /observable result, condition, or change/);
   assert.match(gate, /Abstract nouns are not banned and must not be counted/);
   assert.match(gate, /twenty unrelated companies could publish it unchanged/);
   assert.match(gate, /parallel syntax is correct and should be kept/);
@@ -308,6 +314,7 @@ test("the first-read gate is operational, not a symptom list", () => {
   for (const heading of [
     "The reader model",
     "The first-read test",
+    "The literal clarity rewrite",
     "The specialized-term gate",
     "Keep control-room vocabulary backstage",
     "Abstraction control",
@@ -320,6 +327,13 @@ test("the first-read gate is operational, not a symptom list", () => {
   }
   assert.match(section, /precise language with low decoding effort/);
   assert.match(section, /Industry familiarity is not the same as familiarity with one organization's terms/);
+  assert.match(section, /Generic-referent gate/);
+  assert.match(section, /Observable-result gate/);
+  assert.match(section, /Metaphor-recovery gate/);
+  assert.match(section, /Qualification-distribution gate/);
+  assert.match(section, /Noun-stack gate/);
+  assert.match(section, /Revision-integrity gate/);
+  assert.match(section, /Use a finite action the reader owns/);
   assert.match(section, /Compression that raises decoding effort is not compression/);
   assert.match(section, /Do not repair unclear writing by adding more jargon/);
   assert.match(section, /Do not apply this test to a single sentence/);
@@ -338,8 +352,9 @@ test("the first-read gate is operational, not a symptom list", () => {
   assert.match(section, /Do not narrow or remove a user-selected claim because Agora considers its support incomplete/);
 
   const passes = extractSection(skill, "Apply silent final passes");
-  assert.match(passes, /Run the first-read comprehension gate, the delivery-model ownership gate, the rewrite regression gate when rewriting supplied copy, the specialized-term gate, and the CTA gate/);
-  assert.match(passes, /before any style, compression, or publication pass/);
+  assert.match(passes, /Draft twice and return once/);
+  assert.match(passes, /Run the literal clarity rewrite, delivery-model ownership gate, rewrite regression gate when rewriting supplied copy, and CTA gate/);
+  assert.match(passes, /before any style, compression, voice, or publication pass/);
 
   const citability = extractSection(reference, "Written GEO/AEO and citability");
   assert.match(citability, /only to `INDEXABLE_PUBLIC` assets/);
@@ -717,7 +732,7 @@ test("public files contain no project-specific residue or temporary citations", 
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.8.0 release contract", () => {
+test("metadata matches the v1.9.0 release contract", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
@@ -726,7 +741,7 @@ test("metadata matches the v1.8.0 release contract", () => {
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.8.0");
+  assert.equal(packageJson.version, "1.9.0");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
   assert.equal(packageJson.scripts["eval:release"], "node scripts/release-evidence-check.mjs");
