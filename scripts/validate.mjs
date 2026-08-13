@@ -522,7 +522,7 @@ async function main() {
     readFile(join(ROOT, ".github", "workflows", "publish.yml"), "utf8"),
   ]);
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.8.0", "package version must be 1.8.0");
+  check(packageJson.version === "1.9.0", "package version must be 1.9.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.bin?.["agora-voice"] === "scripts/voice-measure.mjs", "package must expose the agora-voice bin");
   check(packageJson.bin?.["agora-publication-audit"] === "skills/agora/scripts/publication-audit.mjs", "package must expose the publication audit bin");

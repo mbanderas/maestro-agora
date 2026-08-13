@@ -1,6 +1,6 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Install Maestro: Agora for persuasive writing, technical explanation, case studies, investment communication, and publication artifact review.",
   "type": "module",
   "bin": {
