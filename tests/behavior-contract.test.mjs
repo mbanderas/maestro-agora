@@ -730,7 +730,10 @@ test("metadata matches the v1.8.0 release contract", () => {
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
   assert.equal(packageJson.scripts["eval:release"], "node scripts/release-evidence-check.mjs");
-  assert.equal(packageJson.scripts["release:check"], "npm run check && npm run eval:release");
+  assert.equal(packageJson.scripts["release:check"], "npm run check");
+  assert.equal(packageJson.scripts.prepack, "npm run release:check");
+  assert.equal(packageJson.scripts.prepublishOnly, "npm run release:check");
+  assert.doesNotMatch(packageJson.scripts["release:check"], /eval:release/);
   assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
   assert.match(gitAttributes, /^\*\.png binary$/m);
   assert.doesNotMatch(skill, /\r\n/);

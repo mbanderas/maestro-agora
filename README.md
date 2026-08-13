@@ -370,7 +370,9 @@ Research informed Agora, but research custody is separate from distribution.
 
 The public repository and npm package must not contain raw or corrected transcripts, caption files, supplied PDFs or office documents, audio, video, private source identities, model-output scratch, research working files, local paths, or assigned secrets.
 
-`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` adds the fail-closed behavioral evidence verifier. `npm pack` and `npm publish` run that complete release gate through `prepack` and `prepublishOnly`.
+`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` is the proportional mandatory release gate and runs those same checks. `npm pack` and `npm publish` invoke it through `prepack` and `prepublishOnly`.
+
+Behavioral evaluation is optional research, not a pack or publish blocker. `npm run eval:release` preserves the version-specific v1.7 evidence audit and must be run from a matching v1.7 checkout. Existing evaluation artifacts remain frozen for reproducibility; new blind or confirmatory generations are not required for later releases.
 
 The versioned directories under `evals/blind/` are public pairwise-release artifacts, not permanently secret holdouts. `v1.2.0`, `v1.4.0`, `v1.5.0`, and `v1.7.0` are frozen by exact tree hashes in `evals/releases/locks.json`; validation fails on additions, deletions, or edits.
 
@@ -388,14 +390,14 @@ npm pack --dry-run --json
 npx -y @maestroagora/agora --dry-run
 ```
 
-The release gate checks skill structure, routing contracts, user-authority boundaries, modifiers, typography, metadata, reference links, full-tree installer parity, exact npm contents, frozen evaluation-tree locks, and public-tree hygiene.
+The mandatory release gate checks skill structure, routing contracts, user-authority boundaries, modifiers, typography, metadata, reference links, full-tree installer parity, exact npm contents, frozen evaluation-tree locks, public-tree hygiene, and deterministic tests. It does not require model generation or blind adjudication.
 
 ## Change record
 
 | Version | What changed |
 |---|---|
 | 1.8.0 | Adds opt-in publication privacy and provenance review plus a packaged read-only audit CLI. Reports configured hidden Unicode, document and image metadata, Office review material, and C2PA carrier or validation signals without changing source files. Redacts sensitive values and paths by default, preserves unknown coverage, and makes no watermark-removal or authorship claim. |
-| 1.7.0 | Adds a progressively loaded conversion-context reference with bounded conversion priors, downstream outcome matching, self-serve and enterprise route design, pricing decision contracts, proof placement, contradiction handling, and fail-closed behavioral release evidence. Tightens closed-world fact preservation and limits written GEO/AEO requirements to indexable public work. |
+| 1.7.0 | Adds a progressively loaded conversion-context reference with bounded conversion priors, downstream outcome matching, self-serve and enterprise route design, pricing decision contracts, proof placement, contradiction handling, and versioned behavioral evaluation tooling. Tightens closed-world fact preservation and limits written GEO/AEO requirements to indexable public work. |
 | 1.6.0 | Expands user control across every writing mode. User-selected claims, fiction, urgency, attribution, profile use, and publication choices now control the draft. Claim, evidence, permission, disclosure, confidentiality, diligence, and compliance review are opt-in. Adds a user-responsibility disclaimer and an accurate privacy notice. |
 | 1.5.0 | Hardens `INVEST` across fundraising, diligence, and capital allocation. Adds an investment claim ledger, metric separations, asset-specific procedures, decision-led questions, objection handling, defensibility analysis, truthful urgency and commitment language, modifier composition, and current-verification boundaries. Separates real projects from fictional mock and concept-portfolio routes, and permits clearly disclosed invention for mock and hypothetical articles. Adds a customer-language boundary that keeps internal checking terms out of ordinary public copy while preserving them where scientific, methodological, audit, legal, compliance, diligence, or technical work needs them. Expands the blind corpus from 60 to 86 cases. Adds a mandatory public-tree and package hygiene gate that blocks research, transcripts, supplied private documents, raw model outputs, local paths, secrets, unexpected binaries, and private source identities. |
 | 1.4.0 | Adds stronger hero and short-form sales composition plus the composable `SCIENCE` and `CASE_STUDY` capabilities. Heroes now separate truth gates from persuasive optimization and treat the complete first-screen composition as one argument. Scientific and technical work preserves claim class, causality, statistics, uncertainty, analogy limits, and source limits. Case studies add result classes, causality, permissions, confidentiality, role attribution, quote, typicality, and visual-support gates. The blind corpus contains 60 cases. |

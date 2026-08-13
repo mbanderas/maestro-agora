@@ -539,11 +539,16 @@ async function main() {
   );
   check(
     packageJson.scripts?.["eval:release"] === "node scripts/release-evidence-check.mjs",
-    "eval:release must verify v1.7 release evidence",
+    "eval:release must preserve the optional v1.7 evidence audit",
   );
   check(
-    packageJson.scripts?.["release:check"] === "npm run check && npm run eval:release",
-    "release:check must fail closed on v1.7 release evidence",
+    packageJson.scripts?.["release:check"] === "npm run check",
+    "release:check must use the proportional deterministic gate",
+  );
+  check(
+    packageJson.scripts?.prepack === "npm run release:check"
+      && packageJson.scripts?.prepublishOnly === "npm run release:check",
+    "pack and publish must run the proportional release gate",
   );
   check(
     /actions\/checkout@[\s\S]{0,160}fetch-depth:\s*0/.test(validateWorkflow),
