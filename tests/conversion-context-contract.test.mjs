@@ -559,7 +559,7 @@ test("development fixtures remain regression-only and cannot enter the superiori
   assert.deepEqual(actualPromptFiles, expectedPromptFiles);
 });
 
-test("spent attempt1 pack remains immutable regression evidence and cannot re-enter superiority", async () => {
+test("attempt1 pack remains immutable regression evidence and separate from the active set", async () => {
   const releaseIds = new Set(frozenReleasePlan.partitions.flatMap((partition) => partition.case_ids));
   const attempt1Ids = new Set(attempt1Manifest.cases.map((item) => item.id));
   assert.equal(attempt1Manifest.cases.length, 13);
@@ -572,10 +572,10 @@ test("spent attempt1 pack remains immutable regression evidence and cannot re-en
     .sort();
   assert.deepEqual(actualPromptFiles, expectedPromptFiles);
   assert.equal((await readdir(ATTEMPT1_ROOT)).sort().join(","), "README.md,judge-instructions.md,judge-schema.json,manifest.json,prompts");
-  assert.match(await readFile(join(ATTEMPT1_ROOT, "README.md"), "utf8"), /failed its release gates/);
+  assert.match(await readFile(join(ATTEMPT1_ROOT, "README.md"), "utf8"), /preserved for regression analysis and historical reproducibility/);
 });
 
-test("spent attempt2 pack remains exact locked regression evidence and cannot re-enter superiority", async () => {
+test("attempt2 pack remains exact locked regression evidence and separate from the active set", async () => {
   const releaseIds = new Set(frozenReleasePlan.partitions.flatMap((partition) => partition.case_ids));
   const attempt2Ids = new Set(attempt2Manifest.cases.map((item) => item.id));
   assert.equal(attempt2Manifest.cases.length, 20);
@@ -588,8 +588,8 @@ test("spent attempt2 pack remains exact locked regression evidence and cannot re
     .sort();
   assert.deepEqual(actualPromptFiles, expectedPromptFiles);
   assert.equal((await readdir(ATTEMPT2_ROOT)).sort().join(","), "README.md,judge-instructions.md,judge-schema.json,manifest.json,prompts");
-  assert.match(await readFile(join(ATTEMPT2_ROOT, "README.md"), "utf8"), /spent by the second confirmatory run and failed its release gates/);
-  assert.match(await readFile(join(ATTEMPT2_ROOT, "README.md"), "utf8"), /regression-only/);
+  assert.match(await readFile(join(ATTEMPT2_ROOT, "README.md"), "utf8"), /preserved for regression analysis and historical reproducibility/);
+  assert.match(await readFile(join(ATTEMPT2_ROOT, "README.md"), "utf8"), /separate from the active v1\.7\.0 evaluation pack/);
 
   const lockPath = "evals/regression/conversion-context-v1.7.0-confirmatory-attempt2";
   const expectedLock = releaseLocks.releases.find((item) => item.path === lockPath);

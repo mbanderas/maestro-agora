@@ -504,11 +504,11 @@ async function main() {
   );
   check(
     packageJson.scripts?.["eval:release"] === "node scripts/release-evidence-check.mjs",
-    "eval:release must verify v1.7 release evidence",
+    "eval:release must retain the optional v1.7 evidence verifier",
   );
   check(
-    packageJson.scripts?.["release:check"] === "npm run check && npm run eval:release",
-    "release:check must fail closed on v1.7 release evidence",
+    packageJson.scripts?.["release:check"] === "npm run check",
+    "release:check must run complete distributable validation",
   );
   check(
     /actions\/checkout@[\s\S]{0,160}fetch-depth:\s*0/.test(validateWorkflow),

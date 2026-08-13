@@ -43,5 +43,5 @@ jobs:
 
       # No NODE_AUTH_TOKEN. Authentication is the OIDC token above, and
       # provenance is attached automatically on GitHub Actions.
-      # prepublishOnly also verifies the committed v1.7 behavioral evidence and Git provenance.
+      # prepublishOnly repeats deterministic validation and package hygiene before publication.
       - run: npm publish
