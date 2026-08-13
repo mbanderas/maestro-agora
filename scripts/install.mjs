@@ -248,11 +248,14 @@ async function verifySource() {
     "SKILL.md",
     "agents/openai.yaml",
     "references/agora-case-studies.md",
+    "references/agora-conversion.md",
     "references/agora-craft.md",
     "references/agora-invest.md",
     "references/agora-marketing.md",
+    "references/agora-publication.md",
     "references/agora-science.md",
     "references/agora-voice.md",
+    "scripts/publication-audit.mjs",
   ];
   for (const file of required) {
     if (!(await exists(join(SOURCE_DIR, file)))) {

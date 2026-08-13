@@ -18,8 +18,10 @@ const REQUIRED_SKILL_FILES = [
   "references/agora-craft.md",
   "references/agora-invest.md",
   "references/agora-marketing.md",
+  "references/agora-publication.md",
   "references/agora-science.md",
   "references/agora-voice.md",
+  "scripts/publication-audit.mjs",
 ].sort((a, b) => a.localeCompare(b));
 const errors = [];
 
@@ -130,9 +132,10 @@ async function main() {
   const investPath = join(SKILL_ROOT, "references", "agora-invest.md");
   const sciencePath = join(SKILL_ROOT, "references", "agora-science.md");
   const caseStudyPath = join(SKILL_ROOT, "references", "agora-case-studies.md");
+  const publicationPath = join(SKILL_ROOT, "references", "agora-publication.md");
   const voicePath = join(SKILL_ROOT, "references", "agora-voice.md");
   const openaiPath = join(SKILL_ROOT, "agents", "openai.yaml");
-  const [skill, reference, conversion, craft, invest, science, caseStudy, voice, openaiYaml] = await Promise.all([
+  const [skill, reference, conversion, craft, invest, science, caseStudy, publication, voice, openaiYaml] = await Promise.all([
     readFile(skillPath, "utf8"),
     readFile(referencePath, "utf8"),
     readFile(conversionPath, "utf8"),
@@ -140,6 +143,7 @@ async function main() {
     readFile(investPath, "utf8"),
     readFile(sciencePath, "utf8"),
     readFile(caseStudyPath, "utf8"),
+    readFile(publicationPath, "utf8"),
     readFile(voicePath, "utf8"),
     readFile(openaiPath, "utf8"),
   ]);
@@ -152,6 +156,7 @@ async function main() {
     ["skills/agora/references/agora-invest.md", invest],
     ["skills/agora/references/agora-science.md", science],
     ["skills/agora/references/agora-case-studies.md", caseStudy],
+    ["skills/agora/references/agora-publication.md", publication],
     ["skills/agora/references/agora-voice.md", voice],
     ["skills/agora/agents/openai.yaml", openaiYaml],
   ]) {
@@ -170,17 +175,16 @@ async function main() {
     const description = frontmatter.get("description") || "";
     for (const trigger of [
       "Write, rewrite, shorten, critique, or plan",
-      "marketing and sales copy",
-      "fundraising, investor outreach, pitch decks, investment memos, diligence, capital allocation",
+      "marketing, sales, investment, scientific, technical, editorial, case-study, interface, and spoken content",
+      "fundraising, investor outreach, pitch decks, investment memos, diligence, and capital allocation",
       "CTAs and microcopy",
-      "landing, product, and comparison pages",
+      "landing, product, comparison, onboarding, upgrade, and paywall screens",
       "email and direct outreach",
-      "mobile onboarding, upgrade, and paywall screens",
       "ads and social posts",
-      "editorial or educational content",
       "scientific communication, technical explanation, research communication, and science video scripts",
       "customer success, creative portfolio, and technical implementation case studies",
-      "spoken audio/video scripts plus written derivatives",
+      "titles, descriptions, transcripts, captions, show notes, and companion pages",
+      "inspect local publication artifacts for privacy metadata, hidden Unicode, or provenance",
     ]) {
       check(description.includes(trigger), `SKILL.md description lost trigger breadth: ${trigger}`);
     }
@@ -201,6 +205,10 @@ async function main() {
     "[references/agora-case-studies.md](references/agora-case-studies.md)",
     "[references/agora-invest.md](references/agora-invest.md)",
     "[references/agora-conversion.md](references/agora-conversion.md)",
+    "[references/agora-publication.md](references/agora-publication.md)",
+    "Inspect publication artifacts only on request",
+    "Use the shipped `scripts/publication-audit.mjs` for deterministic inspection",
+    "Never improvise a cleaner, strip Unicode by category, remove metadata, rewrite text to evade detection",
     "Load the authority progressively",
     "`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs",
     "Select persuasion treatment internally",
@@ -477,11 +485,33 @@ async function main() {
     check(voice.includes(required), `voice reference is missing: ${required}`);
   }
 
+  for (const required of [
+    "## Purpose and boundary",
+    "## Trigger and non-trigger rules",
+    "## Run the audit",
+    "## Interpret the report",
+    "## Format coverage",
+    "## Unicode review",
+    "## Metadata and privacy review",
+    "## Provenance review",
+    "## Publication decision",
+    "`FOUND`",
+    "`NOT_FOUND_BY_THIS_CHECK`",
+    "`UNKNOWN`",
+    "`ERROR`",
+    "Never describe this audit as a watermark remover",
+    "Do not run it against ordinary chat text",
+    "remote-manifest fetching",
+    "never writes to a source file",
+  ]) {
+    check(publication.includes(required), `publication reference is missing: ${required}`);
+  }
+
   check(/^interface:\r?$/m.test(openaiYaml), "agents/openai.yaml must define interface");
   check(openaiYaml.includes('display_name: "Maestro: Agora"'), "agents/openai.yaml has the wrong display name");
-  check(openaiYaml.includes('short_description: "Persuasion, science, cases, and capital"'), "agents/openai.yaml has the wrong short description");
+  check(openaiYaml.includes('short_description: "Writing and publication artifact review"'), "agents/openai.yaml has the wrong short description");
   check(
-    openaiYaml.includes('default_prompt: "Use $agora to write clear persuasion, technical explanations, compelling case studies, and investment communication from my brief and content choices."'),
+    openaiYaml.includes('default_prompt: "Use $agora to write from my brief or inspect a local publication artifact for privacy metadata and provenance."'),
     "agents/openai.yaml has the wrong default prompt",
   );
 
@@ -492,9 +522,10 @@ async function main() {
     readFile(join(ROOT, ".github", "workflows", "publish.yml"), "utf8"),
   ]);
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.7.0", "package version must be 1.7.0");
+  check(packageJson.version === "1.8.0", "package version must be 1.8.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.bin?.["agora-voice"] === "scripts/voice-measure.mjs", "package must expose the agora-voice bin");
+  check(packageJson.bin?.["agora-publication-audit"] === "skills/agora/scripts/publication-audit.mjs", "package must expose the publication audit bin");
   for (const shipped of ["scripts/voice-measure.mjs", "scripts/voice"]) {
     check(packageJson.files?.includes(shipped), `package files must ship ${shipped}`);
   }
@@ -503,12 +534,21 @@ async function main() {
     "npm test must run the voice measurement suite",
   );
   check(
+    (packageJson.scripts?.test || "").includes("tests/publication-audit.test.mjs"),
+    "npm test must run the publication audit suite",
+  );
+  check(
     packageJson.scripts?.["eval:release"] === "node scripts/release-evidence-check.mjs",
-    "eval:release must retain the optional v1.7 evidence verifier",
+    "eval:release must preserve the optional v1.7 evidence audit",
   );
   check(
     packageJson.scripts?.["release:check"] === "npm run check",
-    "release:check must run complete distributable validation",
+    "release:check must use the proportional deterministic gate",
+  );
+  check(
+    packageJson.scripts?.prepack === "npm run release:check"
+      && packageJson.scripts?.prepublishOnly === "npm run release:check",
+    "pack and publish must run the proportional release gate",
   );
   check(
     /actions\/checkout@[\s\S]{0,160}fetch-depth:\s*0/.test(validateWorkflow),
@@ -540,10 +580,10 @@ async function main() {
   check(codexPlugin.name === "maestro-agora", "Codex plugin ID must be maestro-agora");
   check(codexPlugin.version === packageJson.version, "Codex plugin version must match package");
   check(codexPlugin.skills === "./skills/", "Codex plugin must expose skills");
-  check(codexPlugin.interface?.shortDescription === "Persuasion, science, cases, and capital", "Codex short description is stale");
+  check(codexPlugin.interface?.shortDescription === "Writing and publication artifact review", "Codex short description is stale");
   check(
     Array.isArray(codexPlugin.interface?.defaultPrompt) &&
-      codexPlugin.interface.defaultPrompt.length === 4 &&
+      codexPlugin.interface.defaultPrompt.length === 5 &&
       codexPlugin.interface.defaultPrompt.every((prompt) => prompt.startsWith("/agora ") && prompt.length <= 128),
     "Codex default prompts must activate /agora and fit the client limit",
   );
@@ -604,9 +644,11 @@ async function main() {
     "skills/agora/references/agora-conversion.md",
     "skills/agora/references/agora-craft.md",
     "skills/agora/references/agora-invest.md",
+    "skills/agora/references/agora-publication.md",
     "skills/agora/references/agora-science.md",
     "skills/agora/references/agora-case-studies.md",
     "skills/agora/references/agora-voice.md",
+    "skills/agora/scripts/publication-audit.mjs",
   ]) {
     const content = await readFile(join(ROOT, file), "utf8");
     check(!/[\u2014\u2018\u2019\u201c\u201d]/.test(content), `${file} contains banned typography`);

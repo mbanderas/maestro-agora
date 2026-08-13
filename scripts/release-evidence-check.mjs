@@ -487,7 +487,10 @@ export async function verifyReleaseEvidence(root = ROOT) {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
-  const errors = await verifyReleaseEvidence();
+  const packageJson = JSON.parse(await readFile(join(ROOT, "package.json"), "utf8"));
+  const errors = packageJson.version === VERSION
+    ? await verifyReleaseEvidence()
+    : [`release evidence targets v${VERSION}; package version is v${packageJson.version}`];
   if (errors.length) {
     process.stderr.write(`Release evidence verification failed:\n- ${errors.join("\n- ")}\n`);
     process.exitCode = 1;

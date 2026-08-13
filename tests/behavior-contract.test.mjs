@@ -14,6 +14,7 @@ const VOICE_PATH = join(SKILL_ROOT, "references", "agora-voice.md");
 const SCIENCE_PATH = join(SKILL_ROOT, "references", "agora-science.md");
 const CASE_STUDY_PATH = join(SKILL_ROOT, "references", "agora-case-studies.md");
 const INVEST_PATH = join(SKILL_ROOT, "references", "agora-invest.md");
+const PUBLICATION_PATH = join(SKILL_ROOT, "references", "agora-publication.md");
 const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
 const CODEX_PLUGIN_PATH = join(ROOT, ".codex-plugin", "plugin.json");
 const CLAUDE_PLUGIN_PATH = join(ROOT, ".claude-plugin", "plugin.json");
@@ -26,7 +27,7 @@ const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.5.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, conversion, craft, voice, science, caseStudies, invest, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
+const [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
@@ -36,6 +37,7 @@ const [skill, reference, conversion, craft, voice, science, caseStudies, invest,
     readFile(SCIENCE_PATH, "utf8"),
     readFile(CASE_STUDY_PATH, "utf8"),
     readFile(INVEST_PATH, "utf8"),
+    readFile(PUBLICATION_PATH, "utf8"),
     readFile(OPENAI_PATH, "utf8"),
     readFile(CODEX_PLUGIN_PATH, "utf8").then(JSON.parse),
     readFile(CLAUDE_PLUGIN_PATH, "utf8").then(JSON.parse),
@@ -90,6 +92,30 @@ test("skill frontmatter and direct activation remain portable", () => {
   assert.match(skill, /Treat `\/agora` as explicit activation/);
   assert.match(skill, /\[references\/agora-marketing\.md\]\(references\/agora-marketing\.md\)/);
   assert.ok(skill.split(/\r?\n/).length < 500, "SKILL.md must stay under 500 lines");
+});
+
+test("publication audit is explicit, read only, and separate from ordinary writing", () => {
+  const loading = extractSection(skill, "Load the authority progressively");
+  assert.match(loading, /\[references\/agora-publication\.md\]\(references\/agora-publication\.md\)/);
+  assert.match(loading, /Load it only when the user asks to inspect an artifact before publication or external sharing/);
+  assert.match(loading, /Do not load or run it for ordinary writing merely because the result is public, indexable, or AI-assisted/);
+
+  const workflow = extractSection(skill, "Inspect publication artifacts only on request");
+  assert.match(workflow, /separate read-only workflow, not a primary mode or writing modifier/);
+  assert.match(workflow, /Use the shipped `scripts\/publication-audit\.mjs`/);
+  assert.match(workflow, /Never improvise a cleaner, strip Unicode by category, remove metadata, rewrite text to evade detection/);
+
+  const watermarkBoundary = extractSection(publication, "Model-level text watermark boundary");
+  assert.match(watermarkBoundary, /introduced during generation by changing token-selection probabilities/);
+  assert.match(watermarkBoundary, /not evidence that Claude uses that exact scheme/);
+  assert.match(watermarkBoundary, /Without the provider's verifier or equivalent configuration, the result remains `UNKNOWN`/);
+  assert.match(watermarkBoundary, /Unusual Unicode is therefore neither evidence of a model-level watermark nor reliable evidence that one was removed/);
+
+  assert.match(publication, /Never describe this audit as a watermark remover/);
+  assert.match(publication, /Do not run it against ordinary chat text/);
+  assert.match(publication, /never writes to a source file/);
+  assert.match(publication, /Never collapse `UNKNOWN` into success/);
+  assert.match(publication, /A carrier hint is not cryptographic validation/);
 });
 
 test("routing defaults profiles to POSITION and reserves INVEST for capital decisions", () => {
@@ -676,30 +702,38 @@ test("public responsibility and privacy notices match the shipped behavior", () 
   assert.match(privacy, /selected corpus excerpts used for calibration/);
   assert.match(privacy, /When a user supplies an HTTP or HTTPS URL as a corpus source, the voice tool fetches that URL from the user's computer/);
   assert.match(privacy, /host or provider may process, retain, review, or use prompts, source material, generated content, metadata, and account information/);
+  assert.match(privacy, /`agora-publication-audit` tool reads local files selected by the user/);
+  assert.match(privacy, /redact metadata values and absolute paths by default/);
+  assert.match(privacy, /disables remote-manifest fetching/);
+  assert.match(disclaimer, /It is not a watermark remover, AI detector, authorship determination/);
+  assert.match(disclaimer, /`UNKNOWN` coverage remains unresolved/);
 });
 
 test("public files contain no project-specific residue or temporary citations", () => {
-  const publicText = [skill, reference, conversion, craft, voice, science, caseStudies, invest, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
+  const publicText = [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
   assert.doesNotMatch(publicText, new RegExp(["cite", "surge"].join(""), "i"));
   assert.doesNotMatch(publicText, /turn\d+(?:search|fetch|view|open|file)\d+/i);
   assert.doesNotMatch(publicText, /sandbox:\/\/mnt\/data/i);
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.7.0 release contract", () => {
+test("metadata matches the v1.8.0 release contract", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
-    '  short_description: "Persuasion, science, cases, and capital"',
-    '  default_prompt: "Use $agora to write clear persuasion, technical explanations, compelling case studies, and investment communication from my brief and content choices."',
+    '  short_description: "Writing and publication artifact review"',
+    '  default_prompt: "Use $agora to write from my brief or inspect a local publication artifact for privacy metadata and provenance."',
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.7.0");
+  assert.equal(packageJson.version, "1.8.0");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
   assert.equal(packageJson.scripts["eval:release"], "node scripts/release-evidence-check.mjs");
   assert.equal(packageJson.scripts["release:check"], "npm run check");
+  assert.equal(packageJson.scripts.prepack, "npm run release:check");
+  assert.equal(packageJson.scripts.prepublishOnly, "npm run release:check");
+  assert.doesNotMatch(packageJson.scripts["release:check"], /eval:release/);
   assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
   assert.match(gitAttributes, /^\*\.png binary$/m);
   assert.doesNotMatch(skill, /\r\n/);
@@ -710,8 +744,10 @@ test("metadata matches the v1.7.0 release contract", () => {
   assert.doesNotMatch(science, /\r\n/);
   assert.doesNotMatch(caseStudies, /\r\n/);
   assert.doesNotMatch(invest, /\r\n/);
+  assert.doesNotMatch(publication, /\r\n/);
   assert.doesNotMatch(openaiYaml, /\r\n/);
-  assert.equal(codexPlugin.interface.shortDescription, "Persuasion, science, cases, and capital");
+  assert.equal(codexPlugin.interface.shortDescription, "Writing and publication artifact review");
+  assert.equal(packageJson.bin["agora-publication-audit"], "skills/agora/scripts/publication-audit.mjs");
   const publicMetadata = [
     packageJson.description,
     codexPlugin.description,

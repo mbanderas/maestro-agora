@@ -1,4 +1,4 @@
 interface:
   display_name: "Maestro: Agora"
-  short_description: "Persuasion, science, cases, and capital"
-  default_prompt: "Use $agora to write clear persuasion, technical explanations, compelling case studies, and investment communication from my brief and content choices."
+  short_description: "Writing and publication artifact review"
+  default_prompt: "Use $agora to write from my brief or inspect a local publication artifact for privacy metadata and provenance."

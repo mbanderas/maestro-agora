@@ -1,8 +1,8 @@
 {
   "name": "maestro-agora",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "displayName": "Maestro: Agora",
-  "description": "Use /agora for persuasive writing, technical explanation, compelling case studies, fundraising, investment analysis, and spoken or written copy.",
+  "description": "Use /agora for persuasive writing, technical explanation, case studies, investment analysis, spoken or written copy, and explicit publication artifact audits.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"

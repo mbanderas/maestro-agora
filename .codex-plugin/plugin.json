@@ -1,7 +1,7 @@
 {
   "name": "maestro-agora",
-  "version": "1.7.0",
-  "description": "Maestro: Agora writes clear persuasion, technical explanations, compelling case studies, and investment communication to the user's brief.",
+  "version": "1.8.0",
+  "description": "Maestro: Agora writes clear persuasion, technical explanations, case studies, and investment communication, then audits local publication artifacts when requested.",
   "author": {
     "name": "Mark Laursen",
     "url": "https://github.com/mbanderas"
@@ -25,8 +25,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Maestro: Agora",
-    "shortDescription": "Persuasion, science, cases, and capital",
-    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that follows the user's claims, framing, creative choices, and intended action across commercial arguments, technical explanations, case studies, and investment communication.",
+    "shortDescription": "Writing and publication artifact review",
+    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that follows the user's claims, framing, creative choices, and intended action across commercial arguments, technical explanations, case studies, and investment communication, with explicit read-only privacy and provenance audits for local publication artifacts.",
     "developerName": "Mark Laursen",
     "category": "Productivity",
     "capabilities": [
@@ -40,7 +40,8 @@
       "/agora sell Write the strongest hero from this brief and destination.",
       "/agora science Explain this technical subject with the certainty and framing I specify.",
       "/agora case study Turn this project material into the case study I describe.",
-      "/agora invest Build this fundraising asset from my thesis, claims, urgency, and plan."
+      "/agora invest Build this fundraising asset from my thesis, claims, urgency, and plan.",
+      "/agora publication audit Inspect this local file for hidden Unicode, metadata, and provenance."
     ]
   }
 }

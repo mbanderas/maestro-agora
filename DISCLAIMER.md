@@ -1,6 +1,6 @@
 # User Responsibility and Disclaimer
 
-Last updated: August 10, 2026
+Last updated: August 12, 2026
 
 ## Purpose
 
@@ -22,6 +22,8 @@ That responsibility includes:
 - consequences arising from publication, distribution, reliance, or other use.
 
 Agora can perform claim, evidence, permission, confidentiality, disclosure, diligence, or compliance review when explicitly requested. Such review is automated assistance, not professional advice or a guarantee that content is accurate, lawful, complete, effective, or suitable for a particular purpose.
+
+Agora can also inspect selected local publication artifacts for configured privacy, metadata, hidden-text, review-data, and provenance signals. That inspection is partial and format-dependent. It is not a watermark remover, AI detector, authorship determination, forensic examination, anonymization service, or guarantee that a file is clean, safe, private, authentic, human-written, or free of undisclosed provenance. `NOT_FOUND_BY_THIS_CHECK` applies only to the named check. `UNKNOWN` coverage remains unresolved.
 
 ## No monitoring or approval duty
 
