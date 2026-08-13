@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { lstat, readFile, readdir } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -112,7 +113,11 @@ export function gitVisibleFiles(root) {
     windowsHide: true,
   });
   if (result.error || result.status !== 0) return null;
-  return [...new Set(result.stdout.split("\0").filter(Boolean).map(normalizePath))].sort();
+  return [...new Set(result.stdout
+    .split("\0")
+    .filter(Boolean)
+    .map(normalizePath)
+    .filter((file) => existsSync(join(root, file))))].sort();
 }
 
 async function readPrivateTerms(root) {

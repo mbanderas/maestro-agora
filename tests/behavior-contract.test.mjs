@@ -8,6 +8,7 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SKILL_ROOT = join(ROOT, "skills", "agora");
 const SKILL_PATH = join(SKILL_ROOT, "SKILL.md");
 const REFERENCE_PATH = join(SKILL_ROOT, "references", "agora-marketing.md");
+const CONVERSION_PATH = join(SKILL_ROOT, "references", "agora-conversion.md");
 const CRAFT_PATH = join(SKILL_ROOT, "references", "agora-craft.md");
 const VOICE_PATH = join(SKILL_ROOT, "references", "agora-voice.md");
 const SCIENCE_PATH = join(SKILL_ROOT, "references", "agora-science.md");
@@ -20,15 +21,16 @@ const PACKAGE_PATH = join(ROOT, "package.json");
 const GITATTRIBUTES_PATH = join(ROOT, ".gitattributes");
 const DISCLAIMER_PATH = join(ROOT, "DISCLAIMER.md");
 const PRIVACY_PATH = join(ROOT, "PRIVACY.md");
-const LINK_FIXTURE_PATH = join(ROOT, "tests", "fixtures", "reference-links.v1.5.0.json");
+const LINK_FIXTURE_PATH = join(ROOT, "tests", "fixtures", "reference-links.v1.7.0.json");
 const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.5.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, craft, voice, science, caseStudies, invest, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
+const [skill, reference, conversion, craft, voice, science, caseStudies, invest, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
+    readFile(CONVERSION_PATH, "utf8"),
     readFile(CRAFT_PATH, "utf8"),
     readFile(VOICE_PATH, "utf8"),
     readFile(SCIENCE_PATH, "utf8"),
@@ -184,12 +186,13 @@ test("user authority controls requested content", () => {
   const passes = extractSection(skill, "Apply silent final passes");
   assert.match(passes, /Honor the user's requested claims, framing, tone, and content decisions without adding policy commentary/);
   assert.match(passes, /claim, evidence, permission, disclosure, or compliance checks only when the user requested that review/);
-  assert.match(passes, /Apply written GEO\/AEO only to written deliverables/);
+  assert.match(passes, /Apply written GEO\/AEO only to `INDEXABLE_PUBLIC` work/);
   assert.match(passes, /technical publication checks only to indexable public work/);
   assert.match(passes, /Keep these passes invisible/);
   assert.match(passes, /only when a host rule or missing requirement makes the requested result impossible/);
   assert.match(passes, /Run the final U\+2014 scan across the complete response/);
-  assert.match(passes, /Scan for U\+2018, U\+2019, U\+201C, and U\+201D/);
+  assert.match(passes, /For every draft, build a private fact ledger covering the complete response/);
+  assert.match(passes, /scan for U\+2018, U\+2019, U\+201C, and U\+201D/i);
   assert.match(passes, /Count the finished asset after removing Markdown syntax/);
   assert.match(passes, /Treat a requested exact word count or range as an immutable output requirement/);
   assert.match(passes, /Verify with a counter when one is available/);
@@ -198,11 +201,13 @@ test("user authority controls requested content", () => {
   assert.match(passes, /visible wording or measured property/);
   assert.match(passes, /format, sequence, route, status, or length requirement/);
   assert.match(passes, /hierarchy, spacing, or channel-native structure/);
-  assert.match(passes, /Do not add worksheet labels merely to prove/);
+  assert.match(passes, /worksheet-label ban applies inside ready-to-use copy/);
+  assert.match(passes, /Labels remain available outside the copy when the user requests labeled fields/);
   assert.match(passes, /an exact count is exact or a bounded count is inside the range/);
   assert.match(passes, /An exact count is not a maximum, and the shortest-complete-output default does not override it/);
   assert.match(passes, /Build a private ledger of every explicit output constraint/);
   assert.match(passes, /Implication does not satisfy an explicit scope, exclusion, format, sequence, route, status, or length requirement/);
+  assert.match(passes, /For conversion compositions, load and apply the surface-specific route, pricing, experiment, proof, and placement contracts/);
   assert.match(passes, /preserve necessary series/);
 
   const channel = extractSection(skill, "Fit the channel");
@@ -307,10 +312,11 @@ test("the first-read gate is operational, not a symptom list", () => {
   assert.match(section, /Do not narrow or remove a user-selected claim because Agora considers its support incomplete/);
 
   const passes = extractSection(skill, "Apply silent final passes");
-  assert.match(passes, /Run the first-read comprehension gate, the specialized-term gate, and the CTA gate/);
+  assert.match(passes, /Run the first-read comprehension gate, the delivery-model ownership gate, the rewrite regression gate when rewriting supplied copy, the specialized-term gate, and the CTA gate/);
   assert.match(passes, /before any style, compression, or publication pass/);
 
   const citability = extractSection(reference, "Written GEO/AEO and citability");
+  assert.match(citability, /only to `INDEXABLE_PUBLIC` assets/);
   assert.match(citability, /None of them may raise decoding effort/);
   assert.match(citability, /The unit is the passage, not the individual sentence, and no sentence count defines it/);
 });
@@ -455,6 +461,7 @@ test("reference examples cover the known failure families", () => {
     "Company positioning",
     "Investor description",
     "Hero",
+    "Done-for-you service",
     "Paywall",
     "Cold email",
     "Spoken pitch",
@@ -520,6 +527,8 @@ test("the craft reference carries the five unabsorbed domains with graded rules"
 
   const emotion = extractSection(craft, "Emotion under a user brief");
   assert.ok(emotion.includes("### Emotion from a fact set with no outcome data"));
+  assert.match(emotion, /For identity-led or sensory commercial work, ground recognition in the audience or aesthetic direction the brief supplies/);
+  assert.match(emotion, /Do not turn aesthetic direction into a creation fact, audience behavior, wearer effect, or performance claim/);
   assert.ok(emotion.includes("### Permission to write flat"));
   assert.match(emotion, /do not add emotion\. Increase resolution around the emotionally consequential facts/);
   assert.match(emotion, /the correct output is then flat/);
@@ -615,6 +624,7 @@ test("owned voice vocabulary follows the brief without becoming a content gate",
 test("SKILL.md carries VOICE as a modifier with its exception written down", () => {
   const loading = extractSection(skill, "Load the authority progressively");
   assert.match(loading, /\[references\/agora-voice\.md\]\(references\/agora-voice\.md\)/);
+  assert.match(loading, /Load the reference whenever any explicit or default profile will be applied/);
   assert.match(loading, /Do not load it for ordinary human-voice cleanup/);
 
   const job = extractSection(skill, "Choose the job");
@@ -638,12 +648,18 @@ test("SKILL.md carries VOICE as a modifier with its exception written down", () 
 
   const authority = extractSection(skill, "Follow user authority");
   assert.match(authority, /Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer/);
+
+  assert.match(voice, /Voice never overrides host-required or user-required text/);
+  assert.match(voice, /findings constrain content only when the user requested that review or the host requires them/);
+
+  const finalPasses = extractSection(skill, "Apply silent final passes");
+  assert.match(finalPasses, /Unless exact, immutable, legal, technical, or user-required text must be preserved/);
 });
 
 test("current source links remain available across all references", () => {
   assert.equal(linkFixture.source, "unreleased:skills/agora/references/*.md");
-  assert.equal(linkFixture.urls.length, 140);
-  const current = externalUrls([reference, craft, voice, science, caseStudies, invest].join("\n"));
+  assert.equal(linkFixture.urls.length, 155);
+  const current = externalUrls([reference, conversion, craft, voice, science, caseStudies, invest].join("\n"));
   const missing = linkFixture.urls.filter((url) => !current.has(url));
   assert.deepEqual(missing, [], `reference dropped source links: ${missing.join(", ")}`);
 });
@@ -663,14 +679,14 @@ test("public responsibility and privacy notices match the shipped behavior", () 
 });
 
 test("public files contain no project-specific residue or temporary citations", () => {
-  const publicText = [skill, reference, craft, voice, science, caseStudies, invest, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
+  const publicText = [skill, reference, conversion, craft, voice, science, caseStudies, invest, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
   assert.doesNotMatch(publicText, new RegExp(["cite", "surge"].join(""), "i"));
   assert.doesNotMatch(publicText, /turn\d+(?:search|fetch|view|open|file)\d+/i);
   assert.doesNotMatch(publicText, /sandbox:\/\/mnt\/data/i);
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.6.0 release contract", () => {
+test("metadata matches the v1.7.0 release contract", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
@@ -679,13 +695,16 @@ test("metadata matches the v1.6.0 release contract", () => {
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.6.0");
+  assert.equal(packageJson.version, "1.7.0");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
+  assert.equal(packageJson.scripts["eval:release"], "node scripts/release-evidence-check.mjs");
+  assert.equal(packageJson.scripts["release:check"], "npm run check");
   assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
   assert.match(gitAttributes, /^\*\.png binary$/m);
   assert.doesNotMatch(skill, /\r\n/);
   assert.doesNotMatch(reference, /\r\n/);
+  assert.doesNotMatch(conversion, /\r\n/);
   assert.doesNotMatch(craft, /\r\n/);
   assert.doesNotMatch(voice, /\r\n/);
   assert.doesNotMatch(science, /\r\n/);

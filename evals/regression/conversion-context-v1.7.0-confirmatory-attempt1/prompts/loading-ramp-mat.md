@@ -1,0 +1,5 @@
+/agora --no-voice
+
+Write a catalogue listing for DockStep 900, a modular rubber threshold mat for moving wheeled carts across small level changes. Closed facts: each mat is 900 mm wide, 400 mm deep, 32 mm high, and weighs 8.4 kg; the textured surface is molded recycled rubber; two mats can be placed side by side but do not lock together; it is intended for indoor loading areas on flat, dry concrete; it is not rated for vehicle traffic, permanent outdoor exposure, stairs, or accessibility-code compliance; the listed price is EUR 74 per mat excluding VAT; minimum order is two; delivery is quoted after the destination postcode is entered; no load-capacity test result is available. Buyers need fast dimensional certainty more than lifestyle language.
+
+Deliver a catalogue title, a 45-65 word summary, a compact specification table, a Suitable for / Not suitable for split list, one ordering note, and a button label. Do not invent a load rating, safety certification, installation method, delivery time, or durability claim.

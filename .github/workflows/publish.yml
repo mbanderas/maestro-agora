@@ -4,7 +4,6 @@ on:
   release:
     types:
       - published
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -16,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
@@ -32,7 +33,6 @@ jobs:
       # A release tag that disagrees with package.json would publish a version
       # nobody tagged. Fail before the registry sees it.
       - name: Check the tag matches package.json
-        if: github.event_name == 'release'
         run: |
           tag="${GITHUB_REF_NAME#v}"
           packaged="$(node -p 'require("./package.json").version')"
@@ -43,5 +43,5 @@ jobs:
 
       # No NODE_AUTH_TOKEN. Authentication is the OIDC token above, and
       # provenance is attached automatically on GitHub Actions.
-      # prepublishOnly runs validation, tests, package allowlist, and public-tree hygiene.
+      # prepublishOnly repeats deterministic validation and package hygiene before publication.
       - run: npm publish

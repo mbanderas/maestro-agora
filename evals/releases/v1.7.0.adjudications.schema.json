@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agora v1.7.0 normalized blind adjudications",
+  "type": "array",
+  "minItems": 25,
+  "maxItems": 25,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "passes"],
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "passes": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 3,
+        "items": { "$ref": "#/$defs/pass" }
+      }
+    }
+  },
+  "$defs": {
+    "scores": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "number", "minimum": 1, "maximum": 5 }
+    },
+    "evidence": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate", "excerpt", "missingPremise"],
+        "properties": {
+          "gate": { "type": "string", "minLength": 1 },
+          "excerpt": { "type": "string", "minLength": 1 },
+          "missingPremise": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "custody": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "artifacts", "judge_run"],
+      "properties": {
+        "schema_version": { "const": 1 },
+        "artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "original_task",
+            "candidate_response",
+            "incumbent_response",
+            "judge_prompt",
+            "raw_judgment",
+            "judge_log"
+          ],
+          "properties": {
+            "original_task": { "$ref": "#/$defs/artifact" },
+            "candidate_response": { "$ref": "#/$defs/artifact" },
+            "incumbent_response": { "$ref": "#/$defs/artifact" },
+            "judge_prompt": { "$ref": "#/$defs/artifact" },
+            "raw_judgment": { "$ref": "#/$defs/artifact" },
+            "judge_log": { "$ref": "#/$defs/artifact" }
+          }
+        },
+        "judge_run": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "runtime", "model", "fresh_context", "skill_access"],
+          "properties": {
+            "schema_version": { "const": 1 },
+            "runtime": { "const": "codex-subagent" },
+            "model": { "const": "gpt-5.6-sol" },
+            "fresh_context": { "const": true },
+            "skill_access": { "const": false }
+          }
+        }
+      }
+    },
+    "pass": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pass",
+        "order",
+        "winner",
+        "candidateScores",
+        "incumbentScores",
+        "candidateVetoes",
+        "candidateHardGateFailures",
+        "candidateHardGateEvidence",
+        "incumbentHardGateFailures",
+        "incumbentHardGateEvidence",
+        "custody"
+      ],
+      "properties": {
+        "pass": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "order": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "enum": ["candidate", "incumbent"] }
+        },
+        "winner": { "enum": ["candidate", "incumbent", "tie"] },
+        "candidateScores": { "$ref": "#/$defs/scores" },
+        "incumbentScores": { "$ref": "#/$defs/scores" },
+        "candidateVetoes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "candidateHardGateFailures": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "candidateHardGateEvidence": { "$ref": "#/$defs/evidence" },
+        "incumbentHardGateFailures": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "incumbentHardGateEvidence": { "$ref": "#/$defs/evidence" },
+        "custody": { "$ref": "#/$defs/custody" }
+      }
+    }
+  }
+}

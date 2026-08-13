@@ -1,0 +1,5 @@
+/agora --no-voice
+
+Design the first-run activation copy for KindRoster, a scheduling app for volunteer coordinators. Closed facts: a new coordinator must create one event, add at least one shift, and invite one volunteer before the home screen can show participation status; events may be saved without sending invitations; invitees receive an email link and do not need an account to accept; availability, attendance, and reminders are not visible until an invitation is sent; importing contacts is not supported; the product team has defined the existing order as event, shift, invitation and will not add a tour, sample project, concierge setup, or skipped steps. Some coordinators are still drafting details and fear accidentally emailing volunteers.
+
+Deliver: (1) a three-step activation checklist with a title, one explanatory sentence, and action label for each step; (2) the unsent-event status message; (3) the confirmation dialog shown immediately before invitations are emailed, including title, body, primary action, and secondary action; and (4) the completed-state banner. Do not invent automation, templates, recipient counts, outcome claims, or alternate routes.

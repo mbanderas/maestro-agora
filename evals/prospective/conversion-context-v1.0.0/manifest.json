@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "status": "prospective-unfrozen",
+  "skill_version": "unreleased",
+  "generation_contract": {
+    "pass_to_model": [
+      "prompt_file"
+    ],
+    "never_pass_to_model": [
+      "manifest.json",
+      "case metadata",
+      "rubric",
+      "incumbent label"
+    ],
+    "fresh_context_per_case": true,
+    "isolated_skill_copy": true
+  },
+  "adjudication": {
+    "method": "blind-pairwise",
+    "randomize_order": true,
+    "swap_order": true,
+    "escalate_on_order_flip": true,
+    "report_hard_gate_failures": true,
+    "tie_policy": "Use a tie when both responses satisfy every declared boundary and neither has a material advantage for the supplied decision."
+  },
+  "rubric": {
+    "scale": "1-5",
+    "dimensions": [
+      "brief-fidelity",
+      "first-read-comprehension",
+      "concrete-action-clarity",
+      "outcome-fit",
+      "funnel-stage-fit",
+      "commitment-fit",
+      "prior-calibration",
+      "contradiction-handling",
+      "composition-fit"
+    ],
+    "domain_dimensions": {}
+  },
+  "hard_gate_definitions": {
+    "no-nearby-metric-substitution": "The response preserves the stated business outcome instead of replacing it with clicks, completions, or another nearby event.",
+    "no-universal-prior": "The response does not turn a contextual conversion pattern into a law or fixed optimum.",
+    "no-effect-transfer-in-review": "When review is requested, the response does not carry a reported effect size into a different business, audience, or surface.",
+    "no-invented-proof-or-rationale": "The response uses only supplied proof, terms, permissions, data-use reasons, and operational facts.",
+    "no-unauthorized-funnel-change": "The response preserves required fields, choices, steps, and commitments unless the user authorizes changes.",
+    "commitment-and-terms-preserved": "The action label and surrounding copy state the supplied commitment, terms, reversibility, and next step clearly.",
+    "route-reality-preserved": "The response distinguishes supplied self-serve and enterprise routes and does not invent a route that the business does not offer.",
+    "pricing-decision-contract-preserved": "The response keeps supplied public prices, billing periods, limits, enterprise differences, and material buying terms visible at the decision.",
+    "enterprise-risk-specificity": "The response connects supplied enterprise capabilities to concrete organizational requirements instead of relying on generic enterprise language.",
+    "proof-uncertainty-match": "The response places supplied proof near the doubt it actually resolves and does not use unrelated proof to imply an unsupported capability.",
+    "user-framing-preserved": "The response follows the user's selected emotional and commercial framing instead of replacing it with a preferred pattern.",
+    "full-composition-fit": "The response optimizes the requested composition as a whole rather than treating one isolated element as the complete intervention."
+  },
+  "cases": [
+    {
+      "id": "checkout-trust-relevance",
+      "prompt_file": "prompts/checkout-trust-relevance.md",
+      "archetype": "ecommerce-checkout",
+      "primary_outcome": "completed purchase",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-universal-prior",
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "qualified-demo-form",
+      "prompt_file": "prompts/qualified-demo-form.md",
+      "archetype": "b2b-lead-generation",
+      "primary_outcome": "qualified opportunities that become revenue",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "no-unauthorized-funnel-change",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "low-commitment-report-form",
+      "prompt_file": "prompts/low-commitment-report-form.md",
+      "archetype": "content-lead-generation",
+      "primary_outcome": "completed report downloads with valid consent",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-universal-prior",
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "activation-aware-onboarding",
+      "prompt_file": "prompts/activation-aware-onboarding.md",
+      "archetype": "mobile-onboarding",
+      "primary_outcome": "first successful account sync",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "paywall-retained-revenue",
+      "prompt_file": "prompts/paywall-retained-revenue.md",
+      "archetype": "subscription-paywall",
+      "primary_outcome": "90-day retained revenue per visitor",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "commitment-and-terms-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "utilitarian-product-benefit",
+      "prompt_file": "prompts/utilitarian-product-benefit.md",
+      "archetype": "utilitarian-product-page",
+      "primary_outcome": "completed purchase",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-universal-prior",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "identity-led-product-opening",
+      "prompt_file": "prompts/identity-led-product-opening.md",
+      "archetype": "identity-product-page",
+      "primary_outcome": "product-page purchase",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "user-framing-preserved",
+        "no-universal-prior",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "contradictory-case-transfer",
+      "prompt_file": "prompts/contradictory-case-transfer.md",
+      "archetype": "evidence-led-conversion-review",
+      "primary_outcome": "decision-grade experiment recommendation",
+      "review_mode": true,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "no-universal-prior",
+        "no-effect-transfer-in-review",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "dual-route-enterprise-pricing",
+      "prompt_file": "prompts/dual-route-enterprise-pricing.md",
+      "archetype": "product-led-enterprise-pricing",
+      "primary_outcome": "qualified self-serve purchases and enterprise consultations",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "route-reality-preserved",
+        "pricing-decision-contract-preserved",
+        "commitment-and-terms-preserved",
+        "proof-uncertainty-match",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "sales-led-no-invented-self-serve",
+      "prompt_file": "prompts/sales-led-no-invented-self-serve.md",
+      "archetype": "sales-led-enterprise-page",
+      "primary_outcome": "qualified enterprise scoping requests",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "route-reality-preserved",
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "enterprise-risk-specificity",
+      "prompt_file": "prompts/enterprise-risk-specificity.md",
+      "archetype": "enterprise-product-page",
+      "primary_outcome": "qualified enterprise consultations",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "enterprise-risk-specificity",
+        "no-invented-proof-or-rationale",
+        "route-reality-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "pricing-decision-contract",
+      "prompt_file": "prompts/pricing-decision-contract.md",
+      "archetype": "high-ticket-self-serve-pricing",
+      "primary_outcome": "informed annual subscriptions",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "pricing-decision-contract-preserved",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "enterprise-proof-placement",
+      "prompt_file": "prompts/enterprise-proof-placement.md",
+      "archetype": "enterprise-proof-composition",
+      "primary_outcome": "qualified migration-planning requests",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "proof-uncertainty-match",
+        "enterprise-risk-specificity",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    }
+  ]
+}

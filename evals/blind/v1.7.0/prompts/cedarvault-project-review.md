@@ -1,0 +1,2 @@
+/agora --no-voice
+Write the hero, primary CTA, below-CTA helper, and form-submission confirmation for CedarVault Joinery, which builds custom archival cabinets. Facts: the CTA opens a six-question project review form; submitting the form sends a review request; the team replies within 2 business days to say whether the project appears to fit; only then may the team propose call times; there is no calendar in the flow and neither opening nor submitting the form books a consultation. Make the route feel low-friction and worthwhile for qualified buyers. Use only these facts.

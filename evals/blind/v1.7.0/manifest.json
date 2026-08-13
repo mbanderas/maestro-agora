@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "status": "frozen-release",
+  "skill_version": "1.7.0",
+  "generation_contract": {
+    "pass_to_model": [
+      "prompt_file"
+    ],
+    "never_pass_to_model": [
+      "manifest.json",
+      "case metadata",
+      "rubric",
+      "release gates",
+      "incumbent label"
+    ],
+    "fresh_context_per_case": true,
+    "isolated_skill_copy": true
+  },
+  "adjudication": {
+    "method": "blind-pairwise",
+    "randomize_order": true,
+    "swap_order": true,
+    "escalate_on_order_flip": true,
+    "report_hard_gate_failures": true,
+    "tie_policy": "Use a tie when both responses satisfy every declared boundary and neither has a material advantage for the supplied decision."
+  },
+  "rubric": {
+    "scale": "1-5",
+    "dimensions": [
+      "brief-fidelity",
+      "first-read-comprehension",
+      "concrete-action-clarity",
+      "outcome-fit",
+      "funnel-stage-fit",
+      "commitment-fit",
+      "prior-calibration",
+      "contradiction-handling",
+      "composition-fit"
+    ],
+    "domain_dimensions": {}
+  },
+  "hard_gate_definitions": {
+    "no-nearby-metric-substitution": "The response preserves the stated business outcome instead of replacing it with clicks, completions, or another nearby event.",
+    "no-universal-prior": "The response does not turn a contextual conversion pattern into a law or fixed optimum.",
+    "no-effect-transfer-in-review": "When review is requested, the response does not carry a reported effect size into a different business, audience, or surface.",
+    "no-invented-proof-or-rationale": "The response uses only supplied proof, terms, permissions, data-use reasons, and operational facts. A description of what a quotation says is not verbatim wording; reconstructing it inside quotation marks is invented proof.",
+    "no-unauthorized-funnel-change": "The response preserves required fields, choices, steps, and commitments unless the user authorizes changes.",
+    "commitment-and-terms-preserved": "The action label and surrounding copy state the supplied commitment, terms, reversibility, and next step clearly.",
+    "route-reality-preserved": "The response preserves every supplied action route and its next state, distinguishes self-serve and enterprise routes when both exist, and does not invent a route the business does not offer.",
+    "pricing-decision-contract-preserved": "The response keeps supplied public prices, billing periods, limits, enterprise differences, and material buying terms visible at the decision.",
+    "enterprise-risk-specificity": "The response connects supplied enterprise capabilities to concrete organizational requirements instead of relying on generic enterprise language.",
+    "proof-uncertainty-match": "The response places supplied proof near the doubt it actually resolves and does not use unrelated proof to imply an unsupported capability.",
+    "user-framing-preserved": "The response follows the user's selected emotional and commercial framing instead of replacing it with a preferred pattern.",
+    "full-composition-fit": "The response optimizes the requested composition as a whole rather than treating one isolated element as the complete intervention."
+  },
+  "release_gates": {
+    "governance_default": true,
+    "all_cases_pass_absolute_vetoes": true,
+    "legacy_material_regressions_allowed": 0,
+    "conversion_case_count": 25,
+    "conversion_minimum_comparable_cases": 16,
+    "conversion_minimum_win_rate": 0.77,
+    "critical_contract_failures_allowed": 0,
+    "domain_mean_noninferiority_margin": 0.25
+  },
+  "cases": [
+    {
+      "id": "mossarc-seed-club-checkout",
+      "prompt_file": "prompts/mossarc-seed-club-checkout.md",
+      "archetype": "subscription checkout and confirmation",
+      "primary_outcome": "Increase completed subscriptions while preserving the distinct first-parcel and renewal timing.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "commitment-and-terms-preserved",
+        "pricing-decision-contract-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "quillcurrent-application-deadline",
+      "prompt_file": "prompts/quillcurrent-application-deadline.md",
+      "archetype": "deadline-driven application landing page",
+      "primary_outcome": "Drive timely application starts without misstating what satisfies the deadline.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "harborkite-onboarding-consent",
+      "prompt_file": "prompts/harborkite-onboarding-consent.md",
+      "archetype": "app onboarding with optional consent",
+      "primary_outcome": "Increase workspace creation while preserving an explicit optional email choice.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-unauthorized-funnel-change",
+        "commitment-and-terms-preserved",
+        "user-framing-preserved",
+        "full-composition-fit",
+        "no-invented-proof-or-rationale"
+      ]
+    },
+    {
+      "id": "cedarvault-project-review",
+      "prompt_file": "prompts/cedarvault-project-review.md",
+      "archetype": "high-consideration consultation lead flow",
+      "primary_outcome": "Increase qualified review requests without presenting form actions as bookings.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "route-reality-preserved",
+        "no-unauthorized-funnel-change",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "parcelpollen-label-download",
+      "prompt_file": "prompts/parcelpollen-label-download.md",
+      "archetype": "dynamic order completion state",
+      "primary_outcome": "Move customers to the correct label download with grammatically exact status copy.",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "route-reality-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit",
+        "no-unauthorized-funnel-change"
+      ]
+    },
+    {
+      "id": "moonwell-collection-card",
+      "prompt_file": "prompts/moonwell-collection-card.md",
+      "archetype": "editorial collection card with unresolved destination",
+      "primary_outcome": "Earn a next-step click while keeping the destination and availability claims accurate.",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "route-reality-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "flintpass-permit-renewal",
+      "prompt_file": "prompts/flintpass-permit-renewal.md",
+      "archetype": "regulated renewal submission flow",
+      "primary_outcome": "Increase completed renewal requests without implying immediate permit approval.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "commitment-and-terms-preserved",
+        "pricing-decision-contract-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "sonoraswitch-experiment-review",
+      "prompt_file": "prompts/sonoraswitch-experiment-review.md",
+      "archetype": "completed conversion experiment review",
+      "primary_outcome": "Produce a decision-ready review centered on the registered outcome and full result set.",
+      "review_mode": true,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "no-invented-proof-or-rationale",
+        "proof-uncertainty-match",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "ternroster-pilot-proof",
+      "prompt_file": "prompts/ternroster-pilot-proof.md",
+      "archetype": "B2B homepage pilot proof",
+      "primary_outcome": "Increase briefing requests through credible presentation of mixed pilot evidence.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "proof-uncertainty-match",
+        "no-invented-proof-or-rationale",
+        "route-reality-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "ledgerfern-service-composition",
+      "prompt_file": "prompts/ledgerfern-service-composition.md",
+      "archetype": "service landing-page composition",
+      "primary_outcome": "Create a coherent page sequence that converts museum teams into sample-plan requests.",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "full-composition-fit",
+        "proof-uncertainty-match",
+        "route-reality-preserved",
+        "no-invented-proof-or-rationale"
+      ]
+    },
+    {
+      "id": "forgemorrow-enterprise-pricing",
+      "prompt_file": "prompts/forgemorrow-enterprise-pricing.md",
+      "archetype": "enterprise custom-pricing page",
+      "primary_outcome": "Generate qualified enterprise inquiries while preserving custom pricing and the sales-only route.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "enterprise-risk-specificity",
+        "pricing-decision-contract-preserved",
+        "route-reality-preserved",
+        "no-unauthorized-funnel-change",
+        "full-composition-fit",
+        "no-invented-proof-or-rationale"
+      ]
+    },
+    {
+      "id": "bluekeel-engagement-terms",
+      "prompt_file": "prompts/bluekeel-engagement-terms.md",
+      "archetype": "high-ticket service close and terms",
+      "primary_outcome": "Increase qualified applications with the full financial and reservation commitment intact.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "commitment-and-terms-preserved",
+        "pricing-decision-contract-preserved",
+        "route-reality-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "lexitrellis-trial-proof",
+      "prompt_file": "prompts/lexitrellis-trial-proof.md",
+      "archetype": "SaaS proof panel and trial CTA",
+      "primary_outcome": "Increase trial starts using the measured setup result rather than an unmeasured business outcome.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "proof-uncertainty-match",
+        "commitment-and-terms-preserved",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "rimerelay-campaign-review",
+      "prompt_file": "prompts/rimerelay-campaign-review.md",
+      "archetype": "full-funnel campaign review",
+      "primary_outcome": "Support a sound campaign decision without transferring an attention gain to downstream conversion.",
+      "review_mode": true,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "proof-uncertainty-match",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "pinna-pantry-course-purchase",
+      "prompt_file": "prompts/pinna-pantry-course-purchase.md",
+      "archetype": "direct-purchase course landing page",
+      "primary_outcome": "Increase course purchases without inserting or implying extra funnel steps.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-unauthorized-funnel-change",
+        "route-reality-preserved",
+        "pricing-decision-contract-preserved",
+        "commitment-and-terms-preserved",
+        "full-composition-fit",
+        "no-invented-proof-or-rationale"
+      ]
+    },
+    {
+      "id": "calyxnote-scoped-sharing",
+      "prompt_file": "prompts/calyxnote-scoped-sharing.md",
+      "archetype": "in-app scoped sharing decision",
+      "primary_outcome": "Help researchers complete intentional sharing without shifting ownership of the choice.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "user-framing-preserved",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "full-composition-fit",
+        "no-invented-proof-or-rationale"
+      ]
+    },
+    {
+      "id": "asterlock-security-deployment",
+      "prompt_file": "prompts/asterlock-security-deployment.md",
+      "archetype": "enterprise security conversion section",
+      "primary_outcome": "Move qualified rail buyers into security review with risk-specific, bounded claims.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "enterprise-risk-specificity",
+        "no-invented-proof-or-rationale",
+        "proof-uncertainty-match",
+        "route-reality-preserved",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "velamend-product-proof",
+      "prompt_file": "prompts/velamend-product-proof.md",
+      "archetype": "consumer product proof callout",
+      "primary_outcome": "Increase product consideration through appropriately bounded beta evidence and concrete mechanism.",
+      "review_mode": false,
+      "critical": false,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "proof-uncertainty-match",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "kilnwise-pricing-comparison",
+      "prompt_file": "prompts/kilnwise-pricing-comparison.md",
+      "archetype": "SaaS pricing comparison",
+      "primary_outcome": "Increase informed plan selection while preserving prices, allowances, billing, and trial consequences.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "pricing-decision-contract-preserved",
+        "commitment-and-terms-preserved",
+        "no-unauthorized-funnel-change",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "wildfern-volunteer-intake",
+      "prompt_file": "prompts/wildfern-volunteer-intake.md",
+      "archetype": "volunteer recruitment and conditional intake",
+      "primary_outcome": "Increase suitable volunteer interest submissions without implying acceptance or emergency response.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "no-unauthorized-funnel-change",
+        "no-invented-proof-or-rationale",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "juniperhearth-calculator-followup",
+      "prompt_file": "prompts/juniperhearth-calculator-followup.md",
+      "archetype": "lead calculator with optional follow-up",
+      "primary_outcome": "Increase calculator completions and intentional adviser requests while preserving the estimate's limits.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "route-reality-preserved",
+        "no-unauthorized-funnel-change",
+        "user-framing-preserved",
+        "full-composition-fit",
+        "no-invented-proof-or-rationale"
+      ]
+    },
+    {
+      "id": "stonecrop-checkout-experiment",
+      "prompt_file": "prompts/stonecrop-checkout-experiment.md",
+      "archetype": "completed checkout experiment decision memo",
+      "primary_outcome": "Resolve a mixed experiment against its registered purchase criterion without substituting a proxy.",
+      "review_mode": true,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "no-nearby-metric-substitution",
+        "no-invented-proof-or-rationale",
+        "proof-uncertainty-match",
+        "full-composition-fit"
+      ]
+    },
+    {
+      "id": "fathomfold-upgrade-sheet",
+      "prompt_file": "prompts/fathomfold-upgrade-sheet.md",
+      "archetype": "mobile app one-time upgrade sheet",
+      "primary_outcome": "Increase informed upgrade purchases through a complete, nonredundant decision composition.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "full-composition-fit",
+        "pricing-decision-contract-preserved",
+        "commitment-and-terms-preserved",
+        "route-reality-preserved",
+        "no-unauthorized-funnel-change",
+        "no-invented-proof-or-rationale"
+      ]
+    },
+    {
+      "id": "lumarook-rental-request",
+      "prompt_file": "prompts/lumarook-rental-request.md",
+      "archetype": "high-value equipment rental request",
+      "primary_outcome": "Increase qualified date requests while preserving payment, authorization, refund, and confirmation conditions.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "commitment-and-terms-preserved",
+        "pricing-decision-contract-preserved",
+        "route-reality-preserved",
+        "user-framing-preserved",
+        "full-composition-fit",
+        "no-invented-proof-or-rationale"
+      ]
+    },
+    {
+      "id": "tesseraops-pricing-routes",
+      "prompt_file": "prompts/tesseraops-pricing-routes.md",
+      "archetype": "dual-route public and enterprise pricing comparison",
+      "primary_outcome": "Increase informed plan selection while preserving direct self-serve checkout and sales-only enterprise inquiry routes.",
+      "review_mode": false,
+      "critical": true,
+      "domain_dimensions": [],
+      "hard_gates": [
+        "pricing-decision-contract-preserved",
+        "route-reality-preserved",
+        "enterprise-risk-specificity",
+        "no-unauthorized-funnel-change",
+        "no-invented-proof-or-rationale",
+        "commitment-and-terms-preserved",
+        "full-composition-fit"
+      ]
+    }
+  ]
+}

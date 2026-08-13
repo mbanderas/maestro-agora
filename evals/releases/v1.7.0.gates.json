@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "skill_version": "1.7.0",
+  "governance_default_gate": "governance_default",
+  "absolute_veto_gate": "all_cases_pass_absolute_vetoes",
+  "legacy_regressions_allowed_gate": "legacy_material_regressions_allowed",
+  "critical_contract_failures_allowed_gate": "critical_contract_failures_allowed",
+  "noninferiority_margin_gate": "domain_mean_noninferiority_margin",
+  "legacy_case_ids": [],
+  "partitions": [
+    {
+      "id": "conversion",
+      "case_count_gate": "conversion_case_count",
+      "minimum_comparable_cases_gate": "conversion_minimum_comparable_cases",
+      "minimum_win_rate_gate": "conversion_minimum_win_rate",
+      "case_ids": [
+        "mossarc-seed-club-checkout",
+        "quillcurrent-application-deadline",
+        "harborkite-onboarding-consent",
+        "cedarvault-project-review",
+        "parcelpollen-label-download",
+        "moonwell-collection-card",
+        "flintpass-permit-renewal",
+        "sonoraswitch-experiment-review",
+        "ternroster-pilot-proof",
+        "ledgerfern-service-composition",
+        "forgemorrow-enterprise-pricing",
+        "bluekeel-engagement-terms",
+        "lexitrellis-trial-proof",
+        "rimerelay-campaign-review",
+        "pinna-pantry-course-purchase",
+        "calyxnote-scoped-sharing",
+        "asterlock-security-deployment",
+        "velamend-product-proof",
+        "kilnwise-pricing-comparison",
+        "wildfern-volunteer-intake",
+        "juniperhearth-calculator-followup",
+        "stonecrop-checkout-experiment",
+        "fathomfold-upgrade-sheet",
+        "lumarook-rental-request",
+        "tesseraops-pricing-routes"
+      ]
+    }
+  ]
+}

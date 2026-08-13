@@ -295,11 +295,11 @@ Read [User Responsibility and Disclaimer](DISCLAIMER.md) and [Privacy Notice](PR
 
 ## Written GEO/AEO boundaries
 
-For written assets, Agora answers the reader's question early when the format calls for it, names entities and scope, keeps supporting details and qualifications beside claims, exposes real provenance, and builds useful passages that remain accurate when quoted alone.
+For indexable public assets, Agora answers the reader's question early when the format calls for it, names entities and scope, keeps supporting details and qualifications beside claims, exposes supplied provenance, and builds useful passages that remain accurate when quoted alone.
 
 For indexable public pages, it can flag relevant crawlability, canonical, sitemap, metadata, structured-data, accessibility, and delivery checks. These practices may improve eligibility and citability. They cannot promise retrieval, selection, quotation, citation, ranking, recommendation, referral, conversion, or revenue.
 
-GEO/AEO applies to coherent page passages, not every sentence. It cannot force article-style density into a hero, case-study opening, spoken script, or short CTA.
+GEO/AEO applies to coherent passages on indexable public pages, not every sentence. It does not automatically apply to private, non-indexable, or spoken work, and it cannot force article-style density into a hero, case-study opening, or short CTA.
 
 ## Package architecture
 
@@ -329,6 +329,7 @@ skills/agora/
 - `agora-craft.md` adds headlines, heroes, awareness and sophistication, emotion, and prose rhythm.
 - `agora-science.md` adds empirical and technical explanation plus optional scientific claim review.
 - `agora-case-studies.md` adds case structure, results, and optional attribution, permission, and confidentiality review.
+- `agora-conversion.md` adds bounded conversion priors, outcome matching, self-serve and enterprise route design, pricing decision contracts, decision-adjacent proof, contradiction handling, and experiment interpretation for funnel surfaces.
 - `agora-invest.md` adds fundraising, diligence, allocation, and optional claim-review procedures.
 - `agora-voice.md` adds measured voice profiles and user-controlled profile use.
 
@@ -338,25 +339,31 @@ Research informed Agora, but research custody is separate from distribution.
 
 The public repository and npm package must not contain raw or corrected transcripts, caption files, supplied PDFs or office documents, audio, video, private source identities, model-output scratch, research working files, local paths, or assigned secrets.
 
-`npm run check` always runs a release-hygiene scan after validation, deterministic tests, and the exact package allowlist. `npm pack` and `npm publish` run the same complete release gate through `prepack` and `prepublishOnly`.
+`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` repeats that complete distributable validation. `npm pack` and `npm publish` run it through `prepack` and `prepublishOnly`.
 
-The versioned `evals/blind/v1.5.0/` corpus is retained as a historical release artifact. Its 86 prompt and manifest pairs record the v1.5.0 contract and do not govern the current user-authority behavior. Current deterministic tests verify that claim, evidence, permission, disclosure, confidentiality, diligence, and compliance review remain opt-in.
+The versioned directories under `evals/blind/` are public pairwise-release artifacts, not permanently secret holdouts. `v1.2.0`, `v1.4.0`, `v1.5.0`, and `v1.7.0` are frozen by exact tree hashes in `evals/releases/locks.json`; validation fails on additions, deletions, or edits.
+
+`evals/prospective/conversion-context-v1.0.0/` remains the development source for conversion-context cases. Earlier fixture sets are preserved under `evals/regression/` for regression analysis and historical reproducibility. `evals/blind/v1.7.0/` contains 25 independently authored conversion scenarios with versioned judging and reduction tooling.
+
+Deterministic tests verify instruction structure, routing contracts, static invariants, and evaluation-record shape. Versioned blind-evaluation tooling remains available for repeatable development analysis without turning model preference into a universal conversion claim.
 
 ## Verify
 
 ```sh
 npm run check
 npm run release:check
+node scripts/eval-locks.mjs
 npm pack --dry-run --json
 npx -y @maestroagora/agora --dry-run
 ```
 
-The release gate checks skill structure, routing contracts, user-authority boundaries, modifiers, typography, metadata, reference links, full-tree installer parity, exact npm contents, blind-corpus integrity, and public-tree hygiene.
+The release gate checks skill structure, routing contracts, user-authority boundaries, modifiers, typography, metadata, reference links, full-tree installer parity, exact npm contents, frozen evaluation-tree locks, and public-tree hygiene.
 
 ## Change record
 
 | Version | What changed |
 |---|---|
+| 1.7.0 | Adds a progressively loaded conversion-context reference with bounded conversion priors, downstream outcome matching, self-serve and enterprise route design, pricing decision contracts, proof placement, and contradiction handling. Tightens closed-world fact preservation and limits written GEO/AEO requirements to indexable public work. |
 | 1.6.0 | Expands user control across every writing mode. User-selected claims, fiction, urgency, attribution, profile use, and publication choices now control the draft. Claim, evidence, permission, disclosure, confidentiality, diligence, and compliance review are opt-in. Adds a user-responsibility disclaimer and an accurate privacy notice. |
 | 1.5.0 | Hardens `INVEST` across fundraising, diligence, and capital allocation. Adds an investment claim ledger, metric separations, asset-specific procedures, decision-led questions, objection handling, defensibility analysis, truthful urgency and commitment language, modifier composition, and current-verification boundaries. Separates real projects from fictional mock and concept-portfolio routes, and permits clearly disclosed invention for mock and hypothetical articles. Adds a customer-language boundary that keeps internal checking terms out of ordinary public copy while preserving them where scientific, methodological, audit, legal, compliance, diligence, or technical work needs them. Expands the blind corpus from 60 to 86 cases. Adds a mandatory public-tree and package hygiene gate that blocks research, transcripts, supplied private documents, raw model outputs, local paths, secrets, unexpected binaries, and private source identities. |
 | 1.4.0 | Adds stronger hero and short-form sales composition plus the composable `SCIENCE` and `CASE_STUDY` capabilities. Heroes now separate truth gates from persuasive optimization and treat the complete first-screen composition as one argument. Scientific and technical work preserves claim class, causality, statistics, uncertainty, analogy limits, and source limits. Case studies add result classes, causality, permissions, confidentiality, role attribution, quote, typicality, and visual-support gates. The blind corpus contains 60 cases. |

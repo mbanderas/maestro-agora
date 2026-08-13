@@ -168,6 +168,7 @@ Determine:
 - traffic source and upstream promise;
 - one commercial action the hero must earn;
 - actual CTA destination and commitment;
+- delivery model, including what the provider performs and what the buyer must genuinely supply, decide, or approve;
 - offer facts and mechanism;
 - strongest proof;
 - material price, scope, eligibility, safety, or commitment limits;
@@ -223,6 +224,8 @@ Passing the floor does not make the copy good. Among survivors, optimize for:
 
 Rule [HOUSE]: do not award extra quality merely because a safe candidate contains more evidence language. Once the hard gates pass, additional proof or qualification helps only when it improves belief, orientation, or the next decision.
 
+For rewrites, run `Rewrite regression gate` from [agora-marketing.md](agora-marketing.md) before generating new routes. For `SELL`, apply `Delivery-model ownership` from the same authority. These are source-fidelity checks; user-selected framing remains controlling.
+
 ### Draft the boldest requested promise first
 
 Use this internal process:
@@ -242,7 +245,7 @@ Keep the headline to one commercial argument. When two numbers make it read like
 
 Route families include competitive threat, ambition, control, avoided loss, category change, broken assumption, direct outcome, provocative contrast, proof-led confidence, and offer-led action. Follow the emotional direction the user chooses.
 
-Return one recommended composition by default. Present it as finished copy, not a worksheet labeled `Headline`, `Subhead`, `CTA`, and `Qualification`, unless the user requests component labels or the delivery context would otherwise be ambiguous. Keep internal routes and scoring hidden unless the user requests options or rationale.
+Return one recommended composition by default. Keep worksheet labels out of the ready-to-use copy. Use labels around the copy when the user requests component fields, when implementation recommendations need them, or when the delivery context would otherwise be ambiguous. Keep internal routes and scoring hidden unless the user requests options or rationale.
 
 ### Map promise grammar to the intended claim
 
@@ -279,7 +282,7 @@ Keep a material limit close enough to govern the claim. Use the headline, subhea
 
 Rule [HOUSE]: the lower an element sits, the less it can repair a misleading first impression. A qualification directly below the CTA can bound eligibility. A methodology note several screens later cannot repair an unsupported outcome in the headline.
 
-Written GEO/AEO applies to the page and coherent passages. The hero can optimize for attention while later sections provide definitions, sources, scope, methodology, and quotable answers. Do not make every hero sentence independently extractable.
+For an `INDEXABLE_PUBLIC` page, written GEO/AEO applies to the page and coherent passages. The hero can optimize for attention while later sections provide definitions, sources, scope, methodology, and quotable answers. Do not make every hero sentence independently extractable. Other surfaces do not inherit this pass.
 
 ### Permanent RivalScope regression fixture
 
@@ -426,6 +429,8 @@ Before any threat appears in copy, all of the following must hold. This is a sys
 ### Emotion from a fact set with no outcome data
 
 This is the section that matters most, because it is Agora's normal condition. Assume the available facts contain product mechanics, workflow steps, interfaces, limits, permissions, prices, dates, terms, error states, and reversibility conditions, and contain no outcome data, no testimonials, no prevalence claims, no market claims, and no evidence of what any user feels.
+
+For identity-led or sensory commercial work, ground recognition in the audience or aesthetic direction the brief supplies. Do not turn aesthetic direction into a creation fact, audience behavior, wearer effect, or performance claim. Transform supplied sensory material through concrete relationships rather than repeating a list, while preserving material product facts and limitations at the decision where they matter. Let each component advance a different decision job. Label the action from the supplied commitment and destination, not a category-default verb.
 
 That fact set is sufficient. The move is to stop treating emotion as an adjective layer over evidence and start exposing the consequential structure already inside the facts.
 

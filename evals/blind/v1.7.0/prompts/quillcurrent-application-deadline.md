@@ -1,0 +1,2 @@
+/agora --no-voice
+Write the deadline banner, opening paragraph, CTA, and upload helper for QuillCurrent Residencies. Facts: applications must be fully received by the portal by 17:00 CET on October 3; starting an upload, sending an email, or having files in transit before 17:00 does not count; the portal displays a receipt timestamp only after every required file arrives; the CTA opens the application form and does not submit anything; no deadline extensions are promised. Create urgency without sacrificing precision. Use only these facts.

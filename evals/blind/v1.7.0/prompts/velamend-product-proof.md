@@ -1,0 +1,2 @@
+/agora --no-voice
+Write a product-page proof callout, design-features paragraph, and use-limit note for VelaMend inflatable repair patches. Facts: 18 freshwater guides received a beta kit; 14 returned a survey; 11 of those 14 said application felt easier than using repair tape; the beta was not controlled; long-term durability was not measured; saltwater and sub-freezing use were not studied; each patch has rounded corners and a premeasured adhesive layer. Make the observed experience useful to a buyer while keeping the field evidence in scale. Use only these facts.

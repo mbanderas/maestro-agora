@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "path": "evals/blind/v1.2.0",
+      "file_count": 18,
+      "sha256": "170ec80457e48af50fb35cd5ddcbdd64cd91882bf71484b3bf971a91a395d03e"
+    },
+    {
+      "path": "evals/blind/v1.4.0",
+      "file_count": 61,
+      "sha256": "737ee92c2a2f48ab40e01e70767d634d5c976ac5007558065d5fff09d9ca10b5"
+    },
+    {
+      "path": "evals/blind/v1.5.0",
+      "file_count": 87,
+      "sha256": "eeeca3d14148957dfe8021b7701311ea91e51b65c264af1e63ef59c6620f0e99"
+    },
+    {
+      "path": "evals/blind/v1.7.0",
+      "file_count": 28,
+      "sha256": "f0b90a0069967c0fe37b4a4d122d80edbc85d1d94e485374444eb4962deffb58"
+    },
+    {
+      "path": "evals/regression/conversion-context-v1.7.0-confirmatory-attempt1",
+      "file_count": 17,
+      "sha256": "d274111288051252d15bf9cddf6ec249329a06acd4892f93222479f82b505f88"
+    },
+    {
+      "path": "evals/regression/conversion-context-v1.7.0-confirmatory-attempt2",
+      "file_count": 24,
+      "sha256": "667eee2f18a83c5af064600c734aacec87d8d3bca46cb5128a8cb37f69950703"
+    },
+    {
+      "path": "evals/regression/conversion-context-v1.7.0-development",
+      "file_count": 15,
+      "sha256": "1ce5ddf5839b6fa0a876ca5718ae810aa73424dd5c9827f80390eff386409652"
+    }
+  ]
+}

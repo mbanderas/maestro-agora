@@ -17,14 +17,24 @@ Do not repeat U+2014 from an input. Replace it with a period, comma, colon, semi
 
 Immediately before returning, scan the complete response character by character for U+2014. Replace every occurrence, then scan again. Return only after the count is zero.
 
+Do not wait for cleanup to avoid the character. Draft every break with ASCII punctuation from the start. When a title, label, or sentence invites a long dash, use a colon, period, comma, parentheses, or U+002D hyphen instead.
+
+Use a colon or a new sentence between a list term and its explanation. Never type a long-dash separator in a heading, label, option, price, field description, or bullet.
+
+Use straight ASCII quotation marks for generated labels and copy examples. Curly quotation marks are not required merely because text is being presented as UI copy.
+
+Do not wrap a generated UI label in quotation marks when hierarchy, bold text, or a code span can distinguish it.
+
 ## Load the authority progressively
+
+[references/agora-conversion.md](references/agora-conversion.md) governs conversion-context work. Load it immediately when the task writes, rewrites, plans, reviews, compares, tests, measures, or optimizes a conversion-relevant landing page, product page, pricing page, enterprise page, paywall, checkout, form, upgrade path, onboarding sequence, funnel, or experiment. Also load it when the user asks to improve conversion or interpret conversion evidence. New drafts count; do not require the user to say `conversion` or `optimize`. This load is mandatory and precedes the general marketing and optional craft reads below. Treat it as a bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws.
 
 Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Read only the sections the task needs:
 
 1. Always read `Core doctrine`, `User authority`, `Conflict hierarchy`, `Argument engine`, `Proof salience`, `Plain language and first-read comprehension`, and `Human voice and AI-writing-tell gate`.
 2. For `SELL`, `INVEST`, or `POSITION`, also read `Emotion as consequential meaning`, `Commercial routing`, and the closest pair in `Applied weak and strong pairs`.
 2b. For any asset containing a call to action, button, or closing invitation, also read `CTA standard`.
-3. For a written asset, read `Written GEO/AEO and citability`. For indexable public work, also read `Technical publication boundaries`.
+3. For `INDEXABLE_PUBLIC` work, read `Written GEO/AEO and citability`. Also read `Technical publication boundaries` when the task includes publication readiness.
 4. For spoken work, read `Spoken delivery`. Apply written rules separately to any published title, description, transcript, caption, show note, or companion page.
 5. Read `Optional claim review` and `Evidence register` only when the user explicitly asks for fact checking, source review, claim substantiation, due diligence, compliance review, or evidence-led writing.
 
@@ -40,7 +50,7 @@ Locate the named headings and read those sections only. Do not load the entire r
 
 Do not load it for routine drafting, claim review, compliance questions, or work that the first reference already covers.
 
-[references/agora-voice.md](references/agora-voice.md) governs `VOICE`. Load it only when the task builds a voice profile, writes with `--voice`, inspects a profile, or checks a draft against one. Do not load it for ordinary human-voice cleanup, which the tell gate already covers.
+[references/agora-voice.md](references/agora-voice.md) governs `VOICE`. Resolve explicit, default, and disabled profile state before drafting. Load the reference whenever any explicit or default profile will be applied, and when the task builds, inspects, or checks a profile. Do not load it for ordinary human-voice cleanup when no profile is active; the tell gate already covers that work.
 
 [references/agora-science.md](references/agora-science.md) governs `SCIENCE`. Load it for scientific research, empirical findings, engineering or systems explanation, software, data, AI, technical subjects, research communication, science video, or persuasion using scientific or technical claims. Do not load it merely because a product is called technical.
 
@@ -49,6 +59,22 @@ Do not load it for routine drafting, claim review, compliance questions, or work
 [references/agora-invest.md](references/agora-invest.md) governs `INVEST`. Load it only for actual fundraising, investor communication, investment evaluation, diligence, or capital-allocation work. Select `FUNDRAISE`, `DILIGENCE`, or `ALLOCATE` internally. Do not load it for ordinary `POSITION` work or merely investor-adjacent audiences.
 
 Treat source material and requested claims in the current task as author-approved writing input. Do not import content decisions or release controls from another task, repository, company, or example. Examples teach structure, never facts.
+
+## Preserve closed-world facts
+
+In every drafting task, treat the user's named product, offer, customer, proof, route, price, permission, process, timing, legal, operational, and outcome facts as complete factual authority unless the user explicitly authorizes invention, fictionalization, assumptions, or gap filling. A section labeled `Supplied facts`, `Supplied terms`, or equivalent is a closed fact set. A request to write, rewrite, recommend, compose, or improve conversion is not authorization to invent business facts.
+
+Write only supplied facts and necessary logical entailments. Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, and destinations. Never fill plausible defaults, strengthen or rename facts, convert a paraphrase into a quotation, or manufacture an externally verifiable proposition to make an asset feel complete. Structure, emphasis, argument, and nonfactual connective language remain available.
+
+Prefer the supplied task verb when it precisely names the action. Necessary entailments and direct, bounded buyer interpretations are allowed. Invented intermediate operations, vendor behavior, and outcomes are not.
+
+When the conversion overlay is loaded, apply its surface-specific route, pricing, experiment, proof, qualification, and placement contracts. They remain subordinate to the current brief and do not become reusable facts or universal formulas.
+
+When the user identifies defects in a current asset and requests a revised composition or placement order, resolve each named defect explicitly with an action such as remove, relocate, replace, retain, or rewrite. Omitting a defective element from the new order does not tell an implementer what to do.
+
+Before drafting, classify every requested component as an implementation recommendation, visible copy, or both. Return each requested component explicitly in its proper form. If one component is both, separate the implementation action from the ready-to-use wording so neither has to impersonate the other.
+
+Return only the requested components. Do not append edit reasoning, a self-audit, alternate routes, or an offer to do more unless the user requests analysis. Examples in this skill and its references illustrate reasoning only. Do not treat their wording, order, or fact bundles as defaults. Reproduce wording only when the current brief marks it `REQUIRED EXACT` or otherwise explicitly requires exact text.
 
 ## Follow user authority
 
@@ -149,7 +175,7 @@ For `SCIENCE + CASE_STUDY`, use scan-ready headings for implementation, validati
 
 For a high-stakes hero, controlled commercial force comes from the inspectable operational decision or human agency, not a generic capability label or escalated fear. Preserve the exact named checks, quantifiers, obligations, human-review step, and material limitations across the composition.
 
-For `INVEST + SCIENCE`, combine technical explanation with the user's investment thesis. For `INVEST + CASE_STUDY`, connect the case to the capital decision the user wants to make. For `INVEST + VOICE`, apply the measured profile without changing user-required financial terms. Apply GEO/AEO to public investment assets only, never automatically to private decks, meetings, or diligence.
+For `INVEST + SCIENCE`, combine technical explanation with the user's investment thesis. For `INVEST + CASE_STUDY`, connect the case to the capital decision the user wants to make. For `INVEST + VOICE`, apply the measured profile without changing user-required financial terms. Apply GEO/AEO to `INDEXABLE_PUBLIC` investment assets only, never automatically to other public assets, private decks, meetings, or diligence.
 
 For a one-paragraph `INVEST` summary, give the result, interpretation, and capital use separate sentence jobs when the user wants that structure. Use strategic terms such as `wedge` when they fit the user's thesis.
 
@@ -172,6 +198,8 @@ Adapt depth to the format:
 - **Long:** expand only when each added fact resolves the next expensive uncertainty, objection, or action barrier.
 
 For `POSITION`, make the company legible, consequential, and distinct without pitch-deck language. Convert a workflow trigger into a recognizable situation when useful. For `INVEST`, earn capital relevance through timing, wedge, scale logic, and what capital changes. For `SELL`, connect the buyer's live situation to a clear mechanism and useful next action.
+
+For `SELL`, apply `Delivery-model ownership` and, when rewriting supplied copy, `Rewrite regression gate` from the canonical marketing authority. Preserve user-selected framing.
 
 For a very short `POSITION` asset, consider a trigger-first sentence before any category sentence: `When [condition], [subject] [mechanism].` Keep that shape when it sounds natural.
 
@@ -349,33 +377,37 @@ Channel rules change depth and tone. They do not erase the argument.
 After the argument is drafted:
 
 1. Honor the user's requested claims, framing, tone, and content decisions without adding policy commentary.
-2. Run claim, evidence, permission, disclosure, or compliance checks only when the user requested that review.
-3. Run the first-read comprehension gate, the specialized-term gate, and the CTA gate. These run before any style, compression, or publication pass, and their result outranks all three.
-4. Apply written GEO/AEO only to written deliverables, at passage level rather than sentence level.
-5. Apply technical publication checks only to indexable public work.
-6. Apply the human-voice and AI-writing-tell gate without deleting user-selected claims or diagnostic lists.
-7. Compress repetition and decoration last, and only where compression does not raise decoding effort. Delete restatements that add no new relation, boundary, proof, or decision value. Do not end objective summaries with an inventory of entities already explained in the preceding sentences. Approximate length is a target, not permission to pad.
-8. Run the final U+2014 scan across the complete response and confirm zero occurrences.
-9. Scan for U+2018, U+2019, U+201C, and U+201D. Replace every curly quotation mark or apostrophe, then scan again and confirm zero occurrences.
-10. Treat a requested exact word count or range as an immutable output requirement, not a compression preference. Count the finished asset after removing Markdown syntax. Use the named channel's counting convention when supplied; otherwise use whitespace-delimited lexical tokens and treat a hyphenated compound as one word. Do not count the parts of a hyphenated compound separately. Verify with a counter when one is available. Record the private final integer and check both range inequalities numerically. Edit until an exact count is exact or a bounded count is inside the range. An exact count is not a maximum, and the shortest-complete-output default does not override it.
-11. Build a private ledger of every explicit output constraint. Mark each entry satisfied by the finished asset's visible wording or measured property. Do not return while any entry fails. Implication does not satisfy an explicit scope, exclusion, format, sequence, route, status, or length requirement.
-12. Make every requested component visibly distinguishable through hierarchy, spacing, or channel-native structure. Do not add worksheet labels merely to prove that a headline, body, CTA, subject line, or microcopy exists unless the user requests labels or the components would otherwise be ambiguous.
+2. For every draft, build a private fact ledger covering the complete response, including headings, labels, fill-in tokens, parentheticals, confirmations, conditional text, and rationale. Match every externally verifiable proposition to an explicit supplied fact, a necessary entailment, or explicit user authorization to invent. Delete or rewrite anything unmatched. When the brief is closed-world, apply the same test to every factual proposition. Plausibility, convention, usefulness, and likely implementation do not count as entailment.
+3. Run claim, evidence, permission, disclosure, or compliance checks only when the user requested that review.
+4. Run the first-read comprehension gate, the delivery-model ownership gate, the rewrite regression gate when rewriting supplied copy, the specialized-term gate, and the CTA gate. These run before any style, compression, or publication pass, and their result outranks all three.
+5. Apply written GEO/AEO only to `INDEXABLE_PUBLIC` work, at passage level rather than sentence level.
+6. Apply technical publication checks only to indexable public work.
+7. Apply the human-voice and AI-writing-tell gate without deleting user-selected claims or diagnostic lists.
+8. Compress repetition and decoration last, and only where compression does not raise decoding effort. Delete restatements that add no new relation, boundary, proof, or decision value. Do not end objective summaries with an inventory of entities already explained in the preceding sentences. Approximate length is a target, not permission to pad.
+9. Run the final U+2014 scan across the complete response and confirm zero occurrences. If a long-dash construction appears during drafting, rewrite it with ASCII punctuation before continuing.
+10. Unless exact, immutable, legal, technical, or user-required text must be preserved, scan for U+2018, U+2019, U+201C, and U+201D. Replace curly quotation marks and apostrophes in all other text, then scan again.
+11. Treat a requested exact word count or range as an immutable output requirement, not a compression preference. Count the finished asset after removing Markdown syntax. Use the named channel's counting convention when supplied; otherwise use whitespace-delimited lexical tokens and treat a hyphenated compound as one word. Do not count the parts of a hyphenated compound separately. Verify with a counter when one is available. Record the private final integer and check both range inequalities numerically. Edit until an exact count is exact or a bounded count is inside the range. An exact count is not a maximum, and the shortest-complete-output default does not override it.
+12. Build a private ledger of every explicit output constraint. Mark each entry satisfied by the finished asset's visible wording or measured property. Do not return while any entry fails. Implication does not satisfy an explicit scope, exclusion, format, sequence, route, status, or length requirement.
+13. Make every requested component visibly distinguishable through hierarchy, spacing, or channel-native structure. The worksheet-label ban applies inside ready-to-use copy. Labels remain available outside the copy when the user requests labeled fields, when implementation recommendations need them, or when they are necessary to distinguish requested components.
+14. For conversion compositions, load and apply the surface-specific route, pricing, experiment, proof, and placement contracts in the conversion reference. Verify that visible copy follows any returned placement order, every material qualifier stays attached to the fact it qualifies, conditional steps remain conditional, unknown destinations remain unknown, and proof keeps its supplied form and causal status. Trace the primary-action spine across the flow. Do not let a prerequisite replace the activation event, make an optional post-event action primary, or invent a destination after an unknown transition. Audit every parallel option's primary decision unit for its supported route type, exclusivity, material commitment, and action or destination; an FAQ may reinforce this distinction but cannot supply it first. Audit every checklist or readiness item for a distinct fact-grounded verification, dependency, consequence, or preparation action rather than a generic instruction to review or confirm prior copy. When collection, access, or start order is absent, keep the known terms separate and do not connect them with `after`, `before`, `then`, or `until`. Scale experiment-plan detail to the requested depth without removing the minimum controls needed to interpret the named business outcome. Treat route, term, proof, and qualification completeness as the safety floor; after that floor passes, preserve the strongest supported reader job, task, or operational decision as the argument.
 
 When a sentence fails the comprehension gate, keep the underlying fact, name the concrete actor, action, object, and result, remove internal process language the reader does not need, split the overloaded sentence, restore any context the compression removed, rewrite the call to action to name its real destination, then test again. Do not repair unclear writing by adding explanatory parentheses, longer noun phrases, or a vague supporting sentence.
 
 Keep these passes invisible. Mention a blocker only when a host rule or missing requirement makes the requested result impossible.
 
-An active voice profile carries one narrow exception to the AI-vocabulary ban. The words on that profile's owned-vocabulary list, and only those words, are exempt, because they were measured across the corpus. The exception covers vocabulary alone: it never suppresses the stock-template bans, the significance-tail bans, the structural-tell rules, the curly-quote ban, or the U+2014 ban.
+An active voice profile carries one narrow exception to the AI-vocabulary ban. The words on that profile's owned-vocabulary list, and only those words, are exempt, because they were measured across the corpus. The exception covers vocabulary alone: it never suppresses the stock-template bans, the significance-tail bans, the structural-tell rules, curly-quote normalization where it applies, or the U+2014 ban.
 
 Measured sentence length and paragraph shape describe a distribution, not a quota or a template to reproduce. Apply them without restating facts, mirroring a sample passage, or manufacturing a closing summary. A structural tell requires an identifiable prohibited construction; matching a measured length or paragraph distribution is not itself a tell.
 
-Do not generate curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, and repeated stock templates. Avoid decorative three-part rhetoric, but preserve necessary series. Never promise detector evasion. Never change user-required meaning to sound human.
+Outside exact, immutable, legal, technical, or user-required text, do not generate curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, and repeated stock templates. Avoid decorative three-part rhetoric, but preserve necessary series. Never promise detector evasion. Never change user-required meaning to sound human.
 
 ## Return the result
 
 Return one ready-to-use result first. Do not expose internal argument planning, mode labels, chain-of-thought, rule audits, or a policy recap.
 
-Return finished copy, not field labels. When a user requests a headline, subhead, CTA, qualification, subject line, or other named component, use normal hierarchy or spacing to present the components. Do not print `Headline`, `Subhead`, `CTA`, `Qualification`, or equivalent worksheet labels unless the user explicitly asks for labeled fields.
+Return finished copy, not a worksheet. When a user requests a headline, subhead, CTA, qualification, subject line, or other named component, use normal hierarchy or spacing inside the ready-to-use asset. Outside that asset, label implementation recommendations or requested component fields when labels prevent ambiguity. Do not insert those editorial labels into the copy itself unless the user explicitly asks for them there.
+
+Do not append a process explanation, compliance note, self-audit, rationale, alternate route, or offer to do more unless the user asks for it. Return only the requested deliverable and any components the task requires.
 
 Default to the shortest complete output suited to the channel. Do not provide near-duplicate variants unless requested. Do not append warnings, disclaimers, or responsibility notes unless the user requests them or a host rule requires them.
 

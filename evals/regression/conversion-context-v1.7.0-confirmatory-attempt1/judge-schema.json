@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "winner": {
+      "type": "string",
+      "enum": ["A", "B", "tie"]
+    },
+    "aScores": {
+      "$ref": "#/$defs/scores"
+    },
+    "bScores": {
+      "$ref": "#/$defs/scores"
+    },
+    "aHardGateFailures": {
+      "type": "array",
+      "description": "Every listed hard gate applies. Include each failed gate ID; an omitted gate ID is recorded as passed. Null and unevaluable states are forbidden.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "bHardGateFailures": {
+      "type": "array",
+      "description": "Every listed hard gate applies. Include each failed gate ID; an omitted gate ID is recorded as passed. Null and unevaluable states are forbidden.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "rationale": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "winner",
+    "aScores",
+    "bScores",
+    "aHardGateFailures",
+    "bHardGateFailures",
+    "rationale"
+  ],
+  "$defs": {
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "brief-fidelity": { "type": "number", "minimum": 1, "maximum": 5 },
+        "first-read-comprehension": { "type": "number", "minimum": 1, "maximum": 5 },
+        "concrete-action-clarity": { "type": "number", "minimum": 1, "maximum": 5 },
+        "outcome-fit": { "type": "number", "minimum": 1, "maximum": 5 },
+        "funnel-stage-fit": { "type": "number", "minimum": 1, "maximum": 5 },
+        "commitment-fit": { "type": "number", "minimum": 1, "maximum": 5 },
+        "prior-calibration": { "type": "number", "minimum": 1, "maximum": 5 },
+        "contradiction-handling": { "type": "number", "minimum": 1, "maximum": 5 },
+        "composition-fit": { "type": "number", "minimum": 1, "maximum": 5 }
+      },
+      "required": [
+        "brief-fidelity",
+        "first-read-comprehension",
+        "concrete-action-clarity",
+        "outcome-fit",
+        "funnel-stage-fit",
+        "commitment-fit",
+        "prior-calibration",
+        "contradiction-handling",
+        "composition-fit"
+      ]
+    }
+  }
+}

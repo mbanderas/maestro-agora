@@ -44,6 +44,28 @@ test("hero doctrine separates brief fidelity from persuasive optimization", () =
   assert.match(craft, /`Know why the order was flagged` promises inspectable information/);
 });
 
+test("sales rewrites preserve delivery roles, burden, and source-relative strengths", () => {
+  assert.match(skill, /apply `Delivery-model ownership` and, when rewriting supplied copy, `Rewrite regression gate`/);
+  assert.match(skill, /Preserve user-selected framing/);
+  assert.match(skill, /rewrite regression gate when rewriting supplied copy/);
+
+  assert.match(marketing, /### Delivery-model ownership/);
+  assert.match(marketing, /This is source and offer fidelity, not claim, compliance, or moral review/);
+  assert.match(marketing, /Do not invent or magnify preparation, training, review cycles, handoffs, approvals, dependencies, response times, frequency, or internal coordination/);
+  assert.match(marketing, /A buyer-led headline can be valid when an adjacent element makes provider ownership clear/);
+  assert.match(marketing, /Repair responsibility locally/);
+
+  assert.match(marketing, /### Rewrite regression gate/);
+  assert.match(marketing, /A candidate can pass every standalone rule and still weaken the source/);
+  assert.match(marketing, /supported promise and selected certainty/);
+  assert.match(marketing, /buyer effort by type, amount, frequency, timing, dependencies, approvals, and coordination/);
+  assert.match(marketing, /Keep the source when the candidate produces no material improvement or introduces a material regression/);
+  assert.match(marketing, /Improve your brand's chances of becoming part of the answer/);
+
+  assert.match(craft, /delivery model, including what the provider performs and what the buyer must genuinely supply/);
+  assert.match(craft, /For rewrites, run `Rewrite regression gate`/);
+});
+
 test("hero is evaluated as a distributed composition", () => {
   for (const element of [
     "headline",
@@ -76,8 +98,9 @@ test("claim grammar and RivalScope remain bounded by destination and outcome evi
 test("hero route generation requires semantic alternatives and one recommended output", () => {
   assert.match(craft, /at least four meaningfully different routes as a governance default, not four synonyms/);
   assert.match(craft, /Return one recommended composition by default/);
-  assert.match(craft, /Present it as finished copy, not a worksheet labeled `Headline`, `Subhead`, `CTA`, and `Qualification`/);
-  assert.match(skill, /Return finished copy, not field labels/);
+  assert.match(craft, /Keep worksheet labels out of the ready-to-use copy/);
+  assert.match(craft, /Use labels around the copy when the user requests component fields/);
+  assert.match(skill, /Return finished copy, not a worksheet/);
   assert.match(craft, /Follow the emotional direction the user chooses/);
   assert.match(craft, /Keep the headline to one commercial argument/);
   assert.match(craft, /When two numbers make it read like a report/);

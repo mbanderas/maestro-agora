@@ -1,0 +1,2 @@
+/agora --no-voice
+Write the completion-page heading, status sentence, and download CTA for both outcomes in ParcelPollen Soil Lab. Facts: an order with one kit produces one return label; an order with two or more kits produces exactly {count} return labels; all labels are placed in one PDF; the CTA downloads that PDF in the browser; nothing is emailed from this screen. Supply a singular version and a plural version that can accept the {count} variable, while keeping the next action unmistakable. Use only these facts.

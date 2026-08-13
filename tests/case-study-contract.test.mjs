@@ -77,6 +77,16 @@ test("permissions, quotes, typicality, and confidentiality remain optional revie
   assert.match(caseStudy, /When an outcome exists but its permission is `PENDING`, omit the outcome and its approval status from public copy/);
   assert.match(caseStudy, /Reserve `unmeasured` for a genuinely unmeasured outcome/);
   assert.match(caseStudy, /Outside review mode, do not refuse, narrow, qualify, relabel, omit, or append disclosure language/);
+  assert.match(caseStudy, /Apply permission, confidentiality, approval-state, and publication enforcement only when the user requests case review/);
+  assert.match(caseStudy, /Outside review mode, follow the user's names, permissions, confidentiality choices, and publication instructions/);
+  assert.match(caseStudy, /Curly-quote normalization yields to exact, immutable, legal, technical, or user-required text/);
+});
+
+test("case modifiers preserve the user proposition outside review mode", () => {
+  assert.match(caseStudy, /When explicit scientific or case review is active/);
+  assert.match(caseStudy, /Voice may change rhythm, syntax, and measured vocabulary/);
+  assert.match(caseStudy, /Host-required text and findings from explicitly requested case review may constrain the result/);
+  assert.match(caseStudy, /Other written surfaces do not inherit GEO\/AEO formatting/);
 });
 
 test("causality and metric context cannot be inferred from chronology", () => {

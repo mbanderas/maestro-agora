@@ -64,6 +64,8 @@ Rule [HOUSE]: evidence status determines whether invention is allowed. Boundary:
 
 ## Build the evidence packet
 
+Use this as an optional completeness review only when the user requests case review. Outside review mode, use supplied and requested case facts as approved input, do not demand missing evidence, and do not invent facts the user did not supply or request.
+
 Collect or mark missing before drafting:
 
 - intended audience and desired decision;
@@ -104,6 +106,8 @@ Sequence does not prove influence. Testing before shipment does not establish th
 A newly launched control does not prove the prior process lacked that control or used its opposite. Launching an approval workflow does not establish that earlier changes were informal, unreviewed, or moved without a recorded step. State the new workflow without inventing a before-state contrast.
 
 ## Classify results before writing
+
+Optional case-review control. Outside review mode, preserve the result status, certainty, and presentation the user requests rather than independently reclassifying or narrowing it.
 
 Assign every result one class:
 
@@ -165,6 +169,8 @@ Apply a vanity-metric gate. A metric belongs only when it establishes reach, use
 
 ## Control permission and confidentiality
 
+Optional case-review control. Apply permission, confidentiality, approval-state, and publication enforcement only when the user requests case review. Outside review mode, follow the user's names, permissions, confidentiality choices, and publication instructions.
+
 Assign each publishable element one state:
 
 | State | Meaning | Output rule |
@@ -185,6 +191,8 @@ When an outcome exists but its permission is `PENDING`, omit the outcome and its
 Anonymization must protect identity without laundering the claim. Preserve the industry, scale, period, constraint, or role only when approved and necessary to interpret the evidence. If combined details re-identify the subject, remove or generalize them before publication.
 
 ## Handle quotes and testimonials
+
+Optional case-review control. Check source, permission, typicality, material connection, and quote status only when the user requests case review. Outside review mode, follow the quotations, attribution, and treatment the user supplies or requests.
 
 Record for each quote:
 
@@ -207,7 +215,7 @@ Never:
 
 Rule [A]: applicable consumer endorsements must reflect honest experience, avoid unsupported implied claims, and disclose material connections when needed to prevent deception. See the current [FTC Endorsement Guides](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255) and [FTC reviews and testimonials Q&A](https://www.ftc.gov/business-guidance/resources/consumer-reviews-testimonials-rule-questions-answers). Boundary: those authorities do not automatically govern every B2B, employment, creative, or internal case. Use them where applicable and use their truth principles as a conservative editorial floor elsewhere without making a legal claim.
 
-Agora's U+2014 and curly-quote bans still apply. If an approved exact quotation contains prohibited typography, paraphrase it and label it as paraphrase, or obtain approval for a typography-normalized version. Never silently alter it and retain an exact-quote label.
+Agora's U+2014 ban still applies. Curly-quote normalization yields to exact, immutable, legal, technical, or user-required text. Never silently alter a quotation and retain an exact-quote label.
 
 ## Build a structured argument
 
@@ -299,19 +307,19 @@ Use the CTA standard in [agora-marketing.md](agora-marketing.md). `See the diffe
 
 ### `SCIENCE + CASE_STUDY`
 
-Load [agora-science.md](agora-science.md). Keep observed result, mechanism, interpretation, recommendation, and unknowns distinct. Scientific certainty and case attribution must agree.
+Load [agora-science.md](agora-science.md). When explicit scientific or case review is active, keep observed result, mechanism, interpretation, recommendation, and unknowns distinct. Otherwise preserve the user's requested scientific and case framing.
 
 ### `SELL + CASE_STUDY`
 
-Write the strongest buyer-relevant argument the evidence supports. Structure and transparency do not require chronological or academic prose. Do not hide a material result boundary below a commercial opening that implies more.
+Write the strongest buyer-relevant argument the user's brief requests. Structure does not require chronological or academic prose. Apply result-boundary and evidence checks only when explicit case review is active.
 
 ### `VOICE + CASE_STUDY`
 
-Voice may change rhythm and vocabulary. It may not change quote wording, permission, role attribution, metrics, causality, typicality, or uncertainty.
+Voice may change rhythm, syntax, and measured vocabulary. It may not change the proposition, quote wording, roles, metrics, certainty, or attribution supplied in the user's current brief. Host-required text and findings from explicitly requested case review may constrain the result.
 
 ### `GEO/AEO + CASE_STUDY`
 
-Make project snapshot, role, method, result, period, and limitation legible in coherent passages. Expose genuine dates, sources, authorship, and evidence. Do not load the opening with every method detail or turn headings into keyword variants.
+For `INDEXABLE_PUBLIC` cases, make project snapshot, role, method, result, period, and limitation legible in coherent passages. Expose supplied dates, sources, authorship, and evidence. Do not load the opening with every method detail or turn headings into keyword variants. Other written surfaces do not inherit GEO/AEO formatting.
 
 ## Maintain the case
 
