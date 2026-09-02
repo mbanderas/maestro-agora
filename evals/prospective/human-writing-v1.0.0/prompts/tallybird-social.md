@@ -8,4 +8,4 @@ Supplied facts:
 
 Avoid formulaic hooks and endings, including "The result?", "Here is the thing," "This is more than an export," and "Let me know what you think." Do not use "robust," "seamless," "framework," or "operational."
 
-Return only the post. Keep it between 70 and 100 words. Do not invent customer reactions, performance results, or a CTA destination.
+Return only the post. Keep it between 45 and 70 words. Do not infer relationships among the four exported fields. Availability on paid plans does not establish that no upgrade or plan change is required. Do not invent customer reactions, performance results, or a CTA destination.

@@ -7,6 +7,7 @@ Supplied facts:
 - During the six-week observation period, 18 shift leads used the log.
 - Missing reason entries fell from 31% in week one to 12% in week six.
 - A packaging change happened during week four.
+- The actor responsible for the packaging change is not supplied. Do not attribute it to Vale, OrchardLoop, or another party.
 - No production, waste, revenue, or labor outcome was measured.
 - Vale approved use of its name and the two percentages. No quotation was supplied. These are source constraints, not facts to narrate in the case.
 
