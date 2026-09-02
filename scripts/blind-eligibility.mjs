@@ -3,9 +3,12 @@ export const ELIGIBILITY_SCORE_DIMENSIONS = [
   "prior-calibration",
   "contradiction-handling",
   "composition-fit",
+  "factual-fidelity",
+  "register-fit",
+  "technical-or-legal-precision",
 ];
 
-export const ELIGIBILITY_POLICY = "symmetric-cross-order-hard-gates-v3";
+export const ELIGIBILITY_POLICY = "symmetric-cross-order-hard-gates-v4";
 
 const failures = (values) => Array.isArray(values) ? values : [];
 

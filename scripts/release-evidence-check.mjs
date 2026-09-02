@@ -24,27 +24,29 @@ import { validateJsonSchema } from "./json-schema-validator.mjs";
 import { validateGitReleaseProvenance } from "./release-git-provenance.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const VERSION = "1.7.0";
-const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
+export const CURRENT_RELEASE_CONTRACT = JSON.parse(await readFile(join(ROOT, "evals", "releases", "current.json"), "utf8"));
+export const VERSION = CURRENT_RELEASE_CONTRACT.skill_version;
+const BASELINE_COMMIT = CURRENT_RELEASE_CONTRACT.baseline_commit;
 const SHA256 = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
 const EVIDENCE_KEYS = ["excerpt", "gate", "missingPremise"];
 
 const PATHS = {
-  manifest: `evals/blind/v${VERSION}/manifest.json`,
-  releasePlan: `evals/releases/v${VERSION}.gates.json`,
-  adjudications: `evals/releases/v${VERSION}.adjudications.json`,
-  records: `evals/releases/v${VERSION}.records.json`,
-  evidence: `evals/releases/v${VERSION}.evidence.json`,
+  manifest: CURRENT_RELEASE_CONTRACT.blind_manifest,
+  releasePlan: CURRENT_RELEASE_CONTRACT.release_plan,
+  adjudications: CURRENT_RELEASE_CONTRACT.adjudications,
+  records: CURRENT_RELEASE_CONTRACT.records,
+  evidence: CURRENT_RELEASE_CONTRACT.evidence,
 };
 
 export const REQUIRED_HASHED_FILES = [
   PATHS.manifest,
   `evals/blind/v${VERSION}/judge-instructions.md`,
   `evals/blind/v${VERSION}/judge-schema.json`,
-  `evals/releases/v${VERSION}.adjudications.schema.json`,
-  `evals/releases/v${VERSION}.records.schema.json`,
+  CURRENT_RELEASE_CONTRACT.adjudications_schema,
+  CURRENT_RELEASE_CONTRACT.records_schema,
   PATHS.releasePlan,
+  "evals/releases/current.json",
   "evals/releases/locks.json",
   "scripts/adjudication-reducer.mjs",
   "scripts/blind-eligibility.mjs",
@@ -101,7 +103,9 @@ const sha256File = async (root, path) => createHash("sha256")
 const sameJson = (left, right) => JSON.stringify(left) === JSON.stringify(right);
 
 export const deriveReleaseEvidenceSummary = ({ records, adjudications, evaluation }) => {
-  const partition = evaluation.release?.partitionResults?.find((item) => item.id === "conversion");
+  const partition = evaluation.release?.partitionResults?.find(
+    (item) => CURRENT_RELEASE_CONTRACT.required_partitions.includes(item.id),
+  ) ?? evaluation.release?.partitionResults?.[0];
   const domain = partition?.summary ?? {};
   return {
     pass: evaluation.pass,
@@ -144,14 +148,16 @@ export const validateEvidenceExecution = (evidence) => {
   if (evidence?.skill_version !== VERSION) errors.push(`evidence skill_version must be ${VERSION}`);
   if (evidence?.status !== "passed") errors.push("evidence status must be passed");
   if (!COMMIT.test(commits.candidate_freeze ?? "")) errors.push("evidence candidate freeze commit is invalid");
-  if (commits.baseline !== BASELINE_COMMIT || commits.baseline_ref !== "v1.6.0") {
-    errors.push("evidence baseline does not match v1.6.0");
+  if (commits.baseline !== BASELINE_COMMIT || commits.baseline_ref !== CURRENT_RELEASE_CONTRACT.baseline_ref) {
+    errors.push(`evidence baseline does not match ${CURRENT_RELEASE_CONTRACT.baseline_ref}`);
   }
   if (!COMMIT.test(commits.judge_protocol ?? "")) errors.push("evidence judge protocol commit is invalid");
-  if (execution.generator_model !== "gpt-5.6-sol") errors.push("generator model must be gpt-5.6-sol");
-  if (execution.judge_model !== "gpt-5.6-sol") errors.push("judge model must be gpt-5.6-sol");
-  if (execution.generator_runtime !== "codex-subagent") errors.push("generator runtime must be codex-subagent");
-  if (execution.judge_runtime !== "codex-subagent") errors.push("judge runtime must be codex-subagent");
+  if (execution.generator_model !== CURRENT_RELEASE_CONTRACT.generator_model) errors.push(`generator model must be ${CURRENT_RELEASE_CONTRACT.generator_model}`);
+  if (execution.judge_model !== CURRENT_RELEASE_CONTRACT.judge_model) errors.push(`judge model must be ${CURRENT_RELEASE_CONTRACT.judge_model}`);
+  if (execution.generator_runtime !== CURRENT_RELEASE_CONTRACT.generator_runtime) errors.push(`generator runtime must be ${CURRENT_RELEASE_CONTRACT.generator_runtime}`);
+  if (execution.judge_runtime !== CURRENT_RELEASE_CONTRACT.judge_runtime) errors.push(`judge runtime must be ${CURRENT_RELEASE_CONTRACT.judge_runtime}`);
+  if (execution.generator_reasoning_effort !== CURRENT_RELEASE_CONTRACT.generator_reasoning_effort) errors.push(`generator reasoning effort must be ${CURRENT_RELEASE_CONTRACT.generator_reasoning_effort}`);
+  if (execution.judge_reasoning_effort !== CURRENT_RELEASE_CONTRACT.judge_reasoning_effort) errors.push(`judge reasoning effort must be ${CURRENT_RELEASE_CONTRACT.judge_reasoning_effort}`);
   if (execution.order_seed !== BLIND_ORDER_SEED) errors.push("blind order seed does not match protocol");
   if (execution.eligibility_policy !== ELIGIBILITY_POLICY) {
     errors.push("evaluation eligibility policy does not match protocol");
@@ -323,10 +329,10 @@ export const validateExternalArtifacts = async ({ evidence, summary, manifest, a
       manifestRoot: roots.incumbent_skill_copy,
     });
     if (!sameExternalFileSet(incumbentSkill, baselineSkill)) {
-      errors.push("external incumbent skill copy does not match the v1.6.0 skill tree");
+      errors.push(`external incumbent skill copy does not match ${CURRENT_RELEASE_CONTRACT.baseline_ref}`);
     }
   } catch (error) {
-    errors.push(`v1.6.0 skill tree could not be manifested: ${error.message}`);
+    errors.push(`${CURRENT_RELEASE_CONTRACT.baseline_ref} skill tree could not be manifested: ${error.message}`);
   }
   for (const adjudication of adjudications) {
     for (const pass of adjudication.passes) {
@@ -397,8 +403,8 @@ export async function verifyReleaseEvidence(root = ROOT) {
       readJson(root, PATHS.records),
       readJson(root, PATHS.evidence),
       readFile(join(root, ...PATHS.records.split("/")), "utf8"),
-      readJson(root, `evals/releases/v${VERSION}.adjudications.schema.json`),
-      readJson(root, `evals/releases/v${VERSION}.records.schema.json`),
+      readJson(root, CURRENT_RELEASE_CONTRACT.adjudications_schema),
+      readJson(root, CURRENT_RELEASE_CONTRACT.records_schema),
     ]);
   } catch (error) {
     return [`release evidence could not be loaded: ${error.message}`];
@@ -428,6 +434,11 @@ export async function verifyReleaseEvidence(root = ROOT) {
   }
   if (manifest.skill_version !== VERSION || releasePlan.skill_version !== VERSION) {
     errors.push(`manifest and release plan must target ${VERSION}`);
+  }
+  for (const id of CURRENT_RELEASE_CONTRACT.required_partitions) {
+    if (!(releasePlan.partitions ?? []).some((partition) => partition.id === id)) {
+      errors.push(`release plan is missing required partition ${id}`);
+    }
   }
 
   let reduced;
@@ -488,9 +499,10 @@ export async function verifyReleaseEvidence(root = ROOT) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const packageJson = JSON.parse(await readFile(join(ROOT, "package.json"), "utf8"));
-  const errors = packageJson.version === VERSION
-    ? await verifyReleaseEvidence()
-    : [`release evidence targets v${VERSION}; package version is v${packageJson.version}`];
+  const errors = [];
+  if (packageJson.version !== VERSION) errors.push(`release evidence targets v${VERSION}; package version is v${packageJson.version}`);
+  if (CURRENT_RELEASE_CONTRACT.schema_version !== 1) errors.push("current release contract schema_version must be 1");
+  if (!errors.length) errors.push(...await verifyReleaseEvidence());
   if (errors.length) {
     process.stderr.write(`Release evidence verification failed:\n- ${errors.join("\n- ")}\n`);
     process.exitCode = 1;

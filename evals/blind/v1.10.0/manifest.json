@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "status": "frozen-release",
+  "skill_version": "1.10.0",
+  "generation_contract": {
+    "pass_to_model": ["prompt_file"],
+    "never_pass_to_model": ["manifest.json", "case metadata", "rubric", "release gates", "incumbent label"],
+    "fresh_context_per_case": true,
+    "isolated_skill_copy": true
+  },
+  "adjudication": {
+    "method": "blind-pairwise",
+    "randomize_order": true,
+    "swap_order": true,
+    "escalate_on_order_flip": true,
+    "report_hard_gate_failures": true,
+    "tie_policy": "Use a tie only when both responses are eligible and neither has a material advantage on naturalness, ease, register, fidelity, or precision."
+  },
+  "rubric": {
+    "scale": "1-5",
+    "dimensions": [
+      "factual-fidelity",
+      "first-read-ease",
+      "sentence-ease",
+      "natural-voice",
+      "register-fit",
+      "author-sample-fit",
+      "control-room-vocabulary-containment",
+      "nonformulaic-structure",
+      "concision-without-loss",
+      "technical-or-legal-precision"
+    ],
+    "domain_dimensions": {}
+  },
+  "hard_gate_definitions": {
+    "factual-fidelity": "The response preserves every supplied fact, name, figure, date, condition, certainty level, attribution, and required term.",
+    "no-invention": "The response invents no result, permission, route, quote, motive, anecdote, opinion, product behavior, or supporting fact.",
+    "ready-copy-only": "The response returns only the requested deliverable, with no rationale, audit, process note, change log, confidence note, recap, or invitation to continue.",
+    "plain-register-containment": "For an ordinary audience, the response does not leak internal review, research, legal, or system vocabulary unless the reader needs the exact term.",
+    "canonical-house-style": "Generated copy contains no canonical banned typography, vocabulary, connective, stock template, significance tail, or prompt leakage without an explicit immutable-text exception.",
+    "qualification-preserved": "Every material source qualification remains clear without being stacked into unreadable prose.",
+    "technical-precision": "The response preserves required technical behavior, identifiers, status codes, constraints, and terminology without simplifying them into error.",
+    "legal-precision": "The response preserves required legal meaning, defined terms, obligations, conditions, and modality.",
+    "author-sample-no-copy": "The response follows observable sample habits without copying a distinctive phrase, fact, example, metaphor, slogan, or anecdote.",
+    "exact-length": "The response meets the requested exact word count under the prompt's counting rule."
+  },
+  "release_gates": {
+    "governance_default": true,
+    "all_cases_pass_absolute_vetoes": true,
+    "legacy_material_regressions_allowed": 0,
+    "human_writing_case_count": 24,
+    "human_writing_minimum_comparable_cases": 16,
+    "human_writing_minimum_win_rate": 0.3,
+    "human_writing_minimum_style_mean_delta": 0,
+    "human_writing_minimum_protected_mean_delta": 0,
+    "critical_contract_failures_allowed": 0,
+    "domain_mean_noninferiority_margin": 0
+  },
+  "cases": [
+    {"id":"northstar-ai-homepage","prompt_file":"prompts/northstar-ai-homepage.md","archetype":"nontechnical AI homepage","primary_outcome":"Plain, specific homepage copy for operations leaders.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"datumlane-product","prompt_file":"prompts/datumlane-product.md","archetype":"nontechnical data product section","primary_outcome":"Explain a data product without technical or audit leakage.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"softnest-profile","prompt_file":"prompts/softnest-profile.md","archetype":"software company profile","primary_outcome":"A natural company profile for a general business directory.","review_mode":false,"critical":false,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"gridfoundry-executive-summary","prompt_file":"prompts/gridfoundry-executive-summary.md","archetype":"infrastructure executive summary","primary_outcome":"An exact-length executive summary with readable qualifications.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","qualification-preserved","exact-length","canonical-house-style"]},
+    {"id":"sentrybay-professional-email","prompt_file":"prompts/sentrybay-professional-email.md","archetype":"ordinary security email","primary_outcome":"A direct professional request without security-report register.","review_mode":false,"critical":false,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"deploynote-sales-email","prompt_file":"prompts/deploynote-sales-email.md","archetype":"software sales email","primary_outcome":"A concise sales email that preserves the supplied route.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"orchardloop-case-study","prompt_file":"prompts/orchardloop-case-study.md","archetype":"customer success case","primary_outcome":"A compact case study with bounded outcomes and no invented causality.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","qualification-preserved","canonical-house-style"]},
+    {"id":"everyday-ai-editorial","prompt_file":"prompts/everyday-ai-editorial.md","archetype":"general-audience AI editorial","primary_outcome":"An accessible editorial opening with a clear point of view.","review_mode":false,"critical":false,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"lockriver-general-security","prompt_file":"prompts/lockriver-general-security.md","archetype":"general-audience security explanation","primary_outcome":"Explain a security product for office managers in plain language.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"packetforge-api-docs","prompt_file":"prompts/packetforge-api-docs.md","archetype":"true technical documentation","primary_outcome":"Preserve exact API behavior in readable technical documentation.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","technical-precision"]},
+    {"id":"harborlease-legal-clause","prompt_file":"prompts/harborlease-legal-clause.md","archetype":"contractual text","primary_outcome":"Improve layout without changing legal wording or force.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","legal-precision"]},
+    {"id":"seedtrial-science-explainer","prompt_file":"prompts/seedtrial-science-explainer.md","archetype":"scientific explanation","primary_outcome":"Explain study results with exact uncertainty and no overstatement.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","qualification-preserved","technical-precision"]},
+    {"id":"pinboard-interface","prompt_file":"prompts/pinboard-interface.md","archetype":"interface copy","primary_outcome":"Clear state, action, and consequence in compact UI text.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"tallybird-social","prompt_file":"prompts/tallybird-social.md","archetype":"social post","primary_outcome":"A specific social post without formulaic hooks or endings.","review_mode":false,"critical":false,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"clearline-spoken","prompt_file":"prompts/clearline-spoken.md","archetype":"spoken script","primary_outcome":"A natural 30-second script with audible sentence structure.","review_mode":false,"critical":false,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"voice-three-samples","prompt_file":"prompts/voice-three-samples.md","archetype":"rewrite with three author samples","primary_outcome":"Match observable email habits without copying sample material.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","author-sample-no-copy","canonical-house-style"]},
+    {"id":"voice-thin-sample","prompt_file":"prompts/voice-thin-sample.md","archetype":"rewrite with one thin sample","primary_outcome":"Use only cautious local habits without inventing personality.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","author-sample-no-copy","canonical-house-style"]},
+    {"id":"voice-no-sample","prompt_file":"prompts/voice-no-sample.md","archetype":"no-sample fallback","primary_outcome":"Use plain professional language without inventing a house voice.","review_mode":false,"critical":false,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"exact-word-count","prompt_file":"prompts/exact-word-count.md","archetype":"exact word-count profile","primary_outcome":"Meet an exact count without filler or factual loss.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","exact-length","canonical-house-style"]},
+    {"id":"qualified-source-rewrite","prompt_file":"prompts/qualified-source-rewrite.md","archetype":"qualification-heavy rewrite","primary_outcome":"Preserve all material limits in easy sentences.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","qualification-preserved","plain-register-containment","canonical-house-style"]},
+    {"id":"cloudguard-security-homepage","prompt_file":"prompts/cloudguard-security-homepage.md","archetype":"nontechnical security homepage","primary_outcome":"Security homepage copy for finance leaders without technical register.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"ironmesh-infrastructure-product","prompt_file":"prompts/ironmesh-infrastructure-product.md","archetype":"nontechnical infrastructure product copy","primary_outcome":"Infrastructure product copy for procurement readers in plain language.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"clinical-evidence-explainer","prompt_file":"prompts/clinical-evidence-explainer.md","archetype":"scientific evidence explanation","primary_outcome":"Use necessary scientific terms while preserving limits.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","qualification-preserved","technical-precision"]},
+    {"id":"policy-claim-legal","prompt_file":"prompts/policy-claim-legal.md","archetype":"legal policy claim text","primary_outcome":"Retain exact legal claim and scope terminology.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","legal-precision"]}
+  ]
+}

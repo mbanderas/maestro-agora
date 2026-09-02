@@ -103,7 +103,7 @@ test("causality and metric context cannot be inferred from chronology", () => {
 });
 
 test("academic and clinical case reports remain outside scope", () => {
-  assert.match(skill, /Academic and clinical case reports are outside this modifier/);
+  assert.match(skill, /Academic and clinical case reports are outside `CASE_STUDY`/);
   assert.match(caseStudy, /Academic and clinical case reports are outside this reference/);
 });
 

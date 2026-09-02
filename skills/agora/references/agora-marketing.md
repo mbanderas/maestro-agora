@@ -819,99 +819,9 @@ Treat an existence-only route, screen, page, preview, or report as action availa
 
 ## Human voice and AI-writing-tell gate
 
-Apply this gate after the argument and proof pass. Its purpose is specific, accurate, author-owned prose. It does not prove human authorship or guarantee detector outcomes.
+This deep research reference does not restate the house list. The single canonical source is [human-voice-editing-reference.md](human-voice-editing-reference.md), and ordinary drafting follows [agora-writing-runtime.md](agora-writing-runtime.md).
 
-[anti-ai-writing-tells.md](anti-ai-writing-tells.md) is the user-selected, Wikipedia-derived priority authority for this gate. Its operational output rules outrank generic style preferences, measured voice tendencies, cadence targets, compression, and detector-driven edits. The current user's explicit wording and content decisions still control, while the whole-response U+2014 ban remains an immutable host-level Agora constraint.
-
-### Global output bans
-
-Hard invariant: emit zero U+2014 characters in the entire response. This applies to copy, headings, lists, critique, explanations, notes, metadata, quotations, and text copied from user or source material. Do not repeat U+2014 from an input. Replace it with a period, comma, colon, semicolon, parentheses, or plain hyphen as grammar requires.
-
-If an exact quotation contains U+2014, paraphrase it or state that it cannot be reproduced verbatim under the active constraint. Never alter a quotation and still present it as exact. After all drafting and editing, scan the complete response character by character for U+2014, replace every occurrence, and scan again. Return only when the count is zero.
-
-Unless immutable quoted, legal, technical, or user-required text must be preserved, also generate:
-
-- no curly or smart quotation marks;
-- no prompt acknowledgements or task meta-commentary;
-- no fabricated citations, quotations, anecdotes, memories, motives, credentials, opinions, comparisons, facts, or human texture;
-- no listed vocabulary or connective phrase without a documented, load-bearing reason;
-- no generated stock phrase template or generic significance tail;
-- no unneeded conclusion or recap;
-- no repeated or formulaic tripartite structure;
-- no repeated `Not only... but also...` construction;
-- no raw Markdown or source-channel residue that the destination will expose instead of render naturally;
-- no fractal summaries or one-point dilution;
-- no deliberate errors, fake informality, or detector-evasion promises.
-
-Use straight quotes. Never change facts, names, figures, dates, citations, causality, uncertainty, legal meaning, or required technical terminology to satisfy a style preference. The U+2014 ban is not optional; resolve any conflict without misrepresenting altered source text as verbatim.
-
-### AI-heavy vocabulary
-
-Strip these generated terms by default:
-
-- verbs: `delve`, `underscore`, `showcase`, `foster`, metaphorical `navigate`, `harness`, `leverage`, `unlock`, `unleash`, `empower`, `streamline`, `bolster`, `elevate`, `facilitate`, `enhance`, vague `optimize`, metaphorical `drive`, metaphorical `craft`, `forge`, `spearhead`;
-- adjectives: `pivotal`, `crucial`, `vital`, `essential`, `robust`, `seamless`, `holistic`, `comprehensive`, `multifaceted`, `nuanced`, `intricate`, `meticulous`, `profound`, `transformative`, `groundbreaking`, `revolutionary`, `cutting-edge`, `state-of-the-art`, `world-class`, `best-in-class`, `unparalleled`, `unprecedented`, `remarkable`, `noteworthy`, `notable`, `significant`, `invaluable`, `indispensable`, `paramount`, `breathtaking`, `stunning`, `vibrant`, generic `rich`, `bespoke`, `curated`;
-- nouns, especially as metaphors: `tapestry`, `landscape`, `realm`, `ecosystem`, `journey`, `testament`, `frontier`, `forefront`, `cornerstone`, `backbone`, `lifeblood`, `powerhouse`, `trailblazer`, `game-changer`;
-- connectives: `moreover`, `furthermore`, `additionally`, `in addition`, `notably`, `importantly`, `indeed`, `in essence`, `in summary`, `in conclusion`, `ultimately`, `that said`, `on the other hand`, `on one hand`.
-
-These terms are not scientific proof of machine authorship. Retain one only when it is load-bearing, exact, technically required, part of a verified proper name or immutable text, or explicitly required by the user or house style. A measured voice profile can document an author habit, but measurement alone is not an exception. Do not replace a banned term with rarer synonym soup.
-
-### Stock templates and significance tails
-
-Delete every generated occurrence of:
-
-- `It is important to note that`;
-- `It is worth noting or mentioning that`;
-- `In today's fast-paced world`;
-- `In the ever-evolving landscape of`;
-- `In the realm of`;
-- `At its core`;
-- `When it comes to`;
-- `A testament to`;
-- `Stands as a`;
-- `Serves as a`;
-- `Plays a crucial, pivotal, or vital role`;
-- `Not only X but also Y`;
-- `Not just X but Y`;
-- `Whether you are X or Y`;
-- `From X to Y, the subject has`;
-- `Navigating the complexities of`;
-- `Unlocking the potential of`;
-- `Harnessing the power of`;
-- `Paving the way for`;
-- `Setting the stage for`;
-- `Bringing X to the forefront`;
-- `Let me know if you would like`.
-
-Delete generic tails such as `emphasizing the significance of`, `reflecting the continued relevance of`, `underscoring the importance of`, `highlighting its role in`, `demonstrating its impact on`, `marking a turning point in`, `cementing its place as`, `solidifying its reputation for`, or `showcasing its commitment to`. End with the fact, action, or a specific supportable inference.
-
-### Structural tells
-
-Remove repeated `bold label: sentence` bullets, headings or topic sentences that restate themselves, identical paragraph shapes, unneeded conclusion sections, balanced both-sides framing without named evidence, smooth transitions that hide unrelated facts, definitions repeated across sections, raw channel residue, fractal summaries, and one-point dilution.
-
-Extend this to the whole deliverable, not one passage. Headings that share a syntactic template across a page, and calls to action that share a template across a site, are the same defect at a larger scale. A set of headings built as a count followed by a singular abstract noun, or every heading opening with the same conditional clause, is a structural tell even when each heading is accurate and each was written to a sanctioned shape. Sanctioned shapes are the most likely source of this failure, because nothing flags them individually.
-
-Remove repeated or formulaic tripartite rhetoric used as a stock flourish. Do not ban factual three-item series. Preserve necessary enumerations when they state scope, compare options, qualify a claim, meet a legal or platform requirement, or prevent misleading omission.
-
-Never add fake typos, fragments, slang, personal memories, jokes, or emotional confessions to simulate humanity. If author samples are supplied, follow stable habits without copying phrases or inventing an identity.
-
-Use sentence case for generic concepts unless they are verified proper names. Remove mid-paragraph bold from flowing prose unless technical documentation, accessibility, immutable source form, or explicit house style requires it.
-
-### Citation and fidelity tells
-
-Never invent or silently repair a citation, quotation, source title, author, date, URL, name, number, or factual detail. When Agora creates or materially changes a citation, verify the source before delivery. When the user supplies an immutable citation outside explicit review mode, preserve it without claiming that Agora verified it.
-
-Build the private fact ledger before substantial rewriting. After editing, check that every name, number, date, qualification, attribution, causal relation, uncertainty level, quotation, citation, required term, and first-person claim retains its supplied meaning. Do not manufacture concrete detail merely to satisfy the specificity test.
-
-Calibrate the result to the requested genre. A recommendation letter, academic paper, professional email, executive memo, essay, and SEO or GEO page require different pacing, evidence, formality, and conclusion behavior. Genre beats detector optimization.
-
-### Detector limits
-
-Detector outputs are noisy, version-dependent, and vulnerable to domain shift. Never promise that writing is undetectable. Never treat a score as proof of authorship.
-
-If testing is authorized, compare against known-human samples from the same author and genre and use methodologically different detectors when feasible. Record the product, date, disclosed model version or release, mode, language, genre, exact word count, revision stage, disclosed threshold, confidence label, whole-document score, flagged sentences, exact input or stable hash, every one-variable edit, and repeated-run results. Do not average percentages from different products. Stop after two detector-driven revision rounds unless another round has an independent editorial benefit.
-
-Research on detector limits includes the [RAID benchmark](https://arxiv.org/abs/2405.07940), [paraphrasing attacks](https://arxiv.org/abs/2303.13408), the [DAMAGE shared task](https://aclanthology.org/2025.genaidetect-1.9/), a [practical detector examination](https://aclanthology.org/2025.findings-naacl.271/), [bias against non-native English writers](https://arxiv.org/abs/2304.02819), [GPTZero methodology](https://arxiv.org/abs/2602.13042), [reliable detection limits](https://arxiv.org/abs/2303.11156), [human and AI boundary research](https://arxiv.org/abs/2502.15666), [flawed human heuristics](https://arxiv.org/abs/2206.07271), and [function-word adjacency networks](https://arxiv.org/abs/1406.4469).
+Resolve register and voice before argument planning. Apply the canonical hard rules after drafting without changing facts, names, figures, dates, citations, causality, uncertainty, legal meaning, or required technical terminology. Keep detector research and internal review language out of public copy. Never infer authorship or promise detector outcomes.
 
 ## Written GEO/AEO and citability
 
@@ -1494,7 +1404,7 @@ The full reference list, with lineage and adjudication for each entry, is mainta
 
 ### Human voice and detector evidence
 
-Use the detector sources in `Human voice and AI-writing-tell gate`. They support caution about detection claims, dataset shift, paraphrasing, and human bias. The absolute U+2014 character ban remains an Agora invariant. The broader vocabulary, connective, prompt-leakage, template, significance-tail, typography, structure, and fidelity rules follow the user-selected Wikipedia-derived operational standard in [anti-ai-writing-tells.md](anti-ai-writing-tells.md). These are output and editing rules, not proof of authorship.
+Use the detector sources in the canonical [human-voice editing reference](human-voice-editing-reference.md). They support caution about detection claims, dataset shift, paraphrasing, and human bias. The absolute U+2014 character ban remains an Agora invariant. The vocabulary, connective, prompt-leakage, template, significance-tail, typography, structure, and fidelity rules are output and editing rules, not proof of authorship.
 
 ### Preserved technical and research authorities
 

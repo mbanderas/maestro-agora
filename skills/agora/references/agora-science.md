@@ -22,15 +22,21 @@ User authority and the conflict hierarchy in [agora-marketing.md](agora-marketin
 
 ## Activate and route SCIENCE
 
-Activate `SCIENCE` when the asset explains, teaches, compares, summarizes, or persuades through scientific evidence or technical behavior. Select one internal route:
+Activate `SCIENCE` only when the requested deliverable needs research findings, study design, methods, statistics, uncertainty, scientific explanation, or evidence grading.
+
+Activate `TECHNICAL` only when the requested deliverable needs documented system behavior, engineering or systems explanation, architecture, API behavior, implementation detail, technical evaluation, or a technical audience.
+
+Do not activate either modifier because the subject or product category includes AI, software, data, security, engineering, infrastructure, or another technical label. A nontechnical homepage or product page in those categories stays in the `PLAIN` register.
+
+After the job and audience require a specialized explanation, select one internal route:
 
 | Route | Use for | Evidence focus |
 |---|---|---|
 | `EMPIRICAL` | Studies, experiments, observations, measurements, datasets, and research findings | Design, population, measurement, effect, uncertainty, and applicability |
-| `TECHNICAL` | Systems, interfaces, mechanisms, architecture, software, engineering, and failure behavior | Inputs, state changes, outputs, dependencies, constraints, and tradeoffs |
+| `TECHNICAL` | Systems, interfaces, architecture, API behavior, implementation, engineering, and failure behavior | Inputs, state changes, outputs, dependencies, constraints, and tradeoffs |
 | `MIXED` | An empirical result explained through a technical or scientific mechanism | Keep observed result and proposed explanation distinct |
 
-Choose the primary mode first. A public science explainer is normally `INFORM + SCIENCE`. A technical product page is `SELL + SCIENCE`. An investor memo about a research platform is `INVEST + SCIENCE`. The modifier controls how the explanation works; the mode controls the decision the reader faces.
+Choose the register and voice before the primary mode's argument plan. A public science explainer is normally `INFORM + SCIENCE`. An API guide is normally `INFORM + TECHNICAL`. A technical product section for engineers may use `SELL + TECHNICAL`. A general-audience homepage for the same product remains `SELL + PLAIN`. An investor memo using study results may use `INVEST + SCIENCE`. The modifier controls the requested explanation; the mode controls the decision the reader faces.
 
 Rule [HOUSE]: do not treat all technical writing as empirical science. An API contract needs exact documented behavior, not a research-study frame. Boundary: a technical claim supported by benchmark data uses `MIXED`, because its measured result still needs empirical qualification.
 
@@ -119,6 +125,12 @@ Never convert association into causation, mechanism into outcome, or temporal or
 For a one-time observational measurement, state when temporal order is unknown and reverse causation remains possible. Name residual confounders even after stated adjustment. When proposing a stronger causal test, do not pretend an investigator can directly assign an exposure that is impractical or unethical to control. Randomize a feasible intervention, opportunity, encouragement, or program when appropriate, then measure the outcome repeatedly over time. A longitudinal design improves temporal evidence but does not become randomized merely because it has repeated measurements.
 
 ### Preserve statistical meaning
+
+Describe a frequentist confidence interval as a range of values compatible with the data and analysis under the model assumptions. Do not translate it into the probability that the true effect lies in the interval or say the effect is likely above zero unless the stated statistical framework supports that probability claim.
+
+When the full interval lies above or below the null value, state that relation directly when it helps the reader interpret the result. Keep the estimated magnitude and uncertainty visible; do not stop at a significance label.
+
+Do not introduce `in practical terms`, call an effect modest or meaningful, or imply practical significance unless the brief supplies a practical threshold or outcome that supports that judgment.
 
 Rule [A]: report magnitude and uncertainty, not a significance label alone. A small p-value does not establish effect size, importance, certainty, or a useful decision. See the [ASA statement on p-values](https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf) and [Cochrane's interpretation guidance](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-15).
 
@@ -254,9 +266,13 @@ Use the strongest commercial claim requested by the user. Do not turn the hero i
 
 ### `CASE_STUDY + SCIENCE`
 
+Use scan-ready headings for implementation, validation result, limitation, role, and next decision when the supplied material supports them. If the material leaves both an external-validity gap and an unmeasured downstream outcome, keep them separate and make the next decision address each.
+
 Load [agora-case-studies.md](agora-case-studies.md). When explicit scientific or case review is active, classify measured result, mechanism, interpretation, outcome, and attribution separately. Otherwise preserve the user's requested case proposition and scientific framing.
 
 ### `VOICE + SCIENCE`
+
+When a next research step is requested, name the supplied or proposed design, comparator, measurement conditions, and uncertainty reporting. Do not turn a recommendation into `we will` without an approved plan.
 
 An authorized profile enters at hierarchy level 6. It changes expression, not proposition. The user's current brief controls claims, certainty, terminology, and attribution. Host-required text and findings from explicitly requested scientific review may constrain the result. Do not transfer a source author's opinions or certainty into a new claim.
 

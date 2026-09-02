@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "skill_version": "1.10.0",
+  "governance_default_gate": "governance_default",
+  "absolute_veto_gate": "all_cases_pass_absolute_vetoes",
+  "legacy_regressions_allowed_gate": "legacy_material_regressions_allowed",
+  "critical_contract_failures_allowed_gate": "critical_contract_failures_allowed",
+  "noninferiority_margin_gate": "domain_mean_noninferiority_margin",
+  "legacy_case_ids": [],
+  "partitions": [
+    {
+      "id": "human-writing",
+      "case_count_gate": "human_writing_case_count",
+      "minimum_comparable_cases_gate": "human_writing_minimum_comparable_cases",
+      "minimum_win_rate_gate": "human_writing_minimum_win_rate",
+      "minimum_improvement_mean_delta_gate": "human_writing_minimum_style_mean_delta",
+      "minimum_protected_mean_delta_gate": "human_writing_minimum_protected_mean_delta",
+      "protected_dimensions": ["factual-fidelity", "technical-or-legal-precision"],
+      "improvement_dimensions": ["first-read-ease", "sentence-ease", "natural-voice", "register-fit", "author-sample-fit", "control-room-vocabulary-containment", "nonformulaic-structure", "concision-without-loss"],
+      "case_ids": [
+        "northstar-ai-homepage", "datumlane-product", "softnest-profile", "gridfoundry-executive-summary",
+        "sentrybay-professional-email", "deploynote-sales-email", "orchardloop-case-study", "everyday-ai-editorial",
+        "lockriver-general-security", "packetforge-api-docs", "harborlease-legal-clause", "seedtrial-science-explainer",
+        "pinboard-interface", "tallybird-social", "clearline-spoken", "voice-three-samples",
+        "voice-thin-sample", "voice-no-sample", "exact-word-count", "qualified-source-rewrite",
+        "cloudguard-security-homepage", "ironmesh-infrastructure-product", "clinical-evidence-explainer", "policy-claim-legal"
+      ]
+    }
+  ]
+}

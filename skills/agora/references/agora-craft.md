@@ -527,33 +527,25 @@ The strongest surviving machine-writing tell is cadence rather than vocabulary. 
 
 ### The rhythm targets
 
-Every value in the table below is a **governance default**: a control setting chosen so the system has something checkable to enforce instead of the instruction to sound less uniform. The research grades all of them as engineering heuristics with no controlled literature establishing universal values for good prose. None of them is a finding, none may be cited as one, and each is a review trigger rather than an error.
+Numeric sentence-length and paragraph-shape measurements belong in `voice check` and optional diagnostics. They do not set drafting targets.
 
-| Control | Default | Status | Reading |
-|---|---|---|---|
-| Sentence-length spread | For expository prose of at least 20 sentences, a standard deviation of 8 to 12 words with a coefficient of variation of 0.40 to 0.70 | Governance default | Below roughly 6 words of deviation at an 18 to 22 word mean, review for metronomic pacing. Above roughly 15, review for uncontrolled extremes. |
-| Length tails | In a passage of 10 or more sentences, include at least one sentence of 8 words or fewer and one of 25 or more, but only where both are natural | Governance default | A forcing mechanism against middle-length clustering. Drop it wherever it produces a stunt sentence. |
-| Consecutive similar lengths | Flag 3 consecutive sentences when every pair differs by 3 words or fewer | Governance default | Review for accidental monotony. Deliberate parallelism overrides the flag. |
-| Paragraph variation | Over 8 or more paragraphs, aim for a coefficient of variation of at least 0.45 in words | Governance default | Prevents identical blocks without demanding arbitrary one-sentence paragraphs. |
-| Opening structure | At most 2 consecutive sentences opening with the same class, such as subject-first declarative, initial subordinate clause, or imperative | Governance default | Catches repeated `Subject plus verb` starts that length statistics miss. Intentional parallelism overrides it. |
-| Opening dominance | In a rolling 10-sentence window, flag any opening class occupying more than 60 percent | Governance default | Review trigger only. |
-| Clause-count variation | No more than 4 consecutive sentences with the same finite-clause count, unless the passage is deliberately parallel | Governance default | Catches syntactic monotony that survives length variation. |
+No instruction requires a long sentence, a short sentence after a long one, alternating lengths, a target distribution, a coefficient of variation, a tail value, or a repeated-opening quota. Sentence and paragraph shape follow the idea, audience, genre, and active voice.
 
-Where an authorized author profile exists, its measured corpus ranges replace every governance default above, because a measurement of that writer beats a default chosen for everyone. A writer whose corpus naturally runs wider than the spread row must not be normalized down into it, and a writer whose professional register is short briefing paragraphs must not be forced into long blocks.
+Review an ordinary sentence over 28 words. Keep it when splitting would damage a necessary relationship or exact meaning. Review repeated openings and identical paragraph shapes as possible patterns, not automatic failures. Buttons, headings, tables, lists, captions, code, identifiers, URLs, immutable quotations, legal text, and exact technical text keep their native form.
 
-**Boundary on the whole table:** these are controls for continuous prose. They do not apply to a button, a heading set, a table, a list, a caption, or a form label, and they are not evidence about how any reader responds.
+An authorized measured profile may describe the writer's habits. Use those measurements for optional comparison only. Do not generate toward a number or manufacture irregularity to resemble the corpus.
 
 ### The conflict this document does not resolve
 
 Two positions on cadence are in direct conflict, and neither side is strong enough to win.
 
-**The research position** is deliberate variance, expressed in the spread targets above.
+**The research position** is that measured variance can prompt editorial review.
 
 **The practitioner position** is uniform brevity. Experienced conversion copywriters advise short, choppy sentences, paragraphs of no more than two or three lines, and one-sentence paragraphs as the ideal, on scanned commercial surfaces.
 
 The most likely resolution is register: a landing page read by a scanning cold visitor is a different problem from expository prose read continuously, and the practitioners are talking about the first. That is a hypothesis. It has not been tested, neither position is graded above the level of an engineering heuristic, and this document adopts neither as universal.
 
-**What to do meanwhile:** apply the variance targets to continuous prose, apply the brevity preference to scanned commercial surfaces, and record which you applied if the choice is consequential. Do not report either as a finding, and do not resolve the conflict by quietly picking one.
+**What to do meanwhile:** let the idea and surface determine sentence shape. Use measured variance only as an optional diagnostic. Do not report either position as a finding.
 
 ## Open conflicts in this reference
 
@@ -562,4 +554,4 @@ Recorded so that neither side is lost. Do not close either by writing a rule.
 | Conflict | Position A | Position B | Status |
 |---|---|---|---|
 | Question-form subheadings | Practitioners reject them outright: give the answer instead of asking. | A direct observation in this project found question headings reading better than abstract noun-stack statement headings on the same page. | Open. The untested hypothesis is that questions beat noun stacks and lose to concrete answers. Neither side is graded above an assertion. |
-| Sentence cadence | Deliberate variance, per the targets above. | Uniform brevity on scanned commercial surfaces. | Open, probably register-dependent. Neither position is better than an engineering heuristic. |
+| Sentence cadence | Measured variance can prompt review. | Uniform brevity can fit scanned commercial surfaces. | Open, probably register-dependent. Neither position sets a generation quota. |

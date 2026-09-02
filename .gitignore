@@ -6,6 +6,7 @@ npm-debug.log*
 research/
 tests/research-normalize.test.mjs
 .private/
+.planning/
 .env
 .env.*
 *.pdf

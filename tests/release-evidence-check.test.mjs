@@ -26,7 +26,7 @@ const execFileAsync = promisify(execFile);
 
 const commit = "a".repeat(40);
 const candidateFreeze = "b".repeat(40);
-const baseline = "524b7927648c4fce52290e9d680e1d3a3109987c";
+const baseline = "08790a85900f218ff3347b2422559775f49959c8";
 const hash = "a".repeat(64);
 const passFor = (id, pass) => ({
   pass,
@@ -53,7 +53,7 @@ const custody = (id, pass) => ({
   },
   judge_run: {
     schema_version: 1,
-    runtime: "codex-subagent",
+    runtime: "codex-exec",
     model: "gpt-5.6-sol",
     fresh_context: true,
     skill_access: false,
@@ -63,19 +63,21 @@ const custody = (id, pass) => ({
 test("execution evidence freezes model, isolation, baseline, and order seed", () => {
   const evidence = {
     schema_version: 1,
-    skill_version: "1.7.0",
+    skill_version: "1.10.0",
     status: "passed",
     commits: {
       candidate_freeze: candidateFreeze,
       baseline,
-      baseline_ref: "v1.6.0",
+      baseline_ref: "main@08790a8",
       judge_protocol: commit,
     },
     execution: {
       generator_model: "gpt-5.6-sol",
       judge_model: "gpt-5.6-sol",
-      generator_runtime: "codex-subagent",
-      judge_runtime: "codex-subagent",
+      generator_runtime: "codex-exec",
+      judge_runtime: "codex-exec",
+      generator_reasoning_effort: "high",
+      judge_reasoning_effort: "high",
       order_seed: BLIND_ORDER_SEED,
       eligibility_policy: ELIGIBILITY_POLICY,
       reduction_policy: REDUCTION_POLICY,
@@ -91,7 +93,7 @@ test("execution evidence freezes model, isolation, baseline, and order seed", ()
     },
   };
   assert.deepEqual(validateEvidenceExecution(evidence), []);
-  assert.equal(ELIGIBILITY_POLICY, "symmetric-cross-order-hard-gates-v3");
+  assert.equal(ELIGIBILITY_POLICY, "symmetric-cross-order-hard-gates-v4");
   evidence.execution.eligibility_policy = "symmetric-majority-hard-gates-v2";
   assert.match(validateEvidenceExecution(evidence).join("\n"), /eligibility policy/);
   evidence.execution.eligibility_policy = ELIGIBILITY_POLICY;
@@ -188,7 +190,9 @@ test("JSON schemas are executed and fail closed", async () => {
   ]);
   const adjudications = Array.from({ length: 25 }, (_, index) => {
     const id = `case-${index}`;
-    return { id, passes: [passFor(id, 1), passFor(id, 2)] };
+    const passes = [passFor(id, 1), passFor(id, 2)];
+    for (const pass of passes) pass.custody.judge_run.runtime = "codex-subagent";
+    return { id, passes };
   });
   assert.deepEqual(validateJsonSchema({ schema: adjudicationSchema, value: adjudications }), []);
   const onePass = structuredClone(adjudications);

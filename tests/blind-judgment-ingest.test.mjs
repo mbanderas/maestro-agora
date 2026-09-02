@@ -43,7 +43,7 @@ const evidenceFor = (failures, response) => failures.map((gate) => ({
 const digest = (value) => createHash("sha256").update(value).digest("hex");
 const judgeRun = {
   schema_version: 1,
-  runtime: "codex-subagent",
+  runtime: "codex-exec",
   model: "gpt-5.6-sol",
   fresh_context: true,
   skill_access: false,
@@ -110,7 +110,7 @@ const rawJudgment = ({
 };
 
 test("seeded orders are deterministic and pass 2 swaps pass 1", () => {
-  assert.equal(BLIND_ORDER_SEED, "agora-v1.7.0-blind-order-v1");
+  assert.equal(BLIND_ORDER_SEED, "agora-blind-order-v2");
   const first = expectedBlindOrder(item.id, 1);
   assert.deepEqual(expectedBlindOrder(item.id, 1), first);
   assert.deepEqual(expectedBlindOrder(item.id, 2), [...first].reverse());

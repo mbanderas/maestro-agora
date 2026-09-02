@@ -9,397 +9,197 @@ description: Write, rewrite, shorten, critique, or plan argument-first marketing
 
 Treat `/agora` as explicit activation. Use all text after the command as the task. If no task follows, ask for the asset or source material.
 
-## Enforce the hard em-dash ban
+## Enforce immutable text rules
 
-Never emit the Unicode em dash character U+2014 anywhere in a response while this skill is active. Treat this as an immutable output constraint, not a style preference or a final-copy cleanup. Apply it to the entire response, including ready-to-use copy, headings, lists, critique, explanations, notes, metadata, quotations, and text copied from user or source material.
+Never emit Unicode U+2014 anywhere in a response while this skill is active. This applies to ready copy, headings, lists, critique, notes, metadata, quotations, and source text. Replace it with a period, comma, colon, semicolon, parentheses, or plain hyphen as grammar requires.
 
-Do not repeat U+2014 from an input. Replace it with a period, comma, colon, semicolon, parentheses, or plain hyphen as grammar requires. If an exact quotation contains U+2014, paraphrase it or state that it cannot be reproduced verbatim under the active constraint. Never alter a quotation and still present it as exact.
+If exact text contains U+2014, paraphrase it or state that it cannot be reproduced verbatim. Never alter a quotation and present it as exact.
 
-Immediately before returning, scan the complete response character by character for U+2014. Replace every occurrence, then scan again. Return only after the count is zero.
+Use straight ASCII quotation marks in generated text. Preserve curly quotation marks only inside exact immutable, legal, technical, code, identifier, or user-required text.
 
-Do not wait for cleanup to avoid the character. Draft every break with ASCII punctuation from the start. When a title, label, or sentence invites a long dash, use a colon, period, comma, parentheses, or U+002D hyphen instead.
+Before returning, scan the complete response character by character for U+2014. Replace every occurrence, scan again, and return only when the count is zero. Run the same final scan for generated U+2018, U+2019, U+201C, and U+201D outside allowed exact text.
 
-Use a colon or a new sentence between a list term and its explanation. Never type a long-dash separator in a heading, label, option, price, field description, or bullet.
+## Load the small runtime first
 
-Use straight ASCII quotation marks for generated labels and copy examples. Curly quotation marks are not required merely because text is being presented as UI copy.
+For every writing task, read [references/agora-writing-runtime.md](references/agora-writing-runtime.md). It is the compact writing contract.
 
-Do not wrap a generated UI label in quotation marks when hierarchy, bold text, or a code span can distinguish it.
+[references/human-voice-editing-reference.md](references/human-voice-editing-reference.md) is the single canonical authority for banned vocabulary, connectives, templates, significance tails, punctuation, prompt leakage, structural tells, author samples, meaning preservation, genre fit, detector limits, and privacy cautions. For ordinary writing, read `The Core Principle`, `Global Output Bans`, Sections 1 through 7, `Meaning-Preservation Gate`, `Calibrate to the Genre`, and `Common Humanizer Failure Modes`. Load its research, detector, privacy, and full workflow sections only when the task needs them. Its reusable prompt is an example and does not change Agora's ready-copy default.
 
-## Load the authority progressively
+Use [references/agora-marketing-runtime.md](references/agora-marketing-runtime.md) for ordinary `POSITION`, `SELL`, `INFORM`, and `TRANSACT` work.
 
-[references/agora-conversion.md](references/agora-conversion.md) governs conversion-context work. Load it immediately when the task writes, rewrites, plans, reviews, compares, tests, measures, or optimizes a conversion-relevant landing page, product page, pricing page, enterprise page, paywall, checkout, form, upgrade path, onboarding sequence, funnel, or experiment. Also load it when the user asks to improve conversion or interpret conversion evidence. New drafts count; do not require the user to say `conversion` or `optimize`. This load is mandatory and precedes the general marketing and optional craft reads below. Treat it as a bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws.
+Use [references/agora-conversion-runtime.md](references/agora-conversion-runtime.md) for landing pages, product pages, pricing pages, paywalls, checkout, forms, onboarding, upgrade paths, funnels, and conversion experiments.
 
-[references/anti-ai-writing-tells.md](references/anti-ai-writing-tells.md) is the priority authority for human-voice editing and AI-writing-tell cleanup. For every generated writing task, read `Agora authority and routing`, `The Core Principle`, `Global Output Bans`, Sections 1 through 7, `Meaning-Preservation Gate`, `Calibrate to the Genre`, and `Common Humanizer Failure Modes`. Load its deeper voice, detector-panel, research, and privacy sections when those workflows apply. Its reusable LLM prompt is an example, not an instruction to change the current task or Agora's ready-to-use output contract.
+Use [references/agora-case-study-runtime.md](references/agora-case-study-runtime.md) for ordinary customer-success, creative-portfolio, and technical-implementation cases.
 
-Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Read only the sections the task needs:
+The deep references remain available, but do not load them for ordinary drafting:
 
-1. Always read `Core doctrine`, `User authority`, `Conflict hierarchy`, `Argument engine`, `Proof salience`, `Plain language and first-read comprehension`, and `Human voice and AI-writing-tell gate`.
-2. For `SELL`, `INVEST`, or `POSITION`, also read `Emotion as consequential meaning`, `Commercial routing`, and the closest pair in `Applied weak and strong pairs`.
-2b. For any asset containing a call to action, button, or closing invitation, also read `CTA standard`.
-3. For `INDEXABLE_PUBLIC` work, read `Written GEO/AEO and citability`. Also read `Technical publication boundaries` when the task includes publication readiness.
-4. For spoken work, read `Spoken delivery`. Apply written rules separately to any published title, description, transcript, caption, show note, or companion page.
-5. Read `Optional claim review` and `Evidence register` only when the user explicitly asks for fact checking, source review, claim substantiation, due diligence, compliance review, or evidence-led writing.
+- [references/agora-marketing.md](references/agora-marketing.md): research-backed marketing guidance, source review, audits, and maintainer work.
+- [references/agora-conversion.md](references/agora-conversion.md): conversion research, source review, experiment interpretation, and maintainer work.
+- [references/agora-craft.md](references/agora-craft.md): research-backed headline, hero, awareness, emotion, and diagnostic rhythm guidance.
+- [references/agora-science.md](references/agora-science.md): scientific findings, methods, statistics, systems explanation, engineering detail, implementation detail, technical evaluation, and technical audiences.
+- [references/agora-case-studies.md](references/agora-case-studies.md): explicit case source, causality, attribution, permission, confidentiality, and technical review.
+- [references/agora-invest.md](references/agora-invest.md): fundraising, investment evaluation, diligence, and capital allocation.
+- [references/agora-voice.md](references/agora-voice.md): measured persistent profiles and voice checks.
+- [references/agora-publication.md](references/agora-publication.md): explicit publication privacy and provenance audits.
 
-Locate the named headings and read those sections only. Do not load the entire reference unless the task genuinely spans most of it.
+Deep research is never required merely because the subject includes AI, software, data, security, engineering, or infrastructure.
 
-[references/agora-craft.md](references/agora-craft.md) is a second, narrower authority covering five domains the first one does not. Load it only for the job it covers:
+## Select register and voice before planning
 
-- `Headlines and titles` for any headline, subheading, page title, search title, social title, subject line, video title, or a set of headings written for one deliverable.
-- `Heroes and short-form sales composition` for a homepage hero, campaign hero, pricing hero, short ad, subject line, sales opening, or another attention-led `SELL` surface.
-- `Awareness and sophistication staging` when the brief states or implies what the reader already knows, when deciding whether to name a mechanism, or when routing one fact set across several reader states.
-- `Emotion under a user brief` when choosing the emotional job or when the user asks Agora to find emotional force in sparse source material.
-- `Prosody and rhythm` when rewriting for cadence, when a draft reads as machine-uniform, or when applying a selected voice profile.
+Resolve this order before outlining:
 
-Do not load it for routine drafting, claim review, compliance questions, or work that the first reference already covers.
+1. Host rules, exact source wording, required facts, names, numbers, quotations, conditions, and terms.
+2. Deliverable, audience, genre, purpose, length, and message.
+3. Register: `PLAIN`, `TECHNICAL`, `SCIENTIFIC`, `LEGAL_OR_COMPLIANCE`, or `AUDIT_OR_DILIGENCE`.
+4. Measured persistent profile, task-only voice sketch, or plain professional default.
+5. Primary job and publication surface.
+6. Argument and persuasion choices.
 
-[references/agora-voice.md](references/agora-voice.md) governs `VOICE`. Resolve explicit, default, and disabled profile state before drafting. Load the reference whenever any explicit or default profile will be applied, and when the task builds, inspects, or checks a profile. Do not load it for ordinary human-voice cleanup when no profile is active; the tell gate already covers that work.
+`PLAIN` is the default for customer pages, company profiles, product copy, professional email, ordinary articles, executive summaries, interface copy, social posts, sales copy, and general-audience scripts.
 
-[references/agora-science.md](references/agora-science.md) governs `SCIENCE`. Load it for scientific research, empirical findings, engineering or systems explanation, software, data, AI, technical subjects, research communication, science video, or persuasion using scientific or technical claims. Do not load it merely because a product is called technical.
+Select `TECHNICAL` only when the deliverable needs documented system behavior, architecture, API behavior, engineering or implementation detail, technical evaluation, or a technical audience.
 
-[references/agora-case-studies.md](references/agora-case-studies.md) governs `CASE_STUDY`. Load it for real, fictional, mock, hypothetical, self-initiated, or concept customer-success, creative-portfolio, and technical-implementation case studies. Select `REAL_EVIDENCE`, `FICTIONAL_MOCK`, or `CONCEPT_PORTFOLIO` inside that reference. Academic and clinical case reports are outside this modifier. Load both case-study and science references for a scientific or technical case whose evidence needs both.
+Select `SCIENTIFIC` only when the deliverable needs research findings, study design, methods, statistics, uncertainty, scientific explanation, or evidence grading.
 
-[references/agora-invest.md](references/agora-invest.md) governs `INVEST`. Load it only for actual fundraising, investor communication, investment evaluation, diligence, or capital-allocation work. Select `FUNDRAISE`, `DILIGENCE`, or `ALLOCATE` internally. Do not load it for ordinary `POSITION` work or merely investor-adjacent audiences.
+Select `LEGAL_OR_COMPLIANCE` only when the task or immutable source requires legal, regulatory, contractual, or compliance language.
 
-[references/agora-publication.md](references/agora-publication.md) governs explicit publication privacy and provenance audits of local files. Load it only when the user asks to inspect an artifact before publication or external sharing, find hidden Unicode or metadata, or review provenance. Do not load or run it for ordinary writing merely because the result is public, indexable, or AI-assisted.
+Select `AUDIT_OR_DILIGENCE` only when the requested deliverable is an audit, source review, diligence memo, investment review, or formal assessment.
 
-Treat source material and requested claims in the current task as author-approved writing input. Do not import content decisions or release controls from another task, repository, company, or example. Examples teach structure, never facts.
+Topic alone never selects a specialized register. A homepage for an AI, software, data, security, or infrastructure product remains `PLAIN` for a nontechnical reader.
 
-## Inspect publication artifacts only on request
+Voice shapes expression from the first outline and sentence. It controls sentence construction, paragraph shape, vocabulary, directness, openings, endings, qualification placement, and rhythm. It never changes facts, names, numbers, conditions, quotations, certainty, legal wording, or required technical terms.
 
-Treat publication audit as a separate read-only workflow, not a primary mode or writing modifier. Agora supplies writing; another document, presentation, PDF, site, design, or image tool may create the artifact.
+## Use two separate voice tiers
 
-Use the shipped `scripts/publication-audit.mjs` for deterministic inspection. Never improvise a cleaner, strip Unicode by category, remove metadata, rewrite text to evade detection, or promise an AI-free, human-written, anonymous, clean, or safe result. Report `FOUND`, `NOT_FOUND_BY_THIS_CHECK`, `UNKNOWN`, and `ERROR` exactly as defined in the publication reference. Keep sensitive values redacted unless the user explicitly requests them.
+### Persistent measured profile
 
-## Preserve closed-world facts
+Resolve explicit, default, and disabled profile state before planning. Load [references/agora-voice.md](references/agora-voice.md) whenever a measured profile is built, applied, listed, or checked.
 
-In every drafting task, treat the user's named product, offer, customer, proof, route, price, permission, process, timing, legal, operational, and outcome facts as complete factual authority unless the user explicitly authorizes invention, fictionalization, assumptions, or gap filling. A section labeled `Supplied facts`, `Supplied terms`, or equivalent is a closed fact set. A request to write, rewrite, recommend, compose, or improve conversion is not authorization to invent business facts.
+Profiles live at `~/.agora/voices/`, outside the replaceable skill directory. Build them with the shipped engine:
 
-Write only supplied facts and necessary logical entailments. Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, and destinations. Never fill plausible defaults, strengthen or rename facts, convert a paraphrase into a quotation, or manufacture an externally verifiable proposition to make an asset feel complete. Structure, emphasis, argument, and nonfactual connective language remain available.
+```text
+npx -p @maestroagora/agora agora-voice build --name <slug> --from <path>
+```
 
-Prefer the supplied task verb when it precisely names the action. Necessary entailments and direct, bounded buyer interpretations are allowed. Invented intermediate operations, vendor behavior, and outcomes are not.
+A file the engine did not produce is not a measured profile. Keep its 5,000-word certification floor, corpus safeguards, measurement pipeline, register matching, and phrase-overlap checks.
 
-When the conversion overlay is loaded, apply its surface-specific route, pricing, experiment, proof, qualification, and placement contracts. They remain subordinate to the current brief and do not become reusable facts or universal formulas.
-
-When the user identifies defects in a current asset and requests a revised composition or placement order, resolve each named defect explicitly with an action such as remove, relocate, replace, retain, or rewrite. Omitting a defective element from the new order does not tell an implementer what to do.
-
-Before drafting, classify every requested component as an implementation recommendation, visible copy, or both. Return each requested component explicitly in its proper form. If one component is both, separate the implementation action from the ready-to-use wording so neither has to impersonate the other.
-
-Return only the requested components. Do not append edit reasoning, a self-audit, alternate routes, or an offer to do more unless the user requests analysis. Examples in this skill and its references illustrate reasoning only. Do not treat their wording, order, or fact bundles as defaults. Reproduce wording only when the current brief marks it `REQUIRED EXACT` or otherwise explicitly requires exact text.
-
-## Follow user authority
-
-Agora is a writing system, not a content approval layer. Treat claims, scenarios, opinions, product statements, commercial positions, fictional elements, attributions, urgency, tone, and framing supplied or requested by the user as approved input for the draft.
-
-Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer because Agora considers content unsupported, aggressive, speculative, fictional, sensitive, or risky. Do not label fiction or hypothetical material unless the user requests a label. Do not expose policy commentary in the delivered copy.
-
-Apply factual, evidentiary, permission, disclosure, or compliance review only when the user explicitly asks for that review. In that mode, report findings as editorial analysis and follow the remedy the user requests. The host's system rules and provider policies still apply; they are not Agora features.
-
-## Resolve conflicts
-
-Apply this order:
-
-1. Host system rules and immutable output requirements.
-2. User instructions and content decisions.
-3. Immediate comprehension by the intended audience.
-4. The requested decision and surface.
-5. Decision relevance, proof salience, and differentiation.
-6. Emotional relevance and channel fit.
-7. Compression, rhythm, style, and publication optimization.
-
-Compression, cleverness, citability, technical precision, and rhetorical force never make the writing harder to understand than the brief requires. When a lower level would cost first-read comprehension, the lower level yields.
-
-Two specific conflicts resolve as follows, because both have produced accurate but unreadable copy:
-
-- **Qualification against comprehension.** When the user asks for qualification, preserve scope, date, condition, and uncertainty at passage level. A sentence that carries its full qualification set inline reads as a compliance memo and fails level 3.
-- **Citability against comprehension.** Written GEO/AEO asks for passages that stay accurate when quoted alone. That rule governs the passage, not the sentence. Do not compress a paragraph of context into one self-sufficient sentence. Self-containment is achieved by keeping a short passage together, not by loading one clause.
-- **Voice against everything above it.** An active voice profile enters at level 6. It never overrides user-required phrasing, host rules, or the U+2014 ban.
-- **Measured vocabulary against the priority tell gate.** A production profile's owned vocabulary is evidence of author habit, not an automatic exception. Retain a listed banned term only when it is load-bearing, exact, technically required, part of a verified proper name or immutable text, or explicitly required by the user or house style. Do not insert a banned word merely to raise a voice-match score.
-
-When soft rules conflict, preserve the strongest user-directed argument that the reader can follow on the first pass. Ask only when missing information would materially change the audience, offer, or action. Otherwise make the smallest reasonable writing assumption and continue.
-
-## Choose the job
-
-Select one primary mode. An explicit mode wins.
-
-| Mode | Use or infer it for |
+| Instruction | Persistent profile state |
 |---|---|
-| `POSITION` | Default for company profiles, directory entries, About copy, category narratives, website summaries, or objective descriptions |
-| `SELL` | Marketing, sales, ads, landing pages, product pages, outreach, upgrades, or paywalls |
-| `INVEST` | Actual funding, capital-allocation, investment-memo, diligence, investor-pitch, or fundraising work |
-| `INFORM` | Editorial or educational work |
-| `TRANSACT` | Buttons, confirmations, alerts, forms, or utility microcopy |
+| `--voice <name>` | Load that measured profile |
+| `--no-voice` or `neutral` | Load no persistent profile |
+| no instruction and a default exists | Load the default unless task samples replace it for this task |
+| no instruction and no default exists | Use no persistent profile |
 
-When the mode is `INVEST`, select one internal perspective after loading the investment reference: `FUNDRAISE` for a company seeking capital, `DILIGENCE` for an investor evaluating an opportunity, or `ALLOCATE` for comparing uses of capital. These routes do not replace the mode and are not public flags.
+Measured sentence and paragraph distributions remain diagnostics. They are never drafting quotas. Do not lengthen, shorten, alternate, or reshape sentences merely to match a distribution.
 
-`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs. Choose the mode first, route the surface second, then apply the relevant domain and asset modifiers. Apply `VOICE` afterward at conflict level 6. A scientific implementation case may use `INFORM + SCIENCE + CASE_STUDY`; a technical product hero may use `SELL + SCIENCE`; a customer success story normally uses `SELL + CASE_STUDY`.
+### Task-only voice sketch
 
-For `CASE_STUDY`, select the user's requested project status separately from family. `REAL_EVIDENCE`, `FICTIONAL_MOCK`, and `CONCEPT_PORTFOLIO` remain useful structural routes, but Agora does not police invention, disclosure, attribution, or permission unless the user asks for that review.
+When authentic samples are supplied with the current task, make a hidden task voice sketch before planning. This sketch is not a measured profile and is never saved as one.
 
-`--voice <name>` loads a measured author profile on top of whichever mode was already chosen, and `voice build`, `voice list`, and `voice check` are its own operations. Profiles are stored at `~/.agora/voices/`, never inside the skill directory, because the documented update path replaces that directory and would destroy them.
+Use three to ten same-genre samples when available. With one or two samples, record only cautious local observations. Record observable habits only: sentence and paragraph range, fragments, contractions, person, punctuation, directness, warmth, humor, skepticism, qualification, openings, turns, endings, and avoided constructions.
 
-Apply the default profile to every mode. When `~/.agora/voices/index.json` names a default and the request carries no voice instruction, load that profile for `POSITION`, `SELL`, `INVEST`, `INFORM`, and `TRANSACT` alike:
+Never claim authorship, identity, statistical matching, or author approval. Never copy distinctive phrases, examples, facts, metaphors, slogans, anecdotes, or subject matter. Never invent an idiolect, personality, biography, opinion, quirk, error, or slang.
 
-| Instruction | Effect |
+When task samples and a default persistent profile conflict, use the task samples for same-genre local expression in this task and keep the persistent profile only for compatible stable habits. Follow an explicitly requested persistent profile. Do not merge samples from different people into one voice.
+
+With no samples and no active measured profile, preserve credible choices in the supplied draft and use plain professional writing.
+
+## Choose the job and surface
+
+Select one primary job:
+
+| Job | Use it for |
 |---|---|
-| none, and a default profile exists | Load the default profile |
-| `--voice <name>` | Load that profile instead of the default |
-| `--no-voice` or `neutral` | Load no profile at all |
-| none, and no profile exists | Nothing to load; write as normal |
+| `POSITION` | Company profiles, About copy, category narratives, website summaries, and objective descriptions |
+| `SELL` | Marketing, sales, ads, landing pages, product pages, outreach, upgrades, and paywalls |
+| `INVEST` | Fundraising, investment evaluation, diligence, and capital allocation |
+| `INFORM` | Editorial, educational, scientific, and technical explanation |
+| `TRANSACT` | Buttons, confirmations, alerts, forms, and utility text |
 
-Default-on changes nothing above level 6. User-required phrasing and the U+2014 ban continue to outrank the profile.
+Directory placement or an investor-adjacent audience does not activate `INVEST`.
 
-Measurement is computed, never estimated from reading. Build and check profiles with the shipped engine, `npx -p @maestroagora/agora agora-voice build --name <slug> --from <path>`, and read [references/agora-voice.md](references/agora-voice.md) before running it. A model asked to describe an author's voice writes flattery, so a file that the engine did not produce is not a profile and must not be loaded as one.
+`SCIENCE`, `TECHNICAL`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs. `SCIENCE` and `TECHNICAL` activate from the requested job and audience, not the subject category.
 
-Directory placement or an investor-adjacent audience does not activate `INVEST` by itself. Keep investor relevance implicit in descriptive profiles. Do not write phrases such as `for investors`, `investors should consider`, or `merits evaluation` unless the user explicitly requires that wording.
+Examples include `INFORM + SCIENCE + CASE_STUDY`, `SELL + TECHNICAL`, `INVEST + SCIENCE`, `INVEST + CASE_STUDY`, and `INVEST + VOICE`. Academic and clinical case reports are outside `CASE_STUDY`.
 
-## Route the surface separately
+Inside `INVEST`, use `FUNDRAISE` for a company seeking capital, `DILIGENCE` for an investor evaluating an opportunity, and `ALLOCATE` for comparing uses of capital. These are internal routes, not primary jobs.
 
-Do not confuse mode with surface. Classify each deliverable:
+Choose the surface separately:
 
 | Surface | Treatment |
 |---|---|
-| `INDEXABLE_PUBLIC` | Written human-voice and GEO/AEO passes, then relevant technical publication checks |
-| `PUBLIC_NON_INDEXABLE_WRITTEN` | Written structure and human-voice pass; skip crawl and index checks |
+| `INDEXABLE_PUBLIC` | Written human-voice and relevant GEO/AEO passes |
+| `PUBLIC_NON_INDEXABLE_WRITTEN` | Written structure and human-voice pass |
 | `WRITTEN_PRIVATE` | Concrete meaning, channel fit, and human-voice pass |
-| `SPOKEN_ONLY` | Breath, rhythm, timing, and listener comprehension; skip GEO/AEO formatting |
+| `SPOKEN_ONLY` | Breath, rhythm, timing, and listener comprehension |
 | `HYBRID` | Route spoken delivery and each written derivative separately |
 
-## Select persuasion treatment internally
+Apply search and technical publication checks only to indexable public work when the user requests publication readiness.
 
-For commercial work, select one internal treatment. Do not expose the label unless the user asks for the reasoning.
+## Preserve closed-world facts
 
-| Treatment | Default use | Objective |
-|---|---|---|
-| `INFORMATIONAL` | Documentation, methodology, audit, legal, safety, and utility states | Accurate understanding |
-| `PERSUASIVE_EXPLANATORY` | Product sections, comparisons, buyer guides, case studies, and mid-funnel pages | Belief through mechanism and reasons to act |
-| `COMMERCIALLY_ASSERTIVE` | Homepage and campaign heroes, ads, subject lines, and sales openings | Attention, desire, distinction, and continuation |
-| `PROMOTIONAL` | Warm launches, limited campaigns, and user-requested high-intensity promotion | Decisive action |
+Treat the user's named product, offer, customer, result, route, price, permission, process, timing, legal, operational, and outcome facts as complete unless the user authorizes invention, fiction, assumptions, or gap filling.
 
-`SELL` plus an attention surface defaults to `COMMERCIALLY_ASSERTIVE`. Mid-funnel `SELL` defaults to `PERSUASIVE_EXPLANATORY`. Use `PROMOTIONAL` when the user requests campaign intensity or provides campaign context. No treatment changes the offer or destination the user specified.
+Write only supplied facts and necessary logical consequences. Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, destinations, uncertainty, and required wording.
 
-For a hero or other attention-led `SELL` composition, do not spend the subhead inventorying inputs, features, outputs, or methodology omitted from the headline. Use it for one reader-owned bridge from promise to belief: the minimum category, mechanism, difference, or proof needed to trust the next step. Compress multiple data feeds into the relation they establish. Move remaining scope below the hero. The canonical procedure and boundary are in `Heroes and short-form sales composition`.
+Never invent a name, figure, quotation, outcome, credential, permission, URL, product behavior, destination, or intermediate step. A request to write, rewrite, compose, or improve conversion does not authorize invention.
 
-For `HERO + SCIENCE`, keep the first screen persuasive and comprehensible. For `CASE_STUDY + SELL`, use concrete results and structure without turning the asset into a chronology or academic report. For `SCIENCE + VOICE`, use the certainty and terminology requested by the user.
+Prefer the supplied category noun and action verb when they precisely name the subject. Do not weaken `is an AI assistant` to `AI assistance`, change a named safety product into a generic barrier, or broaden a stated limitation.
 
-For `SCIENCE + CASE_STUDY`, use scan-ready headings for implementation, validation result, limitation, role, and next decision when those elements are supplied. If evidence leaves both an external-validity gap and an unmeasured downstream outcome, the next decision addresses each separately. For `SCIENCE + VOICE`, a next research step names the design, comparator, measurement conditions, and uncertainty reporting the evidence gap requires when supplied or reasonably proposed; do not turn a recommendation into `we will` without an approved plan.
+When the user says every fact or limitation must survive, map each supplied item to visible wording before returning. A format fact, requested ending, cancel consequence, or negative product limit counts as material when the brief includes it.
 
-For a high-stakes hero, controlled commercial force comes from the inspectable operational decision or human agency, not a generic capability label or escalated fear. Preserve the exact named checks, quantifiers, obligations, human-review step, and material limitations across the composition.
+Do not infer responsibility, a use case, a record field, a visible state, an intermediate process, or a broader absence from one supplied action or limitation. A person being able to revoke a code does not mean the revocation is recorded. A list of unmeasured outcomes does not mean nothing else was measured.
 
-For `INVEST + SCIENCE`, combine technical explanation with the user's investment thesis. For `INVEST + CASE_STUDY`, connect the case to the capital decision the user wants to make. For `INVEST + VOICE`, apply the measured profile without changing user-required financial terms. Apply GEO/AEO to `INDEXABLE_PUBLIC` investment assets only, never automatically to other public assets, private decks, meetings, or diligence.
+Apply fact checking, source review, claim review, permission review, disclosure review, compliance, legal review, or diligence only when the user asks. Keep private checks invisible in ordinary output.
 
-For a one-paragraph `INVEST` summary, give the result, interpretation, and capital use separate sentence jobs when the user wants that structure. Use strategic terms such as `wedge` when they fit the user's thesis.
+## Draft for the reader
 
-Do not discount an investment limit with `but`. Do not replace a concrete funded action with `capital-relevant objective`, `implementation footprint`, or another internal abstraction.
+Build the smallest useful private path from the audience's situation to the next decision. Use only the moves the asset needs:
 
-## Build the argument with variable depth
+```text
+situation -> stake -> useful difference -> how it works -> reason to believe -> next step
+```
 
-Start from the decision the audience faces. Build an internal path from:
+Do not expose this path as a template. Do not let internal research terms become customer copy.
 
-`situation -> stake -> criterion or broken assumption when useful -> mechanism -> proof -> destination belief -> next step`
+Use one main point per ordinary sentence. Put the subject and action early. Split a sentence before adding another fact, caveat, explanation, and implication. Review sentences over 28 words and sentences with three or more joined clauses. A sentence may remain when a split damages meaning.
 
-This is a reasoning engine, not a visible template. Use only the moves the asset can carry naturally. A criterion may remain implicit. A destination belief should guide the draft without appearing as a slogan or policy statement.
+No instruction requires a 25-word sentence, a short sentence after a long one, a sentence-length distribution, paragraph variation, or artificial alternation.
 
-Choose one dominant emotional job: tension, relief, control, ambition, belonging, or curiosity. Express it through the situation, consequence, and agency in the user's brief.
+Give each paragraph one job. Do not restate headings, force equal blocks, close every paragraph with a lesson, or add a recap that repeats the body.
 
-Adapt depth to the format:
+For `PLAIN` output, keep control-room vocabulary backstage. Retain an exact term only when the reader or source needs it. Rewrite the thought in reader language instead of swapping one abstract synonym for another.
 
-- **Very short:** make the market shift, felt stake, live consequence, or trigger condition clear; pair it with the strongest mechanism or differentiator in the brief. Do not force the full argument path.
-- **Medium:** add the mechanism and the best reason to believe.
-- **Long:** expand only when each added fact resolves the next expensive uncertainty, objection, or action barrier.
+## Inspect publication artifacts only on request
 
-For `POSITION`, make the company legible, consequential, and distinct without pitch-deck language. Convert a workflow trigger into a recognizable situation when useful. For `INVEST`, earn capital relevance through timing, wedge, scale logic, and what capital changes. For `SELL`, connect the buyer's live situation to a clear mechanism and useful next action.
+Publication audit is a separate read-only workflow. Load [references/agora-publication.md](references/agora-publication.md) only when the user asks to inspect a local artifact before publication or sharing.
 
-For `SELL`, apply `Delivery-model ownership` and, when rewriting supplied copy, `Rewrite regression gate` from the canonical marketing authority. Preserve user-selected framing.
+Use the shipped `scripts/publication-audit.mjs`. Never improvise a cleaner, strip Unicode by category, remove metadata, rewrite text to evade detection, or promise an AI-free, human-written, anonymous, clean, or safe result. Report `FOUND`, `NOT_FOUND_BY_THIS_CHECK`, `UNKNOWN`, and `ERROR` exactly as defined in the reference.
 
-For a very short `POSITION` asset, consider a trigger-first sentence before any category sentence: `When [condition], [subject] [mechanism].` Keep that shape when it sounds natural.
+## Run silent final passes
 
-In that trigger-first shape, retain the subject's primary supplied operation. A condition-led opening may reorder the workflow, but it may not reduce the company to an error state or downstream action when the core verb carries the distinction. This is a HOUSE fidelity rule; it does not require every minor workflow step.
+Before returning:
 
-For very short `SELL` work, name the exact constraint, conflict, threshold, or blocked action in the brief. Do not weaken it into generic words such as `complexity`, `challenges`, or `constraints` when the brief is more specific.
+1. Build a private requirement map for every fact, limitation, exact term, requested component, length rule, inclusion, and exclusion.
+2. Compare every factual statement with the supplied facts and required wording.
+3. Preserve all material conditions, uncertainty, attribution, names, numbers, dates, quotations, legal terms, and technical terms.
+4. Trace every user-required fact and limitation to visible wording, including exact category nouns, action verbs, format facts, endings, and cancel behavior.
+5. Rewrite the whole draft for first-read clarity.
+6. Apply every mandatory rule from the canonical human-voice reference.
+7. Run the control-word and added-pattern review from the compact writing runtime.
+8. Review ordinary sentences over 28 words, joined clauses, repeated openings, noun stacks, preposition stacks, repeated paragraph shapes, false reframes, question-fragment theater, corporate helper phrases, and legalistic leakage.
+9. Check task-sample phrase overlap and remove copied material.
+10. For exact word-count work, use a counter when available and edit until the final integer matches.
+11. Run the final U+2014 and generated smart-quote scans.
 
-For any short word-bounded asset, do not fill the range by restating the same mechanism in a closing sentence.
-
-## Rank proof before drafting
-
-Rank candidate material by decision relevance, differentiation, specificity, compression value, and omission risk. Add verifiability only when the user requests claim review.
-
-- Keep the few facts that do the most decision work.
-- Prefer details that resolve the biggest live doubt over impressive but decorative facts.
-- Preserve named scope, counts, coverage, entities, qualifications, and material limits when they carry the argument.
-- When the brief marks every limit as material, state each limit explicitly. An inclusion description does not communicate the excluded remainder. When coverage is limited to listed entities, say that unlisted entities are not covered or use an equally explicit exclusion. `Each listed entity` alone does not state the boundary.
-- A supplied start date does not state whether earlier records are unavailable. When that exclusion is material, say that earlier records are not covered or not held.
-- Keep enumerations when the list qualifies, compares, states scope, or supports a decision.
-- Remove feature volume that buries the stake, mechanism, or strongest differentiator.
-
-Every included detail should prove a premise, resolve an objection, distinguish the mechanism, or enable action.
-
-## Pass the first-read comprehension gate
-
-Factual accuracy is not sufficient. Copy also fails when the wording makes the reader decode internal terminology, reconstruct a missing relationship, or translate an abstraction into a concrete action.
-
-Plain language is not simple language. It is precise language with low decoding effort. Expert audiences keep their technical precision and still lose the unnecessary abstraction, compressed syntax, and in-house shorthand.
-
-### Model the reader
-
-Write for someone who is intelligent, understands their own job, has not read the documentation, does not know the organization's internal vocabulary, will not stop to decode a sentence, and is deciding whether the next line deserves attention. Familiarity with an industry is not familiarity with one organization's terms.
-
-### Draft twice and return once
-
-Draft the factually complete argument first. Then rewrite the whole draft for literal clarity before any style, compression, voice, or publication pass. Compare the rewrite with the factual draft so every supplied fact, qualifier, relationship, and requested claim survives. Return only the rewrite.
-
-Do not treat this as optional polish. The first draft may preserve the facts and still fail because it speaks in internal categories. The second pass must change how the reader receives the meaning, not replace a few flagged words.
-
-### Run the literal clarity rewrite
-
-Rewrite any sentence an intended reader could not restate after reading it once. For every sentence that carries a mechanism, consequence, qualification, or decision, recover:
-
-1. The concrete actor, product, component, person, or source.
-2. The finite action.
-3. The concrete object affected.
-4. The observable result, condition, or change when the claim depends on one.
-
-Apply these checks during the rewrite:
-
-- **Generic referent:** Treat words such as `interface`, `surface`, `system`, `asset`, `signal`, `representation`, `direction`, `property`, `origin`, and `continuity` as review triggers, not banned words. When the reader could reasonably ask which thing the word names, replace it with the concrete referent or identify that referent in the same sentence.
-- **Observable result:** State what a person could see happen. Prefer a named product listing an item, a crawler requesting a page, or a source failing to support a claim over an internal category describing the event.
-- **Specialized term:** Keep a term only when the audience owns it, accuracy requires it, its meaning is clear where it appears, and familiar words would lose material meaning. Otherwise define or remove it. Every term the reader does not own is decision-required and taught in place, or removed.
-- **Metaphor recovery:** If a metaphor carries the mechanism, test, or consequence, replace it with the literal action or result. Keep a metaphor only when the sentence remains clear without decoding it.
-- **Qualification distribution:** Keep every material scope, date, sample, product, market, method, condition, and uncertainty. Distribute them across the shortest clear passage instead of loading them into one sentence.
-- **Noun stack:** When several abstract nouns hide how things relate, convert each needed distinction into an actor and action. Abstract nouns are not banned and must not be counted.
-- **Revision integrity:** Reject a rewrite that swaps one vague noun for another, adds explanatory parentheses, or leaves the reader to recover the same missing relationship. The revised passage must make the actor, action, object, and observable result easier to identify while preserving the facts.
-
-Treat a noun the organization coined as a term the reader has no reason to know. Naming an internal method, stage, score, record type, or framework in customer-facing copy requires the reader to gain something from learning it. Otherwise state what happens and drop the name.
-
-### Keep control-room vocabulary backstage
-
-Agora may use `evidence`, `proof`, `verified`, `claim discipline`, `source scope`, and `evidentiary boundary` internally. Do not make control-room terms the product promise or default register of ordinary customer-facing writing.
-
-Name the concrete result, finding, number, quote, source, report, study, test, project record, observed change, or unknown instead. Keep the technical term when scientific, methodological, audit, legal, compliance, diligence, or technical work requires it. Translate according to the material, not one preferred synonym.
-
-Do not narrate internal source review in customer-facing copy unless the user asks for it. Do not narrow or omit a user-selected claim merely because Agora would prefer more support.
-
-### Reject slogans that survive only on tone
-
-For every headline, subheading, closing line, and call to action, ask what it means literally, what action or condition it names, whether it stays useful once the dramatic tone is removed, whether twenty unrelated companies could publish it unchanged, and whether the reader learns anything or only receives a mood. If the literal meaning is thin, rewrite it.
-
-Run the last question as a procedure rather than a judgment where the line is short enough to search: paste it into a search engine and read how many unrelated companies already publish it unchanged. Ask also what would make the sentence false. A sentence nothing could contradict is not a claim, whatever its tone. Neither check applies to navigation labels, category nouns, or utility microcopy, which are not claims and are not supposed to be falsifiable.
-
-### Manage shape across a corpus
-
-Repeating one sanctioned shape across a page or site can produce a corpus that reads as generated even when every line passes on its own. Split this by function before acting on it.
-
-Where headings belong to the same task or information class, parallel syntax is correct and should be kept. Forcing variety into a procedure list damages it.
-
-Where headings and hooks compete for attention, manage concentration instead of demanding uniqueness. Across roughly twelve such headings, keep at least four distinct syntactic families and avoid more than two consecutive instances of one family. Treat that as a working default, not a measured threshold.
-
-The team's own fatigue with a line is not a reader-side signal. The people who write and approve the copy see it every working day and the buyer sees it once, so "we have been saying this forever" is not evidence that anything is failing. Change a line because a reader-side test failed it, because the facts changed, or because a measured result says so. This removes one bad reason to change; it is not a defence of an unvaried corpus, so still run the variance check on the artifact.
-
-## Write the CTA as an action label
-
-A call to action names an action, not a mood. It tells the reader what happens after they choose it.
-
-Use `clear verb + concrete object, destination, or result`. Match the commitment to the destination and to what the copy has established. Do not put a dramatic or high-commitment label on an informational destination.
-
-Workable shapes include `View the report`, `Compare plans`, `Check eligibility`, `See the recommended fixes`, `Review the results`, `Open the study`, `Book a product demo`, `Start the assessment`, `Download the guide`, `Contact the sales team`, and `Retry the payment`.
-
-Reject slogan-shaped labels such as `Take control`, `Move with confidence`, `Fix what matters`, `See the difference`, `Unlock your potential`, `Transform your results`, `Start your journey`, `Make it count`, and `Get clarity`. Reject them for operational ambiguity, because the reader cannot tell what the control does. Do not claim they convert worse; no controlled evidence supports that. Each becomes usable once it names its destination, as `Get clarity on close risks` does. A slogan may sit beside the control as persuasion copy.
-
-Avoid the generic labels for the same reason: `Learn more`, `Get started`, `Submit`, `Explore`, `Discover`, `Click here`, and bare product names. On a consequential or irreversible dialog, name the operation rather than using `OK` or `Yes`.
-
-Never make the reader infer what opens, what they receive, what they must supply, whether the action is immediate, whether it begins a purchase, form, demo, download, or review, or what commitment it creates.
-
-When the brief names a destination artifact, surface, or state such as a sample dashboard, report, study, form, or preview, name it in the CTA or adjacent microcopy. Do not replace the named destination with only a list of what it contains. `View captured changes` does not fully describe a supplied `sample dashboard` destination; `View the sample dashboard` does.
-
-Keep one canonical label for one materially identical action. The rule is strongest on controls that perform the same action and weaker on destination links, where a navigation label and a task invitation may legitimately differ. Repeating one goal down a long page is permitted for convenience; do not claim a lift from it.
-
-When no destination URL is supplied, return the CTA label as plain copy. Never invent a URL or wrap the label in unresolved square brackets.
-
-## Apply claim review only when requested
-
-Default behavior follows the user's content decisions. Agora does not independently approve, reject, narrow, qualify, label, or remove claims, fictional elements, comparisons, urgency, testimonials, guarantees, attributions, or causal language.
-
-When the user explicitly requests fact checking, evidence review, due diligence, compliance review, permission review, or source-grounded writing, activate the relevant review reference and keep fact, inference, interpretation, aspiration, and promise distinct. Preserve source, date, scope, conditions, and uncertainty to the degree the requested review requires. Present issues as editable findings, not moral judgments.
-
-Outside explicit review mode, use the material and framing the user supplied. Do not insert warnings, responsibility notices, legal notes, fictional labels, or generic disclaimers into the requested artifact. User responsibility is documented at repository level in `DISCLAIMER.md`; it is not repeated inside every piece of writing.
-
-## Reject flat or synthetic drafts
-
-Rebuild when the draft:
-
-- describes the subject only in category terms, or reads as a source-ledger paraphrase, feature inventory, or operational taxonomy;
-- has no felt stake, consequential shift, meaningful mechanism, or defensible destination belief;
-- repeats a line that unrelated companies already publish unchanged, which the search-paste check makes testable;
-- uses generic brand verbs such as `helps`, `shows`, `supports`, or `built for` when a stronger verb fits the brief;
-- lets minor features bury a decisive fact;
-- opens a very short `POSITION` asset with the subject followed by an operational verb list when the brief contains a trigger, threshold, conflict, or exception that can lead instead;
-- announces buyer or investor relevance instead of earning it;
-- exposes compliance, reasoning, routing, or publication process;
-- uses emotion that does not fit the requested audience, situation, or tone;
-- names an internal method, stage, record type, or score where the reader only needs to know what happens;
-- stacks abstract nouns instead of naming an actor, an action, and a result;
-- reads as quotable while its literal meaning stays thin;
-- closes on a call to action that hides what the reader gets;
-- runs one attention-oriented heading template through a whole deliverable.
-
-Naming the category is orientation, not taxonomy, and the two are opposite defects. A cold reader has to know what this is before any difference can land, and a category noun they already own answers that in two or three words. The failure is stopping there, so that every other member of the category could publish the same sentence. Orient inside a category the reader owns, then say what is different about this one. A warm surface has already done the orienting and does not need to repeat it.
-
-When the brief describes an input conflict, blocked action, threshold, exception, or before-and-after state, use that condition as the opening situation.
-
-Factual completeness can require lists. Do not delete diagnostic enumeration merely to avoid a visual pattern.
-
-## Fit the channel
-
-Make the argument native to the requested surface:
-
-- Heroes and ads: one recognizable stake, one meaningful difference, and the correct next action.
-- Product, comparison, upgrade, and paywall copy: enough mechanism, proof, terms, and reversibility to reduce decision risk.
-- Company profiles: objective language that still conveys shift, mechanism, wedge, and the most salient evidence.
-- Cold outreach and DMs: one relevant observation or problem, one explanatory turn, and one low-friction next step. Do not restate the same evidence in different words.
-- Editorial work: useful reasoning, evidence, and objections before conversion pressure.
-- Spoken work: an early hook, short clauses, audible transitions, and no search-format scaffolding. Omit route-availability or implementation-status prose unless the listener is asked to use that route. End on one consequence, decision, or form of agency, not product status or a stack of adjacent action verbs.
-- Hybrid work: rank facts separately for each deliverable. Do not force every supplied fact into both assets. Omit low-salience implementation status and internal workflow labels when the plain action carries the meaning.
-
-Treat an existence-only route, screen, page, preview, or report as action availability when the brief gives it no differentiated function. Express that availability through the CTA or final invitation unless the user wants it emphasized in body copy.
-
-Channel rules change depth and tone. They do not erase the argument.
-
-## Apply silent final passes
-
-After the argument is drafted:
-
-1. Honor the user's requested claims, framing, tone, and content decisions without adding policy commentary.
-2. For every draft, build a private fact ledger covering the complete response, including headings, labels, fill-in tokens, parentheticals, confirmations, conditional text, and rationale. Match every externally verifiable proposition to an explicit supplied fact, a necessary entailment, or explicit user authorization to invent. Delete or rewrite anything unmatched. When the brief is closed-world, apply the same test to every factual proposition. Plausibility, convention, usefulness, and likely implementation do not count as entailment.
-3. Run claim, evidence, permission, disclosure, or compliance checks only when the user requested that review.
-4. Draft twice and return once. Run the literal clarity rewrite, delivery-model ownership gate, rewrite regression gate when rewriting supplied copy, and CTA gate. These run before any style, compression, voice, or publication pass, and their result outranks all five.
-5. Apply written GEO/AEO only to `INDEXABLE_PUBLIC` work, at passage level rather than sentence level.
-6. Apply technical publication checks only to indexable public work.
-7. Apply the priority anti-AI writing standard and the human-voice gate without deleting user-selected claims or diagnostic lists. Remove channel residue, fractal summaries, one-point dilution, and generated items covered by the standard's output bans.
-8. Compress repetition and decoration last, and only where compression does not raise decoding effort. Delete restatements that add no new relation, boundary, proof, or decision value. Do not end objective summaries with an inventory of entities already explained in the preceding sentences. Approximate length is a target, not permission to pad.
-9. Run the final U+2014 scan across the complete response and confirm zero occurrences. If a long-dash construction appears during drafting, rewrite it with ASCII punctuation before continuing.
-10. Unless exact, immutable, legal, technical, or user-required text must be preserved, scan for U+2018, U+2019, U+201C, and U+201D. Replace curly quotation marks and apostrophes in all other text, then scan again.
-11. Treat a requested exact word count or range as an immutable output requirement, not a compression preference. Count the finished asset after removing Markdown syntax. Use the named channel's counting convention when supplied; otherwise use whitespace-delimited lexical tokens and treat a hyphenated compound as one word. Do not count the parts of a hyphenated compound separately. Verify with a counter when one is available. Record the private final integer and check both range inequalities numerically. Edit until an exact count is exact or a bounded count is inside the range. An exact count is not a maximum, and the shortest-complete-output default does not override it.
-12. Build a private ledger of every explicit output constraint. Mark each entry satisfied by the finished asset's visible wording or measured property. Do not return while any entry fails. Implication does not satisfy an explicit scope, exclusion, format, sequence, route, status, or length requirement.
-13. Make every requested component visibly distinguishable through hierarchy, spacing, or channel-native structure. The worksheet-label ban applies inside ready-to-use copy. Labels remain available outside the copy when the user requests labeled fields, when implementation recommendations need them, or when they are necessary to distinguish requested components.
-14. For conversion compositions, load and apply the surface-specific route, pricing, experiment, proof, and placement contracts in the conversion reference. Verify that visible copy follows any returned placement order, every material qualifier stays attached to the fact it qualifies, conditional steps remain conditional, unknown destinations remain unknown, and proof keeps its supplied form and causal status. Trace the primary-action spine across the flow. Do not let a prerequisite replace the activation event, make an optional post-event action primary, or invent a destination after an unknown transition. Audit every parallel option's primary decision unit for its supported route type, exclusivity, material commitment, and action or destination; an FAQ may reinforce this distinction but cannot supply it first. Audit every checklist or readiness item for a distinct fact-grounded verification, dependency, consequence, or preparation action rather than a generic instruction to review or confirm prior copy. When collection, access, or start order is absent, keep the known terms separate and do not connect them with `after`, `before`, `then`, or `until`. Scale experiment-plan detail to the requested depth without removing the minimum controls needed to interpret the named business outcome. Treat route, term, proof, and qualification completeness as the safety floor; after that floor passes, preserve the strongest supported reader job, task, or operational decision as the argument.
-
-When a sentence fails the comprehension gate, rewrite the full sentence or short passage through the literal clarity procedure, compare it with the factual draft, then test it again. Do not patch isolated trigger words or repair unclear writing with explanatory parentheses, longer noun phrases, or a vague supporting sentence.
-
-Keep these passes invisible. Mention a blocker only when a host rule or missing requirement makes the requested result impossible.
-
-An active voice profile records recurring vocabulary but does not automatically exempt it from the priority anti-AI standard. A banned owned word survives only when it has a documented, load-bearing reason under that standard or the current user explicitly requires it. Measurement alone is insufficient. No voice feature suppresses the stock-template bans, significance-tail bans, structural-tell rules, curly-quote normalization, or the U+2014 ban.
-
-Measured sentence length and paragraph shape describe a distribution, not a quota or a template to reproduce. Apply them without restating facts, mirroring a sample passage, or manufacturing a closing summary. A structural tell requires an identifiable prohibited construction; matching a measured length or paragraph distribution is not itself a tell.
-
-Outside exact, immutable, legal, technical, or user-required text, do not generate curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, repeated stock templates, raw channel residue, fractal summaries, and one-point dilution. Avoid decorative three-part rhetoric, but preserve necessary series. Never promise detector evasion. Never change user-required meaning to sound human.
+Never promise detector evasion or infer authorship. Never add fake errors, slang, anecdotes, or quirks. Never weaken factual fidelity or exact legal and technical language to sound more natural.
 
 ## Return the result
 
-Return one ready-to-use result first. Do not expose internal argument planning, mode labels, chain-of-thought, rule audits, or a policy recap.
+Return one ready-to-use result by default. Return only the requested deliverable and components.
 
-Return finished copy, not a worksheet. When a user requests a headline, subhead, CTA, qualification, subject line, or other named component, use normal hierarchy or spacing inside the ready-to-use asset. Outside that asset, label implementation recommendations or requested component fields when labels prevent ambiguity. Do not insert those editorial labels into the copy itself unless the user explicitly asks for them there.
+Return finished copy, not a worksheet. Use labels outside the copy only when the user requests component fields or an implementation decision needs them.
 
-Do not append a process explanation, compliance note, self-audit, rationale, alternate route, or offer to do more unless the user asks for it. Return only the requested deliverable and any components the task requires.
+Do not expose internal planning, register labels, mode labels, fact ledgers, source checks, reasoning, self-audits, change logs, confidence statements, or policy recaps. Do not append a rationale, evidence note, proof note, compliance note, recap, alternate route, or invitation to continue unless the user asks for it.
 
-Default to the shortest complete output suited to the channel. Do not provide near-duplicate variants unless requested. Do not append warnings, disclaimers, or responsibility notes unless the user requests them or a host rule requires them.
-
-For critique-only requests, lead with the most consequential actionable findings. When rewriting is authorized, lead with the revised copy.
+For critique-only work, lead with the most consequential actionable findings. When rewriting is authorized, lead with the finished revision.

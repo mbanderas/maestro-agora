@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "winner": {"type":"string","enum":["A","B","tie"]},
+    "aScores": {"$ref":"#/$defs/scores"},
+    "bScores": {"$ref":"#/$defs/scores"},
+    "aHardGateFailures": {"$ref":"#/$defs/failures"},
+    "bHardGateFailures": {"$ref":"#/$defs/failures"},
+    "aHardGateEvidence": {"$ref":"#/$defs/evidence"},
+    "bHardGateEvidence": {"$ref":"#/$defs/evidence"},
+    "rationale": {"type":"string","minLength":1}
+  },
+  "required": ["winner","aScores","bScores","aHardGateFailures","bHardGateFailures","aHardGateEvidence","bHardGateEvidence","rationale"],
+  "$defs": {
+    "scores": {
+      "type":"object",
+      "additionalProperties":false,
+      "properties": {
+        "factual-fidelity":{"type":"number","minimum":1,"maximum":5},
+        "first-read-ease":{"type":"number","minimum":1,"maximum":5},
+        "sentence-ease":{"type":"number","minimum":1,"maximum":5},
+        "natural-voice":{"type":"number","minimum":1,"maximum":5},
+        "register-fit":{"type":"number","minimum":1,"maximum":5},
+        "author-sample-fit":{"type":"number","minimum":1,"maximum":5},
+        "control-room-vocabulary-containment":{"type":"number","minimum":1,"maximum":5},
+        "nonformulaic-structure":{"type":"number","minimum":1,"maximum":5},
+        "concision-without-loss":{"type":"number","minimum":1,"maximum":5},
+        "technical-or-legal-precision":{"type":"number","minimum":1,"maximum":5}
+      },
+      "required": ["factual-fidelity","first-read-ease","sentence-ease","natural-voice","register-fit","author-sample-fit","control-room-vocabulary-containment","nonformulaic-structure","concision-without-loss","technical-or-legal-precision"]
+    },
+    "failures": {"type":"array","items":{"type":"string","minLength":1}},
+    "evidence": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "additionalProperties":false,
+        "properties": {
+          "gate":{"type":"string","minLength":1},
+          "excerpt":{"type":"string","minLength":1},
+          "missingPremise":{"type":"string","minLength":1}
+        },
+        "required":["gate","excerpt","missingPremise"]
+      }
+    }
+  }
+}

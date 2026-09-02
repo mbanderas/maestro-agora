@@ -8,7 +8,9 @@ import { pathToFileURL } from "node:url";
 import { adjudicationsDisagree, validateEligibility } from "./blind-eligibility.mjs";
 import { buildBlindJudgePrompt, normalizeOriginalTask } from "./blind-judge-prompt.mjs";
 
-export const BLIND_ORDER_SEED = "agora-v1.7.0-blind-order-v1";
+const RELEASE_CONTRACT = JSON.parse(await readFile(new URL("../evals/releases/current.json", import.meta.url), "utf8"));
+
+export const BLIND_ORDER_SEED = "agora-blind-order-v2";
 
 const VALID_JUDGE_WINNERS = new Set(["A", "B", "tie"]);
 const VALID_MAPPED_WINNERS = new Set(["candidate", "incumbent", "tie"]);
@@ -148,8 +150,8 @@ const validateJudgeRun = (judgeRun, label) => {
   }
   if (!sameKeys(judgeRun, JUDGE_RUN_KEYS)
     || judgeRun.schema_version !== 1
-    || judgeRun.runtime !== "codex-subagent"
-    || judgeRun.model !== "gpt-5.6-sol"
+    || judgeRun.runtime !== RELEASE_CONTRACT.judge_runtime
+    || judgeRun.model !== RELEASE_CONTRACT.judge_model
     || judgeRun.fresh_context !== true
     || judgeRun.skill_access !== false) {
     throw new Error(`${label} has invalid or non-normalized judge run metadata`);
@@ -355,7 +357,8 @@ export const ingestBlindJudgments = async ({
         throw new Error(`case ${item.id} pass ${pass} judge prompt does not match deterministic materialization`);
       }
       const judgment = JSON.parse(rawJudgment.toString("utf8"));
-      const judgeRun = JSON.parse(judgeLog.toString("utf8"));
+      const judgeLogValue = JSON.parse(judgeLog.toString("utf8"));
+      const judgeRun = judgeLogValue?.attestation ?? judgeLogValue;
       passes.push(normalizeBlindJudgment({
         manifest,
         item,

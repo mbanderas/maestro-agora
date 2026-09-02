@@ -15,7 +15,10 @@ const SCIENCE_PATH = join(SKILL_ROOT, "references", "agora-science.md");
 const CASE_STUDY_PATH = join(SKILL_ROOT, "references", "agora-case-studies.md");
 const INVEST_PATH = join(SKILL_ROOT, "references", "agora-invest.md");
 const PUBLICATION_PATH = join(SKILL_ROOT, "references", "agora-publication.md");
-const ANTI_AI_PATH = join(SKILL_ROOT, "references", "anti-ai-writing-tells.md");
+const ANTI_AI_PATH = join(SKILL_ROOT, "references", "human-voice-editing-reference.md");
+const WRITING_RUNTIME_PATH = join(SKILL_ROOT, "references", "agora-writing-runtime.md");
+const MARKETING_RUNTIME_PATH = join(SKILL_ROOT, "references", "agora-marketing-runtime.md");
+const CONVERSION_RUNTIME_PATH = join(SKILL_ROOT, "references", "agora-conversion-runtime.md");
 const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
 const CODEX_PLUGIN_PATH = join(ROOT, ".codex-plugin", "plugin.json");
 const CLAUDE_PLUGIN_PATH = join(ROOT, ".claude-plugin", "plugin.json");
@@ -24,11 +27,11 @@ const GITATTRIBUTES_PATH = join(ROOT, ".gitattributes");
 const DISCLAIMER_PATH = join(ROOT, "DISCLAIMER.md");
 const PRIVACY_PATH = join(ROOT, "PRIVACY.md");
 const LINK_FIXTURE_PATH = join(ROOT, "tests", "fixtures", "reference-links.v1.7.0.json");
-const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.5.0");
+const EVAL_ROOT = join(ROOT, "evals", "prospective", "human-writing-v1.0.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, antiAi, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
+const [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, antiAi, writingRuntime, marketingRuntime, conversionRuntime, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
@@ -40,6 +43,9 @@ const [skill, reference, conversion, craft, voice, science, caseStudies, invest,
     readFile(INVEST_PATH, "utf8"),
     readFile(PUBLICATION_PATH, "utf8"),
     readFile(ANTI_AI_PATH, "utf8"),
+    readFile(WRITING_RUNTIME_PATH, "utf8"),
+    readFile(MARKETING_RUNTIME_PATH, "utf8"),
+    readFile(CONVERSION_RUNTIME_PATH, "utf8"),
     readFile(OPENAI_PATH, "utf8"),
     readFile(CODEX_PLUGIN_PATH, "utf8").then(JSON.parse),
     readFile(CLAUDE_PLUGIN_PATH, "utf8").then(JSON.parse),
@@ -97,13 +103,12 @@ test("skill frontmatter and direct activation remain portable", () => {
 });
 
 test("publication audit is explicit, read only, and separate from ordinary writing", () => {
-  const loading = extractSection(skill, "Load the authority progressively");
+  const loading = extractSection(skill, "Load the small runtime first");
   assert.match(loading, /\[references\/agora-publication\.md\]\(references\/agora-publication\.md\)/);
-  assert.match(loading, /Load it only when the user asks to inspect an artifact before publication or external sharing/);
-  assert.match(loading, /Do not load or run it for ordinary writing merely because the result is public, indexable, or AI-assisted/);
+  assert.match(loading, /explicit publication privacy and provenance audits/);
 
   const workflow = extractSection(skill, "Inspect publication artifacts only on request");
-  assert.match(workflow, /separate read-only workflow, not a primary mode or writing modifier/);
+  assert.match(workflow, /separate read-only workflow/);
   assert.match(workflow, /Use the shipped `scripts\/publication-audit\.mjs`/);
   assert.match(workflow, /Never improvise a cleaner, strip Unicode by category, remove metadata, rewrite text to evade detection/);
 
@@ -121,14 +126,12 @@ test("publication audit is explicit, read only, and separate from ordinary writi
 });
 
 test("routing defaults profiles to POSITION and reserves INVEST for capital decisions", () => {
-  const routing = extractSection(skill, "Choose the job");
-  assert.match(routing, /`POSITION` \| Default for company profiles/);
-  assert.match(routing, /`INVEST` \| Actual funding, capital-allocation/);
-  assert.match(routing, /Directory placement or an investor-adjacent audience does not activate `INVEST` by itself/);
-  assert.match(routing, /Keep investor relevance implicit in descriptive profiles/);
-  assert.match(routing, /Do not write phrases such as `for investors`, `investors should consider`, or `merits evaluation`/);
+  const routing = extractSection(skill, "Choose the job and surface");
+  assert.match(routing, /`POSITION` \| Company profiles/);
+  assert.match(routing, /`INVEST` \| Fundraising, investment evaluation, diligence, and capital allocation/);
+  assert.match(routing, /Directory placement or an investor-adjacent audience does not activate `INVEST`/);
 
-  const surfaces = extractSection(skill, "Route the surface separately");
+  const surfaces = routing;
   for (const surface of [
     "INDEXABLE_PUBLIC",
     "PUBLIC_NON_INDEXABLE_WRITTEN",
@@ -138,116 +141,51 @@ test("routing defaults profiles to POSITION and reserves INVEST for capital deci
   ]) {
     assert.ok(surfaces.includes(`\`${surface}\``), `missing surface ${surface}`);
   }
-  assert.match(surfaces, /Do not confuse mode with surface/);
-  assert.match(surfaces, /skip GEO\/AEO formatting/);
+  assert.match(surfaces, /Choose the surface separately/);
+  assert.match(skill, /Apply search and technical publication checks only to indexable public work/);
 });
 
 test("science compositions preserve evidence gaps and next-step design", () => {
-  assert.match(skill, /For `SCIENCE \+ CASE_STUDY`, use scan-ready headings for implementation, validation result, limitation, role, and next decision/);
-  assert.match(skill, /If evidence leaves both an external-validity gap and an unmeasured downstream outcome, the next decision addresses each separately/);
-  assert.match(skill, /For `SCIENCE \+ VOICE`, a next research step names the design, comparator, measurement conditions, and uncertainty reporting/);
-  assert.match(skill, /do not turn a recommendation into `we will` without an approved plan/);
+  assert.match(science, /Use scan-ready headings for implementation, validation result, limitation, role, and next decision/);
+  assert.match(science, /both an external-validity gap and an unmeasured downstream outcome/);
+  assert.match(science, /name the supplied or proposed design, comparator, measurement conditions, and uncertainty reporting/);
+  assert.match(science, /Do not turn a recommendation into `we will` without an approved plan/);
 });
 
 test("trigger-first positioning retains the supplied primary operation", () => {
-  assert.match(skill, /retain the subject's primary supplied operation/);
-  assert.match(skill, /may reorder the workflow, but it may not reduce the company to an error state or downstream action/);
-  assert.match(skill, /HOUSE fidelity rule/);
+  assert.match(marketingRuntime, /Retain the subject's primary supplied operation/);
+  assert.match(marketingRuntime, /Reordering may not reduce the company to an error state or downstream action/);
 });
 
 test("argument architecture is variable-depth and user-directed", () => {
-  const argument = extractSection(skill, "Build the argument with variable depth");
-  assert.match(
-    argument,
-    /situation -> stake -> criterion or broken assumption when useful -> mechanism -> proof -> destination belief -> next step/,
-  );
-  assert.match(argument, /reasoning engine, not a visible template/);
-  assert.match(argument, /Very short:/);
-  assert.match(argument, /Do not force the full argument path/);
-  assert.match(argument, /very short `POSITION` asset/);
-  assert.match(argument, /trigger-first sentence/);
-  assert.match(argument, /very short `SELL` work/);
-  assert.match(argument, /Do not weaken it into generic words/);
-  assert.match(argument, /POSITION.*legible, consequential, and distinct/s);
-  assert.match(argument, /INVEST.*timing, wedge, scale logic/s);
-
-  const proof = extractSection(skill, "Rank proof before drafting");
-  for (const signal of [
-    "decision relevance",
-    "differentiation",
-    "verifiability",
-    "specificity",
-    "compression value",
-    "omission risk",
-  ]) {
-    assert.match(proof, new RegExp(signal, "i"));
+  const argument = extractSection(skill, "Draft for the reader");
+  assert.match(argument, /situation -> stake -> useful difference -> how it works -> reason to believe -> next step/);
+  assert.match(argument, /Do not expose this path as a template/);
+  assert.match(marketingRuntime, /Very short copy may need only the live constraint, the strongest supplied difference, and the next action/);
+  assert.match(marketingRuntime, /For a very short company profile/);
+  assert.match(marketingRuntime, /For very short sales copy/);
+  for (const signal of ["relevance", "differentiation", "specificity", "compression value", "omission risk"]) {
+    assert.match(marketingRuntime, new RegExp(signal, "i"));
   }
-  assert.match(proof, /Preserve named scope, counts, coverage, entities, qualifications, and material limits/);
-  assert.match(skill, /When the brief marks every limit as material, state each limit explicitly/);
-  assert.match(skill, /An inclusion description does not communicate the excluded remainder/);
-  assert.match(skill, /`Each listed entity` alone does not state the boundary/);
-  assert.match(skill, /A supplied start date does not state whether earlier records are unavailable/);
-  assert.match(skill, /For any short word-bounded asset, do not fill the range by restating the same mechanism/);
-  assert.match(proof, /Keep enumerations/);
-  assert.match(proof, /Every included detail should prove a premise, resolve an objection, distinguish the mechanism, or enable action/);
-  assert.match(proof, /Add verifiability only when the user requests claim review/);
+  assert.match(marketingRuntime, /Preserve named limits, counts, coverage, entities, qualifications, and necessary lists/);
 });
 
 test("user authority controls requested content", () => {
-  const authority = extractSection(skill, "Follow user authority");
-  assert.match(authority, /writing system, not a content approval layer/);
-  assert.match(authority, /Treat claims, scenarios, opinions, product statements, commercial positions, fictional elements, attributions, urgency, tone, and framing supplied or requested by the user as approved input/);
-  assert.match(authority, /Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer/);
-  assert.match(authority, /Do not label fiction or hypothetical material unless the user requests a label/);
-  assert.match(authority, /Apply factual, evidentiary, permission, disclosure, or compliance review only when the user explicitly asks/);
-
-  const optionalReview = extractSection(skill, "Apply claim review only when requested");
-  assert.match(optionalReview, /Default behavior follows the user's content decisions/);
-  assert.match(optionalReview, /does not independently approve, reject, narrow, qualify, label, or remove claims/);
-  assert.match(optionalReview, /Outside explicit review mode/);
-  assert.match(optionalReview, /Do not insert warnings, responsibility notices, legal notes, fictional labels, or generic disclaimers/);
+  assert.match(writingRuntime, /writing system, not a content approval layer/);
+  assert.match(writingRuntime, /Treat user-supplied claims, scenarios, opinions, product statements, commercial positions, fictional elements, attributions, urgency, tone, and framing as approved input/);
+  assert.match(writingRuntime, /Do not independently refuse, narrow, remove, weaken, qualify, fact-check, moralize, label fiction, or append a disclaimer/);
+  assert.match(skill, /Apply fact checking, source review, claim review, permission review, disclosure review, compliance, legal review, or diligence only when the user asks/);
 
   const referenceAuthority = extractSection(reference, "User authority");
   assert.match(referenceAuthority, /All review instructions elsewhere in this reference and the domain references are conditional on that request/);
   assert.match(referenceAuthority, /Outside review mode, the user owns content decisions and publication responsibility/);
 
-  const passes = extractSection(skill, "Apply silent final passes");
-  assert.match(passes, /Honor the user's requested claims, framing, tone, and content decisions without adding policy commentary/);
-  assert.match(passes, /claim, evidence, permission, disclosure, or compliance checks only when the user requested that review/);
-  assert.match(passes, /Apply written GEO\/AEO only to `INDEXABLE_PUBLIC` work/);
-  assert.match(passes, /technical publication checks only to indexable public work/);
-  assert.match(passes, /Keep these passes invisible/);
-  assert.match(passes, /only when a host rule or missing requirement makes the requested result impossible/);
-  assert.match(passes, /Run the final U\+2014 scan across the complete response/);
-  assert.match(passes, /For every draft, build a private fact ledger covering the complete response/);
-  assert.match(passes, /scan for U\+2018, U\+2019, U\+201C, and U\+201D/i);
-  assert.match(passes, /Count the finished asset after removing Markdown syntax/);
-  assert.match(passes, /Treat a requested exact word count or range as an immutable output requirement/);
-  assert.match(passes, /Verify with a counter when one is available/);
-  assert.match(passes, /check both range inequalities numerically/);
-  assert.match(passes, /Do not count the parts of a hyphenated compound separately/);
-  assert.match(passes, /visible wording or measured property/);
-  assert.match(passes, /format, sequence, route, status, or length requirement/);
-  assert.match(passes, /hierarchy, spacing, or channel-native structure/);
-  assert.match(passes, /worksheet-label ban applies inside ready-to-use copy/);
-  assert.match(passes, /Labels remain available outside the copy when the user requests labeled fields/);
-  assert.match(passes, /an exact count is exact or a bounded count is inside the range/);
-  assert.match(passes, /An exact count is not a maximum, and the shortest-complete-output default does not override it/);
-  assert.match(passes, /Build a private ledger of every explicit output constraint/);
-  assert.match(passes, /Implication does not satisfy an explicit scope, exclusion, format, sequence, route, status, or length requirement/);
-  assert.match(passes, /For conversion compositions, load and apply the surface-specific route, pricing, experiment, proof, and placement contracts/);
-  assert.match(passes, /preserve necessary series/);
-
-  const channel = extractSection(skill, "Fit the channel");
-  assert.match(channel, /one explanatory turn/);
-  assert.match(channel, /Do not restate the same evidence/);
-  assert.match(channel, /Omit route-availability or implementation-status prose/);
-  assert.match(channel, /End on one consequence, decision, or form of agency/);
-  assert.match(channel, /rank facts separately for each deliverable/i);
-  assert.match(channel, /Do not force every supplied fact into both assets/);
-  assert.match(channel, /internal workflow labels/);
-  assert.match(channel, /Treat an existence-only route, screen, page, preview, or report as action availability/);
-  assert.match(channel, /unless the user wants it emphasized in body copy/);
+  const passes = extractSection(skill, "Run silent final passes");
+  assert.match(passes, /Compare every factual statement with the supplied facts and required wording/);
+  assert.match(passes, /For exact word-count work, use a counter when available and edit until the final integer matches/);
+  assert.match(passes, /Run the final U\+2014 and generated smart-quote scans/);
+  assert.match(skill, /Return finished copy, not a worksheet/);
+  assert.match(marketingRuntime, /Fit the channel/);
 });
 
 test("claim review is optional while unnamed CTA destinations remain exact", () => {
@@ -261,19 +199,13 @@ test("claim review is optional while unnamed CTA destinations remain exact", () 
   assert.match(reference, /Do not invent `#`, `example\.com`, a route, or a dummy href/);
   assert.match(reference, /Return a CTA label as plain copy unless the user requests markup or supplies the destination URL/);
   assert.match(reference, /Do not wrap a label in square brackets without a destination/);
-  assert.match(skill, /Never invent a URL or wrap the label in unresolved square brackets/);
+  assert.match(marketingRuntime, /Do not invent `#`, a dummy address, a route, or unresolved link markup/);
 });
 
 test("comprehension outranks compression, citability, and differentiation", () => {
-  const conflicts = extractSection(skill, "Resolve conflicts");
-  assert.match(conflicts, /3\. Immediate comprehension by the intended audience\./);
-  assert.match(conflicts, /7\. Compression, rhythm, style, and publication optimization\./);
-  assert.match(
-    conflicts,
-    /Compression, cleverness, citability, technical precision, and rhetorical force never make the writing harder to understand/,
-  );
-  assert.match(conflicts, /preserve scope, date, condition, and uncertainty at passage level/);
-  assert.match(conflicts, /That rule governs the passage, not the sentence/);
+  const priorities = extractSection(writingRuntime, "Priority");
+  assert.match(priorities, /Make the first read clear/);
+  assert.match(priorities, /Apply search, GEO\/AEO, cadence, and compression only when they do not make the writing harder to read/);
 
   const referenceHierarchy = extractSection(reference, "Conflict hierarchy");
   assert.match(referenceHierarchy, /3\. Immediate comprehension by the intended audience\./);
@@ -289,28 +221,11 @@ test("comprehension outranks compression, citability, and differentiation", () =
 });
 
 test("the first-read gate is operational, not a symptom list", () => {
-  const gate = extractSection(skill, "Pass the first-read comprehension gate");
-  assert.match(gate, /Plain language is not simple language/);
-  assert.match(gate, /does not know the organization's internal vocabulary/);
-  assert.match(gate, /Draft twice and return once/);
-  assert.match(gate, /rewrite the whole draft for literal clarity/);
-  assert.match(gate, /Return only the rewrite/);
-  assert.match(gate, /Rewrite any sentence an intended reader could not restate after reading it once/);
-  assert.match(gate, /Generic referent/);
-  assert.match(gate, /Observable result/);
-  assert.match(gate, /Metaphor recovery/);
-  assert.match(gate, /Qualification distribution/);
-  assert.match(gate, /Revision integrity/);
-  assert.match(gate, /Every term the reader does not own is decision-required and taught in place, or removed/);
-  assert.match(gate, /Treat a noun the organization coined as a term the reader has no reason to know/);
-  assert.match(gate, /concrete actor, product, component, person, or source/);
-  assert.match(gate, /finite action/);
-  assert.match(gate, /concrete object affected/);
-  assert.match(gate, /observable result, condition, or change/);
-  assert.match(gate, /Abstract nouns are not banned and must not be counted/);
-  assert.match(gate, /twenty unrelated companies could publish it unchanged/);
-  assert.match(gate, /parallel syntax is correct and should be kept/);
-  assert.match(gate, /Treat that as a working default, not a measured threshold/);
+  assert.match(writingRuntime, /rewrite the whole draft for first-read clarity/i);
+  assert.match(writingRuntime, /Use one main point per sentence/);
+  assert.match(writingRuntime, /Put the subject and action early/);
+  assert.match(writingRuntime, /Review an ordinary sentence over 28 words/);
+  assert.match(writingRuntime, /Give each paragraph one job/);
 
   const section = extractSection(reference, "Plain language and first-read comprehension");
   for (const heading of [
@@ -346,17 +261,14 @@ test("the first-read gate is operational, not a symptom list", () => {
   assert.match(section, /name the concrete object the reader can understand or inspect/);
   assert.match(section, /Do not run a mechanical synonym replacement/);
   assert.match(section, /scientific research, methodology, audit, legal, compliance, diligence, and technical evaluation/);
-  assert.match(gate, /Do not make control-room terms the product promise or default register of ordinary customer-facing writing/);
-  assert.match(gate, /Translate according to the material, not one preferred synonym/);
-  assert.match(gate, /Do not narrate internal source review in customer-facing copy unless the user asks for it/);
-  assert.match(gate, /Do not narrow or omit a user-selected claim merely because Agora would prefer more support/);
+  assert.match(writingRuntime, /Keep system language backstage/);
+  assert.match(writingRuntime, /Do not replace these words mechanically/);
   assert.match(section, /Source review stays backstage unless the user asks to expose it/);
   assert.match(section, /Do not narrow or remove a user-selected claim because Agora considers its support incomplete/);
 
-  const passes = extractSection(skill, "Apply silent final passes");
-  assert.match(passes, /Draft twice and return once/);
-  assert.match(passes, /Run the literal clarity rewrite, delivery-model ownership gate, rewrite regression gate when rewriting supplied copy, and CTA gate/);
-  assert.match(passes, /before any style, compression, voice, or publication pass/);
+  const passes = extractSection(skill, "Run silent final passes");
+  assert.match(passes, /Rewrite the whole draft for first-read clarity/);
+  assert.match(passes, /Apply every mandatory rule from the canonical human-voice reference/);
 
   const citability = extractSection(reference, "Written GEO/AEO and citability");
   assert.match(citability, /only to `INDEXABLE_PUBLIC` assets/);
@@ -365,17 +277,11 @@ test("the first-read gate is operational, not a symptom list", () => {
 });
 
 test("CTAs name an action and a destination, never a mood", () => {
-  const cta = extractSection(skill, "Write the CTA as an action label");
-  assert.match(cta, /A call to action names an action, not a mood/);
-  assert.match(cta, /clear verb \+ concrete object, destination, or result/);
-  assert.match(cta, /Never make the reader infer what opens/);
-  assert.match(cta, /Keep one canonical label for one materially identical action/);
-  assert.match(cta, /Reject them for operational ambiguity/);
-  assert.match(cta, /Do not claim they convert worse; no controlled evidence supports that/);
-  assert.match(cta, /Review the results/);
-  assert.doesNotMatch(cta, /Review the evidence/);
-  assert.match(cta, /When the brief names a destination artifact, surface, or state/);
-  assert.match(cta, /Do not replace the named destination with only a list of what it contains/);
+  const cta = extractSection(marketingRuntime, "Write calls to action");
+  assert.match(cta, /clear verb plus the concrete object, destination, or result/);
+  assert.match(cta, /Match the commitment to what happens next/);
+  assert.match(cta, /Do not invent a URL or destination/);
+  assert.match(cta, /Keep one label for one materially identical action/);
 
   const standard = extractSection(reference, "CTA standard");
   assert.match(standard, /A CTA is an action label, not a slogan/);
@@ -441,36 +347,27 @@ test("the evidence register records common myths without overriding user content
 });
 
 test("U+2014 is an immutable whole-response veto", () => {
-  const ban = extractSection(skill, "Enforce the hard em-dash ban");
-  assert.match(ban, /Never emit the Unicode em dash character U\+2014 anywhere in a response/);
-  assert.match(ban, /immutable output constraint, not a style preference or a final-copy cleanup/);
-  assert.match(ban, /including ready-to-use copy, headings, lists, critique, explanations, notes, metadata, quotations/);
-  assert.match(ban, /Do not repeat U\+2014 from an input/);
-  assert.match(ban, /Never alter a quotation and still present it as exact/);
+  const ban = extractSection(skill, "Enforce immutable text rules");
+  assert.match(ban, /Never emit Unicode U\+2014 anywhere in a response/);
+  assert.match(ban, /ready copy, headings, lists, critique, notes, metadata, quotations, and source text/);
+  assert.match(ban, /Never alter a quotation and present it as exact/);
   assert.match(ban, /scan the complete response character by character for U\+2014/);
-  assert.match(ban, /Return only after the count is zero/);
+  assert.match(ban, /return only when the count is zero/);
 
-  const outputBans = extractSection(reference, "Global output bans", 3);
-  assert.match(outputBans, /Hard invariant: emit zero U\+2014 characters in the entire response/);
-  assert.match(outputBans, /The U\+2014 ban is not optional/);
+  const outputBans = extractSection(antiAi, "Global Output Bans");
+  assert.match(outputBans, /zero em dashes/);
 
   const evaluation = extractSection(reference, "Evaluation contract");
   assert.match(evaluation, /entire generated response contains zero U\+2014 characters/);
   assert.match(evaluation, /Automatic failure: any U\+2014 occurrence/);
-  assert.ok(manifest.adjudication.absolute_vetoes.includes("em-dash"));
+  assert.match(manifest.hard_gate_definitions["canonical-house-style"], /banned typography/);
 });
 
-test("the Wikipedia-derived anti-AI reference is the priority human-voice standard", () => {
-  const loading = extractSection(skill, "Load the authority progressively");
-  assert.match(loading, /\[references\/anti-ai-writing-tells\.md\]\(references\/anti-ai-writing-tells\.md\)/);
-  assert.match(loading, /priority authority for human-voice editing and AI-writing-tell cleanup/);
-  assert.match(loading, /reusable LLM prompt is an example/);
-
-  const routing = extractSection(antiAi, "Agora authority and routing");
-  assert.match(routing, /user-selected priority authority/);
-  assert.match(routing, /It is not represented as a verbatim copy of Wikipedia/);
-  assert.match(routing, /Do not refuse an authorized rewrite/);
-  assert.match(routing, /does not override the current task/);
+test("the exact attached reference is the canonical human-voice standard", () => {
+  const loading = extractSection(skill, "Load the small runtime first");
+  assert.match(loading, /\[references\/human-voice-editing-reference\.md\]\(references\/human-voice-editing-reference\.md\)/);
+  assert.match(loading, /single canonical authority/);
+  assert.match(loading, /reusable prompt is an example/);
 
   const bans = extractSection(antiAi, "Global Output Bans");
   for (const required of [
@@ -487,24 +384,13 @@ test("the Wikipedia-derived anti-AI reference is the priority human-voice standa
     assert.ok(bans.includes(required), `priority output bans are missing: ${required}`);
   }
 
-  const structure = extractSection(antiAi, "5. Structural Tells");
-  assert.match(structure, /Fractal summaries/);
-  assert.match(structure, /One-point dilution/);
-  assert.match(structure, /Raw Markdown, chat acknowledgements, email sign-offs/);
-
-  const voiceProfile = extractSection(antiAi, "13. Build an Author Voice Profile Before Rewriting");
-  assert.match(voiceProfile, /author-specific rejection register/);
-  assert.match(voiceProfile, /at least quarterly/);
-
-  const detector = extractSection(antiAi, "18. Optional Detector-Panel Protocol");
-  for (const required of ["operating threshold when disclosed", "confidence label", "stable input hash", "one-variable edit", "repeated-run results"]) {
-    assert.ok(detector.includes(required), `detector protocol is missing: ${required}`);
-  }
+  assert.match(extractSection(antiAi, "5. Structural Tells"), /Paragraph-level patterns to break/);
+  assert.match(extractSection(antiAi, "13. Build an Author Voice Profile Before Rewriting"), /three to ten authentic samples/);
+  assert.match(extractSection(antiAi, "18. Optional Detector-Panel Protocol"), /Never claim that a passing score proves human authorship/);
 
   const humanGate = extractSection(reference, "Human voice and AI-writing-tell gate");
-  assert.match(humanGate, /anti-ai-writing-tells\.md/);
-  assert.match(humanGate, /Wikipedia-derived priority authority/);
-  assert.match(humanGate, /measurement alone is not an exception/i);
+  assert.match(humanGate, /single canonical source is \[human-voice-editing-reference\.md\]/);
+  assert.match(humanGate, /Never infer authorship or promise detector outcomes/);
 });
 
 test("reference leads with doctrine and keeps the deep authority library", () => {
@@ -626,10 +512,10 @@ test("the craft reference carries the five unabsorbed domains with graded rules"
   assert.match(emotion, /never advertise the prevalence of an undesirable behavior/i);
 
   const prosody = extractSection(craft, "Prosody and rhythm");
-  assert.match(prosody, /Every value in the table below is a \*\*governance default\*\*/);
+  assert.match(prosody, /Numeric sentence-length and paragraph-shape measurements belong in `voice check` and optional diagnostics/);
   assert.match(prosody, /diagnostic signal, not a verdict/);
   assert.match(prosody, /this document adopts neither as universal/);
-  assert.match(prosody, /Do not report either as a finding/);
+  assert.match(prosody, /Do not report either position as a finding/);
 
   const conflicts = extractSection(craft, "Open conflicts in this reference");
   assert.match(conflicts, /Question-form subheadings/);
@@ -638,15 +524,10 @@ test("the craft reference carries the five unabsorbed domains with graded rules"
 });
 
 test("SKILL.md loads the craft reference only when the task needs it", () => {
-  const loading = extractSection(skill, "Load the authority progressively");
+  const loading = extractSection(skill, "Load the small runtime first");
   assert.match(loading, /\[references\/agora-craft\.md\]\(references\/agora-craft\.md\)/);
-  assert.match(loading, /Load it only for the job it covers/);
-  assert.match(loading, /Headlines and titles`/);
-  assert.match(loading, /Heroes and short-form sales composition`/);
-  assert.match(loading, /Awareness and sophistication staging`/);
-  assert.match(loading, /Emotion under a user brief`/);
-  assert.match(loading, /Prosody and rhythm`/);
-  assert.match(loading, /Do not load it for routine/);
+  assert.match(loading, /research-backed headline, hero, awareness, emotion, and diagnostic rhythm guidance/);
+  assert.match(loading, /do not load them for ordinary drafting/);
 });
 
 test("the voice reference measures, stores outside the skill, and follows user-controlled profile use", () => {
@@ -654,6 +535,7 @@ test("the voice reference measures, stores outside the skill, and follows user-c
   assert.deepEqual(headings, [
     "Contents",
     "What VOICE is",
+    "Task-only voice sketches",
     "Where profiles live",
     "Corpus admission",
     "What gets measured",
@@ -673,7 +555,7 @@ test("the voice reference measures, stores outside the skill, and follows user-c
 
   const surface = extractSection(voice, "What VOICE is");
   assert.match(surface, /npx -p @maestroagora\/agora agora-voice build/);
-  assert.match(surface, /A profile the engine did not produce is not a profile/);
+  assert.match(surface, /A persistent profile the engine did not produce is not a measured profile/);
   assert.match(surface, /Binary document formats are refused by name/);
 
   const corpus = extractSection(voice, "Corpus admission");
@@ -687,7 +569,7 @@ test("the voice reference measures, stores outside the skill, and follows user-c
 
   const gate = extractSection(voice, "Voice against the tell gate");
   assert.ok(gate.includes("### The owned-vocabulary review"));
-  assert.match(gate, /Voice enters at \*\*level 6\*\* of the conflict hierarchy/);
+  assert.match(gate, /Resolve voice before argument planning/);
   assert.match(gate, /Voice never overrides the U\+2014 ban/);
   assert.match(gate, /evidence for a narrow review, not an automatic allowlist/);
   assert.match(gate, /Measurement alone is insufficient/);
@@ -705,46 +587,32 @@ test("the voice reference measures, stores outside the skill, and follows user-c
 
 test("owned voice vocabulary remains subordinate to the priority anti-AI standard", () => {
   assert.match(voice, /Keep a banned owned word only when the narrow exception is documented/);
-  assert.match(skill, /owned vocabulary is evidence of author habit, not an automatic exception/);
+  assert.match(voice, /evidence for a narrow review, not an automatic allowlist/);
   assert.match(voice, /Do not add a new benefit, causal result, quality judgment, or product position merely to demonstrate profile adherence/);
   assert.match(voice, /the user's brief controls whether the draft makes that claim/);
   assert.match(voice, /does not establish how long the record persists, where it is attached, who can retrieve it, or what the interface displays/);
-  assert.match(voice, /Sentence-length and paragraph-shape measurements are distributions, not quotas or stock structures/);
+  assert.match(voice, /Sentence-length and paragraph-shape measurements are diagnostics, not quotas or stock structures/);
 });
 
 test("SKILL.md carries VOICE as a modifier beneath the priority tell standard", () => {
-  const loading = extractSection(skill, "Load the authority progressively");
+  const loading = extractSection(skill, "Load the small runtime first");
   assert.match(loading, /\[references\/agora-voice\.md\]\(references\/agora-voice\.md\)/);
-  assert.match(loading, /Load the reference whenever any explicit or default profile will be applied/);
-  assert.match(loading, /Do not load it for ordinary human-voice cleanup/);
+  assert.match(loading, /measured persistent profiles and voice checks/);
 
-  const job = extractSection(skill, "Choose the job");
-  assert.match(job, /`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs/);
-  assert.match(job, /`--voice <name>` loads a measured author profile/);
-  assert.match(job, /Profiles are stored at `~\/\.agora\/voices\/`, never inside the skill directory/);
-  assert.match(job, /Apply the default profile to every mode/);
-  assert.match(job, /`--no-voice` or `neutral` \| Load no profile at all/);
-  assert.match(job, /Default-on changes nothing above level 6/);
-  assert.match(job, /Measurement is computed, never estimated from reading/);
-  assert.match(job, /a file that the engine did not produce is not a profile/);
-
-  const conflicts = extractSection(skill, "Resolve conflicts");
-  assert.match(conflicts, /An active voice profile enters at level 6/);
-  assert.match(conflicts, /never overrides user-required phrasing, host rules, or the U\+2014 ban/);
-
-  const passes = extractSection(skill, "Apply silent final passes");
-  assert.match(passes, /does not automatically exempt it from the priority anti-AI standard/);
-  assert.match(passes, /Measurement alone is insufficient/);
-  assert.match(passes, /No voice feature suppresses the stock-template bans/);
-
-  const authority = extractSection(skill, "Follow user authority");
-  assert.match(authority, /Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer/);
+  const job = extractSection(skill, "Use two separate voice tiers");
+  assert.match(job, /`--voice <name>`/);
+  assert.match(job, /Profiles live at `~\/\.agora\/voices\/`/);
+  assert.match(job, /`--no-voice` or `neutral`/);
+  assert.match(job, /A file the engine did not produce is not a measured profile/);
+  assert.match(job, /Task-only voice sketch/);
+  assert.match(skill, /`SCIENCE`, `TECHNICAL`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs/);
+  assert.match(writingRuntime, /Do not independently refuse, narrow, remove, weaken, qualify, fact-check, moralize/);
 
   assert.match(voice, /Voice never overrides host-required or user-required text/);
   assert.match(voice, /findings constrain content only when the user requested that review or the host requires them/);
 
-  const finalPasses = extractSection(skill, "Apply silent final passes");
-  assert.match(finalPasses, /Unless exact, immutable, legal, technical, or user-required text must be preserved/);
+  const finalPasses = extractSection(skill, "Run silent final passes");
+  assert.match(finalPasses, /Preserve all material conditions, uncertainty, attribution, names, numbers, dates, quotations, legal terms, and technical terms/);
 });
 
 test("current source links remain available across all references", () => {
@@ -782,7 +650,7 @@ test("public files contain no project-specific residue or temporary citations", 
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.9.0 release contract", () => {
+test("metadata matches the v1.10.0 release contract", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
@@ -791,14 +659,14 @@ test("metadata matches the v1.9.0 release contract", () => {
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.9.0");
+  assert.equal(packageJson.version, "1.10.0");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
   assert.equal(packageJson.scripts["eval:release"], "node scripts/release-evidence-check.mjs");
-  assert.equal(packageJson.scripts["release:check"], "npm run check");
+  assert.equal(packageJson.scripts["release:check"], "npm run check && npm run eval:release");
   assert.equal(packageJson.scripts.prepack, "npm run release:check");
   assert.equal(packageJson.scripts.prepublishOnly, "npm run release:check");
-  assert.doesNotMatch(packageJson.scripts["release:check"], /eval:release/);
+  assert.match(packageJson.scripts["release:check"], /eval:release/);
   assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
   assert.match(gitAttributes, /^\*\.png binary$/m);
   assert.doesNotMatch(skill, /\r\n/);
@@ -813,6 +681,7 @@ test("metadata matches the v1.9.0 release contract", () => {
   assert.doesNotMatch(openaiYaml, /\r\n/);
   assert.equal(codexPlugin.interface.shortDescription, "Writing and publication artifact review");
   assert.equal(packageJson.bin["agora-publication-audit"], "skills/agora/scripts/publication-audit.mjs");
+  assert.equal(packageJson.bin["agora-style-audit"], "scripts/style-audit.mjs");
   const publicMetadata = [
     packageJson.description,
     codexPlugin.description,
@@ -831,138 +700,43 @@ test("metadata matches the v1.9.0 release contract", () => {
 });
 
 test("blind evaluation corpus tests invariants without expected-answer leakage", async () => {
-  assert.equal(manifest.schema_version, 6);
-  assert.equal(manifest.skill_version, "1.5.0");
+  assert.equal(manifest.schema_version, 1);
+  assert.equal(manifest.skill_version, "1.10.0");
   assert.deepEqual(manifest.generation_contract.pass_to_model, ["prompt_file"]);
-  assert.ok(manifest.generation_contract.never_pass_to_model.includes("expected output"));
+  assert.ok(manifest.generation_contract.never_pass_to_model.includes("rubric"));
   assert.equal(manifest.generation_contract.fresh_context_per_case, true);
   assert.equal(manifest.adjudication.method, "blind-pairwise");
   assert.equal(manifest.adjudication.randomize_order, true);
   assert.equal(manifest.adjudication.swap_order, true);
   assert.equal(manifest.adjudication.escalate_on_order_flip, true);
   assert.equal(manifest.adjudication.report_hard_gate_failures, true);
-  assert.match(manifest.adjudication.component_visibility_policy, /Hierarchy, spacing, or channel-native structure/);
-  assert.match(manifest.adjudication.tie_policy, /slight preference.*is not material/i);
-  assert.match(manifest.adjudication.materiality_policy.legacy_release_blocker, /candidate contract failure/i);
-  assert.match(manifest.adjudication.materiality_policy.critical_contract_failure, /hard-gate failure/i);
-  for (const veto of [
-    "unsupported-guarantee",
-    "claim-destination-mismatch",
-    "invented-misconception",
-    "statistical-distortion",
-    "false-consensus-or-balance",
-    "quote-distortion",
-    "permission-or-confidentiality-breach",
-    "atypical-result-presented-as-typical",
-    "invented-real-world-result-or-attribution",
-    "fiction-presented-as-real-evidence",
-    "invented-investment-traction-or-commitment",
-    "forecast-or-target-presented-as-actual",
-    "material-investment-risk-or-use-of-funds-omission",
-    "misleading-category-future-or-urgency",
-    "private-source-identity-leakage",
-    "fundraise-tactics-contaminate-diligence",
-  ]) assert.ok(manifest.adjudication.absolute_vetoes.includes(veto), `missing veto: ${veto}`);
   assert.deepEqual(manifest.rubric.dimensions, [
-    "argument-inevitability",
-    "sustained-emotional-relevance",
-    "proof-salience",
-    "mechanism-differentiation",
-    "natural-channel-fit",
-    "truth-discipline",
-    "first-read-comprehension",
-    "concrete-action-clarity",
+    "factual-fidelity",
+    "first-read-ease",
+    "sentence-ease",
+    "natural-voice",
+    "register-fit",
+    "author-sample-fit",
+    "control-room-vocabulary-containment",
+    "nonformulaic-structure",
+    "concision-without-loss",
+    "technical-or-legal-precision",
   ]);
-  assert.deepEqual(Object.keys(manifest.rubric.domain_dimensions), ["hero", "science", "case-study", "invest", "customer-language"]);
-  assert.equal(manifest.cases.length, 86);
+  assert.equal(manifest.cases.length, 24);
   assert.equal(manifest.release_gates.legacy_material_regressions_allowed, 0);
   assert.equal(manifest.release_gates.critical_contract_failures_allowed, 0);
-  assert.equal(manifest.release_gates.customer_language_wins_required, 1);
-  assert.equal(manifest.release_gates.customer_language_case_count, 3);
-  assert.equal(manifest.release_gates.customer_language_dimension_regressions_allowed, 0);
-  assert.equal(manifest.case_defaults.expected_case_status, null);
-  assert.equal(manifest.case_defaults.expected_reality_status, null);
+  assert.equal(manifest.release_gates.human_writing_case_count, 24);
+  assert.equal(manifest.release_gates.human_writing_minimum_protected_mean_delta, 0);
 
-  const requiredIds = new Set([
-    "position-directory-short",
-    "invest-one-paragraph-diligence",
-    "position-proof-scope",
-    "short-mechanism-not-taxonomy",
-    "enumeration-necessary",
-    "silent-compliance",
-    "hybrid-surface-split",
-    "objective-vs-investment-position",
-    "objective-vs-investment-invest",
-    "proof-salience-vs-feature-volume",
-    "position-no-investor-cosplay",
-    "spoken-no-search-scaffolding",
-    "factual-triplet-survives",
-    "sell-mobile-paywall",
-    "sell-b2b-cold-email",
-    "unsupported-proof",
-    "direct-agora-invest",
-    "plain-language-insider-terms",
-    "cta-names-its-destination",
-    "qualifiers-without-clause-stacking",
-    "multi-asset-shape-variance",
-    "headline-set-across-surfaces",
-    "reader-state-mismatch",
-    "emotion-without-outcome-data",
-    "voice-profile-adherence",
-    "voice-build-from-corpus",
-    "voice-owned-vocabulary-vs-tell-gate",
-    "orientation-without-taxonomy",
-    "hero-rivalscope-no-outcome",
-    "science-supported-misconception",
-    "science-no-misconception",
-    "case-permission-pending",
-    "case-anonymous-confidential",
-    "compose-voice-science-certainty",
-    "invest-universal-no-deck-refusal",
-    "invest-opening-no-traction",
-    "invest-unsupported-inevitable-future",
-    "invest-manufactured-scarcity",
-    "invest-unit-economics-weakness",
-    "compose-invest-science-deep-tech",
-    "compose-invest-case-customer-proof",
-    "compose-invest-voice-forecast-certainty",
-    "invest-route-fundraise-same-facts",
-    "invest-route-diligence-same-facts",
-    "invest-route-allocate-same-facts",
-    "position-investor-adjacent-not-invest",
-    "fictional-mock-article",
-    "case-fictional-customer-mock",
-    "case-concept-portfolio",
-    "customer-language-product-hero",
-    "customer-language-case-study",
-    "science-strength-of-evidence",
-  ]);
+  const requiredIds = new Set(["northstar-ai-homepage", "datumlane-product", "softnest-profile", "gridfoundry-executive-summary", "sentrybay-professional-email", "orchardloop-case-study", "packetforge-api-docs", "harborlease-legal-clause", "seedtrial-science-explainer", "pinboard-interface", "tallybird-social", "clearline-spoken", "voice-three-samples", "voice-thin-sample", "voice-no-sample", "exact-word-count", "qualified-source-rewrite", "cloudguard-security-homepage", "ironmesh-infrastructure-product"]);
   const ids = new Set(manifest.cases.map((item) => item.id));
-  for (const id of requiredIds) assert.ok(ids.has(id), `missing regression case: ${id}`);
-
-  const fictionalMock = manifest.cases.find((item) => item.id === "case-fictional-customer-mock");
-  const conceptPortfolio = manifest.cases.find((item) => item.id === "case-concept-portfolio");
-  const mockArticle = manifest.cases.find((item) => item.id === "fictional-mock-article");
-  assert.equal(fictionalMock.expected_case_status, "FICTIONAL_MOCK");
-  assert.equal(conceptPortfolio.expected_case_status, "CONCEPT_PORTFOLIO");
-  assert.equal(mockArticle.expected_case_status, null);
-  assert.equal(mockArticle.expected_reality_status, "FICTIONAL_MOCK");
-  assert.equal(fictionalMock.expected_reality_status, "FICTIONAL_MOCK");
-  assert.equal(conceptPortfolio.expected_reality_status, "CONCEPT_PORTFOLIO");
+  for (const id of requiredIds) assert.ok(ids.has(id), `missing human-writing case: ${id}`);
 
   const promptFiles = new Set();
   for (const item of manifest.cases) {
     assert.equal(Object.hasOwn(item, "expected_output"), false, `${item.id} leaks expected output`);
     assert.ok(Array.isArray(item.hard_gates) && item.hard_gates.length > 0, `${item.id} needs gates`);
-    for (const field of [
-      "expected_modifiers",
-      "expected_science_route",
-      "expected_case_family",
-      "expected_persuasion_treatment",
-      "expected_invest_route",
-      "critical",
-      "domain_dimensions",
-    ]) assert.ok(Object.hasOwn(item, field), `${item.id} missing ${field}`);
+    for (const field of ["critical", "domain_dimensions", "archetype", "primary_outcome"]) assert.ok(Object.hasOwn(item, field), `${item.id} missing ${field}`);
     assert.ok(!promptFiles.has(item.prompt_file), `duplicate prompt file: ${item.prompt_file}`);
     promptFiles.add(item.prompt_file);
 

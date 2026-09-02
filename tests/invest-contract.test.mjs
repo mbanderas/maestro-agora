@@ -84,13 +84,12 @@ test("allocation comparisons do not invent numeric decision policy", () => {
 });
 
 test("INVEST composes under user authority with optional review boundaries", () => {
-  assert.match(skill, /For `INVEST \+ SCIENCE`/);
-  assert.match(skill, /For `INVEST \+ CASE_STUDY`/);
-  assert.match(skill, /For `INVEST \+ VOICE`/);
-  assert.match(skill, /combine technical explanation with the user's investment thesis/);
-  assert.match(skill, /connect the case to the capital decision the user wants to make/);
-  assert.match(skill, /apply the measured profile without changing user-required financial terms/);
-  assert.match(skill, /Apply GEO\/AEO to `INDEXABLE_PUBLIC` investment assets only/);
+  assert.match(skill, /`INVEST \+ SCIENCE`/);
+  assert.match(skill, /`INVEST \+ CASE_STUDY`/);
+  assert.match(skill, /`INVEST \+ VOICE`/);
+  assert.match(skill, /Voice shapes expression from the first outline and sentence/);
+  assert.match(skill, /never changes facts, names, numbers, conditions, quotations, certainty, legal wording, or required technical terms/i);
+  assert.match(skill, /Apply search and technical publication checks only to indexable public work/);
   assert.match(invest, /Claim, evidence, omission, legal, confidentiality, and refusal checks.*activate only when the user explicitly requests/s);
   assert.match(invest, /Otherwise follow the user's investment claims, urgency, commitments, forecasts, framing, and requested action/);
   assert.match(invest, /The user's investment thesis and scientific framing control/);
