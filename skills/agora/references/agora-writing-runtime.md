@@ -28,6 +28,8 @@ A software, data, or AI topic is not automatically technical writing.
 
 Build a private requirement map with one entry for every supplied fact, limitation, exact term, requested component, length rule, inclusion, and exclusion. Mark which items the user requires in visible copy.
 
+The map is never copy. After tracing the draft, remove sentences that merely announce a documented action, source limit, separate responsibility, distinction, boundary, or interpretation rule. State the underlying fact once in reader language.
+
 After drafting, trace each required item to the finished text. Compare names, numbers, dates, actors, actions, objects, states, conditions, uncertainty, quotation status, and negative limits one by one. Plausibility is not support.
 
 Do not turn an action into a stored record, a capability into observed use, a listed exclusion into a broader absence, or a missing outcome into a responsibility. Do not add a likely use case, workflow, benefit, comparison, or result.
@@ -39,6 +41,8 @@ When a task supplies an exact term, keep that term. Style editing cannot shorten
 In legal text, preserve who acts and who receives an action. Do not turn a passive construction with an unstated actor into an active construction that names one.
 
 For an exact word count, count the finished visible copy with the user's rule. Use a counter when available. Edit and recount until the integer matches exactly. Do not return an estimate.
+
+For a word range, do not reach the minimum by repeating a fact, restating a limitation, adding a generic benefit, or narrating the review. Use the shortest natural passage inside the range.
 
 ## Keep system language backstage
 
@@ -133,6 +137,8 @@ Give each paragraph one job.
 Start with the information. Do not restate the heading. Do not end every paragraph with a lesson, benefit, or summary. Let paragraph length follow the idea.
 
 Use a conclusion only when the genre needs a judgment, recommendation, request, decision, or next step. Delete a recap that merely repeats the body.
+
+Keep private controls out of the output. Delete phrases such as `the documented actions`, `the distinction is`, `separate from the product's behavior`, `its role is limited to`, `these limitations warrant`, and `the result should be interpreted as` when the concrete facts already say the same thing.
 
 ## Apply every canonical anti-tell rule
 

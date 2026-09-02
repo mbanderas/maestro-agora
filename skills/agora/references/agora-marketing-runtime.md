@@ -60,13 +60,15 @@ When rewriting supplied copy, compare the candidate with the source for promise 
 ## Fit the channel
 
 - Heroes and ads: one recognizable stake, one meaningful difference, and the correct next action.
-- Product and comparison pages: explain enough for the reader to judge fit, terms, effort, and risk.
+- Product and comparison pages: explain enough for the reader to judge fit, terms, effort, and risk. Use prose unless the user asks for a specification table, field list, or checklist.
 - Company profiles: make the company easy to place and distinct without investor or audit language.
 - Professional email: put the request and needed context where they are easy to find.
 - Cold sales email: include a subject, greeting, brief body, and next step. When the copy is a reusable template and no recipient name is supplied, `[First name]` is an acceptable fill-in label.
 - Editorial work: give the reader useful reasoning before any commercial pressure.
 - Spoken work: use audible transitions, manageable clauses, and one clear ending.
 - Interface copy: name the state, action, object, or destination.
+
+For a button, prefer the immediate effect the user triggers. If selecting the button sends invitations, use `Send invitations` rather than a generic object label.
 
 If the brief supplies a required final shot, cancel consequence, negative capability, or exact product category, carry it into the requested component. Compression does not authorize omission.
 

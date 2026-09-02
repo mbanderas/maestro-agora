@@ -22,6 +22,8 @@ Do not invent customer motives, internal reactions, implementation steps, permis
 
 Start with the most useful situation or result for the intended reader. Explain the constraint, the relevant decision, the work, and what changed. Give each section a distinct job. Keep failed attempts or tradeoffs when they explain the decision.
 
+State each limitation once, beside the fact it limits. Do not repeat the same causal or outcome limit in a closing recap.
+
 For a public case, translate internal review language into customer language. For a technical audience, keep exact system terms and behavior. For sales work, do not turn the case into a chronology or an academic report.
 
 ## Return the case

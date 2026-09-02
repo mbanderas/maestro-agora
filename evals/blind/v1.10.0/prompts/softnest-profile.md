@@ -9,4 +9,4 @@ Supplied facts:
 
 Avoid the source draft's phrases: "comprehensive ecosystem," "plays a pivotal role," and "The result? Seamless operations."
 
-Return only the profile. Do not address investors. Do not invent results, integrations, or credentials.
+Return only the profile. Do not state which tutor, room, or time conflict causes a double booking; the source establishes only that double bookings are flagged. Do not address investors. Do not invent results, integrations, or credentials.

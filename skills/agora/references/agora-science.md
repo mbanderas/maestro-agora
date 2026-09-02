@@ -132,6 +132,8 @@ When the full interval lies above or below the null value, state that relation d
 
 Do not introduce `in practical terms`, call an effect modest or meaningful, or imply practical significance unless the brief supplies a practical threshold or outcome that supports that judgment.
 
+End on the supplied scientific limit. Do not append a generic recommendation to interpret cautiously, weigh benefits and harms, or use the result as a decision basis unless the task asks for that advice.
+
 Rule [A]: report magnitude and uncertainty, not a significance label alone. A small p-value does not establish effect size, importance, certainty, or a useful decision. See the [ASA statement on p-values](https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf) and [Cochrane's interpretation guidance](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-15).
 
 When material:
