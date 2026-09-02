@@ -79,8 +79,8 @@ export function ownedVocabulary(documents, certified) {
 
   return {
     withheld: false,
-    // The allowlist is the intersection with the generic ban list. Only a word
-    // the tell gate would otherwise strip needs an exception written down.
+    // Keep the public field name for profile-schema compatibility. The entries
+    // are candidate exceptions that require a separate load-bearing review.
     allowlist: qualifying.filter((entry) => AI_VOCABULARY.has(entry.token)),
     distinctive: qualifying
       .filter((entry) => !AI_VOCABULARY.has(entry.token) && !ALL_FUNCTION_WORDS.has(entry.token))
@@ -386,7 +386,7 @@ function notCaptured(measured, gates, corpus) {
   );
   if (curly > 0) {
     lines.push(
-      `- The corpus contains ${curly} curly quote characters. The curly-quote ban is not vocabulary, so the owned-vocabulary exception does not reach it and final copy uses straight quotes.`,
+      `- The corpus contains ${curly} curly quote characters. The priority anti-AI standard treats typography separately from vocabulary, so final copy uses straight quotes.`,
     );
   }
 
@@ -444,16 +444,16 @@ export function renderProfile({ name, measured, gates, corpus, pipeline, now }) 
   const excerpts = selectExcerpts(corpus.documents, measured);
 
   const vocabulary = [
-    "**Owned.** Words measured as recurring across independent documents in this corpus. The list is an allowlist against the generic AI-vocabulary ban and reaches those words only. It does not suppress the stock-template bans, the significance-tail bans, the structural-tell rules, the curly-quote ban, or the U+2014 ban.",
+    "**Owned.** Words measured as recurring across independent documents in this corpus. Entries that also appear on the priority anti-AI vocabulary list are candidate exceptions, not an automatic allowlist. Retain one only when it is load-bearing, exact, technically required, part of a verified proper name or immutable text, or explicitly required by the current user or house style. Nothing here suppresses the stock-template bans, significance-tail bans, structural-tell rules, curly-quote ban, or U+2014 ban.",
     "",
   ];
   if (owned.withheld) {
     vocabulary.push(
-      "No allowlist is issued. The corpus is below the certification floor, and a word cannot be shown to recur across genres in a corpus that has one. An allowlist assembled from a thin corpus is a licence built on noise.",
+      "No candidate exception list is issued. The corpus is below the certification floor, and a word cannot be shown to recur across genres in a corpus that has one. A preference claim assembled from a thin corpus is built on noise.",
     );
   } else if (owned.allowlist.length === 0) {
     vocabulary.push(
-      "No word on the generic AI-vocabulary ban list met the measurement bar in this corpus, so no exception is issued. The generic ban applies in full.",
+      "No word on the priority anti-AI vocabulary list met the measurement bar in this corpus. The vocabulary ban applies in full.",
     );
   } else {
     vocabulary.push(

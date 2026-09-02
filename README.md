@@ -28,6 +28,7 @@ Use it for landing pages, heroes, ads, product copy, sales outreach, investor co
 | `CASE_STUDY` | Real projects, fictional mocks, and concept portfolios shaped around the story and status you choose |
 | `INVEST` | Fundraising, diligence, and capital-allocation communication shaped around your thesis, claims, urgency, and next decision |
 | `VOICE` | A measured voice profile built from the corpus you choose |
+| Human-voice editing | A user-selected, Wikipedia-derived operational standard for output bans, structural cleanup, meaning preservation, genre fit, and detector limits |
 | Written GEO/AEO | Clear entities, self-contained passages, source transparency, and relevant publication checks |
 
 Agora returns one ready-to-use result by default. Alternatives, internal routes, and rationale stay out of the final copy unless requested.
@@ -121,6 +122,12 @@ Add modifiers when the subject or asset needs them:
 ```
 
 In Codex, `$agora` and the skills picker can also select the installed skill. Other hosts may expose skills through a picker or mention syntax. Asking the agent to use the Agora skill remains portable.
+
+## Human-voice editing standard
+
+Agora ships a dedicated `anti-ai-writing-tells.md` reference derived from Wikipedia's WikiProject AI Cleanup guidance and expanded with detector, voice, fidelity, genre, and privacy rules. It is the priority authority for AI-writing-tell cleanup inside Agora. It is not represented as a verbatim Wikipedia document or an authorship test.
+
+The standard removes generated stock vocabulary, connective phrases, templates, significance tails, prompt leakage, repeated structural patterns, raw channel residue, fake human texture, and detector-driven corruption. It preserves the current user's facts, required wording, technical terms, genre, and intended meaning. Measured voice profiles document author habits but do not automatically exempt banned vocabulary.
 
 ## Publication privacy and provenance
 
@@ -347,6 +354,7 @@ skills/agora/
     |-- agora-craft.md
     |-- agora-invest.md
     |-- agora-marketing.md
+    |-- anti-ai-writing-tells.md
     |-- agora-publication.md
     |-- agora-science.md
     `-- agora-voice.md
@@ -354,7 +362,8 @@ skills/agora/
 
 `SKILL.md` contains routing and the concise operating contract. Ordinary work loads only the reference sections it needs.
 
-- `agora-marketing.md` is the canonical doctrine for user authority, argument, channels, optional claim review, GEO/AEO, AI-writing-tell controls, examples, research grades, and conflict handling.
+- `anti-ai-writing-tells.md` is the priority human-voice editing and AI-writing-tell authority.
+- `agora-marketing.md` is the canonical doctrine for user authority, argument, channels, optional claim review, GEO/AEO, examples, research grades, and conflict handling.
 - `agora-craft.md` adds headlines, heroes, awareness and sophistication, emotion, and prose rhythm.
 - `agora-science.md` adds empirical and technical explanation plus optional scientific claim review.
 - `agora-case-studies.md` adds case structure, results, and optional attribution, permission, and confidentiality review.

@@ -37,6 +37,7 @@ const EXPECTED = [
   "skills/agora/references/agora-craft.md",
   "skills/agora/references/agora-invest.md",
   "skills/agora/references/agora-marketing.md",
+  "skills/agora/references/anti-ai-writing-tells.md",
   "skills/agora/references/agora-publication.md",
   "skills/agora/references/agora-science.md",
   "skills/agora/references/agora-voice.md",

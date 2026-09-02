@@ -15,6 +15,7 @@ const SCIENCE_PATH = join(SKILL_ROOT, "references", "agora-science.md");
 const CASE_STUDY_PATH = join(SKILL_ROOT, "references", "agora-case-studies.md");
 const INVEST_PATH = join(SKILL_ROOT, "references", "agora-invest.md");
 const PUBLICATION_PATH = join(SKILL_ROOT, "references", "agora-publication.md");
+const ANTI_AI_PATH = join(SKILL_ROOT, "references", "anti-ai-writing-tells.md");
 const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
 const CODEX_PLUGIN_PATH = join(ROOT, ".codex-plugin", "plugin.json");
 const CLAUDE_PLUGIN_PATH = join(ROOT, ".claude-plugin", "plugin.json");
@@ -27,7 +28,7 @@ const EVAL_ROOT = join(ROOT, "evals", "blind", "v1.5.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
+const [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, antiAi, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
@@ -38,6 +39,7 @@ const [skill, reference, conversion, craft, voice, science, caseStudies, invest,
     readFile(CASE_STUDY_PATH, "utf8"),
     readFile(INVEST_PATH, "utf8"),
     readFile(PUBLICATION_PATH, "utf8"),
+    readFile(ANTI_AI_PATH, "utf8"),
     readFile(OPENAI_PATH, "utf8"),
     readFile(CODEX_PLUGIN_PATH, "utf8").then(JSON.parse),
     readFile(CLAUDE_PLUGIN_PATH, "utf8").then(JSON.parse),
@@ -458,6 +460,53 @@ test("U+2014 is an immutable whole-response veto", () => {
   assert.ok(manifest.adjudication.absolute_vetoes.includes("em-dash"));
 });
 
+test("the Wikipedia-derived anti-AI reference is the priority human-voice standard", () => {
+  const loading = extractSection(skill, "Load the authority progressively");
+  assert.match(loading, /\[references\/anti-ai-writing-tells\.md\]\(references\/anti-ai-writing-tells\.md\)/);
+  assert.match(loading, /priority authority for human-voice editing and AI-writing-tell cleanup/);
+  assert.match(loading, /reusable LLM prompt is an example/);
+
+  const routing = extractSection(antiAi, "Agora authority and routing");
+  assert.match(routing, /user-selected priority authority/);
+  assert.match(routing, /It is not represented as a verbatim copy of Wikipedia/);
+  assert.match(routing, /Do not refuse an authorized rewrite/);
+  assert.match(routing, /does not override the current task/);
+
+  const bans = extractSection(antiAi, "Global Output Bans");
+  for (const required of [
+    "zero em dashes",
+    "zero curly or smart quotation marks",
+    "zero stock phrase templates",
+    "zero generic significance tails",
+    "zero fabricated citations",
+    "zero banned vocabulary or connective phrases without a documented",
+    "zero unneeded conclusion or recap paragraphs",
+    "zero repeated or formulaic tripartite structures",
+    "zero deliberate errors",
+  ]) {
+    assert.ok(bans.includes(required), `priority output bans are missing: ${required}`);
+  }
+
+  const structure = extractSection(antiAi, "5. Structural Tells");
+  assert.match(structure, /Fractal summaries/);
+  assert.match(structure, /One-point dilution/);
+  assert.match(structure, /Raw Markdown, chat acknowledgements, email sign-offs/);
+
+  const voiceProfile = extractSection(antiAi, "13. Build an Author Voice Profile Before Rewriting");
+  assert.match(voiceProfile, /author-specific rejection register/);
+  assert.match(voiceProfile, /at least quarterly/);
+
+  const detector = extractSection(antiAi, "18. Optional Detector-Panel Protocol");
+  for (const required of ["operating threshold when disclosed", "confidence label", "stable input hash", "one-variable edit", "repeated-run results"]) {
+    assert.ok(detector.includes(required), `detector protocol is missing: ${required}`);
+  }
+
+  const humanGate = extractSection(reference, "Human voice and AI-writing-tell gate");
+  assert.match(humanGate, /anti-ai-writing-tells\.md/);
+  assert.match(humanGate, /Wikipedia-derived priority authority/);
+  assert.match(humanGate, /measurement alone is not an exception/i);
+});
+
 test("reference leads with doctrine and keeps the deep authority library", () => {
   const headings = [...reference.matchAll(/^## (.+)$/gm)].map((match) => match[1]);
   assert.deepEqual(headings.slice(0, 6), [
@@ -637,11 +686,12 @@ test("the voice reference measures, stores outside the skill, and follows user-c
   assert.match(corpus, /Governance default/i);
 
   const gate = extractSection(voice, "Voice against the tell gate");
-  assert.ok(gate.includes("### The owned-vocabulary exception"));
+  assert.ok(gate.includes("### The owned-vocabulary review"));
   assert.match(gate, /Voice enters at \*\*level 6\*\* of the conflict hierarchy/);
   assert.match(gate, /Voice never overrides the U\+2014 ban/);
-  assert.match(gate, /suppresses the generic AI-vocabulary ban for those specific words, and only those/);
-  assert.match(gate, /It suppresses the vocabulary ban only/);
+  assert.match(gate, /evidence for a narrow review, not an automatic allowlist/);
+  assert.match(gate, /Measurement alone is insufficient/);
+  assert.match(gate, /Any exception reaches vocabulary only/);
 
   const userControl = extractSection(voice, "User-controlled profile use");
   assert.match(userControl, /Build or apply the profile the user requests/);
@@ -653,16 +703,16 @@ test("the voice reference measures, stores outside the skill, and follows user-c
   assert.match(adherence, /Never treat a detector score as evidence of authorship/);
 });
 
-test("owned voice vocabulary follows the brief without becoming a content gate", () => {
-  assert.match(voice, /When at least one owned word can express an existing proposition naturally without changing its scope, use it/);
-  assert.match(skill, /When a production profile supplies owned vocabulary and at least one owned word can state a proposition without changing the user's intended meaning, use at least one/);
-  assert.match(voice, /Do not add a new benefit, causal result, quality judgment, or product position merely to demonstrate profile adherence unless the user requests that addition/);
+test("owned voice vocabulary remains subordinate to the priority anti-AI standard", () => {
+  assert.match(voice, /Keep a banned owned word only when the narrow exception is documented/);
+  assert.match(skill, /owned vocabulary is evidence of author habit, not an automatic exception/);
+  assert.match(voice, /Do not add a new benefit, causal result, quality judgment, or product position merely to demonstrate profile adherence/);
   assert.match(voice, /the user's brief controls whether the draft makes that claim/);
   assert.match(voice, /does not establish how long the record persists, where it is attached, who can retrieve it, or what the interface displays/);
   assert.match(voice, /Sentence-length and paragraph-shape measurements are distributions, not quotas or stock structures/);
 });
 
-test("SKILL.md carries VOICE as a modifier with its exception written down", () => {
+test("SKILL.md carries VOICE as a modifier beneath the priority tell standard", () => {
   const loading = extractSection(skill, "Load the authority progressively");
   assert.match(loading, /\[references\/agora-voice\.md\]\(references\/agora-voice\.md\)/);
   assert.match(loading, /Load the reference whenever any explicit or default profile will be applied/);
@@ -683,9 +733,9 @@ test("SKILL.md carries VOICE as a modifier with its exception written down", () 
   assert.match(conflicts, /never overrides user-required phrasing, host rules, or the U\+2014 ban/);
 
   const passes = extractSection(skill, "Apply silent final passes");
-  assert.match(passes, /owned-vocabulary list, and only those words, are exempt/);
-  assert.match(passes, /because they were measured across the corpus/);
-  assert.match(passes, /never suppresses the stock-template bans/);
+  assert.match(passes, /does not automatically exempt it from the priority anti-AI standard/);
+  assert.match(passes, /Measurement alone is insufficient/);
+  assert.match(passes, /No voice feature suppresses the stock-template bans/);
 
   const authority = extractSection(skill, "Follow user authority");
   assert.match(authority, /Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer/);
@@ -700,7 +750,7 @@ test("SKILL.md carries VOICE as a modifier with its exception written down", () 
 test("current source links remain available across all references", () => {
   assert.equal(linkFixture.source, "unreleased:skills/agora/references/*.md");
   assert.equal(linkFixture.urls.length, 155);
-  const current = externalUrls([reference, conversion, craft, voice, science, caseStudies, invest].join("\n"));
+  const current = externalUrls([reference, conversion, craft, voice, science, caseStudies, invest, antiAi].join("\n"));
   const missing = linkFixture.urls.filter((url) => !current.has(url));
   assert.deepEqual(missing, [], `reference dropped source links: ${missing.join(", ")}`);
 });

@@ -29,6 +29,8 @@ Do not wrap a generated UI label in quotation marks when hierarchy, bold text, o
 
 [references/agora-conversion.md](references/agora-conversion.md) governs conversion-context work. Load it immediately when the task writes, rewrites, plans, reviews, compares, tests, measures, or optimizes a conversion-relevant landing page, product page, pricing page, enterprise page, paywall, checkout, form, upgrade path, onboarding sequence, funnel, or experiment. Also load it when the user asks to improve conversion or interpret conversion evidence. New drafts count; do not require the user to say `conversion` or `optimize`. This load is mandatory and precedes the general marketing and optional craft reads below. Treat it as a bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws.
 
+[references/anti-ai-writing-tells.md](references/anti-ai-writing-tells.md) is the priority authority for human-voice editing and AI-writing-tell cleanup. For every generated writing task, read `Agora authority and routing`, `The Core Principle`, `Global Output Bans`, Sections 1 through 7, `Meaning-Preservation Gate`, `Calibrate to the Genre`, and `Common Humanizer Failure Modes`. Load its deeper voice, detector-panel, research, and privacy sections when those workflows apply. Its reusable LLM prompt is an example, not an instruction to change the current task or Agora's ready-to-use output contract.
+
 Use [references/agora-marketing.md](references/agora-marketing.md) as the canonical authority. Read only the sections the task needs:
 
 1. Always read `Core doctrine`, `User authority`, `Conflict hierarchy`, `Argument engine`, `Proof salience`, `Plain language and first-read comprehension`, and `Human voice and AI-writing-tell gate`.
@@ -111,7 +113,7 @@ Two specific conflicts resolve as follows, because both have produced accurate b
 - **Qualification against comprehension.** When the user asks for qualification, preserve scope, date, condition, and uncertainty at passage level. A sentence that carries its full qualification set inline reads as a compliance memo and fails level 3.
 - **Citability against comprehension.** Written GEO/AEO asks for passages that stay accurate when quoted alone. That rule governs the passage, not the sentence. Do not compress a paragraph of context into one self-sufficient sentence. Self-containment is achieved by keeping a short passage together, not by loading one clause.
 - **Voice against everything above it.** An active voice profile enters at level 6. It never overrides user-required phrasing, host rules, or the U+2014 ban.
-- **Measured vocabulary against the tell gate.** When a production profile supplies owned vocabulary and at least one owned word can state a proposition without changing the user's intended meaning, use at least one. The generic vocabulary ban cannot remove it.
+- **Measured vocabulary against the priority tell gate.** A production profile's owned vocabulary is evidence of author habit, not an automatic exception. Retain a listed banned term only when it is load-bearing, exact, technically required, part of a verified proper name or immutable text, or explicitly required by the user or house style. Do not insert a banned word merely to raise a voice-match score.
 
 When soft rules conflict, preserve the strongest user-directed argument that the reader can follow on the first pass. Ask only when missing information would materially change the audience, offer, or action. Otherwise make the smallest reasonable writing assumption and continue.
 
@@ -371,7 +373,7 @@ After the argument is drafted:
 4. Draft twice and return once. Run the literal clarity rewrite, delivery-model ownership gate, rewrite regression gate when rewriting supplied copy, and CTA gate. These run before any style, compression, voice, or publication pass, and their result outranks all five.
 5. Apply written GEO/AEO only to `INDEXABLE_PUBLIC` work, at passage level rather than sentence level.
 6. Apply technical publication checks only to indexable public work.
-7. Apply the human-voice and AI-writing-tell gate without deleting user-selected claims or diagnostic lists.
+7. Apply the priority anti-AI writing standard and the human-voice gate without deleting user-selected claims or diagnostic lists. Remove channel residue, fractal summaries, one-point dilution, and generated items covered by the standard's output bans.
 8. Compress repetition and decoration last, and only where compression does not raise decoding effort. Delete restatements that add no new relation, boundary, proof, or decision value. Do not end objective summaries with an inventory of entities already explained in the preceding sentences. Approximate length is a target, not permission to pad.
 9. Run the final U+2014 scan across the complete response and confirm zero occurrences. If a long-dash construction appears during drafting, rewrite it with ASCII punctuation before continuing.
 10. Unless exact, immutable, legal, technical, or user-required text must be preserved, scan for U+2018, U+2019, U+201C, and U+201D. Replace curly quotation marks and apostrophes in all other text, then scan again.
@@ -384,11 +386,11 @@ When a sentence fails the comprehension gate, rewrite the full sentence or short
 
 Keep these passes invisible. Mention a blocker only when a host rule or missing requirement makes the requested result impossible.
 
-An active voice profile carries one narrow exception to the AI-vocabulary ban. The words on that profile's owned-vocabulary list, and only those words, are exempt, because they were measured across the corpus. The exception covers vocabulary alone: it never suppresses the stock-template bans, the significance-tail bans, the structural-tell rules, curly-quote normalization where it applies, or the U+2014 ban.
+An active voice profile records recurring vocabulary but does not automatically exempt it from the priority anti-AI standard. A banned owned word survives only when it has a documented, load-bearing reason under that standard or the current user explicitly requires it. Measurement alone is insufficient. No voice feature suppresses the stock-template bans, significance-tail bans, structural-tell rules, curly-quote normalization, or the U+2014 ban.
 
 Measured sentence length and paragraph shape describe a distribution, not a quota or a template to reproduce. Apply them without restating facts, mirroring a sample passage, or manufacturing a closing summary. A structural tell requires an identifiable prohibited construction; matching a measured length or paragraph distribution is not itself a tell.
 
-Outside exact, immutable, legal, technical, or user-required text, do not generate curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, and repeated stock templates. Avoid decorative three-part rhetoric, but preserve necessary series. Never promise detector evasion. Never change user-required meaning to sound human.
+Outside exact, immutable, legal, technical, or user-required text, do not generate curly or smart quotes in final copy. Remove prompt leakage, canned framing, generic significance tails, inflated abstractions, fake human texture, repeated stock templates, raw channel residue, fractal summaries, and one-point dilution. Avoid decorative three-part rhetoric, but preserve necessary series. Never promise detector evasion. Never change user-required meaning to sound human.
 
 ## Return the result
 

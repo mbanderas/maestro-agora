@@ -141,19 +141,21 @@ export const CONTRACTION_PAIRS = [
   { contracted: ["let's"], expanded: [["let", "us"]] },
 ];
 
-// The generic AI-vocabulary list the tell gate bans. A profile's owned list can
-// suppress the ban for a measured word, and only for the words it measured.
-// Sourced from the vocabulary section of the canonical reference.
+// The priority anti-AI vocabulary list. A profile's owned list records measured
+// author habit but does not suppress this ban automatically. It supplies only
+// candidate evidence for the narrow review described by the skill reference.
 export const GENERIC_AI_VOCABULARY = [
-  "bespoke", "bolster", "breathtaking", "comprehensive", "craft", "curated",
-  "cutting-edge", "delve", "elevate", "embark", "empower", "enhance",
-  "ecosystem", "essential", "facilitate", "forefront", "forge", "foster",
-  "game-changer", "groundbreaking", "harness", "holistic", "innovative",
-  "intricate", "invaluable", "journey", "landscape", "leverage", "meticulous",
-  "multifaceted", "navigate", "nuanced", "paramount", "pivotal", "powerhouse",
-  "profound", "realm", "revolutionary", "robust", "seamless", "showcase",
-  "spearhead", "state-of-the-art", "streamline", "tapestry", "testament",
-  "trailblazer", "transformative", "underscore", "unleash", "unlock",
+  "backbone", "bespoke", "best-in-class", "bolster", "breathtaking",
+  "comprehensive", "cornerstone", "craft", "crucial", "curated", "cutting-edge",
+  "delve", "drive", "ecosystem", "elevate", "empower", "enhance", "essential",
+  "facilitate", "forefront", "forge", "foster", "frontier", "game-changer",
+  "groundbreaking", "harness", "holistic", "indispensable", "intricate",
+  "invaluable", "journey", "landscape", "leverage", "lifeblood", "meticulous",
+  "multifaceted", "navigate", "notable", "noteworthy", "nuanced", "optimize",
+  "paramount", "pivotal", "powerhouse", "profound", "realm", "remarkable",
+  "revolutionary", "rich", "robust", "seamless", "showcase", "significant",
+  "spearhead", "state-of-the-art", "streamline", "stunning", "tapestry",
+  "testament", "trailblazer", "transformative", "underscore", "unleash", "unlock",
   "unparalleled", "unprecedented", "vibrant", "vital", "world-class",
 ];
 
