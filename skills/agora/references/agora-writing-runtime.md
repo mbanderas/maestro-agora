@@ -26,9 +26,7 @@ A software, data, or AI topic is not automatically technical writing.
 
 ## Lock the brief before drafting
 
-Build a private requirement map with one entry for every supplied fact, limitation, exact term, requested component, length rule, inclusion, and exclusion. Mark which items the user requires in visible copy.
-
-The map is never copy. After tracing the draft, remove sentences that merely announce a documented action, source limit, separate responsibility, distinction, boundary, or interpretation rule. State the underlying fact once in reader language.
+Build a private requirement map with one entry for every supplied fact, limitation, exact term, requested component, length rule, inclusion, and exclusion. Mark which items the user requires in visible copy. The map is never copy. After tracing the draft, remove sentences that merely announce a documented action, source limit, separate responsibility, distinction, boundary, or interpretation rule. State the underlying fact once in reader language.
 
 After drafting, trace each required item to the finished text. Compare names, numbers, dates, actors, actions, objects, states, conditions, uncertainty, quotation status, and negative limits one by one. Plausibility is not support.
 
