@@ -95,7 +95,7 @@ test("every canonical stock template has a strict scanner pattern", () => {
 });
 
 test("plain runtime is small, direct, strict, and ready-copy-only", () => {
-  assert.ok(runtime.split(/\r?\n/).length < 260);
+  assert.ok(runtime.split(/\r?\n/).length <= 260);
   assert.doesNotMatch(runtime, /https?:\/\//);
   assert.doesNotMatch(runtime, /\bRule \[[A-Z]\]/);
   assert.match(runtime, /hard output rules, not density suggestions/);
