@@ -583,7 +583,7 @@ async function main() {
     (packageJson.scripts?.test || "").includes("tests/publication-audit.test.mjs"),
     "npm test must run the publication audit suite",
   );
-  for (const suite of ["tests/human-writing-contract.test.mjs", "tests/style-audit.test.mjs", "tests/task-voice-sketch.test.mjs"]) {
+  for (const suite of ["tests/human-writing-contract.test.mjs", "tests/style-audit.test.mjs", "tests/task-voice-sketch.test.mjs", "tests/release-contract.test.mjs"]) {
     check((packageJson.scripts?.test || "").includes(suite), `npm test must run ${suite}`);
   }
   check(
