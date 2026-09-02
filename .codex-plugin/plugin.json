@@ -1,6 +1,6 @@
 {
   "name": "maestro-agora",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "Maestro: Agora writes clear persuasion, technical explanations, case studies, and investment communication, then audits local publication artifacts when requested.",
   "author": {
     "name": "Mark Laursen",
@@ -38,7 +38,7 @@
     "composerIcon": "./assets/icon.png",
     "defaultPrompt": [
       "/agora sell Write the strongest hero from this brief and destination.",
-      "/agora science Explain this technical subject with the certainty and framing I specify.",
+      "/agora technical Explain this system for the technical reader I specify.",
       "/agora case study Turn this project material into the case study I describe.",
       "/agora invest Build this fundraising asset from my thesis, claims, urgency, and plan.",
       "/agora publication audit Inspect this local file for hidden Unicode, metadata, and provenance."

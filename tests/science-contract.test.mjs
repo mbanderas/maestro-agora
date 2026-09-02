@@ -20,8 +20,9 @@ function extractSection(content, heading) {
 test("SCIENCE is discoverable, progressive, and composable", () => {
   assert.match(skill, /scientific communication, technical explanation, research communication, and science video scripts/);
   assert.match(skill, /\[references\/agora-science\.md\]\(references\/agora-science\.md\)/);
-  assert.match(skill, /`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs/);
+  assert.match(skill, /`SCIENCE`, `TECHNICAL`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs/);
   assert.match(skill, /`INFORM \+ SCIENCE \+ CASE_STUDY`/);
+  assert.match(skill, /Topic alone never selects a specialized register/);
 });
 
 test("science routes empirical, technical, and mixed evidence separately", () => {

@@ -1,12 +1,13 @@
 # Agora voice authority
 
-This reference governs `VOICE`: building a measured voice profile from a corpus, writing to that profile, and checking a draft against it. Load it only when the task builds, applies, inspects, or checks a voice profile.
+This reference governs two separate voice tiers: measured persistent profiles and task-only sketches from samples supplied with one task. Load it when the task builds, applies, inspects, or checks either tier.
 
-Voice is a modifier. It changes how a proposition is expressed. User authority in [agora-marketing.md](agora-marketing.md) controls profile use, and [agora-craft.md](agora-craft.md) supplies the rhythm controls a profile replaces. Agora does not authenticate corpus ownership, identity, attribution rights, endorsement rights, or publication permission. The user controls those decisions.
+Voice is a modifier. It changes how a proposition is expressed. User authority in [agora-marketing.md](agora-marketing.md) controls profile use. Numeric rhythm measurements remain optional diagnostics and never become drafting quotas. Agora does not authenticate corpus ownership, identity, attribution rights, endorsement rights, or publication permission. The user controls those decisions.
 
 ## Contents
 
 - [What VOICE is](#what-voice-is)
+- [Task-only voice sketches](#task-only-voice-sketches)
 - [Where profiles live](#where-profiles-live)
 - [Corpus admission](#corpus-admission)
 - [What gets measured](#what-gets-measured)
@@ -18,7 +19,7 @@ Voice is a modifier. It changes how a proposition is expressed. User authority i
 
 ## What VOICE is
 
-`VOICE` sits alongside `POSITION`, `SELL`, `INVEST`, `INFORM`, and `TRANSACT` with one difference: it is not mutually exclusive with them. Every other mode answers what job the copy is doing. `VOICE` answers whose habits the copy is written in, and it rides on top of whichever mode was already selected.
+`VOICE` sits alongside `POSITION`, `SELL`, `INVEST`, `INFORM`, and `TRANSACT` with one difference: it is not mutually exclusive with them. Every other mode answers what job the copy is doing. `VOICE` answers which observed habits shape the expression. Resolve register and voice before argument planning.
 
 The surface:
 
@@ -50,9 +51,32 @@ npx -p @maestroagora/agora agora-voice default --voice <slug>
 
 `voice build` is a measurement task, not a description task. A model asked to describe an author's voice writes flattery. The profile leads with numbers computed from the corpus, because a number is checkable and a later draft can be measured against it. Adjectives belong in the interpretation sections, underneath the measurements they interpret.
 
-**A profile the engine did not produce is not a profile.** Do not write one by reading a corpus and describing what you notice, and do not load a hand-written file as though it were measured. Where the engine cannot run, say so and work without a profile.
+**A persistent profile the engine did not produce is not a measured profile.** Do not load a hand-written file as though it were measured. A task-only sketch is permitted under the next section because it makes no certification, identity, or statistical claim and is never stored as a profile.
 
 **Boundary:** the measurement is only as good as the pipeline. Stylometric values move when the tokenizer, sentence segmenter, parser, or normalization rules change ([Grieve](https://doi.org/10.1093/llc/fqm020)). Freeze the pipeline in the profile and use the identical one when checking a draft. A comparison across two pipelines is not a comparison.
+
+## Task-only voice sketches
+
+A task-only sketch uses authentic samples supplied with the current task. It works without the persistent profile's 5,000-word certification floor because it does not claim stable identity or statistical matching.
+
+Use three to ten same-genre samples when available. Record a fuller local sketch only when those samples show recurring habits. With one or two samples, record cautious observations that are directly visible in the sample and mark internal confidence low. With no samples, preserve credible choices in the supplied draft and use plain professional writing.
+
+Record observable habits only:
+
+- sentence and paragraph range;
+- fragments and contractions;
+- first-person and second-person use;
+- punctuation;
+- directness, warmth, humor, and skepticism;
+- how qualifications are placed;
+- common opening, turning, and ending shapes;
+- constructions and words the samples avoid.
+
+The sketch has the internal type `TASK_VOICE_SKETCH`, a sample count, a genre label when supplied, and `certified: false`. It exists only for the current task. Never write it to `~/.agora/voices/`, add it to the profile index, or present it as a measured profile.
+
+Transfer habits, not material. Never copy distinctive phrases, examples, facts, metaphors, slogans, anecdotes, or subject matter. Never infer personality, biography, opinions, motives, identity, authorship, or approval. Run the existing exact overlap check and review unusual shorter matches before returning the draft.
+
+When task samples and a default persistent profile conflict, use the task samples for same-genre local expression in the current task. Keep only compatible stable habits from the default. An explicitly requested persistent profile remains active, but it still cannot authorize phrase copying or change the current brief.
 
 ## Where profiles live
 
@@ -188,7 +212,7 @@ Two sections carry more weight than they look.
 
 Keep supplied product actions at their stated scope. `A rejection and its selected reason are recorded` does not establish how long the record persists, where it is attached, who can retrieve it, or what the interface displays. Voice work may rephrase the supplied action. It may not fill operational gaps with plausible product behavior.
 
-**Transfer habits, not material.** Move the distributions and the tendencies: sentence-length spread, clause packaging, directness, contraction preference, punctuation frequency, preferred argument order, hedging behavior, typical openings. Do not move distinctive metaphors, slogans, signature phrases, anecdotes, factual examples, or source sentences. **Boundary:** the line is not always obvious. When a construction is both habitual and distinctive, abstract it before use: this author opens with a concrete contradiction is usable; reuse their particular contradiction is not.
+**Transfer habits, not material.** Use directness, contraction preference, punctuation habits, preferred argument order, qualification behavior, and typical openings before drafting. Keep measured sentence and paragraph distributions for comparison after drafting, not as targets. Do not move distinctive metaphors, slogans, signature phrases, anecdotes, factual examples, or source sentences. **Boundary:** the line is not always obvious. When a construction is both habitual and distinctive, abstract it before use: this author opens with a concrete contradiction is usable; reuse their particular contradiction is not.
 
 **Anti-mimicry checks.** After generating, flag every exact overlap of 8 or more consecutive tokens with the source corpus, excluding demonstrably generic strings, and review any shorter phrase that is unusual or repeatedly associated with the author. The token count is a **governance default** and an engineering review trigger; it is not a legal safe harbour, and no word count is one. Also review structural overlap: a sentence preserving the source's sequence of images and syntactic turns can be too close after every word has been swapped. **Boundary:** an overlap flag is a prompt to look, not a verdict. Common phrasing in a technical domain will trip it.
 
@@ -196,7 +220,7 @@ Keep supplied product actions at their stated scope. `A rejection and its select
 
 ## Voice against the tell gate
 
-Voice enters at **level 6** of the conflict hierarchy, with compression and channel fit. It never rises above it. Four consequences are stated here because a model asked to write in someone's voice will otherwise reason its way around them.
+Resolve voice before argument planning. Voice controls expression from the first outline, but never outranks required facts, exact wording, genre, audience, or first-read comprehension. Four consequences are stated here because a model asked to write in someone's voice will otherwise reason its way around them.
 
 1. **Voice follows the user's requested content.** Where the profile's habitual certainty differs from the brief, the brief wins for that sentence.
 2. **Voice never overrides host-required or user-required text.** Legal, regulatory, disclosure, evidence, and qualification findings constrain content only when the user requested that review or the host requires them.
@@ -220,7 +244,7 @@ Before drafting, test the measured owned list against the propositions and the p
 
 For a production profile whose brief explicitly supplies measured owned vocabulary, treat that review as a required pre-draft step. If `leverage` merely replaces `use`, remove it. If a required technical term, verified name, immutable quotation, or explicit user instruction requires the word, preserve it and record why. Never use a banned owned term merely to maximize a match.
 
-Sentence-length and paragraph-shape measurements are distributions, not quotas or stock structures. Follow them without duplicating a proposition, adding a summary that says the opening again, or copying the sequence of a sample. The structural-tell gate fails identifiable canned framing, significance tails, decorative triads, and repeated stock templates. It does not fail a draft merely because its sentence and paragraph lengths resemble the authorized profile.
+Sentence-length and paragraph-shape measurements are diagnostics, not quotas or stock structures. Do not generate toward them, add a long sentence to satisfy a tail, alternate lengths, force paragraph variance, duplicate a proposition, add a summary, or copy the sequence of a sample. The structural-tell gate fails identifiable canned framing, significance tails, decorative triads, and repeated stock templates. It does not fail a draft merely because its sentence and paragraph lengths resemble the authorized profile.
 
 **Boundary:** an owned-vocabulary list assembled from a thin corpus is a preference claim built on noise. Below the certification floor, no candidate exception list is issued, because a word cannot be shown to recur across genres in a corpus that has one.
 

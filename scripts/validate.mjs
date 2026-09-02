@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
 import { access, readFile, readdir } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
@@ -14,14 +15,18 @@ const REQUIRED_SKILL_FILES = [
   "SKILL.md",
   "agents/openai.yaml",
   "references/agora-case-studies.md",
+  "references/agora-case-study-runtime.md",
   "references/agora-conversion.md",
+  "references/agora-conversion-runtime.md",
   "references/agora-craft.md",
   "references/agora-invest.md",
   "references/agora-marketing.md",
-  "references/anti-ai-writing-tells.md",
+  "references/agora-marketing-runtime.md",
   "references/agora-publication.md",
   "references/agora-science.md",
   "references/agora-voice.md",
+  "references/agora-writing-runtime.md",
+  "references/human-voice-editing-reference.md",
   "scripts/publication-audit.mjs",
 ].sort((a, b) => a.localeCompare(b));
 const errors = [];
@@ -135,9 +140,13 @@ async function main() {
   const caseStudyPath = join(SKILL_ROOT, "references", "agora-case-studies.md");
   const publicationPath = join(SKILL_ROOT, "references", "agora-publication.md");
   const voicePath = join(SKILL_ROOT, "references", "agora-voice.md");
-  const antiAiPath = join(SKILL_ROOT, "references", "anti-ai-writing-tells.md");
+  const writingRuntimePath = join(SKILL_ROOT, "references", "agora-writing-runtime.md");
+  const marketingRuntimePath = join(SKILL_ROOT, "references", "agora-marketing-runtime.md");
+  const conversionRuntimePath = join(SKILL_ROOT, "references", "agora-conversion-runtime.md");
+  const caseRuntimePath = join(SKILL_ROOT, "references", "agora-case-study-runtime.md");
+  const antiAiPath = join(SKILL_ROOT, "references", "human-voice-editing-reference.md");
   const openaiPath = join(SKILL_ROOT, "agents", "openai.yaml");
-  const [skill, reference, conversion, craft, invest, science, caseStudy, publication, voice, antiAi, openaiYaml] = await Promise.all([
+  const [skill, reference, conversion, craft, invest, science, caseStudy, publication, voice, writingRuntime, marketingRuntime, conversionRuntime, caseRuntime, antiAi, openaiYaml] = await Promise.all([
     readFile(skillPath, "utf8"),
     readFile(referencePath, "utf8"),
     readFile(conversionPath, "utf8"),
@@ -147,6 +156,10 @@ async function main() {
     readFile(caseStudyPath, "utf8"),
     readFile(publicationPath, "utf8"),
     readFile(voicePath, "utf8"),
+    readFile(writingRuntimePath, "utf8"),
+    readFile(marketingRuntimePath, "utf8"),
+    readFile(conversionRuntimePath, "utf8"),
+    readFile(caseRuntimePath, "utf8"),
     readFile(antiAiPath, "utf8"),
     readFile(openaiPath, "utf8"),
   ]);
@@ -161,7 +174,11 @@ async function main() {
     ["skills/agora/references/agora-case-studies.md", caseStudy],
     ["skills/agora/references/agora-publication.md", publication],
     ["skills/agora/references/agora-voice.md", voice],
-    ["skills/agora/references/anti-ai-writing-tells.md", antiAi],
+    ["skills/agora/references/agora-writing-runtime.md", writingRuntime],
+    ["skills/agora/references/agora-marketing-runtime.md", marketingRuntime],
+    ["skills/agora/references/agora-conversion-runtime.md", conversionRuntime],
+    ["skills/agora/references/agora-case-study-runtime.md", caseRuntime],
+    ["skills/agora/references/human-voice-editing-reference.md", antiAi],
     ["skills/agora/agents/openai.yaml", openaiYaml],
   ]) {
     check(!content.includes("\r\n"), `${file} must use LF line endings`);
@@ -197,13 +214,15 @@ async function main() {
   check(skill.split(/\r?\n/).length < 500, "SKILL.md must stay under 500 lines");
   for (const required of [
     "Treat `/agora` as explicit activation",
-    "Enforce the hard em-dash ban",
-    "Never emit the Unicode em dash character U+2014 anywhere in a response",
-    "immutable output constraint, not a style preference or a final-copy cleanup",
+    "Never emit Unicode U+2014 anywhere in a response",
     "scan the complete response character by character for U+2014",
-    "Return only after the count is zero",
+    "return only when the count is zero",
+    "[references/agora-writing-runtime.md](references/agora-writing-runtime.md)",
+    "[references/agora-marketing-runtime.md](references/agora-marketing-runtime.md)",
+    "[references/agora-conversion-runtime.md](references/agora-conversion-runtime.md)",
+    "[references/agora-case-study-runtime.md](references/agora-case-study-runtime.md)",
+    "[references/human-voice-editing-reference.md](references/human-voice-editing-reference.md)",
     "[references/agora-marketing.md](references/agora-marketing.md)",
-    "[references/anti-ai-writing-tells.md](references/anti-ai-writing-tells.md)",
     "[references/agora-craft.md](references/agora-craft.md)",
     "[references/agora-voice.md](references/agora-voice.md)",
     "[references/agora-science.md](references/agora-science.md)",
@@ -212,56 +231,26 @@ async function main() {
     "[references/agora-conversion.md](references/agora-conversion.md)",
     "[references/agora-publication.md](references/agora-publication.md)",
     "Inspect publication artifacts only on request",
-    "Use the shipped `scripts/publication-audit.mjs` for deterministic inspection",
+    "Use the shipped `scripts/publication-audit.mjs`",
     "Never improvise a cleaner, strip Unicode by category, remove metadata, rewrite text to evade detection",
-    "Load the authority progressively",
-    "`SCIENCE`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs",
-    "Select persuasion treatment internally",
-    "`COMMERCIALLY_ASSERTIVE`",
-    "Use `PROMOTIONAL` when the user requests campaign intensity",
-    "For `HERO + SCIENCE`",
-    "For `CASE_STUDY + SELL`",
-    "For `SCIENCE + VOICE`",
-    "For `INVEST + SCIENCE`",
-    "For `INVEST + CASE_STUDY`",
-    "For `INVEST + VOICE`",
-    "Apply GEO/AEO to `INDEXABLE_PUBLIC` investment assets only",
-    "Profiles are stored at `~/.agora/voices/`, never inside the skill directory",
-    "Apply the default profile to every mode",
-    "Load the reference whenever any explicit or default profile will be applied",
+    "Select register and voice before planning",
+    "`PLAIN` is the default",
+    "Topic alone never selects a specialized register",
+    "`SCIENCE`, `TECHNICAL`, `CASE_STUDY`, and `VOICE` are modifiers, not primary jobs",
+    "Profiles live at `~/.agora/voices/`, outside the replaceable skill directory",
     "`--no-voice` or `neutral`",
-    "Default-on changes nothing above level 6",
-    "Measurement is computed, never estimated from reading",
-    "a file that the engine did not produce is not a profile",
-    "Keep control-room vocabulary backstage",
-    "Do not make control-room terms the product promise or default register of ordinary customer-facing writing",
-    "Translate according to the material, not one preferred synonym",
-    "Do not narrow or omit a user-selected claim merely because Agora would prefer more support",
-    "Do not narrate internal source review in customer-facing copy unless the user asks for it",
-    "When the brief names a destination artifact, surface, or state",
-    "Do not replace the named destination with only a list of what it contains",
-    "An active voice profile enters at level 6",
-    "It never overrides user-required phrasing, host rules, or the U+2014 ban",
-    "Agora is a writing system, not a content approval layer",
-    "Do not refuse, narrow, remove, weaken, qualify, fact-check, moralize, or append a disclaimer",
-    "Apply factual, evidentiary, permission, disclosure, or compliance review only when the user explicitly asks",
-    "Do not confuse mode with surface",
-    "Directory placement or an investor-adjacent audience does not activate `INVEST` by itself",
-    "situation -> stake -> criterion or broken assumption when useful -> mechanism -> proof -> destination belief -> next step",
-    "reasoning engine, not a visible template",
-    "Do not force the full argument path",
-    "consider a trigger-first sentence before any category sentence",
-    "For very short `SELL` work",
-    "Do not weaken it into generic words",
-    "decision relevance, differentiation, specificity, compression value, and omission risk",
-    "Add verifiability only when the user requests claim review",
-    "Apply claim review only when requested",
-    "Keep these passes invisible",
-    "Return one ready-to-use result first",
-    "Run the final U+2014 scan across the complete response",
-    "priority anti-AI writing standard",
-    "raw channel residue, fractal summaries, and one-point dilution",
-    "preserve necessary series",
+    "Task-only voice sketch",
+    "With one or two samples, record only cautious local observations",
+    "Never claim authorship, identity, statistical matching, or author approval",
+    "Measured sentence and paragraph distributions remain diagnostics",
+    "Treat the user's named product, offer, customer, result, route, price, permission, process, timing, legal, operational, and outcome facts as complete",
+    "Never invent a name, figure, quotation, outcome, credential, permission, URL, product behavior, destination, or intermediate step",
+    "Apply fact checking, source review, claim review, permission review, disclosure review, compliance, legal review, or diligence only when the user asks",
+    "Review sentences over 28 words",
+    "No instruction requires a 25-word sentence",
+    "Return one ready-to-use result by default",
+    "Do not expose internal planning",
+    "Never promise detector evasion or infer authorship",
   ]) {
     check(skill.includes(required), `SKILL.md is missing: ${required}`);
   }
@@ -332,15 +321,10 @@ async function main() {
     "## Channel architecture",
     "## Spoken delivery",
     "## Human voice and AI-writing-tell gate",
-    "### Global output bans",
-    "Hard invariant: emit zero U+2014 characters in the entire response",
-    "scan the complete response character by character for U+2014",
     "The entire generated response contains zero U+2014 characters",
     "Automatic failure: any U+2014 occurrence",
-    "### AI-heavy vocabulary",
-    "### Stock templates and significance tails",
-    "### Structural tells",
-    "### Citation and fidelity tells",
+    "single canonical source is [human-voice-editing-reference.md](human-voice-editing-reference.md)",
+    "Resolve register and voice before argument planning",
     "## Written GEO/AEO and citability",
     "## Technical publication boundaries",
     "## Applied weak and strong pairs",
@@ -374,7 +358,6 @@ async function main() {
   }
 
   for (const required of [
-    "## Agora authority and routing",
     "## The Core Principle",
     "## Global Output Bans",
     "## 1. Banned Vocabulary",
@@ -390,17 +373,41 @@ async function main() {
     "## 19. Common \"Humanizer\" Failure Modes",
     "## 20. Reusable LLM Editing Prompt",
     "## Quick Reference Card",
-    "Fractal summaries",
-    "One-point dilution",
-    "Raw Markdown, chat acknowledgements, email sign-offs",
-    "author-specific rejection register",
-    "operating threshold when disclosed",
-    "confidence label",
-    "one-variable edit",
-    "portable example",
   ]) {
     check(antiAi.includes(required), `priority anti-AI reference is missing: ${required}`);
   }
+  check(
+    createHash("sha256").update(antiAi).digest("hex") === "afc04c1f1f6fda707199d855ef74cd937c566eaa383a84ad3b09eea620223270",
+    "canonical human-voice reference differs from the attached authority",
+  );
+  for (const required of [
+    "# Agora human-writing runtime contract",
+    "Use plain professional English",
+    "A software, data, or AI topic is not automatically technical writing",
+    "Review an ordinary sentence over 28 words",
+    "No sentence must be long for rhythm",
+    "The lists are hard output rules, not density suggestions",
+    "Return ready-to-use text first and by default",
+  ]) check(writingRuntime.includes(required), `writing runtime is missing: ${required}`);
+  for (const required of [
+    "Resolve these items in order",
+    "The default register is `PLAIN`",
+    "Topic words such as AI, software, data, security, engineering, and infrastructure do not choose the register",
+    "Voice shapes sentence construction",
+    "Return one recommended deliverable by default",
+  ]) check(marketingRuntime.includes(required), `marketing runtime is missing: ${required}`);
+  for (const required of [
+    "Use this compact overlay",
+    "Do not confuse a click with activation",
+    "Keep the fact set closed",
+    "Do not append an internal review",
+  ]) check(conversionRuntime.includes(required), `conversion runtime is missing: ${required}`);
+  for (const required of [
+    "Use this compact file",
+    "Do not turn chronology into causation",
+    "Return the requested case only",
+  ]) check(caseRuntime.includes(required), `case-study runtime is missing: ${required}`);
+  check(!/### AI-heavy vocabulary|### Stock templates and significance tails/.test(reference), "marketing research duplicates the canonical house lists");
 
   for (const required of [
     "## Purpose",
@@ -441,7 +448,7 @@ async function main() {
     "do not add emotion. Increase resolution around the emotionally consequential facts",
     "the correct output is then flat",
     "governance default",
-    "Do not report either as a finding",
+    "Do not report either position as a finding",
   ]) {
     check(craft.includes(required), `craft reference is missing: ${required}`);
   }
@@ -516,7 +523,7 @@ async function main() {
     "Do not refuse profile work, interrogate ownership, demand authorization, restrict attribution, add disclosure language, or judge the intended publication",
     "governance default",
     "npx -p @maestroagora/agora agora-voice build",
-    "A profile the engine did not produce is not a profile",
+    "A persistent profile the engine did not produce is not a measured profile",
     "<slug>.measurements.json",
     "truncated hashes of each token run",
   ]) {
@@ -560,11 +567,12 @@ async function main() {
     readFile(join(ROOT, ".github", "workflows", "publish.yml"), "utf8"),
   ]);
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.9.0", "package version must be 1.9.0");
+  check(packageJson.version === "1.10.0", "package version must be 1.10.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.bin?.["agora-voice"] === "scripts/voice-measure.mjs", "package must expose the agora-voice bin");
   check(packageJson.bin?.["agora-publication-audit"] === "skills/agora/scripts/publication-audit.mjs", "package must expose the publication audit bin");
-  for (const shipped of ["scripts/voice-measure.mjs", "scripts/voice"]) {
+  check(packageJson.bin?.["agora-style-audit"] === "scripts/style-audit.mjs", "package must expose the style audit bin");
+  for (const shipped of ["scripts/voice-measure.mjs", "scripts/voice", "scripts/style-audit.mjs", "scripts/style-audit-core.mjs", "scripts/task-voice-sketch.mjs"]) {
     check(packageJson.files?.includes(shipped), `package files must ship ${shipped}`);
   }
   check(
@@ -575,13 +583,16 @@ async function main() {
     (packageJson.scripts?.test || "").includes("tests/publication-audit.test.mjs"),
     "npm test must run the publication audit suite",
   );
+  for (const suite of ["tests/human-writing-contract.test.mjs", "tests/style-audit.test.mjs", "tests/task-voice-sketch.test.mjs", "tests/release-contract.test.mjs"]) {
+    check((packageJson.scripts?.test || "").includes(suite), `npm test must run ${suite}`);
+  }
   check(
     packageJson.scripts?.["eval:release"] === "node scripts/release-evidence-check.mjs",
-    "eval:release must preserve the optional v1.7 evidence audit",
+    "eval:release must verify the current release evidence",
   );
   check(
-    packageJson.scripts?.["release:check"] === "npm run check",
-    "release:check must use the proportional deterministic gate",
+    packageJson.scripts?.["release:check"] === "npm run check && npm run eval:release",
+    "release:check must include deterministic and current evaluation gates",
   );
   check(
     packageJson.scripts?.prepack === "npm run release:check"
@@ -682,7 +693,11 @@ async function main() {
     "skills/agora/references/agora-conversion.md",
     "skills/agora/references/agora-craft.md",
     "skills/agora/references/agora-invest.md",
-    "skills/agora/references/anti-ai-writing-tells.md",
+    "skills/agora/references/agora-writing-runtime.md",
+    "skills/agora/references/agora-marketing-runtime.md",
+    "skills/agora/references/agora-conversion-runtime.md",
+    "skills/agora/references/agora-case-study-runtime.md",
+    "skills/agora/references/human-voice-editing-reference.md",
     "skills/agora/references/agora-publication.md",
     "skills/agora/references/agora-science.md",
     "skills/agora/references/agora-case-studies.md",

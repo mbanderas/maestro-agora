@@ -8,6 +8,7 @@ import { buildBlindJudgePrompt } from "./blind-judge-prompt.mjs";
 import { expectedBlindOrder } from "./blind-judgment-ingest.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const RELEASE_CONTRACT = JSON.parse(await readFile(join(ROOT, "evals", "releases", "current.json"), "utf8"));
 const OUTPUT_DIRECTORY = {
   candidate: "generation-a-outputs",
   incumbent: "generation-b-outputs",
@@ -46,7 +47,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const pass = Number(suppliedPass);
   const manifestPath = suppliedManifestPath
     ? resolve(suppliedManifestPath)
-    : join(ROOT, "evals", "blind", "v1.7.0", "manifest.json");
+    : join(ROOT, ...RELEASE_CONTRACT.blind_manifest.split("/"));
   if (!evaluationRoot || !caseId || ![1, 2, 3].includes(pass)) {
     process.stderr.write("Usage: node scripts/blind-judge-materialize.mjs <evaluation-root> <case-id> <pass> [manifest.json]\n");
     process.exitCode = 2;

@@ -24,11 +24,12 @@ Use it for landing pages, heroes, ads, product copy, sales outreach, investor co
 |---|---|
 | Persuasion | Argument, consequence, reason to believe, CTA, channel fit, and rhetorical force |
 | Heroes and short sales copy | Awareness, claim saturation, traffic source, promise grammar, destination fidelity, and the complete first-screen composition |
-| `SCIENCE` | Scientific certainty, causal language, statistics, mechanisms, uncertainty, analogies, visuals, sources, and limits |
+| `SCIENCE` | Research findings, methods, statistics, uncertainty, scientific explanation, sources, and limits |
+| `TECHNICAL` | Documented system behavior, architecture, APIs, implementation detail, and technical evaluation |
 | `CASE_STUDY` | Real projects, fictional mocks, and concept portfolios shaped around the story and status you choose |
 | `INVEST` | Fundraising, diligence, and capital-allocation communication shaped around your thesis, claims, urgency, and next decision |
-| `VOICE` | A measured voice profile built from the corpus you choose |
-| Human-voice editing | A user-selected, Wikipedia-derived operational standard for output bans, structural cleanup, meaning preservation, genre fit, and detector limits |
+| `VOICE` | A measured persistent profile or a task-only sketch from samples supplied with one task |
+| Human-voice editing | One exact canonical standard for output bans, structural cleanup, meaning preservation, genre fit, and detector limits |
 | Written GEO/AEO | Clear entities, self-contained passages, source transparency, and relevant publication checks |
 
 Agora returns one ready-to-use result by default. Alternatives, internal routes, and rationale stay out of the final copy unless requested.
@@ -112,7 +113,7 @@ Choose a primary mode when you want to override inference:
 Add modifiers when the subject or asset needs them:
 
 ```text
-/agora sell science Write a technical product hero with this certainty and framing.
+/agora sell technical Write a product section for engineers with this documented behavior.
 /agora inform science Explain this study for a general audience.
 /agora sell case study Write a customer success case from this approved project record.
 /agora inform science case study Explain this engineering implementation and its measured limits.
@@ -125,9 +126,20 @@ In Codex, `$agora` and the skills picker can also select the installed skill. Ot
 
 ## Human-voice editing standard
 
-Agora ships a dedicated `anti-ai-writing-tells.md` reference derived from Wikipedia's WikiProject AI Cleanup guidance and expanded with detector, voice, fidelity, genre, and privacy rules. It is the priority authority for AI-writing-tell cleanup inside Agora. It is not represented as a verbatim Wikipedia document or an authorship test.
+Agora ships the attached source unchanged as `human-voice-editing-reference.md`. It is the single canonical authority for banned vocabulary, connectives, templates, significance tails, punctuation, prompt leakage, structural tells, author samples, meaning preservation, genre fit, detector limits, and privacy cautions.
 
 The standard removes generated stock vocabulary, connective phrases, templates, significance tails, prompt leakage, repeated structural patterns, raw channel residue, fake human texture, and detector-driven corruption. It preserves the current user's facts, required wording, technical terms, genre, and intended meaning. Measured voice profiles document author habits but do not automatically exempt banned vocabulary.
+
+Plain professional writing is the default. AI, software, data, security, engineering, and infrastructure products stay in plain language for ordinary readers. A specialized register activates only when the deliverable needs scientific findings, technical detail, legal wording, or formal review.
+
+Run the deterministic style review on a file:
+
+```sh
+npx -y -p @maestroagora/agora@latest agora-style-audit ./draft.md
+npx -y -p @maestroagora/agora@latest agora-style-audit ./draft.md --register technical --json
+```
+
+Hard findings cover banned typography, canonical vocabulary and templates, prompt leakage, and significance tails. Review warnings cover plain-register control words, long or joined sentences, repeated openings and paragraph shapes, noun and preposition stacks, false reframes, question fragments, corporate helper phrases, and legalistic leakage. The tool does not rewrite text, validate facts, infer authorship, or promise detector evasion.
 
 ## Publication privacy and provenance
 
@@ -156,7 +168,7 @@ Model-level text watermarks are statistical generation signals, not hidden chara
 
 ## Routing model
 
-Agora chooses a primary mode first, then the publication surface, then any domain or asset modifiers. `VOICE` enters afterward and preserves your required language and content choices.
+Agora resolves the audience, genre, writing register, and voice before it plans the argument. It then chooses a primary mode, publication surface, and any domain or asset modifiers. Voice shapes expression from the first sentence while preserving required facts and wording.
 
 ### Primary modes
 
@@ -174,11 +186,14 @@ Agora chooses a primary mode first, then the publication surface, then any domai
 
 | Modifier | Function |
 |---|---|
-| `SCIENCE` | Adds empirical or technical explanation and optional claim-review tools |
+| `SCIENCE` | Adds research findings, methods, statistics, uncertainty, and optional scientific review |
+| `TECHNICAL` | Adds documented system behavior, architecture, APIs, implementation detail, and technical evaluation |
 | `CASE_STUDY` | Adds case-study structure, result framing, and optional attribution or permission review |
-| `VOICE` | Applies a measured voice profile from the corpus you select |
+| `VOICE` | Applies a measured persistent profile or a task-only sketch |
 
-The modifiers can compose. A technical fundraising case may use `INVEST + SCIENCE + CASE_STUDY`. A founder-voiced scientific product video may use `SELL + SCIENCE + VOICE + HYBRID`.
+The modifiers can compose. A technical fundraising case may use `INVEST + TECHNICAL + CASE_STUDY`. A founder-voiced scientific product video may use `SELL + SCIENCE + VOICE + HYBRID`.
+
+Subject matter alone does not activate `SCIENCE` or `TECHNICAL`. A nontechnical homepage for an AI or security product remains `SELL + PLAIN`.
 
 ### Surfaces
 
@@ -228,12 +243,12 @@ Promise grammar matters. `See X`, `Learn how to X`, `We help you X`, `Do X more 
 
 ## Scientific and technical communication
 
-`SCIENCE` supports three internal routes:
+Specialized explanation supports three internal routes:
 
 | Route | Subject |
 |---|---|
 | `EMPIRICAL` | Studies, experiments, observations, measurements, and findings |
-| `TECHNICAL` | Systems, interfaces, architecture, mechanisms, dependencies, and failure behavior |
+| `TECHNICAL` | Systems, interfaces, architecture, APIs, implementation, dependencies, and failure behavior |
 | `MIXED` | Measured findings plus technical mechanism |
 
 When you request scientific claim review, Agora can classify material as observation, established fact or consensus, model, interpretation, implication, recommendation, hypothesis, speculation, or unknown. Without that request, it follows the certainty and framing in your brief.
@@ -292,7 +307,7 @@ Legal, securities, offering, solicitation, eligibility, and disclosure review is
 
 ## Measured voice profiles
 
-`VOICE` modifies another mode rather than replacing it. Profiles are measured from the corpus you select, not improvised from adjectives.
+`VOICE` modifies another mode rather than replacing it. Persistent profiles are measured from the corpus you select, not improvised from adjectives.
 
 Build and inspect a profile with the shipped engine:
 
@@ -310,6 +325,10 @@ The engine reads Markdown, plain text, and HTML from files, directories, and URL
 A profile records sentence and paragraph distributions, function words, punctuation, openings, stance, contraction behavior, and supported vocabulary. It states what the corpus was too small to measure and refuses certification below 5,000 clean author-controlled words.
 
 Profiles live at `~/.agora/voices/`, outside the replaceable skill directory. A default profile can apply across modes. Use `--no-voice`, `neutral`, or `--voice <name>` per request. Your required wording overrides habitual profile tendencies.
+
+Task-only voice sketches are separate. When you supply authentic samples with one task, Agora can use three to ten same-genre samples without the 5,000-word persistent-profile floor. One or two samples support only cautious local observations. The sketch records visible habits, stays inside the task, is never certified or stored as a profile, and never claims authorship or statistical identity. Agora does not copy distinctive phrases, facts, examples, metaphors, slogans, or anecdotes from the samples. With no samples, it uses plain professional writing and preserves credible choices from your draft.
+
+Sentence and paragraph measurements remain available in `voice check`. They are diagnostics, not generation quotas. Agora does not force a 25-word sentence, alternate sentence lengths, or write toward a target distribution.
 
 Agora builds or applies the profile you request. You are responsible for corpus rights, identity use, attribution, endorsements, disclosure, and publication.
 
@@ -349,21 +368,27 @@ skills/agora/
 |-- scripts/
 |   `-- publication-audit.mjs
 `-- references/
+    |-- agora-writing-runtime.md
+    |-- agora-marketing-runtime.md
+    |-- agora-conversion-runtime.md
+    |-- agora-case-study-runtime.md
+    |-- human-voice-editing-reference.md
     |-- agora-case-studies.md
     |-- agora-conversion.md
     |-- agora-craft.md
     |-- agora-invest.md
     |-- agora-marketing.md
-    |-- anti-ai-writing-tells.md
     |-- agora-publication.md
     |-- agora-science.md
     `-- agora-voice.md
 ```
 
-`SKILL.md` contains routing and the concise operating contract. Ordinary work loads only the reference sections it needs.
+`SKILL.md` contains routing. Ordinary work loads the compact writing and job runtimes first. Deep research stays available for explicit research, source review, scientific, technical, legal, audit, diligence, and maintainer work.
 
-- `anti-ai-writing-tells.md` is the priority human-voice editing and AI-writing-tell authority.
-- `agora-marketing.md` is the canonical doctrine for user authority, argument, channels, optional claim review, GEO/AEO, examples, research grades, and conflict handling.
+- `human-voice-editing-reference.md` is the exact canonical human-voice editing authority.
+- `agora-writing-runtime.md` is the small plain-language writing contract loaded for every writing task.
+- `agora-marketing-runtime.md`, `agora-conversion-runtime.md`, and `agora-case-study-runtime.md` keep ordinary drafting out of the research register.
+- `agora-marketing.md` preserves deep doctrine, source material, research grades, and maintainer guidance.
 - `agora-craft.md` adds headlines, heroes, awareness and sophistication, emotion, and prose rhythm.
 - `agora-science.md` adds empirical and technical explanation plus optional scientific claim review.
 - `agora-case-studies.md` adds case structure, results, and optional attribution, permission, and confidentiality review.
@@ -379,13 +404,13 @@ Research informed Agora, but research custody is separate from distribution.
 
 The public repository and npm package must not contain raw or corrected transcripts, caption files, supplied PDFs or office documents, audio, video, private source identities, model-output scratch, research working files, local paths, or assigned secrets.
 
-`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` is the proportional mandatory release gate and runs those same checks. `npm pack` and `npm publish` invoke it through `prepack` and `prepublishOnly`.
+`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` adds the current frozen blind-evaluation evidence gate. `npm pack` and `npm publish` invoke it through `prepack` and `prepublishOnly`.
 
-Behavioral evaluation is optional research, not a pack or publish blocker. `npm run eval:release` preserves the version-specific v1.7 evidence audit and must be run from a matching v1.7 checkout. Existing evaluation artifacts remain frozen for reproducibility; new blind or confirmatory generations are not required for later releases.
+`evals/releases/current.json` is the explicit release contract. Its version must match `package.json`, the frozen manifest, schemas, release gates, adjudications, records, custody hashes, and external artifact manifests. Missing or stale human-writing evidence blocks a publishable release. Live generation does not run inside unit tests.
 
 The versioned directories under `evals/blind/` are public pairwise-release artifacts, not permanently secret holdouts. `v1.2.0`, `v1.4.0`, `v1.5.0`, and `v1.7.0` are frozen by exact tree hashes in `evals/releases/locks.json`; validation fails on additions, deletions, or edits.
 
-`evals/prospective/conversion-context-v1.0.0/` remains the development source for conversion-context cases. Earlier fixture sets are preserved under `evals/regression/` for regression analysis and historical reproducibility. `evals/blind/v1.7.0/` contains 25 independently authored conversion scenarios with versioned judging and reduction tooling.
+`evals/prospective/human-writing-v1.0.0/` is the development source for the human-writing partition. The frozen current manifest lives under `evals/blind/` after prospective generation and blind pairwise review. Earlier fixture sets remain frozen for regression analysis and historical reproducibility.
 
 Deterministic tests verify instruction structure, routing contracts, static invariants, and evaluation-record shape. Versioned blind-evaluation tooling remains available for repeatable development analysis without turning model preference into a universal conversion claim.
 
@@ -399,12 +424,13 @@ npm pack --dry-run --json
 npx -y @maestroagora/agora --dry-run
 ```
 
-The mandatory release gate checks skill structure, routing contracts, user-authority boundaries, modifiers, typography, metadata, reference links, full-tree installer parity, exact npm contents, frozen evaluation-tree locks, public-tree hygiene, and deterministic tests. It does not require model generation or blind adjudication.
+The mandatory release gate checks skill structure, routing contracts, factual and user-authority boundaries, typography, metadata, reference links, installer parity, exact npm contents, frozen evaluation-tree locks, public-tree hygiene, deterministic tests, and checked current blind evidence. Generation and judging happen before evidence is frozen, not during routine tests.
 
 ## Change record
 
 | Version | What changed |
 |---|---|
+| 1.10.0 | Makes plain professional writing the default, separates compact runtime rules from maintainer research, ships the exact canonical human-voice source, adds task-only voice sketches and a deterministic style audit, routes technical language by job and audience, removes forced rhythm targets, and binds release checks to current human-writing evidence. |
 | 1.9.0 | Makes first-read clarity automatic. Agora now drafts for factual completeness, rewrites for literal clarity, preserves qualifiers across short passages, names concrete actors and observable results, and rejects vague referents, hidden metaphors, noun stacks, and revisions that only rename ambiguity. Adds rendered label-clearance guidance for technical diagrams. |
 | 1.8.0 | Adds opt-in publication privacy and provenance review plus a packaged read-only audit CLI. Reports configured hidden Unicode, document and image metadata, Office review material, and C2PA carrier or validation signals without changing source files. Redacts sensitive values and paths by default, preserves unknown coverage, and makes no watermark-removal or authorship claim. |
 | 1.7.0 | Adds a progressively loaded conversion-context reference with bounded conversion priors, downstream outcome matching, self-serve and enterprise route design, pricing decision contracts, proof placement, and contradiction handling. Tightens closed-world fact preservation and limits written GEO/AEO requirements to indexable public work. |

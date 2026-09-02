@@ -6,8 +6,9 @@ import { pathToFileURL } from "node:url";
 
 const BANNED_TYPOGRAPHY = /[\u2014\u2018\u2019\u201C\u201D]/u;
 const SKILL_READ_MARKER = "## Accept direct invocation";
-const CONVERSION_READ_MARKER = "## Route the decision before drafting";
-const AGORA_SKILL_PATH = /(?:\.agents|\.codex|\.claude)[\\/]skills[\\/]agora[\\/](?:SKILL\.md|references[\\/]agora-conversion\.md)/i;
+const WRITING_RUNTIME_READ_MARKER = "# Agora human-writing runtime contract";
+const AGORA_SKILL_PATH = /(?:\.agents|\.codex|\.claude)[\\/]skills[\\/]agora[\\/]/i;
+const RELEASE_CONTRACT = JSON.parse(await readFile(new URL("../evals/releases/current.json", import.meta.url), "utf8"));
 
 const names = async (path) => (await readdir(path, { withFileTypes: true }))
   .filter((entry) => entry.isFile())
@@ -15,6 +16,20 @@ const names = async (path) => (await readdir(path, { withFileTypes: true }))
   .sort();
 
 const equalNames = (actual, expected) => JSON.stringify(actual) === JSON.stringify([...expected].sort());
+
+const parseAttestedLog = (text, label, requireEvents, errors) => {
+  try {
+    const parsed = JSON.parse(text);
+    const attestation = parsed?.attestation ?? parsed;
+    if (requireEvents && (!Array.isArray(parsed?.events) || parsed.events.length === 0)) {
+      errors.push(`${label} does not preserve raw runtime events`);
+    }
+    return { parsed, attestation };
+  } catch {
+    errors.push(`${label} is not valid JSON`);
+    return { parsed: null, attestation: null };
+  }
+};
 
 const GENERATION_LAYOUT = {
   candidate: {
@@ -29,7 +44,7 @@ const GENERATION_LAYOUT = {
   },
 };
 
-const validateGenerationSide = async ({ root, ids, side, requireConversion, errors }) => {
+const validateGenerationSide = async ({ root, ids, side, manifest, requireHumanRuntime, errors }) => {
   const layout = GENERATION_LAYOUT[side];
   const outputDirectory = join(root, layout.outputDirectory);
   const logDirectory = join(root, "generation-logs");
@@ -48,22 +63,31 @@ const validateGenerationSide = async ({ root, ids, side, requireConversion, erro
     if (!output.trim()) errors.push(`${side} output ${id} is empty`);
     if (BANNED_TYPOGRAPHY.test(output)) errors.push(`${side} output ${id} contains banned typography`);
     try {
-      const audit = JSON.parse(logText);
+      const { parsed, attestation: audit } = parseAttestedLog(
+        logText,
+        `${side} generation ${id} log`,
+        manifest.skill_version === RELEASE_CONTRACT.skill_version,
+        errors,
+      );
+      if (!audit) continue;
+      if (manifest.skill_version === RELEASE_CONTRACT.skill_version && parsed.reasoning_effort !== RELEASE_CONTRACT.generator_reasoning_effort) {
+        errors.push(`${side} generation ${id} reasoning effort does not match the current release contract`);
+      }
       if (audit.schema_version !== 1
-        || audit.runtime !== "codex-subagent"
-        || audit.model !== "gpt-5.6-sol"
+        || audit.runtime !== RELEASE_CONTRACT.generator_runtime
+        || audit.model !== RELEASE_CONTRACT.generator_model
         || audit.fresh_context !== true
         || audit.skill_access !== true
         || audit.skill_root !== layout.skillRoot
-        || audit.prompt_file !== `evals/blind/v1.7.0/prompts/${id}.md`
+        || audit.prompt_file !== `evals/blind/v${manifest.skill_version}/prompts/${id}.md`
         || audit.output_file !== `${layout.outputDirectory}/${id}.md`) {
         errors.push(`${side} generation ${id} has invalid runtime attestation`);
       }
-      if (requireConversion && audit.conversion_reference_access !== true) {
-        errors.push(`${side} generation ${id} lacks conversion reference access attestation`);
+      if (requireHumanRuntime && (audit.writing_runtime_access !== true || audit.canonical_reference_access !== true)) {
+        errors.push(`${side} generation ${id} lacks human-writing runtime access attestation`);
       }
     } catch {
-      errors.push(`${side} generation ${id} log is not valid JSON`);
+      errors.push(`${side} generation ${id} log validation failed`);
     }
   }
 };
@@ -71,8 +95,8 @@ const validateGenerationSide = async ({ root, ids, side, requireConversion, erro
 export async function validateEvaluationProvenance({ root, manifest, adjudications }) {
   const errors = [];
   const ids = (manifest.cases ?? []).map((item) => item.id);
-  await validateGenerationSide({ root, ids, side: "candidate", requireConversion: true, errors });
-  await validateGenerationSide({ root, ids, side: "incumbent", requireConversion: false, errors });
+  await validateGenerationSide({ root, ids, side: "candidate", manifest, requireHumanRuntime: true, errors });
+  await validateGenerationSide({ root, ids, side: "incumbent", manifest, requireHumanRuntime: false, errors });
 
   const expectedJudgments = adjudications.flatMap((item) => item.passes.map((pass) => `${item.id}-pass${pass.pass}.json`));
   const expectedJudgePrompts = adjudications.flatMap((item) => item.passes.map((pass) => `${item.id}-pass${pass.pass}.md`));
@@ -86,20 +110,29 @@ export async function validateEvaluationProvenance({ root, manifest, adjudicatio
   for (const logName of expectedJudgeLogs) {
     const log = await readFile(join(root, "judge-logs", logName), "utf8").catch(() => "");
     if (!log.trim()) errors.push(`judge log ${logName} is empty`);
-    if (AGORA_SKILL_PATH.test(log) || log.includes(SKILL_READ_MARKER) || log.includes(CONVERSION_READ_MARKER)) {
+    if (AGORA_SKILL_PATH.test(log) || log.includes(SKILL_READ_MARKER) || log.includes(WRITING_RUNTIME_READ_MARKER)) {
       errors.push(`judge log ${logName} contains Agora skill access evidence`);
     }
     try {
-      const audit = JSON.parse(log);
+      const { parsed, attestation: audit } = parseAttestedLog(
+        log,
+        `judge log ${logName}`,
+        manifest.skill_version === RELEASE_CONTRACT.skill_version,
+        errors,
+      );
+      if (!audit) continue;
+      if (manifest.skill_version === RELEASE_CONTRACT.skill_version && parsed.reasoning_effort !== RELEASE_CONTRACT.judge_reasoning_effort) {
+        errors.push(`judge log ${logName} reasoning effort does not match the current release contract`);
+      }
       if (audit.schema_version !== 1
-        || audit.runtime !== "codex-subagent"
-        || audit.model !== "gpt-5.6-sol"
+        || audit.runtime !== RELEASE_CONTRACT.judge_runtime
+        || audit.model !== RELEASE_CONTRACT.judge_model
         || audit.fresh_context !== true
         || audit.skill_access !== false) {
         errors.push(`judge log ${logName} has invalid runtime attestation`);
       }
     } catch {
-      errors.push(`judge log ${logName} is not valid JSON`);
+      errors.push(`judge log ${logName} validation failed`);
     }
   }
   return errors;

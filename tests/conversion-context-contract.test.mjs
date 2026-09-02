@@ -18,8 +18,9 @@ const ATTEMPT1_ROOT = join(ROOT, "evals", "regression", "conversion-context-v1.7
 const ATTEMPT2_ROOT = join(ROOT, "evals", "regression", "conversion-context-v1.7.0-confirmatory-attempt2");
 const execFileAsync = promisify(execFile);
 
-const [skill, conversion, craft, manifest] = await Promise.all([
+const [skill, conversionRuntime, conversion, craft, manifest] = await Promise.all([
   readFile(join(SKILL_ROOT, "SKILL.md"), "utf8"),
+  readFile(join(SKILL_ROOT, "references", "agora-conversion-runtime.md"), "utf8"),
   readFile(join(SKILL_ROOT, "references", "agora-conversion.md"), "utf8"),
   readFile(join(SKILL_ROOT, "references", "agora-craft.md"), "utf8"),
   readFile(join(EVAL_ROOT, "manifest.json"), "utf8").then(JSON.parse),
@@ -35,28 +36,21 @@ const [frozenManifest, frozenReleasePlan, regressionManifest, attempt1Manifest, 
 ]);
 
 test("conversion context loads progressively without adding a mode", () => {
-  assert.match(skill, /\[references\/agora-conversion\.md\]\(references\/agora-conversion\.md\) governs conversion-context work/);
-  assert.match(skill, /writes, rewrites, plans, reviews, compares, tests, measures, or optimizes a conversion-relevant/);
-  assert.match(skill, /landing page, product page, pricing page, enterprise page, paywall, checkout, form, upgrade path, onboarding sequence, funnel, or experiment/);
-  assert.match(skill, /New drafts count; do not require the user to say `conversion` or `optimize`/);
-  assert.match(skill, /This load is mandatory and precedes the general marketing and optional craft reads below/);
-  assert.match(skill, /bounded overlay inside `SELL` or `TRANSACT`, not a primary mode, modifier, or source of universal conversion laws/);
-  assert.ok(skill.indexOf("references/agora-conversion.md") < skill.indexOf("Use [references/agora-marketing.md]"));
+  assert.match(skill, /Use \[references\/agora-conversion-runtime\.md\]/);
+  assert.match(skill, /landing pages, product pages, pricing pages, paywalls, checkout, forms, onboarding, upgrade paths, funnels, and conversion experiments/);
+  assert.match(skill, /do not load them for ordinary drafting/);
+  assert.match(conversionRuntime, /Use this compact overlay/);
+  assert.match(conversionRuntime, /Do not turn one test into a universal rule/);
   assert.doesNotMatch(skill, /\| `CONVERSION` \|/);
 });
 
 test("closed-world core delegates general conversion contracts", () => {
   assert.match(skill, /^## Preserve closed-world facts$/m);
-  assert.match(skill, /Write only supplied facts and necessary logical entailments/);
-  assert.match(skill, /Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, and destinations/);
-  assert.match(skill, /Never fill plausible defaults, strengthen or rename facts, convert a paraphrase into a quotation/);
-  assert.match(skill, /Prefer the supplied task verb when it precisely names the action/);
-  assert.match(skill, /Necessary entailments and direct, bounded buyer interpretations are allowed/);
-  assert.match(skill, /Invented intermediate operations, vendor behavior, and outcomes are not/);
-  assert.match(skill, /apply its surface-specific route, pricing, experiment, proof, qualification, and placement contracts/);
-  assert.match(skill, /classify every requested component as an implementation recommendation, visible copy, or both/i);
-  assert.match(skill, /Examples in this skill and its references illustrate reasoning only/);
-  assert.match(skill, /Reproduce wording only when the current brief marks it `REQUIRED EXACT`/);
+  assert.match(skill, /Write only supplied facts and necessary logical consequences/);
+  assert.match(skill, /Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, destinations, uncertainty, and required wording/);
+  assert.match(skill, /Never invent a name, figure, quotation, outcome, credential, permission, URL, product behavior, destination, or intermediate step/);
+  assert.match(conversionRuntime, /Use only supplied routes, prices, terms, commitments, permissions, timing, data use, product behavior, and results/);
+  assert.match(conversionRuntime, /Classify each requested component as implementation direction, visible copy, or both/);
 });
 
 test("conversion priors preserve context, objectives, and user authority", () => {
@@ -82,10 +76,9 @@ test("conversion priors preserve context, objectives, and user authority", () =>
 });
 
 test("closed-world conversion contracts preserve fact dimensions", () => {
-  assert.match(skill, /A section labeled `Supplied facts`, `Supplied terms`, or equivalent is a closed fact set/);
-  assert.match(skill, /A request to write, rewrite, recommend, compose, or improve conversion is not authorization to invent business facts/);
-  assert.match(skill, /For every draft, build a private fact ledger covering the complete response/);
-  assert.match(skill, /Plausibility, convention, usefulness, and likely implementation do not count as entailment/);
+  assert.match(skill, /Treat the user's named product, offer, customer, result, route, price, permission, process, timing, legal, operational, and outcome facts as complete/);
+  assert.match(skill, /A request to write, rewrite, compose, or improve conversion does not authorize invention/);
+  assert.match(skill, /Compare every factual statement with the supplied facts and required wording/);
 
   assert.match(conversion, /Track facts at the level of actor, action, object, status, timing, scope, qualifier, evidence form, route, destination, permission, consent, price, term, and limitation/);
   assert.match(conversion, /Support for one field does not supply an adjacent field/);
@@ -120,7 +113,7 @@ test("conversion procedure static contract", () => {
 test("component and flow contracts preserve action hierarchy", () => {
   assert.match(conversion, /plan the requested components as implementation recommendations, visible copy, or both/);
   assert.match(conversion, /Keep editorial directions outside ready-to-use copy/);
-  assert.match(skill, /worksheet-label ban applies inside ready-to-use copy/);
+  assert.match(conversionRuntime, /Keep editorial directions and worksheet labels outside ready-to-use copy/);
   assert.match(craft, /Keep worksheet labels out of the ready-to-use copy/);
   assert.match(conversion, /Give each component one incremental decision job/);
   assert.match(conversion, /Remove repetition without reducing material coverage/);
@@ -159,7 +152,7 @@ test("pricing, route, proof, and persuasion contracts remain general", () => {
   assert.match(conversion, /Use quotation marks only for verbatim wording supplied by the user/);
   assert.match(conversion, /summary of what someone said supplies meaning, not exact speech/);
   assert.match(conversion, /support and evidence gap as separate facts/);
-  assert.match(skill, /after that floor passes, preserve the strongest supported reader job, task, or operational decision as the argument/);
+  assert.match(conversionRuntime, /After factual and route requirements pass, preserve the strongest supported reader job as the argument/);
 });
 
 test("frozen fixture recipes are absent from reusable skill guidance", () => {

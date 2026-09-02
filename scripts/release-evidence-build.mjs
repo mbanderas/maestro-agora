@@ -18,15 +18,16 @@ import {
 import { validateEvaluationProvenance } from "./eval-provenance-check.mjs";
 import { validateJsonSchema } from "./json-schema-validator.mjs";
 import {
+  CURRENT_RELEASE_CONTRACT,
   deriveReleaseEvidenceSummary,
   REQUIRED_HASHED_FILES,
   REQUIRED_PROTOCOL_FILES,
+  VERSION,
 } from "./release-evidence-check.mjs";
 import { validateGitReleaseProvenance } from "./release-git-provenance.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const VERSION = "1.7.0";
-const BASELINE_COMMIT = "524b7927648c4fce52290e9d680e1d3a3109987c";
+const BASELINE_COMMIT = CURRENT_RELEASE_CONTRACT.baseline_commit;
 const COMMIT = /^[a-f0-9]{40}$/;
 
 const repoPath = (...parts) => join(ROOT, ...parts);
@@ -65,10 +66,10 @@ const timingWindow = async (evaluationRoot, paths) => {
 async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, judgeProtocolCommit }) {
   if (!COMMIT.test(candidateFreezeCommit)) throw new Error("candidate freeze commit must be a 40-character Git commit");
   if (!COMMIT.test(judgeProtocolCommit)) throw new Error("judge protocol commit must be a 40-character Git commit");
-  const manifestPath = repoPath("evals", "blind", `v${VERSION}`, "manifest.json");
-  const releasePlanPath = repoPath("evals", "releases", `v${VERSION}.gates.json`);
-  const adjudicationsSchemaPath = repoPath("evals", "releases", `v${VERSION}.adjudications.schema.json`);
-  const recordsSchemaPath = repoPath("evals", "releases", `v${VERSION}.records.schema.json`);
+  const manifestPath = repoPath(...CURRENT_RELEASE_CONTRACT.blind_manifest.split("/"));
+  const releasePlanPath = repoPath(...CURRENT_RELEASE_CONTRACT.release_plan.split("/"));
+  const adjudicationsSchemaPath = repoPath(...CURRENT_RELEASE_CONTRACT.adjudications_schema.split("/"));
+  const recordsSchemaPath = repoPath(...CURRENT_RELEASE_CONTRACT.records_schema.split("/"));
   const [manifest, releasePlan, adjudicationsSchema, recordsSchema] = await Promise.all([
     readFile(manifestPath, "utf8").then(JSON.parse),
     readFile(releasePlanPath, "utf8").then(JSON.parse),
@@ -147,12 +148,12 @@ async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, jud
     manifestRoot: "generation-b-work/.agents/skills/agora",
   });
   if (!sameExternalFileSet(externalArtifacts.incumbent_skill_copy, baselineSkillManifest)) {
-    throw new Error("external incumbent skill copy does not match the v1.6.0 skill tree");
+    throw new Error(`external incumbent skill copy does not match ${CURRENT_RELEASE_CONTRACT.baseline_ref}`);
   }
   const commits = {
     candidate_freeze: candidateFreezeCommit,
     judge_protocol: judgeProtocolCommit,
-    baseline_ref: "v1.6.0",
+    baseline_ref: CURRENT_RELEASE_CONTRACT.baseline_ref,
     baseline: BASELINE_COMMIT,
   };
   const gitErrors = await validateGitReleaseProvenance({
@@ -165,8 +166,8 @@ async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, jud
   });
   if (gitErrors.length) throw new Error(`Git release provenance failed:\n- ${gitErrors.join("\n- ")}`);
 
-  const adjudicationsPath = repoPath("evals", "releases", `v${VERSION}.adjudications.json`);
-  const recordsPath = repoPath("evals", "releases", `v${VERSION}.records.json`);
+  const adjudicationsPath = repoPath(...CURRENT_RELEASE_CONTRACT.adjudications.split("/"));
+  const recordsPath = repoPath(...CURRENT_RELEASE_CONTRACT.records.split("/"));
   await writeFile(adjudicationsPath, json(adjudications), "utf8");
   await writeFile(recordsPath, json(records), "utf8");
 
@@ -180,10 +181,12 @@ async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, jud
     status: "passed",
     commits,
     execution: {
-      generator_model: "gpt-5.6-sol",
-      judge_model: "gpt-5.6-sol",
-      generator_runtime: "codex-subagent",
-      judge_runtime: "codex-subagent",
+      generator_model: CURRENT_RELEASE_CONTRACT.generator_model,
+      judge_model: CURRENT_RELEASE_CONTRACT.judge_model,
+      generator_runtime: CURRENT_RELEASE_CONTRACT.generator_runtime,
+      judge_runtime: CURRENT_RELEASE_CONTRACT.judge_runtime,
+      generator_reasoning_effort: CURRENT_RELEASE_CONTRACT.generator_reasoning_effort,
+      judge_reasoning_effort: CURRENT_RELEASE_CONTRACT.judge_reasoning_effort,
       fresh_context_per_generation: true,
       fresh_context_per_judgment: true,
       isolated_skill_copy: true,
@@ -201,7 +204,7 @@ async function buildReleaseEvidence({ evaluationRoot, candidateFreezeCommit, jud
     external_artifacts: externalArtifacts,
     summary: deriveReleaseEvidenceSummary({ records, adjudications, evaluation }),
   };
-  await writeFile(repoPath("evals", "releases", `v${VERSION}.evidence.json`), json(evidence), "utf8");
+  await writeFile(repoPath(...CURRENT_RELEASE_CONTRACT.evidence.split("/")), json(evidence), "utf8");
   return evidence;
 }
 

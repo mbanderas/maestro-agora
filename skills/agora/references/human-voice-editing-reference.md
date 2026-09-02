@@ -8,23 +8,8 @@ Purpose: turn generic AI-assisted drafts into concrete, author-specific writing 
 
 ---
 
-## Agora authority and routing
-
-This is Agora's user-selected priority authority for human-voice editing and AI-writing-tell cleanup. It is derived from Wikipedia's WikiProject AI Cleanup guidance and expanded with the research and production rules named in this file. It is not represented as a verbatim copy of Wikipedia.
-
-Within Agora, this reference outranks generic style preferences, measured voice tendencies, cadence targets, compression, and detector-driven edits. Host rules and explicit instructions in the current request still rank above it. Agora's whole-response U+2014 ban is stricter than the generated-copy minimum here and remains immutable.
-
-Apply `The Core Principle`, `Global Output Bans`, Sections 1 through 7, `Meaning-Preservation Gate`, `Calibrate to the Genre`, and `Common Humanizer Failure Modes` to every generated writing deliverable. Load the deeper voice, detector-panel, research, and privacy sections when the task uses those workflows.
-
-The rejection language in this reference changes with the user's requested job. In critique-only work, flag the defect and give an actionable correction. When rewriting is authorized, remove the defect and return the revision. Do not refuse an authorized rewrite merely because the source fails this standard.
-
-`Reusable LLM Editing Prompt` is a portable example. It does not override the current task, force a factual-change audit into every response, or change Agora's normal ready-to-use output contract.
-
----
-
 ## Contents
 
-- [Agora authority and routing](#agora-authority-and-routing)
 - [The Core Principle](#the-core-principle)
 - [Global Output Bans](#global-output-bans)
 - [1. Banned Vocabulary](#1-banned-vocabulary)
@@ -208,14 +193,12 @@ unrelated human writing as proof of authorship.
 
 **Paragraph-level patterns to break:**
 - Every paragraph closing with a summary/significance sentence
-- Fractal summaries: previews and recaps repeated at section, paragraph, and conclusion level
 - Tripartite parallelism (three adjectives, three clauses, three examples: the rule of three, every time)
 - "Not only... but also..." recurring across a piece
 - Headings followed by a sentence that restates the heading
 - Bullet lists where every item is `**Bolded Term:** followed by a sentence.`
 - Balanced both-sides paragraphs that refuse to commit to a claim
 - A "conclusion" or summary section on formats that don't require one (product pages, bios, encyclopedia entries, news items)
-- One-point dilution: the same claim restated without adding a new fact, relation, boundary, objection, or decision
 
 **Content-shape tells:**
 - Generic positive framing replacing specific facts (a person is "highly regarded" instead of "winner of the 2019 X Award")
@@ -223,7 +206,6 @@ unrelated human writing as proof of authorship.
 - Definitions repeated across sections
 - Smooth transitions between unrelated facts
 - Topic sentences that restate the heading
-- Raw Markdown, chat acknowledgements, email sign-offs, or other source-channel residue that the destination will expose instead of render naturally
 
 **Fix:** write concrete. Material factual claims should use names, numbers, dates, places, events, or other verifiable detail when the genre and evidence support them. Reflective and analytical claims can be specific without containing those items. If a sentence survives the "could this describe any X" test unchanged, rewrite it.
 
@@ -381,8 +363,6 @@ Record a short voice profile:
 - how the author opens, changes direction, and ends;
 - words or constructions the author avoids;
 - natural imperfections that appear consistently in real samples.
-
-Maintain an author-specific rejection register separately from the universal output bans. Record the rejected word or construction, a dated example, the affected genre or channel, and the reason it failed. Recheck the register against recent drafts after a material body of work or at least quarterly when the profile is actively used. Remove stale entries instead of turning temporary model habits into permanent universal bans.
 
 Separate relatively stable habits from genre-dependent ones. Function-word patterns, punctuation preferences, and habitual qualification may persist across topics. Paragraph size, list use, formality, openings, and conclusions often change by genre.
 
@@ -555,16 +535,14 @@ Keep samples long enough for each detector's stated minimum. Do not paste confid
 ### Test method
 
 1. Use at least three methodologically different detectors when feasible; one score has little diagnostic value.
-2. Record the product, date, disclosed model version or release, mode, language, genre, exact word count, revision stage, operating threshold when disclosed, confidence label, whole-document score, flagged sentences, and repeated-run results.
+2. Record the product, date, disclosed version or release, mode, language, genre, document length, revision stage, whole-document score, and flagged sentences.
 3. Test all calibration samples in the same session and settings.
-4. Preserve the exact input or a stable input hash, then record every one-variable edit so a score swing can be reproduced rather than attributed to a remembered change.
-5. Repeat boundary-sensitive tests enough to distinguish a stable result from an unexplained interface or threshold swing.
-6. Compare the revised draft with genuine same-author writing, not an arbitrary "0% AI" target.
-7. Look for agreement at the sentence or pattern level. Ignore a lone product's unexplained swing.
-8. Make only edits that improve voice, clarity, structure, or factual precision.
-9. Recheck meaning after every revision round.
-10. When possible, use blinded human reviewers to rate clarity, voice match, genre fit, and factual trust without showing detector scores or asking them to guess authorship.
-11. Stop after two detector-driven revision rounds unless another round has a clear editorial benefit independent of its score.
+4. Compare the revised draft with genuine same-author writing, not an arbitrary "0% AI" target.
+5. Look for agreement at the sentence or pattern level. Ignore a lone product's unexplained swing.
+6. Make only edits that improve voice, clarity, structure, or factual precision.
+7. Recheck meaning after every revision round.
+8. When possible, use blinded human reviewers to rate clarity, voice match, genre fit, and factual trust without showing detector scores or asking them to guess authorship.
+9. Stop after two detector-driven revision rounds unless another round has a clear editorial benefit independent of its score.
 
 Suggested log:
 

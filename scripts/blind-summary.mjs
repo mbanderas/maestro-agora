@@ -142,7 +142,7 @@ const mean = (values) => values.length
 export const requiredComparableWins = ({ comparableCaseCount, minimumWinRate }) =>
   Math.ceil(minimumWinRate * comparableCaseCount);
 
-export const summarizeDomainQuality = ({ records, ids, manifest }) => {
+export const summarizeDomainQuality = ({ records, ids, manifest, protectedDimensions = null, improvementDimensions = null }) => {
   const selected = records.filter((record) => ids.has(record.id));
   const selectedIds = new Set(selected.map((record) => record.id));
   const missingIds = [...ids].filter((id) => !selectedIds.has(id));
@@ -157,6 +157,18 @@ export const summarizeDomainQuality = ({ records, ids, manifest }) => {
   );
   const candidateMean = mean(candidateValues);
   const incumbentMean = mean(incumbentValues);
+  const candidateImprovementValues = improvementDimensions
+    ? comparable.flatMap((record) => improvementDimensions.map((dimension) => Number(record.final.candidateScores[dimension])))
+    : [];
+  const incumbentImprovementValues = improvementDimensions
+    ? comparable.flatMap((record) => improvementDimensions.map((dimension) => Number(record.final.incumbentScores[dimension])))
+    : [];
+  const candidateProtectedValues = protectedDimensions
+    ? comparable.flatMap((record) => protectedDimensions.map((dimension) => Number(record.final.candidateScores[dimension])))
+    : [];
+  const incumbentProtectedValues = protectedDimensions
+    ? comparable.flatMap((record) => protectedDimensions.map((dimension) => Number(record.final.incumbentScores[dimension])))
+    : [];
   const contractFailures = [];
   const incumbentHardGateFailures = [];
   const scoreRegressions = [];
@@ -170,7 +182,7 @@ export const summarizeDomainQuality = ({ records, ids, manifest }) => {
       continue;
     }
     const item = manifest.cases.find((candidate) => candidate.id === record.id);
-    const drops = protectedDrops(record, requiredDimensionsForCase(manifest, item));
+    const drops = protectedDrops(record, protectedDimensions ?? requiredDimensionsForCase(manifest, item));
     if (drops.length) scoreRegressions.push({ id: record.id, dimensions: drops.map((drop) => drop.dimension) });
   }
 
@@ -187,6 +199,12 @@ export const summarizeDomainQuality = ({ records, ids, manifest }) => {
     candidateMean,
     incumbentMean,
     meanDelta: candidateMean - incumbentMean,
+    improvementMeanDelta: improvementDimensions
+      ? mean(candidateImprovementValues) - mean(incumbentImprovementValues)
+      : null,
+    protectedMeanDelta: protectedDimensions
+      ? mean(candidateProtectedValues) - mean(incumbentProtectedValues)
+      : null,
     contractFailures,
     incumbentHardGateFailures,
     scoreRegressions,
@@ -326,14 +344,26 @@ export const evaluateReleaseGates = ({ manifest, records, releasePlan }) => {
     } else {
       errors.push(`partition ${partition.id} must map either wins_required_gate or comparable win-rate gates`);
     }
+    const minimumProtectedMeanDelta = partition.minimum_protected_mean_delta_gate
+      ? useGate(partition.minimum_protected_mean_delta_gate)
+      : null;
     const regressionsAllowed = partition.dimension_regressions_allowed_gate
       ? useGate(partition.dimension_regressions_allowed_gate)
-      : 0;
+      : minimumProtectedMeanDelta === null ? 0 : null;
+    const minimumImprovementMeanDelta = partition.minimum_improvement_mean_delta_gate
+      ? useGate(partition.minimum_improvement_mean_delta_gate)
+      : null;
     if (ids.size !== expectedCount) {
       errors.push(`partition ${partition.id} declares ${ids.size} cases but ${partition.case_count_gate} requires ${expectedCount}`);
     }
 
-    const summary = summarizeDomainQuality({ records, ids, manifest });
+    const summary = summarizeDomainQuality({
+      records,
+      ids,
+      manifest,
+      protectedDimensions: partition.protected_dimensions ?? null,
+      improvementDimensions: partition.improvement_dimensions ?? null,
+    });
     const winsRequired = usesDynamicWinRate
       ? requiredComparableWins({ comparableCaseCount: summary.comparableCaseCount, minimumWinRate })
       : fixedWinsRequired;
@@ -343,10 +373,12 @@ export const evaluateReleaseGates = ({ manifest, records, releasePlan }) => {
     const pass = summary.coverageComplete
       && comparableDenominatorPasses
       && summary.contractFailures.length === 0
-      && summary.scoreRegressions.length <= regressionsAllowed
+      && (regressionsAllowed === null || summary.scoreRegressions.length <= regressionsAllowed)
       && Number.isFinite(summary.meanDelta)
       && summary.comparableCandidateWins >= winsRequired
-      && summary.meanDelta >= -noninferiorityMargin;
+      && summary.meanDelta >= -noninferiorityMargin
+      && (minimumImprovementMeanDelta === null || summary.improvementMeanDelta >= minimumImprovementMeanDelta)
+      && (minimumProtectedMeanDelta === null || summary.protectedMeanDelta >= minimumProtectedMeanDelta);
     partitionResults.push({
       id: partition.id,
       pass,
@@ -354,6 +386,8 @@ export const evaluateReleaseGates = ({ manifest, records, releasePlan }) => {
       minimumComparableCases,
       minimumWinRate,
       regressionsAllowed,
+      minimumImprovementMeanDelta,
+      minimumProtectedMeanDelta,
       summary,
     });
   }

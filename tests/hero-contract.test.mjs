@@ -8,19 +8,15 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SKILL_ROOT = join(ROOT, "skills", "agora");
 const skill = await readFile(join(SKILL_ROOT, "SKILL.md"), "utf8");
 const marketing = await readFile(join(SKILL_ROOT, "references", "agora-marketing.md"), "utf8");
+const marketingRuntime = await readFile(join(SKILL_ROOT, "references", "agora-marketing-runtime.md"), "utf8");
 const craft = await readFile(join(SKILL_ROOT, "references", "agora-craft.md"), "utf8");
 
 test("hero work uses an internal treatment without adding a primary mode", () => {
   for (const mode of ["POSITION", "SELL", "INVEST", "INFORM", "TRANSACT"]) {
     assert.ok(skill.includes(`| \`${mode}\` |`), mode);
   }
-  assert.match(skill, /Select persuasion treatment internally/);
-  assert.match(skill, /`COMMERCIALLY_ASSERTIVE`/);
-  assert.match(skill, /Use `PROMOTIONAL` when the user requests campaign intensity or provides campaign context/);
-  assert.match(skill, /do not spend the subhead inventorying inputs, features, outputs, or methodology/);
-  assert.match(skill, /Compress multiple data feeds into the relation they establish/);
-  assert.match(skill, /For a high-stakes hero, controlled commercial force comes from the inspectable operational decision or human agency/);
-  assert.match(skill, /Preserve the exact named checks, quantifiers, obligations, human-review step, and material limitations/);
+  assert.match(marketingRuntime, /Heroes and ads: one recognizable stake, one meaningful difference, and the correct next action/);
+  assert.match(skill, /Preserve all material conditions, uncertainty, attribution, names, numbers, dates, quotations, legal terms, and technical terms/);
   assert.doesNotMatch(skill, /\| `HERO` \|/);
 });
 
@@ -45,9 +41,9 @@ test("hero doctrine separates brief fidelity from persuasive optimization", () =
 });
 
 test("sales rewrites preserve delivery roles, burden, and source-relative strengths", () => {
-  assert.match(skill, /apply `Delivery-model ownership` and, when rewriting supplied copy, `Rewrite regression gate`/);
-  assert.match(skill, /Preserve user-selected framing/);
-  assert.match(skill, /rewrite regression gate when rewriting supplied copy/);
+  assert.match(marketingRuntime, /Preserve delivery ownership/);
+  assert.match(marketingRuntime, /When rewriting supplied copy, compare the candidate with the source/);
+  assert.match(marketingRuntime, /Keep the source when the candidate introduces a material regression or no material improvement/);
 
   assert.match(marketing, /### Delivery-model ownership/);
   assert.match(marketing, /This is source and offer fidelity, not claim, compliance, or moral review/);
@@ -101,6 +97,7 @@ test("hero route generation requires semantic alternatives and one recommended o
   assert.match(craft, /Keep worksheet labels out of the ready-to-use copy/);
   assert.match(craft, /Use labels around the copy when the user requests component fields/);
   assert.match(skill, /Return finished copy, not a worksheet/);
+  assert.match(marketingRuntime, /Return one recommended deliverable by default/);
   assert.match(craft, /Follow the emotional direction the user chooses/);
   assert.match(craft, /Keep the headline to one commercial argument/);
   assert.match(craft, /When two numbers make it read like a report/);
