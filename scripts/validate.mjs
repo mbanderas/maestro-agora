@@ -18,6 +18,7 @@ const REQUIRED_SKILL_FILES = [
   "references/agora-craft.md",
   "references/agora-invest.md",
   "references/agora-marketing.md",
+  "references/anti-ai-writing-tells.md",
   "references/agora-publication.md",
   "references/agora-science.md",
   "references/agora-voice.md",
@@ -134,8 +135,9 @@ async function main() {
   const caseStudyPath = join(SKILL_ROOT, "references", "agora-case-studies.md");
   const publicationPath = join(SKILL_ROOT, "references", "agora-publication.md");
   const voicePath = join(SKILL_ROOT, "references", "agora-voice.md");
+  const antiAiPath = join(SKILL_ROOT, "references", "anti-ai-writing-tells.md");
   const openaiPath = join(SKILL_ROOT, "agents", "openai.yaml");
-  const [skill, reference, conversion, craft, invest, science, caseStudy, publication, voice, openaiYaml] = await Promise.all([
+  const [skill, reference, conversion, craft, invest, science, caseStudy, publication, voice, antiAi, openaiYaml] = await Promise.all([
     readFile(skillPath, "utf8"),
     readFile(referencePath, "utf8"),
     readFile(conversionPath, "utf8"),
@@ -145,6 +147,7 @@ async function main() {
     readFile(caseStudyPath, "utf8"),
     readFile(publicationPath, "utf8"),
     readFile(voicePath, "utf8"),
+    readFile(antiAiPath, "utf8"),
     readFile(openaiPath, "utf8"),
   ]);
 
@@ -158,6 +161,7 @@ async function main() {
     ["skills/agora/references/agora-case-studies.md", caseStudy],
     ["skills/agora/references/agora-publication.md", publication],
     ["skills/agora/references/agora-voice.md", voice],
+    ["skills/agora/references/anti-ai-writing-tells.md", antiAi],
     ["skills/agora/agents/openai.yaml", openaiYaml],
   ]) {
     check(!content.includes("\r\n"), `${file} must use LF line endings`);
@@ -199,6 +203,7 @@ async function main() {
     "scan the complete response character by character for U+2014",
     "Return only after the count is zero",
     "[references/agora-marketing.md](references/agora-marketing.md)",
+    "[references/anti-ai-writing-tells.md](references/anti-ai-writing-tells.md)",
     "[references/agora-craft.md](references/agora-craft.md)",
     "[references/agora-voice.md](references/agora-voice.md)",
     "[references/agora-science.md](references/agora-science.md)",
@@ -254,6 +259,8 @@ async function main() {
     "Keep these passes invisible",
     "Return one ready-to-use result first",
     "Run the final U+2014 scan across the complete response",
+    "priority anti-AI writing standard",
+    "raw channel residue, fractal summaries, and one-point dilution",
     "preserve necessary series",
   ]) {
     check(skill.includes(required), `SKILL.md is missing: ${required}`);
@@ -333,6 +340,7 @@ async function main() {
     "### AI-heavy vocabulary",
     "### Stock templates and significance tails",
     "### Structural tells",
+    "### Citation and fidelity tells",
     "## Written GEO/AEO and citability",
     "## Technical publication boundaries",
     "## Applied weak and strong pairs",
@@ -363,6 +371,35 @@ async function main() {
     "unless the user wants it emphasized in body copy",
   ]) {
     check(reference.includes(required), `canonical reference is missing: ${required}`);
+  }
+
+  for (const required of [
+    "## Agora authority and routing",
+    "## The Core Principle",
+    "## Global Output Bans",
+    "## 1. Banned Vocabulary",
+    "## 2. Banned Connective Phrases",
+    "## 3. Banned Phrase Templates",
+    "## 4. Present-Participle Significance Tails",
+    "## 5. Structural Tells",
+    "## 6. Punctuation and Typography",
+    "## 7. Prompt and Sycophancy Leakage",
+    "## 15. Meaning-Preservation Gate",
+    "## 16. Calibrate to the Genre",
+    "## 18. Optional Detector-Panel Protocol",
+    "## 19. Common \"Humanizer\" Failure Modes",
+    "## 20. Reusable LLM Editing Prompt",
+    "## Quick Reference Card",
+    "Fractal summaries",
+    "One-point dilution",
+    "Raw Markdown, chat acknowledgements, email sign-offs",
+    "author-specific rejection register",
+    "operating threshold when disclosed",
+    "confidence label",
+    "one-variable edit",
+    "portable example",
+  ]) {
+    check(antiAi.includes(required), `priority anti-AI reference is missing: ${required}`);
   }
 
   for (const required of [
@@ -469,12 +506,13 @@ async function main() {
     "## Voice against the tell gate",
     "## Checking adherence",
     "## User-controlled profile use",
-    "### The owned-vocabulary exception",
+    "### The owned-vocabulary review",
     "`~/.agora/voices/<slug>.md`, with `~/.agora/voices/index.json`",
     "Refuse to certify a profile",
     "Voice never overrides the U+2014 ban",
     "Voice never overrides host-required or user-required text",
-    "suppresses the generic AI-vocabulary ban for those specific words, and only those",
+    "evidence for a narrow review, not an automatic allowlist",
+    "Measurement alone is insufficient",
     "Do not refuse profile work, interrogate ownership, demand authorization, restrict attribution, add disclosure language, or judge the intended publication",
     "governance default",
     "npx -p @maestroagora/agora agora-voice build",
@@ -644,6 +682,7 @@ async function main() {
     "skills/agora/references/agora-conversion.md",
     "skills/agora/references/agora-craft.md",
     "skills/agora/references/agora-invest.md",
+    "skills/agora/references/anti-ai-writing-tells.md",
     "skills/agora/references/agora-publication.md",
     "skills/agora/references/agora-science.md",
     "skills/agora/references/agora-case-studies.md",

@@ -157,7 +157,8 @@ concrete example.
 
 ## Vocabulary
 Owned: words and constructions recurring across genres, with frequency and one
-example line each. This list is an allowlist against the AI-vocabulary gate.
+example line each. This list documents author habit. It does not automatically
+override the priority anti-AI vocabulary gate.
 Avoided: words frequent in comparable writing and absent here. Record an
 avoidance only from a stated preference or a stable alternative in repeated
 eligible contexts. Absence alone is weak evidence.
@@ -200,27 +201,28 @@ Voice enters at **level 6** of the conflict hierarchy, with compression and chan
 1. **Voice follows the user's requested content.** Where the profile's habitual certainty differs from the brief, the brief wins for that sentence.
 2. **Voice never overrides host-required or user-required text.** Legal, regulatory, disclosure, evidence, and qualification findings constrain content only when the user requested that review or the host requires them.
 3. **Voice never overrides the U+2014 ban.** That constraint is immutable and sits at level 1. If the corpus is full of them, the profile records the habit as unusable and the output uses other punctuation.
-4. **Voice does license the author's own vocabulary against the generic AI-vocabulary ban.** This is a real exception and it needs writing down.
+4. **Voice identifies possible author-owned vocabulary but does not license it automatically against the priority anti-AI standard.**
 
-### The owned-vocabulary exception
+### The owned-vocabulary review
 
 The AI-tell gate and a voice profile genuinely conflict, and the conflict is not hypothetical. If an author writes `leverage` constantly across years and genres, the generic ban strips the word, the draft comes back in nobody's voice, and the feature the user paid for has been removed by a rule meant to make writing sound human.
 
-**The resolution: a profile's `## Vocabulary` owned list is an explicit allowlist that suppresses the generic AI-vocabulary ban for those specific words, and only those.** Everything not on the list stays banned. The allowlist is scoped to the profile, not to the session, and it does not travel to work written without that profile.
+**The resolution: a profile's `## Vocabulary` owned list is evidence for a narrow review, not an automatic allowlist.** Retain a listed banned word only when it is also load-bearing, exact, technically required, part of a verified proper name or immutable text, or explicitly required by the current user or house style. Measurement alone is insufficient.
 
-Three conditions bound it:
+Four conditions bound the review:
 
 - **The word has to be on the list because it was measured.** A word recorded from frequency across genres qualifies. A word added because the draft wanted it does not.
-- **It suppresses the vocabulary ban only.** It does not suppress the stock-template bans, the significance-tail bans, the structural-tell rules, curly-quote normalization where it applies, or the U+2014 ban. Those are not vocabulary.
-- **It does not change the proposition by itself.** `Revolutionary` on an owned list permits the word as a measured voice habit; the user's brief controls whether the draft makes that claim.
+- **The word must carry exact meaning.** Familiarity or voice match alone does not make a banned term load-bearing.
+- **Any exception reaches vocabulary only.** It does not suppress the stock-template bans, significance-tail bans, structural-tell rules, curly-quote normalization, or the U+2014 ban.
+- **It does not change the proposition by itself.** `Revolutionary` on an owned list records a measured habit; the user's brief controls whether the draft makes that claim, and the priority anti-AI standard controls whether the wording survives.
 
-Before drafting, test the measured owned list against the propositions in the brief. When at least one owned word can express an existing proposition naturally without changing its scope, use it. Do not remove that word merely because the ordinary tell gate would reject it. Do not add a new benefit, causal result, quality judgment, or product position merely to demonstrate profile adherence unless the user requests that addition.
+Before drafting, test the measured owned list against the propositions and the priority anti-AI standard. Keep a banned owned word only when the narrow exception is documented. Do not add a new benefit, causal result, quality judgment, or product position merely to demonstrate profile adherence.
 
-For a production profile whose brief explicitly supplies measured owned vocabulary, treat that test as a required pre-draft step. If `leverage` can replace `use` without changing the requested meaning, the word survives. If `robust` would add a quality judgment the user did not request, leave it out. Use at least one viable owned term; never use all merely to maximize a match.
+For a production profile whose brief explicitly supplies measured owned vocabulary, treat that review as a required pre-draft step. If `leverage` merely replaces `use`, remove it. If a required technical term, verified name, immutable quotation, or explicit user instruction requires the word, preserve it and record why. Never use a banned owned term merely to maximize a match.
 
 Sentence-length and paragraph-shape measurements are distributions, not quotas or stock structures. Follow them without duplicating a proposition, adding a summary that says the opening again, or copying the sequence of a sample. The structural-tell gate fails identifiable canned framing, significance tails, decorative triads, and repeated stock templates. It does not fail a draft merely because its sentence and paragraph lengths resemble the authorized profile.
 
-**Boundary:** an owned-vocabulary list assembled from a thin corpus is a licence built on noise. Below the certification floor, no allowlist is issued at all, because a word cannot be shown to recur across genres in a corpus that has one.
+**Boundary:** an owned-vocabulary list assembled from a thin corpus is a preference claim built on noise. Below the certification floor, no candidate exception list is issued, because a word cannot be shown to recur across genres in a corpus that has one.
 
 ## Checking adherence
 

@@ -252,6 +252,7 @@ async function verifySource() {
     "references/agora-craft.md",
     "references/agora-invest.md",
     "references/agora-marketing.md",
+    "references/anti-ai-writing-tells.md",
     "references/agora-publication.md",
     "references/agora-science.md",
     "references/agora-voice.md",
