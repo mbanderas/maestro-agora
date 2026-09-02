@@ -410,7 +410,8 @@ export const ingestBlindJudgments = async ({
         throw new Error(`case ${item.id} pass 3 judge prompt does not match deterministic materialization`);
       }
       const judgment = JSON.parse(rawJudgment.toString("utf8"));
-      const judgeRun = JSON.parse(judgeLog.toString("utf8"));
+      const judgeLogValue = JSON.parse(judgeLog.toString("utf8"));
+      const judgeRun = judgeLogValue?.attestation ?? judgeLogValue;
       passes.push(normalizeBlindJudgment({
         manifest,
         item,
