@@ -1,0 +1,4661 @@
+[
+  {
+    "id": "northstar-ai-homepage",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/northstar-ai-homepage.md",
+              "sha256": "72f0339ac81f7f11ab184aa6805dfab171446e899a29f3accb2180b33ea1df22"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/northstar-ai-homepage.md",
+              "sha256": "647f95951b17743c3a4f97ad557d70268c950401a44dcee97d268daff8db2563"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/northstar-ai-homepage.md",
+              "sha256": "03d8d378f648690db520d07a04c883af274b022dfbf63d1d04bcffbe7799cb5e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/northstar-ai-homepage-pass1.md",
+              "sha256": "016d26c4f10907f82a6024cc4096e4734e27a5267b07e790fe00ea29f54167fd"
+            },
+            "raw_judgment": {
+              "path": "judgments/northstar-ai-homepage-pass1.json",
+              "sha256": "8f065dc157189b60a61b4882b3cff691b9d0284bae18572f66a632ea11f48193"
+            },
+            "judge_log": {
+              "path": "judge-logs/northstar-ai-homepage-pass1.json",
+              "sha256": "f53247950bd19e0f16f7842a9179e7bebb94145a41ff6fbd1b61729b9c3c2654"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/northstar-ai-homepage.md",
+              "sha256": "72f0339ac81f7f11ab184aa6805dfab171446e899a29f3accb2180b33ea1df22"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/northstar-ai-homepage.md",
+              "sha256": "647f95951b17743c3a4f97ad557d70268c950401a44dcee97d268daff8db2563"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/northstar-ai-homepage.md",
+              "sha256": "03d8d378f648690db520d07a04c883af274b022dfbf63d1d04bcffbe7799cb5e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/northstar-ai-homepage-pass2.md",
+              "sha256": "eefc70294c4e15a08fe4472c4c231ddc941b91baf3928d9e748cf1086067c118"
+            },
+            "raw_judgment": {
+              "path": "judgments/northstar-ai-homepage-pass2.json",
+              "sha256": "27fb47abd2c74ca8bafeecc8a8ed423d0e2372e4b7f0ea9f35cdb83083fbabd4"
+            },
+            "judge_log": {
+              "path": "judge-logs/northstar-ai-homepage-pass2.json",
+              "sha256": "dd7586e1a92c1d2f27159d3ba1cbc5443d73978c391e9dd5f9b1415f9ae7df0f"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/northstar-ai-homepage.md",
+              "sha256": "72f0339ac81f7f11ab184aa6805dfab171446e899a29f3accb2180b33ea1df22"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/northstar-ai-homepage.md",
+              "sha256": "647f95951b17743c3a4f97ad557d70268c950401a44dcee97d268daff8db2563"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/northstar-ai-homepage.md",
+              "sha256": "03d8d378f648690db520d07a04c883af274b022dfbf63d1d04bcffbe7799cb5e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/northstar-ai-homepage-pass3.md",
+              "sha256": "eefc70294c4e15a08fe4472c4c231ddc941b91baf3928d9e748cf1086067c118"
+            },
+            "raw_judgment": {
+              "path": "judgments/northstar-ai-homepage-pass3.json",
+              "sha256": "67de0a571c922f0783d4a18212c8a26af3c39afb3629e952eef6fdf2dfe38558"
+            },
+            "judge_log": {
+              "path": "judge-logs/northstar-ai-homepage-pass3.json",
+              "sha256": "ba0cb9d98927083f855d28ec94434c078fa25d75842f0be1c90247cce8a530aa"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "datumlane-product",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/datumlane-product.md",
+              "sha256": "1b7b7b1eb248a9513c5c9f7e4f027f7f4c11237046a9b239cd05a904a9b505a6"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/datumlane-product.md",
+              "sha256": "4e668e56b38f96e72eeda75f81967832970114bfb21868694c0633e56bbe6388"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/datumlane-product.md",
+              "sha256": "7bdc3a6b94ef6c83d0eb1478c326ee1f0a3bf0145c86ce61f75b0460f83c3e29"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/datumlane-product-pass1.md",
+              "sha256": "e54a2aa9949d4ce51a029b71a309670ab9e65473a69d0ededb212d468a3f3dd9"
+            },
+            "raw_judgment": {
+              "path": "judgments/datumlane-product-pass1.json",
+              "sha256": "b55b8e1f0e3457c9e3564ad5647c960c9b23fb92f099de34b1f5a64750a02ae3"
+            },
+            "judge_log": {
+              "path": "judge-logs/datumlane-product-pass1.json",
+              "sha256": "8f21bff82a91f3b89e90c9a9a32e729a5a88dcfbb23bff06f731d4f2ec618d92"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/datumlane-product.md",
+              "sha256": "1b7b7b1eb248a9513c5c9f7e4f027f7f4c11237046a9b239cd05a904a9b505a6"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/datumlane-product.md",
+              "sha256": "4e668e56b38f96e72eeda75f81967832970114bfb21868694c0633e56bbe6388"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/datumlane-product.md",
+              "sha256": "7bdc3a6b94ef6c83d0eb1478c326ee1f0a3bf0145c86ce61f75b0460f83c3e29"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/datumlane-product-pass2.md",
+              "sha256": "f8168442540543ae49cddd58d90f050860cf7125f88051aa1bd13b302e3efb33"
+            },
+            "raw_judgment": {
+              "path": "judgments/datumlane-product-pass2.json",
+              "sha256": "7486e4b5bee1ca57e2564f6c876af502da3d1e1cbf47223f1542737a46a08fdc"
+            },
+            "judge_log": {
+              "path": "judge-logs/datumlane-product-pass2.json",
+              "sha256": "cff197c393c57125c38383a799688d0e0045d6b0105f76d5d012179b5259f14a"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/datumlane-product.md",
+              "sha256": "1b7b7b1eb248a9513c5c9f7e4f027f7f4c11237046a9b239cd05a904a9b505a6"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/datumlane-product.md",
+              "sha256": "4e668e56b38f96e72eeda75f81967832970114bfb21868694c0633e56bbe6388"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/datumlane-product.md",
+              "sha256": "7bdc3a6b94ef6c83d0eb1478c326ee1f0a3bf0145c86ce61f75b0460f83c3e29"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/datumlane-product-pass3.md",
+              "sha256": "f8168442540543ae49cddd58d90f050860cf7125f88051aa1bd13b302e3efb33"
+            },
+            "raw_judgment": {
+              "path": "judgments/datumlane-product-pass3.json",
+              "sha256": "d8b5605fc688db905484cf461591f4072ba8acdacb58d667415d015edf41e83c"
+            },
+            "judge_log": {
+              "path": "judge-logs/datumlane-product-pass3.json",
+              "sha256": "6a41a1185e5db99c1a4bfc00af1bc4b7d06c98aca69cdd2a85b0cd756a29c459"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "softnest-profile",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 3,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 2,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 4,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 4
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "factual-fidelity",
+          "no-invention"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "factual-fidelity",
+            "excerpt": "where staff assign tutors, rooms, and recurring lesson times",
+            "missingPremise": "Staff can assign tutors, rooms, and recurring lesson times."
+          },
+          {
+            "gate": "no-invention",
+            "excerpt": "combines tutor and room assignments, recurring lesson times, emails to parents, and double-booking checks in one scheduling workflow",
+            "missingPremise": "Do not invent results, integrations, or credentials."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/softnest-profile.md",
+              "sha256": "8a0d96b75b7c4908574555a2e4362ee83c3bf46421c1f27e539c3a4a7616a2fb"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/softnest-profile.md",
+              "sha256": "9547c2ae91faf0996fba96a908edba67eac4083017f2113df19b818c789fc516"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/softnest-profile.md",
+              "sha256": "8fc2eb23a5a28a2d7ad1e7d4fb640e4aef234858ab0243ee56569733e822c257"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/softnest-profile-pass1.md",
+              "sha256": "6f35d2923d8b05171c1d66d4fcf6c56b46f69d0eb6299455194b07ca8dc1e130"
+            },
+            "raw_judgment": {
+              "path": "judgments/softnest-profile-pass1.json",
+              "sha256": "4ce83358c703a9b16587427f9e33d92b53676dafbcd3046608810d334927ab11"
+            },
+            "judge_log": {
+              "path": "judge-logs/softnest-profile-pass1.json",
+              "sha256": "999f5c2695586a77e462adc07cffbcd581fb72857b7168d4d427ee7896d05493"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 4,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 4,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 4
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "no-invention"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "no-invention",
+            "excerpt": "in one scheduling workflow",
+            "missingPremise": "Do not invent results, integrations, or credentials."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/softnest-profile.md",
+              "sha256": "8a0d96b75b7c4908574555a2e4362ee83c3bf46421c1f27e539c3a4a7616a2fb"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/softnest-profile.md",
+              "sha256": "9547c2ae91faf0996fba96a908edba67eac4083017f2113df19b818c789fc516"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/softnest-profile.md",
+              "sha256": "8fc2eb23a5a28a2d7ad1e7d4fb640e4aef234858ab0243ee56569733e822c257"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/softnest-profile-pass2.md",
+              "sha256": "1b1138487de522601098a523fb45c2c1c50b0f38b179fb8482eeddbb5d26964f"
+            },
+            "raw_judgment": {
+              "path": "judgments/softnest-profile-pass2.json",
+              "sha256": "8125ad4c9bd9c9b559d073fa1bd29c1db55f642ed336cc9563473fa5b25d88ae"
+            },
+            "judge_log": {
+              "path": "judge-logs/softnest-profile-pass2.json",
+              "sha256": "ad00cbfeb52011c8166806cfebc325c428d5b7dffc7625e3cbfac7843a9f48ae"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 3,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 4,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 2,
+          "technical-or-legal-precision": 3
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "no-invention"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "no-invention",
+            "excerpt": "The tool combines tutor and room assignments, recurring lesson times, emails to parents, and double-booking checks in one scheduling workflow",
+            "missingPremise": "Do not invent results, integrations, or credentials."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/softnest-profile.md",
+              "sha256": "8a0d96b75b7c4908574555a2e4362ee83c3bf46421c1f27e539c3a4a7616a2fb"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/softnest-profile.md",
+              "sha256": "9547c2ae91faf0996fba96a908edba67eac4083017f2113df19b818c789fc516"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/softnest-profile.md",
+              "sha256": "8fc2eb23a5a28a2d7ad1e7d4fb640e4aef234858ab0243ee56569733e822c257"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/softnest-profile-pass3.md",
+              "sha256": "1b1138487de522601098a523fb45c2c1c50b0f38b179fb8482eeddbb5d26964f"
+            },
+            "raw_judgment": {
+              "path": "judgments/softnest-profile-pass3.json",
+              "sha256": "f2c775d9120326727e6ccfe39eb54b854639657df85c7633fbc07d4d1bfb442f"
+            },
+            "judge_log": {
+              "path": "judge-logs/softnest-profile-pass3.json",
+              "sha256": "0634ea39f363b6ebccc3b82d270c9f4100ce6bbfbe6a5b9abb61473ac6049131"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "gridfoundry-executive-summary",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 4,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 4,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 4,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/gridfoundry-executive-summary.md",
+              "sha256": "62242ce8dad9bfb70681cb88d9270eb2d62d740571be73deaad6bf06a1d3f3a7"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/gridfoundry-executive-summary.md",
+              "sha256": "3bb8dbe2326585ef3b4ccace2157b4b267bc8b22637fdf4cfc3152c7c4f0f5f4"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/gridfoundry-executive-summary.md",
+              "sha256": "6524485c03578ad15da09448bb40fdffdebee34b133d96d3156f0f5e401540eb"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/gridfoundry-executive-summary-pass1.md",
+              "sha256": "4690d6c7684dfa0e4383e34cda7a5447fc937595af9ca9893505024102d60fb9"
+            },
+            "raw_judgment": {
+              "path": "judgments/gridfoundry-executive-summary-pass1.json",
+              "sha256": "7f7c61f1be268d092a85cfc35b533cf5a2e70fc059999b34cafc58ee842b6931"
+            },
+            "judge_log": {
+              "path": "judge-logs/gridfoundry-executive-summary-pass1.json",
+              "sha256": "df48f828759abac6c6fbb8a0d5c08c415303369cb306339472a33cc6ac8752e7"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 4,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 4
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/gridfoundry-executive-summary.md",
+              "sha256": "62242ce8dad9bfb70681cb88d9270eb2d62d740571be73deaad6bf06a1d3f3a7"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/gridfoundry-executive-summary.md",
+              "sha256": "3bb8dbe2326585ef3b4ccace2157b4b267bc8b22637fdf4cfc3152c7c4f0f5f4"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/gridfoundry-executive-summary.md",
+              "sha256": "6524485c03578ad15da09448bb40fdffdebee34b133d96d3156f0f5e401540eb"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/gridfoundry-executive-summary-pass2.md",
+              "sha256": "e486d18eade47702a27a7348c4fb42da12c89755f7721f27afc7801962dcf12d"
+            },
+            "raw_judgment": {
+              "path": "judgments/gridfoundry-executive-summary-pass2.json",
+              "sha256": "d33719a13006c5f7fd1e12505fe59a6593555a06a20d58a65069af665dd4ca76"
+            },
+            "judge_log": {
+              "path": "judge-logs/gridfoundry-executive-summary-pass2.json",
+              "sha256": "ef3234ad46c50b0c1d60fc7bc2ddf3159ce93ed5d9f1818da2f83c3edd8f8f17"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 4,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 4,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/gridfoundry-executive-summary.md",
+              "sha256": "62242ce8dad9bfb70681cb88d9270eb2d62d740571be73deaad6bf06a1d3f3a7"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/gridfoundry-executive-summary.md",
+              "sha256": "3bb8dbe2326585ef3b4ccace2157b4b267bc8b22637fdf4cfc3152c7c4f0f5f4"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/gridfoundry-executive-summary.md",
+              "sha256": "6524485c03578ad15da09448bb40fdffdebee34b133d96d3156f0f5e401540eb"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/gridfoundry-executive-summary-pass3.md",
+              "sha256": "e486d18eade47702a27a7348c4fb42da12c89755f7721f27afc7801962dcf12d"
+            },
+            "raw_judgment": {
+              "path": "judgments/gridfoundry-executive-summary-pass3.json",
+              "sha256": "0da587bf7a4fbafa71503331bd2ecbc6321b82d53576d07604ece69a130854a1"
+            },
+            "judge_log": {
+              "path": "judge-logs/gridfoundry-executive-summary-pass3.json",
+              "sha256": "ae1e7483da7e014f27a6093632ce80ecd35072a583e55f1671d1889df3e472a0"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sentrybay-professional-email",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/sentrybay-professional-email.md",
+              "sha256": "9cc00b1581d094daf911dce89b52591e737ee454ade66e10224caf574999ad39"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/sentrybay-professional-email.md",
+              "sha256": "94d1fa411432e574f0e72ca982fc7bb5f184de4efa445cf48b45ab944e96f808"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/sentrybay-professional-email.md",
+              "sha256": "59e5cc8fbd234d60d1bf9abfa826ad45d4b45b2c16504e0661a2da8e33e4206a"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/sentrybay-professional-email-pass1.md",
+              "sha256": "edf10c0e11e89536bd95191f51001e5354507b3b2cd57f1ab8619a3d8ff9439f"
+            },
+            "raw_judgment": {
+              "path": "judgments/sentrybay-professional-email-pass1.json",
+              "sha256": "f86593a443cec5cb67191af4105d2a8562177a72eaac5c756da292c391f82b98"
+            },
+            "judge_log": {
+              "path": "judge-logs/sentrybay-professional-email-pass1.json",
+              "sha256": "30657ca9cab1dc4c096373a7e48c8e2b55e88f4eeb40f685ca1c8be421ae4bee"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/sentrybay-professional-email.md",
+              "sha256": "9cc00b1581d094daf911dce89b52591e737ee454ade66e10224caf574999ad39"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/sentrybay-professional-email.md",
+              "sha256": "94d1fa411432e574f0e72ca982fc7bb5f184de4efa445cf48b45ab944e96f808"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/sentrybay-professional-email.md",
+              "sha256": "59e5cc8fbd234d60d1bf9abfa826ad45d4b45b2c16504e0661a2da8e33e4206a"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/sentrybay-professional-email-pass2.md",
+              "sha256": "e3e63822f43ebf6729aa336cd4d98948c522e7a08917af2c01485c2baca31ed5"
+            },
+            "raw_judgment": {
+              "path": "judgments/sentrybay-professional-email-pass2.json",
+              "sha256": "cc9e32f9471ddd974cee936482dd346dfdf8f507a50e61de9d61c1c4178ff47f"
+            },
+            "judge_log": {
+              "path": "judge-logs/sentrybay-professional-email-pass2.json",
+              "sha256": "1a2012ba1b93a1ddee73aff868ebf3ab09f7e3d64969d9a86b0f67be2eb2c49a"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "deploynote-sales-email",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/deploynote-sales-email.md",
+              "sha256": "d80d8639adb1ec24cf9244663ed13b0362151f47bcf02c61d9a39ae4efb3c7fe"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/deploynote-sales-email.md",
+              "sha256": "5a317c983870849fb7a5066bf8461643901fdd56ed80b19a88aa7a402cdcf39f"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/deploynote-sales-email.md",
+              "sha256": "4e4b7fbf68622a05b2441be7fe0c1bef05d8c832b52079aaff46ce5446623a2b"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/deploynote-sales-email-pass1.md",
+              "sha256": "fb2fc0ddf434c9bc5a92f57a093ec1046f0b19f97b1bf5fe35a8855679450a71"
+            },
+            "raw_judgment": {
+              "path": "judgments/deploynote-sales-email-pass1.json",
+              "sha256": "5c28dcc4ce1bfab6421c4b9060621665586bcef25f6cb33fccb8ca12ff564c30"
+            },
+            "judge_log": {
+              "path": "judge-logs/deploynote-sales-email-pass1.json",
+              "sha256": "20c4cc106b6fdf89a050cab85cb6e6c380f5d726d297429c9e8b8409eaa315c9"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 3,
+          "sentence-ease": 3,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/deploynote-sales-email.md",
+              "sha256": "d80d8639adb1ec24cf9244663ed13b0362151f47bcf02c61d9a39ae4efb3c7fe"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/deploynote-sales-email.md",
+              "sha256": "5a317c983870849fb7a5066bf8461643901fdd56ed80b19a88aa7a402cdcf39f"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/deploynote-sales-email.md",
+              "sha256": "4e4b7fbf68622a05b2441be7fe0c1bef05d8c832b52079aaff46ce5446623a2b"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/deploynote-sales-email-pass2.md",
+              "sha256": "860d991ca512e31b0aef09d957723377e1fec03a1d09721abcbb5b7304a49a68"
+            },
+            "raw_judgment": {
+              "path": "judgments/deploynote-sales-email-pass2.json",
+              "sha256": "d0429ee6657899b316ce8e5f0ed838ae5fe70894efd04c2090bd0b8f9cf93dce"
+            },
+            "judge_log": {
+              "path": "judge-logs/deploynote-sales-email-pass2.json",
+              "sha256": "aab02865d4e7a6729114c7a840fb3a1e01c5e00307c2cc0e04e8f40b34ccd7f8"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/deploynote-sales-email.md",
+              "sha256": "d80d8639adb1ec24cf9244663ed13b0362151f47bcf02c61d9a39ae4efb3c7fe"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/deploynote-sales-email.md",
+              "sha256": "5a317c983870849fb7a5066bf8461643901fdd56ed80b19a88aa7a402cdcf39f"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/deploynote-sales-email.md",
+              "sha256": "4e4b7fbf68622a05b2441be7fe0c1bef05d8c832b52079aaff46ce5446623a2b"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/deploynote-sales-email-pass3.md",
+              "sha256": "fb2fc0ddf434c9bc5a92f57a093ec1046f0b19f97b1bf5fe35a8855679450a71"
+            },
+            "raw_judgment": {
+              "path": "judgments/deploynote-sales-email-pass3.json",
+              "sha256": "c43ebb6b083996618e0e130657e9baaca54f706549915a32918ce5c93e407002"
+            },
+            "judge_log": {
+              "path": "judge-logs/deploynote-sales-email-pass3.json",
+              "sha256": "a999992672a41ada2e0408abd1f5f09b0fe58f8fd19c663ab989d6d5d527fbc5"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "orchardloop-case-study",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 4,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 4,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 4,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 4
+        },
+        "incumbentScores": {
+          "factual-fidelity": 4,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 3,
+          "author-sample-fit": 3,
+          "control-room-vocabulary-containment": 3,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/orchardloop-case-study.md",
+              "sha256": "7e12881cad94cc933d1a63391af3a0508d8f4952d034800cfb7b21689f5ae628"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/orchardloop-case-study.md",
+              "sha256": "d6fba30d3cca80bb8b187fbe873a3b04251400f5c3ed4c81ea249e1183781e60"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/orchardloop-case-study.md",
+              "sha256": "12ee126d5765ddc53007336ce03d7b842ee483335b325ac45ff3eb14cd02047e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/orchardloop-case-study-pass1.md",
+              "sha256": "382273f1c6a7e5e18738ef26d34f8d3d723d8a75dffe6c4b55c43579bb372214"
+            },
+            "raw_judgment": {
+              "path": "judgments/orchardloop-case-study-pass1.json",
+              "sha256": "4301ec1391e607ab3c59e3455dc5ffc145fbb008dac4cea1f2deb7f019b8dae6"
+            },
+            "judge_log": {
+              "path": "judge-logs/orchardloop-case-study-pass1.json",
+              "sha256": "fa1aabf4396742dd88469db2116fe7648dfb58774a92f4f92a047db9f3903cb8"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 3,
+          "author-sample-fit": 3,
+          "control-room-vocabulary-containment": 3,
+          "nonformulaic-structure": 2,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 4,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 4,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/orchardloop-case-study.md",
+              "sha256": "7e12881cad94cc933d1a63391af3a0508d8f4952d034800cfb7b21689f5ae628"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/orchardloop-case-study.md",
+              "sha256": "d6fba30d3cca80bb8b187fbe873a3b04251400f5c3ed4c81ea249e1183781e60"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/orchardloop-case-study.md",
+              "sha256": "12ee126d5765ddc53007336ce03d7b842ee483335b325ac45ff3eb14cd02047e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/orchardloop-case-study-pass2.md",
+              "sha256": "603e8fb6f539ab40fdfc54ee0756e52351430a05699c2c8104835580e12c10ca"
+            },
+            "raw_judgment": {
+              "path": "judgments/orchardloop-case-study-pass2.json",
+              "sha256": "6a81cace052f54db6d2694a5171b2d841cd10c9b9438334e937ea2f615be199b"
+            },
+            "judge_log": {
+              "path": "judge-logs/orchardloop-case-study-pass2.json",
+              "sha256": "e792f87f7c2711f03edda43e943fcf7925a3026ddcf23b08a98d8da579f7f4bd"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 3,
+          "author-sample-fit": 3,
+          "control-room-vocabulary-containment": 3,
+          "nonformulaic-structure": 2,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 3,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 3,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 3,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 3
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "no-invention"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "no-invention",
+            "excerpt": "The shared log brought the stop record and the reason choice into the same entry.",
+            "missingPremise": "OrchardLoop added one shared stop log and a reason selector."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/orchardloop-case-study.md",
+              "sha256": "7e12881cad94cc933d1a63391af3a0508d8f4952d034800cfb7b21689f5ae628"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/orchardloop-case-study.md",
+              "sha256": "d6fba30d3cca80bb8b187fbe873a3b04251400f5c3ed4c81ea249e1183781e60"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/orchardloop-case-study.md",
+              "sha256": "12ee126d5765ddc53007336ce03d7b842ee483335b325ac45ff3eb14cd02047e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/orchardloop-case-study-pass3.md",
+              "sha256": "603e8fb6f539ab40fdfc54ee0756e52351430a05699c2c8104835580e12c10ca"
+            },
+            "raw_judgment": {
+              "path": "judgments/orchardloop-case-study-pass3.json",
+              "sha256": "3576b83fc8562a5166b5fad58fed468ef90d11b3602ab1cc138b1fe4929d18db"
+            },
+            "judge_log": {
+              "path": "judge-logs/orchardloop-case-study-pass3.json",
+              "sha256": "4e9e65904ff430f140f7e1e3ba9eef5f08c85e80b02d6b2abb3f6850238d099e"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "everyday-ai-editorial",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 3,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 3
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "no-invention"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "no-invention",
+            "excerpt": "The writer can compare the two, edit the response, accept it, or leave it unused.",
+            "missingPremise": "A drafting tool can show the source text beside a suggested reply."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/everyday-ai-editorial.md",
+              "sha256": "bf6ca5735d8a651920e42be49e6d47773f0b31a4a8d9a0dbc1da4924dd689a52"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/everyday-ai-editorial.md",
+              "sha256": "4ee9bcc0548f8ef7ccf6c5fcf24bcf919a97ae225b132cde2e183f8e66a38ebb"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/everyday-ai-editorial.md",
+              "sha256": "1bd1bcda3e607de469f9273058c47e94327c2af347c20988e709a63131b819ec"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/everyday-ai-editorial-pass1.md",
+              "sha256": "d64e11ad637ac98ea791ef6f26fd1fabb9e61f313512e9806fdb7ac477acbd9c"
+            },
+            "raw_judgment": {
+              "path": "judgments/everyday-ai-editorial-pass1.json",
+              "sha256": "30c89e0aa068ffb441b8cc5152c4473d6eeabcff318e14b607106730df78b033"
+            },
+            "judge_log": {
+              "path": "judge-logs/everyday-ai-editorial-pass1.json",
+              "sha256": "959fc437e8a627017102d235dc4c7c5ff0a1b9d65bde2ea7820be18d2bd809ea"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 4,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/everyday-ai-editorial.md",
+              "sha256": "bf6ca5735d8a651920e42be49e6d47773f0b31a4a8d9a0dbc1da4924dd689a52"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/everyday-ai-editorial.md",
+              "sha256": "4ee9bcc0548f8ef7ccf6c5fcf24bcf919a97ae225b132cde2e183f8e66a38ebb"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/everyday-ai-editorial.md",
+              "sha256": "1bd1bcda3e607de469f9273058c47e94327c2af347c20988e709a63131b819ec"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/everyday-ai-editorial-pass2.md",
+              "sha256": "1341234e2baa83b9378979b00943ebc3da9a46dd35bc775e1ef08564c72d5c8e"
+            },
+            "raw_judgment": {
+              "path": "judgments/everyday-ai-editorial-pass2.json",
+              "sha256": "a0136fd55de81b4c5b58c4cdecfd6270bbb3e740b25a606739fc78ec8f3407bf"
+            },
+            "judge_log": {
+              "path": "judge-logs/everyday-ai-editorial-pass2.json",
+              "sha256": "28800006d9c5ee45a23d55bf9648fba9e7378eb5798f461dfedb1ac65df830a1"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 3,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 3
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "no-invention"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "no-invention",
+            "excerpt": "The writer can compare the two, edit the response, accept it, or leave it unused.",
+            "missingPremise": "A drafting tool can show the source text beside a suggested reply."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/everyday-ai-editorial.md",
+              "sha256": "bf6ca5735d8a651920e42be49e6d47773f0b31a4a8d9a0dbc1da4924dd689a52"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/everyday-ai-editorial.md",
+              "sha256": "4ee9bcc0548f8ef7ccf6c5fcf24bcf919a97ae225b132cde2e183f8e66a38ebb"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/everyday-ai-editorial.md",
+              "sha256": "1bd1bcda3e607de469f9273058c47e94327c2af347c20988e709a63131b819ec"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/everyday-ai-editorial-pass3.md",
+              "sha256": "1341234e2baa83b9378979b00943ebc3da9a46dd35bc775e1ef08564c72d5c8e"
+            },
+            "raw_judgment": {
+              "path": "judgments/everyday-ai-editorial-pass3.json",
+              "sha256": "0c4208ea916480a991f3030e74a9dec1a8f7b78d1ce0f3f26e83a63834a7d16a"
+            },
+            "judge_log": {
+              "path": "judge-logs/everyday-ai-editorial-pass3.json",
+              "sha256": "9484b5df215a5e4cea01ec5474c173a695a32395ce8dfa552c9a85dbe4a0ee6f"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lockriver-general-security",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/lockriver-general-security.md",
+              "sha256": "a6f8837fdf315b309dc1aecb42694bc5dafd801a27e449af97452b0d80b3edc8"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/lockriver-general-security.md",
+              "sha256": "329d99eec6e28a6088699e3cdcc855d38d55e2e89130df2fec5615cef0e517aa"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/lockriver-general-security.md",
+              "sha256": "624b86d59eb0067c8ef54b0f827a14adb8e3402b2b81ba6892925490a8536c1b"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/lockriver-general-security-pass1.md",
+              "sha256": "175041162fc4ff9871142e401b7bcfe9941050f04ab73af9996fcf1ce37119c0"
+            },
+            "raw_judgment": {
+              "path": "judgments/lockriver-general-security-pass1.json",
+              "sha256": "302cf6a5cfba32e341001be08c2e1cfd70de3a0799f2298a13be859b3981fb5e"
+            },
+            "judge_log": {
+              "path": "judge-logs/lockriver-general-security-pass1.json",
+              "sha256": "5d206b4a82df64ef073f7810116d3de4cffe3f1dce536350089261e48fe87f14"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/lockriver-general-security.md",
+              "sha256": "a6f8837fdf315b309dc1aecb42694bc5dafd801a27e449af97452b0d80b3edc8"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/lockriver-general-security.md",
+              "sha256": "329d99eec6e28a6088699e3cdcc855d38d55e2e89130df2fec5615cef0e517aa"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/lockriver-general-security.md",
+              "sha256": "624b86d59eb0067c8ef54b0f827a14adb8e3402b2b81ba6892925490a8536c1b"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/lockriver-general-security-pass2.md",
+              "sha256": "d4b3f514e23e08af9e0cbcd39f574e2b1f4977f1c557e8412dc5049037e40b24"
+            },
+            "raw_judgment": {
+              "path": "judgments/lockriver-general-security-pass2.json",
+              "sha256": "a644eb46f616faa950f042d3be01fae736d3f5b6290df43af6d30c191c66ae24"
+            },
+            "judge_log": {
+              "path": "judge-logs/lockriver-general-security-pass2.json",
+              "sha256": "690c94dbd982d903d0a51f7fa6b602bd8a9430ad765ef5e2b73a0bf70a31c253"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "packetforge-api-docs",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/packetforge-api-docs.md",
+              "sha256": "a3912ad693226e9a3a98d86dc42cdb429cc6cd29b2c0e499d0a7599ca7ca65ca"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/packetforge-api-docs.md",
+              "sha256": "b9ca8a7e623099808a97f7cb954bffd26289085da698b8f59212dac47893f4d9"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/packetforge-api-docs.md",
+              "sha256": "2507d54fa96ce7e3ca5bd67125783cc6a239ae3dcb7625017101f05a04f24665"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/packetforge-api-docs-pass1.md",
+              "sha256": "489030aca32e42fceb3702b7c9d1b7bbf9c7add967fd8f01010baf97f5d65fed"
+            },
+            "raw_judgment": {
+              "path": "judgments/packetforge-api-docs-pass1.json",
+              "sha256": "820968cfcd0a6cbb201686e06e9d805f6a1ea64a7e6923d41c425a35fa9648d9"
+            },
+            "judge_log": {
+              "path": "judge-logs/packetforge-api-docs-pass1.json",
+              "sha256": "081fc9906602209360247c99d7a42b6b879a73680d8225fa967bbfd55ca79051"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/packetforge-api-docs.md",
+              "sha256": "a3912ad693226e9a3a98d86dc42cdb429cc6cd29b2c0e499d0a7599ca7ca65ca"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/packetforge-api-docs.md",
+              "sha256": "b9ca8a7e623099808a97f7cb954bffd26289085da698b8f59212dac47893f4d9"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/packetforge-api-docs.md",
+              "sha256": "2507d54fa96ce7e3ca5bd67125783cc6a239ae3dcb7625017101f05a04f24665"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/packetforge-api-docs-pass2.md",
+              "sha256": "3716b955715c6d093e4fd6f4d390b63a8f10f819f2fc8c947f2507db8502013f"
+            },
+            "raw_judgment": {
+              "path": "judgments/packetforge-api-docs-pass2.json",
+              "sha256": "5a254e264061112e05deadb975d42ec110074e44e4f2528418271d46b962a446"
+            },
+            "judge_log": {
+              "path": "judge-logs/packetforge-api-docs-pass2.json",
+              "sha256": "cb651395e2e020ef042ce1f67f9f6f4585eab6827bf775f8e8ed1b5d88708cf3"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/packetforge-api-docs.md",
+              "sha256": "a3912ad693226e9a3a98d86dc42cdb429cc6cd29b2c0e499d0a7599ca7ca65ca"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/packetforge-api-docs.md",
+              "sha256": "b9ca8a7e623099808a97f7cb954bffd26289085da698b8f59212dac47893f4d9"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/packetforge-api-docs.md",
+              "sha256": "2507d54fa96ce7e3ca5bd67125783cc6a239ae3dcb7625017101f05a04f24665"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/packetforge-api-docs-pass3.md",
+              "sha256": "489030aca32e42fceb3702b7c9d1b7bbf9c7add967fd8f01010baf97f5d65fed"
+            },
+            "raw_judgment": {
+              "path": "judgments/packetforge-api-docs-pass3.json",
+              "sha256": "d0a5ed2a62ad25bb9ec474fe1d69ac996063721af02a657092ff0124d32e6d20"
+            },
+            "judge_log": {
+              "path": "judge-logs/packetforge-api-docs-pass3.json",
+              "sha256": "844858de342db89b3b1eebfa5fc282a63bee76d1cad4ecc477c7465668484337"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "harborlease-legal-clause",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/harborlease-legal-clause.md",
+              "sha256": "ae497c10b7d017bfe8a15e35338fb14ba8f4bc344b8563fc0bf275db5e2c406f"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/harborlease-legal-clause.md",
+              "sha256": "39caf7247b79891c9cd04467222c733a88071ab605526a794eb007d6b24f0a11"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/harborlease-legal-clause.md",
+              "sha256": "39caf7247b79891c9cd04467222c733a88071ab605526a794eb007d6b24f0a11"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/harborlease-legal-clause-pass1.md",
+              "sha256": "aa77540f03c6cb7ea8372cd6c6634063db018355f23a2c3dd8a5f05222497028"
+            },
+            "raw_judgment": {
+              "path": "judgments/harborlease-legal-clause-pass1.json",
+              "sha256": "236dfbc931c5fc78a6b297fa852f8f8d231c2fe1f77954d3c2edc1ac2a416939"
+            },
+            "judge_log": {
+              "path": "judge-logs/harborlease-legal-clause-pass1.json",
+              "sha256": "81ec88ae274f8de4f7acbde9e1981b3a54c4d8e719f84f6ed75007925f2f3e15"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/harborlease-legal-clause.md",
+              "sha256": "ae497c10b7d017bfe8a15e35338fb14ba8f4bc344b8563fc0bf275db5e2c406f"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/harborlease-legal-clause.md",
+              "sha256": "39caf7247b79891c9cd04467222c733a88071ab605526a794eb007d6b24f0a11"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/harborlease-legal-clause.md",
+              "sha256": "39caf7247b79891c9cd04467222c733a88071ab605526a794eb007d6b24f0a11"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/harborlease-legal-clause-pass2.md",
+              "sha256": "aa77540f03c6cb7ea8372cd6c6634063db018355f23a2c3dd8a5f05222497028"
+            },
+            "raw_judgment": {
+              "path": "judgments/harborlease-legal-clause-pass2.json",
+              "sha256": "a0e8a23e9dbd19adceeffa933b08dde1c7dd22454c7f783fa952973964c049cb"
+            },
+            "judge_log": {
+              "path": "judge-logs/harborlease-legal-clause-pass2.json",
+              "sha256": "5db18969f981e74ae43faf68053fc96fe91c8b07520969f6e7a1abc9abee81f6"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "seedtrial-science-explainer",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/seedtrial-science-explainer.md",
+              "sha256": "cee122efc0ba314dcb2819b5a2eaab749e39cf845e8e0804cb629e11722fd9d3"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/seedtrial-science-explainer.md",
+              "sha256": "4b10d7686031f4422a32feccf127a1ace04d2f6f9c3d43d9a75f839f5145e0d4"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/seedtrial-science-explainer.md",
+              "sha256": "8dd93080172fc3bc80b885cec9e1c36807daf0fc7417b9a33d033d9d97c0eb16"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/seedtrial-science-explainer-pass1.md",
+              "sha256": "b0fb214867b4e1f95bef6b3c6d5ee06c401946c32ddfb42e279073019b6822f6"
+            },
+            "raw_judgment": {
+              "path": "judgments/seedtrial-science-explainer-pass1.json",
+              "sha256": "90fac79d14d4228e4a958f14593e738de158f67016686b37736e6cb3314d6ddc"
+            },
+            "judge_log": {
+              "path": "judge-logs/seedtrial-science-explainer-pass1.json",
+              "sha256": "9761770b2b95eddb5efc379b61af6126f097bdd5260c080d98f8d8b4b86f7805"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/seedtrial-science-explainer.md",
+              "sha256": "cee122efc0ba314dcb2819b5a2eaab749e39cf845e8e0804cb629e11722fd9d3"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/seedtrial-science-explainer.md",
+              "sha256": "4b10d7686031f4422a32feccf127a1ace04d2f6f9c3d43d9a75f839f5145e0d4"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/seedtrial-science-explainer.md",
+              "sha256": "8dd93080172fc3bc80b885cec9e1c36807daf0fc7417b9a33d033d9d97c0eb16"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/seedtrial-science-explainer-pass2.md",
+              "sha256": "f0385887ca0102b5468adeefcb5983a57ff2dba465282a51232163284db3bbd3"
+            },
+            "raw_judgment": {
+              "path": "judgments/seedtrial-science-explainer-pass2.json",
+              "sha256": "00fd45b1efb5dd6011b93ca7f496d75023518b9c88d54bba16ceb4502a19af4e"
+            },
+            "judge_log": {
+              "path": "judge-logs/seedtrial-science-explainer-pass2.json",
+              "sha256": "4e1e056d016916d961e0e5e069c7430ddb666d553408907b2eb2fefef451337e"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pinboard-interface",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/pinboard-interface.md",
+              "sha256": "4de18a5ad1ffe2ad58528646e21cf755c23b30e30cbef346d91bb5171381df4c"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/pinboard-interface.md",
+              "sha256": "cce7c2a18b423d59587c8f19f26c123de6efb238e28c4cf782657f84e47a598d"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/pinboard-interface.md",
+              "sha256": "ae013e5f2b81eb60da06ef9ae57a05730a75f40132c5f54205eef54c4b6b5928"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/pinboard-interface-pass1.md",
+              "sha256": "115a8910f511c8659f9bfbbb82353d34648b37afe49fd2a66c3f20cd024e6095"
+            },
+            "raw_judgment": {
+              "path": "judgments/pinboard-interface-pass1.json",
+              "sha256": "3c628ea2c76d685ac7234da8101e5bb28f7cab0fee8ecc14b7a36ecc6e7cfead"
+            },
+            "judge_log": {
+              "path": "judge-logs/pinboard-interface-pass1.json",
+              "sha256": "4af4c61e04c34df09911528043abf5cd88af5b4220f6695d3ef76bba8181c2b1"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/pinboard-interface.md",
+              "sha256": "4de18a5ad1ffe2ad58528646e21cf755c23b30e30cbef346d91bb5171381df4c"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/pinboard-interface.md",
+              "sha256": "cce7c2a18b423d59587c8f19f26c123de6efb238e28c4cf782657f84e47a598d"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/pinboard-interface.md",
+              "sha256": "ae013e5f2b81eb60da06ef9ae57a05730a75f40132c5f54205eef54c4b6b5928"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/pinboard-interface-pass2.md",
+              "sha256": "1caa376e1123d3c4d6d0d81e0bafdb6c26121e7f2abf9d6fffb82ec84f5c2825"
+            },
+            "raw_judgment": {
+              "path": "judgments/pinboard-interface-pass2.json",
+              "sha256": "99d9945ff1a82562f3817e8513aaa9bbf344a35b22fe8cf6cb452e822a8b33f6"
+            },
+            "judge_log": {
+              "path": "judge-logs/pinboard-interface-pass2.json",
+              "sha256": "ac5172d4f10624fd72d907f481bddc55099cee1dc7a4fd8c5fe6351fed38dc9e"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/pinboard-interface.md",
+              "sha256": "4de18a5ad1ffe2ad58528646e21cf755c23b30e30cbef346d91bb5171381df4c"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/pinboard-interface.md",
+              "sha256": "cce7c2a18b423d59587c8f19f26c123de6efb238e28c4cf782657f84e47a598d"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/pinboard-interface.md",
+              "sha256": "ae013e5f2b81eb60da06ef9ae57a05730a75f40132c5f54205eef54c4b6b5928"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/pinboard-interface-pass3.md",
+              "sha256": "1caa376e1123d3c4d6d0d81e0bafdb6c26121e7f2abf9d6fffb82ec84f5c2825"
+            },
+            "raw_judgment": {
+              "path": "judgments/pinboard-interface-pass3.json",
+              "sha256": "746cfde334aa79a14f4fae67a302ab681ad623f1b02dccd3043565e624971bdc"
+            },
+            "judge_log": {
+              "path": "judge-logs/pinboard-interface-pass3.json",
+              "sha256": "ed9b82e76e39978e6550fef65295c9e33d9ff8afc4d73c358a63a36d1872da1d"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "tallybird-social",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 3,
+          "sentence-ease": 4,
+          "natural-voice": 2,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 2,
+          "concision-without-loss": 2,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/tallybird-social.md",
+              "sha256": "6bce635a7a49f5c61d5878501d088d8b59b1e32f31cc516f0c395633d4d08d46"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/tallybird-social.md",
+              "sha256": "c54b07837d73d3f932f24788f2100c03a68365d98a4f24493a35d3c16faf3756"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/tallybird-social.md",
+              "sha256": "38c40604c7a3e37b55c8e27705f66f4a944417fae6e49aa7494644e4730d129e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/tallybird-social-pass1.md",
+              "sha256": "511656fba5a85c5de2a4cf1d107c58e7e4ed24ae06174eabb741391574b6cbd6"
+            },
+            "raw_judgment": {
+              "path": "judgments/tallybird-social-pass1.json",
+              "sha256": "39d862528b6f05f788f5453bfa57110e93109a3913d06912e9c69f21971cfe0d"
+            },
+            "judge_log": {
+              "path": "judge-logs/tallybird-social-pass1.json",
+              "sha256": "1d756652f2f3a60e3cf2edb08e529d2f7c57891557d4c75d0e6246bc642effbb"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/tallybird-social.md",
+              "sha256": "6bce635a7a49f5c61d5878501d088d8b59b1e32f31cc516f0c395633d4d08d46"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/tallybird-social.md",
+              "sha256": "c54b07837d73d3f932f24788f2100c03a68365d98a4f24493a35d3c16faf3756"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/tallybird-social.md",
+              "sha256": "38c40604c7a3e37b55c8e27705f66f4a944417fae6e49aa7494644e4730d129e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/tallybird-social-pass2.md",
+              "sha256": "95091cf4580e9cc966471f2def9de2ee5ce040d716920bb9098098c0dff28d69"
+            },
+            "raw_judgment": {
+              "path": "judgments/tallybird-social-pass2.json",
+              "sha256": "0ac122aea382e5e2e8d5cd8a5553766c4526497c989317b31bf50e161d0911d4"
+            },
+            "judge_log": {
+              "path": "judge-logs/tallybird-social-pass2.json",
+              "sha256": "10efc08ad150ff3594f6fa18f1979d662cc6f4061e6f75541cb4aae1dabbb746"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/tallybird-social.md",
+              "sha256": "6bce635a7a49f5c61d5878501d088d8b59b1e32f31cc516f0c395633d4d08d46"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/tallybird-social.md",
+              "sha256": "c54b07837d73d3f932f24788f2100c03a68365d98a4f24493a35d3c16faf3756"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/tallybird-social.md",
+              "sha256": "38c40604c7a3e37b55c8e27705f66f4a944417fae6e49aa7494644e4730d129e"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/tallybird-social-pass3.md",
+              "sha256": "95091cf4580e9cc966471f2def9de2ee5ce040d716920bb9098098c0dff28d69"
+            },
+            "raw_judgment": {
+              "path": "judgments/tallybird-social-pass3.json",
+              "sha256": "15a2b10e6459f612fde41be023d7a28e90762361f6075b88545d3f4ff8de7b9c"
+            },
+            "judge_log": {
+              "path": "judge-logs/tallybird-social-pass3.json",
+              "sha256": "81f8664e13722050a85f84b05d03769617197f3ed7158f714c99e3215bed278b"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "clearline-spoken",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/clearline-spoken.md",
+              "sha256": "5d0693a2b34d4641c9dbfffb8fa51f7914e30d53cefd842ebe79dfc3bcb073f1"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/clearline-spoken.md",
+              "sha256": "62ad02380b1c3345fab7ca8fa41eb8c9bc3b25c538ccd0262cfc4c90d2033f5e"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/clearline-spoken.md",
+              "sha256": "7eeeea3e264476280aeb7426e65aa584fc0a00c30827bc4207f3118e7698723f"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/clearline-spoken-pass1.md",
+              "sha256": "e44d5d3e2786aa0b7be89d5117985b73e067f66cd8428a1e97916e27f81b5c3c"
+            },
+            "raw_judgment": {
+              "path": "judgments/clearline-spoken-pass1.json",
+              "sha256": "7530a5a8f41eb551ebdaa31c29d064a0fe093243cef6d24be0390b740ed80bf5"
+            },
+            "judge_log": {
+              "path": "judge-logs/clearline-spoken-pass1.json",
+              "sha256": "cc2ec4c5c9dfc744aa0372fc9792052b0d366f0460b23201239eeb8f2ea6e3a1"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 3,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 4
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/clearline-spoken.md",
+              "sha256": "5d0693a2b34d4641c9dbfffb8fa51f7914e30d53cefd842ebe79dfc3bcb073f1"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/clearline-spoken.md",
+              "sha256": "62ad02380b1c3345fab7ca8fa41eb8c9bc3b25c538ccd0262cfc4c90d2033f5e"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/clearline-spoken.md",
+              "sha256": "7eeeea3e264476280aeb7426e65aa584fc0a00c30827bc4207f3118e7698723f"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/clearline-spoken-pass2.md",
+              "sha256": "4f49ca4fddd3517de49a7058ef76a9f6394195ea4afe4dd9541aeca4402af5e5"
+            },
+            "raw_judgment": {
+              "path": "judgments/clearline-spoken-pass2.json",
+              "sha256": "cd28e1d978547b164ce879a40da7d4ffc4552f1103f28737b5a55dda4473e5e4"
+            },
+            "judge_log": {
+              "path": "judge-logs/clearline-spoken-pass2.json",
+              "sha256": "f2239448b2709666239b05f2867f5f5e31d77e5e222fd9a9d8fd710507576900"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "voice-three-samples",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 1,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 2,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "factual-fidelity"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "factual-fidelity",
+            "excerpt": "Please add them by Wednesday at 10:00.",
+            "missingPremise": "Priya owns those descriptions."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/voice-three-samples.md",
+              "sha256": "1d94db019a1b9cdbc08a560241571f64eff959f4486cfd4c6a67bd4216074e52"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/voice-three-samples.md",
+              "sha256": "98aeec4b5846e301a76a0f7a2d4d4dd584e9f55e5f74308b0fd4f9504180be02"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/voice-three-samples.md",
+              "sha256": "9609ac9da664777edffdc31fbcc2bce13fc81249fd57cdbd8104bfc1b6cfac78"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/voice-three-samples-pass1.md",
+              "sha256": "c219021aa2555e140cc3b456ebd019dd999a8d63030adef93c1a7378ea6a9400"
+            },
+            "raw_judgment": {
+              "path": "judgments/voice-three-samples-pass1.json",
+              "sha256": "c4e3b76e904c2596365b0f804716fc48b6df6bb50d01ffa22b09600b87ad6af3"
+            },
+            "judge_log": {
+              "path": "judge-logs/voice-three-samples-pass1.json",
+              "sha256": "e9e0959dc93623992a2c8feab06bb3ed53d9d99e3619ddc89760df8644cd76a9"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 2,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "factual-fidelity"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "factual-fidelity",
+            "excerpt": "Three image descriptions are missing.",
+            "missingPremise": "- Priya owns those descriptions."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/voice-three-samples.md",
+              "sha256": "1d94db019a1b9cdbc08a560241571f64eff959f4486cfd4c6a67bd4216074e52"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/voice-three-samples.md",
+              "sha256": "98aeec4b5846e301a76a0f7a2d4d4dd584e9f55e5f74308b0fd4f9504180be02"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/voice-three-samples.md",
+              "sha256": "9609ac9da664777edffdc31fbcc2bce13fc81249fd57cdbd8104bfc1b6cfac78"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/voice-three-samples-pass2.md",
+              "sha256": "e8e765c4c142e564b262ec6f91f857fe71fc6de67f5a639b06780f3f2abeb7eb"
+            },
+            "raw_judgment": {
+              "path": "judgments/voice-three-samples-pass2.json",
+              "sha256": "defa9ec07ae688307061f113d48cf7830c3aa68e04879e57bb7440f8864b108d"
+            },
+            "judge_log": {
+              "path": "judge-logs/voice-three-samples-pass2.json",
+              "sha256": "5698ad855bc5b16adcb65aea14460e59c1737e6211fa52710004d7122f9cd1ed"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "voice-thin-sample",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/voice-thin-sample.md",
+              "sha256": "056a4c7c4f6321c278f7c3bceee247e872c104c8d1ee6230b568e959e3bd007a"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/voice-thin-sample.md",
+              "sha256": "a50eca2d2064adb19d70d05e35472894cf48d17f7a1373728565e4b559e83450"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/voice-thin-sample.md",
+              "sha256": "a50eca2d2064adb19d70d05e35472894cf48d17f7a1373728565e4b559e83450"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/voice-thin-sample-pass1.md",
+              "sha256": "535afab2e2fc50670c373143e68cc74ba42c71613ce577105eedbf0ce9e62a33"
+            },
+            "raw_judgment": {
+              "path": "judgments/voice-thin-sample-pass1.json",
+              "sha256": "22a8102ac2f3557b12e2b426f9eea676d35c184154ce7aa7550e8aeb00f288d9"
+            },
+            "judge_log": {
+              "path": "judge-logs/voice-thin-sample-pass1.json",
+              "sha256": "53e32c49bb6f349cf7a4bf241156aac844d371ef273c7e06ea10562c81c62dfe"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/voice-thin-sample.md",
+              "sha256": "056a4c7c4f6321c278f7c3bceee247e872c104c8d1ee6230b568e959e3bd007a"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/voice-thin-sample.md",
+              "sha256": "a50eca2d2064adb19d70d05e35472894cf48d17f7a1373728565e4b559e83450"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/voice-thin-sample.md",
+              "sha256": "a50eca2d2064adb19d70d05e35472894cf48d17f7a1373728565e4b559e83450"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/voice-thin-sample-pass2.md",
+              "sha256": "535afab2e2fc50670c373143e68cc74ba42c71613ce577105eedbf0ce9e62a33"
+            },
+            "raw_judgment": {
+              "path": "judgments/voice-thin-sample-pass2.json",
+              "sha256": "9c103816c03ed21c530be48540de50eee33e163cac6d9c2b609f91f8b4710eb0"
+            },
+            "judge_log": {
+              "path": "judge-logs/voice-thin-sample-pass2.json",
+              "sha256": "13d5a685120377465e695497ecd56ebe1e985def189cd0cee9708d3c3d33a3b7"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "voice-no-sample",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/voice-no-sample.md",
+              "sha256": "9cf907bf742681f747b06b28d370d47a9b74e5670da03792b53d561096853976"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/voice-no-sample.md",
+              "sha256": "cf74618e17dbfdd0c4bf0212aa05a8dd32237c4caa747b0141bd6d640f34ed17"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/voice-no-sample.md",
+              "sha256": "cf74618e17dbfdd0c4bf0212aa05a8dd32237c4caa747b0141bd6d640f34ed17"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/voice-no-sample-pass1.md",
+              "sha256": "57f1e23e12b503e445cf6ec3063a29bb173d7ffbb3efc517e39a75c6c5d065a5"
+            },
+            "raw_judgment": {
+              "path": "judgments/voice-no-sample-pass1.json",
+              "sha256": "0c2766fca1d1592d1b4fc59fb2fdcd3d45501874324f806a73b69211b6b7d1bd"
+            },
+            "judge_log": {
+              "path": "judge-logs/voice-no-sample-pass1.json",
+              "sha256": "8956c06c2c67f4a9e0a47f1e297e79f7347e0d58b442dc31f703aaa06d32b634"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/voice-no-sample.md",
+              "sha256": "9cf907bf742681f747b06b28d370d47a9b74e5670da03792b53d561096853976"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/voice-no-sample.md",
+              "sha256": "cf74618e17dbfdd0c4bf0212aa05a8dd32237c4caa747b0141bd6d640f34ed17"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/voice-no-sample.md",
+              "sha256": "cf74618e17dbfdd0c4bf0212aa05a8dd32237c4caa747b0141bd6d640f34ed17"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/voice-no-sample-pass2.md",
+              "sha256": "57f1e23e12b503e445cf6ec3063a29bb173d7ffbb3efc517e39a75c6c5d065a5"
+            },
+            "raw_judgment": {
+              "path": "judgments/voice-no-sample-pass2.json",
+              "sha256": "08236ce16ac4bb3a8b6ad02a361976d31f2ac782f4e22e92b9dbf7a7002bfe92"
+            },
+            "judge_log": {
+              "path": "judge-logs/voice-no-sample-pass2.json",
+              "sha256": "0b1c7e3452c12e663974141daa713c26a42d1cfaaaa2538285c28d981e57190a"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "exact-word-count",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/exact-word-count.md",
+              "sha256": "1de63339649d73d17b5be71650cacbca0fa194b989bbc7dda8c881bcca77d424"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/exact-word-count.md",
+              "sha256": "9781a9810046c7e7a392838a97920077653755d8e0f6af38d1052917031cb7be"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/exact-word-count.md",
+              "sha256": "7e96e0dc0a27d45d9f7e2ccd59290c0d2671be5178daa05dbfb9a314eee7fb57"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/exact-word-count-pass1.md",
+              "sha256": "cd9d10d6e820141341ad6f834264fe1026c49c76cedeeb9cd490a8368c4513ad"
+            },
+            "raw_judgment": {
+              "path": "judgments/exact-word-count-pass1.json",
+              "sha256": "0917ef37b6162239db12ea53007e5755d27674452f004f2b0ae7114c9c274d89"
+            },
+            "judge_log": {
+              "path": "judge-logs/exact-word-count-pass1.json",
+              "sha256": "826082a461cd1edb944388b2c7878c8ac7b88c5c095241ac11aaed3901232d2f"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 3,
+          "sentence-ease": 3,
+          "natural-voice": 3,
+          "register-fit": 4,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 2,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 4
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [
+          "canonical-house-style"
+        ],
+        "incumbentHardGateEvidence": [
+          {
+            "gate": "canonical-house-style",
+            "excerpt": "MapMorrow does not track vehicles live; instead, it organizes route planning around a proposed sequence",
+            "missingPremise": "Use plain professional language without banned templates or control-room vocabulary."
+          }
+        ],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/exact-word-count.md",
+              "sha256": "1de63339649d73d17b5be71650cacbca0fa194b989bbc7dda8c881bcca77d424"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/exact-word-count.md",
+              "sha256": "9781a9810046c7e7a392838a97920077653755d8e0f6af38d1052917031cb7be"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/exact-word-count.md",
+              "sha256": "7e96e0dc0a27d45d9f7e2ccd59290c0d2671be5178daa05dbfb9a314eee7fb57"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/exact-word-count-pass2.md",
+              "sha256": "e490324a178ff5b3f86dbb321211e2309a1d6f2ae973822f536bd63cf9ebd911"
+            },
+            "raw_judgment": {
+              "path": "judgments/exact-word-count-pass2.json",
+              "sha256": "0dce1a5331ab849c867b7b2f82f6299ec958a92fe11c260c64358f79e114e2b5"
+            },
+            "judge_log": {
+              "path": "judge-logs/exact-word-count-pass2.json",
+              "sha256": "9d49e7256e2858b2dbce1f8d89c040dcc0da747c3cb3ba76630b357bbf33d1b3"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 3,
+          "sentence-ease": 3,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/exact-word-count.md",
+              "sha256": "1de63339649d73d17b5be71650cacbca0fa194b989bbc7dda8c881bcca77d424"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/exact-word-count.md",
+              "sha256": "9781a9810046c7e7a392838a97920077653755d8e0f6af38d1052917031cb7be"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/exact-word-count.md",
+              "sha256": "7e96e0dc0a27d45d9f7e2ccd59290c0d2671be5178daa05dbfb9a314eee7fb57"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/exact-word-count-pass3.md",
+              "sha256": "cd9d10d6e820141341ad6f834264fe1026c49c76cedeeb9cd490a8368c4513ad"
+            },
+            "raw_judgment": {
+              "path": "judgments/exact-word-count-pass3.json",
+              "sha256": "ad4cccc1e8d402eb3f9b658054e4f00f78b862f504fd2844bf65da51f33c933b"
+            },
+            "judge_log": {
+              "path": "judge-logs/exact-word-count-pass3.json",
+              "sha256": "c56cbcbd7f7c17163bdd069949dc296cc035cde441b21c512ec48b9a102e1c7b"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "qualified-source-rewrite",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/qualified-source-rewrite.md",
+              "sha256": "deaea92b2c985e3279f3b6008a7527fab7fb63c1354bce0c8f2a209198a5501d"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/qualified-source-rewrite.md",
+              "sha256": "9ab1dc67c5f70c2ef5efe614d50a155542872d10d2e0bb9ac21cbe0fe463af07"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/qualified-source-rewrite.md",
+              "sha256": "e7021a85096095f9ec5a5e4d55fcd9ce554fd5d3994775aaff1cd1604388c9ba"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/qualified-source-rewrite-pass1.md",
+              "sha256": "6d4bef83f5924ad31d0a483710d58dee035677c5a7eb24326cd304aa380d92dc"
+            },
+            "raw_judgment": {
+              "path": "judgments/qualified-source-rewrite-pass1.json",
+              "sha256": "71c5fb1d47cd926b82b314667f85f793c0da8b8170195daa97efa6c433d19b54"
+            },
+            "judge_log": {
+              "path": "judge-logs/qualified-source-rewrite-pass1.json",
+              "sha256": "f84ce73bfe45091fd279781527f3bed41666b6253b377e115df72f3150644f75"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/qualified-source-rewrite.md",
+              "sha256": "deaea92b2c985e3279f3b6008a7527fab7fb63c1354bce0c8f2a209198a5501d"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/qualified-source-rewrite.md",
+              "sha256": "9ab1dc67c5f70c2ef5efe614d50a155542872d10d2e0bb9ac21cbe0fe463af07"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/qualified-source-rewrite.md",
+              "sha256": "e7021a85096095f9ec5a5e4d55fcd9ce554fd5d3994775aaff1cd1604388c9ba"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/qualified-source-rewrite-pass2.md",
+              "sha256": "8b78e761f407f0171baa566c8b606818c4c5d10c0cae595f6c322b0584c51bb1"
+            },
+            "raw_judgment": {
+              "path": "judgments/qualified-source-rewrite-pass2.json",
+              "sha256": "e192659365e1027070ff2dd9d0f3706bd5da58737968abfa165413fc51fadbf7"
+            },
+            "judge_log": {
+              "path": "judge-logs/qualified-source-rewrite-pass2.json",
+              "sha256": "9979be3d442d1d446557b9e866a372abbbb54eeab974793b620004556d7e7371"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "cloudguard-security-homepage",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 4,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 4
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/cloudguard-security-homepage.md",
+              "sha256": "aa0e0d5410c2cd2dcb6056f364c417215fb72ea50414df0557ee8be53ff4040a"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/cloudguard-security-homepage.md",
+              "sha256": "e386eba334606699351f7f65adbe2d4fd1f746c6e4c43052a27efa2d0c342cec"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/cloudguard-security-homepage.md",
+              "sha256": "e06ccc28de49b12ef728c3a50d4a0a2ef917a9e3554e610f2b802b60ca7b85f7"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/cloudguard-security-homepage-pass1.md",
+              "sha256": "ffff3cda5d51e96585e3f97209ac41ddcb9a473425f1015dbaecaddc28bb3532"
+            },
+            "raw_judgment": {
+              "path": "judgments/cloudguard-security-homepage-pass1.json",
+              "sha256": "5da903882bb179f332ddf12c00f7308ccdbdfca4dd7318b15865815b2217f8b0"
+            },
+            "judge_log": {
+              "path": "judge-logs/cloudguard-security-homepage-pass1.json",
+              "sha256": "18782787956c6ca7cd2a75fa647241dc94ccf6399be5c23071405da4b2c4bb16"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 4,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 4
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/cloudguard-security-homepage.md",
+              "sha256": "aa0e0d5410c2cd2dcb6056f364c417215fb72ea50414df0557ee8be53ff4040a"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/cloudguard-security-homepage.md",
+              "sha256": "e386eba334606699351f7f65adbe2d4fd1f746c6e4c43052a27efa2d0c342cec"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/cloudguard-security-homepage.md",
+              "sha256": "e06ccc28de49b12ef728c3a50d4a0a2ef917a9e3554e610f2b802b60ca7b85f7"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/cloudguard-security-homepage-pass2.md",
+              "sha256": "b2732d17bc2a25095d22d1cf8be3d1df62c0a24a97b9954871d2b9192a571745"
+            },
+            "raw_judgment": {
+              "path": "judgments/cloudguard-security-homepage-pass2.json",
+              "sha256": "afdee3255a55d499e6092b30e90b1d7a5f8ee5f67030c3b938284f0811b000b4"
+            },
+            "judge_log": {
+              "path": "judge-logs/cloudguard-security-homepage-pass2.json",
+              "sha256": "77be8760ffa3d6c2fb5eefc79f31106b5081ea0b7c97a22108c0110fa5043591"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ironmesh-infrastructure-product",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 3,
+          "sentence-ease": 4,
+          "natural-voice": 2,
+          "register-fit": 4,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 4,
+          "nonformulaic-structure": 2,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 4,
+          "author-sample-fit": 4,
+          "control-room-vocabulary-containment": 4,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 4
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/ironmesh-infrastructure-product.md",
+              "sha256": "efa6a1d5c5158991599a8483f21a6447ea21143f8df2114547c57d28facc0d4e"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/ironmesh-infrastructure-product.md",
+              "sha256": "98f5b25dce9c8861233ceca87d694a98c26c0a0b22e1de3b7b69d1af284b9ed8"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/ironmesh-infrastructure-product.md",
+              "sha256": "686c1037da5270c99ad71a601972d84169a6d91bcbea2d4964dde2783058d238"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/ironmesh-infrastructure-product-pass1.md",
+              "sha256": "0ff24ccee022a1a764074abeb0f772f07ff87ebaa559b7a45e170d4dda6e59eb"
+            },
+            "raw_judgment": {
+              "path": "judgments/ironmesh-infrastructure-product-pass1.json",
+              "sha256": "8d99d7c75dd36a994bf86f587c88ee88ca79c5a6b9e3ad829f80e8b46e4bf228"
+            },
+            "judge_log": {
+              "path": "judge-logs/ironmesh-infrastructure-product-pass1.json",
+              "sha256": "44ca454b5e3fe76afa2b145b691e74910b50cc1d074bb60a45c27589b79cafd7"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 4,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 4,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 3,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 4,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 4,
+          "nonformulaic-structure": 2,
+          "concision-without-loss": 2,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/ironmesh-infrastructure-product.md",
+              "sha256": "efa6a1d5c5158991599a8483f21a6447ea21143f8df2114547c57d28facc0d4e"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/ironmesh-infrastructure-product.md",
+              "sha256": "98f5b25dce9c8861233ceca87d694a98c26c0a0b22e1de3b7b69d1af284b9ed8"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/ironmesh-infrastructure-product.md",
+              "sha256": "686c1037da5270c99ad71a601972d84169a6d91bcbea2d4964dde2783058d238"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/ironmesh-infrastructure-product-pass2.md",
+              "sha256": "3577e405f311ea76a187bc80684c9121c0c92603c91a6d9a84a446da37a15ba6"
+            },
+            "raw_judgment": {
+              "path": "judgments/ironmesh-infrastructure-product-pass2.json",
+              "sha256": "96d71055cceb66d8da5c804a0e0536a297224ec98f32194904e4ebf3323a60b2"
+            },
+            "judge_log": {
+              "path": "judge-logs/ironmesh-infrastructure-product-pass2.json",
+              "sha256": "18b9cb8088a1a84f41920256a7a5954628c7ae4df48edd05286ff4518a8aef7d"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 4,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 3,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 4
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 3,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 2,
+          "concision-without-loss": 3,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [
+          "no-invention"
+        ],
+        "candidateHardGateEvidence": [
+          {
+            "gate": "no-invention",
+            "excerpt": "Section format: modular sections.",
+            "missingPremise": "IronMesh is a modular safety barrier for indoor warehouse aisles."
+          }
+        ],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/ironmesh-infrastructure-product.md",
+              "sha256": "efa6a1d5c5158991599a8483f21a6447ea21143f8df2114547c57d28facc0d4e"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/ironmesh-infrastructure-product.md",
+              "sha256": "98f5b25dce9c8861233ceca87d694a98c26c0a0b22e1de3b7b69d1af284b9ed8"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/ironmesh-infrastructure-product.md",
+              "sha256": "686c1037da5270c99ad71a601972d84169a6d91bcbea2d4964dde2783058d238"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/ironmesh-infrastructure-product-pass3.md",
+              "sha256": "3577e405f311ea76a187bc80684c9121c0c92603c91a6d9a84a446da37a15ba6"
+            },
+            "raw_judgment": {
+              "path": "judgments/ironmesh-infrastructure-product-pass3.json",
+              "sha256": "b22cdfa80b7c69536daf1f37ec85c81899cffb6904d35fb8cc7861e7bd82b5f9"
+            },
+            "judge_log": {
+              "path": "judge-logs/ironmesh-infrastructure-product-pass3.json",
+              "sha256": "45306761984f3318d3ae4d400794d2ebc8af454bb4f97d9d22b31ac518895091"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "clinical-evidence-explainer",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 4,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/clinical-evidence-explainer.md",
+              "sha256": "90c1fdda68db69e0e0fd5b529d5d348db7be962ba12b70017af6ae8db3608d22"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/clinical-evidence-explainer.md",
+              "sha256": "4871391c4d70aa56100b471269627e3dd54a595a69801d0bf244b59e86da0b42"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/clinical-evidence-explainer.md",
+              "sha256": "24613e82fd870301a0b09d0717945b3789dfbeee8049f75e11ebcaa9f1ea0e05"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/clinical-evidence-explainer-pass1.md",
+              "sha256": "82655f4f364ad765212259abf280617257efc0ba506497cd449fab6e03da8aa8"
+            },
+            "raw_judgment": {
+              "path": "judgments/clinical-evidence-explainer-pass1.json",
+              "sha256": "0a26e92dc5b9f5eb92dd5e374bfe8b688b4592fe6abc61e507776f6cc1e7660a"
+            },
+            "judge_log": {
+              "path": "judge-logs/clinical-evidence-explainer-pass1.json",
+              "sha256": "22343764252c3e5d9dcb2420d7c9ba0982fd4a3599b2e9869715ca75505b5576"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "incumbent",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 4,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/clinical-evidence-explainer.md",
+              "sha256": "90c1fdda68db69e0e0fd5b529d5d348db7be962ba12b70017af6ae8db3608d22"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/clinical-evidence-explainer.md",
+              "sha256": "4871391c4d70aa56100b471269627e3dd54a595a69801d0bf244b59e86da0b42"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/clinical-evidence-explainer.md",
+              "sha256": "24613e82fd870301a0b09d0717945b3789dfbeee8049f75e11ebcaa9f1ea0e05"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/clinical-evidence-explainer-pass2.md",
+              "sha256": "e7cb562d55d813a8d1ef1033346821b7e38d3435a5896a408e363a83659942b1"
+            },
+            "raw_judgment": {
+              "path": "judgments/clinical-evidence-explainer-pass2.json",
+              "sha256": "4ed82a217972793182ce8a5c417a9a3fe346bf8d5632bd4fb7ab7b67e7f50e63"
+            },
+            "judge_log": {
+              "path": "judge-logs/clinical-evidence-explainer-pass2.json",
+              "sha256": "a702cc70c5cc3239c49084543403d8d17aaae90c0b0bed02ac471cdd2a45cd72"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "policy-claim-legal",
+    "passes": [
+      {
+        "pass": 1,
+        "order": [
+          "incumbent",
+          "candidate"
+        ],
+        "winner": "candidate",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 4,
+          "sentence-ease": 4,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/policy-claim-legal.md",
+              "sha256": "f214610214af336b476c0d16fa5e5281542635b698253818cafcedfd0872fa6a"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/policy-claim-legal.md",
+              "sha256": "02200d90ba5d6d0f30f1bbb47b9e3fb586f66661b35b6ac0089e797e0f381bed"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/policy-claim-legal.md",
+              "sha256": "dae364b8ebced3ffdf5163100ae3ca25c536a593e11d0f8858aae48637f733eb"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/policy-claim-legal-pass1.md",
+              "sha256": "a5215d4c8ce267874003671a58d5ba9773b865d4ea4e6220debe1a7942d69985"
+            },
+            "raw_judgment": {
+              "path": "judgments/policy-claim-legal-pass1.json",
+              "sha256": "12d1298fb1b6eaa6fb0cd215f801edd6976f035c3d4b8147e2d7e1b965f5d6de"
+            },
+            "judge_log": {
+              "path": "judge-logs/policy-claim-legal-pass1.json",
+              "sha256": "c5f84d40faafc20d6c63779492e8f1a5217c713a159ecab81a3ac29f87a68961"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 2,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/policy-claim-legal.md",
+              "sha256": "f214610214af336b476c0d16fa5e5281542635b698253818cafcedfd0872fa6a"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/policy-claim-legal.md",
+              "sha256": "02200d90ba5d6d0f30f1bbb47b9e3fb586f66661b35b6ac0089e797e0f381bed"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/policy-claim-legal.md",
+              "sha256": "dae364b8ebced3ffdf5163100ae3ca25c536a593e11d0f8858aae48637f733eb"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/policy-claim-legal-pass2.md",
+              "sha256": "c43c9654209484d63541e43aa16be6a4d033778aaf5f5fdf48b9888fca10e391"
+            },
+            "raw_judgment": {
+              "path": "judgments/policy-claim-legal-pass2.json",
+              "sha256": "7bc04e0c76b643e209dca685eede4a139ba472aad1850e659f58852223e68047"
+            },
+            "judge_log": {
+              "path": "judge-logs/policy-claim-legal-pass2.json",
+              "sha256": "c303a9f6071cc29ca4b36866baf45f7ef99d0caca9998f2be2063719625ff446"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      },
+      {
+        "pass": 3,
+        "order": [
+          "candidate",
+          "incumbent"
+        ],
+        "winner": "tie",
+        "candidateScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "incumbentScores": {
+          "factual-fidelity": 5,
+          "first-read-ease": 5,
+          "sentence-ease": 5,
+          "natural-voice": 5,
+          "register-fit": 5,
+          "author-sample-fit": 5,
+          "control-room-vocabulary-containment": 5,
+          "nonformulaic-structure": 5,
+          "concision-without-loss": 5,
+          "technical-or-legal-precision": 5
+        },
+        "candidateVetoes": [],
+        "candidateHardGateFailures": [],
+        "candidateHardGateEvidence": [],
+        "incumbentHardGateFailures": [],
+        "incumbentHardGateEvidence": [],
+        "custody": {
+          "schema_version": 1,
+          "artifacts": {
+            "original_task": {
+              "path": "evals/blind/v1.10.0/prompts/policy-claim-legal.md",
+              "sha256": "f214610214af336b476c0d16fa5e5281542635b698253818cafcedfd0872fa6a"
+            },
+            "candidate_response": {
+              "path": "generation-a-outputs/policy-claim-legal.md",
+              "sha256": "02200d90ba5d6d0f30f1bbb47b9e3fb586f66661b35b6ac0089e797e0f381bed"
+            },
+            "incumbent_response": {
+              "path": "generation-b-outputs/policy-claim-legal.md",
+              "sha256": "dae364b8ebced3ffdf5163100ae3ca25c536a593e11d0f8858aae48637f733eb"
+            },
+            "judge_prompt": {
+              "path": "judge-prompts/policy-claim-legal-pass3.md",
+              "sha256": "c43c9654209484d63541e43aa16be6a4d033778aaf5f5fdf48b9888fca10e391"
+            },
+            "raw_judgment": {
+              "path": "judgments/policy-claim-legal-pass3.json",
+              "sha256": "292418b7294af84f2bfa78366a5eae27b816d015f3399d541e9c6c7f6e1eec42"
+            },
+            "judge_log": {
+              "path": "judge-logs/policy-claim-legal-pass3.json",
+              "sha256": "2b501ca5d2e61de108ed16e81b8749fa7bd5b35942b89c745efac16e54f54b9b"
+            }
+          },
+          "judge_run": {
+            "schema_version": 1,
+            "runtime": "codex-exec",
+            "model": "gpt-5.6-luna",
+            "fresh_context": true,
+            "skill_access": false
+          }
+        }
+      }
+    ]
+  }
+]
