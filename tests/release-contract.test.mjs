@@ -28,8 +28,10 @@ test("current release contract matches package, frozen manifest, schemas, and ga
   assert.equal(manifest.cases.length, 24);
   assert.ok(gates.partitions.some((partition) => partition.id === "human-writing"));
   assert.deepEqual(current.required_partitions, ["human-writing"]);
-  assert.equal(current.generator_reasoning_effort, "high");
-  assert.equal(current.judge_reasoning_effort, "high");
+  assert.equal(current.generator_model, "gpt-5.6-luna");
+  assert.equal(current.judge_model, "gpt-5.6-luna");
+  assert.equal(current.generator_reasoning_effort, "max");
+  assert.equal(current.judge_reasoning_effort, "max");
 });
 
 test("publish paths fail closed through the current evidence verifier", () => {

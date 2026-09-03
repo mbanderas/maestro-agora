@@ -54,7 +54,7 @@ const custody = (id, pass) => ({
   judge_run: {
     schema_version: 1,
     runtime: "codex-exec",
-    model: "gpt-5.6-sol",
+    model: "gpt-5.6-luna",
     fresh_context: true,
     skill_access: false,
   },
@@ -72,12 +72,12 @@ test("execution evidence freezes model, isolation, baseline, and order seed", ()
       judge_protocol: commit,
     },
     execution: {
-      generator_model: "gpt-5.6-sol",
-      judge_model: "gpt-5.6-sol",
+      generator_model: "gpt-5.6-luna",
+      judge_model: "gpt-5.6-luna",
       generator_runtime: "codex-exec",
       judge_runtime: "codex-exec",
-      generator_reasoning_effort: "high",
-      judge_reasoning_effort: "high",
+      generator_reasoning_effort: "max",
+      judge_reasoning_effort: "max",
       order_seed: BLIND_ORDER_SEED,
       eligibility_policy: ELIGIBILITY_POLICY,
       reduction_policy: REDUCTION_POLICY,
@@ -191,7 +191,10 @@ test("JSON schemas are executed and fail closed", async () => {
   const adjudications = Array.from({ length: 25 }, (_, index) => {
     const id = `case-${index}`;
     const passes = [passFor(id, 1), passFor(id, 2)];
-    for (const pass of passes) pass.custody.judge_run.runtime = "codex-subagent";
+    for (const pass of passes) {
+      pass.custody.judge_run.runtime = "codex-subagent";
+      pass.custody.judge_run.model = "gpt-5.6-sol";
+    }
     return { id, passes };
   });
   assert.deepEqual(validateJsonSchema({ schema: adjudicationSchema, value: adjudications }), []);

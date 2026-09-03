@@ -10,12 +10,12 @@
   "evidence": "evals/releases/v1.10.0.evidence.json",
   "baseline_ref": "main@08790a8",
   "baseline_commit": "08790a85900f218ff3347b2422559775f49959c8",
-  "generator_model": "gpt-5.6-sol",
-  "judge_model": "gpt-5.6-sol",
+  "generator_model": "gpt-5.6-luna",
+  "judge_model": "gpt-5.6-luna",
   "generator_runtime": "codex-exec",
   "judge_runtime": "codex-exec",
-  "generator_reasoning_effort": "high",
-  "judge_reasoning_effort": "high",
+  "generator_reasoning_effort": "max",
+  "judge_reasoning_effort": "max",
   "required_partitions": [
     "human-writing"
   ]

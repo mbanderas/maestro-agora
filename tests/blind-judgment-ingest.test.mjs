@@ -44,7 +44,7 @@ const digest = (value) => createHash("sha256").update(value).digest("hex");
 const judgeRun = {
   schema_version: 1,
   runtime: "codex-exec",
-  model: "gpt-5.6-sol",
+  model: "gpt-5.6-luna",
   fresh_context: true,
   skill_access: false,
 };
