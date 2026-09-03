@@ -1,0 +1,929 @@
+[
+  {
+    "id": "northstar-ai-homepage",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "datumlane-product",
+    "final": {
+      "winner": "incumbent",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 5,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "softnest-profile",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [
+        "no-invention"
+      ],
+      "incumbentHardGateEvidence": [
+        {
+          "gate": "no-invention",
+          "observations": [
+            {
+              "pass": 1,
+              "order": [
+                "candidate",
+                "incumbent"
+              ],
+              "excerpt": "combines tutor and room assignments, recurring lesson times, emails to parents, and double-booking checks in one scheduling workflow",
+              "missingPremise": "Do not invent results, integrations, or credentials."
+            },
+            {
+              "pass": 2,
+              "order": [
+                "incumbent",
+                "candidate"
+              ],
+              "excerpt": "in one scheduling workflow",
+              "missingPremise": "Do not invent results, integrations, or credentials."
+            },
+            {
+              "pass": 3,
+              "order": [
+                "incumbent",
+                "candidate"
+              ],
+              "excerpt": "The tool combines tutor and room assignments, recurring lesson times, emails to parents, and double-booking checks in one scheduling workflow",
+              "missingPremise": "Do not invent results, integrations, or credentials."
+            }
+          ]
+        }
+      ],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 3,
+        "concision-without-loss": 3,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 3,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 4,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 3,
+        "concision-without-loss": 2,
+        "technical-or-legal-precision": 3
+      }
+    }
+  },
+  {
+    "id": "gridfoundry-executive-summary",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 4,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 3,
+        "register-fit": 4,
+        "author-sample-fit": 4,
+        "control-room-vocabulary-containment": 4,
+        "nonformulaic-structure": 3,
+        "concision-without-loss": 3,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "sentrybay-professional-email",
+    "final": {
+      "winner": "tie",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "deploynote-sales-email",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "orchardloop-case-study",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 3,
+        "register-fit": 3,
+        "author-sample-fit": 3,
+        "control-room-vocabulary-containment": 3,
+        "nonformulaic-structure": 2,
+        "concision-without-loss": 3,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 3,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 4,
+        "register-fit": 3,
+        "author-sample-fit": 4,
+        "control-room-vocabulary-containment": 3,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 3
+      }
+    }
+  },
+  {
+    "id": "everyday-ai-editorial",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [
+        "no-invention"
+      ],
+      "incumbentHardGateEvidence": [
+        {
+          "gate": "no-invention",
+          "observations": [
+            {
+              "pass": 1,
+              "order": [
+                "incumbent",
+                "candidate"
+              ],
+              "excerpt": "The writer can compare the two, edit the response, accept it, or leave it unused.",
+              "missingPremise": "A drafting tool can show the source text beside a suggested reply."
+            },
+            {
+              "pass": 3,
+              "order": [
+                "candidate",
+                "incumbent"
+              ],
+              "excerpt": "The writer can compare the two, edit the response, accept it, or leave it unused.",
+              "missingPremise": "A drafting tool can show the source text beside a suggested reply."
+            }
+          ]
+        }
+      ],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 3,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 3
+      }
+    }
+  },
+  {
+    "id": "lockriver-general-security",
+    "final": {
+      "winner": "incumbent",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4.5,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 3.5,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4.5,
+        "sentence-ease": 5,
+        "natural-voice": 4.5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 4.5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "packetforge-api-docs",
+    "final": {
+      "winner": "tie",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "harborlease-legal-clause",
+    "final": {
+      "winner": "tie",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "seedtrial-science-explainer",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4.5,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "pinboard-interface",
+    "final": {
+      "winner": "incumbent",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "tallybird-social",
+    "final": {
+      "winner": "incumbent",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 3,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "clearline-spoken",
+    "final": {
+      "winner": "incumbent",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 3.5,
+        "sentence-ease": 4,
+        "natural-voice": 3,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 3,
+        "concision-without-loss": 3,
+        "technical-or-legal-precision": 4.5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4.5,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "voice-three-samples",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [
+        "factual-fidelity"
+      ],
+      "incumbentHardGateEvidence": [
+        {
+          "gate": "factual-fidelity",
+          "observations": [
+            {
+              "pass": 1,
+              "order": [
+                "candidate",
+                "incumbent"
+              ],
+              "excerpt": "Please add them by Wednesday at 10:00.",
+              "missingPremise": "Priya owns those descriptions."
+            },
+            {
+              "pass": 2,
+              "order": [
+                "incumbent",
+                "candidate"
+              ],
+              "excerpt": "Three image descriptions are missing.",
+              "missingPremise": "- Priya owns those descriptions."
+            }
+          ]
+        }
+      ],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 4.5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 1.5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 2.5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "voice-thin-sample",
+    "final": {
+      "winner": "tie",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "voice-no-sample",
+    "final": {
+      "winner": "tie",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "exact-word-count",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 3,
+        "sentence-ease": 3,
+        "natural-voice": 3,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 3,
+        "concision-without-loss": 3,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "qualified-source-rewrite",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4.5,
+        "sentence-ease": 4.5,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4,
+        "concision-without-loss": 4,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "cloudguard-security-homepage",
+    "final": {
+      "winner": "candidate",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4.5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 4.5,
+        "first-read-ease": 4.5,
+        "sentence-ease": 4,
+        "natural-voice": 4,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 4.5,
+        "concision-without-loss": 4.5,
+        "technical-or-legal-precision": 4
+      }
+    }
+  },
+  {
+    "id": "ironmesh-infrastructure-product",
+    "final": {
+      "winner": "incumbent",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 4,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 3,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 3,
+        "concision-without-loss": 3,
+        "technical-or-legal-precision": 4
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 3,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 2,
+        "concision-without-loss": 3,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "clinical-evidence-explainer",
+    "final": {
+      "winner": "incumbent",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 4,
+        "sentence-ease": 4,
+        "natural-voice": 4.5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 4.5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  },
+  {
+    "id": "policy-claim-legal",
+    "final": {
+      "winner": "tie",
+      "candidateVetoes": [],
+      "candidateHardGateFailures": [],
+      "candidateHardGateEvidence": [],
+      "incumbentHardGateFailures": [],
+      "incumbentHardGateEvidence": [],
+      "candidateScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      },
+      "incumbentScores": {
+        "factual-fidelity": 5,
+        "first-read-ease": 5,
+        "sentence-ease": 5,
+        "natural-voice": 5,
+        "register-fit": 5,
+        "author-sample-fit": 5,
+        "control-room-vocabulary-containment": 5,
+        "nonformulaic-structure": 5,
+        "concision-without-loss": 5,
+        "technical-or-legal-precision": 5
+      }
+    }
+  }
+]

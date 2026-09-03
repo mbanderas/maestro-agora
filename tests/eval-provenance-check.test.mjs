@@ -20,7 +20,7 @@ async function withEvidence(callback) {
     await writeFile(join(root, "generation-logs", "generation-a-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-exec",
-      model: "gpt-5.6-sol",
+      model: "gpt-5.6-luna",
       fresh_context: true,
       skill_access: true,
       writing_runtime_access: true,
@@ -32,7 +32,7 @@ async function withEvidence(callback) {
     await writeFile(join(root, "generation-logs", "generation-b-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-exec",
-      model: "gpt-5.6-sol",
+      model: "gpt-5.6-luna",
       fresh_context: true,
       skill_access: true,
       writing_runtime_access: false,
@@ -47,7 +47,7 @@ async function withEvidence(callback) {
       await writeFile(join(root, "judge-logs", `case-one-pass${pass}.json`), JSON.stringify({
         schema_version: 1,
         runtime: "codex-exec",
-        model: "gpt-5.6-sol",
+        model: "gpt-5.6-luna",
         fresh_context: true,
         skill_access: false,
       }));
@@ -69,7 +69,7 @@ test("missing human-writing runtime read, banned typography, and judge skill acc
     await writeFile(join(root, "generation-logs", "generation-a-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-exec",
-      model: "gpt-5.6-sol",
+      model: "gpt-5.6-luna",
       fresh_context: true,
       skill_access: true,
       writing_runtime_access: false,
@@ -82,7 +82,7 @@ test("missing human-writing runtime read, banned typography, and judge skill acc
     await writeFile(join(root, "judge-logs", "case-one-pass1.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-exec",
-      model: "gpt-5.6-sol",
+      model: "gpt-5.6-luna",
       fresh_context: true,
       skill_access: false,
       path: ".agents/skills/agora/SKILL.md",
