@@ -49,6 +49,7 @@ const EXPECTED = [
   "skills/agora/references/agora-science.md",
   "skills/agora/references/agora-voice.md",
   "skills/agora/scripts/publication-audit.mjs",
+  "skills/agora/scripts/article-typography-check.mjs",
 ].sort();
 
 const cache = await mkdtemp(join(tmpdir(), "agora-npm-pack-"));

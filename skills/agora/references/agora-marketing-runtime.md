@@ -51,6 +51,16 @@ Rank supplied facts by relevance to the reader's decision, differentiation, spec
 
 For customer-facing writing, name what the product or person does and what the reader can observe. Drop internal method names when the reader gains nothing from learning them.
 
+### Article and editorial path
+
+Before outlining an article, privately map the user's central point, audience question, first-party observations, customer examples, numbers, events, decisions, constraints, failures, lessons, and opinions. Keep attribution and certainty attached to each detail. Treat author samples as voice input rather than factual source material unless the user explicitly supplies their facts for the article.
+
+Build an outline around the strongest material and the reader's next question. Give a consequential example or argument the space it needs; do not force three equal sections or add a summary section to complete a pattern. Follow any structure, stance, or length the user requests. A numbered list of requested headings gives their order; keep the heading text itself unnumbered unless the user requests numbering. For a generic brief, organize a clear explanation from what is known without manufacturing a case, study, statistic, personal experience, or opinion.
+
+In an article with a supplied first-party event or decision, open with that material or the reader question it raises. Do not add a generic statement about what teams often do before the supplied event. Show what happened, the detail that matters, what it means, and what to do next when useful and requested. Keep the sequence flexible and do not label it in the article. Put the user's example, count, or decision beside the point it explains. When those details are absent, make a narrower, useful point instead of inventing one.
+
+Revise paragraphs that could describe any company or topic. Use the user's own examples, decisions, and constraints when they help the reader. Keep a supplied recommendation attributed to its speaker instead of turning it into an anonymous instruction. Carry a supplied unmeasured outcome or negative limit into visible article copy once when it bounds the point; never remove that fact merely to shorten the draft. Remove prose that sounds like a legal brief or source review: `the evidence suggests`, `the claim is supported`, and routine statements about `qualifications` do not belong in ordinary copy. State the actual fact, speaker, or limit in everyday words instead. Cut repeated introductions, parallel section endings, and a conclusion that restates the article. Preserve the requested voice, format, and every material fact while revising.
+
 Preserve delivery ownership. Keep what the provider does, what the buyer supplies, the amount and timing of buyer work, dependencies, approvals, and coordination at the supplied level. Do not invent or magnify preparation, training, review cycles, handoffs, response times, or frequency.
 
 Do not add a plausible use case, reporting process, planning responsibility, reader behavior, comparison criterion, or benefit merely to make a section feel complete. Use only reader interpretations that follow directly from the supplied facts.

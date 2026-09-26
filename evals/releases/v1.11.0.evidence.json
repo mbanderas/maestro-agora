@@ -1,0 +1,507 @@
+{
+  "schema_version": 1,
+  "skill_version": "1.11.0",
+  "status": "passed",
+  "commits": {
+    "candidate_freeze": "37cb8052c8b33ba701458617bc29bf06bfde1c86",
+    "judge_protocol": "37cb8052c8b33ba701458617bc29bf06bfde1c86",
+    "baseline_ref": "v1.10.0",
+    "baseline": "f169fdc0b651138c0428dae7277322c6005ff7b5"
+  },
+  "execution": {
+    "generator_model": "gpt-6-luna",
+    "judge_model": "gpt-6-luna",
+    "generator_runtime": "codex-exec",
+    "judge_runtime": "codex-exec",
+    "generator_reasoning_effort": "max",
+    "judge_reasoning_effort": "max",
+    "fresh_context_per_generation": true,
+    "fresh_context_per_judgment": true,
+    "isolated_skill_copy": true,
+    "context_fork": "none",
+    "raw_outputs_outside_repository": true,
+    "runtime_attestations_verified": true,
+    "provenance_check_passed": true,
+    "order_seed": "agora-blind-order-v2",
+    "eligibility_policy": "symmetric-cross-order-hard-gates-v4",
+    "reduction_policy": "Passes 1 and 2 use swapped A/B orders. Agreed mapped winners and hard-gate sets use pass 1/2 mean scores. Winner or either side's hard-gate-set disagreement requires pass 3 winner and scores. A final candidate or incumbent hard-gate failure requires observations in at least two used passes and across both distinct A/B order configurations; agreement in passes 1 and 2 satisfies both requirements, while a same-order two-of-three finding clears. Candidate and incumbent failures reduce independently under this symmetric rule, then final winner eligibility derives from the retained failure sets. Candidate vetoes remain the union of used passes. Normalized adjudications retain every pass's structured gate evidence; final records retain every supporting source-pass observation for each retained hard-gate failure.",
+    "started_at_utc": "2026-09-26T17:05:10.667Z",
+    "completed_at_utc": "2026-09-26T17:33:45.359Z"
+  },
+  "artifact_hashes": {
+    "evals/blind/v1.11.0/manifest.json": "e54231b9f0cf4037a6466ba3571e1767623128735b9e506ca7bb58af6394f506",
+    "evals/blind/v1.11.0/judge-instructions.md": "aa95146abc41f2a69520db75cb39bfd342f3307ab560160d26a607904189033f",
+    "evals/blind/v1.11.0/judge-schema.json": "18b1e3f10b42dedd15cab394acd97e838dcc3ec9a0b71ee65a4f281ce92fa145",
+    "evals/releases/v1.11.0.adjudications.schema.json": "90904fcacdb6a209f8e556679a9b416ecb51f1fbced9ac6ea7a02ab298fd4709",
+    "evals/releases/v1.11.0.records.schema.json": "e5c38d406a041294e294532a571dda7fd07465388bce2e7efc51c1284e218558",
+    "evals/releases/v1.11.0.gates.json": "6913df46d0c0717f52f0f1855fbf1ff206799570a57174974f938124259868f0",
+    "evals/releases/current.json": "7b2c597987cfbe3848e660983efc322b0a3b1860d813372d9e6d074350893e35",
+    "evals/releases/locks.json": "0c897884fcf6c6dc7655a6f257d67db5797ceae0573b32579068fb70a199b170",
+    "scripts/adjudication-reducer.mjs": "e5ee6e87663582bba45e453e81c8d27dca01317562cd0b623b2a13588bfd4ed4",
+    "scripts/blind-eligibility.mjs": "6700d9e5c95fc6999019f213a18ec7396352f8ffb02291662efa3e0d0f414a2a",
+    "scripts/eval-locks.mjs": "3e8d33b36d7bf57f78bbb0a0e357934110a31c304c52193c2da23799af94c991",
+    "scripts/external-artifact-manifest.mjs": "b65717275fa86e0b759e48bf6f4ea4723b99a8161c200aa366ee3dc086ca7f3f",
+    "scripts/json-schema-validator.mjs": "47b949e504802a381d21fc6b0804b2f053288114b5a771279ff5229662605136",
+    "scripts/eval-provenance-check.mjs": "c7f06349e583844ae4a57cff2451a4a0103d38a55e65b2ef9337557ef3ac39ff",
+    "scripts/blind-judge-prompt.mjs": "2b9623a8581613068aea718282fa0b1988ad447b2de961d5eeb9a47b773a6146",
+    "scripts/blind-judge-materialize.mjs": "cc3664c55f5f4f74e08baa40b9829f6ffb531d9c0e1f2772e1975b55ae337d4f",
+    "scripts/blind-judgment-ingest.mjs": "e4e378a664175b479732b4f6c9132b72af53e530274fef4d08e239c98c8d246b",
+    "scripts/blind-summary.mjs": "c68f9b51fdbd9348493381af77de581a948967417194648e8c415363fbfdceb9",
+    "scripts/release-evidence-check.mjs": "f9d004836729c42029c76a8738d18a4488f85df0008390d361d3ffccdcdb155f",
+    "scripts/release-evidence-build.mjs": "043fb03369dec4e2c1a8d58442248e39a66868455d651781715e88bc5c851db9",
+    "scripts/release-git-provenance.mjs": "c440620509198e8f5e5b50cbfe33b5403e06686ad01edec31f0b660e7a3e6730",
+    "evals/releases/v1.11.0.adjudications.json": "b6f649ad2f5b685418e822f8131b45a7e789affbe9765ccc6299774a5ac67afc",
+    "evals/releases/v1.11.0.records.json": "2a52e427cda0541036caf9e5c2704d8e6db8e13c8a9b38072c040408a4064164"
+  },
+  "tree_hashes": {
+    "skills/agora": {
+      "file_count": 17,
+      "sha256": "1a1758a1f58ed1f4322ab03ade05a91907d164ae8c2b2dd1053776c02bcaa4aa"
+    },
+    "evals/blind/v1.11.0": {
+      "file_count": 8,
+      "sha256": "dad48b9875baed72c9eff2aa3f0c3e39c88f94ca899d5f850bd5bd0fd77fb24b"
+    }
+  },
+  "external_artifacts": {
+    "candidate_skill_copy": {
+      "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+      "root": "generation-a-work/.agents/skills/agora",
+      "file_count": 17,
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "8a9844cb863ae01b9c82702bc18c326346c1f5d4bfedfc327d511077005f0c47"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "4486bcc5e165a91e5933ce5d93a46b60d1e740b74a4d0dd468213592c89a71c4"
+        },
+        {
+          "path": "references/agora-case-studies.md",
+          "sha256": "f5b83fe2ee23571fd2fdc70552552095077cd63ad3659283ffa9c487456436a2"
+        },
+        {
+          "path": "references/agora-case-study-runtime.md",
+          "sha256": "d7be2a4184442f210473815cfa7b92a7e96f3d23c9d36266329f9e6d4746b722"
+        },
+        {
+          "path": "references/agora-conversion-runtime.md",
+          "sha256": "513521401110a1b536c7a1ef23cf9bdf44b08dbc06f186b02b04ee03172ed323"
+        },
+        {
+          "path": "references/agora-conversion.md",
+          "sha256": "59a06dcece635ef1956101d6afe39e95f29a4696f2432047fc6d50bc88a37e29"
+        },
+        {
+          "path": "references/agora-craft.md",
+          "sha256": "e39be24c8024fbc78be08b8771885d4329d23fd59e7db02f5e877da9c009fc31"
+        },
+        {
+          "path": "references/agora-invest.md",
+          "sha256": "869032ff873d66225f92ed3421f2eb60b8c1e3927aeb48bfcd4df3ad5efe7c9c"
+        },
+        {
+          "path": "references/agora-marketing-runtime.md",
+          "sha256": "8b223f7866e6e568a5eafcd32f4497c2480bc94498a69740382f46a0a709add5"
+        },
+        {
+          "path": "references/agora-marketing.md",
+          "sha256": "d141eb7f7187c5ce8b8e5ed96e121ee4e363107803829f08399ad86f05044454"
+        },
+        {
+          "path": "references/agora-publication.md",
+          "sha256": "72a157345570d2458427de95b0c69ec93808d2f61962d65fb658e8a5983e466f"
+        },
+        {
+          "path": "references/agora-science.md",
+          "sha256": "e402ee79cdba02d89d845665023b2fdbf70c685d8dc09561315449ecbe9c126e"
+        },
+        {
+          "path": "references/agora-voice.md",
+          "sha256": "e0f858315d9a687f46d6f92a7c6f2f58d4e6fa3a9e9b1ac3c1c652509b24f114"
+        },
+        {
+          "path": "references/agora-writing-runtime.md",
+          "sha256": "3c34e51f0b7ec1613c353fa46915abcc2346f0d1d6718234953cbe4a34ccef79"
+        },
+        {
+          "path": "references/human-voice-editing-reference.md",
+          "sha256": "afc04c1f1f6fda707199d855ef74cd937c566eaa383a84ad3b09eea620223270"
+        },
+        {
+          "path": "scripts/article-typography-check.mjs",
+          "sha256": "09469eb2cd35b40539ca85ccf75bb0a036637ca555b1fe6d6c47868473c70073"
+        },
+        {
+          "path": "scripts/publication-audit.mjs",
+          "sha256": "ceb133a707838fe5538eaa727189cdcf28e6395dacb5f8c139d670dbb83c8884"
+        }
+      ],
+      "sha256": "5ea9edc883c0bb9e419c7f7765d5060fcc1c37a6274cae6222850f98913ca75c"
+    },
+    "incumbent_skill_copy": {
+      "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+      "root": "generation-b-work/.agents/skills/agora",
+      "file_count": 16,
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "535ed19aa8ed91a3855eb43026fbdbbbda686b925bc2ccc757b413268574d726"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "4486bcc5e165a91e5933ce5d93a46b60d1e740b74a4d0dd468213592c89a71c4"
+        },
+        {
+          "path": "references/agora-case-studies.md",
+          "sha256": "f5b83fe2ee23571fd2fdc70552552095077cd63ad3659283ffa9c487456436a2"
+        },
+        {
+          "path": "references/agora-case-study-runtime.md",
+          "sha256": "d7be2a4184442f210473815cfa7b92a7e96f3d23c9d36266329f9e6d4746b722"
+        },
+        {
+          "path": "references/agora-conversion-runtime.md",
+          "sha256": "513521401110a1b536c7a1ef23cf9bdf44b08dbc06f186b02b04ee03172ed323"
+        },
+        {
+          "path": "references/agora-conversion.md",
+          "sha256": "59a06dcece635ef1956101d6afe39e95f29a4696f2432047fc6d50bc88a37e29"
+        },
+        {
+          "path": "references/agora-craft.md",
+          "sha256": "e39be24c8024fbc78be08b8771885d4329d23fd59e7db02f5e877da9c009fc31"
+        },
+        {
+          "path": "references/agora-invest.md",
+          "sha256": "869032ff873d66225f92ed3421f2eb60b8c1e3927aeb48bfcd4df3ad5efe7c9c"
+        },
+        {
+          "path": "references/agora-marketing-runtime.md",
+          "sha256": "634c0ca0c227b914b4135f4e888f74988aa792dd853ca0929e26bfab322ae630"
+        },
+        {
+          "path": "references/agora-marketing.md",
+          "sha256": "d141eb7f7187c5ce8b8e5ed96e121ee4e363107803829f08399ad86f05044454"
+        },
+        {
+          "path": "references/agora-publication.md",
+          "sha256": "72a157345570d2458427de95b0c69ec93808d2f61962d65fb658e8a5983e466f"
+        },
+        {
+          "path": "references/agora-science.md",
+          "sha256": "e402ee79cdba02d89d845665023b2fdbf70c685d8dc09561315449ecbe9c126e"
+        },
+        {
+          "path": "references/agora-voice.md",
+          "sha256": "e0f858315d9a687f46d6f92a7c6f2f58d4e6fa3a9e9b1ac3c1c652509b24f114"
+        },
+        {
+          "path": "references/agora-writing-runtime.md",
+          "sha256": "5b4061d22554263143543f4b6bcd2cbb756b23309e1222a9d609c6fd92af1822"
+        },
+        {
+          "path": "references/human-voice-editing-reference.md",
+          "sha256": "afc04c1f1f6fda707199d855ef74cd937c566eaa383a84ad3b09eea620223270"
+        },
+        {
+          "path": "scripts/publication-audit.mjs",
+          "sha256": "ceb133a707838fe5538eaa727189cdcf28e6395dacb5f8c139d670dbb83c8884"
+        }
+      ],
+      "sha256": "8f2989d656a1686d8ec0290194df4735c212fa219c7a1e335dcf0f57d946d2b9"
+    },
+    "candidate_outputs": {
+      "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+      "root": "generation-a-outputs",
+      "file_count": 5,
+      "files": [
+        {
+          "path": "first-party-article.md",
+          "sha256": "a888ad355adabd0d16733af35d45fd0a6d5540454e69e24a43015c8ee9024644"
+        },
+        {
+          "path": "plain-word-choice.md",
+          "sha256": "0e8843e75b3d597c4558eaaf21efc1f86fb28f94776c9f6ae63731e11ab83ae1"
+        },
+        {
+          "path": "sparse-brief-article.md",
+          "sha256": "9bfacfb586116a2066607154669f3e6d601ed4c08bb857480b9ce5d222963f48"
+        },
+        {
+          "path": "task-voice-article.md",
+          "sha256": "558a262389cfc524b6db82b621e26df7a6be009e69cdfa97588f53f83f9f6672"
+        },
+        {
+          "path": "user-structure-controls.md",
+          "sha256": "c01b3e7fdabb9947ad48f500687a1f632d3aaa8a5451077020dfc4c34adf10fe"
+        }
+      ],
+      "sha256": "87f9d1473ea8b8a9b8976141480b49f21b3d944c01262efa5984b38f9a94f442"
+    },
+    "incumbent_outputs": {
+      "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+      "root": "generation-b-outputs",
+      "file_count": 5,
+      "files": [
+        {
+          "path": "first-party-article.md",
+          "sha256": "9d779a86850872097055eda77881e7822e4d935c9add3062ef7f3617a76ea1d5"
+        },
+        {
+          "path": "plain-word-choice.md",
+          "sha256": "3c1d32749bfb56d7239e9cc6ba5fae3cbb091cb4d49a41d79aad82c3749e6f28"
+        },
+        {
+          "path": "sparse-brief-article.md",
+          "sha256": "2b927992281f5f65669aaea41e45a3aaf1799542475026100ae7baf17cfe996f"
+        },
+        {
+          "path": "task-voice-article.md",
+          "sha256": "8f381f471a4a396b33ce2217a49f81799e1d0e9b688409b59c1052321f0a202e"
+        },
+        {
+          "path": "user-structure-controls.md",
+          "sha256": "3e88d7f342c43e9c612d28330dcf5c28a662f858c928cc87b9a7917f0479e95b"
+        }
+      ],
+      "sha256": "fae07e5aa98f4a9fe44603eb4a48a1a554d88f024e9a819cbb77e5aae94a9c99"
+    },
+    "generation_logs": {
+      "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+      "root": "generation-logs",
+      "file_count": 10,
+      "files": [
+        {
+          "path": "generation-a-first-party-article.json",
+          "sha256": "7281fdbb235c2c0e4639016b61bb59f2b402858f7af079e5bc9dcecd5117da29"
+        },
+        {
+          "path": "generation-a-plain-word-choice.json",
+          "sha256": "6925989fe45ec7596e54ebed19859c4295d543a06b6f321d91f04334ec3af495"
+        },
+        {
+          "path": "generation-a-sparse-brief-article.json",
+          "sha256": "5f5051b7fbab7f312b990dad3a94c06895c30ceb779978b8060d46bc31df3108"
+        },
+        {
+          "path": "generation-a-task-voice-article.json",
+          "sha256": "f279960e85334e4cb02330284ea3588573075e7c538a0b80c03e144cf2bc93ef"
+        },
+        {
+          "path": "generation-a-user-structure-controls.json",
+          "sha256": "086bfa9b286143a8ebb0cf764d4345f24b77fdbe9a06b5b8173e21da7cbf1877"
+        },
+        {
+          "path": "generation-b-first-party-article.json",
+          "sha256": "d0778c268ca8688853c82a661d95f329f54a8875be81edf5b9d9cb8fe03f2bb2"
+        },
+        {
+          "path": "generation-b-plain-word-choice.json",
+          "sha256": "7e2ed5be7d15f7ae5d3320a9a589599360835573d1272de4363e094737cff09e"
+        },
+        {
+          "path": "generation-b-sparse-brief-article.json",
+          "sha256": "30caaf412ba9ca07b73355b20a0034dc156d72a6c59e3a5874561d9d729cf0b7"
+        },
+        {
+          "path": "generation-b-task-voice-article.json",
+          "sha256": "38797650f6f654dd86ad5bfe457b68905b9d16fe9687c2fc4777dd4aad2660ac"
+        },
+        {
+          "path": "generation-b-user-structure-controls.json",
+          "sha256": "3ae667f98c7ad87779df77252e2e8e975d649b91b9265961e9b191840ea7323f"
+        }
+      ],
+      "sha256": "209167af8153c6d3d5d866416cf7b2055ff071659ff8eb3f47a2a2b5be27ee4c"
+    },
+    "raw_judgments": {
+      "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+      "root": "judgments",
+      "file_count": 12,
+      "files": [
+        {
+          "path": "first-party-article-pass1.json",
+          "sha256": "c9f5b5d90dc4a8b4e65228cccc4ea398d576fc6bac48b40840f7fcd0b033ee02"
+        },
+        {
+          "path": "first-party-article-pass2.json",
+          "sha256": "4b4573546f457214523cab6295b572be7c7929830d00cfbca3219f08ebef1569"
+        },
+        {
+          "path": "plain-word-choice-pass1.json",
+          "sha256": "7509f7909032f475362af2e0a4a5145abf878619d4ea1c7d13838ae3a46efe20"
+        },
+        {
+          "path": "plain-word-choice-pass2.json",
+          "sha256": "51e9cc045063219105301e4ee9090c01c7f2f274b024472d200357d5ee773a2e"
+        },
+        {
+          "path": "sparse-brief-article-pass1.json",
+          "sha256": "f09c2d376911f568160b787a6a116932eb38246ebf8fce7c2131a0c3715035f3"
+        },
+        {
+          "path": "sparse-brief-article-pass2.json",
+          "sha256": "dce4ed965941276e2c95d21c022cc93793e1990af9cd70eafc3d1787d9cb6c99"
+        },
+        {
+          "path": "sparse-brief-article-pass3.json",
+          "sha256": "8d055d4da60544374d4d78b7a0447af7f4397213646720ec825efac21b34afd2"
+        },
+        {
+          "path": "task-voice-article-pass1.json",
+          "sha256": "9d1046ac4fc424c0e7567433e0ab4b366e440f14953cc8edd0da6f8847a57ff9"
+        },
+        {
+          "path": "task-voice-article-pass2.json",
+          "sha256": "42eeb12b264982b1a0e3ad774fa49b504dc235b75729834adb562998aace748f"
+        },
+        {
+          "path": "task-voice-article-pass3.json",
+          "sha256": "28d46bce65d214b768eb25f6b1a86442e52092bdc1cf5981e27ceb39c68cff63"
+        },
+        {
+          "path": "user-structure-controls-pass1.json",
+          "sha256": "0b0ab47dd3e33b56259232bfeea3a7ed822030fefdb92b33851d93ddfb048991"
+        },
+        {
+          "path": "user-structure-controls-pass2.json",
+          "sha256": "c3d27c265bc5378336e617e1e3ffece891554c6ab6eb0b62522b7bf927f0fabc"
+        }
+      ],
+      "sha256": "019a5cf806522b41f407527f6e48240c88396c2b417410bb2042ce35918c42ec"
+    },
+    "judge_logs": {
+      "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+      "root": "judge-logs",
+      "file_count": 12,
+      "files": [
+        {
+          "path": "first-party-article-pass1.json",
+          "sha256": "6bd50dc57bbf0a7152e99ad6e7e5825b707649854218ca4d9fd95a07dba8e93e"
+        },
+        {
+          "path": "first-party-article-pass2.json",
+          "sha256": "21161c18122c41227754acdb0febf7b1e6f6cfa7bac92b16cae06adaf7552eb9"
+        },
+        {
+          "path": "plain-word-choice-pass1.json",
+          "sha256": "732fa599bca587ab34bbb5a31e17ede819f61864bc4b77019e52e962c9fc1375"
+        },
+        {
+          "path": "plain-word-choice-pass2.json",
+          "sha256": "9b117102b754c20867e0c3b8c466437333928c0b68ece5dc2d20a87e9063d6a2"
+        },
+        {
+          "path": "sparse-brief-article-pass1.json",
+          "sha256": "b518bb2a875f8757daf540d4162f7d3b57fba3a742db1c9e2651da30b32d6113"
+        },
+        {
+          "path": "sparse-brief-article-pass2.json",
+          "sha256": "88335d973ea2eb16092867a6765fb9f6946e93eedd206fd612f484458a1cfdb2"
+        },
+        {
+          "path": "sparse-brief-article-pass3.json",
+          "sha256": "c75b3f47d3c48b6aa756895c48b31b8ef771e0416d32c338b08083f22fb08015"
+        },
+        {
+          "path": "task-voice-article-pass1.json",
+          "sha256": "fe0b0f5ce1db85c9dfb3999ef6ecd82c357c989f31e870d332b554230429632d"
+        },
+        {
+          "path": "task-voice-article-pass2.json",
+          "sha256": "8acf84923e80199e89e6cdc58c6c7bd3d729958c00313bb1cf3af0de9a4a45eb"
+        },
+        {
+          "path": "task-voice-article-pass3.json",
+          "sha256": "cbc7354c632cfa7b71731f365abeafe4602caf55e6d834cf5f384babecc5e589"
+        },
+        {
+          "path": "user-structure-controls-pass1.json",
+          "sha256": "822a7748f67ef2b25b2fcef45d50ac14725e9f609f8acda21c0bb0ecee9f6856"
+        },
+        {
+          "path": "user-structure-controls-pass2.json",
+          "sha256": "ef47b16d725acd20d10f6cd522f705d028381716d1cee69cc9f89d3c459fe3b3"
+        }
+      ],
+      "sha256": "b0b6edcb3eb2a2d5494b704c0f9b3b77af9be6d0f5bd936b90a2337027a9fe3b"
+    },
+    "judge_prompts": {
+      "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+      "root": "judge-prompts",
+      "file_count": 12,
+      "files": [
+        {
+          "path": "first-party-article-pass1.md",
+          "sha256": "20b4cbfeb6eb0c1967b88c0c3f63ece65865267827d86fe2f42c0e6241b5216f"
+        },
+        {
+          "path": "first-party-article-pass2.md",
+          "sha256": "3284adb898920e15ecb8737529ef63cba30aac3e3e33156a49a84a42090622cc"
+        },
+        {
+          "path": "plain-word-choice-pass1.md",
+          "sha256": "8e751e7dfa7c0074660faa10f5bba4574199baaf7d7ea9553fb844a819c21bcc"
+        },
+        {
+          "path": "plain-word-choice-pass2.md",
+          "sha256": "caa345db50b6188f24fda7f22f957226d5a158b8bd1d8e9b1b2063683ce05665"
+        },
+        {
+          "path": "sparse-brief-article-pass1.md",
+          "sha256": "235111f39d8f3c1adda76725648c41354924fc46864aef76eb933a4e4e0fbccf"
+        },
+        {
+          "path": "sparse-brief-article-pass2.md",
+          "sha256": "6a7b890a1278624c8c11fadba2b2b7e7ebc732527e177570d1c3a4bce61d64b3"
+        },
+        {
+          "path": "sparse-brief-article-pass3.md",
+          "sha256": "6a7b890a1278624c8c11fadba2b2b7e7ebc732527e177570d1c3a4bce61d64b3"
+        },
+        {
+          "path": "task-voice-article-pass1.md",
+          "sha256": "85e2fe466e9c09a685188765a90064427e84c88cc4956e00d845b9c29b8f6280"
+        },
+        {
+          "path": "task-voice-article-pass2.md",
+          "sha256": "4035e91e0cf0a2ea4d1037c91efeb270fe878be665c542f0fd5475f49a6fdcac"
+        },
+        {
+          "path": "task-voice-article-pass3.md",
+          "sha256": "4035e91e0cf0a2ea4d1037c91efeb270fe878be665c542f0fd5475f49a6fdcac"
+        },
+        {
+          "path": "user-structure-controls-pass1.md",
+          "sha256": "a739aa20beafb7212f783e27f3f939081c01a4b11e1771a925f39f2f01c61ec4"
+        },
+        {
+          "path": "user-structure-controls-pass2.md",
+          "sha256": "2df06c11a101cf1bfa24d7abf4e671009cec5ea1da3f0489f9f24fb98e9eefee"
+        }
+      ],
+      "sha256": "5ea8b9e86417fab423263f1bbf838291c0111334eadb6000a5569de15cfb7ff2"
+    }
+  },
+  "summary": {
+    "pass": true,
+    "case_count": 5,
+    "adjudication_pass_count": 12,
+    "total_candidate_wins": 3,
+    "comparable_candidate_wins": 3,
+    "ties": 0,
+    "incumbent_wins": 2,
+    "candidate_veto_count": 0,
+    "candidate_hard_gate_failure_count": 0,
+    "incumbent_hard_gate_failure_count": 0,
+    "incumbent_invalid_case_count": 0,
+    "comparable_case_count": 5,
+    "incumbent_hard_gate_findings": [],
+    "score_regression_count": 0,
+    "candidate_mean": 4.85,
+    "incumbent_mean": 4.69,
+    "mean_delta": 0.15999999999999925
+  }
+}

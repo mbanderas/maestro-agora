@@ -20,7 +20,7 @@ async function withEvidence(callback) {
     await writeFile(join(root, "generation-logs", "generation-a-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-exec",
-      model: "gpt-5.6-luna",
+      model: "gpt-6-luna",
       fresh_context: true,
       skill_access: true,
       writing_runtime_access: true,
@@ -32,7 +32,7 @@ async function withEvidence(callback) {
     await writeFile(join(root, "generation-logs", "generation-b-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-exec",
-      model: "gpt-5.6-luna",
+      model: "gpt-6-luna",
       fresh_context: true,
       skill_access: true,
       writing_runtime_access: false,
@@ -47,7 +47,7 @@ async function withEvidence(callback) {
       await writeFile(join(root, "judge-logs", `case-one-pass${pass}.json`), JSON.stringify({
         schema_version: 1,
         runtime: "codex-exec",
-        model: "gpt-5.6-luna",
+        model: "gpt-6-luna",
         fresh_context: true,
         skill_access: false,
       }));
@@ -64,12 +64,21 @@ test("complete isolated generation and blind-judge provenance passes", async () 
   });
 });
 
+test("baseline typography remains available for blind judgment while candidate typography fails", async () => {
+  await withEvidence(async (root) => {
+    await writeFile(join(root, "generation-b-outputs", "case-one.md"), "Incumbent\u2019s response\n");
+    assert.deepEqual(await validateEvaluationProvenance({ root, manifest, adjudications }), []);
+    await writeFile(join(root, "generation-a-outputs", "case-one.md"), "Candidate\u2019s response\n");
+    assert.match((await validateEvaluationProvenance({ root, manifest, adjudications })).join("\n"), /candidate output case-one contains banned typography/);
+  });
+});
+
 test("missing human-writing runtime read, banned typography, and judge skill access fail", async () => {
   await withEvidence(async (root) => {
     await writeFile(join(root, "generation-logs", "generation-a-case-one.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-exec",
-      model: "gpt-5.6-luna",
+      model: "gpt-6-luna",
       fresh_context: true,
       skill_access: true,
       writing_runtime_access: false,
@@ -82,7 +91,7 @@ test("missing human-writing runtime read, banned typography, and judge skill acc
     await writeFile(join(root, "judge-logs", "case-one-pass1.json"), JSON.stringify({
       schema_version: 1,
       runtime: "codex-exec",
-      model: "gpt-5.6-luna",
+      model: "gpt-6-luna",
       fresh_context: true,
       skill_access: false,
       path: ".agents/skills/agora/SKILL.md",

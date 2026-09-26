@@ -27,6 +27,11 @@
       "sha256": "384a34882210b9c4788257f9d17f96cd5821ca4ff4ab30c58c44c5872a898a5d"
     },
     {
+      "path": "evals/blind/v1.11.0",
+      "file_count": 8,
+      "sha256": "dad48b9875baed72c9eff2aa3f0c3e39c88f94ca899d5f850bd5bd0fd77fb24b"
+    },
+    {
       "path": "evals/regression/conversion-context-v1.7.0-confirmatory-attempt1",
       "file_count": 17,
       "sha256": "d274111288051252d15bf9cddf6ec249329a06acd4892f93222479f82b505f88"

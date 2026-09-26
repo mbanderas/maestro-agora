@@ -1,6 +1,6 @@
 {
   "name": "@maestroagora/agora",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Install Maestro: Agora for persuasive writing, technical explanation, case studies, investment communication, and publication artifact review.",
   "type": "module",
   "bin": {
@@ -37,7 +37,7 @@
     "prepublishOnly": "npm run release:check",
     "eval:release": "node scripts/release-evidence-check.mjs",
     "release:check": "npm run check && npm run eval:release",
-    "test": "node --test tests/behavior-contract.test.mjs tests/human-writing-contract.test.mjs tests/style-audit.test.mjs tests/task-voice-sketch.test.mjs tests/release-contract.test.mjs tests/hero-contract.test.mjs tests/conversion-context-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/invest-contract.test.mjs tests/publication-audit.test.mjs tests/blind-summary.test.mjs tests/blind-judge-prompt.test.mjs tests/blind-judge-materialize.test.mjs tests/blind-judgment-ingest.test.mjs tests/adjudication-reducer.test.mjs tests/eval-provenance-check.test.mjs tests/release-evidence-check.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
+    "test": "node --test tests/article-generation-contract.test.mjs tests/article-typography-check.test.mjs tests/behavior-contract.test.mjs tests/human-writing-contract.test.mjs tests/style-audit.test.mjs tests/task-voice-sketch.test.mjs tests/release-contract.test.mjs tests/hero-contract.test.mjs tests/conversion-context-contract.test.mjs tests/science-contract.test.mjs tests/case-study-contract.test.mjs tests/invest-contract.test.mjs tests/publication-audit.test.mjs tests/blind-summary.test.mjs tests/blind-judge-prompt.test.mjs tests/blind-judge-materialize.test.mjs tests/blind-judgment-ingest.test.mjs tests/adjudication-reducer.test.mjs tests/eval-provenance-check.test.mjs tests/release-evidence-check.test.mjs tests/release-hygiene.test.mjs tests/install.test.mjs tests/voice-measure.test.mjs",
     "validate": "node scripts/validate.mjs"
   },
   "engines": {

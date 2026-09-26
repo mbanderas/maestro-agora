@@ -7,6 +7,7 @@ import test from "node:test";
 import { promisify } from "node:util";
 
 import {
+  CURRENT_RELEASE_CONTRACT,
   deriveReleaseEvidenceSummary,
   validateExternalArtifacts,
   validateEvidenceExecution,
@@ -54,7 +55,7 @@ const custody = (id, pass) => ({
   judge_run: {
     schema_version: 1,
     runtime: "codex-exec",
-    model: "gpt-5.6-luna",
+    model: CURRENT_RELEASE_CONTRACT.judge_model,
     fresh_context: true,
     skill_access: false,
   },
@@ -63,17 +64,17 @@ const custody = (id, pass) => ({
 test("execution evidence freezes model, isolation, baseline, and order seed", () => {
   const evidence = {
     schema_version: 1,
-    skill_version: "1.10.0",
+    skill_version: CURRENT_RELEASE_CONTRACT.skill_version,
     status: "passed",
     commits: {
       candidate_freeze: candidateFreeze,
-      baseline,
-      baseline_ref: "main@08790a8",
+      baseline: CURRENT_RELEASE_CONTRACT.baseline_commit,
+      baseline_ref: CURRENT_RELEASE_CONTRACT.baseline_ref,
       judge_protocol: commit,
     },
     execution: {
-      generator_model: "gpt-5.6-luna",
-      judge_model: "gpt-5.6-luna",
+      generator_model: CURRENT_RELEASE_CONTRACT.generator_model,
+      judge_model: CURRENT_RELEASE_CONTRACT.judge_model,
       generator_runtime: "codex-exec",
       judge_runtime: "codex-exec",
       generator_reasoning_effort: "max",

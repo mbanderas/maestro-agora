@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "prospective",
+  "purpose": "Check article generation against first-party specificity, bounded reasoning, user instructions, voice, and factual fidelity.",
+  "generation_contract": {
+    "fresh_context_per_case": true,
+    "pass_to_model": ["prompt_file"],
+    "never_pass_to_model": ["manifest.json", "acceptance", "prohibited_content"]
+  },
+  "cases": [
+    {
+      "id": "first-party-article",
+      "prompt_file": "prompts/first-party-article.md",
+      "acceptance": [
+        "Uses the supplied March migration, 76 duplicate tickets, two support reps, 11 hours, and the decision to pause the next import where relevant.",
+        "Develops the supplied lesson from the event rather than replacing it with generic advice.",
+        "Keeps the team's account and the measured ticket count distinct from any broader outcome."
+      ],
+      "prohibited_content": ["Invented customer", "Invented result", "Invented statistic", "Invented quotation", "Invented personal story"]
+    },
+    {
+      "id": "sparse-brief-article",
+      "prompt_file": "prompts/sparse-brief-article.md",
+      "acceptance": [
+        "Builds a useful article with a clear progression despite the absence of first-party examples or research.",
+        "Uses bounded reasoning and concrete process language without asserting an event occurred.",
+        "Avoids a stock three-reasons structure and repetitive recap."
+      ],
+      "prohibited_content": ["Invented company", "Invented customer", "Invented experience", "Invented study", "Invented statistic", "Invented quotation"]
+    },
+    {
+      "id": "user-structure-controls",
+      "prompt_file": "prompts/user-structure-controls.md",
+      "acceptance": [
+        "Follows the requested three headings in the requested order, despite the general preference for flexible article structure.",
+        "Preserves the user's specified position and exact closing question.",
+        "Uses only the supplied product and workflow facts."
+      ],
+      "prohibited_content": ["Changed position", "Omitted closing question", "Invented outcome", "Invented customer"]
+    },
+    {
+      "id": "task-voice-article",
+      "prompt_file": "prompts/task-voice-article.md",
+      "acceptance": [
+        "Uses the requested calm, skeptical, direct style and avoids rhetorical questions.",
+        "Uses the article facts about the intake pilot without importing facts from the voice samples.",
+        "Preserves the pilot result as a team observation, not a measured causal effect."
+      ],
+      "prohibited_content": ["Copied sample anecdote", "Invented personal opinion", "Invented statistic", "Invented customer", "Invented quote"]
+    },
+    {
+      "id": "plain-word-choice",
+      "prompt_file": "prompts/plain-word-choice.md",
+      "acceptance": [
+        "Explains the supplied return-process change in words a retail manager would use.",
+        "Names the order-number problem and the two process changes instead of narrating evidence, claims, qualifications, or a review method.",
+        "Preserves that the team has not measured whether the change reduced repeat contacts without turning the article into a cautionary report."
+      ],
+      "prohibited_content": ["Legalistic source-review language", "Invented reduction in repeat contacts", "Invented customer quote", "Invented statistic", "Repeated caveats"]
+    }
+  ]
+}
