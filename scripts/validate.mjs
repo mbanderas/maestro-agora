@@ -28,6 +28,7 @@ const REQUIRED_SKILL_FILES = [
   "references/agora-writing-runtime.md",
   "references/human-voice-editing-reference.md",
   "scripts/publication-audit.mjs",
+  "scripts/article-typography-check.mjs",
 ].sort((a, b) => a.localeCompare(b));
 const errors = [];
 
@@ -703,6 +704,7 @@ async function main() {
     "skills/agora/references/agora-case-studies.md",
     "skills/agora/references/agora-voice.md",
     "skills/agora/scripts/publication-audit.mjs",
+    "skills/agora/scripts/article-typography-check.mjs",
   ]) {
     const content = await readFile(join(ROOT, file), "utf8");
     check(!/[\u2014\u2018\u2019\u201c\u201d]/.test(content), `${file} contains banned typography`);

@@ -128,6 +128,8 @@ In Codex, `$agora` and the skills picker can also select the installed skill. Ot
 
 For articles, Agora starts with your instructions, audience, voice, and supplied material. It uses first-party observations, customer examples, numbers, decisions, and constraints to plan the argument before drafting. Sections receive space according to what the material can support. A requested outline or style still controls the result. Sparse briefs produce useful explanations without invented customer stories, personal experiences, opinions, or statistics. The final pass removes generic repetition and internal words such as `evidence`, `claim`, and `qualification` when ordinary readers do not need them. Agora states what happened or who said it in everyday language and preserves your facts and intended message. This happens in the existing writing flow and returns a ready-to-use draft.
 
+When Node is available, Agora can use its shipped article typography check during the final writing pass. It reports character positions for the writer to correct and does not score, classify, or rewrite the article.
+
 ## Human-voice editing standard
 
 Agora ships the attached source unchanged as `human-voice-editing-reference.md`. It is the single canonical authority for banned vocabulary, connectives, templates, significance tails, punctuation, prompt leakage, structural tells, author samples, meaning preservation, genre fit, detector limits, and privacy cautions.
