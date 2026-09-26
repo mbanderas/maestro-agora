@@ -37,7 +37,7 @@ test("first-party material informs article structure without changing its factua
   assert.match(skill, /customer examples, numbers, events, decisions, failures, lessons, opinions, external sources, and voice samples/);
   assert.match(skill, /Keep straight who said what, what was counted, and what remains unknown/);
   assert.match(skill, /Let the strength and importance of the material determine section order and length/);
-  assert.match(skill, /do not turn a customer report into a measured result or a possibility into an event/);
+  assert.match(skill, /a customer report into a measured result, or a possibility into an event/);
   assert.match(marketingRuntime, /Put the user's example, count, or decision beside the point it explains/);
   assert.match(writingRuntime, /let supplied observations, examples, decisions, and constraints determine where detail and space go/);
 });
@@ -51,9 +51,12 @@ test("sparse briefs cannot trigger invented experience or supporting facts", () 
 
 test("user instructions and active voice remain ahead of article preferences", () => {
   assert.match(skill, /Follow an outline, section order, or format the user explicitly requests/);
+  assert.match(skill, /treat the numbers as list markers unless the user asks for numbered headings/);
+  assert.match(skill, /Do not turn a supplied recommendation into an unattributed command/);
   assert.match(skill, /Trace the user's instructions, first-party material, required facts, length, structure, and active voice through the final article/);
   assert.match(skill, /A voice sample supplies style habits, not article facts/);
   assert.match(marketingRuntime, /Follow any structure, stance, or length the user requests/);
+  assert.match(marketingRuntime, /Keep a supplied recommendation attributed to its speaker/);
   assert.match(marketingRuntime, /Preserve the requested voice, format, and every material fact while revising/);
 });
 
@@ -87,7 +90,8 @@ test("prospective cases cover all requested generation behaviors", async () => {
   const sparse = await read("evals/prospective/article-generation-v1.0.0/prompts/sparse-brief-article.md");
   assert.match(sparse, /No company facts, customer examples, research, outcomes, or numbers are supplied/);
   const userStructure = await read("evals/prospective/article-generation-v1.0.0/prompts/user-structure-controls.md");
-  assert.match(userStructure, /Use exactly these three section headings/);
+  assert.match(userStructure, /Use exactly these three section heading texts/);
+  assert.match(userStructure, /numbers indicate order and are not part of the headings/);
   assert.match(userStructure, /End with this exact question/);
   const voice = await read("evals/prospective/article-generation-v1.0.0/prompts/task-voice-article.md");
   assert.match(voice, /samples below show style only/);

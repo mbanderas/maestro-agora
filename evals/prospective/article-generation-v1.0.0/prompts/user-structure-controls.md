@@ -1,6 +1,6 @@
 /agora sell Write a short article for facilities managers considering our maintenance request product. Return only the article.
 
-Use exactly these three section headings, in this order:
+Use exactly these three section heading texts, in this order. The numbers indicate order and are not part of the headings:
 1. What staff submit
 2. What the manager sees
 3. What remains a decision
