@@ -1,4 +1,4 @@
-/agora inform Write a 220 to 300 word short article for team leads about what an intake pilot can and cannot show. Return only the article.
+/agora inform Write a short article with a title and several developed paragraphs for team leads about what an intake pilot can and cannot show. Return only the article.
 
 Style: calm, skeptical, direct. Use short paragraphs, plain verbs, and no rhetorical questions. The two samples below show style only. Do not transfer their facts, examples, people, or opinions into the article.
 

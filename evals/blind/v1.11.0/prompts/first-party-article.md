@@ -1,4 +1,4 @@
-/agora inform Write a 450 to 550 word article for operations leaders on why data cleanup belongs in a software migration plan. Return only the article.
+/agora inform Write a developed article with a title and several paragraphs for operations leaders on why data cleanup belongs in a software migration plan. Return only the article.
 
 First-party account from our team:
 - In March, we migrated our support inbox to a new ticket system.

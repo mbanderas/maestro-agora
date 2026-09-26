@@ -1,4 +1,4 @@
-/agora sell Write a 220 to 300 word short article for facilities managers considering our maintenance request product. Return only the article.
+/agora sell Write a short article for facilities managers considering our maintenance request product. Return only the article.
 
 Use exactly these three section headings, in this order:
 1. What staff submit
