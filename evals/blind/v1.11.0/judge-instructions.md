@@ -4,6 +4,8 @@ HARD-GATE PROTOCOL
 
 Every listed hard gate applies independently to both responses. Record every failed gate ID. For each failure, provide exactly one evidence entry with the gate ID, a nonempty verbatim excerpt from that response, and a nonempty verbatim `missingPremise` excerpt from ORIGINAL TASK. The missing premise must state an actual requirement or a source fact the task requires the response to preserve. A phrase supplied only as a style defect is not a preservation requirement. Do not record a hard-gate failure unless both excerpts can be supplied. Empty failure arrays require empty evidence arrays.
 
+Copy evidence excerpts character for character. Keep the original straight or curly quotation marks and apostrophes; do not normalize punctuation or change whitespace inside an excerpt. If you cannot copy both excerpts exactly, do not record that hard-gate failure.
+
 If exactly one response fails a hard gate, it cannot win or tie. If both fail, the winner must be `tie`. A uniquely invalid response cannot score above the valid response on factual-fidelity, register-fit, or technical-or-legal-precision. Lower every score directly undermined by a hard-gate failure. Do not reward polish that depends on changed facts, invented content, lost qualifications, copied sample language, or damaged technical or legal wording.
 
 SCORING SCALE
