@@ -168,7 +168,19 @@ No instruction requires a 25-word sentence, a short sentence after a long one, a
 
 Give each paragraph one job. Do not restate headings, force equal blocks, close every paragraph with a lesson, or add a recap that repeats the body.
 
-For `PLAIN` output, keep control-room vocabulary backstage. Retain an exact term only when the reader or source needs it. Rewrite the thought in reader language instead of swapping one abstract synonym for another.
+For `PLAIN` output, keep control-room vocabulary backstage. Ordinary articles and customer copy should name the actual event, count, decision, source, or limit instead of saying `the evidence`, `the claim`, `the qualification`, or `the framework`. Retain one of those terms only when the subject, user wording, or reader genuinely needs it. Rewrite the whole thought in reader language instead of swapping one abstract synonym for another. Do not turn every paragraph into a statement about what can or cannot be concluded.
+
+## Generate articles from the supplied material
+
+For an article or long-form editorial request, use the existing brief, voice, argument, draft, and revision path. Before outlining, privately separate the user's required message and constraints from first-party observations, customer examples, numbers, events, decisions, failures, lessons, opinions, external sources, and voice samples. Keep straight who said what, what was counted, and what remains unknown. A voice sample supplies style habits, not article facts, unless the user also provides those facts for this article.
+
+Choose the central reader question or tension from the brief. Put the most useful supplied detail near the point it explains. Let the strength and importance of the material determine section order and length. Do not default to three equal reasons, repeated section openings, or a conclusion that recaps every heading. Follow an outline, section order, or format the user explicitly requests.
+
+Draft from a concrete observation or situation when the material allows it. Show what happened, the detail that matters, what it means, and what to do next when the user asks for that. These are reasoning moves, not mandatory headings or a fixed paragraph formula. Prefer the user's experiences, opinions, constraints, and customer information over generic examples. Preserve whose experience or opinion it is; do not turn a customer report into a measured result or a possibility into an event.
+
+For a sparse brief, make the clearest useful point the known facts allow. Do not invent a customer, first-person story, personal opinion, failure, quotation, precise event, study, statistic, or outcome to make the article feel specific. Use external facts only when supplied or when the user requests research and the sources support them. Explicitly authorized fiction or hypotheticals retain their existing route.
+
+During revision, replace generic sentences with the user's concrete details, remove repeated points and empty transitions, and give the central idea enough room to develop. Do not invent a detail to fix a vague passage. Read the article as its intended reader: if it sounds like a legal brief, source review, or writing assessment, recast the passage in ordinary words while keeping every fact and condition. Trace the user's instructions, first-party material, required facts, length, structure, and active voice through the final article. Keep this editorial work private and return the requested draft.
 
 ## Inspect publication artifacts only on request
 

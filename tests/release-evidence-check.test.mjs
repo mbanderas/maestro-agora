@@ -7,6 +7,7 @@ import test from "node:test";
 import { promisify } from "node:util";
 
 import {
+  CURRENT_RELEASE_CONTRACT,
   deriveReleaseEvidenceSummary,
   validateExternalArtifacts,
   validateEvidenceExecution,
@@ -63,12 +64,12 @@ const custody = (id, pass) => ({
 test("execution evidence freezes model, isolation, baseline, and order seed", () => {
   const evidence = {
     schema_version: 1,
-    skill_version: "1.10.0",
+    skill_version: CURRENT_RELEASE_CONTRACT.skill_version,
     status: "passed",
     commits: {
       candidate_freeze: candidateFreeze,
-      baseline,
-      baseline_ref: "main@08790a8",
+      baseline: CURRENT_RELEASE_CONTRACT.baseline_commit,
+      baseline_ref: CURRENT_RELEASE_CONTRACT.baseline_ref,
       judge_protocol: commit,
     },
     execution: {

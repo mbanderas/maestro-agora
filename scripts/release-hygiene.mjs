@@ -22,6 +22,7 @@ const ALLOWED_TOP_LEVEL = new Set([
   "PRIVACY.md",
   "README.md",
   "assets",
+  "docs",
   "evals",
   "package-lock.json",
   "package.json",

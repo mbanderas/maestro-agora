@@ -78,9 +78,9 @@ scope
 operational
 ```
 
-Keep one only when the reader needs the exact term. Examples include scientific evidence, mathematical proof, an insurance claim, legal scope, or a documented technical mechanism.
+In ordinary articles and customer copy, name the actual event, number, person, decision, or limit instead of calling it `evidence`, a `claim`, or a `qualification`. Keep an internal term only when the reader needs its exact meaning, as with scientific evidence, mathematical proof, an insurance claim, legal scope, or a documented technical mechanism.
 
-Do not replace these words mechanically. Rewrite the idea in reader language.
+Do not replace these words mechanically. Rewrite the thought in reader language. Do not narrate a private source check or repeat what cannot be concluded unless that limit changes the reader's understanding.
 
 ## Use author samples before drafting
 
@@ -132,7 +132,7 @@ No sentence must be long for rhythm. Do not alternate long and short sentences m
 
 Give each paragraph one job.
 
-Start with the information. Do not restate the heading. Do not end every paragraph with a lesson, benefit, or summary. Let paragraph length follow the idea.
+Start with the information. Do not restate the heading. Do not end every paragraph with a lesson, benefit, or summary. Let paragraph length follow the idea. For articles, let supplied observations, examples, decisions, and constraints determine where detail and space go. Do not equalize section lengths or add a three-part outline by default. Never invent first-person experience, customer stories, opinions, statistics, or events to make a sparse brief feel concrete.
 
 Use a conclusion only when the genre needs a judgment, recommendation, request, decision, or next step. Delete a recap that merely repeats the body.
 
@@ -242,8 +242,8 @@ The review may use formal terms. Any rewritten public copy still follows its own
 
 1. Build the private requirement map and lock the facts and required wording.
 2. Select audience, genre, register, and voice.
-3. Make the smallest useful outline.
-4. Draft in plain language.
+3. Make the smallest useful outline; for articles, organize around the reader's question and the strongest supplied material.
+4. Draft in plain language; place supporting detail near the observation or interpretation it explains.
 5. Rewrite the whole draft for first-read clarity.
 6. Apply the canonical bans.
 7. Run the added pattern and control-word scan.

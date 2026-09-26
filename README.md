@@ -124,6 +124,10 @@ Add modifiers when the subject or asset needs them:
 
 In Codex, `$agora` and the skills picker can also select the installed skill. Other hosts may expose skills through a picker or mention syntax. Asking the agent to use the Agora skill remains portable.
 
+## Article generation
+
+For articles, Agora starts with your instructions, audience, voice, and supplied material. It uses first-party observations, customer examples, numbers, decisions, and constraints to plan the argument before drafting. Sections receive space according to what the material can support. A requested outline or style still controls the result. Sparse briefs produce useful explanations without invented customer stories, personal experiences, opinions, or statistics. The final pass removes generic repetition and internal words such as `evidence`, `claim`, and `qualification` when ordinary readers do not need them. Agora states what happened or who said it in everyday language and preserves your facts and intended message. This happens in the existing writing flow and returns a ready-to-use draft.
+
 ## Human-voice editing standard
 
 Agora ships the attached source unchanged as `human-voice-editing-reference.md`. It is the single canonical authority for banned vocabulary, connectives, templates, significance tails, punctuation, prompt leakage, structural tells, author samples, meaning preservation, genre fit, detector limits, and privacy cautions.
@@ -410,7 +414,7 @@ The public repository and npm package must not contain raw or corrected transcri
 
 The versioned directories under `evals/blind/` are public pairwise-release artifacts, not permanently secret holdouts. `v1.2.0`, `v1.4.0`, `v1.5.0`, and `v1.7.0` are frozen by exact tree hashes in `evals/releases/locks.json`; validation fails on additions, deletions, or edits.
 
-`evals/prospective/human-writing-v1.0.0/` is the development source for the human-writing partition. The frozen current manifest lives under `evals/blind/` after prospective generation and blind pairwise review. Earlier fixture sets remain frozen for regression analysis and historical reproducibility.
+`evals/prospective/article-generation-v1.0.0/` contains the article-generation development cases for this release. The frozen current manifest lives under `evals/blind/` after prospective generation and blind pairwise review. Earlier fixture sets remain frozen for regression analysis and historical reproducibility.
 
 Deterministic tests verify instruction structure, routing contracts, static invariants, and evaluation-record shape. Versioned blind-evaluation tooling remains available for repeatable development analysis without turning model preference into a universal conversion claim.
 
@@ -430,6 +434,7 @@ The mandatory release gate checks skill structure, routing contracts, factual an
 
 | Version | What changed |
 |---|---|
+| 1.11.0 | Improved Human Writing Layer: articles use supplied first-party material in planning, outlining, drafting, and revision; plain-language passes remove internal review vocabulary from ordinary copy while preserving the user's facts, structure, and voice. |
 | 1.10.0 | Makes plain professional writing the default, separates compact runtime rules from maintainer research, ships the exact canonical human-voice source, adds task-only voice sketches and a deterministic style audit, routes technical language by job and audience, removes forced rhythm targets, and binds release checks to current human-writing evidence. |
 | 1.9.0 | Makes first-read clarity automatic. Agora now drafts for factual completeness, rewrites for literal clarity, preserves qualifiers across short passages, names concrete actors and observable results, and rejects vague referents, hidden metaphors, noun stacks, and revisions that only rename ambiguity. Adds rendered label-clearance guidance for technical diagrams. |
 | 1.8.0 | Adds opt-in publication privacy and provenance review plus a packaged read-only audit CLI. Reports configured hidden Unicode, document and image metadata, Office review material, and C2PA carrier or validation signals without changing source files. Redacts sensitive values and paths by default, preserves unknown coverage, and makes no watermark-removal or authorship claim. |

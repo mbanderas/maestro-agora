@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "frozen-release",
+  "skill_version": "1.11.0",
+  "generation_contract": {
+    "pass_to_model": ["prompt_file"],
+    "never_pass_to_model": ["manifest.json", "case metadata", "rubric", "release gates", "incumbent label"],
+    "fresh_context_per_case": true,
+    "isolated_skill_copy": true
+  },
+  "adjudication": {
+    "method": "blind-pairwise",
+    "randomize_order": true,
+    "swap_order": true,
+    "escalate_on_order_flip": true,
+    "report_hard_gate_failures": true,
+    "tie_policy": "Use a tie only when both responses are eligible and neither has a material advantage on naturalness, ease, register, fidelity, or precision."
+  },
+  "rubric": {
+    "scale": "1-5",
+    "dimensions": ["factual-fidelity", "first-read-ease", "sentence-ease", "natural-voice", "register-fit", "author-sample-fit", "control-room-vocabulary-containment", "nonformulaic-structure", "concision-without-loss", "technical-or-legal-precision"],
+    "domain_dimensions": {}
+  },
+  "hard_gate_definitions": {
+    "factual-fidelity": "The response preserves every supplied fact, name, figure, date, condition, certainty level, attribution, and required term.",
+    "no-invention": "The response invents no result, permission, route, quote, motive, anecdote, opinion, product behavior, or supporting fact.",
+    "ready-copy-only": "The response returns only the requested article, with no rationale, audit, process note, change log, confidence note, recap, or invitation to continue.",
+    "plain-register-containment": "For an ordinary audience, the response does not leak internal review, research, legal, or system vocabulary unless the reader needs the exact term.",
+    "canonical-house-style": "Generated copy contains no canonical banned typography, vocabulary, connective, stock template, significance tail, or prompt leakage without an explicit immutable-text exception.",
+    "author-sample-no-copy": "The response follows observable sample habits without copying a distinctive phrase, fact, example, metaphor, slogan, or anecdote.",
+    "user-instructions": "The response follows the user's exact structure, position, ending, and style requirements."
+  },
+  "release_gates": {
+    "governance_default": true,
+    "all_cases_pass_absolute_vetoes": true,
+    "legacy_material_regressions_allowed": 0,
+    "article_generation_case_count": 5,
+    "article_generation_minimum_comparable_cases": 4,
+    "article_generation_minimum_win_rate": 0.2,
+    "article_generation_minimum_style_mean_delta": 0,
+    "article_generation_minimum_protected_mean_delta": 0,
+    "critical_contract_failures_allowed": 0,
+    "domain_mean_noninferiority_margin": 0
+  },
+  "cases": [
+    {"id":"first-party-article","prompt_file":"prompts/first-party-article.md","archetype":"article with first-party event and decisions","primary_outcome":"Uses the supplied migration details to explain the lesson without invented results.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"sparse-brief-article","prompt_file":"prompts/sparse-brief-article.md","archetype":"article from sparse brief","primary_outcome":"Useful, deliberate structure without invented supporting facts.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]},
+    {"id":"user-structure-controls","prompt_file":"prompts/user-structure-controls.md","archetype":"user-selected article structure","primary_outcome":"Keeps the requested sections, position, and ending.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style","user-instructions"]},
+    {"id":"task-voice-article","prompt_file":"prompts/task-voice-article.md","archetype":"article with task voice samples","primary_outcome":"Uses sample style without importing facts or overstating the pilot.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style","author-sample-no-copy","user-instructions"]},
+    {"id":"plain-word-choice","prompt_file":"prompts/plain-word-choice.md","archetype":"plain article word choice","primary_outcome":"Uses ordinary retail language instead of internal review terms.","review_mode":false,"critical":true,"domain_dimensions":[],"hard_gates":["factual-fidelity","no-invention","ready-copy-only","plain-register-containment","canonical-house-style"]}
+  ]
+}

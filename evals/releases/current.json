@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "skill_version": "1.10.0",
-  "blind_manifest": "evals/blind/v1.10.0/manifest.json",
-  "release_plan": "evals/releases/v1.10.0.gates.json",
-  "adjudications_schema": "evals/releases/v1.10.0.adjudications.schema.json",
-  "records_schema": "evals/releases/v1.10.0.records.schema.json",
-  "adjudications": "evals/releases/v1.10.0.adjudications.json",
-  "records": "evals/releases/v1.10.0.records.json",
-  "evidence": "evals/releases/v1.10.0.evidence.json",
-  "baseline_ref": "main@08790a8",
-  "baseline_commit": "08790a85900f218ff3347b2422559775f49959c8",
+  "skill_version": "1.11.0",
+  "blind_manifest": "evals/blind/v1.11.0/manifest.json",
+  "release_plan": "evals/releases/v1.11.0.gates.json",
+  "adjudications_schema": "evals/releases/v1.11.0.adjudications.schema.json",
+  "records_schema": "evals/releases/v1.11.0.records.schema.json",
+  "adjudications": "evals/releases/v1.11.0.adjudications.json",
+  "records": "evals/releases/v1.11.0.records.json",
+  "evidence": "evals/releases/v1.11.0.evidence.json",
+  "baseline_ref": "v1.10.0",
+  "baseline_commit": "f169fdc0b651138c0428dae7277322c6005ff7b5",
   "generator_model": "gpt-5.6-luna",
   "judge_model": "gpt-5.6-luna",
   "generator_runtime": "codex-exec",
@@ -17,6 +17,6 @@
   "generator_reasoning_effort": "max",
   "judge_reasoning_effort": "max",
   "required_partitions": [
-    "human-writing"
+    "article-generation"
   ]
 }

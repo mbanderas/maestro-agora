@@ -25,9 +25,9 @@ test("current release contract matches package, frozen manifest, schemas, and ga
   assert.equal(manifest.status, "frozen-release");
   assert.equal(manifest.skill_version, packageJson.version);
   assert.equal(gates.skill_version, packageJson.version);
-  assert.equal(manifest.cases.length, 24);
-  assert.ok(gates.partitions.some((partition) => partition.id === "human-writing"));
-  assert.deepEqual(current.required_partitions, ["human-writing"]);
+  assert.equal(manifest.cases.length, 5);
+  assert.ok(gates.partitions.some((partition) => partition.id === "article-generation"));
+  assert.deepEqual(current.required_partitions, ["article-generation"]);
   assert.equal(current.generator_model, "gpt-5.6-luna");
   assert.equal(current.judge_model, "gpt-5.6-luna");
   assert.equal(current.generator_reasoning_effort, "max");
