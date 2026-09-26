@@ -47,6 +47,7 @@ test("first-party material informs article structure without changing its factua
 test("sparse briefs cannot trigger invented experience or supporting facts", () => {
   assert.match(skill, /For a sparse brief, make the clearest useful point the known facts allow/);
   assert.match(skill, /Do not invent a customer, first-person story, personal opinion, failure, quotation, precise event, study, statistic, or outcome/);
+  assert.match(skill, /carry any supplied unmeasured outcome or negative limit into visible copy once/);
   assert.match(skill, /Use external facts only when supplied or when the user requests research and the sources support them/);
   assert.match(marketingRuntime, /without manufacturing a case, study, statistic, personal experience, or opinion/);
 });
