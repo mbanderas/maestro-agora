@@ -1,3 +1,3 @@
-/agora inform Write a 400 to 500 word article for managers of small service teams about choosing what to document in a customer onboarding process. Return only the article.
+/agora inform Write a 250 to 330 word short article for managers of small service teams about choosing what to document in a customer onboarding process. Return only the article.
 
 The article should help a manager distinguish information needed for the next handoff from information collected out of habit. Use clear reasoning and a deliberate structure. No company facts, customer examples, research, outcomes, or numbers are supplied. Do not invent any of them. Do not write as if you personally ran an onboarding project. Do not use a "three reasons" outline or repeat the introduction in the conclusion.

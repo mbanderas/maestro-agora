@@ -29,7 +29,7 @@
     {
       "path": "evals/blind/v1.11.0",
       "file_count": 8,
-      "sha256": "85082069ca1465da4a2aaf8ba45be4e900667927d4d21c72b650d4456b9d7f32"
+      "sha256": "52e084e3d5e5315011870a9533e73dd9311846d0aeb0f599518a7588e24a2de2"
     },
     {
       "path": "evals/regression/conversion-context-v1.7.0-confirmatory-attempt1",
