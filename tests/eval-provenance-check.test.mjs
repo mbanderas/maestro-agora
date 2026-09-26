@@ -64,6 +64,15 @@ test("complete isolated generation and blind-judge provenance passes", async () 
   });
 });
 
+test("baseline typography remains available for blind judgment while candidate typography fails", async () => {
+  await withEvidence(async (root) => {
+    await writeFile(join(root, "generation-b-outputs", "case-one.md"), "Incumbent\u2019s response\n");
+    assert.deepEqual(await validateEvaluationProvenance({ root, manifest, adjudications }), []);
+    await writeFile(join(root, "generation-a-outputs", "case-one.md"), "Candidate\u2019s response\n");
+    assert.match((await validateEvaluationProvenance({ root, manifest, adjudications })).join("\n"), /candidate output case-one contains banned typography/);
+  });
+});
+
 test("missing human-writing runtime read, banned typography, and judge skill access fail", async () => {
   await withEvidence(async (root) => {
     await writeFile(join(root, "generation-logs", "generation-a-case-one.json"), JSON.stringify({

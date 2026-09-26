@@ -61,7 +61,9 @@ const validateGenerationSide = async ({ root, ids, side, manifest, requireHumanR
       readFile(join(logDirectory, `${layout.logPrefix}-${id}.json`), "utf8").catch(() => ""),
     ]);
     if (!output.trim()) errors.push(`${side} output ${id} is empty`);
-    if (BANNED_TYPOGRAPHY.test(output)) errors.push(`${side} output ${id} contains banned typography`);
+    if (side === "candidate" && BANNED_TYPOGRAPHY.test(output)) {
+      errors.push(`${side} output ${id} contains banned typography`);
+    }
     try {
       const { parsed, attestation: audit } = parseAttestedLog(
         logText,
