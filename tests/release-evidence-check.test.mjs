@@ -55,7 +55,7 @@ const custody = (id, pass) => ({
   judge_run: {
     schema_version: 1,
     runtime: "codex-exec",
-    model: "gpt-5.6-luna",
+    model: CURRENT_RELEASE_CONTRACT.judge_model,
     fresh_context: true,
     skill_access: false,
   },
@@ -73,8 +73,8 @@ test("execution evidence freezes model, isolation, baseline, and order seed", ()
       judge_protocol: commit,
     },
     execution: {
-      generator_model: "gpt-5.6-luna",
-      judge_model: "gpt-5.6-luna",
+      generator_model: CURRENT_RELEASE_CONTRACT.generator_model,
+      judge_model: CURRENT_RELEASE_CONTRACT.judge_model,
       generator_runtime: "codex-exec",
       judge_runtime: "codex-exec",
       generator_reasoning_effort: "max",

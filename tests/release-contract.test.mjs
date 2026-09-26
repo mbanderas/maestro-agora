@@ -28,8 +28,8 @@ test("current release contract matches package, frozen manifest, schemas, and ga
   assert.equal(manifest.cases.length, 5);
   assert.ok(gates.partitions.some((partition) => partition.id === "article-generation"));
   assert.deepEqual(current.required_partitions, ["article-generation"]);
-  assert.equal(current.generator_model, "gpt-5.6-luna");
-  assert.equal(current.judge_model, "gpt-5.6-luna");
+  assert.equal(current.generator_model, "gpt-6-luna");
+  assert.equal(current.judge_model, "gpt-6-luna");
   assert.equal(current.generator_reasoning_effort, "max");
   assert.equal(current.judge_reasoning_effort, "max");
 });
