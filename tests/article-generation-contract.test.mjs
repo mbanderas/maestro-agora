@@ -27,7 +27,8 @@ test("the internal name describes generation rather than a review product", () =
 test("article generation follows the existing brief, voice, outline, draft, and revision path", () => {
   assert.match(skill, /For an article or long-form editorial request, use the existing brief, voice, argument, draft, and revision path/);
   assert.match(skill, /Before outlining, privately separate/);
-  assert.match(skill, /Draft from a concrete observation or situation when the material allows it/);
+  assert.match(skill, /When the brief supplies a first-party event or decision, open the article with it/);
+  assert.match(skill, /Do not stage that material with an invented claim about what teams often or typically do/);
   assert.match(skill, /During revision, replace generic sentences with the user's concrete details/);
   assert.match(marketingRuntime, /### Article and editorial path/);
   assert.match(writingRuntime, /for articles, organize around the reader's question and the strongest supplied material/);
