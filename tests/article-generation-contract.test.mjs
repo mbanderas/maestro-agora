@@ -30,6 +30,7 @@ test("article generation follows the existing brief, voice, outline, draft, and 
   assert.match(skill, /When the brief supplies a first-party event or decision, open the article with it/);
   assert.match(skill, /Do not stage that material with an invented claim about what teams often or typically do/);
   assert.match(skill, /During revision, replace generic sentences with the user's concrete details/);
+  assert.match(skill, /Scan the final visible article for U\+2014 and U\+2018 through U\+201D/);
   assert.match(marketingRuntime, /### Article and editorial path/);
   assert.match(writingRuntime, /for articles, organize around the reader's question and the strongest supplied material/);
 });

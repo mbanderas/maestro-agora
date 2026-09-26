@@ -249,7 +249,7 @@ The review may use formal terms. Any rewritten public copy still follows its own
 7. Run the added pattern and control-word scan.
 8. Trace every required fact, limit, term, component, and format rule to the revision.
 9. Count exact-length work with the stated rule.
-10. Read it aloud.
+10. Read it aloud, then scan the final visible text again for U+2014 and U+2018 through U+201D. Replace generated smart punctuation with plain punctuation while preserving immutable source text.
 11. Return only the requested deliverable.
 
 ## Output
