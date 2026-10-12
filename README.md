@@ -92,6 +92,12 @@ codex plugin add maestro-agora@maestro-agora
 
 The npm installer provides the broadest host coverage. Native plugin commands use the matching Claude or Codex manifest from this repository.
 
+### ChatGPT plugin package
+
+Agora also has a skills-only package for submission to the public ChatGPT and Codex Plugins Directory. This repository does not yet claim an approved public listing. The package includes the released writing skill, its references and optional audit scripts, and a short onboarding skill that explains available tools. Core writing needs no external account or server.
+
+Maintainers can run `npm run plugin:pack` to validate the release and build `dist/maestro-agora-1.11.0.zip`. See [ChatGPT plugin submission](docs/chatgpt-plugin.md) for package contents, environment limits, testing, and publishing steps.
+
 ## Quick start
 
 Invoke Agora directly and provide the brief, material, and claims you want it to use:

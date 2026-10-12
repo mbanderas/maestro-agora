@@ -7,6 +7,7 @@ import { access, readFile, readdir } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { verifyEvalLocks } from "./eval-locks.mjs";
+import { validatePluginManifest } from "./plugin-package.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SKILL_NAME = "agora";
@@ -630,13 +631,11 @@ async function main() {
   check(codexPlugin.name === "maestro-agora", "Codex plugin ID must be maestro-agora");
   check(codexPlugin.version === packageJson.version, "Codex plugin version must match package");
   check(codexPlugin.skills === "./skills/", "Codex plugin must expose skills");
-  check(codexPlugin.interface?.shortDescription === "Writing and publication artifact review", "Codex short description is stale");
-  check(
-    Array.isArray(codexPlugin.interface?.defaultPrompt) &&
-      codexPlugin.interface.defaultPrompt.length === 5 &&
-      codexPlugin.interface.defaultPrompt.every((prompt) => prompt.startsWith("/agora ") && prompt.length <= 128),
-    "Codex default prompts must activate /agora and fit the client limit",
-  );
+  try {
+    validatePluginManifest(codexPlugin);
+  } catch (error) {
+    check(false, `Plugin listing: ${error.message}`);
+  }
   check(claudePlugin.version === packageJson.version, "Claude plugin version must match package");
 
   const publicMetadata = [

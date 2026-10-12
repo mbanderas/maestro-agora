@@ -50,6 +50,8 @@ const EXPECTED = [
   "skills/agora/references/agora-voice.md",
   "skills/agora/scripts/publication-audit.mjs",
   "skills/agora/scripts/article-typography-check.mjs",
+  "skills/agora-start/SKILL.md",
+  "skills/agora-start/agents/openai.yaml",
 ].sort();
 
 const cache = await mkdtemp(join(tmpdir(), "agora-npm-pack-"));

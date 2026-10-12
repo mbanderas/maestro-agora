@@ -679,7 +679,8 @@ test("metadata matches the v1.11.0 release contract", () => {
   assert.doesNotMatch(invest, /\r\n/);
   assert.doesNotMatch(publication, /\r\n/);
   assert.doesNotMatch(openaiYaml, /\r\n/);
-  assert.equal(codexPlugin.interface.shortDescription, "Writing and publication artifact review");
+  assert.ok(codexPlugin.interface.shortDescription.length <= 30);
+  assert.ok(codexPlugin.interface.defaultPrompt.length <= 3);
   assert.equal(packageJson.bin["agora-publication-audit"], "skills/agora/scripts/publication-audit.mjs");
   assert.equal(packageJson.bin["agora-style-audit"], "scripts/style-audit.mjs");
   const publicMetadata = [
