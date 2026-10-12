@@ -39,7 +39,7 @@ Stored profile data can include:
 
 These files can contain sensitive or identifiable writing. Users control the corpus, storage location, access, backup, retention, sharing, and deletion of those files.
 
-When a user supplies an HTTP or HTTPS URL as a corpus source, the voice tool fetches that URL from the user's computer. The remote website may receive ordinary request and network information under its own privacy policy. The fetched content and resulting profile are not sent to the Agora maintainer by the tool.
+When a user supplies an HTTP or HTTPS URL as a corpus source, the voice tool fetches that URL from the environment running the voice tool. The remote website may receive ordinary request and network information under its own privacy policy. The fetched content and resulting profile are not sent to the Agora maintainer by the tool.
 
 ## Publication audit
 
