@@ -6,12 +6,11 @@ import { pathToFileURL } from "node:url";
 
 const TEMPLATE_TOKENS = ["HARD_GATES", "ORIGINAL_TASK", "RESPONSE_A", "RESPONSE_B"];
 
-const replaceOnce = (source, name, value) => {
+const requireOnce = (source, name) => {
   const token = `{{${name}}}`;
   const first = source.indexOf(token);
   const last = source.lastIndexOf(token);
   if (first < 0 || first !== last) throw new Error(`judge template must contain ${token} exactly once`);
-  return source.replace(token, value.trim());
 };
 
 export const normalizeOriginalTask = (task) => task
@@ -34,10 +33,16 @@ export const buildBlindJudgePrompt = ({ manifest, item, template, originalTask, 
     RESPONSE_B: responseB,
   };
 
-  let prompt = template.trim();
-  for (const name of TEMPLATE_TOKENS) prompt = replaceOnce(prompt, name, values[name]);
-  if (/\{\{[A-Z_]+\}\}/.test(prompt)) throw new Error("judge template contains an unknown token");
-  return `${prompt}\n`;
+  const prompt = template.trim();
+  for (const name of TEMPLATE_TOKENS) requireOnce(prompt, name);
+  const tokens = /\{\{([A-Z_]+)\}\}/g;
+  for (const match of prompt.matchAll(tokens)) {
+    if (!TEMPLATE_TOKENS.includes(match[1])) throw new Error("judge template contains an unknown token");
+  }
+  // Validate only the template, then insert data literally in one pass. A
+  // replacement string would interpret $$, $&, $`, and $'; sequential filling
+  // would also mistake token-like article text for template syntax.
+  return `${prompt.replace(tokens, (_match, name) => values[name].trim())}\n`;
 };
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {

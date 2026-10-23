@@ -12,9 +12,9 @@ const [packageJson, current] = await Promise.all([
   readJson("evals/releases/current.json"),
 ]);
 
-test("current release contract matches package, frozen manifest, schemas, and gates", async () => {
+test("historical blind contract retains its matching manifest, schemas, and gates", async () => {
   assert.equal(current.schema_version, 1);
-  assert.equal(current.skill_version, packageJson.version);
+  assert.equal(current.skill_version, "1.11.0");
   for (const field of ["blind_manifest", "release_plan", "adjudications_schema", "records_schema"]) {
     await access(join(ROOT, ...current[field].split("/")));
   }
@@ -23,8 +23,8 @@ test("current release contract matches package, frozen manifest, schemas, and ga
     readJson(current.release_plan),
   ]);
   assert.equal(manifest.status, "frozen-release");
-  assert.equal(manifest.skill_version, packageJson.version);
-  assert.equal(gates.skill_version, packageJson.version);
+  assert.equal(manifest.skill_version, current.skill_version);
+  assert.equal(gates.skill_version, current.skill_version);
   assert.equal(manifest.cases.length, 5);
   assert.ok(gates.partitions.some((partition) => partition.id === "article-generation"));
   assert.deepEqual(current.required_partitions, ["article-generation"]);
@@ -34,12 +34,16 @@ test("current release contract matches package, frozen manifest, schemas, and ga
   assert.equal(current.judge_reasoning_effort, "max");
 });
 
-test("publish paths fail closed through the current evidence verifier", () => {
+test("publish paths require checks and the versioned distribution lock", async () => {
   assert.equal(packageJson.scripts["eval:release"], "node scripts/release-evidence-check.mjs");
-  assert.equal(packageJson.scripts["release:check"], "npm run check && npm run eval:release");
+  assert.equal(packageJson.scripts["release:check"], "npm run check && node scripts/distribution-release-check.mjs");
   assert.equal(packageJson.scripts.prepack, "npm run release:check");
   assert.equal(packageJson.scripts.prepublishOnly, "npm run release:check");
-  assert.equal(current.adjudications, `evals/releases/v${packageJson.version}.adjudications.json`);
-  assert.equal(current.records, `evals/releases/v${packageJson.version}.records.json`);
-  assert.equal(current.evidence, `evals/releases/v${packageJson.version}.evidence.json`);
+  assert.equal(current.adjudications, `evals/releases/v${current.skill_version}.adjudications.json`);
+  assert.equal(current.records, `evals/releases/v${current.skill_version}.records.json`);
+  assert.equal(current.evidence, `evals/releases/v${current.skill_version}.evidence.json`);
+  const distribution = await readJson(`evals/releases/v${packageJson.version}.distribution.json`);
+  assert.equal(distribution.version, packageJson.version);
+  assert.equal(distribution.policy, "owner-approved-content-lock-v1");
+  assert.equal(distribution.blind_superiority, "not-established");
 });

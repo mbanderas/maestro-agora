@@ -11,15 +11,15 @@ npm run plugin:check
 npm run plugin:pack
 ```
 
-`plugin:check` validates listing metadata and constructs the archive in memory without writing it. `plugin:pack` first runs the existing full release checks, then writes `dist/maestro-agora-1.11.0.zip` and prints its SHA-256. The packager refuses to replace an existing output. For another destination after a rebuild, run:
+`plugin:check` validates listing metadata and constructs the archive in memory without writing it. `plugin:pack` first runs the existing full release checks, then writes `dist/maestro-agora-1.12.0.zip` and prints its SHA-256. The packager refuses to replace an existing output. For another destination after a rebuild, run:
 
 ```sh
-npm run plugin:pack -- --output dist/maestro-agora-1.11.0-candidate.zip
+npm run plugin:pack -- --output dist/maestro-agora-1.12.0-candidate.zip
 ```
 
-The ZIP has one plugin root and an explicit file allowlist: `.codex-plugin/plugin.json`, `LICENSE`, `DISCLAIMER.md`, `PRIVACY.md`, `assets/icon.png`, all 17 released `skills/agora/` files, and the two `skills/agora-start/` onboarding files. It excludes repository history, research, evaluation records, private files, the npm installer, and development tools. The compatibility manifest is supported by the submission portal; a root portable manifest is not required for this existing format.
+The ZIP has one plugin root and an explicit file allowlist: `.codex-plugin/plugin.json`, `LICENSE`, `DISCLAIMER.md`, `PRIVACY.md`, `assets/icon.png`, all 19 released `skills/agora/` files, and the two `skills/agora-start/` onboarding files. It excludes repository history, research, evaluation records, private files, the npm installer, and development tools. The compatibility manifest is supported by the submission portal; a root portable manifest is not required for this existing format.
 
-The released Agora skill is copied byte for byte. Its existing evaluation hashes remain valid. The new onboarding skill and marketplace metadata are separate additions; the v1.11.0 writing evaluation is not evidence of ChatGPT installation or onboarding behavior. A future writing-skill change must go through the repository's release evaluation process.
+The approved Agora skill is copied byte for byte. The versioned distribution record binds both the writing skill and onboarding files to the release. Historical writing evaluations remain version-specific and do not establish installation or onboarding behavior.
 
 ## Available capabilities
 
@@ -29,7 +29,7 @@ Optional deterministic file audits require an execution tool, Node.js, and an ac
 
 The onboarding skill checks prerequisites for requested optional features and offers supported alternatives. It does not intercept every later writing request. The core skill already provides a manual typography fallback when Node is absent and reports unavailable audit coverage as unknown. Do not advertise a deterministic audit or certified voice profile on a surface where it has not been tested.
 
-Agora's references put host rules above editorial preferences. Its broad user-authority wording remains part of the evaluated writing skill and is still subject to OpenAI's scan and review. Do not claim that local checks establish marketplace acceptance.
+Agora's references put host rules above editorial preferences. Its broad user-authority wording remains part of the packaged writing skill and is still subject to OpenAI's scan and review. Do not claim that local checks establish marketplace acceptance.
 
 ## Test the installed candidate
 
@@ -52,6 +52,6 @@ Repeat core writing in ChatGPT on the web and mobile where available. Verify tha
 4. Complete the applicable attestations and submit for review. Skills-only submissions do not need MCP credentials, MCP test cases, or a demo recording.
 5. After approval, select Publish plugin. Update this documentation with the actual listing link only after publication is confirmed.
 
-Metadata or skill updates require a new complete ZIP and version. The first candidate uses the existing 1.11.0 version because this is its initial public-directory submission, not a new npm release. Do not overwrite the existing npm release or retag it. Adding an MCP server to an already-created skills-only listing is currently unsupported, so reconsider that architecture before the initial submission if a hosted service is planned.
+Metadata or skill updates require a new complete ZIP and version. The current package uses version 1.12.0, matching the npm release. Do not overwrite the existing npm release or retag it. Adding an MCP server to an already-created skills-only listing is currently unsupported, so reconsider that architecture before the initial submission if a hosted service is planned.
 
 Requirements checked on October 12, 2026: [package format](https://developers.openai.com/plugins/build/plugins), [submission fields and publishing](https://developers.openai.com/plugins/deploy/submission), [archive errors](https://developers.openai.com/plugins/deploy/submission-errors), [plugin testing](https://developers.openai.com/plugins/deploy/connect-chatgpt), and [directory guidelines](https://developers.openai.com/plugins/plugin-guidelines). Account access, platform scans, installation behavior, and approval remain separate from repository checks.

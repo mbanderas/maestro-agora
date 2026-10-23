@@ -78,7 +78,7 @@ test("conversion priors preserve context, objectives, and user authority", () =>
 test("closed-world conversion contracts preserve fact dimensions", () => {
   assert.match(skill, /Treat the user's named product, offer, customer, result, route, price, permission, process, timing, legal, operational, and outcome facts as complete/);
   assert.match(skill, /A request to write, rewrite, compose, or improve conversion does not authorize invention/);
-  assert.match(skill, /Compare every factual statement with the supplied facts and required wording/);
+  assert.match(skill, /Compare factual statements with the brief and trace every required fact/);
 
   assert.match(conversion, /Track facts at the level of actor, action, object, status, timing, scope, qualifier, evidence form, route, destination, permission, consent, price, term, and limitation/);
   assert.match(conversion, /Support for one field does not supply an adjacent field/);

@@ -17,6 +17,8 @@ export const PLUGIN_FILES = [
   "assets/icon.png",
   "skills/agora/SKILL.md",
   "skills/agora/agents/openai.yaml",
+  "skills/agora/references/agora-article-examples.md",
+  "skills/agora/references/agora-article-runtime.md",
   "skills/agora/references/agora-case-studies.md",
   "skills/agora/references/agora-case-study-runtime.md",
   "skills/agora/references/agora-conversion.md",

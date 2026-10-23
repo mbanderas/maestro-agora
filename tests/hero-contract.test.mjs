@@ -16,7 +16,8 @@ test("hero work uses an internal treatment without adding a primary mode", () =>
     assert.ok(skill.includes(`| \`${mode}\` |`), mode);
   }
   assert.match(marketingRuntime, /Heroes and ads: one recognizable stake, one meaningful difference, and the correct next action/);
-  assert.match(skill, /Preserve all material conditions, uncertainty, attribution, names, numbers, dates, quotations, legal terms, and technical terms/);
+  assert.match(skill, /trace every required fact, limit, exact term, attribution, uncertainty, component, structure, and ending to visible wording/);
+  assert.match(skill, /Preserve quotation status and legal or technical meaning/);
   assert.doesNotMatch(skill, /\| `HERO` \|/);
 });
 

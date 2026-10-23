@@ -35,6 +35,8 @@ const EXPECTED = [
   "scripts/voice/profile.mjs",
   "skills/agora/SKILL.md",
   "skills/agora/agents/openai.yaml",
+  "skills/agora/references/agora-article-examples.md",
+  "skills/agora/references/agora-article-runtime.md",
   "skills/agora/references/agora-case-studies.md",
   "skills/agora/references/agora-conversion.md",
   "skills/agora/references/agora-craft.md",

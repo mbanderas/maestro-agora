@@ -60,7 +60,9 @@ test("submission ZIP is deterministic and preserves every packaged input byte", 
   const extracted = extractStoredZip(first.zip);
   assert.deepEqual([...extracted.keys()], PLUGIN_FILES);
   assert.ok(extracted.has(".codex-plugin/plugin.json"), "hidden manifest must survive archiving");
-  assert.equal([...extracted.keys()].filter((file) => file.startsWith("skills/agora/")).length, 17);
+  assert.equal([...extracted.keys()].filter((file) => file.startsWith("skills/agora/")).length, 19);
+  assert.ok(extracted.has("skills/agora/references/agora-article-runtime.md"));
+  assert.ok(extracted.has("skills/agora/references/agora-article-examples.md"));
   for (const [name, bytes] of extracted) assert.deepEqual(bytes, await readFile(join(ROOT, name)), name);
 });
 

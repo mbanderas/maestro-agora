@@ -247,6 +247,8 @@ async function verifySource() {
   const required = [
     "SKILL.md",
     "agents/openai.yaml",
+    "references/agora-article-examples.md",
+    "references/agora-article-runtime.md",
     "references/agora-case-studies.md",
     "references/agora-conversion.md",
     "references/agora-craft.md",

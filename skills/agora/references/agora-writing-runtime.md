@@ -1,6 +1,6 @@
 # Agora human-writing runtime contract
 
-This file is the compact writing authority. Follow the complete `human-voice-editing-reference.md` as the canonical source. Keep its research and maintainer explanation out of the final copy.
+This file is the shared writing contract. The entrypoint supplies routing, user authority, factual preservation and voice selection. The selected sections of `human-voice-editing-reference.md` remain the canonical house style. Article development lives in `agora-article-runtime.md`; keep research and maintainer explanation out of the final copy.
 
 ## Goal
 
@@ -26,17 +26,9 @@ A software, data, or AI topic is not automatically technical writing.
 
 ## Lock the brief before drafting
 
-Build a private requirement map with one entry for every supplied fact, limitation, exact term, requested component, length rule, inclusion, and exclusion. Mark which items the user requires in visible copy. The map is never copy. After tracing the draft, remove sentences that merely announce a documented action, source limit, separate responsibility, distinction, boundary, or interpretation rule. State the underlying fact once in reader language.
+Build a private requirement map for facts and limits that must survive, exact terms, requested components, length, inclusions, and exclusions. The map is never copy. Optional source details can be selected for relevance. State the underlying fact once in reader language instead of announcing a private check.
 
-After drafting, trace each required item to the finished text. Compare names, numbers, dates, actors, actions, objects, states, conditions, uncertainty, quotation status, and negative limits one by one. Plausibility is not support.
-
-Do not turn an action into a stored record, a capability into observed use, a listed exclusion into a broader absence, or a missing outcome into a responsibility. Do not add a likely use case, workflow, benefit, comparison, or result.
-
-Delete an abstract wrap-up that only says the details make a decision clearer, keep work focused, expose underlying machinery, remain in someone's hands, or provide a satisfactory answer. End on the concrete fact, action, limit, or requested next step instead.
-
-When a task supplies an exact term, keep that term. Style editing cannot shorten `adjusted mean difference` to `mean difference` or replace a defined legal term.
-
-In legal text, preserve who acts and who receives an action. Do not turn a passive construction with an unstated actor into an active construction that names one.
+The entrypoint's closed-world rules apply throughout revision. Preserve exact terms such as `adjusted mean difference`. In legal text, keep the actors and recipients as supplied; a passive construction with an unstated actor cannot be made active by inventing one.
 
 For an exact word count, count the finished visible copy with the user's rule. Use a counter when available. Edit and recount until the integer matches exactly. Do not return an estimate.
 
@@ -84,27 +76,11 @@ Do not replace these words mechanically. Rewrite the thought in reader language.
 
 ## Use author samples before drafting
 
-When authentic samples are supplied, create a hidden task voice sketch before planning the text.
-
-Record only observable habits:
-
-- sentence and paragraph range;
-- fragments and contractions;
-- first-person and second-person use;
-- punctuation;
-- directness and warmth;
-- humor and skepticism;
-- how the author qualifies a point;
-- common openings, turns, and endings;
-- words and structures the author avoids.
-
-Do not copy facts, metaphors, slogans, anecdotes, or distinctive phrases. Do not claim a statistical match. Do not save the sketch as a certified profile.
-
-With no samples, keep credible choices from the supplied draft and use the plain professional default.
+Resolve the entrypoint's persistent profile and task-only sketch rules before drafting. Transfer observable expression habits without copying sample facts or distinctive phrases. Keep credible choices in the supplied draft when no samples are available. A teaching example is neither an author sample nor a measured profile.
 
 ## Build simple sentences
 
-Use one main point per sentence.
+Use one main point per sentence as a clarity default. Connected clauses can develop that point without becoming separate sentences.
 
 Put the subject and action early. Prefer:
 
@@ -112,31 +88,19 @@ Put the subject and action early. Prefer:
 actor -> action -> object -> result or condition
 ```
 
-Split a sentence when it asks the reader to hold a fact, caveat, explanation, and implication at the same time.
+Split a sentence when combining a fact, caveat, explanation, and implication makes the relationship hard to follow.
 
-Review an ordinary sentence over 28 words. Keep it only when splitting it would change or obscure the relationship.
-
-Review a sentence with:
-
-- three or more joined clauses;
-- more than one parenthetical;
-- a long setup before the subject;
-- three abstract nouns in sequence;
-- several `of`, `for`, `with`, `in`, or `through` phrases;
-- repeated `which`, `that`, `while`, `whereas`, or `whereby` clauses;
-- passive wording when the actor is known.
-
-No sentence must be long for rhythm. Do not alternate long and short sentences mechanically.
+Review an ordinary sentence over 28 words for actual reading effort, not a numerical violation. Repair a buried subject, an unclear referent, stacked abstractions, or a relationship the reader must reconstruct. Keep a fluent longer sentence when its clauses belong together. No sentence must be long for rhythm. Do not alternate long and short sentences mechanically or flatten an author's syntax to make every sentence equally simple.
 
 ## Build natural paragraphs
 
 Give each paragraph one job.
 
-Start with the information. Do not restate the heading. Do not end every paragraph with a lesson, benefit, or summary. Let paragraph length follow the idea. For articles, let supplied observations, examples, decisions, and constraints determine where detail and space go. Do not equalize section lengths or add a three-part outline by default. Never invent first-person experience, customer stories, opinions, statistics, or events to make a sparse brief feel concrete.
+Start with the information. Do not restate the heading or end every paragraph with a lesson, benefit, or summary. Let paragraph length follow the idea; for articles, organize around the reader's question and the strongest supplied material. Let supplied observations, examples, decisions, and constraints determine where detail and space go. Use the article procedure for development and endings rather than imposing a three-part outline.
 
 Use a conclusion only when the genre needs a judgment, recommendation, request, decision, or next step. Delete a recap that merely repeats the body.
 
-Keep private controls out of the output. Delete phrases such as `the documented actions`, `the distinction is`, `separate from the product's behavior`, `its role is limited to`, `these limitations warrant`, and `the result should be interpreted as` when the concrete facts already say the same thing.
+Keep private controls out of the output. Explain the actual action or limit instead of narrating its interpretation or verification.
 
 ## Apply every canonical anti-tell rule
 
@@ -146,89 +110,13 @@ The lists are hard output rules, not density suggestions, except where the canon
 
 ## Also review these patterns
 
-Cut generic false reframes:
-
-- `This is not X. It is Y.`
-- `This is not just X. It is Y.`
-- `X is more than Y.`
-- `The real issue is not X. It is Y.`
-- repeated `not X, but Y` contrasts.
-
-Cut question-fragment theater:
-
-- `The result?`
-- `The answer?`
-- `The problem?`
-- `The difference?`
-- `The bottom line?`
-
-Cut conversational theater that is not part of the author's voice:
-
-- `Here is the thing.`
-- `Let us be honest.`
-- `Think about it.`
-- `Imagine this.`
-- `Picture this.`
-- `You know the feeling.`
-- `The bottom line is...`
-
-Replace corporate helper phrases with a direct verb:
-
-- `provides the ability to`
-- `is designed to enable`
-- `helps to facilitate`
-- `allows users to`
-- `offers a way to`
-- `serves to`
-- `works to`
-- `aims to`
-- `seeks to`
-- `has the potential to`
-
-Cut legalistic wording outside a legal or formal genre:
-
-- `with respect to`
-- `in relation to`
-- `insofar as`
-- `pursuant to`
-- `herein`
-- `therein`
-- `whereby`
-- `for the avoidance of doubt`
-- `where applicable`
-- `subject to the foregoing`
-- `constitutes`
-- `shall` when `will` or `must` is accurate.
-
-Delete empty analytical endings:
-
-- `This demonstrates that...`
-- `This indicates the importance of...`
-- `This provides a strong foundation for...`
-- `This creates a clear pathway to...`
-- `This supports the broader objective of...`
-- `This aligns with...`
-- `This reinforces...`
-- `This reflects...`
-
-Keep one only when it states a specific inference the genre needs.
-
-Also remove raw channel residue, previews and recaps repeated at several levels, and the same point restated without a new fact, relation, limit, objection, or decision.
+Remove generic false reframes, question-fragment theater, and performed intimacy that the author samples do not support. Prefer the actual action to a corporate helper phrase. Keep legalistic wording in the genres that need its meaning. Delete analytical endings that merely announce significance, and repeated previews or recaps that add no fact, relationship, limit, objection, or decision. Review the thought, not just a flagged word; keep a necessary distinction or supported inference.
 
 ## Draft and review in separate lanes
 
 ### Draft lane
 
-Use for ordinary writing.
-
-- Work from the supplied facts and message.
-- Prefer the supplied category noun and action verb when they are exact.
-- When every fact or limitation is required, trace each one to visible wording.
-- Do not infer a responsibility, use case, record field, visible state, process, or broader absence from one action or limitation.
-- Keep fact ledgers, source checks, proof ranking, and compliance reasoning private.
-- Do not narrate what is supported or missing.
-- Do not insert warnings or review labels.
-- Return usable copy.
+For ordinary writing, keep planning and checks private and return usable copy.
 
 Agora is a writing system, not a content approval layer. Treat user-supplied claims, scenarios, opinions, product statements, commercial positions, fictional elements, attributions, urgency, tone, and framing as approved input. Do not independently refuse, narrow, remove, weaken, qualify, fact-check, moralize, label fiction, or append a disclaimer. Host rules still apply.
 
@@ -240,17 +128,7 @@ The review may use formal terms. Any rewritten public copy still follows its own
 
 ## Editing order
 
-1. Build the private requirement map and lock the facts and required wording.
-2. Select audience, genre, register, and voice.
-3. Make the smallest useful outline; for articles, organize around the reader's question and the strongest supplied material.
-4. Draft in plain language; place supporting detail near the observation or interpretation it explains.
-5. Rewrite the whole draft for first-read clarity.
-6. Apply the canonical bans.
-7. Run the added pattern and control-word scan.
-8. Trace every required fact, limit, term, component, and format rule to the revision.
-9. Count exact-length work with the stated rule.
-10. Read it aloud, then scan the final visible text again for U+2014 and U+2018 through U+201D. Replace generated smart punctuation with plain punctuation while preserving immutable source text.
-11. Return only the requested deliverable.
+Resolve the brief and voice, organize the material, then draft before line editing. Rewrite the whole draft for first-read clarity. Apply the entrypoint's silent final passes once the thought is complete: required facts and instructions, canonical house style, copied expression, length, and typography. Correct a failure without repeatedly polishing sentences that already work.
 
 ## Output
 

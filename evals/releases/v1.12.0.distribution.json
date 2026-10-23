@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "version": "1.12.0",
+  "title": "Improving human writing capabilities",
+  "policy": "owner-approved-content-lock-v1",
+  "approval": {
+    "decision": "approved",
+    "basis": "explicit-release-request",
+    "approved_by": "mbanderas",
+    "recorded_at": "2026-10-23T14:23:42.759Z"
+  },
+  "blind_superiority": "not-established",
+  "npm_files": [
+    ".agents/plugins/marketplace.json",
+    ".claude-plugin/marketplace.json",
+    ".claude-plugin/plugin.json",
+    ".codex-plugin/plugin.json",
+    "DISCLAIMER.md",
+    "LICENSE",
+    "PRIVACY.md",
+    "README.md",
+    "assets/agora-orbit.svg",
+    "assets/icon.png",
+    "assets/maestro-agora-banner.png",
+    "package.json",
+    "scripts/install.mjs",
+    "scripts/style-audit-core.mjs",
+    "scripts/style-audit.mjs",
+    "scripts/task-voice-sketch.mjs",
+    "scripts/voice-measure.mjs",
+    "scripts/voice/check.mjs",
+    "scripts/voice/features.mjs",
+    "scripts/voice/gates.mjs",
+    "scripts/voice/ingest.mjs",
+    "scripts/voice/lexicon.mjs",
+    "scripts/voice/pipeline.mjs",
+    "scripts/voice/profile.mjs",
+    "skills/agora-start/SKILL.md",
+    "skills/agora-start/agents/openai.yaml",
+    "skills/agora/SKILL.md",
+    "skills/agora/agents/openai.yaml",
+    "skills/agora/references/agora-article-examples.md",
+    "skills/agora/references/agora-article-runtime.md",
+    "skills/agora/references/agora-case-studies.md",
+    "skills/agora/references/agora-case-study-runtime.md",
+    "skills/agora/references/agora-conversion-runtime.md",
+    "skills/agora/references/agora-conversion.md",
+    "skills/agora/references/agora-craft.md",
+    "skills/agora/references/agora-invest.md",
+    "skills/agora/references/agora-marketing-runtime.md",
+    "skills/agora/references/agora-marketing.md",
+    "skills/agora/references/agora-publication.md",
+    "skills/agora/references/agora-science.md",
+    "skills/agora/references/agora-voice.md",
+    "skills/agora/references/agora-writing-runtime.md",
+    "skills/agora/references/human-voice-editing-reference.md",
+    "skills/agora/scripts/article-typography-check.mjs",
+    "skills/agora/scripts/publication-audit.mjs"
+  ],
+  "plugin_files": [
+    ".codex-plugin/plugin.json",
+    "DISCLAIMER.md",
+    "LICENSE",
+    "PRIVACY.md",
+    "assets/icon.png",
+    "skills/agora-start/SKILL.md",
+    "skills/agora-start/agents/openai.yaml",
+    "skills/agora/SKILL.md",
+    "skills/agora/agents/openai.yaml",
+    "skills/agora/references/agora-article-examples.md",
+    "skills/agora/references/agora-article-runtime.md",
+    "skills/agora/references/agora-case-studies.md",
+    "skills/agora/references/agora-case-study-runtime.md",
+    "skills/agora/references/agora-conversion-runtime.md",
+    "skills/agora/references/agora-conversion.md",
+    "skills/agora/references/agora-craft.md",
+    "skills/agora/references/agora-invest.md",
+    "skills/agora/references/agora-marketing-runtime.md",
+    "skills/agora/references/agora-marketing.md",
+    "skills/agora/references/agora-publication.md",
+    "skills/agora/references/agora-science.md",
+    "skills/agora/references/agora-voice.md",
+    "skills/agora/references/agora-writing-runtime.md",
+    "skills/agora/references/human-voice-editing-reference.md",
+    "skills/agora/scripts/article-typography-check.mjs",
+    "skills/agora/scripts/publication-audit.mjs"
+  ],
+  "inventory": {
+    "algorithm": "sha256-path-nul-file-sha256-lf-v1",
+    "root": ".",
+    "file_count": 48,
+    "files": [
+      {
+        "path": ".agents/plugins/marketplace.json",
+        "sha256": "ef3680beaa2adc04cbe3a8394ebacfba4a175c0e962afd5e0e4f583d0dfa0326"
+      },
+      {
+        "path": ".claude-plugin/marketplace.json",
+        "sha256": "c9aea80d5b139f9cead57760f9c4af318437b5e52236d35e217515f8ed1a1a2e"
+      },
+      {
+        "path": ".claude-plugin/plugin.json",
+        "sha256": "cb3e8966e7d97dcefe74ec17997f1de80b5ba155baeb0c5064f276f63c7c1d61"
+      },
+      {
+        "path": ".codex-plugin/plugin.json",
+        "sha256": "a0caa206c454f6d3d00274605dcf5b84b244f6a184c63e9131876cde1c07e924"
+      },
+      {
+        "path": "DISCLAIMER.md",
+        "sha256": "3639688123ebde4584a7242ff8a787f8790f6fe67532d61bf1befc09511690e5"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "21be1f29e36b6dd5e1858c12c5060b0e02cbc9d8b11ed052340e0ff925e0ff3a"
+      },
+      {
+        "path": "PRIVACY.md",
+        "sha256": "ed38b627e6efb3cf0962a098eb3dbdc7edd8d0b3e1f03ac147f1e5b816cb6fa5"
+      },
+      {
+        "path": "README.md",
+        "sha256": "b36b1a921628862b284483d2dedc0688ae28af06dc7708e1c188f00caf13ff95"
+      },
+      {
+        "path": "assets/agora-orbit.svg",
+        "sha256": "54a6baa5e82e9ded03a4ff4edea221508febbbe44b9d586f63e00c0a787706a1"
+      },
+      {
+        "path": "assets/icon.png",
+        "sha256": "af40e5d99111d332f8db4b7c913c47de3f55a428e06b37b1765efca555223697"
+      },
+      {
+        "path": "assets/maestro-agora-banner.png",
+        "sha256": "6ec0150bd179dbd2a3194b4ec805d54d661cef8c7d08969b912668e3f1efc454"
+      },
+      {
+        "path": "package.json",
+        "sha256": "e1801e4c3b3eef60e7760f29d9d148d5adb4c4979990b5fb1306516cd73deceb"
+      },
+      {
+        "path": "scripts/distribution-release-check.mjs",
+        "sha256": "156102c1ddfa000d67925590938cdaa3533dbd31a2be3a2167e46ce9db22d7d0"
+      },
+      {
+        "path": "scripts/external-artifact-manifest.mjs",
+        "sha256": "b65717275fa86e0b759e48bf6f4ea4723b99a8161c200aa366ee3dc086ca7f3f"
+      },
+      {
+        "path": "scripts/install.mjs",
+        "sha256": "c3985701b38d6fbffbb7dcd49508d345b76b7f193ba5fd8beb5d8b601a8f4a5a"
+      },
+      {
+        "path": "scripts/plugin-package.mjs",
+        "sha256": "ddbbd7f2d85e731393404815fd5fea539e0c18e736dfce0e357c103dd44f71ce"
+      },
+      {
+        "path": "scripts/style-audit-core.mjs",
+        "sha256": "d70b8566ed1c40c0a340dbc16878a5d54ff31f3e96e42013c9857a44a79663d6"
+      },
+      {
+        "path": "scripts/style-audit.mjs",
+        "sha256": "e61f911ffaaeffd01acc13a0626355bacd2751fefa738a46d218c6f997e04325"
+      },
+      {
+        "path": "scripts/task-voice-sketch.mjs",
+        "sha256": "dfde40930911c91f272857420f9dcff136c16d7ffeede2505fa9fc6ad2335df3"
+      },
+      {
+        "path": "scripts/voice-measure.mjs",
+        "sha256": "bd23a3be1a85e0058b2048794e75bad14c6bff267585838ec53228d059480d67"
+      },
+      {
+        "path": "scripts/voice/check.mjs",
+        "sha256": "e324d414ed2ea2af51c875e8e51453da230052c0011bf867797c01040dfebfdb"
+      },
+      {
+        "path": "scripts/voice/features.mjs",
+        "sha256": "89efd638544747ca04db0696014566933442d0776a0006bbd7ae87c338f696c3"
+      },
+      {
+        "path": "scripts/voice/gates.mjs",
+        "sha256": "023e12b97e6b120a90153583fc619ab4b9468fc48607a6b236fc3bdd874d2740"
+      },
+      {
+        "path": "scripts/voice/ingest.mjs",
+        "sha256": "0dbea25c7b68a36b432ce4255f9894aea467cc7b0bf66e2c6371994c6bfae763"
+      },
+      {
+        "path": "scripts/voice/lexicon.mjs",
+        "sha256": "5d9253c40ad62ef8387198ba30b1752920ee8ef43f67564d8c1420783a41437d"
+      },
+      {
+        "path": "scripts/voice/pipeline.mjs",
+        "sha256": "3d4d57e9184924f1470806ba2be650df780477213545a133fcf02eaa91d7b0c4"
+      },
+      {
+        "path": "scripts/voice/profile.mjs",
+        "sha256": "4f73285eeb6cdfa38e03801a70119d4bd5881fe8600c7e47896186e5af86d542"
+      },
+      {
+        "path": "skills/agora-start/SKILL.md",
+        "sha256": "f8f4e7f9d91b04f100873f56935aa9d5731ff1aeac236b97935b4ab9caf84f6a"
+      },
+      {
+        "path": "skills/agora-start/agents/openai.yaml",
+        "sha256": "06092b67e091fc901e8e557a9bb8c8d7315859487aa436cfd65da90a66e44c1e"
+      },
+      {
+        "path": "skills/agora/SKILL.md",
+        "sha256": "9f9320b329cb277c70f7f33cb1cae1e07712ecc1cfac098ed8d05f23a1b32dd6"
+      },
+      {
+        "path": "skills/agora/agents/openai.yaml",
+        "sha256": "4486bcc5e165a91e5933ce5d93a46b60d1e740b74a4d0dd468213592c89a71c4"
+      },
+      {
+        "path": "skills/agora/references/agora-article-examples.md",
+        "sha256": "a85e327881e206a20db1050906bf57284b1c887b44ce3d84b1bf1b0019970ad5"
+      },
+      {
+        "path": "skills/agora/references/agora-article-runtime.md",
+        "sha256": "51d34cfa8727898f5f306511a15b81884045529cf3cfa697530d4609ae07b95c"
+      },
+      {
+        "path": "skills/agora/references/agora-case-studies.md",
+        "sha256": "f5b83fe2ee23571fd2fdc70552552095077cd63ad3659283ffa9c487456436a2"
+      },
+      {
+        "path": "skills/agora/references/agora-case-study-runtime.md",
+        "sha256": "d7be2a4184442f210473815cfa7b92a7e96f3d23c9d36266329f9e6d4746b722"
+      },
+      {
+        "path": "skills/agora/references/agora-conversion-runtime.md",
+        "sha256": "513521401110a1b536c7a1ef23cf9bdf44b08dbc06f186b02b04ee03172ed323"
+      },
+      {
+        "path": "skills/agora/references/agora-conversion.md",
+        "sha256": "59a06dcece635ef1956101d6afe39e95f29a4696f2432047fc6d50bc88a37e29"
+      },
+      {
+        "path": "skills/agora/references/agora-craft.md",
+        "sha256": "e39be24c8024fbc78be08b8771885d4329d23fd59e7db02f5e877da9c009fc31"
+      },
+      {
+        "path": "skills/agora/references/agora-invest.md",
+        "sha256": "869032ff873d66225f92ed3421f2eb60b8c1e3927aeb48bfcd4df3ad5efe7c9c"
+      },
+      {
+        "path": "skills/agora/references/agora-marketing-runtime.md",
+        "sha256": "71564fa9e57eec86045e274361fe22807ba8f40b80fce60b1adfbf3e0e3a497d"
+      },
+      {
+        "path": "skills/agora/references/agora-marketing.md",
+        "sha256": "d141eb7f7187c5ce8b8e5ed96e121ee4e363107803829f08399ad86f05044454"
+      },
+      {
+        "path": "skills/agora/references/agora-publication.md",
+        "sha256": "72a157345570d2458427de95b0c69ec93808d2f61962d65fb658e8a5983e466f"
+      },
+      {
+        "path": "skills/agora/references/agora-science.md",
+        "sha256": "e402ee79cdba02d89d845665023b2fdbf70c685d8dc09561315449ecbe9c126e"
+      },
+      {
+        "path": "skills/agora/references/agora-voice.md",
+        "sha256": "e0f858315d9a687f46d6f92a7c6f2f58d4e6fa3a9e9b1ac3c1c652509b24f114"
+      },
+      {
+        "path": "skills/agora/references/agora-writing-runtime.md",
+        "sha256": "956528aeac7bcaa7a85bc8d380419b2ebc5d0dda7c6974d57330dcb54b87a801"
+      },
+      {
+        "path": "skills/agora/references/human-voice-editing-reference.md",
+        "sha256": "afc04c1f1f6fda707199d855ef74cd937c566eaa383a84ad3b09eea620223270"
+      },
+      {
+        "path": "skills/agora/scripts/article-typography-check.mjs",
+        "sha256": "09469eb2cd35b40539ca85ccf75bb0a036637ca555b1fe6d6c47868473c70073"
+      },
+      {
+        "path": "skills/agora/scripts/publication-audit.mjs",
+        "sha256": "ceb133a707838fe5538eaa727189cdcf28e6395dacb5f8c139d670dbb83c8884"
+      }
+    ],
+    "sha256": "dfa788a94ed6cfb3fca9e6210d20435dc5aa6490dc73931e69edd2c375d167be"
+  },
+  "core_sha256": "e9edf77aa4a8225b57ef834c086f1a478535fc975b9fecd04a15405229088074"
+}
