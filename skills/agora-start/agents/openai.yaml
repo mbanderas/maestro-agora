@@ -1,0 +1,4 @@
+interface:
+  display_name: "Get started with Agora"
+  short_description: "Start writing and check optional tools"
+  default_prompt: "Use $agora-start to help me get started with Agora in this environment."

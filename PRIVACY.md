@@ -1,12 +1,18 @@
 # Privacy Notice
 
-Last updated: August 12, 2026
+Last updated: October 12, 2026
 
 ## Scope
 
-This notice describes the data behavior of the official Maestro: Agora source code and npm package maintained at [mbanderas/maestro-agora](https://github.com/mbanderas/maestro-agora).
+This notice describes the data behavior of the official Maestro: Agora source code, npm package, and skills-only plugin maintained at [mbanderas/maestro-agora](https://github.com/mbanderas/maestro-agora).
 
 Agora does not operate a hosted writing service, user-account system, analytics service, advertising system, or project-controlled telemetry endpoint.
+
+## ChatGPT and Codex plugin
+
+The plugin packages writing instructions, references, and optional scripts. It has no Agora-operated MCP server or account connection. Installing it does not grant the maintainer access to conversations or files.
+
+ChatGPT, Codex, and their configured model or execution providers process the material supplied to them under their own policies. File tools run in the execution environment the host makes available, which may be on a local computer or a managed cloud environment. References to local processing below mean that execution environment; they do not mean that ChatGPT processing stays on the user's computer. The plugin does not synchronize voice profiles or guarantee storage between conversations. Users manage host-held data through the host's controls.
 
 ## Local installation
 
@@ -33,7 +39,7 @@ Stored profile data can include:
 
 These files can contain sensitive or identifiable writing. Users control the corpus, storage location, access, backup, retention, sharing, and deletion of those files.
 
-When a user supplies an HTTP or HTTPS URL as a corpus source, the voice tool fetches that URL from the user's computer. The remote website may receive ordinary request and network information under its own privacy policy. The fetched content and resulting profile are not sent to the Agora maintainer by the tool.
+When a user supplies an HTTP or HTTPS URL as a corpus source, the voice tool fetches that URL from the environment running the voice tool. The remote website may receive ordinary request and network information under its own privacy policy. The fetched content and resulting profile are not sent to the Agora maintainer by the tool.
 
 ## Publication audit
 

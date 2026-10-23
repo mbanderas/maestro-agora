@@ -34,6 +34,8 @@ Use it for landing pages, heroes, ads, product copy, sales outreach, investor co
 
 Agora returns one ready-to-use result by default. Alternatives, internal routes, and rationale stay out of the final copy unless requested.
 
+Articles use a compact writing procedure for choosing an angle, developing the supplied material, and giving each passage a useful role. [Article examples](skills/agora/references/agora-article-examples.md) are available for explicit example requests. They are not loaded automatically.
+
 ## When buyers ask AI, is your brand part of the answer?
 
 More decisions now start inside an AI answer. Buyers ask for comparisons, explanations, and recommendations; brands either enter that answer or they do not.
@@ -91,6 +93,12 @@ codex plugin add maestro-agora@maestro-agora
 ```
 
 The npm installer provides the broadest host coverage. Native plugin commands use the matching Claude or Codex manifest from this repository.
+
+### ChatGPT plugin package
+
+Agora also has a skills-only package for submission to the public ChatGPT and Codex Plugins Directory. This repository does not yet claim an approved public listing. The package includes the released writing skill, its references and optional audit scripts, and a short onboarding skill that explains available tools. Core writing needs no external account or server.
+
+Maintainers can run `npm run plugin:pack` to validate the release and build `dist/maestro-agora-1.12.0.zip`. See [ChatGPT plugin submission](docs/chatgpt-plugin.md) for package contents, environment limits, testing, and publishing steps.
 
 ## Quick start
 
@@ -393,6 +401,7 @@ skills/agora/
 
 - `human-voice-editing-reference.md` is the exact canonical human-voice editing authority.
 - `agora-writing-runtime.md` is the small plain-language writing contract loaded for every writing task.
+- `agora-article-runtime.md` provides the article procedure; `agora-article-examples.md` supplies optional writing examples.
 - `agora-marketing-runtime.md`, `agora-conversion-runtime.md`, and `agora-case-study-runtime.md` keep ordinary drafting out of the research register.
 - `agora-marketing.md` preserves deep doctrine, source material, research grades, and maintainer guidance.
 - `agora-craft.md` adds headlines, heroes, awareness and sophistication, emotion, and prose rhythm.
@@ -406,17 +415,17 @@ skills/agora/
 
 ## Public-package hygiene
 
-Research informed Agora, but research custody is separate from distribution.
-
 The public repository and npm package must not contain raw or corrected transcripts, caption files, supplied PDFs or office documents, audio, video, private source identities, model-output scratch, research working files, local paths, or assigned secrets.
 
-`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` adds the current frozen blind-evaluation evidence gate. `npm pack` and `npm publish` invoke it through `prepack` and `prepublishOnly`.
+`npm run check` runs validation, deterministic tests, the exact package allowlist, and release hygiene. `npm run release:check` also verifies the versioned distribution approval and the complete approved payload. `npm pack` and `npm publish` invoke it through `prepack` and `prepublishOnly`.
 
-`evals/releases/current.json` is the explicit release contract. Its version must match `package.json`, the frozen manifest, schemas, release gates, adjudications, records, custody hashes, and external artifact manifests. Missing or stale human-writing evidence blocks a publishable release. Live generation does not run inside unit tests.
+For v1.12.0, `evals/releases/v1.12.0.distribution.json` records owner authorization and exact approved content hashes. Missing approval, version mismatches, omitted or changed payload files, and unsupported release policies block publication. Distribution approval does not certify behavioral superiority.
+
+`evals/releases/current.json` retains the historical v1.11.0 blind-evaluation contract. Its verifier remains available through `npm run eval:release` at the matching historical checkout; it is not reused as certification of a later release. Historical records and their locks remain unchanged. Live generation does not run inside unit tests.
 
 The versioned directories under `evals/blind/` are public pairwise-release artifacts, not permanently secret holdouts. `v1.2.0`, `v1.4.0`, `v1.5.0`, and `v1.7.0` are frozen by exact tree hashes in `evals/releases/locks.json`; validation fails on additions, deletions, or edits.
 
-`evals/prospective/article-generation-v1.0.0/` contains the article-generation development cases for this release. The frozen current manifest lives under `evals/blind/` after prospective generation and blind pairwise review. Earlier fixture sets remain frozen for regression analysis and historical reproducibility.
+`evals/prospective/article-generation-v1.0.0/` contains earlier article-generation development cases. Versioned manifests under `evals/blind/` and the earlier fixture sets remain available for regression analysis and historical reproducibility.
 
 Deterministic tests verify instruction structure, routing contracts, static invariants, and evaluation-record shape. Versioned blind-evaluation tooling remains available for repeatable development analysis without turning model preference into a universal conversion claim.
 
@@ -430,12 +439,13 @@ npm pack --dry-run --json
 npx -y @maestroagora/agora --dry-run
 ```
 
-The mandatory release gate checks skill structure, routing contracts, factual and user-authority boundaries, typography, metadata, reference links, installer parity, exact npm contents, frozen evaluation-tree locks, public-tree hygiene, deterministic tests, and checked current blind evidence. Generation and judging happen before evidence is frozen, not during routine tests.
+The mandatory release gate checks skill structure, routing contracts, factual and user-authority boundaries, typography, metadata, reference links, installer parity, exact npm and plugin contents, historical evaluation-tree locks, public-tree hygiene, deterministic tests, and the approved distribution inventory.
 
 ## Change record
 
 | Version | What changed |
 |---|---|
+| 1.12.0 | Improving human writing capabilities. |
 | 1.11.0 | Improved Human Writing Layer: articles use supplied first-party material in planning, outlining, drafting, and revision; plain-language passes remove internal review vocabulary from ordinary copy while preserving the user's facts, structure, and voice. |
 | 1.10.0 | Makes plain professional writing the default, separates compact runtime rules from maintainer research, ships the exact canonical human-voice source, adds task-only voice sketches and a deterministic style audit, routes technical language by job and audience, removes forced rhythm targets, and binds release checks to current human-writing evidence. |
 | 1.9.0 | Makes first-read clarity automatic. Agora now drafts for factual completeness, rewrites for literal clarity, preserves qualifiers across short passages, names concrete actors and observable results, and rejects vague referents, hidden metaphors, noun stacks, and revisions that only rename ambiguity. Adds rendered label-clearance guidance for technical diagrams. |
@@ -448,8 +458,6 @@ The mandatory release gate checks skill structure, routing contracts, factual an
 | 1.2.2 | Adds a hard U+2014 ban across the complete response. |
 | 1.2.1 | Adds the first-read comprehension gate, specialized-term gate, and CTA standard. |
 | 1.2.0 | Adds the blind evaluation corpus, generation isolation, pairwise adjudication, and absolute vetoes. |
-
-Every research-derived rule records its source grade and boundary or failure condition. Numeric thresholds are sourced or labeled as governance defaults. Practitioner procedures remain bounded craft guidance, not scientific or commercial performance laws.
 
 ## Maestro suite
 

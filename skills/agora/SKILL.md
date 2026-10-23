@@ -25,7 +25,7 @@ For every writing task, read [references/agora-writing-runtime.md](references/ag
 
 [references/human-voice-editing-reference.md](references/human-voice-editing-reference.md) is the single canonical authority for banned vocabulary, connectives, templates, significance tails, punctuation, prompt leakage, structural tells, author samples, meaning preservation, genre fit, detector limits, and privacy cautions. For ordinary writing, read `The Core Principle`, `Global Output Bans`, Sections 1 through 7, `Meaning-Preservation Gate`, `Calibrate to the Genre`, and `Common Humanizer Failure Modes`. Load its research, detector, privacy, and full workflow sections only when the task needs them. Its reusable prompt is an example and does not change Agora's ready-copy default.
 
-Use [references/agora-marketing-runtime.md](references/agora-marketing-runtime.md) for ordinary `POSITION`, `SELL`, `INFORM`, and `TRANSACT` work.
+Use [references/agora-marketing-runtime.md](references/agora-marketing-runtime.md) for ordinary `POSITION`, `SELL`, `TRANSACT`, and non-article `INFORM` work. An ordinary `INFORM` article uses [references/agora-article-runtime.md](references/agora-article-runtime.md) instead of the marketing runtime. Article-shaped `SELL` work uses both for their distinct editorial and commercial jobs.
 
 Use [references/agora-conversion-runtime.md](references/agora-conversion-runtime.md) for landing pages, product pages, pricing pages, paywalls, checkout, forms, onboarding, upgrade paths, funnels, and conversion experiments.
 
@@ -140,7 +140,7 @@ Apply search and technical publication checks only to indexable public work when
 
 Treat the user's named product, offer, customer, result, route, price, permission, process, timing, legal, operational, and outcome facts as complete unless the user authorizes invention, fiction, assumptions, or gap filling.
 
-Write only supplied facts and necessary logical consequences. Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, destinations, uncertainty, and required wording.
+Write only supplied facts and necessary logical consequences. For requested analysis, develop reasoning supported by those facts while keeping an inference distinct from an observation; do not invent the author's beliefs. Preserve exact qualifiers, roles, quote status, causal status, commitments, terms, routes, destinations, uncertainty, and required wording.
 
 Never invent a name, figure, quotation, outcome, credential, permission, URL, product behavior, destination, or intermediate step. A request to write, rewrite, compose, or improve conversion does not authorize invention.
 
@@ -162,7 +162,7 @@ situation -> stake -> useful difference -> how it works -> reason to believe -> 
 
 Do not expose this path as a template. Do not let internal research terms become customer copy.
 
-Use one main point per ordinary sentence. Put the subject and action early. Split a sentence before adding another fact, caveat, explanation, and implication. Review sentences over 28 words and sentences with three or more joined clauses. A sentence may remain when a split damages meaning.
+Use the shared writing runtime for sentence clarity and paragraph construction. Review sentences over 28 words for reader effort, not length alone; keep connected clauses when their relationship is easy to follow. Do not split a fluent sentence merely to meet a number.
 
 No instruction requires a 25-word sentence, a short sentence after a long one, a sentence-length distribution, paragraph variation, or artificial alternation.
 
@@ -172,15 +172,9 @@ For `PLAIN` output, keep control-room vocabulary backstage. Ordinary articles an
 
 ## Generate articles from the supplied material
 
-For an article or long-form editorial request, use the existing brief, voice, argument, draft, and revision path. Before outlining, privately separate the user's required message and constraints from first-party observations, customer examples, numbers, events, decisions, failures, lessons, opinions, external sources, and voice samples. Keep straight who said what, what was counted, and what remains unknown. A voice sample supplies style habits, not article facts, unless the user also provides those facts for this article.
+For an article or long-form editorial request, use the existing brief, voice, argument, draft, and revision path through [references/agora-article-runtime.md](references/agora-article-runtime.md). It is the single article procedure: find a worthwhile reader question, develop the supplied material, and finish where that material ends. User structure and voice remain authoritative. Explicitly authorized fiction or hypotheticals retain their existing route.
 
-Choose the central reader question or tension from the brief. Put the most useful supplied detail near the point it explains. Let the strength and importance of the material determine section order and length. Do not default to three equal reasons, repeated section openings, or a conclusion that recaps every heading. Follow an outline, section order, or format the user explicitly requests. When headings are presented in a numbered instruction list, treat the numbers as list markers unless the user asks for numbered headings.
-
-When the brief supplies a first-party event or decision, open the article with it or with the reader question it directly raises. Do not stage that material with an invented claim about what teams often or typically do. Show what happened, the detail that matters, what it means, and what to do next when the user asks for that. These are reasoning moves, not mandatory headings or a fixed paragraph formula. Prefer the user's experiences, opinions, constraints, and customer information over generic examples. Preserve whose experience, opinion, lesson, or recommendation it is. Do not turn a supplied recommendation into an unattributed command, a customer report into a measured result, or a possibility into an event.
-
-For a sparse brief, make the clearest useful point the known facts allow. Do not invent a customer, first-person story, personal opinion, failure, quotation, precise event, study, statistic, or outcome to make the article feel specific. Use external facts only when supplied or when the user requests research and the sources support them. Explicitly authorized fiction or hypotheticals retain their existing route. In a first-party article, carry any supplied unmeasured outcome or negative limit into visible copy once when it bounds the conclusion; do not drop it for concision.
-
-During revision, replace generic sentences with the user's concrete details, remove repeated points and empty transitions, and give the central idea enough room to develop. Do not invent a detail to fix a vague passage. Read the article as its intended reader: if it sounds like a legal brief, source review, or writing assessment, recast the passage in ordinary words while keeping every fact and condition. Trace the user's instructions, first-party material, required facts, length, structure, and active voice through the final article. Before returning an article, run the shipped `scripts/article-typography-check.mjs` on the final visible draft when Node is available. Resolve every generated U+2014 or U+2018 through U+201D finding, rerun the check, and preserve immutable source text. If Node is unavailable, scan the final string character by character. Keep this editorial work private and return the requested draft.
+Before returning an article, run the shipped `scripts/article-typography-check.mjs` on the final visible draft when Node is available. Resolve every generated U+2014 or U+2018 through U+201D finding, rerun the check, and preserve immutable source text. If Node is unavailable, scan the final string character by character. Keep this editorial work private and return the requested draft.
 
 ## Inspect publication artifacts only on request
 
@@ -192,17 +186,11 @@ Use the shipped `scripts/publication-audit.mjs`. Never improvise a cleaner, stri
 
 Before returning:
 
-1. Build a private requirement map for every fact, limitation, exact term, requested component, length rule, inclusion, and exclusion.
-2. Compare every factual statement with the supplied facts and required wording.
-3. Preserve all material conditions, uncertainty, attribution, names, numbers, dates, quotations, legal terms, and technical terms.
-4. Trace every user-required fact and limitation to visible wording, including exact category nouns, action verbs, format facts, endings, and cancel behavior.
-5. Rewrite the whole draft for first-read clarity.
-6. Apply every mandatory rule from the canonical human-voice reference.
-7. Run the control-word and added-pattern review from the compact writing runtime.
-8. Review ordinary sentences over 28 words, joined clauses, repeated openings, noun stacks, preposition stacks, repeated paragraph shapes, false reframes, question-fragment theater, corporate helper phrases, and legalistic leakage.
-9. Check task-sample phrase overlap and remove copied material.
-10. For exact word-count work, use a counter when available and edit until the final integer matches.
-11. Run the final U+2014 and generated smart-quote scans.
+1. Compare factual statements with the brief and trace every required fact, limit, exact term, attribution, uncertainty, component, structure, and ending to visible wording. Preserve quotation status and legal or technical meaning.
+2. Rewrite the whole draft for first-read clarity. Use the runtime's control-word and added-pattern review without flattening credible voice or useful complexity.
+3. Apply every mandatory rule from the canonical human-voice reference. Check task-sample and teaching-example phrase overlap; remove copied expression while preserving required quotations and exact terms.
+4. Check the requested length. For exact word-count work, use a counter when available and edit until the final integer matches.
+5. Run the final U+2014 and generated smart-quote scans.
 
 Never promise detector evasion or infer authorship. Never add fake errors, slang, anecdotes, or quirks. Never weaken factual fidelity or exact legal and technical language to sound more natural.
 

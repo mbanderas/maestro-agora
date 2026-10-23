@@ -57,6 +57,13 @@ test("ordinary original-task text remains unchanged", () => {
   );
 });
 
+test("article and task metacharacters remain literal, including template-looking text", () => {
+  const article = "The literal price text is $$5. Keep $& and $` and $' and {{RESPONSE_B}} and {{UNKNOWN}}.";
+  const task = "Explain {{RESPONSE_A}} literally, including $$ and $&.";
+  const prompt = buildBlindJudgePrompt({ manifest, item, template, originalTask: task, responseA: article, responseB: "Second article: {{ORIGINAL_TASK}}." });
+  assert.ok(prompt.includes(`ORIGINAL TASK\n${task}\nRESPONSE A\n${article}\nRESPONSE B\nSecond article: {{ORIGINAL_TASK}}.`));
+});
+
 test("unknown hard gates and malformed templates fail closed", () => {
   assert.throws(
     () => buildBlindJudgePrompt({
@@ -80,6 +87,12 @@ test("unknown hard gates and malformed templates fail closed", () => {
     }),
     /RESPONSE_B.*exactly once/,
   );
+  for (const [badTemplate, expected] of [
+    [`${template}\n{{RESPONSE_A}}`, /RESPONSE_A.*exactly once/],
+    [`${template}\n{{UNKNOWN}}`, /unknown token/],
+  ]) {
+    assert.throws(() => buildBlindJudgePrompt({ manifest, item, template: badTemplate, originalTask: "Task", responseA: "A", responseB: "B" }), expected);
+  }
 });
 
 test("versioned judge protocol anchors every score and forbids unknown gate states", () => {

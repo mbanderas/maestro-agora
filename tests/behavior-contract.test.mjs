@@ -17,6 +17,8 @@ const INVEST_PATH = join(SKILL_ROOT, "references", "agora-invest.md");
 const PUBLICATION_PATH = join(SKILL_ROOT, "references", "agora-publication.md");
 const ANTI_AI_PATH = join(SKILL_ROOT, "references", "human-voice-editing-reference.md");
 const WRITING_RUNTIME_PATH = join(SKILL_ROOT, "references", "agora-writing-runtime.md");
+const ARTICLE_RUNTIME_PATH = join(SKILL_ROOT, "references", "agora-article-runtime.md");
+const ARTICLE_EXAMPLES_PATH = join(SKILL_ROOT, "references", "agora-article-examples.md");
 const MARKETING_RUNTIME_PATH = join(SKILL_ROOT, "references", "agora-marketing-runtime.md");
 const CONVERSION_RUNTIME_PATH = join(SKILL_ROOT, "references", "agora-conversion-runtime.md");
 const OPENAI_PATH = join(SKILL_ROOT, "agents", "openai.yaml");
@@ -31,7 +33,7 @@ const EVAL_ROOT = join(ROOT, "evals", "prospective", "human-writing-v1.0.0");
 const PROMPT_ROOT = join(EVAL_ROOT, "prompts");
 const MANIFEST_PATH = join(EVAL_ROOT, "manifest.json");
 
-const [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, antiAi, writingRuntime, marketingRuntime, conversionRuntime, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
+const [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, antiAi, writingRuntime, articleRuntime, articleExamples, marketingRuntime, conversionRuntime, openaiYaml, codexPlugin, claudePlugin, packageJson, gitAttributes, disclaimer, privacy, linkFixture, manifest] =
   await Promise.all([
     readFile(SKILL_PATH, "utf8"),
     readFile(REFERENCE_PATH, "utf8"),
@@ -44,6 +46,8 @@ const [skill, reference, conversion, craft, voice, science, caseStudies, invest,
     readFile(PUBLICATION_PATH, "utf8"),
     readFile(ANTI_AI_PATH, "utf8"),
     readFile(WRITING_RUNTIME_PATH, "utf8"),
+    readFile(ARTICLE_RUNTIME_PATH, "utf8"),
+    readFile(ARTICLE_EXAMPLES_PATH, "utf8"),
     readFile(MARKETING_RUNTIME_PATH, "utf8"),
     readFile(CONVERSION_RUNTIME_PATH, "utf8"),
     readFile(OPENAI_PATH, "utf8"),
@@ -181,7 +185,8 @@ test("user authority controls requested content", () => {
   assert.match(referenceAuthority, /Outside review mode, the user owns content decisions and publication responsibility/);
 
   const passes = extractSection(skill, "Run silent final passes");
-  assert.match(passes, /Compare every factual statement with the supplied facts and required wording/);
+  assert.match(passes, /Compare factual statements with the brief and trace every required fact, limit, exact term, attribution, uncertainty, component, structure, and ending to visible wording/);
+  assert.match(passes, /Preserve quotation status and legal or technical meaning/);
   assert.match(passes, /For exact word-count work, use a counter when available and edit until the final integer matches/);
   assert.match(passes, /Run the final U\+2014 and generated smart-quote scans/);
   assert.match(skill, /Return finished copy, not a worksheet/);
@@ -222,9 +227,12 @@ test("comprehension outranks compression, citability, and differentiation", () =
 
 test("the first-read gate is operational, not a symptom list", () => {
   assert.match(writingRuntime, /rewrite the whole draft for first-read clarity/i);
-  assert.match(writingRuntime, /Use one main point per sentence/);
+  assert.match(writingRuntime, /Use one main point per sentence as a clarity default/);
+  assert.match(writingRuntime, /Connected clauses can develop that point without becoming separate sentences/);
   assert.match(writingRuntime, /Put the subject and action early/);
-  assert.match(writingRuntime, /Review an ordinary sentence over 28 words/);
+  assert.match(writingRuntime, /Review an ordinary sentence over 28 words for actual reading effort, not a numerical violation/);
+  assert.match(writingRuntime, /Repair a buried subject, an unclear referent, stacked abstractions, or a relationship the reader must reconstruct/);
+  assert.match(writingRuntime, /Keep a fluent longer sentence when its clauses belong together/);
   assert.match(writingRuntime, /Give each paragraph one job/);
 
   const section = extractSection(reference, "Plain language and first-read comprehension");
@@ -612,7 +620,10 @@ test("SKILL.md carries VOICE as a modifier beneath the priority tell standard", 
   assert.match(voice, /findings constrain content only when the user requested that review or the host requires them/);
 
   const finalPasses = extractSection(skill, "Run silent final passes");
-  assert.match(finalPasses, /Preserve all material conditions, uncertainty, attribution, names, numbers, dates, quotations, legal terms, and technical terms/);
+  assert.match(finalPasses, /trace every required fact, limit, exact term, attribution, uncertainty, component, structure, and ending to visible wording/);
+  assert.match(finalPasses, /Preserve quotation status and legal or technical meaning/);
+  assert.match(extractSection(skill, "Select register and voice before planning"), /It never changes facts, names, numbers, conditions, quotations, certainty, legal wording, or required technical terms/);
+  assert.match(extractSection(writingRuntime, "Priority"), /Preserve required facts, names, numbers, dates, quotations, conditions, uncertainty, and exact terms/);
 });
 
 test("current source links remain available across all references", () => {
@@ -633,7 +644,7 @@ test("public responsibility and privacy notices match the shipped behavior", () 
   assert.match(privacy, /installer does not send your installed skill files, prompts, drafts, or local documents to the Agora maintainer/);
   assert.match(privacy, /By default, it writes profiles and measurements to `~\/\.agora\/voices\/`/);
   assert.match(privacy, /selected corpus excerpts used for calibration/);
-  assert.match(privacy, /When a user supplies an HTTP or HTTPS URL as a corpus source, the voice tool fetches that URL from the user's computer/);
+  assert.match(privacy, /When a user supplies an HTTP or HTTPS URL as a corpus source, the voice tool fetches that URL from the environment running the voice tool/);
   assert.match(privacy, /host or provider may process, retain, review, or use prompts, source material, generated content, metadata, and account information/);
   assert.match(privacy, /`agora-publication-audit` tool reads local files selected by the user/);
   assert.match(privacy, /redact metadata values and absolute paths by default/);
@@ -643,14 +654,14 @@ test("public responsibility and privacy notices match the shipped behavior", () 
 });
 
 test("public files contain no project-specific residue or temporary citations", () => {
-  const publicText = [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
+  const publicText = [skill, reference, conversion, craft, voice, science, caseStudies, invest, publication, writingRuntime, articleRuntime, articleExamples, marketingRuntime, conversionRuntime, openaiYaml, JSON.stringify(codexPlugin), JSON.stringify(claudePlugin)].join("\n");
   assert.doesNotMatch(publicText, new RegExp(["cite", "surge"].join(""), "i"));
   assert.doesNotMatch(publicText, /turn\d+(?:search|fetch|view|open|file)\d+/i);
   assert.doesNotMatch(publicText, /sandbox:\/\/mnt\/data/i);
   assert.doesNotMatch(skill, /brand-specific|brand overlay|claim ledger/i);
 });
 
-test("metadata matches the v1.11.0 release contract", () => {
+test("metadata matches the v1.12.0 distribution release", () => {
   const expectedYaml = [
     "interface:",
     '  display_name: "Maestro: Agora"',
@@ -659,14 +670,14 @@ test("metadata matches the v1.11.0 release contract", () => {
     "",
   ].join("\n");
   assert.equal(normalizeNewlines(openaiYaml), expectedYaml);
-  assert.equal(packageJson.version, "1.11.0");
+  assert.equal(packageJson.version, "1.12.0");
   assert.equal(codexPlugin.version, packageJson.version);
   assert.equal(claudePlugin.version, packageJson.version);
   assert.equal(packageJson.scripts["eval:release"], "node scripts/release-evidence-check.mjs");
-  assert.equal(packageJson.scripts["release:check"], "npm run check && npm run eval:release");
+  assert.equal(packageJson.scripts["release:check"], "npm run check && node scripts/distribution-release-check.mjs");
   assert.equal(packageJson.scripts.prepack, "npm run release:check");
   assert.equal(packageJson.scripts.prepublishOnly, "npm run release:check");
-  assert.match(packageJson.scripts["release:check"], /eval:release/);
+  assert.match(packageJson.scripts["release:check"], /distribution-release-check/);
   assert.match(gitAttributes, /^\* text=auto eol=lf$/m);
   assert.match(gitAttributes, /^\*\.png binary$/m);
   assert.doesNotMatch(skill, /\r\n/);
@@ -678,8 +689,11 @@ test("metadata matches the v1.11.0 release contract", () => {
   assert.doesNotMatch(caseStudies, /\r\n/);
   assert.doesNotMatch(invest, /\r\n/);
   assert.doesNotMatch(publication, /\r\n/);
+  assert.doesNotMatch(articleRuntime, /\r\n/);
+  assert.doesNotMatch(articleExamples, /\r\n/);
   assert.doesNotMatch(openaiYaml, /\r\n/);
-  assert.equal(codexPlugin.interface.shortDescription, "Writing and publication artifact review");
+  assert.ok(codexPlugin.interface.shortDescription.length <= 30);
+  assert.ok(codexPlugin.interface.defaultPrompt.length <= 3);
   assert.equal(packageJson.bin["agora-publication-audit"], "skills/agora/scripts/publication-audit.mjs");
   assert.equal(packageJson.bin["agora-style-audit"], "scripts/style-audit.mjs");
   const publicMetadata = [

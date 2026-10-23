@@ -1,6 +1,6 @@
 {
   "name": "maestro-agora",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "Maestro: Agora writes clear persuasion, technical explanations, case studies, and investment communication, then audits local publication artifacts when requested.",
   "author": {
     "name": "Mark Laursen",
@@ -25,8 +25,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Maestro: Agora",
-    "shortDescription": "Writing and publication artifact review",
-    "longDescription": "Install Maestro: Agora in Codex for a direct /agora skill that follows the user's claims, framing, creative choices, and intended action across commercial arguments, technical explanations, case studies, and investment communication, with explicit read-only privacy and provenance audits for local publication artifacts.",
+    "shortDescription": "Writing shaped by your brief",
+    "longDescription": "Turn your brief, source material, and writing samples into landing pages, product copy, articles, technical explanations, case studies, and investor communication. Agora shapes the argument around your audience and intended action, preserves supplied facts, and adapts the writing to the channel. Use it in ChatGPT or Codex for drafting, rewriting, shortening, and critique. Core writing needs no external account or server. Optional file audits require accessible files and a Node.js execution environment; persistent measured voice profiles also require the separately installed Agora CLI and user-controlled storage. These local utilities and profile persistence are not available on every surface. The plugin does not create or publish websites, documents, or messages by itself.",
     "developerName": "Mark Laursen",
     "category": "Productivity",
     "capabilities": [
@@ -34,14 +34,20 @@
       "Write"
     ],
     "websiteURL": "https://github.com/mbanderas/maestro-agora",
+    "supportURL": "https://github.com/mbanderas/maestro-agora/issues",
+    "privacyPolicyURL": "https://github.com/mbanderas/maestro-agora/blob/main/PRIVACY.md",
     "brandColor": "#7C3AED",
     "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
     "defaultPrompt": [
       "/agora sell Write the strongest hero from this brief and destination.",
-      "/agora technical Explain this system for the technical reader I specify.",
-      "/agora case study Turn this project material into the case study I describe.",
-      "/agora invest Build this fundraising asset from my thesis, claims, urgency, and plan.",
-      "/agora publication audit Inspect this local file for hidden Unicode, metadata, and provenance."
+      "/agora inform Turn these notes into an article for the audience I describe.",
+      "/agora case study Turn this project material into the case study I describe."
     ]
+  },
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/agora-start/SKILL.md"
+    }
   }
 }

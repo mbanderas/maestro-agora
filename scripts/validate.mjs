@@ -7,6 +7,7 @@ import { access, readFile, readdir } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { verifyEvalLocks } from "./eval-locks.mjs";
+import { validatePluginManifest } from "./plugin-package.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SKILL_NAME = "agora";
@@ -14,6 +15,8 @@ const SKILL_ROOT = join(ROOT, "skills", SKILL_NAME);
 const REQUIRED_SKILL_FILES = [
   "SKILL.md",
   "agents/openai.yaml",
+  "references/agora-article-examples.md",
+  "references/agora-article-runtime.md",
   "references/agora-case-studies.md",
   "references/agora-case-study-runtime.md",
   "references/agora-conversion.md",
@@ -142,12 +145,14 @@ async function main() {
   const publicationPath = join(SKILL_ROOT, "references", "agora-publication.md");
   const voicePath = join(SKILL_ROOT, "references", "agora-voice.md");
   const writingRuntimePath = join(SKILL_ROOT, "references", "agora-writing-runtime.md");
+  const articleRuntimePath = join(SKILL_ROOT, "references", "agora-article-runtime.md");
+  const articleExamplesPath = join(SKILL_ROOT, "references", "agora-article-examples.md");
   const marketingRuntimePath = join(SKILL_ROOT, "references", "agora-marketing-runtime.md");
   const conversionRuntimePath = join(SKILL_ROOT, "references", "agora-conversion-runtime.md");
   const caseRuntimePath = join(SKILL_ROOT, "references", "agora-case-study-runtime.md");
   const antiAiPath = join(SKILL_ROOT, "references", "human-voice-editing-reference.md");
   const openaiPath = join(SKILL_ROOT, "agents", "openai.yaml");
-  const [skill, reference, conversion, craft, invest, science, caseStudy, publication, voice, writingRuntime, marketingRuntime, conversionRuntime, caseRuntime, antiAi, openaiYaml] = await Promise.all([
+  const [skill, reference, conversion, craft, invest, science, caseStudy, publication, voice, writingRuntime, articleRuntime, articleExamples, marketingRuntime, conversionRuntime, caseRuntime, antiAi, openaiYaml] = await Promise.all([
     readFile(skillPath, "utf8"),
     readFile(referencePath, "utf8"),
     readFile(conversionPath, "utf8"),
@@ -158,6 +163,8 @@ async function main() {
     readFile(publicationPath, "utf8"),
     readFile(voicePath, "utf8"),
     readFile(writingRuntimePath, "utf8"),
+    readFile(articleRuntimePath, "utf8"),
+    readFile(articleExamplesPath, "utf8"),
     readFile(marketingRuntimePath, "utf8"),
     readFile(conversionRuntimePath, "utf8"),
     readFile(caseRuntimePath, "utf8"),
@@ -176,6 +183,8 @@ async function main() {
     ["skills/agora/references/agora-publication.md", publication],
     ["skills/agora/references/agora-voice.md", voice],
     ["skills/agora/references/agora-writing-runtime.md", writingRuntime],
+    ["skills/agora/references/agora-article-runtime.md", articleRuntime],
+    ["skills/agora/references/agora-article-examples.md", articleExamples],
     ["skills/agora/references/agora-marketing-runtime.md", marketingRuntime],
     ["skills/agora/references/agora-conversion-runtime.md", conversionRuntime],
     ["skills/agora/references/agora-case-study-runtime.md", caseRuntime],
@@ -219,6 +228,7 @@ async function main() {
     "scan the complete response character by character for U+2014",
     "return only when the count is zero",
     "[references/agora-writing-runtime.md](references/agora-writing-runtime.md)",
+    "[references/agora-article-runtime.md](references/agora-article-runtime.md)",
     "[references/agora-marketing-runtime.md](references/agora-marketing-runtime.md)",
     "[references/agora-conversion-runtime.md](references/agora-conversion-runtime.md)",
     "[references/agora-case-study-runtime.md](references/agora-case-study-runtime.md)",
@@ -247,7 +257,7 @@ async function main() {
     "Treat the user's named product, offer, customer, result, route, price, permission, process, timing, legal, operational, and outcome facts as complete",
     "Never invent a name, figure, quotation, outcome, credential, permission, URL, product behavior, destination, or intermediate step",
     "Apply fact checking, source review, claim review, permission review, disclosure review, compliance, legal review, or diligence only when the user asks",
-    "Review sentences over 28 words",
+    "Review sentences over 28 words for reader effort, not length alone",
     "No instruction requires a 25-word sentence",
     "Return one ready-to-use result by default",
     "Do not expose internal planning",
@@ -385,16 +395,37 @@ async function main() {
     "# Agora human-writing runtime contract",
     "Use plain professional English",
     "A software, data, or AI topic is not automatically technical writing",
-    "Review an ordinary sentence over 28 words",
+    "Review an ordinary sentence over 28 words for actual reading effort, not a numerical violation",
+    "Keep a fluent longer sentence when its clauses belong together",
     "No sentence must be long for rhythm",
     "The lists are hard output rules, not density suggestions",
     "Return ready-to-use text first and by default",
   ]) check(writingRuntime.includes(required), `writing runtime is missing: ${required}`);
   for (const required of [
+    "## Find the article in the material",
+    "## Develop the thought",
+    "## Finish and revise",
+    "A voice sample supplies style habits, not article facts",
+    "Do not invent a customer, first-person story, personal opinion, failure, quotation, precise event, study, statistic, or outcome",
+    "Use external facts only when supplied or when the user requests research and the sources support them",
+    "Do not turn a supplied recommendation into an unattributed command, a customer report into a measured result, or a possibility into an event",
+    "Carry any supplied unmeasured outcome or negative limit into visible copy once when it bounds the conclusion",
+    "Follow an outline, section order, or format the user explicitly requests",
+    "Trace the user's instructions, first-party material, required facts, length, structure, and active voice through the final article",
+  ]) check(articleRuntime.includes(required), `article runtime is missing: ${required}`);
+  for (const required of [
+    "## How to use these examples",
+    "original synthetic demonstration with a closed fact set",
+    "not a published excerpt, author profile, article fact source, or required structure",
+    "Transfer the editorial decision, not its wording or subject matter",
+    "The user's requested structure and voice take priority",
+  ]) check(articleExamples.includes(required), `article examples are missing: ${required}`);
+  for (const required of [
     "Resolve these items in order",
     "The default register is `PLAIN`",
     "Topic words such as AI, software, data, security, engineering, and infrastructure do not choose the register",
     "Voice shapes sentence construction",
+    "[agora-article-runtime.md](agora-article-runtime.md)",
     "Return one recommended deliverable by default",
   ]) check(marketingRuntime.includes(required), `marketing runtime is missing: ${required}`);
   for (const required of [
@@ -568,7 +599,7 @@ async function main() {
     readFile(join(ROOT, ".github", "workflows", "publish.yml"), "utf8"),
   ]);
   check(packageJson.name === "@maestroagora/agora", "package name must match the public package");
-  check(packageJson.version === "1.11.0", "package version must be 1.11.0");
+  check(packageJson.version === "1.12.0", "package version must be 1.12.0");
   check(packageJson.bin?.agora === "scripts/install.mjs", "package must expose the agora bin");
   check(packageJson.bin?.["agora-voice"] === "scripts/voice-measure.mjs", "package must expose the agora-voice bin");
   check(packageJson.bin?.["agora-publication-audit"] === "skills/agora/scripts/publication-audit.mjs", "package must expose the publication audit bin");
@@ -589,11 +620,11 @@ async function main() {
   }
   check(
     packageJson.scripts?.["eval:release"] === "node scripts/release-evidence-check.mjs",
-    "eval:release must verify the current release evidence",
+    "eval:release must retain the historical evidence verifier",
   );
   check(
-    packageJson.scripts?.["release:check"] === "npm run check && npm run eval:release",
-    "release:check must include deterministic and current evaluation gates",
+    packageJson.scripts?.["release:check"] === "npm run check && node scripts/distribution-release-check.mjs",
+    "release:check must include deterministic checks and approved distribution integrity",
   );
   check(
     packageJson.scripts?.prepack === "npm run release:check"
@@ -630,13 +661,11 @@ async function main() {
   check(codexPlugin.name === "maestro-agora", "Codex plugin ID must be maestro-agora");
   check(codexPlugin.version === packageJson.version, "Codex plugin version must match package");
   check(codexPlugin.skills === "./skills/", "Codex plugin must expose skills");
-  check(codexPlugin.interface?.shortDescription === "Writing and publication artifact review", "Codex short description is stale");
-  check(
-    Array.isArray(codexPlugin.interface?.defaultPrompt) &&
-      codexPlugin.interface.defaultPrompt.length === 5 &&
-      codexPlugin.interface.defaultPrompt.every((prompt) => prompt.startsWith("/agora ") && prompt.length <= 128),
-    "Codex default prompts must activate /agora and fit the client limit",
-  );
+  try {
+    validatePluginManifest(codexPlugin);
+  } catch (error) {
+    check(false, `Plugin listing: ${error.message}`);
+  }
   check(claudePlugin.version === packageJson.version, "Claude plugin version must match package");
 
   const publicMetadata = [
@@ -690,6 +719,8 @@ async function main() {
     ".claude-plugin/plugin.json",
     ".codex-plugin/plugin.json",
     "skills/agora/SKILL.md",
+    "skills/agora/references/agora-article-runtime.md",
+    "skills/agora/references/agora-article-examples.md",
     "skills/agora/references/agora-marketing.md",
     "skills/agora/references/agora-conversion.md",
     "skills/agora/references/agora-craft.md",

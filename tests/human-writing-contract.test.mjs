@@ -19,10 +19,12 @@ const SKILL_ROOT = join(ROOT, "skills", "agora");
 const REFERENCES = join(SKILL_ROOT, "references");
 const read = (path) => readFile(join(ROOT, ...path.split("/")), "utf8");
 
-const [skill, runtime, marketingRuntime, conversionRuntime, science, voice, craft, canonical] = await Promise.all([
+const [skill, runtime, marketingRuntime, articleRuntime, articleExamples, conversionRuntime, science, voice, craft, canonical] = await Promise.all([
   read("skills/agora/SKILL.md"),
   read("skills/agora/references/agora-writing-runtime.md"),
   read("skills/agora/references/agora-marketing-runtime.md"),
+  read("skills/agora/references/agora-article-runtime.md"),
+  read("skills/agora/references/agora-article-examples.md"),
   read("skills/agora/references/agora-conversion-runtime.md"),
   read("skills/agora/references/agora-science.md"),
   read("skills/agora/references/agora-voice.md"),
@@ -99,14 +101,17 @@ test("plain runtime is small, direct, strict, and ready-copy-only", () => {
   assert.doesNotMatch(runtime, /https?:\/\//);
   assert.doesNotMatch(runtime, /\bRule \[[A-Z]\]/);
   assert.match(runtime, /hard output rules, not density suggestions/);
-  assert.match(runtime, /Review an ordinary sentence over 28 words/);
+  assert.match(runtime, /Review an ordinary sentence over 28 words for actual reading effort, not a numerical violation/);
+  assert.match(runtime, /Keep a fluent longer sentence when its clauses belong together/);
   assert.match(runtime, /Return ready-to-use text first and by default/);
   assert.match(runtime, /Do not append a rationale/);
   for (const term of CONTROL_ROOM_TERMS) assert.ok(runtime.includes(term), term);
 });
 
-test("ordinary marketing and conversion load compact runtime files, not deep research", () => {
+test("ordinary marketing, articles, and conversion load compact runtime files, not deep research", () => {
   assert.match(skill, /Use \[references\/agora-marketing-runtime\.md/);
+  assert.match(skill, /ordinary `INFORM` article uses \[references\/agora-article-runtime\.md\]\(references\/agora-article-runtime\.md\) instead of the marketing runtime/);
+  assert.match(marketingRuntime, /Use \[agora-article-runtime\.md\]\(agora-article-runtime\.md\) for article development/);
   assert.match(skill, /Use \[references\/agora-conversion-runtime\.md/);
   assert.match(skill, /do not load them for ordinary drafting/);
   assert.match(marketingRuntime, /The default register is `PLAIN`/);
@@ -131,10 +136,12 @@ test("register and both voice tiers resolve before argument planning", () => {
 });
 
 test("forced rhythm generation is removed while diagnostics remain", () => {
-  const generationSources = `${skill}\n${runtime}\n${marketingRuntime}\n${craft}\n${voice}`;
+  const generationSources = `${skill}\n${runtime}\n${marketingRuntime}\n${articleRuntime}\n${articleExamples}\n${craft}\n${voice}`;
   assert.doesNotMatch(generationSources, /include at least one sentence of 8 words or fewer and one of 25 or more/i);
   assert.doesNotMatch(generationSources, /aim for a coefficient of variation/i);
   assert.match(skill, /No instruction requires a 25-word sentence/);
+  assert.match(skill, /Do not split a fluent sentence merely to meet a number/);
+  assert.match(runtime, /Do not alternate long and short sentences mechanically or flatten an author's syntax/);
   assert.match(craft, /Numeric sentence-length and paragraph-shape measurements belong in `voice check` and optional diagnostics/);
   assert.match(voice, /Do not generate toward them/);
 });
